@@ -3,13 +3,13 @@
 
 $('#tablaPreguntas').on('click', '.detallepregunta', function () {
 
-    console.log(Lista_preguntas);
+  
     $('#Detalle-tbody').empty();
     $('#detalleresp').empty();
     var id = $(this).attr('rel');
     $('#ModalDetallePregunta').modal('show');
     var result = $.grep(Lista_preguntas, function (e) { return e.IdPregunta == id || e.IdPregunta2==id; });
-    console.log(result);
+   
     for (var i = 0; i < result.length; i++) {
 
         $('#Detalle-tbody').append("<tr><td><b>Pregunta </b></td><td colspan='3'>" + result[i].Pregunta + "</td> </tr><tr><td><b>Tipo de pregunta</b></td><td class='tipopregunta'>" + result[i].txtTipoPregunta + "</td><td><b>Tipo de control</b></td> <td>" + result[i].txtTipoControl + "</td></tr>");
