@@ -1,0 +1,135 @@
+﻿@{
+    List<Softv.Entities.ModuleEntity> menuList = ViewBag.Menu2;
+    int? idStateInitial = 0;    //Aqui se almacenara el valor que se obtenga como id del tag <A>
+
+}
+
+<link href="@Url.Content("~/Content/menu/styles.css")" rel="stylesheet" type="text/css" />
+<script src="@Url.Content("~/Content/menu/script.js")" type="text/javascript"></script>
+<style>
+
+</style>
+
+@foreach (var mp in menuList.OrderBy(x => x.SortOrder).Where(p => p.ParentId == 0))
+{
+
+
+    if (mp.IdModule == @idStateInitial)
+    {
+        <li class="active treeview">
+            @if (mp.ModulePath.StartsWith("/"))
+            {
+                var MyUri = HttpContext.Current.Request.Url;
+                String StrUri = String.Format("{0}://{1}{2}{3}", MyUri.Scheme, MyUri.Host, MyUri.IsDefaultPort ? "" : ":" + MyUri.Port.ToString(), mp.ModulePath);
+
+
+
+
+                <a href="#"><i class="fa fa-dashboard"></i> <span>@mp.Description</span> <i class="fa fa-angle-left pull-right"></i></a>
+            }
+            else
+            {
+                <a href="#"><i class="fa fa-dashboard"></i> <span>@mp.Description</span> <i class="fa fa-angle-left pull-right"></i></a>
+            }
+
+
+            @RenderMenuItem(menuList, mp)
+
+
+        </li>
+
+    }
+
+    else
+    {
+        <li class="active treeview">
+            @if (mp.ModuleView != "index")
+            {
+                <a href="#"><i class="fa fa-dashboard"></i> <span>@mp.Description</span> <i class="fa fa-angle-left pull-right"></i></a>
+
+            }
+            else
+            {
+                if (mp.ModulePath.StartsWith("/"))
+                {
+                    var MyUri = HttpContext.Current.Request.Url;
+                    String StrUri = String.Format("{0}://{1}{2}{3}", MyUri.Scheme, MyUri.Host, MyUri.IsDefaultPort ? "" : ":" + MyUri.Port.ToString(), mp.ModulePath);
+                    <a href="#"><i class="fa fa-dashboard"></i> <span>@mp.Description</span> <i class="fa fa-angle-left pull-right"></i></a>
+                }
+                else
+                {
+                    <a href="#"><i class="fa fa-dashboard"></i> <span>@mp.Description</span> <i class="fa fa-angle-left pull-right"></i></a>
+                }
+
+            }
+
+
+            @RenderMenuItem(menuList, mp)
+
+
+        </li>
+    }
+}
+
+
+
+    @helper RenderMenuItem(List<Softv.Entities.ModuleEntity> menuList, Softv.Entities.ModuleEntity mi)
+{
+
+    <ul class="treeview-menu">
+        @foreach (var cp in menuList.Where(p => p.ParentId == mi.IdModule))
+        {
+
+            <li>
+
+                @if (@cp.ModuleView == null)
+                {
+                    @*<h3>@cp.Description</h3>*@
+                    <a href="#" id="@cp.ParentId">@cp.Description</a>
+
+
+
+                    //@RenderMenuItem(menuList, cp)
+
+                }
+                else
+                {
+
+                    if (cp.ModulePath.StartsWith("/"))
+                    {
+                        var MyUri = HttpContext.Current.Request.Url;
+                        String StrUri = String.Format("{0}://{1}{2}{3}", MyUri.Scheme, MyUri.Host, MyUri.IsDefaultPort ? "" : ":" + MyUri.Port.ToString(), cp.ModulePath);
+
+                        <a href="@StrUri"><i class="fa fa-circle-o"></i> @cp.Description</a>
+
+                    }
+                    else
+                    {
+                        @:<a href="@Url.Action(@cp.ModuleView, @cp.ModulePath)" id="@cp.ParentId">@cp.Description</a>
+                        
+
+                    }
+
+
+
+
+                    //@RenderMenuItem(menuList, cp)
+
+                }
+            </li>
+        }
+
+            
+        </ul>
+        }
+   
+
+
+
+
+
+
+
+
+
+

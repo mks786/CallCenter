@@ -1,0 +1,79 @@
+﻿@*@{
+        ViewBag.Title = "Index";
+        Layout = "~/Views/Shared/_Layout.cshtml";
+    }
+
+    <h2>Index</h2>*@
+
+<section class="content-header">
+    <h1>
+        Tipo Preguntas
+        <small>Lista de Tipo de Preguntas</small>
+    </h1>
+    <ol class="breadcrumb">
+        <li><a href="#"><i class="fa fa-dashboard"></i> Inicio</a></li>
+        <li class="active">Lista de Tipo de Preguntas</li>
+    </ol>
+</section>
+
+<div class="row">
+    <div class="col-xs-12">
+        <div class="box">
+            <div class="box-header">
+                <h3 class="box-title">Lista de Tipo de Preguntas</h3>
+
+            </div><!-- /.box-header -->
+            <div class="box-body">
+
+                <table id="TablaTipoPreguntas" class="table table-bordered table-hover dataTable">
+                    <thead>
+                        <tr>
+                            <td><b>IdTipoPregunta</b></td>
+                            <td><b>Descripcion</b></td>
+                            @*<td><b>Opciones</b></td>*@
+                        </tr>
+                    </thead>
+
+                    <tfoot>
+                        <tr>
+                            <td><b>IdTipoPregunta</b></td>
+                            <td><b>Descripcion</b></td>
+                            @*<td><b>Opciones</b></td>*@
+                        </tr>
+                    </tfoot>
+
+                </table>
+
+            </div>
+        </div>
+    </div>
+</div>
+
+@*MODAL DETALLE Tipo de Pregunta*@
+@*<div class="modal fade bs-example-modal-lg" id="ModalDetalleTipoPregunta" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button class="close" aria-label="Close" type="button" data-dismiss="modal"><span aria-hidden="true">×</span></button>
+                <h4 class="modal-title">Detalles de Tipo de Preguntas</h4>
+            </div>
+            <div class="modal-body">
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-default pull-left" type="button" data-dismiss="modal">cerrar</button>
+                <button class="btn btn-primary" type="button">Aceptar</button>
+            </div>
+        </div>
+    </div>
+</div>*@
+
+
+
+
+
+
+<script src="~/dist/js/pages/TipoPregunta/Lista.js">
+    //Ruta de lista.js
+
+</script>
+

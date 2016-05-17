@@ -1,0 +1,79 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{15C63329-3235-4F56-8F7A-AE44C969E3C8}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Softv.Entities</RootNamespace>
+    <AssemblyName>Softv.Entities</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Base\BaseEntity.cs" />
+    <Compile Include="CatalogoPeriodosCorteEntity.cs" />
+    <Compile Include="CLIENTEEntity.cs" />
+    <Compile Include="Cliente_ApellidoEntity.cs" />
+    <Compile Include="ConexionEntity.cs" />
+    <Compile Include="DatoFiscalEntity.cs" />
+    <Compile Include="EncuestaEntity.cs" />
+    <Compile Include="EnumEntity.cs" />
+    <Compile Include="LlamadaEntity.cs" />
+    <Compile Include="ModuleEntity.cs" />
+    <Compile Include="PermisoEntity.cs" />
+    <Compile Include="PreguntaEntity.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="RelEncuestaClientesEntity.cs" />
+    <Compile Include="RelEnProcesosEntity.cs" />
+    <Compile Include="RelPreguntaEncuestasEntity.cs" />
+    <Compile Include="RelPreguntaOpcMultsEntity.cs" />
+    <Compile Include="Rel_Clientes_TiposClientesEntity.cs" />
+    <Compile Include="ResOpcMultsEntity.cs" />
+    <Compile Include="RoleEntity.cs" />
+    <Compile Include="TapEntity.cs" />
+    <Compile Include="TipoClienteEntity.cs" />
+    <Compile Include="TipoPreguntasEntity.cs" />
+    <Compile Include="TipServEntity.cs" />
+    <Compile Include="TrabajoEntity.cs" />
+    <Compile Include="TurnoEntity.cs" />
+    <Compile Include="UsuarioEntity.cs" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

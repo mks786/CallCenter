@@ -1,0 +1,91 @@
+D:\Work\Desarrollo\Softv\Softv.Configuration\bin\Debug\Globals.dll
+D:\Work\Desarrollo\Softv\Softv.Configuration\bin\Debug\Globals.pdb
+D:\Work\Desarrollo\Softv\Softv.Configuration\obj\Debug\SoftvConfiguration.csprojResolveAssemblyReference.cache
+D:\Work\Desarrollo\Softv\Softv.Configuration\bin\Debug\SoftvConfiguration.dll
+D:\Work\Desarrollo\Softv\Softv.Configuration\bin\Debug\SoftvConfiguration.pdb
+D:\Work\Desarrollo\Softv\Softv.Configuration\obj\Debug\SoftvConfiguration.dll
+D:\Work\Desarrollo\Softv\Softv.Configuration\obj\Debug\SoftvConfiguration.pdb
+C:\Users\egarcia\Desktop\Softv\Softv.Configuration\bin\Debug\SoftvConfiguration.dll
+C:\Users\egarcia\Desktop\Softv\Softv.Configuration\bin\Debug\SoftvConfiguration.pdb
+C:\Users\egarcia\Desktop\Softv\Softv.Configuration\bin\Debug\Globals.dll
+C:\Users\egarcia\Desktop\Softv\Softv.Configuration\bin\Debug\Globals.pdb
+C:\Users\egarcia\Desktop\Softv\Softv.Configuration\obj\Debug\SoftvConfiguration.csprojResolveAssemblyReference.cache
+C:\Users\egarcia\Desktop\Softv\Softv.Configuration\obj\Debug\SoftvConfiguration.dll
+C:\Users\egarcia\Desktop\Softv\Softv.Configuration\obj\Debug\SoftvConfiguration.pdb
+C:\Users\Lizeth\Desktop\Encuestas\Softv\Softv.Configuration\bin\Debug\SoftvConfiguration.dll
+C:\Users\Lizeth\Desktop\Encuestas\Softv\Softv.Configuration\bin\Debug\SoftvConfiguration.pdb
+C:\Users\Lizeth\Desktop\Encuestas\Softv\Softv.Configuration\bin\Debug\Globals.dll
+C:\Users\Lizeth\Desktop\Encuestas\Softv\Softv.Configuration\bin\Debug\Globals.pdb
+C:\Users\Lizeth\Desktop\Encuestas\Softv\Softv.Configuration\obj\Debug\SoftvConfiguration.csprojResolveAssemblyReference.cache
+C:\Users\Lizeth\Desktop\Encuestas\Softv\Softv.Configuration\obj\Debug\SoftvConfiguration.dll
+C:\Users\Lizeth\Desktop\Encuestas\Softv\Softv.Configuration\obj\Debug\SoftvConfiguration.pdb
+C:\Users\blanca\Documents\Visual Studio 2013\Projects\E 7-5-2016\Encuestas 7-05-2016\Softv\Softv.Configuration\bin\Debug\SoftvConfiguration.dll
+C:\Users\blanca\Documents\Visual Studio 2013\Projects\E 7-5-2016\Encuestas 7-05-2016\Softv\Softv.Configuration\bin\Debug\SoftvConfiguration.pdb
+C:\Users\blanca\Documents\Visual Studio 2013\Projects\E 7-5-2016\Encuestas 7-05-2016\Softv\Softv.Configuration\bin\Debug\Globals.dll
+C:\Users\blanca\Documents\Visual Studio 2013\Projects\E 7-5-2016\Encuestas 7-05-2016\Softv\Softv.Configuration\bin\Debug\Globals.pdb
+C:\Users\blanca\Documents\Visual Studio 2013\Projects\E 7-5-2016\Encuestas 7-05-2016\Softv\Softv.Configuration\obj\Debug\SoftvConfiguration.csprojResolveAssemblyReference.cache
+C:\Users\blanca\Documents\Visual Studio 2013\Projects\E 7-5-2016\Encuestas 7-05-2016\Softv\Softv.Configuration\obj\Debug\SoftvConfiguration.dll
+C:\Users\blanca\Documents\Visual Studio 2013\Projects\E 7-5-2016\Encuestas 7-05-2016\Softv\Softv.Configuration\obj\Debug\SoftvConfiguration.pdb
+C:\Users\blanca\Documents\Visual Studio 2013\Projects\Encuestas 7-05-2016\Softv\Softv.Configuration\bin\Debug\SoftvConfiguration.dll
+C:\Users\blanca\Documents\Visual Studio 2013\Projects\Encuestas 7-05-2016\Softv\Softv.Configuration\bin\Debug\SoftvConfiguration.pdb
+C:\Users\blanca\Documents\Visual Studio 2013\Projects\Encuestas 7-05-2016\Softv\Softv.Configuration\bin\Debug\Globals.dll
+C:\Users\blanca\Documents\Visual Studio 2013\Projects\Encuestas 7-05-2016\Softv\Softv.Configuration\bin\Debug\Globals.pdb
+C:\Users\blanca\Documents\Visual Studio 2013\Projects\Encuestas 7-05-2016\Softv\Softv.Configuration\obj\Debug\SoftvConfiguration.csprojResolveAssemblyReference.cache
+C:\Users\blanca\Documents\Visual Studio 2013\Projects\Encuestas 7-05-2016\Softv\Softv.Configuration\obj\Debug\SoftvConfiguration.dll
+C:\Users\blanca\Documents\Visual Studio 2013\Projects\Encuestas 7-05-2016\Softv\Softv.Configuration\obj\Debug\SoftvConfiguration.pdb
+C:\Users\blanca\Desktop\Encuestas\Encuestas\Softv\Softv.Configuration\bin\Debug\SoftvConfiguration.dll
+C:\Users\blanca\Desktop\Encuestas\Encuestas\Softv\Softv.Configuration\bin\Debug\SoftvConfiguration.pdb
+C:\Users\blanca\Desktop\Encuestas\Encuestas\Softv\Softv.Configuration\bin\Debug\Globals.dll
+C:\Users\blanca\Desktop\Encuestas\Encuestas\Softv\Softv.Configuration\bin\Debug\Globals.pdb
+C:\Users\blanca\Desktop\Encuestas\Encuestas\Softv\Softv.Configuration\obj\Debug\SoftvConfiguration.csprojResolveAssemblyReference.cache
+C:\Users\blanca\Desktop\Encuestas\Encuestas\Softv\Softv.Configuration\obj\Debug\SoftvConfiguration.dll
+C:\Users\blanca\Desktop\Encuestas\Encuestas\Softv\Softv.Configuration\obj\Debug\SoftvConfiguration.pdb
+C:\Users\blanca\Desktop\Encuestas\Encuestas con todas las vistas - copia\Softv\Softv.Configuration\bin\Debug\SoftvConfiguration.dll
+C:\Users\blanca\Desktop\Encuestas\Encuestas con todas las vistas - copia\Softv\Softv.Configuration\bin\Debug\SoftvConfiguration.pdb
+C:\Users\blanca\Desktop\Encuestas\Encuestas con todas las vistas - copia\Softv\Softv.Configuration\bin\Debug\Globals.dll
+C:\Users\blanca\Desktop\Encuestas\Encuestas con todas las vistas - copia\Softv\Softv.Configuration\bin\Debug\Globals.pdb
+C:\Users\blanca\Desktop\Encuestas\Encuestas con todas las vistas - copia\Softv\Softv.Configuration\obj\Debug\SoftvConfiguration.csprojResolveAssemblyReference.cache
+C:\Users\blanca\Desktop\Encuestas\Encuestas con todas las vistas - copia\Softv\Softv.Configuration\obj\Debug\SoftvConfiguration.dll
+C:\Users\blanca\Desktop\Encuestas\Encuestas con todas las vistas - copia\Softv\Softv.Configuration\obj\Debug\SoftvConfiguration.pdb
+C:\Users\blanca\Desktop\Encuestas\Encuestas con todas las vistas\Softv\Softv.Configuration\bin\Debug\SoftvConfiguration.dll
+C:\Users\blanca\Desktop\Encuestas\Encuestas con todas las vistas\Softv\Softv.Configuration\bin\Debug\SoftvConfiguration.pdb
+C:\Users\blanca\Desktop\Encuestas\Encuestas con todas las vistas\Softv\Softv.Configuration\bin\Debug\Globals.dll
+C:\Users\blanca\Desktop\Encuestas\Encuestas con todas las vistas\Softv\Softv.Configuration\bin\Debug\Globals.pdb
+C:\Users\blanca\Desktop\Encuestas\Encuestas con todas las vistas\Softv\Softv.Configuration\obj\Debug\SoftvConfiguration.csprojResolveAssemblyReference.cache
+C:\Users\blanca\Desktop\Encuestas\Encuestas con todas las vistas\Softv\Softv.Configuration\obj\Debug\SoftvConfiguration.dll
+C:\Users\blanca\Desktop\Encuestas\Encuestas con todas las vistas\Softv\Softv.Configuration\obj\Debug\SoftvConfiguration.pdb
+C:\Users\blanca\Desktop\Encuestas\EncuestasVistas ex2\Softv\Softv.Configuration\bin\Debug\SoftvConfiguration.dll
+C:\Users\blanca\Desktop\Encuestas\EncuestasVistas ex2\Softv\Softv.Configuration\bin\Debug\SoftvConfiguration.pdb
+C:\Users\blanca\Desktop\Encuestas\EncuestasVistas ex2\Softv\Softv.Configuration\bin\Debug\Globals.dll
+C:\Users\blanca\Desktop\Encuestas\EncuestasVistas ex2\Softv\Softv.Configuration\bin\Debug\Globals.pdb
+C:\Users\blanca\Desktop\Encuestas\EncuestasVistas ex2\Softv\Softv.Configuration\obj\Debug\SoftvConfiguration.csprojResolveAssemblyReference.cache
+C:\Users\blanca\Desktop\Encuestas\EncuestasVistas ex2\Softv\Softv.Configuration\obj\Debug\SoftvConfiguration.dll
+C:\Users\blanca\Desktop\Encuestas\EncuestasVistas ex2\Softv\Softv.Configuration\obj\Debug\SoftvConfiguration.pdb
+C:\Users\blanca\Desktop\Encuestas\EncuestasVistasModales mod\Softv\Softv.Configuration\bin\Debug\SoftvConfiguration.dll
+C:\Users\blanca\Desktop\Encuestas\EncuestasVistasModales mod\Softv\Softv.Configuration\bin\Debug\SoftvConfiguration.pdb
+C:\Users\blanca\Desktop\Encuestas\EncuestasVistasModales mod\Softv\Softv.Configuration\bin\Debug\Globals.dll
+C:\Users\blanca\Desktop\Encuestas\EncuestasVistasModales mod\Softv\Softv.Configuration\bin\Debug\Globals.pdb
+C:\Users\blanca\Desktop\Encuestas\EncuestasVistasModales mod\Softv\Softv.Configuration\obj\Debug\SoftvConfiguration.csprojResolveAssemblyReference.cache
+C:\Users\blanca\Desktop\Encuestas\EncuestasVistasModales mod\Softv\Softv.Configuration\obj\Debug\SoftvConfiguration.dll
+C:\Users\blanca\Desktop\Encuestas\EncuestasVistasModales mod\Softv\Softv.Configuration\obj\Debug\SoftvConfiguration.pdb
+C:\Users\blanca\Desktop\Encuestas\EncuestasVistasModales mod 3\Softv\Softv.Configuration\bin\Debug\SoftvConfiguration.dll
+C:\Users\blanca\Desktop\Encuestas\EncuestasVistasModales mod 3\Softv\Softv.Configuration\bin\Debug\SoftvConfiguration.pdb
+C:\Users\blanca\Desktop\Encuestas\EncuestasVistasModales mod 3\Softv\Softv.Configuration\bin\Debug\Globals.dll
+C:\Users\blanca\Desktop\Encuestas\EncuestasVistasModales mod 3\Softv\Softv.Configuration\bin\Debug\Globals.pdb
+C:\Users\blanca\Desktop\Encuestas\EncuestasVistasModales mod 3\Softv\Softv.Configuration\obj\Debug\SoftvConfiguration.csprojResolveAssemblyReference.cache
+C:\Users\blanca\Desktop\Encuestas\EncuestasVistasModales mod 3\Softv\Softv.Configuration\obj\Debug\SoftvConfiguration.dll
+C:\Users\blanca\Desktop\Encuestas\EncuestasVistasModales mod 3\Softv\Softv.Configuration\obj\Debug\SoftvConfiguration.pdb
+C:\Users\blanca\Desktop\Encuestas\EncuestasVistasModales mod 3 - copia\Softv\Softv.Configuration\bin\Debug\SoftvConfiguration.dll
+C:\Users\blanca\Desktop\Encuestas\EncuestasVistasModales mod 3 - copia\Softv\Softv.Configuration\bin\Debug\SoftvConfiguration.pdb
+C:\Users\blanca\Desktop\Encuestas\EncuestasVistasModales mod 3 - copia\Softv\Softv.Configuration\bin\Debug\Globals.dll
+C:\Users\blanca\Desktop\Encuestas\EncuestasVistasModales mod 3 - copia\Softv\Softv.Configuration\bin\Debug\Globals.pdb
+C:\Users\blanca\Desktop\Encuestas\EncuestasVistasModales mod 3 - copia\Softv\Softv.Configuration\obj\Debug\SoftvConfiguration.csprojResolveAssemblyReference.cache
+C:\Users\blanca\Desktop\Encuestas\EncuestasVistasModales mod 3 - copia\Softv\Softv.Configuration\obj\Debug\SoftvConfiguration.dll
+C:\Users\blanca\Desktop\Encuestas\EncuestasVistasModales mod 3 - copia\Softv\Softv.Configuration\obj\Debug\SoftvConfiguration.pdb
+\\FABIAN-PC\Exes\EncuestasVistasModales mod 3\Softv\Softv.Configuration\bin\Debug\SoftvConfiguration.dll
+\\FABIAN-PC\Exes\EncuestasVistasModales mod 3\Softv\Softv.Configuration\bin\Debug\SoftvConfiguration.pdb
+\\FABIAN-PC\Exes\EncuestasVistasModales mod 3\Softv\Softv.Configuration\bin\Debug\Globals.dll
+\\FABIAN-PC\Exes\EncuestasVistasModales mod 3\Softv\Softv.Configuration\bin\Debug\Globals.pdb
+\\FABIAN-PC\Exes\EncuestasVistasModales mod 3\Softv\Softv.Configuration\obj\Debug\SoftvConfiguration.csprojResolveAssemblyReference.cache
+\\FABIAN-PC\Exes\EncuestasVistasModales mod 3\Softv\Softv.Configuration\obj\Debug\SoftvConfiguration.dll
+\\FABIAN-PC\Exes\EncuestasVistasModales mod 3\Softv\Softv.Configuration\obj\Debug\SoftvConfiguration.pdb

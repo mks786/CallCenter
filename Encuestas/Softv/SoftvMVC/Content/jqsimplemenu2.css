@@ -1,0 +1,232 @@
+.menu2 {
+    margin: 0;
+    padding: 0;
+    list-style-type: none;
+    position: relative;
+    line-height: 3.5em;
+    z-index: 1;
+    margin-top: 5px;
+    padding-left: 20px;
+}
+
+.menu2 ul {
+    list-style-type: none;
+    padding: 4px 4px 4px 5px;
+     background-color: #0065D3;
+}
+.menu2 ul a:hover {
+    
+     /*background-color: black;*/
+     color:white;
+}
+
+.menu2 a {
+    /*text-decoration: none;*/
+    /*background-color: #0065D3;*/
+}
+
+.menu2 > li {
+    margin-left: 15px;
+}
+
+    .menu2 > li:hover {
+          
+    color: grey;    
+    background: #fff;
+   
+    box-shadow: 0 0 6px rgba(0,0,0,.4);
+    border-radius: 3px;
+    
+    }
+
+    .menu2 > li > a {
+        padding: 0px 10px;
+        margin: 0;
+        width: 100%;
+        text-decoration: none;
+        color: #838383;
+        font-weight: bold;
+    }
+
+div.box {
+    position: absolute;
+    /*z-index: -1;*/
+    background-color: #75CDD2;
+    left: 0;
+    top: 0;
+    border-radius: 4px 4px 0px 0px;
+    -moz-border-radius: 4px 4px 0px 0px;
+    -webkit-border-radius: 4px 4px 0px 0px;
+}
+
+li.pull-down {
+    /*padding-right: 20px;*/
+    /* padding-left: 200px; */
+    width: auto;
+    height: 47px;
+    z-index: 4;
+    /*background-color: aquamarine;*/
+    /*border: 1px double black;*/
+    padding-left: 0px;
+    padding-top: 3px;
+}
+
+    li.pull-down > a {
+        display: block;
+        width: 100px;
+        font-size: 20px;
+        background-image: url('./images/darrow.png');
+        background-position: 96% 75%;
+        background-repeat: no-repeat;
+        padding-right: 20px;
+    }
+
+        li.pull-down > a:hover {
+            background-color: #000000;
+        }
+
+
+
+li.right-menu2 > a {
+    /*background-image: url('./images/downicon.png');    
+    background-position: 97% 45%;
+    background-repeat: no-repeat;*/
+
+}
+
+li.right-menu2 > a:hover {
+    /*background-image: url('./images/downicon.png');    
+    background-position: 97% 45%;
+    background-repeat: no-repeat;*/
+     /*background-color: #75CDD2;*/
+
+}
+
+
+.menu2 a.selected {
+    background-color: #0045BB;
+    border-radius: 0px 4px 4px 4px;
+    -moz-border-radius: 0px 4px 4px 4px;
+    -webkit-border-radius: 0px 4px 4px 4px;
+}
+
+.menu2 li {
+    float: left;
+    position: relative;
+    /*margin-top:-15px;*/
+    cursor: pointer;
+    /*background-color: antiquewhite;*/
+    width: inherit;
+    margin-top: 9px;
+}
+
+.menu2 ul {
+    position: absolute;
+    display: none;
+    width: initial;
+    top: 3.5em;
+    /* padding-right: 10px; */
+    /* background-color: #0045BB; */
+    /*background-color: #f7f7f9;*/
+    color: white;
+    /*border: 1px solid #888888;
+opacity: 0.8;*/
+    /*padding: 15px;*/
+    background: #fff;
+    position: absolute;
+    /*box-shadow: 0 0 6px rgba(0,0,0,.4);*/
+   box-shadow: 2px 3px 19px -5px rgba(0,0,0,.4);
+    border-radius: 3px;
+}
+
+.arrow-up {
+    width: 24px;
+    height: 25px;
+    background: #FFFFFF;
+    -webkit-transform: rotate(45deg);
+    -moz-transform: rotate(45deg);
+    -o-transform: rotate(45deg);
+    transform: rotate(45deg);
+    position: absolute;
+    top: 117px;
+    left: 84px;
+    margin: 0 auto;
+    box-shadow: -2px -2px 2px rgba(0,0,0,.2);
+}
+
+.menu2 li ul a {
+    /*width: 130px;
+    height: auto;
+    float: left;
+    color: black;
+    padding: 0 10px;*/
+    width: 150px;
+height: 35px;
+float: left;
+
+font-size: 12px;
+
+    text-decoration: none;
+    color:black;
+}
+
+
+
+
+.menu2 li ul li {
+    /*padding: 4px 0px 10px 4px;*/
+    margin: 0;
+    top:-4px;
+    /*border-bottom:1px solid black*/
+       
+}
+.right-menu2{
+      background-image: url('./images/righticon.png');   
+       
+    background-position: 97% 45%;
+    background-size: 17px 17px;
+    background-repeat: no-repeat;
+}
+
+
+/*CAMBIAR COLO DE OVER*/
+.menu2 li ul li:hover {
+    /*background-color: rgb(76, 183, 243);*/
+    background-color: rgb(1,125,188);
+    /*background-color: #f5f5f5;*/
+    border-radius: 3px;
+    /*background-color: rgb(108, 0, 15);*/
+    color:white;
+    
+
+     /*background-image: url('./images/downicon.png');    
+    background-position: 97% 45%;
+    background-size: 17px 17px;
+    background-repeat: no-repeat;*/
+     
+}
+
+
+.menu2 ul ul {
+    top: auto;
+}
+
+.menu2 li ul ul {
+    /*margin: 0px 0 0 10px;*/
+    position: absolute;
+    left: 100%;
+    width:initial;
+    top: 0%;
+}
+
+.menu-item-selected2 > a {
+    background-color: #000000;
+    -moz-opacity: .50;
+    filter: alpha(opacity=50);
+    opacity: .50;
+}
+
+    .menu-item-selected2 > a:hover {
+        color: #257E84 !important;
+        background-color: #000000;
+    }

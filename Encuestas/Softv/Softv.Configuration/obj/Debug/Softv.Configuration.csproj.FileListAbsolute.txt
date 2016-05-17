@@ -1,0 +1,5 @@
+D:\Work\Desarrollo\Softv\Softv.Configuration\bin\Debug\Softv.Configuration.dll
+D:\Work\Desarrollo\Softv\Softv.Configuration\bin\Debug\Softv.Configuration.pdb
+D:\Work\Desarrollo\Softv\Softv.Configuration\obj\Debug\Softv.Configuration.csprojResolveAssemblyReference.cache
+D:\Work\Desarrollo\Softv\Softv.Configuration\obj\Debug\Softv.Configuration.dll
+D:\Work\Desarrollo\Softv\Softv.Configuration\obj\Debug\Softv.Configuration.pdb

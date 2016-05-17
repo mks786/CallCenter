@@ -1,0 +1,340 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:tns="http://schemas.datacontract.org/2004/07/Globals" elementFormDefault="qualified" targetNamespace="http://schemas.datacontract.org/2004/07/Globals" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:import schemaLocation="http://localhost:64481/SoftvWCFService.svc?xsd=xsd2" namespace="http://schemas.datacontract.org/2004/07/Softv.Entities" />
+  <xs:complexType name="SoftvListOfUsuarioEntitykmseq5jn">
+    <xs:annotation>
+      <xs:appinfo>
+        <GenericType Name="SoftvListOf{0}{#}" Namespace="http://schemas.datacontract.org/2004/07/Globals" xmlns="http://schemas.microsoft.com/2003/10/Serialization/">
+          <GenericParameter Name="UsuarioEntity" Namespace="http://schemas.datacontract.org/2004/07/Softv.Entities" />
+        </GenericType>
+      </xs:appinfo>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element xmlns:q1="http://schemas.datacontract.org/2004/07/Softv.Entities" minOccurs="0" name="Entities" nillable="true" type="q1:ArrayOfUsuarioEntity" />
+      <xs:element minOccurs="0" name="totalCount" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="SoftvListOfUsuarioEntitykmseq5jn" nillable="true" type="tns:SoftvListOfUsuarioEntitykmseq5jn" />
+  <xs:complexType name="SoftvListOfRoleEntitykmseq5jn">
+    <xs:annotation>
+      <xs:appinfo>
+        <GenericType Name="SoftvListOf{0}{#}" Namespace="http://schemas.datacontract.org/2004/07/Globals" xmlns="http://schemas.microsoft.com/2003/10/Serialization/">
+          <GenericParameter Name="RoleEntity" Namespace="http://schemas.datacontract.org/2004/07/Softv.Entities" />
+        </GenericType>
+      </xs:appinfo>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element xmlns:q2="http://schemas.datacontract.org/2004/07/Softv.Entities" minOccurs="0" name="Entities" nillable="true" type="q2:ArrayOfRoleEntity" />
+      <xs:element minOccurs="0" name="totalCount" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="SoftvListOfRoleEntitykmseq5jn" nillable="true" type="tns:SoftvListOfRoleEntitykmseq5jn" />
+  <xs:complexType name="SoftvListOfModuleEntitykmseq5jn">
+    <xs:annotation>
+      <xs:appinfo>
+        <GenericType Name="SoftvListOf{0}{#}" Namespace="http://schemas.datacontract.org/2004/07/Globals" xmlns="http://schemas.microsoft.com/2003/10/Serialization/">
+          <GenericParameter Name="ModuleEntity" Namespace="http://schemas.datacontract.org/2004/07/Softv.Entities" />
+        </GenericType>
+      </xs:appinfo>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element xmlns:q3="http://schemas.datacontract.org/2004/07/Softv.Entities" minOccurs="0" name="Entities" nillable="true" type="q3:ArrayOfModuleEntity" />
+      <xs:element minOccurs="0" name="totalCount" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="SoftvListOfModuleEntitykmseq5jn" nillable="true" type="tns:SoftvListOfModuleEntitykmseq5jn" />
+  <xs:complexType name="SoftvListOfPermisoEntitykmseq5jn">
+    <xs:annotation>
+      <xs:appinfo>
+        <GenericType Name="SoftvListOf{0}{#}" Namespace="http://schemas.datacontract.org/2004/07/Globals" xmlns="http://schemas.microsoft.com/2003/10/Serialization/">
+          <GenericParameter Name="PermisoEntity" Namespace="http://schemas.datacontract.org/2004/07/Softv.Entities" />
+        </GenericType>
+      </xs:appinfo>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element xmlns:q4="http://schemas.datacontract.org/2004/07/Softv.Entities" minOccurs="0" name="Entities" nillable="true" type="q4:ArrayOfPermisoEntity" />
+      <xs:element minOccurs="0" name="totalCount" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="SoftvListOfPermisoEntitykmseq5jn" nillable="true" type="tns:SoftvListOfPermisoEntitykmseq5jn" />
+  <xs:complexType name="SoftvListOfEncuestaEntitykmseq5jn">
+    <xs:annotation>
+      <xs:appinfo>
+        <GenericType Name="SoftvListOf{0}{#}" Namespace="http://schemas.datacontract.org/2004/07/Globals" xmlns="http://schemas.microsoft.com/2003/10/Serialization/">
+          <GenericParameter Name="EncuestaEntity" Namespace="http://schemas.datacontract.org/2004/07/Softv.Entities" />
+        </GenericType>
+      </xs:appinfo>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element xmlns:q5="http://schemas.datacontract.org/2004/07/Softv.Entities" minOccurs="0" name="Entities" nillable="true" type="q5:ArrayOfEncuestaEntity" />
+      <xs:element minOccurs="0" name="totalCount" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="SoftvListOfEncuestaEntitykmseq5jn" nillable="true" type="tns:SoftvListOfEncuestaEntitykmseq5jn" />
+  <xs:complexType name="SoftvListOfPreguntaEntitykmseq5jn">
+    <xs:annotation>
+      <xs:appinfo>
+        <GenericType Name="SoftvListOf{0}{#}" Namespace="http://schemas.datacontract.org/2004/07/Globals" xmlns="http://schemas.microsoft.com/2003/10/Serialization/">
+          <GenericParameter Name="PreguntaEntity" Namespace="http://schemas.datacontract.org/2004/07/Softv.Entities" />
+        </GenericType>
+      </xs:appinfo>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element xmlns:q6="http://schemas.datacontract.org/2004/07/Softv.Entities" minOccurs="0" name="Entities" nillable="true" type="q6:ArrayOfPreguntaEntity" />
+      <xs:element minOccurs="0" name="totalCount" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="SoftvListOfPreguntaEntitykmseq5jn" nillable="true" type="tns:SoftvListOfPreguntaEntitykmseq5jn" />
+  <xs:complexType name="SoftvListOfTipoPreguntasEntitykmseq5jn">
+    <xs:annotation>
+      <xs:appinfo>
+        <GenericType Name="SoftvListOf{0}{#}" Namespace="http://schemas.datacontract.org/2004/07/Globals" xmlns="http://schemas.microsoft.com/2003/10/Serialization/">
+          <GenericParameter Name="TipoPreguntasEntity" Namespace="http://schemas.datacontract.org/2004/07/Softv.Entities" />
+        </GenericType>
+      </xs:appinfo>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element xmlns:q7="http://schemas.datacontract.org/2004/07/Softv.Entities" minOccurs="0" name="Entities" nillable="true" type="q7:ArrayOfTipoPreguntasEntity" />
+      <xs:element minOccurs="0" name="totalCount" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="SoftvListOfTipoPreguntasEntitykmseq5jn" nillable="true" type="tns:SoftvListOfTipoPreguntasEntitykmseq5jn" />
+  <xs:complexType name="SoftvListOfRelEncuestaClientesEntitykmseq5jn">
+    <xs:annotation>
+      <xs:appinfo>
+        <GenericType Name="SoftvListOf{0}{#}" Namespace="http://schemas.datacontract.org/2004/07/Globals" xmlns="http://schemas.microsoft.com/2003/10/Serialization/">
+          <GenericParameter Name="RelEncuestaClientesEntity" Namespace="http://schemas.datacontract.org/2004/07/Softv.Entities" />
+        </GenericType>
+      </xs:appinfo>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element xmlns:q8="http://schemas.datacontract.org/2004/07/Softv.Entities" minOccurs="0" name="Entities" nillable="true" type="q8:ArrayOfRelEncuestaClientesEntity" />
+      <xs:element minOccurs="0" name="totalCount" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="SoftvListOfRelEncuestaClientesEntitykmseq5jn" nillable="true" type="tns:SoftvListOfRelEncuestaClientesEntitykmseq5jn" />
+  <xs:complexType name="SoftvListOfRelPreguntaOpcMultsEntitykmseq5jn">
+    <xs:annotation>
+      <xs:appinfo>
+        <GenericType Name="SoftvListOf{0}{#}" Namespace="http://schemas.datacontract.org/2004/07/Globals" xmlns="http://schemas.microsoft.com/2003/10/Serialization/">
+          <GenericParameter Name="RelPreguntaOpcMultsEntity" Namespace="http://schemas.datacontract.org/2004/07/Softv.Entities" />
+        </GenericType>
+      </xs:appinfo>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element xmlns:q9="http://schemas.datacontract.org/2004/07/Softv.Entities" minOccurs="0" name="Entities" nillable="true" type="q9:ArrayOfRelPreguntaOpcMultsEntity" />
+      <xs:element minOccurs="0" name="totalCount" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="SoftvListOfRelPreguntaOpcMultsEntitykmseq5jn" nillable="true" type="tns:SoftvListOfRelPreguntaOpcMultsEntitykmseq5jn" />
+  <xs:complexType name="SoftvListOfRelPreguntaEncuestasEntitykmseq5jn">
+    <xs:annotation>
+      <xs:appinfo>
+        <GenericType Name="SoftvListOf{0}{#}" Namespace="http://schemas.datacontract.org/2004/07/Globals" xmlns="http://schemas.microsoft.com/2003/10/Serialization/">
+          <GenericParameter Name="RelPreguntaEncuestasEntity" Namespace="http://schemas.datacontract.org/2004/07/Softv.Entities" />
+        </GenericType>
+      </xs:appinfo>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element xmlns:q10="http://schemas.datacontract.org/2004/07/Softv.Entities" minOccurs="0" name="Entities" nillable="true" type="q10:ArrayOfRelPreguntaEncuestasEntity" />
+      <xs:element minOccurs="0" name="totalCount" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="SoftvListOfRelPreguntaEncuestasEntitykmseq5jn" nillable="true" type="tns:SoftvListOfRelPreguntaEncuestasEntitykmseq5jn" />
+  <xs:complexType name="SoftvListOfResOpcMultsEntitykmseq5jn">
+    <xs:annotation>
+      <xs:appinfo>
+        <GenericType Name="SoftvListOf{0}{#}" Namespace="http://schemas.datacontract.org/2004/07/Globals" xmlns="http://schemas.microsoft.com/2003/10/Serialization/">
+          <GenericParameter Name="ResOpcMultsEntity" Namespace="http://schemas.datacontract.org/2004/07/Softv.Entities" />
+        </GenericType>
+      </xs:appinfo>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element xmlns:q11="http://schemas.datacontract.org/2004/07/Softv.Entities" minOccurs="0" name="Entities" nillable="true" type="q11:ArrayOfResOpcMultsEntity" />
+      <xs:element minOccurs="0" name="totalCount" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="SoftvListOfResOpcMultsEntitykmseq5jn" nillable="true" type="tns:SoftvListOfResOpcMultsEntitykmseq5jn" />
+  <xs:complexType name="SoftvListOfRelEnProcesosEntitykmseq5jn">
+    <xs:annotation>
+      <xs:appinfo>
+        <GenericType Name="SoftvListOf{0}{#}" Namespace="http://schemas.datacontract.org/2004/07/Globals" xmlns="http://schemas.microsoft.com/2003/10/Serialization/">
+          <GenericParameter Name="RelEnProcesosEntity" Namespace="http://schemas.datacontract.org/2004/07/Softv.Entities" />
+        </GenericType>
+      </xs:appinfo>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element xmlns:q12="http://schemas.datacontract.org/2004/07/Softv.Entities" minOccurs="0" name="Entities" nillable="true" type="q12:ArrayOfRelEnProcesosEntity" />
+      <xs:element minOccurs="0" name="totalCount" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="SoftvListOfRelEnProcesosEntitykmseq5jn" nillable="true" type="tns:SoftvListOfRelEnProcesosEntitykmseq5jn" />
+  <xs:complexType name="SoftvListOfConexionEntitykmseq5jn">
+    <xs:annotation>
+      <xs:appinfo>
+        <GenericType Name="SoftvListOf{0}{#}" Namespace="http://schemas.datacontract.org/2004/07/Globals" xmlns="http://schemas.microsoft.com/2003/10/Serialization/">
+          <GenericParameter Name="ConexionEntity" Namespace="http://schemas.datacontract.org/2004/07/Softv.Entities" />
+        </GenericType>
+      </xs:appinfo>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element xmlns:q13="http://schemas.datacontract.org/2004/07/Softv.Entities" minOccurs="0" name="Entities" nillable="true" type="q13:ArrayOfConexionEntity" />
+      <xs:element minOccurs="0" name="totalCount" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="SoftvListOfConexionEntitykmseq5jn" nillable="true" type="tns:SoftvListOfConexionEntitykmseq5jn" />
+  <xs:complexType name="SoftvListOfCLIENTEEntitykmseq5jn">
+    <xs:annotation>
+      <xs:appinfo>
+        <GenericType Name="SoftvListOf{0}{#}" Namespace="http://schemas.datacontract.org/2004/07/Globals" xmlns="http://schemas.microsoft.com/2003/10/Serialization/">
+          <GenericParameter Name="CLIENTEEntity" Namespace="http://schemas.datacontract.org/2004/07/Softv.Entities" />
+        </GenericType>
+      </xs:appinfo>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element xmlns:q14="http://schemas.datacontract.org/2004/07/Softv.Entities" minOccurs="0" name="Entities" nillable="true" type="q14:ArrayOfCLIENTEEntity" />
+      <xs:element minOccurs="0" name="totalCount" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="SoftvListOfCLIENTEEntitykmseq5jn" nillable="true" type="tns:SoftvListOfCLIENTEEntitykmseq5jn" />
+  <xs:complexType name="SoftvListOfTurnoEntitykmseq5jn">
+    <xs:annotation>
+      <xs:appinfo>
+        <GenericType Name="SoftvListOf{0}{#}" Namespace="http://schemas.datacontract.org/2004/07/Globals" xmlns="http://schemas.microsoft.com/2003/10/Serialization/">
+          <GenericParameter Name="TurnoEntity" Namespace="http://schemas.datacontract.org/2004/07/Softv.Entities" />
+        </GenericType>
+      </xs:appinfo>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element xmlns:q15="http://schemas.datacontract.org/2004/07/Softv.Entities" minOccurs="0" name="Entities" nillable="true" type="q15:ArrayOfTurnoEntity" />
+      <xs:element minOccurs="0" name="totalCount" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="SoftvListOfTurnoEntitykmseq5jn" nillable="true" type="tns:SoftvListOfTurnoEntitykmseq5jn" />
+  <xs:complexType name="SoftvListOfLlamadaEntitykmseq5jn">
+    <xs:annotation>
+      <xs:appinfo>
+        <GenericType Name="SoftvListOf{0}{#}" Namespace="http://schemas.datacontract.org/2004/07/Globals" xmlns="http://schemas.microsoft.com/2003/10/Serialization/">
+          <GenericParameter Name="LlamadaEntity" Namespace="http://schemas.datacontract.org/2004/07/Softv.Entities" />
+        </GenericType>
+      </xs:appinfo>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element xmlns:q16="http://schemas.datacontract.org/2004/07/Softv.Entities" minOccurs="0" name="Entities" nillable="true" type="q16:ArrayOfLlamadaEntity" />
+      <xs:element minOccurs="0" name="totalCount" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="SoftvListOfLlamadaEntitykmseq5jn" nillable="true" type="tns:SoftvListOfLlamadaEntitykmseq5jn" />
+  <xs:complexType name="SoftvListOfRel_Clientes_TiposClientesEntitykmseq5jn">
+    <xs:annotation>
+      <xs:appinfo>
+        <GenericType Name="SoftvListOf{0}{#}" Namespace="http://schemas.datacontract.org/2004/07/Globals" xmlns="http://schemas.microsoft.com/2003/10/Serialization/">
+          <GenericParameter Name="Rel_Clientes_TiposClientesEntity" Namespace="http://schemas.datacontract.org/2004/07/Softv.Entities" />
+        </GenericType>
+      </xs:appinfo>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element xmlns:q17="http://schemas.datacontract.org/2004/07/Softv.Entities" minOccurs="0" name="Entities" nillable="true" type="q17:ArrayOfRel_Clientes_TiposClientesEntity" />
+      <xs:element minOccurs="0" name="totalCount" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="SoftvListOfRel_Clientes_TiposClientesEntitykmseq5jn" nillable="true" type="tns:SoftvListOfRel_Clientes_TiposClientesEntitykmseq5jn" />
+  <xs:complexType name="SoftvListOfTipoClienteEntitykmseq5jn">
+    <xs:annotation>
+      <xs:appinfo>
+        <GenericType Name="SoftvListOf{0}{#}" Namespace="http://schemas.datacontract.org/2004/07/Globals" xmlns="http://schemas.microsoft.com/2003/10/Serialization/">
+          <GenericParameter Name="TipoClienteEntity" Namespace="http://schemas.datacontract.org/2004/07/Softv.Entities" />
+        </GenericType>
+      </xs:appinfo>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element xmlns:q18="http://schemas.datacontract.org/2004/07/Softv.Entities" minOccurs="0" name="Entities" nillable="true" type="q18:ArrayOfTipoClienteEntity" />
+      <xs:element minOccurs="0" name="totalCount" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="SoftvListOfTipoClienteEntitykmseq5jn" nillable="true" type="tns:SoftvListOfTipoClienteEntitykmseq5jn" />
+  <xs:complexType name="SoftvListOfCatalogoPeriodosCorteEntitykmseq5jn">
+    <xs:annotation>
+      <xs:appinfo>
+        <GenericType Name="SoftvListOf{0}{#}" Namespace="http://schemas.datacontract.org/2004/07/Globals" xmlns="http://schemas.microsoft.com/2003/10/Serialization/">
+          <GenericParameter Name="CatalogoPeriodosCorteEntity" Namespace="http://schemas.datacontract.org/2004/07/Softv.Entities" />
+        </GenericType>
+      </xs:appinfo>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element xmlns:q19="http://schemas.datacontract.org/2004/07/Softv.Entities" minOccurs="0" name="Entities" nillable="true" type="q19:ArrayOfCatalogoPeriodosCorteEntity" />
+      <xs:element minOccurs="0" name="totalCount" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="SoftvListOfCatalogoPeriodosCorteEntitykmseq5jn" nillable="true" type="tns:SoftvListOfCatalogoPeriodosCorteEntitykmseq5jn" />
+  <xs:complexType name="SoftvListOfCliente_ApellidoEntitykmseq5jn">
+    <xs:annotation>
+      <xs:appinfo>
+        <GenericType Name="SoftvListOf{0}{#}" Namespace="http://schemas.datacontract.org/2004/07/Globals" xmlns="http://schemas.microsoft.com/2003/10/Serialization/">
+          <GenericParameter Name="Cliente_ApellidoEntity" Namespace="http://schemas.datacontract.org/2004/07/Softv.Entities" />
+        </GenericType>
+      </xs:appinfo>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element xmlns:q20="http://schemas.datacontract.org/2004/07/Softv.Entities" minOccurs="0" name="Entities" nillable="true" type="q20:ArrayOfCliente_ApellidoEntity" />
+      <xs:element minOccurs="0" name="totalCount" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="SoftvListOfCliente_ApellidoEntitykmseq5jn" nillable="true" type="tns:SoftvListOfCliente_ApellidoEntitykmseq5jn" />
+  <xs:complexType name="SoftvListOfTapEntitykmseq5jn">
+    <xs:annotation>
+      <xs:appinfo>
+        <GenericType Name="SoftvListOf{0}{#}" Namespace="http://schemas.datacontract.org/2004/07/Globals" xmlns="http://schemas.microsoft.com/2003/10/Serialization/">
+          <GenericParameter Name="TapEntity" Namespace="http://schemas.datacontract.org/2004/07/Softv.Entities" />
+        </GenericType>
+      </xs:appinfo>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element xmlns:q21="http://schemas.datacontract.org/2004/07/Softv.Entities" minOccurs="0" name="Entities" nillable="true" type="q21:ArrayOfTapEntity" />
+      <xs:element minOccurs="0" name="totalCount" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="SoftvListOfTapEntitykmseq5jn" nillable="true" type="tns:SoftvListOfTapEntitykmseq5jn" />
+  <xs:complexType name="SoftvListOfDatoFiscalEntitykmseq5jn">
+    <xs:annotation>
+      <xs:appinfo>
+        <GenericType Name="SoftvListOf{0}{#}" Namespace="http://schemas.datacontract.org/2004/07/Globals" xmlns="http://schemas.microsoft.com/2003/10/Serialization/">
+          <GenericParameter Name="DatoFiscalEntity" Namespace="http://schemas.datacontract.org/2004/07/Softv.Entities" />
+        </GenericType>
+      </xs:appinfo>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element xmlns:q22="http://schemas.datacontract.org/2004/07/Softv.Entities" minOccurs="0" name="Entities" nillable="true" type="q22:ArrayOfDatoFiscalEntity" />
+      <xs:element minOccurs="0" name="totalCount" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="SoftvListOfDatoFiscalEntitykmseq5jn" nillable="true" type="tns:SoftvListOfDatoFiscalEntitykmseq5jn" />
+  <xs:complexType name="SoftvListOfTrabajoEntitykmseq5jn">
+    <xs:annotation>
+      <xs:appinfo>
+        <GenericType Name="SoftvListOf{0}{#}" Namespace="http://schemas.datacontract.org/2004/07/Globals" xmlns="http://schemas.microsoft.com/2003/10/Serialization/">
+          <GenericParameter Name="TrabajoEntity" Namespace="http://schemas.datacontract.org/2004/07/Softv.Entities" />
+        </GenericType>
+      </xs:appinfo>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element xmlns:q23="http://schemas.datacontract.org/2004/07/Softv.Entities" minOccurs="0" name="Entities" nillable="true" type="q23:ArrayOfTrabajoEntity" />
+      <xs:element minOccurs="0" name="totalCount" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="SoftvListOfTrabajoEntitykmseq5jn" nillable="true" type="tns:SoftvListOfTrabajoEntitykmseq5jn" />
+  <xs:complexType name="SoftvListOfTipServEntitykmseq5jn">
+    <xs:annotation>
+      <xs:appinfo>
+        <GenericType Name="SoftvListOf{0}{#}" Namespace="http://schemas.datacontract.org/2004/07/Globals" xmlns="http://schemas.microsoft.com/2003/10/Serialization/">
+          <GenericParameter Name="TipServEntity" Namespace="http://schemas.datacontract.org/2004/07/Softv.Entities" />
+        </GenericType>
+      </xs:appinfo>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element xmlns:q24="http://schemas.datacontract.org/2004/07/Softv.Entities" minOccurs="0" name="Entities" nillable="true" type="q24:ArrayOfTipServEntity" />
+      <xs:element minOccurs="0" name="totalCount" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="SoftvListOfTipServEntitykmseq5jn" nillable="true" type="tns:SoftvListOfTipServEntitykmseq5jn" />
+</xs:schema>

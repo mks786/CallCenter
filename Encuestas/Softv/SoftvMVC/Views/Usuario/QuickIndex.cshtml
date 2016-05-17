@@ -1,0 +1,128 @@
+﻿@model PagedList.IPagedList<Softv.Entities.UsuarioEntity>
+@using PagedList.Mvc;
+<script>
+    function pagechange() {
+        $('#Paginator').on('click', 'a', function () {
+            LoadData();
+            return false;
+        });
+    }
+
+    $(document).ready(function () {
+        pagechange();
+        Permisos();
+        //pone los check
+        $('input').iCheck({
+            checkboxClass: 'icheckbox_square-red',
+            radioClass: 'iradio_square-red',
+        });
+    });
+</script>
+
+<div id="dialog-confirm" title="Warning" style="display:none ">
+    Este registro se borrara permanentemente,¿Estas seguro?
+</div>
+
+
+<div id="DatosTabla">
+    <table class="table" id="datost">
+        <tr>
+
+            <th> 
+            </th>
+
+            <th>
+            </th>
+
+            <th>
+            </th>
+
+            <th class="mostrarnombre">
+                Nombre
+            </th>
+
+            <th>
+                Email
+            </th>
+
+            <th>
+                Usuario
+            </th>
+
+            <th>
+                Password
+            </th>
+
+            <th>
+                Role
+            </th>
+
+            <th>
+                Estado
+            </th>
+
+        </tr>
+        @foreach (var item in Model)
+        {
+            <tr>
+                    <td style="display:none">
+                        @Html.DisplayFor(modelItem => item.IdUsuario)
+                    </td>
+
+                <td style="width: 30px;">
+                    <a href="@Url.Action("Edit", "Usuario", new { id = item.IdUsuario })" class="" style="color:#756F6F">
+                        <i class="fa fa-pencil"></i>
+                    </a>
+                </td>
+
+                <td style="width: 30px;">
+                    <a href="@Url.Action("Details", "Usuario", new { id = item.IdUsuario })" class="btndetails" style="color:#756F6F">
+                        <i class="fa fa-archive"></i>
+                    </a>
+                </td>
+
+                <td id="Eliminar" style=" width: 20px;">
+                    <a style=" color:#756F6F;" onclick="Eliminar()" data-toggle="tooltip" data-placement="left" title="Tooltip on left">
+                        <i class=" fa fa-trash"> </i>
+                    </a>
+                </td>
+              
+
+                <td class="mostrarnombre">
+                    @Html.DisplayFor(modelItem => item.Nombre)
+                </td>
+
+                <td>
+                    @Html.DisplayFor(modelItem => item.Email)
+                </td>
+
+                <td>
+                    @Html.DisplayFor(modelItem => item.Usuario)
+                </td>
+
+                <td>
+                    @Html.DisplayFor(modelItem => item.Password)
+                </td>
+
+                <td>
+                    @Html.DisplayFor(model => item.Role.Nombre)
+                </td>
+
+                <td>
+                    @Html.CheckBoxFor(model => item.Estado.Value, new { disabled = "disabled" })
+                </td>
+
+            </tr>
+
+        }
+    </table>
+    <div id="Paginator" class="pagefooter">
+        @Html.PagedListPager(Model, page => Url.Action("QuickIndex", new { page }), new PagedListRenderOptions
+                                                    {
+                                                        LinkToFirstPageFormat = "1",
+                                                        LinkToPreviousPageFormat = "Anterior",
+                                                        LinkToNextPageFormat = "Siguiente",
+                                                        LinkToLastPageFormat = "Ultima"
+                                                    })
+    </div>
+</div>

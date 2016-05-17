@@ -1,0 +1,172 @@
+﻿@*@{
+        ViewBag.Title = "Index";
+        Layout = "~/Views/Shared/_Layout.cshtml";
+    }
+
+    <h2>Index</h2>*@
+
+<section class="content-header">
+    <h1>
+        Encuestas
+        <small>Lista de Usuarios</small>
+    </h1>
+    <ol class="breadcrumb">
+        <li><a href="#"><i class="fa fa-dashboard"></i> Inicio</a></li>
+        <li class="active">Lista de Usuarios</li>
+    </ol>
+</section>
+
+<div class="row">
+    <div class="col-xs-12">
+        <div class="box">
+            <div class="box-header">
+                <h3 class="box-title">Lista de Usuarios</h3>
+
+            </div><!-- /.box-header -->
+            <div class="box-body">
+
+                <table id="TablaUsuarios" class="table table-bordered table-hover dataTable">
+                    <thead>
+                        <tr>
+                            <td><b>IdUsuario</b></td>
+                            <td><b>IdRol</b></td>
+                            <td><b>Nombre</b></td>
+                            <td><b>Email</b></td>
+                            <td><b>Usuario</b></td>
+                            <td><b>Password</b></td>
+                            <td><b>Estado</b></td>
+                            <td><b>Opciones</b></td>
+                        </tr>
+                    </thead>
+
+                    <tfoot>
+                        <tr>
+                            <td><b>IdUsuario</b></td>
+                            <td><b>IdRol</b></td>
+                            <td><b>Nombre</b></td>
+                            <td><b>Email</b></td>
+                            <td><b>Usuario</b></td>
+                            <td><b>Password</b></td>
+                            <td><b>Estado</b></td>
+                            <td><b>Opciones</b></td>
+                        </tr>
+                    </tfoot>
+
+                </table>
+
+            </div>
+        </div>
+
+    </div>
+
+</div>
+
+
+
+
+@*MODAL AGREGAR Usuario*@
+<div class="modal fade bs-example-modal-lg" id="ModalAgregarUsuario" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button class="close" aria-label="Close" type="button" data-dismiss="modal"><span aria-hidden="true">×</span></button>
+                <h4 class="modal-title">Agregar Usuario</h4>
+            </div>
+            <div class="modal-body">
+                <div class="nav-tabs-custom">
+                    <ul class="nav nav-tabs">
+                        <li class="active"><a href="#tab_1" data-toggle="tab" aria-expanded="true">Información principal</a></li>
+                        @*<li class=""><a href="#tab_2" id="tab-preguntas" data-toggle="tab" aria-expanded="false">Preguntas</a></li>*@
+                        <li class=""><a href="#tab_3" data-toggle="tab" aria-expanded="false">Configuración</a></li>
+
+                        <li class="pull-right"><a href="#" class="text-muted"><i class="fa fa-gear"></i></a></li>
+                    </ul>
+                    <div class="tab-content">
+                        <div class="tab-pane active" id="tab_1">
+                            <div class="row">
+                                <div class="col-xs-12">
+                                    <table class="table">
+                                        <thead>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <td><input type="text" class="form-control" placeholder="Nombre del usuario"> @*Nombre*@
+                                                <td><input type="text" class="form-control" placeholder="Email"></td>
+                                            </tr>
+                                           
+                                            <tr>
+                                                <td><input type="text" class="form-control" placeholder="Rol"></td> @*IdRol*@
+                                                @*<td><input type="text" class="form-control" placeholder="Password"></td>*@
+                                                <td><input type="text" class="form-control" placeholder="Estado"></td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                            <br />
+                            @*<div class="row">
+                                <div class="col-xs-12">
+                                    <textarea class="form-control" placeholder="Descripción del usuario"></textarea>
+                                </div>
+                            </div>*@
+                        </div><!-- /.tab-pane -->
+                        @*<div class="tab-pane" id="tab_2">
+                            <button class="btn btn-success" id="AddPregunta" onclick="DetallePreguntas();"><i class="fa fa-plus" aria-hidden="true"></i> Agregar pregunta</button>
+                            <div class="row">
+                                <table class="table" id="tablaPreguntas">
+                                    <thead>
+                                        <tr>
+                                            <td>PREGUNTA</td>
+                                            <td>TIPO RESPUESTA</td>
+                                            <td>OPCIONES</td>
+                                        </tr>
+                                    </thead>
+                                    <tbody id="TbodyPreguntas"></tbody>
+                                </table>
+                            </div>
+                        </div>*@<!-- /.tab-pane -->
+                        <div class="tab-pane" id="tab_3">
+                        </div><!-- /.tab-pane -->
+                    </div><!-- /.tab-content -->
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-default pull-left" type="button" data-dismiss="modal">cerrar</button>
+                <button class="btn btn-primary" type="button">Guardar Usuario</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+@*MODAL DETALLE USUARIOS*@
+<div class="modal fade bs-example-modal-lg" id="ModalDetalleUsuarios" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button class="close" aria-label="Close" type="button" data-dismiss="modal"><span aria-hidden="true">×</span></button>
+                <h4 class="modal-title">Detalles de Usuario</h4>
+            </div>
+            <div class="modal-body">
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-default pull-left" type="button" data-dismiss="modal">cerrar</button>
+                <button class="btn btn-primary" type="button">Aceptar</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+<script src="~/dist/js/pages/Usuario/Lista.js">
+ //Ruta de lista.js
+
+</script>
+
+

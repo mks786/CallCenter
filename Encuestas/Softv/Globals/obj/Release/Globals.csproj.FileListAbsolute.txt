@@ -1,0 +1,4 @@
+C:\Users\egarcia\Desktop\Softv\Globals\bin\Release\Globals.dll
+C:\Users\egarcia\Desktop\Softv\Globals\bin\Release\Globals.pdb
+C:\Users\egarcia\Desktop\Softv\Globals\obj\Release\Globals.dll
+C:\Users\egarcia\Desktop\Softv\Globals\obj\Release\Globals.pdb

@@ -1,0 +1,144 @@
+﻿
+@*@{
+        ViewBag.Title = "Index";
+        Layout = "~/Views/Shared/_Layout.cshtml";
+    }
+
+    <h2>Index</h2>*@
+
+<section class="content-header">
+    <h1>
+        Encuestas
+        <small>Lista de Clientes</small>
+    </h1>
+    <ol class="breadcrumb">
+        <li><a href="#"><i class="fa fa-dashboard"></i> Inicio</a></li>
+        <li class="active">Lista de Clientes</li>
+    </ol>
+</section>
+
+<div class="row">
+    <div class="col-xs-12">
+        <div class="box">
+            <div class="box-header">
+                <h3 class="box-title">Lista de Clientes</h3>
+
+            </div><!-- /.box-header -->
+            <div class="box-body">
+
+                <table id="TablaRelEncuestaClientes" class="table table-bordered table-hover dataTable">
+                    <thead>
+                        <tr>
+                            <td><b>IdProceso</b></td>
+                            <td><b>IdEncuesta</b></td>
+                            <td><b>Contrato</b></td>
+                            <td><b>Fecha de Aplicación</b></td>
+                            <td><b>Opciones</b></td>
+                        </tr>
+                    </thead>
+
+                    <tfoot>
+                        <tr>
+                            <td><b>IdProceso</b></td>
+                            <td><b>IdEncuesta</b></td>
+                            <td><b>Contrato</b></td>
+                            <td><b>Fecha de Aplicación</b></td>
+                            <td><b>Opciones</b></td>
+                        </tr>
+                    </tfoot>
+
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+@*MODAL AGREGAR RELACION ENCUESTA CLIENTE*@
+<div class="modal fade bs-example-modal-lg" id="ModalAgregarRelEncuestaCliente" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button class="close" aria-label="Close" type="button" data-dismiss="modal"><span aria-hidden="true">×</span></button>
+                <h4 class="modal-title">Agregar Relación Encuesta Cliente</h4>
+            </div>
+            <div class="modal-body">
+                <div class="nav-tabs-custom">
+                    <ul class="nav nav-tabs">
+                        <li class="active"><a href="#tab_1" data-toggle="tab" aria-expanded="true">Información principal</a></li>
+                        @*<li class=""><a href="#tab_2" id="tab-preguntas" data-toggle="tab" aria-expanded="false">Preguntas</a></li>*@
+                        <li class=""><a href="#tab_3" data-toggle="tab" aria-expanded="false">Configuración</a></li>
+
+                        <li class="pull-right"><a href="#" class="text-muted"><i class="fa fa-gear"></i></a></li>
+                    </ul>
+                    <div class="tab-content">
+                        <div class="tab-pane active" id="tab_1">
+                            <div class="row">
+                                <div class="col-xs-12">
+                                    <input type="text" class="form-control" placeholder="Título Encuesta"> @*Con IdEncuesta*@
+                                    <br/>
+                                    <input type="text" class="form-control" placeholder="Contrato (No. contrato del cliente)">
+                                    <br />
+                                    <input type="text" class="form-control" placeholder="Fecha de Aplicación">
+                                </div>
+                            </div>
+                            <br />
+                            @*<div class="row">
+                                <div class="col-xs-12">
+                                    <textarea class="form-control" placeholder="Descripción del cliente"></textarea>
+                                </div>
+                            </div>*@
+                        </div><!-- /.tab-pane -->
+                        <div class="tab-pane" id="tab_2">
+                            <button class="btn btn-success" id="AddPregunta" onclick="DetallePreguntas();"><i class="fa fa-plus" aria-hidden="true"></i> Agregar pregunta</button>
+                            <div class="row">
+                                <table class="table" id="tablaPreguntas">
+                                    <thead>
+                                        <tr>
+                                            <td>PREGUNTA</td>
+                                            <td>TIPO RESPUESTA</td>
+                                            <td>OPCIONES</td>
+                                        </tr>
+                                    </thead>
+                                    <tbody id="TbodyPreguntas"></tbody>
+                                </table>
+                            </div>
+                        </div><!-- /.tab-pane -->
+                        <div class="tab-pane" id="tab_3">
+                        </div><!-- /.tab-pane -->
+                    </div><!-- /.tab-content -->
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-default pull-left" type="button" data-dismiss="modal">cerrar</button>
+                <button class="btn btn-primary" type="button">Guardar relación enc-cliente</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+@*MODAL DETALLE Rel Encuesta Cliente*@
+<div class="modal fade bs-example-modal-lg" id="ModalDetalleRelEncuestaCliente" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button class="close" aria-label="Close" type="button" data-dismiss="modal"><span aria-hidden="true">×</span></button>
+                <h4 class="modal-title">Detalles de Encuesta-Cliente</h4>
+            </div>
+            <div class="modal-body">
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-default pull-left" type="button" data-dismiss="modal">cerrar</button>
+                <button class="btn btn-primary" type="button">Aceptar</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<script src="~/dist/js/pages/RelEncuestaCliente/Lista.js">
+ //Ruta de lista.js
+
+</script>

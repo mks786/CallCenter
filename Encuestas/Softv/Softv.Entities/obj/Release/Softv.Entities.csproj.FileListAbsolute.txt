@@ -1,0 +1,4 @@
+C:\Users\egarcia\Desktop\Softv\Softv.Entities\bin\Release\Softv.Entities.dll
+C:\Users\egarcia\Desktop\Softv\Softv.Entities\bin\Release\Softv.Entities.pdb
+C:\Users\egarcia\Desktop\Softv\Softv.Entities\obj\Release\Softv.Entities.dll
+C:\Users\egarcia\Desktop\Softv\Softv.Entities\obj\Release\Softv.Entities.pdb

@@ -1,0 +1,33 @@
+﻿<style>
+    .lioption {
+        list-style:none;
+        padding: 0px 0px 5px 5px;
+    }
+
+        .lioption:hover {
+            background-color: #f5f5f5;
+            cursor: pointer;
+        }
+</style>
+@using Microsoft.AspNet.Identity
+@if (Request.IsAuthenticated)
+{
+    using (Html.BeginForm("LogOff", "Account", FormMethod.Post, new { id = "logoutForm", @class = "navbar-right" }))
+    {
+    @Html.AntiForgeryToken()
+
+    <ul >
+        <li class="lioption">
+            @Html.ActionLink("Hello " + User.Identity.GetUserName() + "!", "Manage", "Account", routeValues: null, htmlAttributes: new { title = "Manage" })
+        </li>
+        <li class="lioption"><a href="javascript:document.getElementById('logoutForm').submit()">Log off</a></li>
+    </ul>
+    }
+}
+else
+{
+    <ul style="margin-left: -36px;" >
+        <li class="lioption">@Html.ActionLink("Register", "Register", "Account")</li>
+        <li class="lioption">@Html.ActionLink("Log in", "Login", "Account")</li>
+    </ul>
+}

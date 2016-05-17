@@ -1,0 +1,165 @@
+D:\Work\Desarrollo\Softv\Softv.Providers\bin\Debug\Softv.Providers.dll
+D:\Work\Desarrollo\Softv\Softv.Providers\bin\Debug\Softv.Providers.pdb
+D:\Work\Desarrollo\Softv\Softv.Providers\obj\Debug\Softv.Providers.csprojResolveAssemblyReference.cache
+D:\Work\Desarrollo\Softv\Softv.Providers\obj\Debug\Softv.Providers.dll
+D:\Work\Desarrollo\Softv\Softv.Providers\obj\Debug\Softv.Providers.pdb
+D:\Work\Desarrollo\Softv\Softv.Providers\bin\Debug\Globals.dll
+D:\Work\Desarrollo\Softv\Softv.Providers\bin\Debug\Softv.Entities.dll
+D:\Work\Desarrollo\Softv\Softv.Providers\bin\Debug\Globals.pdb
+D:\Work\Desarrollo\Softv\Softv.Providers\bin\Debug\Softv.Entities.pdb
+D:\Work\Desarrollo\Softv\Softv.Providers\bin\Debug\SoftvConfiguration.dll
+D:\Work\Desarrollo\Softv\Softv.Providers\bin\Debug\SoftvConfiguration.pdb
+C:\Users\egarcia\Desktop\Softv\Softv.Providers\bin\Debug\Softv.Providers.dll
+C:\Users\egarcia\Desktop\Softv\Softv.Providers\bin\Debug\Softv.Providers.pdb
+C:\Users\egarcia\Desktop\Softv\Softv.Providers\bin\Debug\Globals.dll
+C:\Users\egarcia\Desktop\Softv\Softv.Providers\bin\Debug\Softv.Entities.dll
+C:\Users\egarcia\Desktop\Softv\Softv.Providers\bin\Debug\SoftvConfiguration.dll
+C:\Users\egarcia\Desktop\Softv\Softv.Providers\bin\Debug\Globals.pdb
+C:\Users\egarcia\Desktop\Softv\Softv.Providers\bin\Debug\SoftvConfiguration.pdb
+C:\Users\egarcia\Desktop\Softv\Softv.Providers\bin\Debug\Softv.Entities.pdb
+C:\Users\egarcia\Desktop\Softv\Softv.Providers\obj\Debug\Softv.Providers.csprojResolveAssemblyReference.cache
+C:\Users\egarcia\Desktop\Softv\Softv.Providers\obj\Debug\Softv.Providers.dll
+C:\Users\egarcia\Desktop\Softv\Softv.Providers\obj\Debug\Softv.Providers.pdb
+C:\Users\Lizeth\Desktop\Encuestas\Softv\Softv.Providers\bin\Debug\Softv.Providers.dll
+C:\Users\Lizeth\Desktop\Encuestas\Softv\Softv.Providers\bin\Debug\Softv.Providers.pdb
+C:\Users\Lizeth\Desktop\Encuestas\Softv\Softv.Providers\bin\Debug\Globals.dll
+C:\Users\Lizeth\Desktop\Encuestas\Softv\Softv.Providers\bin\Debug\Softv.Entities.dll
+C:\Users\Lizeth\Desktop\Encuestas\Softv\Softv.Providers\bin\Debug\SoftvConfiguration.dll
+C:\Users\Lizeth\Desktop\Encuestas\Softv\Softv.Providers\bin\Debug\Globals.pdb
+C:\Users\Lizeth\Desktop\Encuestas\Softv\Softv.Providers\bin\Debug\SoftvConfiguration.pdb
+C:\Users\Lizeth\Desktop\Encuestas\Softv\Softv.Providers\bin\Debug\Softv.Entities.pdb
+C:\Users\Lizeth\Desktop\Encuestas\Softv\Softv.Providers\obj\Debug\Softv.Providers.csprojResolveAssemblyReference.cache
+C:\Users\Lizeth\Desktop\Encuestas\Softv\Softv.Providers\obj\Debug\Softv.Providers.dll
+C:\Users\Lizeth\Desktop\Encuestas\Softv\Softv.Providers\obj\Debug\Softv.Providers.pdb
+C:\Users\blanca\Documents\Visual Studio 2013\Projects\E 7-5-2016\Encuestas 7-05-2016\Softv\Softv.Providers\bin\Debug\Softv.Providers.dll
+C:\Users\blanca\Documents\Visual Studio 2013\Projects\E 7-5-2016\Encuestas 7-05-2016\Softv\Softv.Providers\bin\Debug\Softv.Providers.pdb
+C:\Users\blanca\Documents\Visual Studio 2013\Projects\E 7-5-2016\Encuestas 7-05-2016\Softv\Softv.Providers\bin\Debug\Globals.dll
+C:\Users\blanca\Documents\Visual Studio 2013\Projects\E 7-5-2016\Encuestas 7-05-2016\Softv\Softv.Providers\bin\Debug\Softv.Entities.dll
+C:\Users\blanca\Documents\Visual Studio 2013\Projects\E 7-5-2016\Encuestas 7-05-2016\Softv\Softv.Providers\bin\Debug\SoftvConfiguration.dll
+C:\Users\blanca\Documents\Visual Studio 2013\Projects\E 7-5-2016\Encuestas 7-05-2016\Softv\Softv.Providers\bin\Debug\Globals.pdb
+C:\Users\blanca\Documents\Visual Studio 2013\Projects\E 7-5-2016\Encuestas 7-05-2016\Softv\Softv.Providers\bin\Debug\SoftvConfiguration.pdb
+C:\Users\blanca\Documents\Visual Studio 2013\Projects\E 7-5-2016\Encuestas 7-05-2016\Softv\Softv.Providers\bin\Debug\Softv.Entities.pdb
+C:\Users\blanca\Documents\Visual Studio 2013\Projects\E 7-5-2016\Encuestas 7-05-2016\Softv\Softv.Providers\obj\Debug\Softv.Providers.csprojResolveAssemblyReference.cache
+C:\Users\blanca\Documents\Visual Studio 2013\Projects\E 7-5-2016\Encuestas 7-05-2016\Softv\Softv.Providers\obj\Debug\Softv.Providers.dll
+C:\Users\blanca\Documents\Visual Studio 2013\Projects\E 7-5-2016\Encuestas 7-05-2016\Softv\Softv.Providers\obj\Debug\Softv.Providers.pdb
+C:\Users\blanca\Documents\Visual Studio 2013\Projects\Encuestas 7-05-2016\Softv\Softv.Providers\bin\Debug\Softv.Providers.dll
+C:\Users\blanca\Documents\Visual Studio 2013\Projects\Encuestas 7-05-2016\Softv\Softv.Providers\bin\Debug\Softv.Providers.pdb
+C:\Users\blanca\Documents\Visual Studio 2013\Projects\Encuestas 7-05-2016\Softv\Softv.Providers\bin\Debug\Globals.dll
+C:\Users\blanca\Documents\Visual Studio 2013\Projects\Encuestas 7-05-2016\Softv\Softv.Providers\bin\Debug\Softv.Entities.dll
+C:\Users\blanca\Documents\Visual Studio 2013\Projects\Encuestas 7-05-2016\Softv\Softv.Providers\bin\Debug\SoftvConfiguration.dll
+C:\Users\blanca\Documents\Visual Studio 2013\Projects\Encuestas 7-05-2016\Softv\Softv.Providers\bin\Debug\Globals.pdb
+C:\Users\blanca\Documents\Visual Studio 2013\Projects\Encuestas 7-05-2016\Softv\Softv.Providers\bin\Debug\SoftvConfiguration.pdb
+C:\Users\blanca\Documents\Visual Studio 2013\Projects\Encuestas 7-05-2016\Softv\Softv.Providers\bin\Debug\Softv.Entities.pdb
+C:\Users\blanca\Documents\Visual Studio 2013\Projects\Encuestas 7-05-2016\Softv\Softv.Providers\obj\Debug\Softv.Providers.csprojResolveAssemblyReference.cache
+C:\Users\blanca\Documents\Visual Studio 2013\Projects\Encuestas 7-05-2016\Softv\Softv.Providers\obj\Debug\Softv.Providers.dll
+C:\Users\blanca\Documents\Visual Studio 2013\Projects\Encuestas 7-05-2016\Softv\Softv.Providers\obj\Debug\Softv.Providers.pdb
+C:\Users\blanca\Desktop\Encuestas\Encuestas\Softv\Softv.Providers\bin\Debug\Softv.Providers.dll
+C:\Users\blanca\Desktop\Encuestas\Encuestas\Softv\Softv.Providers\bin\Debug\Softv.Providers.pdb
+C:\Users\blanca\Desktop\Encuestas\Encuestas\Softv\Softv.Providers\bin\Debug\Globals.dll
+C:\Users\blanca\Desktop\Encuestas\Encuestas\Softv\Softv.Providers\bin\Debug\Softv.Entities.dll
+C:\Users\blanca\Desktop\Encuestas\Encuestas\Softv\Softv.Providers\bin\Debug\SoftvConfiguration.dll
+C:\Users\blanca\Desktop\Encuestas\Encuestas\Softv\Softv.Providers\bin\Debug\Globals.pdb
+C:\Users\blanca\Desktop\Encuestas\Encuestas\Softv\Softv.Providers\bin\Debug\SoftvConfiguration.pdb
+C:\Users\blanca\Desktop\Encuestas\Encuestas\Softv\Softv.Providers\bin\Debug\Softv.Entities.pdb
+C:\Users\blanca\Desktop\Encuestas\Encuestas\Softv\Softv.Providers\obj\Debug\Softv.Providers.csprojResolveAssemblyReference.cache
+C:\Users\blanca\Desktop\Encuestas\Encuestas\Softv\Softv.Providers\obj\Debug\Softv.Providers.dll
+C:\Users\blanca\Desktop\Encuestas\Encuestas\Softv\Softv.Providers\obj\Debug\Softv.Providers.pdb
+C:\Users\blanca\Desktop\Encuestas\Encuestas con todas las vistas - copia\Softv\Softv.Providers\bin\Debug\Softv.Providers.dll
+C:\Users\blanca\Desktop\Encuestas\Encuestas con todas las vistas - copia\Softv\Softv.Providers\bin\Debug\Softv.Providers.pdb
+C:\Users\blanca\Desktop\Encuestas\Encuestas con todas las vistas - copia\Softv\Softv.Providers\bin\Debug\Globals.dll
+C:\Users\blanca\Desktop\Encuestas\Encuestas con todas las vistas - copia\Softv\Softv.Providers\bin\Debug\Softv.Entities.dll
+C:\Users\blanca\Desktop\Encuestas\Encuestas con todas las vistas - copia\Softv\Softv.Providers\bin\Debug\SoftvConfiguration.dll
+C:\Users\blanca\Desktop\Encuestas\Encuestas con todas las vistas - copia\Softv\Softv.Providers\bin\Debug\Globals.pdb
+C:\Users\blanca\Desktop\Encuestas\Encuestas con todas las vistas - copia\Softv\Softv.Providers\bin\Debug\SoftvConfiguration.pdb
+C:\Users\blanca\Desktop\Encuestas\Encuestas con todas las vistas - copia\Softv\Softv.Providers\bin\Debug\Softv.Entities.pdb
+C:\Users\blanca\Desktop\Encuestas\Encuestas con todas las vistas - copia\Softv\Softv.Providers\obj\Debug\Softv.Providers.csprojResolveAssemblyReference.cache
+C:\Users\blanca\Desktop\Encuestas\Encuestas con todas las vistas - copia\Softv\Softv.Providers\obj\Debug\Softv.Providers.dll
+C:\Users\blanca\Desktop\Encuestas\Encuestas con todas las vistas - copia\Softv\Softv.Providers\obj\Debug\Softv.Providers.pdb
+C:\Users\blanca\Desktop\Encuestas\Encuestas con todas las vistas\Softv\Softv.Providers\bin\Debug\Softv.Providers.dll
+C:\Users\blanca\Desktop\Encuestas\Encuestas con todas las vistas\Softv\Softv.Providers\bin\Debug\Softv.Providers.pdb
+C:\Users\blanca\Desktop\Encuestas\Encuestas con todas las vistas\Softv\Softv.Providers\bin\Debug\Globals.dll
+C:\Users\blanca\Desktop\Encuestas\Encuestas con todas las vistas\Softv\Softv.Providers\bin\Debug\Softv.Entities.dll
+C:\Users\blanca\Desktop\Encuestas\Encuestas con todas las vistas\Softv\Softv.Providers\bin\Debug\SoftvConfiguration.dll
+C:\Users\blanca\Desktop\Encuestas\Encuestas con todas las vistas\Softv\Softv.Providers\bin\Debug\Globals.pdb
+C:\Users\blanca\Desktop\Encuestas\Encuestas con todas las vistas\Softv\Softv.Providers\bin\Debug\SoftvConfiguration.pdb
+C:\Users\blanca\Desktop\Encuestas\Encuestas con todas las vistas\Softv\Softv.Providers\bin\Debug\Softv.Entities.pdb
+C:\Users\blanca\Desktop\Encuestas\Encuestas con todas las vistas\Softv\Softv.Providers\obj\Debug\Softv.Providers.csprojResolveAssemblyReference.cache
+C:\Users\blanca\Desktop\Encuestas\Encuestas con todas las vistas\Softv\Softv.Providers\obj\Debug\Softv.Providers.dll
+C:\Users\blanca\Desktop\Encuestas\Encuestas con todas las vistas\Softv\Softv.Providers\obj\Debug\Softv.Providers.pdb
+C:\Users\blanca\Desktop\Encuestas\EncuestasVistas respaldo\Softv\Softv.Providers\obj\Debug\Softv.Providers.csprojResolveAssemblyReference.cache
+C:\Users\blanca\Desktop\Encuestas\EncuestasVistas respaldo\Softv\Softv.Providers\obj\Debug\Softv.Providers.dll
+C:\Users\blanca\Desktop\Encuestas\EncuestasVistas respaldo\Softv\Softv.Providers\bin\Debug\Softv.Providers.dll
+C:\Users\blanca\Desktop\Encuestas\EncuestasVistas respaldo\Softv\Softv.Providers\bin\Debug\Softv.Providers.pdb
+C:\Users\blanca\Desktop\Encuestas\EncuestasVistas respaldo\Softv\Softv.Providers\bin\Debug\Globals.dll
+C:\Users\blanca\Desktop\Encuestas\EncuestasVistas respaldo\Softv\Softv.Providers\bin\Debug\Softv.Entities.dll
+C:\Users\blanca\Desktop\Encuestas\EncuestasVistas respaldo\Softv\Softv.Providers\bin\Debug\SoftvConfiguration.dll
+C:\Users\blanca\Desktop\Encuestas\EncuestasVistas respaldo\Softv\Softv.Providers\bin\Debug\Globals.pdb
+C:\Users\blanca\Desktop\Encuestas\EncuestasVistas respaldo\Softv\Softv.Providers\bin\Debug\SoftvConfiguration.pdb
+C:\Users\blanca\Desktop\Encuestas\EncuestasVistas respaldo\Softv\Softv.Providers\bin\Debug\Softv.Entities.pdb
+C:\Users\blanca\Desktop\Encuestas\EncuestasVistas respaldo\Softv\Softv.Providers\obj\Debug\Softv.Providers.pdb
+C:\Users\blanca\Desktop\Encuestas\EncuestasVistas ex2\Softv\Softv.Providers\bin\Debug\Softv.Providers.dll
+C:\Users\blanca\Desktop\Encuestas\EncuestasVistas ex2\Softv\Softv.Providers\bin\Debug\Softv.Providers.pdb
+C:\Users\blanca\Desktop\Encuestas\EncuestasVistas ex2\Softv\Softv.Providers\bin\Debug\Globals.dll
+C:\Users\blanca\Desktop\Encuestas\EncuestasVistas ex2\Softv\Softv.Providers\bin\Debug\Softv.Entities.dll
+C:\Users\blanca\Desktop\Encuestas\EncuestasVistas ex2\Softv\Softv.Providers\bin\Debug\SoftvConfiguration.dll
+C:\Users\blanca\Desktop\Encuestas\EncuestasVistas ex2\Softv\Softv.Providers\bin\Debug\Globals.pdb
+C:\Users\blanca\Desktop\Encuestas\EncuestasVistas ex2\Softv\Softv.Providers\bin\Debug\SoftvConfiguration.pdb
+C:\Users\blanca\Desktop\Encuestas\EncuestasVistas ex2\Softv\Softv.Providers\bin\Debug\Softv.Entities.pdb
+C:\Users\blanca\Desktop\Encuestas\EncuestasVistas ex2\Softv\Softv.Providers\obj\Debug\Softv.Providers.csprojResolveAssemblyReference.cache
+C:\Users\blanca\Desktop\Encuestas\EncuestasVistas ex2\Softv\Softv.Providers\obj\Debug\Softv.Providers.dll
+C:\Users\blanca\Desktop\Encuestas\EncuestasVistas ex2\Softv\Softv.Providers\obj\Debug\Softv.Providers.pdb
+C:\Users\blanca\Desktop\Encuestas\EncuestasVistasModales mod\Softv\Softv.Providers\bin\Debug\Softv.Providers.dll
+C:\Users\blanca\Desktop\Encuestas\EncuestasVistasModales mod\Softv\Softv.Providers\bin\Debug\Softv.Providers.pdb
+C:\Users\blanca\Desktop\Encuestas\EncuestasVistasModales mod\Softv\Softv.Providers\bin\Debug\Globals.dll
+C:\Users\blanca\Desktop\Encuestas\EncuestasVistasModales mod\Softv\Softv.Providers\bin\Debug\Softv.Entities.dll
+C:\Users\blanca\Desktop\Encuestas\EncuestasVistasModales mod\Softv\Softv.Providers\bin\Debug\SoftvConfiguration.dll
+C:\Users\blanca\Desktop\Encuestas\EncuestasVistasModales mod\Softv\Softv.Providers\bin\Debug\Globals.pdb
+C:\Users\blanca\Desktop\Encuestas\EncuestasVistasModales mod\Softv\Softv.Providers\bin\Debug\SoftvConfiguration.pdb
+C:\Users\blanca\Desktop\Encuestas\EncuestasVistasModales mod\Softv\Softv.Providers\bin\Debug\Softv.Entities.pdb
+C:\Users\blanca\Desktop\Encuestas\EncuestasVistasModales mod\Softv\Softv.Providers\obj\Debug\Softv.Providers.csprojResolveAssemblyReference.cache
+C:\Users\blanca\Desktop\Encuestas\EncuestasVistasModales mod\Softv\Softv.Providers\obj\Debug\Softv.Providers.dll
+C:\Users\blanca\Desktop\Encuestas\EncuestasVistasModales mod\Softv\Softv.Providers\obj\Debug\Softv.Providers.pdb
+C:\Users\blanca\Desktop\Encuestas\EncuestasVistasModales mod 3\Softv\Softv.Providers\bin\Debug\Softv.Providers.dll
+C:\Users\blanca\Desktop\Encuestas\EncuestasVistasModales mod 3\Softv\Softv.Providers\bin\Debug\Softv.Providers.pdb
+C:\Users\blanca\Desktop\Encuestas\EncuestasVistasModales mod 3\Softv\Softv.Providers\bin\Debug\Globals.dll
+C:\Users\blanca\Desktop\Encuestas\EncuestasVistasModales mod 3\Softv\Softv.Providers\bin\Debug\Softv.Entities.dll
+C:\Users\blanca\Desktop\Encuestas\EncuestasVistasModales mod 3\Softv\Softv.Providers\bin\Debug\SoftvConfiguration.dll
+C:\Users\blanca\Desktop\Encuestas\EncuestasVistasModales mod 3\Softv\Softv.Providers\bin\Debug\Globals.pdb
+C:\Users\blanca\Desktop\Encuestas\EncuestasVistasModales mod 3\Softv\Softv.Providers\bin\Debug\SoftvConfiguration.pdb
+C:\Users\blanca\Desktop\Encuestas\EncuestasVistasModales mod 3\Softv\Softv.Providers\bin\Debug\Softv.Entities.pdb
+C:\Users\blanca\Desktop\Encuestas\EncuestasVistasModales mod 3\Softv\Softv.Providers\obj\Debug\Softv.Providers.csprojResolveAssemblyReference.cache
+C:\Users\blanca\Desktop\Encuestas\EncuestasVistasModales mod 3\Softv\Softv.Providers\obj\Debug\Softv.Providers.dll
+C:\Users\blanca\Desktop\Encuestas\EncuestasVistasModales mod 3\Softv\Softv.Providers\obj\Debug\Softv.Providers.pdb
+C:\Users\blanca\Desktop\Encuestas\EncuestasVistasModales mod 3 - copia\Softv\Softv.Providers\bin\Debug\Softv.Providers.dll
+C:\Users\blanca\Desktop\Encuestas\EncuestasVistasModales mod 3 - copia\Softv\Softv.Providers\bin\Debug\Softv.Providers.pdb
+C:\Users\blanca\Desktop\Encuestas\EncuestasVistasModales mod 3 - copia\Softv\Softv.Providers\bin\Debug\Globals.dll
+C:\Users\blanca\Desktop\Encuestas\EncuestasVistasModales mod 3 - copia\Softv\Softv.Providers\bin\Debug\Softv.Entities.dll
+C:\Users\blanca\Desktop\Encuestas\EncuestasVistasModales mod 3 - copia\Softv\Softv.Providers\bin\Debug\SoftvConfiguration.dll
+C:\Users\blanca\Desktop\Encuestas\EncuestasVistasModales mod 3 - copia\Softv\Softv.Providers\bin\Debug\Globals.pdb
+C:\Users\blanca\Desktop\Encuestas\EncuestasVistasModales mod 3 - copia\Softv\Softv.Providers\bin\Debug\SoftvConfiguration.pdb
+C:\Users\blanca\Desktop\Encuestas\EncuestasVistasModales mod 3 - copia\Softv\Softv.Providers\bin\Debug\Softv.Entities.pdb
+C:\Users\blanca\Desktop\Encuestas\EncuestasVistasModales mod 3 - copia\Softv\Softv.Providers\obj\Debug\Softv.Providers.csprojResolveAssemblyReference.cache
+C:\Users\blanca\Desktop\Encuestas\EncuestasVistasModales mod 3 - copia\Softv\Softv.Providers\obj\Debug\Softv.Providers.dll
+C:\Users\blanca\Desktop\Encuestas\EncuestasVistasModales mod 3 - copia\Softv\Softv.Providers\obj\Debug\Softv.Providers.pdb
+D:\Exes\EncuestasVistasModales mod 3\Softv\Softv.Providers\bin\Debug\Softv.Providers.dll
+D:\Exes\EncuestasVistasModales mod 3\Softv\Softv.Providers\bin\Debug\Softv.Providers.pdb
+D:\Exes\EncuestasVistasModales mod 3\Softv\Softv.Providers\bin\Debug\Globals.dll
+D:\Exes\EncuestasVistasModales mod 3\Softv\Softv.Providers\bin\Debug\Softv.Entities.dll
+D:\Exes\EncuestasVistasModales mod 3\Softv\Softv.Providers\bin\Debug\SoftvConfiguration.dll
+D:\Exes\EncuestasVistasModales mod 3\Softv\Softv.Providers\bin\Debug\Globals.pdb
+D:\Exes\EncuestasVistasModales mod 3\Softv\Softv.Providers\bin\Debug\SoftvConfiguration.pdb
+D:\Exes\EncuestasVistasModales mod 3\Softv\Softv.Providers\bin\Debug\Softv.Entities.pdb
+D:\Exes\EncuestasVistasModales mod 3\Softv\Softv.Providers\obj\Debug\Softv.Providers.csprojResolveAssemblyReference.cache
+D:\Exes\EncuestasVistasModales mod 3\Softv\Softv.Providers\obj\Debug\Softv.Providers.dll
+D:\Exes\EncuestasVistasModales mod 3\Softv\Softv.Providers\obj\Debug\Softv.Providers.pdb
+\\FABIAN-PC\Exes\EncuestasVistasModales mod 3\Softv\Softv.Providers\bin\Debug\Softv.Providers.dll
+\\FABIAN-PC\Exes\EncuestasVistasModales mod 3\Softv\Softv.Providers\bin\Debug\Softv.Providers.pdb
+\\FABIAN-PC\Exes\EncuestasVistasModales mod 3\Softv\Softv.Providers\bin\Debug\Globals.dll
+\\FABIAN-PC\Exes\EncuestasVistasModales mod 3\Softv\Softv.Providers\bin\Debug\Softv.Entities.dll
+\\FABIAN-PC\Exes\EncuestasVistasModales mod 3\Softv\Softv.Providers\bin\Debug\SoftvConfiguration.dll
+\\FABIAN-PC\Exes\EncuestasVistasModales mod 3\Softv\Softv.Providers\bin\Debug\Globals.pdb
+\\FABIAN-PC\Exes\EncuestasVistasModales mod 3\Softv\Softv.Providers\bin\Debug\SoftvConfiguration.pdb
+\\FABIAN-PC\Exes\EncuestasVistasModales mod 3\Softv\Softv.Providers\bin\Debug\Softv.Entities.pdb
+\\FABIAN-PC\Exes\EncuestasVistasModales mod 3\Softv\Softv.Providers\obj\Debug\Softv.Providers.csprojResolveAssemblyReference.cache
+\\FABIAN-PC\Exes\EncuestasVistasModales mod 3\Softv\Softv.Providers\obj\Debug\Softv.Providers.dll
+\\FABIAN-PC\Exes\EncuestasVistasModales mod 3\Softv\Softv.Providers\obj\Debug\Softv.Providers.pdb

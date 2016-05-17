@@ -1,0 +1,61 @@
+D:\Work\Desarrollo\Softv\Globals\bin\Debug\Globals.dll
+D:\Work\Desarrollo\Softv\Globals\bin\Debug\Globals.pdb
+D:\Work\Desarrollo\Softv\Globals\obj\Debug\Globals.dll
+D:\Work\Desarrollo\Softv\Globals\obj\Debug\Globals.pdb
+D:\Work\Desarrollo\Softv\Globals\obj\Debug\Globals.csprojResolveAssemblyReference.cache
+C:\Users\egarcia\Desktop\Softv\Globals\bin\Debug\Globals.dll
+C:\Users\egarcia\Desktop\Softv\Globals\bin\Debug\Globals.pdb
+C:\Users\egarcia\Desktop\Softv\Globals\obj\Debug\Globals.csprojResolveAssemblyReference.cache
+C:\Users\egarcia\Desktop\Softv\Globals\obj\Debug\Globals.dll
+C:\Users\egarcia\Desktop\Softv\Globals\obj\Debug\Globals.pdb
+C:\Users\Lizeth\Desktop\Encuestas\Softv\Globals\bin\Debug\Globals.dll
+C:\Users\Lizeth\Desktop\Encuestas\Softv\Globals\bin\Debug\Globals.pdb
+C:\Users\Lizeth\Desktop\Encuestas\Softv\Globals\obj\Debug\Globals.dll
+C:\Users\Lizeth\Desktop\Encuestas\Softv\Globals\obj\Debug\Globals.pdb
+C:\Users\Lizeth\Desktop\Encuestas\Softv\Globals\obj\Debug\Globals.csprojResolveAssemblyReference.cache
+C:\Users\blanca\Documents\Visual Studio 2013\Projects\E 7-5-2016\Encuestas 7-05-2016\Softv\Globals\bin\Debug\Globals.dll
+C:\Users\blanca\Documents\Visual Studio 2013\Projects\E 7-5-2016\Encuestas 7-05-2016\Softv\Globals\bin\Debug\Globals.pdb
+C:\Users\blanca\Documents\Visual Studio 2013\Projects\E 7-5-2016\Encuestas 7-05-2016\Softv\Globals\obj\Debug\Globals.csprojResolveAssemblyReference.cache
+C:\Users\blanca\Documents\Visual Studio 2013\Projects\E 7-5-2016\Encuestas 7-05-2016\Softv\Globals\obj\Debug\Globals.dll
+C:\Users\blanca\Documents\Visual Studio 2013\Projects\E 7-5-2016\Encuestas 7-05-2016\Softv\Globals\obj\Debug\Globals.pdb
+C:\Users\blanca\Documents\Visual Studio 2013\Projects\Encuestas 7-05-2016\Softv\Globals\bin\Debug\Globals.dll
+C:\Users\blanca\Documents\Visual Studio 2013\Projects\Encuestas 7-05-2016\Softv\Globals\bin\Debug\Globals.pdb
+C:\Users\blanca\Documents\Visual Studio 2013\Projects\Encuestas 7-05-2016\Softv\Globals\obj\Debug\Globals.dll
+C:\Users\blanca\Documents\Visual Studio 2013\Projects\Encuestas 7-05-2016\Softv\Globals\obj\Debug\Globals.pdb
+C:\Users\blanca\Desktop\Encuestas\Encuestas\Softv\Globals\bin\Debug\Globals.dll
+C:\Users\blanca\Desktop\Encuestas\Encuestas\Softv\Globals\bin\Debug\Globals.pdb
+C:\Users\blanca\Desktop\Encuestas\Encuestas\Softv\Globals\obj\Debug\Globals.dll
+C:\Users\blanca\Desktop\Encuestas\Encuestas\Softv\Globals\obj\Debug\Globals.pdb
+C:\Users\blanca\Desktop\Encuestas\Encuestas con todas las vistas - copia\Softv\Globals\bin\Debug\Globals.dll
+C:\Users\blanca\Desktop\Encuestas\Encuestas con todas las vistas - copia\Softv\Globals\bin\Debug\Globals.pdb
+C:\Users\blanca\Desktop\Encuestas\Encuestas con todas las vistas - copia\Softv\Globals\obj\Debug\Globals.csprojResolveAssemblyReference.cache
+C:\Users\blanca\Desktop\Encuestas\Encuestas con todas las vistas - copia\Softv\Globals\obj\Debug\Globals.dll
+C:\Users\blanca\Desktop\Encuestas\Encuestas con todas las vistas - copia\Softv\Globals\obj\Debug\Globals.pdb
+C:\Users\blanca\Desktop\Encuestas\Encuestas con todas las vistas\Softv\Globals\bin\Debug\Globals.dll
+C:\Users\blanca\Desktop\Encuestas\Encuestas con todas las vistas\Softv\Globals\bin\Debug\Globals.pdb
+C:\Users\blanca\Desktop\Encuestas\Encuestas con todas las vistas\Softv\Globals\obj\Debug\Globals.dll
+C:\Users\blanca\Desktop\Encuestas\Encuestas con todas las vistas\Softv\Globals\obj\Debug\Globals.pdb
+C:\Users\blanca\Desktop\Encuestas\EncuestasVistas ex2\Softv\Globals\bin\Debug\Globals.dll
+C:\Users\blanca\Desktop\Encuestas\EncuestasVistas ex2\Softv\Globals\bin\Debug\Globals.pdb
+C:\Users\blanca\Desktop\Encuestas\EncuestasVistas ex2\Softv\Globals\obj\Debug\Globals.csprojResolveAssemblyReference.cache
+C:\Users\blanca\Desktop\Encuestas\EncuestasVistas ex2\Softv\Globals\obj\Debug\Globals.dll
+C:\Users\blanca\Desktop\Encuestas\EncuestasVistas ex2\Softv\Globals\obj\Debug\Globals.pdb
+C:\Users\blanca\Desktop\Encuestas\EncuestasVistasModales mod\Softv\Globals\bin\Debug\Globals.dll
+C:\Users\blanca\Desktop\Encuestas\EncuestasVistasModales mod\Softv\Globals\bin\Debug\Globals.pdb
+C:\Users\blanca\Desktop\Encuestas\EncuestasVistasModales mod\Softv\Globals\obj\Debug\Globals.dll
+C:\Users\blanca\Desktop\Encuestas\EncuestasVistasModales mod\Softv\Globals\obj\Debug\Globals.pdb
+C:\Users\blanca\Desktop\Encuestas\EncuestasVistasModales mod 3\Softv\Globals\bin\Debug\Globals.dll
+C:\Users\blanca\Desktop\Encuestas\EncuestasVistasModales mod 3\Softv\Globals\bin\Debug\Globals.pdb
+C:\Users\blanca\Desktop\Encuestas\EncuestasVistasModales mod 3\Softv\Globals\obj\Debug\Globals.csprojResolveAssemblyReference.cache
+C:\Users\blanca\Desktop\Encuestas\EncuestasVistasModales mod 3\Softv\Globals\obj\Debug\Globals.dll
+C:\Users\blanca\Desktop\Encuestas\EncuestasVistasModales mod 3\Softv\Globals\obj\Debug\Globals.pdb
+C:\Users\blanca\Desktop\Encuestas\EncuestasVistasModales mod 3 - copia\Softv\Globals\bin\Debug\Globals.dll
+C:\Users\blanca\Desktop\Encuestas\EncuestasVistasModales mod 3 - copia\Softv\Globals\bin\Debug\Globals.pdb
+C:\Users\blanca\Desktop\Encuestas\EncuestasVistasModales mod 3 - copia\Softv\Globals\obj\Debug\Globals.csprojResolveAssemblyReference.cache
+C:\Users\blanca\Desktop\Encuestas\EncuestasVistasModales mod 3 - copia\Softv\Globals\obj\Debug\Globals.dll
+C:\Users\blanca\Desktop\Encuestas\EncuestasVistasModales mod 3 - copia\Softv\Globals\obj\Debug\Globals.pdb
+\\FABIAN-PC\Exes\EncuestasVistasModales mod 3\Softv\Globals\bin\Debug\Globals.dll
+\\FABIAN-PC\Exes\EncuestasVistasModales mod 3\Softv\Globals\bin\Debug\Globals.pdb
+\\FABIAN-PC\Exes\EncuestasVistasModales mod 3\Softv\Globals\obj\Debug\Globals.csprojResolveAssemblyReference.cache
+\\FABIAN-PC\Exes\EncuestasVistasModales mod 3\Softv\Globals\obj\Debug\Globals.dll
+\\FABIAN-PC\Exes\EncuestasVistasModales mod 3\Softv\Globals\obj\Debug\Globals.pdb

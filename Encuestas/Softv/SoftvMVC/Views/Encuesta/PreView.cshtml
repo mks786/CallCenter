@@ -1,0 +1,86 @@
+﻿@{
+    Layout = "";
+    List<SoftvMVC.Controllers.EncuestaController.Detalle_pregunta> preguntas = (List<SoftvMVC.Controllers.EncuestaController.Detalle_pregunta>)ViewData["preguntas"];
+
+
+}
+
+<html>
+
+<head>
+    <script src="~/plugins/jQuery/jQuery-2.1.4.min.js"></script>
+    <!-- Tell the browser to be responsive to screen width -->
+    <!-- Bootstrap 3.3.5 -->
+    <title>titulo</title>
+    <link rel="stylesheet" href="~/bootstrap/css/bootstrap.css">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+    <!-- Ionicons -->
+    <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
+    <link rel="stylesheet" href="~/bootstrap/css/icheck.css">
+</head>
+<body>
+
+    <div class="container">
+
+        <div class="row">
+            <div class="col-md-12">
+                <p class="text-right" style="color:#f0ad4e; font-size:16px;">@ViewBag.FechaCreacion</p>
+                <h2 class="text-center"><strong>@ViewBag.NombreEncuesta</strong></h2>
+                <hr />
+            </div>
+        </div>
+        <div class="row">
+            <p class="text"><strong>@ViewBag.Descripcion</strong></p>
+        </div>
+
+
+
+
+
+
+
+        @foreach (var a in preguntas)
+        {
+
+
+            <h4 style="color:#428bca;"><b>@a.Pregunta.Pregunta</b></h4>
+
+            foreach (var b in a.Respuestas)
+            {
+
+                if (a.Pregunta.TipoControl == 1)
+                {
+                    <input id="check1" type="radio">
+                    <label for="check1">@b.ResOpcMult</label>
+                }
+                if (a.Pregunta.TipoControl == 2)
+                {
+                    <div class="checkbox">
+                        <input id="check1" type="checkbox">
+                        <label for="check1">@b.ResOpcMult</label>
+                    </div>
+
+                }
+                if (a.Pregunta.TipoControl == 3)
+                {
+
+                    <div class="checkbox" style="padding-left:40px;">
+                        <input id="@b.ResOpcMult" type="checkbox" name="@a.Pregunta.Pregunta">
+                        <label for="@b.ResOpcMult">@b.ResOpcMult</label>
+                    </div>
+                }
+
+            }
+
+        }
+
+    </div>
+
+</body>
+
+
+</html>
+
+
+

@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ReferenceGroup xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ID="7c57931e-c6bd-4913-ae09-6c8a171dd569" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
+  <ClientOptions>
+    <GenerateAsynchronousMethods>false</GenerateAsynchronousMethods>
+    <GenerateTaskBasedAsynchronousMethod>true</GenerateTaskBasedAsynchronousMethod>
+    <EnableDataBinding>true</EnableDataBinding>
+    <ExcludedTypes />
+    <ImportXmlTypes>false</ImportXmlTypes>
+    <GenerateInternalTypes>false</GenerateInternalTypes>
+    <GenerateMessageContracts>false</GenerateMessageContracts>
+    <NamespaceMappings />
+    <CollectionMappings>
+      <CollectionMapping TypeName="System.Collections.Generic.List`1" Category="List" />
+    </CollectionMappings>
+    <GenerateSerializableTypes>true</GenerateSerializableTypes>
+    <Serializer>Auto</Serializer>
+    <UseSerializerForFaults>true</UseSerializerForFaults>
+    <ReferenceAllAssemblies>false</ReferenceAllAssemblies>
+    <ReferencedAssemblies>
+      <ReferencedAssembly AssemblyName="Globals" />
+      <ReferencedAssembly AssemblyName="Softv.Entities" />
+    </ReferencedAssemblies>
+    <ReferencedDataContractTypes />
+    <ServiceContractMappings />
+  </ClientOptions>
+  <MetadataSources>
+    <MetadataSource Address="http://localhost:64481/SoftvWCFService.svc" Protocol="http" SourceId="1" />
+  </MetadataSources>
+  <Metadata>
+    <MetadataFile FileName="SoftvWCFService.xsd" MetadataType="Schema" ID="f89098df-cc94-43f4-91ef-2e89d4e52659" SourceId="1" SourceUrl="http://localhost:64481/SoftvWCFService.svc?xsd=xsd1" />
+    <MetadataFile FileName="SoftvWCFService1.xsd" MetadataType="Schema" ID="0208c63f-e040-4a36-8440-89f5648eac11" SourceId="1" SourceUrl="http://localhost:64481/SoftvWCFService.svc?xsd=xsd0" />
+    <MetadataFile FileName="SoftvWCFService2.xsd" MetadataType="Schema" ID="5336bc10-7eea-424e-9c65-221912542e62" SourceId="1" SourceUrl="http://localhost:64481/SoftvWCFService.svc?xsd=xsd2" />
+    <MetadataFile FileName="SoftvWCFService3.xsd" MetadataType="Schema" ID="26334b77-a97f-47a3-b389-8ba5983442de" SourceId="1" SourceUrl="http://localhost:64481/SoftvWCFService.svc?xsd=xsd3" />
+    <MetadataFile FileName="SoftvWCFService.disco" MetadataType="Disco" ID="e5adb9e1-0d40-4eb4-9c92-838a2e27812f" SourceId="1" SourceUrl="http://localhost:64481/SoftvWCFService.svc?disco" />
+    <MetadataFile FileName="SoftvWCFService.wsdl" MetadataType="Wsdl" ID="0d4fe9ab-d01a-4639-89c1-caacbb638705" SourceId="1" SourceUrl="http://localhost:64481/SoftvWCFService.svc?wsdl" />
+  </Metadata>
+  <Extensions>
+    <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />
+    <ExtensionFile FileName="configuration.svcinfo" Name="configuration.svcinfo" />
+  </Extensions>
+</ReferenceGroup>

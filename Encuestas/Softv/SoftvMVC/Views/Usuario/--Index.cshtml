@@ -1,0 +1,439 @@
+﻿@model PagedList.IPagedList<Softv.Entities.UsuarioEntity>
+@using PagedList.Mvc;
+<script src="@Url.Content("~/Content/Plugin/Selectric/jquery.selectric.js")" type="text/javascript"></script>
+<link href="~/Content/Plugin/selectric.css" rel="stylesheet" />
+<link href="~/Content/check/skins/square/blue.css" rel="stylesheet" />
+<script src="@Url.Content("~/Scripts/icheck.js")" type="text/javascript"></script>
+<script>
+    @Html.Raw(ViewBag.CustomScriptsDefault)
+    var valpagesize = '';
+
+    var valNombre = '';
+
+    var valEmail = '';
+
+    var valUsuario = '';
+
+    var valPassword = '';
+
+    var valIdRol = '';
+
+    var valestado = 1;
+
+    function LoadData() {
+        $("#cargandoGrid").show();
+        $('#cargandoGrid').css("display", "inline");
+        valpagesize = $("#selectPage").val();
+        if (typeof pageSelected === 'undefined') { pageSelected = 1 }
+        $.ajax({
+            type: "GET",
+            url: "@Url.Action("QuickIndex", "Usuario")",
+            data: {
+                page: pageSelected, pageSize: valpagesize,
+                Nombre: valNombre, Email: valEmail, Usuario: valUsuario, Password: valPassword, IdRol: valIdRol, estado: valestado
+            },
+            success: function (data) {
+                if (data.Success == 'False') {
+                    $('#cargandoGrid').css("display", "none");
+                    $('#Buscador').css("display", "inline");
+                    ShowNotification('Advertencia', data.Message, 'notice')
+                }
+                else {
+                    $('#DatosTabla').html(data);
+                    ReloadScript();
+                    $('#cargandoGrid').css("display", "none");
+                }
+            },
+            error: function (xhr, ajaxOptions, thrownError) {
+                ShowNotification('Error', thrownError + '' + xhr.status, 'error')
+                $('#cargandoGrid').css("display", "none");
+            }
+        });
+    }
+    function pagechange() {
+        $('#Paginator').on('click', 'a', function () {
+            LoadData();
+            return false;
+        });
+    }
+
+    $(document).ready(function () {
+        pagechange();
+        //pone los check
+        $('input').iCheck({
+            checkboxClass: 'icheckbox_square-red',
+            radioClass: 'iradio_square-red',
+        });
+        $("#selectPage").change(function () {
+            valpagesize = $("#selectPage").val();
+            LoadData();
+        });
+
+
+        $("#IdRoltxt").select2({ placeholder: "Selecciona Role", width: "100%", formatNoMatches: "No hay Resultados" });
+
+        $('#Nombretxt').keyup(function (e) {
+            if (e.keyCode == 13) {
+                SearchFilter();
+            }
+        });
+
+        $('#Emailtxt').keyup(function (e) {
+            if (e.keyCode == 13) {
+                SearchFilter();
+            }
+        });
+
+        $('#Usuariotxt').keyup(function (e) {
+            if (e.keyCode == 13) {
+                SearchFilter();
+            }
+        });
+
+        $('#Passwordtxt').keyup(function (e) {
+            if (e.keyCode == 13) {
+                SearchFilter();
+            }
+        });
+
+
+        $(".btnBuscar").click(function () {
+            pageSelected = 1;
+            SearchFilter();
+        });
+    });
+
+    function SearchFilter() {
+        $("#cargandoGrid").show();
+        $('#cargandoGrid').css("display", "inline");
+        var valpagesizeTemp = $("#selectPage").val();
+
+        var valNombreTemp = $("#Nombretxt").val();
+
+        var valEmailTemp = $("#Emailtxt").val();
+
+        var valUsuarioTemp = $("#Usuariotxt").val();
+
+        var valPasswordTemp = $("#Passwordtxt").val();
+
+        var valIdRolTemp = $("#IdRoltxt").val();
+
+        var valestadoTemp = $("#selectState").val();
+
+        var workPageSelected;
+        if (typeof pageSelected === 'undefined') { workPageSelected = 1 }
+        else { workPageSelected = pageSelected }
+        $.ajax({
+            type: "POST",
+            url: "@Url.Action("QuickIndex", "Usuario")", // Method , Controler
+            data: {
+                page: workPageSelected, pageSize: valpagesizeTemp,
+                Nombre: valNombreTemp, Email: valEmailTemp, Usuario: valUsuarioTemp, Password: valPasswordTemp, IdRol: valIdRolTemp, estado: valestadoTemp
+            },
+            success: function (data) {
+                if (data.Success == 'False') {
+                    $('#cargandoGrid').css("display", "none");
+                    $('#Buscador').css("display", "inline");
+                    ShowNotification('Advertencia', data.Message, 'notice')
+                }
+                else {
+                    $('#DatosTabla').html(data);
+                    ReloadScript();
+                    valpagesize = valpagesizeTemp;
+
+                    valNombre = valNombreTemp;
+
+                    valEmail = valEmailTemp;
+
+                    valUsuario = valUsuarioTemp;
+
+                    valPassword = valPasswordTemp;
+
+                    valIdRol = valIdRolTemp;
+
+                    valestado = valestadoTemp;
+
+                    $('#cargandoGrid').css("display", "none");
+                }
+            },
+            error: function (xhr, ajaxOptions, thrownError) {
+                ShowNotification('Error', thrownError + '' + xhr.status, 'error')
+                $('#cargandoGrid').css("display", "none");
+            }
+        });
+    }
+
+    function Eliminar() {
+        $('tbody').on("click", "#Eliminar", function () {
+            var parent = $(this).parent();
+            var codigo = $(this).parent().find('td:eq(0)').text();
+            $("#dialog-confirm").html("Este registro se borrara permanentemente,¿Estas seguro?");
+            $("#dialog-confirm").dialog({
+                resizable: true,
+                height: 300,
+                widht: 300,
+                modal: true,
+                buttons: {
+                    "Acept": function () {
+                        $(this).dialog("close");
+                        $.ajax({
+                            type: 'POST',
+                            url: '@Url.Action("Delete", "Usuario")',
+                            dataType: 'json',
+                            data: { id: codigo },
+                            success: function (mensaje) {
+                                if (mensaje.length == 0) {
+                                    //alert(" no hay datos");
+                                }
+                                else {
+                                    //alert("hay datos");
+                                    console.log(codigo);
+                                    $(parent).remove();
+                                }
+                            },
+                            error: function (ex) {
+                                alert('Failed to retrieve states.' + ex);
+                            }
+                        });
+                    },
+                    Cancel: function () {
+                        $(this).dialog("close");
+                    }
+                }
+            });
+        });
+    };
+</script>
+
+<div id="dialog-confirm" style="display:none"></div>
+
+<div class="page-header">
+    <h1><small>Usuario</small></h1>
+</div>
+
+<ul class="nav nav-tabs">
+    <li role="presentation" class="dropdown">
+        <a data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
+            <i class="fa fa-search"></i>  Busqueda Filtrada
+        </a>
+    </li>
+
+    <li role="presentation" class="dropdown">
+        <a href="@Url.Action("Create", "Usuario")">
+            <span class="glyphicon glyphicon-plus-sign" aria-hidden="true"></span> Nuevo registro
+        </a>
+    </li>
+</ul>
+
+
+
+
+<div class="row">
+    <div class="collapse" id="collapseExample">
+        <div class="well">
+            <div class="row">
+                <div class="col-md-5">
+                    <div class="form-horizontal">
+                        <form class="form-horizontal" role="form">
+
+                            <div class="form-group">
+                                <label class="control-label col-sm-2"> Nombre</label>
+                                <div class="col-sm-10">
+                                    <input type="text" id="Nombretxt" class="form-control" autocomplete="off" placeholder="Buscar" />
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label class="control-label col-sm-2"> Email</label>
+                                <div class="col-sm-10">
+                                    <input type="text" id="Emailtxt" class="form-control" autocomplete="off" placeholder="Buscar" />
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label class="control-label col-sm-2"> Usuario</label>
+                                <div class="col-sm-10">
+                                    <input type="text" id="Usuariotxt" class="form-control" autocomplete="off" placeholder="Buscar" />
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label class="control-label col-sm-2"> Password</label>
+                                <div class="col-sm-10">
+                                    <input type="text" id="Passwordtxt" class="form-control" autocomplete="off" placeholder="Buscar" />
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label class="control-label col-sm-2">Role</label>
+                                <div class="col-sm-10">
+                                    @Html.DropDownList("IdRoltxt", (SelectList)ViewBag.IdRoltxt, String.Empty)
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label class="control-label col-sm-2">Estado</label>
+                                <div class="col-sm-10">
+                                    <div style="width:50%">
+                                        @Html.DropDownList("selectState", new List<SelectListItem> {
+                                        new SelectListItem { Text = "Activo", Value = "1" },
+                                        new SelectListItem { Text="Inactivo",Value="0"},
+                                        new SelectListItem { Text="Todos",Value="2"}
+                                        })
+                                    </div>
+                                </div>
+                            </div>
+
+                        </form>
+                    </div>
+                    <hr />
+                    <button class="btnBuscar">Buscar</button>
+                    <button class="btnLimpiar">Limpiar</button>
+                </div>
+                <div class="col-md-7">
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+    <div class="containerDivGrey">
+        <div id="loadingcontent">
+            <div class="titleheaderblue">
+                <div style="float: right; padding: 6px 9px 0px 10px;">
+                    <table>
+                        <tbody>
+                            <tr>
+
+                                <td></td>
+                                <td>
+                                    @Html.DropDownList("selectPage", new List<SelectListItem> {
+    new SelectListItem { Text = "15", Value = "15" },
+    new SelectListItem { Text="30",Value="30"},
+    new SelectListItem { Text="45",Value="45"},
+    new SelectListItem { Text="60",Value="60"},
+    new SelectListItem { Text="75",Value="75"},
+    new SelectListItem { Text="90",Value="90"}
+    })
+                                </td>
+                            </tr>
+
+                        </tbody>
+                    </table>
+                </div>
+
+                <br />
+            </div>
+
+            <div id="DatosTabla">
+                <table class="table" id="datost">
+                    <tr>
+
+                        <th>
+
+                        </th>
+
+                        <th>
+
+                        </th>
+
+                        <th>
+
+                        </th>
+
+                        <th>
+                            Nombre
+                        </th>
+
+                        <th>
+                            Email
+                        </th>
+
+                        <th>
+                            Usuario
+                        </th>
+
+                        <th>
+                            Password
+                        </th>
+
+                        <th>
+                            Role
+                        </th>
+
+                        <th>
+                            Estado
+                        </th>
+
+
+                    </tr>
+
+                    @foreach (var item in Model)
+                    {
+                        <tr>
+                            <td style="display:none">
+                                @Html.DisplayFor(modelItem => item.IdUsuario)
+                            </td>
+
+                            <td style="width: 30px;">
+                                <a href="@Url.Action("Edit", "Usuario", new { id = item.IdUsuario })" class="" style="color:#756F6F">
+                                    <i class="fa fa-pencil"></i>
+                                </a>
+                            </td>
+
+                            <td style="width: 30px;">
+                                <a href="@Url.Action("Details", "Usuario", new { id = item.IdUsuario })" class="btndetails" style="color:#756F6F">
+                                    <i class="fa fa-archive"></i>
+                                </a>
+                            </td>
+
+                            <td id="Eliminar" style=" width: 20px;">
+                                <a style=" color:#756F6F;" onclick="Eliminar()" data-toggle="tooltip" data-placement="left" title="Tooltip on left">
+                                    <i class=" fa fa-trash"> </i>
+                                </a>
+                            </td>
+
+                            <td class="mostrarnombre">
+                                @Html.DisplayFor(modelItem => item.Nombre)
+                            </td>
+
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Email)
+                            </td>
+
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Usuario)
+                            </td>
+
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Password)
+                            </td>
+
+                            <td>
+                                @Html.DisplayFor(model => item.Role.Nombre)
+                            </td>
+
+                            <td>
+                                @Html.CheckBoxFor(model => item.Estado.Value, new { disabled = "disabled" })
+                            </td>
+
+                        </tr>
+
+                    }
+
+                </table>
+                <div id="Paginator" class="pagefooter">
+                    @Html.PagedListPager(Model, page => Url.Action("QuickIndex", new { page }), new PagedListRenderOptions
+    {
+        LinkToFirstPageFormat = "1",
+        LinkToPreviousPageFormat = "Anterior",
+        LinkToNextPageFormat = "Siguiente",
+        LinkToLastPageFormat = "Ultima",
+
+    })
+                </div>
+            </div>
+
+        </div>
+    </div>

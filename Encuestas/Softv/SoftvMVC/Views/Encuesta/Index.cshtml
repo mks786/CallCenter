@@ -1,0 +1,474 @@
+﻿
+
+
+
+
+<section class="content-header">
+    <h1>
+        Encuestas
+        <small>Administración de encuestas</small>
+    </h1>
+    <ol class="breadcrumb">
+        <li><a href="#"><i class="fa fa-dashboard"></i> Inicio</a></li>
+        <li class="active">Encuestas</li>
+    </ol>
+</section>
+<hr />
+<div class="row">
+    <div class="col-xs-12">
+        <div class="box">
+            <div class="box-header">
+                <h3 class="box-title">Lista de Encuestas</h3>
+           
+            </div><!-- /.box-header -->
+            <div class="box-body">
+
+                <table id="TablaEncuesta" class="table table-bordered table-hover dataTable">
+                    <thead>
+                        <tr>
+                            <td><b>Nombre de encuesta</b></td>
+                            <td><b>Fecha de creación</b> </td>
+                            <td><b>Creador</b></td>
+                            <td><b>Opciones</b></td>
+                            <td ><b>Opciones</b></td>
+                        </tr>
+                    </thead>
+
+                    <tfoot>
+
+                    </tfoot>
+
+                </table>
+
+            </div>
+        </div>
+
+    </div>
+
+</div>
+<div class="modal fade bs-example-modal-lg" id="ModalAgregarEncuesta" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button class="close" aria-label="Close" type="button" data-dismiss="modal"><span aria-hidden="true">×</span></button>
+                <h4 class="modal-title">Agregar Encuesta</h4>
+            </div>
+            <div class="modal-body">
+                <div class="nav-tabs-custom">
+                    <ul class="nav nav-tabs">
+                        <li class="active"><a href="#tab_1" data-toggle="tab" aria-expanded="true">Información principal</a></li>
+                        <li class=""><a href="#tab_2" id="tab-preguntas" data-toggle="tab" aria-expanded="false">Preguntas</a></li>
+                        <li class=""><a href="#tab_3" data-toggle="tab" aria-expanded="false">Configuración</a></li>
+                        
+                        <li class="pull-right"><a href="#" class="text-muted"><i class="fa fa-gear"></i></a></li>
+                    </ul>
+                    <div class="tab-content">
+                        <div class="tab-pane active" id="tab_1">
+                            <div class="row">
+                                <div class="col-xs-12">
+                                    <input type="text" class="form-control" id="nombreEncuesta" placeholder="Nombre de la encuesta">
+                                </div>
+                             </div>
+                        <br />
+                            <div class="row">
+                                <div class="col-xs-12">
+                                    <textarea class="form-control" id="Descripcion_encuesta" placeholder="Descripción de la encuesta"></textarea>
+                                </div>
+                            </div>
+                        </div><!-- /.tab-pane -->
+                        <div class="tab-pane" id="tab_2">
+                        <button class="btn btn-success btn-xs" id="AddPregunta" onclick="DetallePreguntas();"><i class="fa fa-plus" aria-hidden="true"></i> Agregar pregunta</button>
+                        <hr  style="color:#0094ff; background-color:#0094ff;" />
+                            <div class="row" >
+                                <table class="table" id="tablaPreguntas" style="display:none;">
+                                    <thead >
+                                        <tr>
+                                            <td><b>PREGUNTA</b></td>
+                                            <td><b>TIPO RESPUESTA</b></td>
+                                            <td><b>TIPO CONTROL</b></td>
+                                            <td><b>OPCIONES</b></td>
+                                        </tr>
+                                    </thead>
+                                    <tbody id="TbodyPreguntas">
+
+
+                                    </tbody>
+                                    
+
+                                </table>
+                                <div class="alert alert-info" id="msnTablavacia" style="width: 50%; align-content: center; margin-top:20px; margin-bottom:20px; margin-left:60px;">
+                                   
+                                    <h4><i class="icon fa fa-info"></i> Atención!</h4>
+                                   Aun no tienes preguntas para tu encuesta .
+                                </div>
+
+                            </div>
+                        </div><!-- /.tab-pane -->
+                        <div class="tab-pane" id="tab_3">
+                            
+                        </div><!-- /.tab-pane -->
+                    </div><!-- /.tab-content -->
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-default pull-left" type="button" data-dismiss="modal">cerrar</button>
+                <button class="btn btn-primary" id="guardarEncuesta" type="button">Guardar encuesta</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade bs-example-modal-lg" id="ModalEditarEncuesta" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button class="close" aria-label="Close" type="button" data-dismiss="modal"><span aria-hidden="true">×</span></button>
+                <h4 class="modal-title">Editar Encuesta</h4>
+            </div>
+            <div class="modal-body">
+                <div class="nav-tabs-custom">
+                    <ul class="nav nav-tabs">
+                        <li class="active"><a href="#tab_1_ed" data-toggle="tab" aria-expanded="true">Información principal</a></li>
+                        <li class=""><a href="#tab_2_ed" id="tab-preguntas" data-toggle="tab" aria-expanded="false">Preguntas</a></li>
+                        <li class=""><a href="#tab_3_ed" data-toggle="tab" aria-expanded="false">Configuración</a></li>
+
+                        <li class="pull-right"><a href="#" class="text-muted"><i class="fa fa-gear"></i></a></li>
+                    </ul>
+                    <div class="tab-content">
+                        <div class="tab-pane active" id="tab_1_ed">
+                            <div class="row">
+                                <div class="col-xs-12">
+                                    <input type="text" class="form-control" id="ed_nombreEncuesta" placeholder="Nombre de la encuesta">
+                                </div>
+                            </div>
+                            <br />
+                            <div class="row">
+                                <div class="col-xs-12">
+                                    <textarea class="form-control" id="ed_Descripcion_encuesta" placeholder="Descripción de la encuesta"></textarea>
+                                </div>
+                            </div>
+                        </div><!-- /.tab-pane -->
+                        <div class="tab-pane" id="tab_2_ed">
+                            <button class="btn btn-success btn-xs" id="AddPregunta" onclick="DetallePreguntas();"><i class="fa fa-plus" aria-hidden="true"></i> Agregar pregunta</button>
+                            <hr style="color:#0094ff; background-color:#0094ff;" />
+                            <div class="row">
+                                <table class="table" id="ed_tablaPreguntas" style="display:none;">
+                                    <thead>
+                                        <tr>
+                                            <td><b>PREGUNTA</b></td>
+                                            <td><b>TIPO RESPUESTA</b></td>
+                                            <td><b>TIPO CONTROL</b></td>
+                                            <td><b>OPCIONES</b></td>
+                                        </tr>
+                                    </thead>
+                                    <tbody id="ed_TbodyPreguntas"></tbody>
+
+
+                                </table>
+                                <div class="alert alert-info" id="ed_msnTablavacia" style="width: 50%; align-content: center; margin-top:20px; margin-bottom:20px; margin-left:60px;">
+
+                                    <h4><i class="icon fa fa-info"></i> Atención!</h4>
+                                    Aun no tienes preguntas para tu encuesta .
+                                </div>
+
+                            </div>
+                        </div><!-- /.tab-pane -->
+                        <div class="tab-pane" id="tab_3_ed">
+
+                        </div><!-- /.tab-pane -->
+                    </div><!-- /.tab-content -->
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-default pull-left" type="button" data-dismiss="modal">cerrar</button>
+                <button class="btn btn-primary" id="guardarEncuesta" type="button">Guardar encuesta</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+<div class="modal fade bs-example-modal-lg" id="ModalAgregarPregunta" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button class="close" aria-label="Close" type="button" data-dismiss="modal"><span aria-hidden="true">×</span></button>
+                <h4 class="modal-title">Agregar Pregunta</h4>
+            </div>
+            <div class="modal-body">
+                <div class="row">
+                    <table class="table" id="tablaPreguntas">
+                        <thead>
+                            <tr>
+                                <td>PREGUNTA</td>
+                                <td>TIPO RESPUESTA</td>
+                                <td>OPCIONES</td>
+                            </tr>
+                        </thead>
+                        <tbody id="TbodyPreguntas">
+                            <tr>
+                            <td><input type='text' id="NombrePregunta" class='form-control' placeholder='Escribe tu pregunta'></td>
+                            <td>  <select id='TipoPregunta' class='form-control' >
+                                  <option disabled value="0">Selecciona el tipo de pregunta</option>
+                                  <option value='1'>Pregunta abierta</option>
+                                  <option value='2'>Pregunta cerrada</option>
+                                  <option value='3'>Pregunta con opciones multiples</option>
+                                </select>
+                            </td>
+                            <td><select class="form-control" style="display:none;" id="tipodecontrol">
+                                <option disabled value="0">Selecciona el tipo de control</option>
+                                <option value="1">Radio button</option>
+                                <option value="2">Checkbox</option>
+                                <option value="3">Combo box</option>
+                                </select>
+                                <select class="form-control" style="display:none;" id="tipodecontrolPAbierta">
+                                    <option disabled value="0">Selecciona el tipo de control</option>
+                                    <option value="4">caja de texto</option>
+                                    <option value="5">control de fechas</option>
+                                    <option value="6">caja de texto grande</option>
+                                </select>
+                                </td>
+                            </tr>
+
+
+
+
+                        </tbody>
+
+
+                    </table>
+                    <div class="container">
+                        <div class="row" id="PanelPreguntaAbierta" style="display:none;">
+
+
+                        </div>
+                        <div class="row" id="PanelPreguntaCerrada" style="display:none; margin-left:30px;">
+                            <button id="AgregarRespuestasC" class="btn btn-info btn-xs"><i class="fa fa-plus" aria-hidden="true"></i> Agregar respuesta</button>
+                            <hr  style="width:30px;"/>
+                            <table class="table" id="TablaRespuestasC" style="width:50%; margin-left:30px;">
+                                <thead>
+                                    <tr><td></td><td>Descripción</td><td>Opciones</td></tr>
+                                </thead>
+                                <tbody id="PanelPreguntaCerrada-tbody"></tbody>
+
+                            </table>
+
+
+                        </div>
+                        <div class="row" id="PanelPreguntaOptMultiple" style="display:none; margin-left:30px;">
+
+                            <button id="AgregarRespuestasOM" class="btn btn-info btn-xs"><i class="fa fa-plus" aria-hidden="true"></i> Agregar opción</button>
+                            
+                            <table class="table" id="TablaRespuestasOM" style="width:50%; margin-left:30px;">
+                                <thead>
+                                    <tr><td></td><td>Descripción</td><td>Opciones</td></tr>
+                                </thead>
+                                <tbody id="PanelPreguntaOptMultiple-tbody"></tbody>
+
+                            </table>
+                        </div>
+
+
+                    </div>
+                    
+                </div>
+
+
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-default pull-left" type="button" data-dismiss="modal">cerrar</button>
+                <button class="btn btn-primary" id="GuardarPregunta" type="button">Agregar pregunta</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+ 
+<div class="modal fade bs-example-modal-lg" id="ModalDetalleEncuesta" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button class="close" aria-label="Close" type="button" data-dismiss="modal"><span aria-hidden="true">×</span></button>
+                <h4 class="modal-title">Preview </h4>
+            </div>
+            <div class="modal-body"  style=" width:100%; overflow-y: auto; height: 800px;">
+              
+                <iframe id="ipreview" src="/Encuesta/Details/" style="width:100%; height:100%" ></iframe>
+
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-default pull-right" type="button" data-dismiss="modal">cerrar</button>
+              
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade bs-example-modal-lg" id="ModalDetallePregunta" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button class="close" aria-label="Close" type="button" data-dismiss="modal"><span aria-hidden="true">×</span></button>
+                <h4 class="modal-title">Detalle Pregunta</h4>
+            </div>
+            <div class="modal-body">
+                <div class="box box-info">
+
+                    <table class="table" style="width:60%;">
+                       <tbody id="Detalle-tbody">
+                          
+
+                       </tbody>
+
+                    </table>
+                   
+
+                    
+                    <div class="col-xs-12">
+                        <h5 class="text-muted">Posibles respuestas :</h5>
+                        <select multiple="" class="form-control" id="detalleresp" style="width:60%;"></select>
+
+                    </div>
+                </div>
+                
+                
+                
+
+
+            </div>
+            <br />
+            <div class="modal-footer">
+                <button class="btn btn-default pull-left" type="button" data-dismiss="modal">cerrar</button>
+                
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="ModalEliminaPregunta" role="dialog">
+    <div class="modal-dialog modal-sm">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button class="close" aria-label="Close" type="button" data-dismiss="modal"><span aria-hidden="true">×</span></button>
+                <h4 class="modal-title">Eliminar pregunta</h4>
+            </div>
+            <div class="modal-body">
+                <input type="hidden" id="idpregunta"/>
+                <p>¿Realmente deseas eliminar esta pregunta?</p>
+
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-default pull-left" type="button" data-dismiss="modal">cerrar</button>
+                <button class="btn btn-primary" type="button" id="confirmaEliminaPregunta">Eliminar</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade bs-example-modal-lg" id="ModalEditarPregunta" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button class="close" aria-label="Close" type="button" data-dismiss="modal"><span aria-hidden="true">×</span></button>
+                <h4 class="modal-title">Editar Pregunta</h4>
+            </div>
+            <div class="modal-body">
+                <div class="row">
+                    <table class="table" id="tablaPreguntas">
+                        <thead>
+                            <tr>
+                                <td>PREGUNTA</td>
+                                <td>TIPO RESPUESTA</td>
+                                <td>OPCIONES</td>
+                            </tr>
+                        </thead>
+                        <tbody id="TbodyPreguntas">
+                            <tr>
+                                <td><input type='text' id="ed_NombrePregunta" class='form-control' placeholder='Escribe tu pregunta'></td>
+                                <td>
+                                    <select id='ed_TipoPregunta' class='form-control'>
+                                        <option disabled value="0">Selecciona el tipo de pregunta</option>
+                                        <option value='1'>Pregunta abierta</option>
+                                        <option value='2'>Pregunta cerrada</option>
+                                        <option value='3'>Pregunta con opciones multiples</option>
+                                    </select>
+                                </td>
+                                <td>
+                                    <select class="form-control" style="display:none;" id="ed_tipodecontrol">
+                                        <option disabled value="0">Selecciona el tipo de control</option>
+                                        <option value="1">Radio button</option>
+                                        <option value="2">Checkbox</option>
+                                        <option value="2">Combo box</option>
+                                    </select>
+                                </td>
+                            </tr>
+
+
+
+
+                        </tbody>
+
+
+                    </table>
+                    <div class="container">
+                        <div class="row" id="PanelPreguntaAbierta" style="display:none;">
+
+
+                        </div>
+                        <div class="row" id="edPanelPreguntaCerrada" style="display:none;">
+                            <button style="margin-left:30px;" id="edAgregarRespuestasC" class="btn btn-info btn-xs"><i class="fa fa-plus" aria-hidden="true"></i> Agregar respuesta</button>
+                            <table class="table" id="edTablaRespuestasC" style="width:50%; margin-left:30px;">
+                                <thead>
+                                    <tr><td></td><td>Descripción</td><td>Opciones</td></tr>
+                                </thead>
+                                <tbody id="edPanelPreguntaCerrada-tbody"></tbody>
+
+                            </table>
+
+
+                        </div>
+                        <div class="row" id="edPanelPreguntaOptMultiple" style="display:none;">
+
+                            <button style="margin-left:30px;"  id="edAgregarRespuestasOM" class="btn btn-info btn-xs"><i class="fa fa-plus" aria-hidden="true"></i> Agregar opción</button>
+                            <table class="table" id="edTablaRespuestasOM" style="width:50%; margin-left:30px;">
+                                <thead>
+                                    <tr><td></td><td>Descripción</td><td>Opciones</td></tr>
+                                </thead>
+                                <tbody id="edPanelPreguntaOptMultiple-tbody"></tbody>
+
+                            </table>
+                        </div>
+
+
+                    </div>
+                    <input type="hidden" id="idParaEditar" />
+                </div>
+
+
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-default pull-left" type="button" data-dismiss="modal">cerrar</button>
+                <button class="btn btn-primary" id="EditarPregunta" type="button">Editar pregunta</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+
+<script src="~/dist/js/pages/Encuesta/Lista.js"></script>
+<script src="~/dist/js/pages/Encuesta/Utilerias.js"></script>
+<script src="~/dist/js/pages/Encuesta/ModalAgregarPregunta.js"></script>
+<script src="~/dist/js/pages/Encuesta/ModalEditarPregunta.js"></script>
+<script src="~/dist/js/pages/Encuesta/ModalDetallePregunta.js"></script>
+<script src="~/dist/js/pages/Encuesta/ModalEliminaPregunta.js"></script>
+<script src="~/dist/js/pages/Encuesta/ModalAgregarEncuesta.js"></script>
+<script src="~/dist/js/pages/Encuesta/ModalDetalleEncuesta.js"></script>
+<script src="~/dist/js/pages/Encuesta/ModalEditarEncuesta.js"></script>

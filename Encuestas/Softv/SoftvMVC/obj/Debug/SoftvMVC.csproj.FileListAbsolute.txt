@@ -1,0 +1,1377 @@
+D:\Work\Desarrollo\Softv\SoftvMVC\bin\SoftvMVC.dll.config
+D:\Work\Desarrollo\Softv\SoftvMVC\bin\SoftvMVC.dll
+D:\Work\Desarrollo\Softv\SoftvMVC\bin\SoftvMVC.pdb
+D:\Work\Desarrollo\Softv\SoftvMVC\bin\Antlr3.Runtime.dll
+D:\Work\Desarrollo\Softv\SoftvMVC\bin\EntityFramework.dll
+D:\Work\Desarrollo\Softv\SoftvMVC\bin\EntityFramework.SqlServer.dll
+D:\Work\Desarrollo\Softv\SoftvMVC\bin\Microsoft.AspNet.Identity.Core.dll
+D:\Work\Desarrollo\Softv\SoftvMVC\bin\Microsoft.AspNet.Identity.EntityFramework.dll
+D:\Work\Desarrollo\Softv\SoftvMVC\bin\Microsoft.AspNet.Identity.Owin.dll
+D:\Work\Desarrollo\Softv\SoftvMVC\bin\Microsoft.Owin.dll
+D:\Work\Desarrollo\Softv\SoftvMVC\bin\Microsoft.Owin.Host.SystemWeb.dll
+D:\Work\Desarrollo\Softv\SoftvMVC\bin\Microsoft.Owin.Security.Cookies.dll
+D:\Work\Desarrollo\Softv\SoftvMVC\bin\Microsoft.Owin.Security.dll
+D:\Work\Desarrollo\Softv\SoftvMVC\bin\Microsoft.Owin.Security.Facebook.dll
+D:\Work\Desarrollo\Softv\SoftvMVC\bin\Microsoft.Owin.Security.Google.dll
+D:\Work\Desarrollo\Softv\SoftvMVC\bin\Microsoft.Owin.Security.MicrosoftAccount.dll
+D:\Work\Desarrollo\Softv\SoftvMVC\bin\Microsoft.Owin.Security.OAuth.dll
+D:\Work\Desarrollo\Softv\SoftvMVC\bin\Microsoft.Owin.Security.Twitter.dll
+D:\Work\Desarrollo\Softv\SoftvMVC\bin\Microsoft.Web.Infrastructure.dll
+D:\Work\Desarrollo\Softv\SoftvMVC\bin\Newtonsoft.Json.dll
+D:\Work\Desarrollo\Softv\SoftvMVC\bin\Owin.dll
+D:\Work\Desarrollo\Softv\SoftvMVC\bin\System.Web.Helpers.dll
+D:\Work\Desarrollo\Softv\SoftvMVC\bin\System.Web.Mvc.dll
+D:\Work\Desarrollo\Softv\SoftvMVC\bin\System.Web.Optimization.dll
+D:\Work\Desarrollo\Softv\SoftvMVC\bin\System.Web.Razor.dll
+D:\Work\Desarrollo\Softv\SoftvMVC\bin\System.Web.WebPages.Deployment.dll
+D:\Work\Desarrollo\Softv\SoftvMVC\bin\System.Web.WebPages.dll
+D:\Work\Desarrollo\Softv\SoftvMVC\bin\System.Web.WebPages.Razor.dll
+D:\Work\Desarrollo\Softv\SoftvMVC\bin\WebGrease.dll
+D:\Work\Desarrollo\Softv\SoftvMVC\bin\System.Web.Helpers.xml
+D:\Work\Desarrollo\Softv\SoftvMVC\bin\System.Web.Mvc.xml
+D:\Work\Desarrollo\Softv\SoftvMVC\bin\System.Web.Optimization.xml
+D:\Work\Desarrollo\Softv\SoftvMVC\bin\System.Web.Razor.xml
+D:\Work\Desarrollo\Softv\SoftvMVC\bin\System.Web.WebPages.xml
+D:\Work\Desarrollo\Softv\SoftvMVC\bin\System.Web.WebPages.Deployment.xml
+D:\Work\Desarrollo\Softv\SoftvMVC\bin\System.Web.WebPages.Razor.xml
+D:\Work\Desarrollo\Softv\SoftvMVC\bin\Antlr3.Runtime.pdb
+D:\Work\Desarrollo\Softv\SoftvMVC\bin\Newtonsoft.Json.xml
+D:\Work\Desarrollo\Softv\SoftvMVC\bin\EntityFramework.xml
+D:\Work\Desarrollo\Softv\SoftvMVC\bin\EntityFramework.SqlServer.xml
+D:\Work\Desarrollo\Softv\SoftvMVC\bin\Microsoft.AspNet.Identity.Core.xml
+D:\Work\Desarrollo\Softv\SoftvMVC\bin\Microsoft.AspNet.Identity.Owin.xml
+D:\Work\Desarrollo\Softv\SoftvMVC\bin\Microsoft.AspNet.Identity.EntityFramework.xml
+D:\Work\Desarrollo\Softv\SoftvMVC\bin\Microsoft.Owin.xml
+D:\Work\Desarrollo\Softv\SoftvMVC\bin\Microsoft.Owin.Host.SystemWeb.xml
+D:\Work\Desarrollo\Softv\SoftvMVC\bin\Microsoft.Owin.Security.xml
+D:\Work\Desarrollo\Softv\SoftvMVC\bin\Microsoft.Owin.Security.Facebook.xml
+D:\Work\Desarrollo\Softv\SoftvMVC\bin\Microsoft.Owin.Security.Cookies.xml
+D:\Work\Desarrollo\Softv\SoftvMVC\bin\Microsoft.Owin.Security.OAuth.xml
+D:\Work\Desarrollo\Softv\SoftvMVC\bin\Microsoft.Owin.Security.Google.xml
+D:\Work\Desarrollo\Softv\SoftvMVC\bin\Microsoft.Owin.Security.Twitter.xml
+D:\Work\Desarrollo\Softv\SoftvMVC\bin\Microsoft.Owin.Security.MicrosoftAccount.xml
+D:\Work\Desarrollo\Softv\SoftvMVC\obj\Debug\SoftvMVC.csprojResolveAssemblyReference.cache
+D:\Work\Desarrollo\Softv\SoftvMVC\obj\Debug\SoftvMVC.dll
+D:\Work\Desarrollo\Softv\SoftvMVC\obj\Debug\SoftvMVC.pdb
+D:\Work\Desarrollo\Softv\SoftvMVC\obj\Debug\SoftvMVC.csproj.App.config
+D:\Work\Desarrollo\Softv\SoftvMVC\bin\Globals.dll
+D:\Work\Desarrollo\Softv\SoftvMVC\bin\LinqToExcel.dll
+D:\Work\Desarrollo\Softv\SoftvMVC\bin\log4net.dll
+D:\Work\Desarrollo\Softv\SoftvMVC\bin\PagedList.dll
+D:\Work\Desarrollo\Softv\SoftvMVC\bin\Remotion.Data.Linq.dll
+D:\Work\Desarrollo\Softv\SoftvMVC\bin\Remotion.dll
+D:\Work\Desarrollo\Softv\SoftvMVC\bin\Remotion.Interfaces.dll
+D:\Work\Desarrollo\Softv\SoftvMVC\bin\Softv.Entities.dll
+D:\Work\Desarrollo\Softv\SoftvMVC\bin\System.Net.Http.Extensions.dll
+D:\Work\Desarrollo\Softv\SoftvMVC\bin\System.Net.Http.Formatting.dll
+D:\Work\Desarrollo\Softv\SoftvMVC\bin\System.Net.Http.Primitives.dll
+D:\Work\Desarrollo\Softv\SoftvMVC\bin\System.Web.Http.dll
+D:\Work\Desarrollo\Softv\SoftvMVC\bin\System.Web.Http.WebHost.dll
+D:\Work\Desarrollo\Softv\SoftvMVC\bin\Globals.pdb
+D:\Work\Desarrollo\Softv\SoftvMVC\bin\Softv.Entities.pdb
+D:\Work\Desarrollo\Softv\SoftvMVC\bin\LinqToExcel.xml
+D:\Work\Desarrollo\Softv\SoftvMVC\bin\log4net.xml
+D:\Work\Desarrollo\Softv\SoftvMVC\bin\PagedList.xml
+D:\Work\Desarrollo\Softv\SoftvMVC\bin\System.Net.Http.Extensions.xml
+D:\Work\Desarrollo\Softv\SoftvMVC\bin\System.Net.Http.Formatting.xml
+D:\Work\Desarrollo\Softv\SoftvMVC\bin\System.Net.Http.Primitives.xml
+D:\Work\Desarrollo\Softv\SoftvMVC\bin\System.Web.Http.xml
+D:\Work\Desarrollo\Softv\SoftvMVC\bin\System.Web.Http.WebHost.xml
+D:\Work\Desarrollo\Softv\SoftvMVC\bin\PagedList.Mvc.dll
+D:\Work\Desarrollo\Softv\SoftvMVC\bin\PagedList.Mvc.xml
+C:\Users\egarcia\Desktop\Softv\SoftvMVC\bin\SoftvMVC.dll.config
+C:\Users\egarcia\Desktop\Softv\SoftvMVC\bin\SoftvMVC.dll
+C:\Users\egarcia\Desktop\Softv\SoftvMVC\bin\SoftvMVC.pdb
+C:\Users\egarcia\Desktop\Softv\SoftvMVC\bin\Antlr3.Runtime.dll
+C:\Users\egarcia\Desktop\Softv\SoftvMVC\bin\EntityFramework.dll
+C:\Users\egarcia\Desktop\Softv\SoftvMVC\bin\EntityFramework.SqlServer.dll
+C:\Users\egarcia\Desktop\Softv\SoftvMVC\bin\Globals.dll
+C:\Users\egarcia\Desktop\Softv\SoftvMVC\bin\LinqToExcel.dll
+C:\Users\egarcia\Desktop\Softv\SoftvMVC\bin\log4net.dll
+C:\Users\egarcia\Desktop\Softv\SoftvMVC\bin\Microsoft.AspNet.Identity.Core.dll
+C:\Users\egarcia\Desktop\Softv\SoftvMVC\bin\Microsoft.AspNet.Identity.EntityFramework.dll
+C:\Users\egarcia\Desktop\Softv\SoftvMVC\bin\Microsoft.AspNet.Identity.Owin.dll
+C:\Users\egarcia\Desktop\Softv\SoftvMVC\bin\Microsoft.Owin.dll
+C:\Users\egarcia\Desktop\Softv\SoftvMVC\bin\Microsoft.Owin.Host.SystemWeb.dll
+C:\Users\egarcia\Desktop\Softv\SoftvMVC\bin\Microsoft.Owin.Security.Cookies.dll
+C:\Users\egarcia\Desktop\Softv\SoftvMVC\bin\Microsoft.Owin.Security.dll
+C:\Users\egarcia\Desktop\Softv\SoftvMVC\bin\Microsoft.Owin.Security.Facebook.dll
+C:\Users\egarcia\Desktop\Softv\SoftvMVC\bin\Microsoft.Owin.Security.Google.dll
+C:\Users\egarcia\Desktop\Softv\SoftvMVC\bin\Microsoft.Owin.Security.MicrosoftAccount.dll
+C:\Users\egarcia\Desktop\Softv\SoftvMVC\bin\Microsoft.Owin.Security.OAuth.dll
+C:\Users\egarcia\Desktop\Softv\SoftvMVC\bin\Microsoft.Owin.Security.Twitter.dll
+C:\Users\egarcia\Desktop\Softv\SoftvMVC\bin\Microsoft.Web.Infrastructure.dll
+C:\Users\egarcia\Desktop\Softv\SoftvMVC\bin\Newtonsoft.Json.dll
+C:\Users\egarcia\Desktop\Softv\SoftvMVC\bin\Owin.dll
+C:\Users\egarcia\Desktop\Softv\SoftvMVC\bin\PagedList.dll
+C:\Users\egarcia\Desktop\Softv\SoftvMVC\bin\PagedList.Mvc.dll
+C:\Users\egarcia\Desktop\Softv\SoftvMVC\bin\Remotion.Data.Linq.dll
+C:\Users\egarcia\Desktop\Softv\SoftvMVC\bin\Remotion.dll
+C:\Users\egarcia\Desktop\Softv\SoftvMVC\bin\Remotion.Interfaces.dll
+C:\Users\egarcia\Desktop\Softv\SoftvMVC\bin\Softv.Entities.dll
+C:\Users\egarcia\Desktop\Softv\SoftvMVC\bin\System.Net.Http.Extensions.dll
+C:\Users\egarcia\Desktop\Softv\SoftvMVC\bin\System.Net.Http.Formatting.dll
+C:\Users\egarcia\Desktop\Softv\SoftvMVC\bin\System.Net.Http.Primitives.dll
+C:\Users\egarcia\Desktop\Softv\SoftvMVC\bin\System.Web.Helpers.dll
+C:\Users\egarcia\Desktop\Softv\SoftvMVC\bin\System.Web.Http.dll
+C:\Users\egarcia\Desktop\Softv\SoftvMVC\bin\System.Web.Http.WebHost.dll
+C:\Users\egarcia\Desktop\Softv\SoftvMVC\bin\System.Web.Mvc.dll
+C:\Users\egarcia\Desktop\Softv\SoftvMVC\bin\System.Web.Optimization.dll
+C:\Users\egarcia\Desktop\Softv\SoftvMVC\bin\System.Web.Razor.dll
+C:\Users\egarcia\Desktop\Softv\SoftvMVC\bin\System.Web.WebPages.Deployment.dll
+C:\Users\egarcia\Desktop\Softv\SoftvMVC\bin\System.Web.WebPages.dll
+C:\Users\egarcia\Desktop\Softv\SoftvMVC\bin\System.Web.WebPages.Razor.dll
+C:\Users\egarcia\Desktop\Softv\SoftvMVC\bin\WebGrease.dll
+C:\Users\egarcia\Desktop\Softv\SoftvMVC\bin\Globals.pdb
+C:\Users\egarcia\Desktop\Softv\SoftvMVC\bin\Softv.Entities.pdb
+C:\Users\egarcia\Desktop\Softv\SoftvMVC\bin\EntityFramework.xml
+C:\Users\egarcia\Desktop\Softv\SoftvMVC\bin\EntityFramework.SqlServer.xml
+C:\Users\egarcia\Desktop\Softv\SoftvMVC\bin\LinqToExcel.xml
+C:\Users\egarcia\Desktop\Softv\SoftvMVC\bin\log4net.xml
+C:\Users\egarcia\Desktop\Softv\SoftvMVC\bin\Microsoft.AspNet.Identity.Core.xml
+C:\Users\egarcia\Desktop\Softv\SoftvMVC\bin\Microsoft.AspNet.Identity.EntityFramework.xml
+C:\Users\egarcia\Desktop\Softv\SoftvMVC\bin\Microsoft.Owin.xml
+C:\Users\egarcia\Desktop\Softv\SoftvMVC\bin\Microsoft.Owin.Host.SystemWeb.xml
+C:\Users\egarcia\Desktop\Softv\SoftvMVC\bin\Newtonsoft.Json.xml
+C:\Users\egarcia\Desktop\Softv\SoftvMVC\bin\PagedList.xml
+C:\Users\egarcia\Desktop\Softv\SoftvMVC\bin\PagedList.Mvc.xml
+C:\Users\egarcia\Desktop\Softv\SoftvMVC\bin\System.Net.Http.Extensions.xml
+C:\Users\egarcia\Desktop\Softv\SoftvMVC\bin\System.Net.Http.Formatting.xml
+C:\Users\egarcia\Desktop\Softv\SoftvMVC\bin\System.Net.Http.Primitives.xml
+C:\Users\egarcia\Desktop\Softv\SoftvMVC\bin\System.Web.Helpers.xml
+C:\Users\egarcia\Desktop\Softv\SoftvMVC\bin\System.Web.Http.xml
+C:\Users\egarcia\Desktop\Softv\SoftvMVC\bin\System.Web.Http.WebHost.xml
+C:\Users\egarcia\Desktop\Softv\SoftvMVC\bin\System.Web.Mvc.xml
+C:\Users\egarcia\Desktop\Softv\SoftvMVC\bin\System.Web.Razor.xml
+C:\Users\egarcia\Desktop\Softv\SoftvMVC\bin\System.Web.WebPages.xml
+C:\Users\egarcia\Desktop\Softv\SoftvMVC\bin\System.Web.WebPages.Deployment.xml
+C:\Users\egarcia\Desktop\Softv\SoftvMVC\bin\System.Web.WebPages.Razor.xml
+C:\Users\egarcia\Desktop\Softv\SoftvMVC\bin\System.Web.Optimization.xml
+C:\Users\egarcia\Desktop\Softv\SoftvMVC\bin\Antlr3.Runtime.pdb
+C:\Users\egarcia\Desktop\Softv\SoftvMVC\bin\Microsoft.AspNet.Identity.Owin.xml
+C:\Users\egarcia\Desktop\Softv\SoftvMVC\bin\Microsoft.Owin.Security.xml
+C:\Users\egarcia\Desktop\Softv\SoftvMVC\bin\Microsoft.Owin.Security.Facebook.xml
+C:\Users\egarcia\Desktop\Softv\SoftvMVC\bin\Microsoft.Owin.Security.Cookies.xml
+C:\Users\egarcia\Desktop\Softv\SoftvMVC\bin\Microsoft.Owin.Security.OAuth.xml
+C:\Users\egarcia\Desktop\Softv\SoftvMVC\bin\Microsoft.Owin.Security.Google.xml
+C:\Users\egarcia\Desktop\Softv\SoftvMVC\bin\Microsoft.Owin.Security.Twitter.xml
+C:\Users\egarcia\Desktop\Softv\SoftvMVC\bin\Microsoft.Owin.Security.MicrosoftAccount.xml
+C:\Users\egarcia\Desktop\Softv\SoftvMVC\obj\Debug\SoftvMVC.csproj.App.config
+C:\Users\egarcia\Desktop\Softv\SoftvMVC\obj\Debug\SoftvMVC.csprojResolveAssemblyReference.cache
+C:\Users\egarcia\Desktop\Softv\SoftvMVC\obj\Debug\SoftvMVC.dll
+C:\Users\egarcia\Desktop\Softv\SoftvMVC\obj\Debug\SoftvMVC.pdb
+C:\Users\Lizeth\Desktop\Encuestas\Softv\SoftvMVC\obj\Debug\SoftvMVC.csproj.App.config
+C:\Users\Lizeth\Desktop\Encuestas\Softv\SoftvMVC\obj\Debug\SoftvMVC.csprojResolveAssemblyReference.cache
+C:\Users\Lizeth\Desktop\Encuestas\Softv\SoftvMVC\bin\SoftvMVC.dll.config
+C:\Users\Lizeth\Desktop\Encuestas\Softv\SoftvMVC\bin\SoftvMVC.dll
+C:\Users\Lizeth\Desktop\Encuestas\Softv\SoftvMVC\bin\SoftvMVC.pdb
+C:\Users\Lizeth\Desktop\Encuestas\Softv\SoftvMVC\bin\Antlr3.Runtime.dll
+C:\Users\Lizeth\Desktop\Encuestas\Softv\SoftvMVC\bin\EntityFramework.dll
+C:\Users\Lizeth\Desktop\Encuestas\Softv\SoftvMVC\bin\EntityFramework.SqlServer.dll
+C:\Users\Lizeth\Desktop\Encuestas\Softv\SoftvMVC\bin\Globals.dll
+C:\Users\Lizeth\Desktop\Encuestas\Softv\SoftvMVC\bin\LinqToExcel.dll
+C:\Users\Lizeth\Desktop\Encuestas\Softv\SoftvMVC\bin\log4net.dll
+C:\Users\Lizeth\Desktop\Encuestas\Softv\SoftvMVC\bin\Microsoft.AspNet.Identity.Core.dll
+C:\Users\Lizeth\Desktop\Encuestas\Softv\SoftvMVC\bin\Microsoft.AspNet.Identity.EntityFramework.dll
+C:\Users\Lizeth\Desktop\Encuestas\Softv\SoftvMVC\bin\Microsoft.AspNet.Identity.Owin.dll
+C:\Users\Lizeth\Desktop\Encuestas\Softv\SoftvMVC\bin\Microsoft.Owin.dll
+C:\Users\Lizeth\Desktop\Encuestas\Softv\SoftvMVC\bin\Microsoft.Owin.Host.SystemWeb.dll
+C:\Users\Lizeth\Desktop\Encuestas\Softv\SoftvMVC\bin\Microsoft.Owin.Security.Cookies.dll
+C:\Users\Lizeth\Desktop\Encuestas\Softv\SoftvMVC\bin\Microsoft.Owin.Security.dll
+C:\Users\Lizeth\Desktop\Encuestas\Softv\SoftvMVC\bin\Microsoft.Owin.Security.Facebook.dll
+C:\Users\Lizeth\Desktop\Encuestas\Softv\SoftvMVC\bin\Microsoft.Owin.Security.Google.dll
+C:\Users\Lizeth\Desktop\Encuestas\Softv\SoftvMVC\bin\Microsoft.Owin.Security.MicrosoftAccount.dll
+C:\Users\Lizeth\Desktop\Encuestas\Softv\SoftvMVC\bin\Microsoft.Owin.Security.OAuth.dll
+C:\Users\Lizeth\Desktop\Encuestas\Softv\SoftvMVC\bin\Microsoft.Owin.Security.Twitter.dll
+C:\Users\Lizeth\Desktop\Encuestas\Softv\SoftvMVC\bin\Microsoft.Web.Infrastructure.dll
+C:\Users\Lizeth\Desktop\Encuestas\Softv\SoftvMVC\bin\Newtonsoft.Json.dll
+C:\Users\Lizeth\Desktop\Encuestas\Softv\SoftvMVC\bin\Owin.dll
+C:\Users\Lizeth\Desktop\Encuestas\Softv\SoftvMVC\bin\PagedList.dll
+C:\Users\Lizeth\Desktop\Encuestas\Softv\SoftvMVC\bin\PagedList.Mvc.dll
+C:\Users\Lizeth\Desktop\Encuestas\Softv\SoftvMVC\bin\Remotion.Data.Linq.dll
+C:\Users\Lizeth\Desktop\Encuestas\Softv\SoftvMVC\bin\Remotion.dll
+C:\Users\Lizeth\Desktop\Encuestas\Softv\SoftvMVC\bin\Remotion.Interfaces.dll
+C:\Users\Lizeth\Desktop\Encuestas\Softv\SoftvMVC\bin\Softv.Entities.dll
+C:\Users\Lizeth\Desktop\Encuestas\Softv\SoftvMVC\bin\System.Net.Http.Extensions.dll
+C:\Users\Lizeth\Desktop\Encuestas\Softv\SoftvMVC\bin\System.Net.Http.Formatting.dll
+C:\Users\Lizeth\Desktop\Encuestas\Softv\SoftvMVC\bin\System.Net.Http.Primitives.dll
+C:\Users\Lizeth\Desktop\Encuestas\Softv\SoftvMVC\bin\System.Web.Helpers.dll
+C:\Users\Lizeth\Desktop\Encuestas\Softv\SoftvMVC\bin\System.Web.Http.dll
+C:\Users\Lizeth\Desktop\Encuestas\Softv\SoftvMVC\bin\System.Web.Http.WebHost.dll
+C:\Users\Lizeth\Desktop\Encuestas\Softv\SoftvMVC\bin\System.Web.Mvc.dll
+C:\Users\Lizeth\Desktop\Encuestas\Softv\SoftvMVC\bin\System.Web.Optimization.dll
+C:\Users\Lizeth\Desktop\Encuestas\Softv\SoftvMVC\bin\System.Web.Razor.dll
+C:\Users\Lizeth\Desktop\Encuestas\Softv\SoftvMVC\bin\System.Web.WebPages.Deployment.dll
+C:\Users\Lizeth\Desktop\Encuestas\Softv\SoftvMVC\bin\System.Web.WebPages.dll
+C:\Users\Lizeth\Desktop\Encuestas\Softv\SoftvMVC\bin\System.Web.WebPages.Razor.dll
+C:\Users\Lizeth\Desktop\Encuestas\Softv\SoftvMVC\bin\WebGrease.dll
+C:\Users\Lizeth\Desktop\Encuestas\Softv\SoftvMVC\bin\Globals.pdb
+C:\Users\Lizeth\Desktop\Encuestas\Softv\SoftvMVC\bin\Softv.Entities.pdb
+C:\Users\Lizeth\Desktop\Encuestas\Softv\SoftvMVC\bin\EntityFramework.xml
+C:\Users\Lizeth\Desktop\Encuestas\Softv\SoftvMVC\bin\EntityFramework.SqlServer.xml
+C:\Users\Lizeth\Desktop\Encuestas\Softv\SoftvMVC\bin\LinqToExcel.xml
+C:\Users\Lizeth\Desktop\Encuestas\Softv\SoftvMVC\bin\log4net.xml
+C:\Users\Lizeth\Desktop\Encuestas\Softv\SoftvMVC\bin\Microsoft.AspNet.Identity.Core.xml
+C:\Users\Lizeth\Desktop\Encuestas\Softv\SoftvMVC\bin\Microsoft.AspNet.Identity.EntityFramework.xml
+C:\Users\Lizeth\Desktop\Encuestas\Softv\SoftvMVC\bin\Microsoft.Owin.xml
+C:\Users\Lizeth\Desktop\Encuestas\Softv\SoftvMVC\bin\Microsoft.Owin.Host.SystemWeb.xml
+C:\Users\Lizeth\Desktop\Encuestas\Softv\SoftvMVC\bin\Newtonsoft.Json.xml
+C:\Users\Lizeth\Desktop\Encuestas\Softv\SoftvMVC\bin\PagedList.xml
+C:\Users\Lizeth\Desktop\Encuestas\Softv\SoftvMVC\bin\PagedList.Mvc.xml
+C:\Users\Lizeth\Desktop\Encuestas\Softv\SoftvMVC\bin\System.Net.Http.Extensions.xml
+C:\Users\Lizeth\Desktop\Encuestas\Softv\SoftvMVC\bin\System.Net.Http.Formatting.xml
+C:\Users\Lizeth\Desktop\Encuestas\Softv\SoftvMVC\bin\System.Net.Http.Primitives.xml
+C:\Users\Lizeth\Desktop\Encuestas\Softv\SoftvMVC\bin\System.Web.Helpers.xml
+C:\Users\Lizeth\Desktop\Encuestas\Softv\SoftvMVC\bin\System.Web.Http.xml
+C:\Users\Lizeth\Desktop\Encuestas\Softv\SoftvMVC\bin\System.Web.Http.WebHost.xml
+C:\Users\Lizeth\Desktop\Encuestas\Softv\SoftvMVC\bin\System.Web.Mvc.xml
+C:\Users\Lizeth\Desktop\Encuestas\Softv\SoftvMVC\bin\System.Web.Razor.xml
+C:\Users\Lizeth\Desktop\Encuestas\Softv\SoftvMVC\bin\System.Web.WebPages.xml
+C:\Users\Lizeth\Desktop\Encuestas\Softv\SoftvMVC\bin\System.Web.WebPages.Deployment.xml
+C:\Users\Lizeth\Desktop\Encuestas\Softv\SoftvMVC\bin\System.Web.WebPages.Razor.xml
+C:\Users\Lizeth\Desktop\Encuestas\Softv\SoftvMVC\bin\System.Web.Optimization.xml
+C:\Users\Lizeth\Desktop\Encuestas\Softv\SoftvMVC\bin\Antlr3.Runtime.pdb
+C:\Users\Lizeth\Desktop\Encuestas\Softv\SoftvMVC\bin\Microsoft.AspNet.Identity.Owin.xml
+C:\Users\Lizeth\Desktop\Encuestas\Softv\SoftvMVC\bin\Microsoft.Owin.Security.xml
+C:\Users\Lizeth\Desktop\Encuestas\Softv\SoftvMVC\bin\Microsoft.Owin.Security.Facebook.xml
+C:\Users\Lizeth\Desktop\Encuestas\Softv\SoftvMVC\bin\Microsoft.Owin.Security.Cookies.xml
+C:\Users\Lizeth\Desktop\Encuestas\Softv\SoftvMVC\bin\Microsoft.Owin.Security.OAuth.xml
+C:\Users\Lizeth\Desktop\Encuestas\Softv\SoftvMVC\bin\Microsoft.Owin.Security.Google.xml
+C:\Users\Lizeth\Desktop\Encuestas\Softv\SoftvMVC\bin\Microsoft.Owin.Security.Twitter.xml
+C:\Users\Lizeth\Desktop\Encuestas\Softv\SoftvMVC\bin\Microsoft.Owin.Security.MicrosoftAccount.xml
+C:\Users\Lizeth\Desktop\Encuestas\Softv\SoftvMVC\obj\Debug\SoftvMVC.dll
+C:\Users\Lizeth\Desktop\Encuestas\Softv\SoftvMVC\obj\Debug\SoftvMVC.pdb
+C:\Users\blanca\Documents\Visual Studio 2013\Projects\E 7-5-2016\Encuestas 7-05-2016\Softv\SoftvMVC\bin\SoftvMVC.dll.config
+C:\Users\blanca\Documents\Visual Studio 2013\Projects\E 7-5-2016\Encuestas 7-05-2016\Softv\SoftvMVC\bin\SoftvMVC.dll
+C:\Users\blanca\Documents\Visual Studio 2013\Projects\E 7-5-2016\Encuestas 7-05-2016\Softv\SoftvMVC\bin\SoftvMVC.pdb
+C:\Users\blanca\Documents\Visual Studio 2013\Projects\E 7-5-2016\Encuestas 7-05-2016\Softv\SoftvMVC\bin\Antlr3.Runtime.dll
+C:\Users\blanca\Documents\Visual Studio 2013\Projects\E 7-5-2016\Encuestas 7-05-2016\Softv\SoftvMVC\bin\EntityFramework.dll
+C:\Users\blanca\Documents\Visual Studio 2013\Projects\E 7-5-2016\Encuestas 7-05-2016\Softv\SoftvMVC\bin\EntityFramework.SqlServer.dll
+C:\Users\blanca\Documents\Visual Studio 2013\Projects\E 7-5-2016\Encuestas 7-05-2016\Softv\SoftvMVC\bin\Globals.dll
+C:\Users\blanca\Documents\Visual Studio 2013\Projects\E 7-5-2016\Encuestas 7-05-2016\Softv\SoftvMVC\bin\LinqToExcel.dll
+C:\Users\blanca\Documents\Visual Studio 2013\Projects\E 7-5-2016\Encuestas 7-05-2016\Softv\SoftvMVC\bin\log4net.dll
+C:\Users\blanca\Documents\Visual Studio 2013\Projects\E 7-5-2016\Encuestas 7-05-2016\Softv\SoftvMVC\bin\Microsoft.AspNet.Identity.Core.dll
+C:\Users\blanca\Documents\Visual Studio 2013\Projects\E 7-5-2016\Encuestas 7-05-2016\Softv\SoftvMVC\bin\Microsoft.AspNet.Identity.EntityFramework.dll
+C:\Users\blanca\Documents\Visual Studio 2013\Projects\E 7-5-2016\Encuestas 7-05-2016\Softv\SoftvMVC\bin\Microsoft.AspNet.Identity.Owin.dll
+C:\Users\blanca\Documents\Visual Studio 2013\Projects\E 7-5-2016\Encuestas 7-05-2016\Softv\SoftvMVC\bin\Microsoft.Owin.dll
+C:\Users\blanca\Documents\Visual Studio 2013\Projects\E 7-5-2016\Encuestas 7-05-2016\Softv\SoftvMVC\bin\Microsoft.Owin.Host.SystemWeb.dll
+C:\Users\blanca\Documents\Visual Studio 2013\Projects\E 7-5-2016\Encuestas 7-05-2016\Softv\SoftvMVC\bin\Microsoft.Owin.Security.Cookies.dll
+C:\Users\blanca\Documents\Visual Studio 2013\Projects\E 7-5-2016\Encuestas 7-05-2016\Softv\SoftvMVC\bin\Microsoft.Owin.Security.dll
+C:\Users\blanca\Documents\Visual Studio 2013\Projects\E 7-5-2016\Encuestas 7-05-2016\Softv\SoftvMVC\bin\Microsoft.Owin.Security.Facebook.dll
+C:\Users\blanca\Documents\Visual Studio 2013\Projects\E 7-5-2016\Encuestas 7-05-2016\Softv\SoftvMVC\bin\Microsoft.Owin.Security.Google.dll
+C:\Users\blanca\Documents\Visual Studio 2013\Projects\E 7-5-2016\Encuestas 7-05-2016\Softv\SoftvMVC\bin\Microsoft.Owin.Security.MicrosoftAccount.dll
+C:\Users\blanca\Documents\Visual Studio 2013\Projects\E 7-5-2016\Encuestas 7-05-2016\Softv\SoftvMVC\bin\Microsoft.Owin.Security.OAuth.dll
+C:\Users\blanca\Documents\Visual Studio 2013\Projects\E 7-5-2016\Encuestas 7-05-2016\Softv\SoftvMVC\bin\Microsoft.Owin.Security.Twitter.dll
+C:\Users\blanca\Documents\Visual Studio 2013\Projects\E 7-5-2016\Encuestas 7-05-2016\Softv\SoftvMVC\bin\Microsoft.Web.Infrastructure.dll
+C:\Users\blanca\Documents\Visual Studio 2013\Projects\E 7-5-2016\Encuestas 7-05-2016\Softv\SoftvMVC\bin\Newtonsoft.Json.dll
+C:\Users\blanca\Documents\Visual Studio 2013\Projects\E 7-5-2016\Encuestas 7-05-2016\Softv\SoftvMVC\bin\Owin.dll
+C:\Users\blanca\Documents\Visual Studio 2013\Projects\E 7-5-2016\Encuestas 7-05-2016\Softv\SoftvMVC\bin\PagedList.dll
+C:\Users\blanca\Documents\Visual Studio 2013\Projects\E 7-5-2016\Encuestas 7-05-2016\Softv\SoftvMVC\bin\PagedList.Mvc.dll
+C:\Users\blanca\Documents\Visual Studio 2013\Projects\E 7-5-2016\Encuestas 7-05-2016\Softv\SoftvMVC\bin\Remotion.Data.Linq.dll
+C:\Users\blanca\Documents\Visual Studio 2013\Projects\E 7-5-2016\Encuestas 7-05-2016\Softv\SoftvMVC\bin\Remotion.dll
+C:\Users\blanca\Documents\Visual Studio 2013\Projects\E 7-5-2016\Encuestas 7-05-2016\Softv\SoftvMVC\bin\Remotion.Interfaces.dll
+C:\Users\blanca\Documents\Visual Studio 2013\Projects\E 7-5-2016\Encuestas 7-05-2016\Softv\SoftvMVC\bin\Softv.Entities.dll
+C:\Users\blanca\Documents\Visual Studio 2013\Projects\E 7-5-2016\Encuestas 7-05-2016\Softv\SoftvMVC\bin\System.Net.Http.Extensions.dll
+C:\Users\blanca\Documents\Visual Studio 2013\Projects\E 7-5-2016\Encuestas 7-05-2016\Softv\SoftvMVC\bin\System.Net.Http.Formatting.dll
+C:\Users\blanca\Documents\Visual Studio 2013\Projects\E 7-5-2016\Encuestas 7-05-2016\Softv\SoftvMVC\bin\System.Net.Http.Primitives.dll
+C:\Users\blanca\Documents\Visual Studio 2013\Projects\E 7-5-2016\Encuestas 7-05-2016\Softv\SoftvMVC\bin\System.Web.Helpers.dll
+C:\Users\blanca\Documents\Visual Studio 2013\Projects\E 7-5-2016\Encuestas 7-05-2016\Softv\SoftvMVC\bin\System.Web.Http.dll
+C:\Users\blanca\Documents\Visual Studio 2013\Projects\E 7-5-2016\Encuestas 7-05-2016\Softv\SoftvMVC\bin\System.Web.Http.WebHost.dll
+C:\Users\blanca\Documents\Visual Studio 2013\Projects\E 7-5-2016\Encuestas 7-05-2016\Softv\SoftvMVC\bin\System.Web.Mvc.dll
+C:\Users\blanca\Documents\Visual Studio 2013\Projects\E 7-5-2016\Encuestas 7-05-2016\Softv\SoftvMVC\bin\System.Web.Optimization.dll
+C:\Users\blanca\Documents\Visual Studio 2013\Projects\E 7-5-2016\Encuestas 7-05-2016\Softv\SoftvMVC\bin\System.Web.Razor.dll
+C:\Users\blanca\Documents\Visual Studio 2013\Projects\E 7-5-2016\Encuestas 7-05-2016\Softv\SoftvMVC\bin\System.Web.WebPages.Deployment.dll
+C:\Users\blanca\Documents\Visual Studio 2013\Projects\E 7-5-2016\Encuestas 7-05-2016\Softv\SoftvMVC\bin\System.Web.WebPages.dll
+C:\Users\blanca\Documents\Visual Studio 2013\Projects\E 7-5-2016\Encuestas 7-05-2016\Softv\SoftvMVC\bin\System.Web.WebPages.Razor.dll
+C:\Users\blanca\Documents\Visual Studio 2013\Projects\E 7-5-2016\Encuestas 7-05-2016\Softv\SoftvMVC\bin\WebGrease.dll
+C:\Users\blanca\Documents\Visual Studio 2013\Projects\E 7-5-2016\Encuestas 7-05-2016\Softv\SoftvMVC\bin\Globals.pdb
+C:\Users\blanca\Documents\Visual Studio 2013\Projects\E 7-5-2016\Encuestas 7-05-2016\Softv\SoftvMVC\bin\Softv.Entities.pdb
+C:\Users\blanca\Documents\Visual Studio 2013\Projects\E 7-5-2016\Encuestas 7-05-2016\Softv\SoftvMVC\bin\EntityFramework.xml
+C:\Users\blanca\Documents\Visual Studio 2013\Projects\E 7-5-2016\Encuestas 7-05-2016\Softv\SoftvMVC\bin\EntityFramework.SqlServer.xml
+C:\Users\blanca\Documents\Visual Studio 2013\Projects\E 7-5-2016\Encuestas 7-05-2016\Softv\SoftvMVC\bin\LinqToExcel.xml
+C:\Users\blanca\Documents\Visual Studio 2013\Projects\E 7-5-2016\Encuestas 7-05-2016\Softv\SoftvMVC\bin\log4net.xml
+C:\Users\blanca\Documents\Visual Studio 2013\Projects\E 7-5-2016\Encuestas 7-05-2016\Softv\SoftvMVC\bin\Microsoft.AspNet.Identity.Core.xml
+C:\Users\blanca\Documents\Visual Studio 2013\Projects\E 7-5-2016\Encuestas 7-05-2016\Softv\SoftvMVC\bin\Microsoft.AspNet.Identity.EntityFramework.xml
+C:\Users\blanca\Documents\Visual Studio 2013\Projects\E 7-5-2016\Encuestas 7-05-2016\Softv\SoftvMVC\bin\Microsoft.Owin.xml
+C:\Users\blanca\Documents\Visual Studio 2013\Projects\E 7-5-2016\Encuestas 7-05-2016\Softv\SoftvMVC\bin\Microsoft.Owin.Host.SystemWeb.xml
+C:\Users\blanca\Documents\Visual Studio 2013\Projects\E 7-5-2016\Encuestas 7-05-2016\Softv\SoftvMVC\bin\Newtonsoft.Json.xml
+C:\Users\blanca\Documents\Visual Studio 2013\Projects\E 7-5-2016\Encuestas 7-05-2016\Softv\SoftvMVC\bin\PagedList.xml
+C:\Users\blanca\Documents\Visual Studio 2013\Projects\E 7-5-2016\Encuestas 7-05-2016\Softv\SoftvMVC\bin\PagedList.Mvc.xml
+C:\Users\blanca\Documents\Visual Studio 2013\Projects\E 7-5-2016\Encuestas 7-05-2016\Softv\SoftvMVC\bin\System.Net.Http.Extensions.xml
+C:\Users\blanca\Documents\Visual Studio 2013\Projects\E 7-5-2016\Encuestas 7-05-2016\Softv\SoftvMVC\bin\System.Net.Http.Formatting.xml
+C:\Users\blanca\Documents\Visual Studio 2013\Projects\E 7-5-2016\Encuestas 7-05-2016\Softv\SoftvMVC\bin\System.Net.Http.Primitives.xml
+C:\Users\blanca\Documents\Visual Studio 2013\Projects\E 7-5-2016\Encuestas 7-05-2016\Softv\SoftvMVC\bin\System.Web.Helpers.xml
+C:\Users\blanca\Documents\Visual Studio 2013\Projects\E 7-5-2016\Encuestas 7-05-2016\Softv\SoftvMVC\bin\System.Web.Http.xml
+C:\Users\blanca\Documents\Visual Studio 2013\Projects\E 7-5-2016\Encuestas 7-05-2016\Softv\SoftvMVC\bin\System.Web.Http.WebHost.xml
+C:\Users\blanca\Documents\Visual Studio 2013\Projects\E 7-5-2016\Encuestas 7-05-2016\Softv\SoftvMVC\bin\System.Web.Mvc.xml
+C:\Users\blanca\Documents\Visual Studio 2013\Projects\E 7-5-2016\Encuestas 7-05-2016\Softv\SoftvMVC\bin\System.Web.Razor.xml
+C:\Users\blanca\Documents\Visual Studio 2013\Projects\E 7-5-2016\Encuestas 7-05-2016\Softv\SoftvMVC\bin\System.Web.WebPages.xml
+C:\Users\blanca\Documents\Visual Studio 2013\Projects\E 7-5-2016\Encuestas 7-05-2016\Softv\SoftvMVC\bin\System.Web.WebPages.Deployment.xml
+C:\Users\blanca\Documents\Visual Studio 2013\Projects\E 7-5-2016\Encuestas 7-05-2016\Softv\SoftvMVC\bin\System.Web.WebPages.Razor.xml
+C:\Users\blanca\Documents\Visual Studio 2013\Projects\E 7-5-2016\Encuestas 7-05-2016\Softv\SoftvMVC\bin\System.Web.Optimization.xml
+C:\Users\blanca\Documents\Visual Studio 2013\Projects\E 7-5-2016\Encuestas 7-05-2016\Softv\SoftvMVC\bin\Antlr3.Runtime.pdb
+C:\Users\blanca\Documents\Visual Studio 2013\Projects\E 7-5-2016\Encuestas 7-05-2016\Softv\SoftvMVC\bin\Microsoft.AspNet.Identity.Owin.xml
+C:\Users\blanca\Documents\Visual Studio 2013\Projects\E 7-5-2016\Encuestas 7-05-2016\Softv\SoftvMVC\bin\Microsoft.Owin.Security.xml
+C:\Users\blanca\Documents\Visual Studio 2013\Projects\E 7-5-2016\Encuestas 7-05-2016\Softv\SoftvMVC\bin\Microsoft.Owin.Security.Facebook.xml
+C:\Users\blanca\Documents\Visual Studio 2013\Projects\E 7-5-2016\Encuestas 7-05-2016\Softv\SoftvMVC\bin\Microsoft.Owin.Security.Cookies.xml
+C:\Users\blanca\Documents\Visual Studio 2013\Projects\E 7-5-2016\Encuestas 7-05-2016\Softv\SoftvMVC\bin\Microsoft.Owin.Security.OAuth.xml
+C:\Users\blanca\Documents\Visual Studio 2013\Projects\E 7-5-2016\Encuestas 7-05-2016\Softv\SoftvMVC\bin\Microsoft.Owin.Security.Google.xml
+C:\Users\blanca\Documents\Visual Studio 2013\Projects\E 7-5-2016\Encuestas 7-05-2016\Softv\SoftvMVC\bin\Microsoft.Owin.Security.Twitter.xml
+C:\Users\blanca\Documents\Visual Studio 2013\Projects\E 7-5-2016\Encuestas 7-05-2016\Softv\SoftvMVC\bin\Microsoft.Owin.Security.MicrosoftAccount.xml
+C:\Users\blanca\Documents\Visual Studio 2013\Projects\E 7-5-2016\Encuestas 7-05-2016\Softv\SoftvMVC\obj\Debug\SoftvMVC.csproj.App.config
+C:\Users\blanca\Documents\Visual Studio 2013\Projects\E 7-5-2016\Encuestas 7-05-2016\Softv\SoftvMVC\obj\Debug\SoftvMVC.csprojResolveAssemblyReference.cache
+C:\Users\blanca\Documents\Visual Studio 2013\Projects\E 7-5-2016\Encuestas 7-05-2016\Softv\SoftvMVC\obj\Debug\SoftvMVC.dll
+C:\Users\blanca\Documents\Visual Studio 2013\Projects\E 7-5-2016\Encuestas 7-05-2016\Softv\SoftvMVC\obj\Debug\SoftvMVC.pdb
+C:\Users\blanca\Documents\Visual Studio 2013\Projects\Encuestas 7-05-2016\Softv\SoftvMVC\bin\SoftvMVC.dll.config
+C:\Users\blanca\Documents\Visual Studio 2013\Projects\Encuestas 7-05-2016\Softv\SoftvMVC\bin\SoftvMVC.dll
+C:\Users\blanca\Documents\Visual Studio 2013\Projects\Encuestas 7-05-2016\Softv\SoftvMVC\bin\SoftvMVC.pdb
+C:\Users\blanca\Documents\Visual Studio 2013\Projects\Encuestas 7-05-2016\Softv\SoftvMVC\bin\Antlr3.Runtime.dll
+C:\Users\blanca\Documents\Visual Studio 2013\Projects\Encuestas 7-05-2016\Softv\SoftvMVC\bin\EntityFramework.dll
+C:\Users\blanca\Documents\Visual Studio 2013\Projects\Encuestas 7-05-2016\Softv\SoftvMVC\bin\EntityFramework.SqlServer.dll
+C:\Users\blanca\Documents\Visual Studio 2013\Projects\Encuestas 7-05-2016\Softv\SoftvMVC\bin\Globals.dll
+C:\Users\blanca\Documents\Visual Studio 2013\Projects\Encuestas 7-05-2016\Softv\SoftvMVC\bin\LinqToExcel.dll
+C:\Users\blanca\Documents\Visual Studio 2013\Projects\Encuestas 7-05-2016\Softv\SoftvMVC\bin\log4net.dll
+C:\Users\blanca\Documents\Visual Studio 2013\Projects\Encuestas 7-05-2016\Softv\SoftvMVC\bin\Microsoft.AspNet.Identity.Core.dll
+C:\Users\blanca\Documents\Visual Studio 2013\Projects\Encuestas 7-05-2016\Softv\SoftvMVC\bin\Microsoft.AspNet.Identity.EntityFramework.dll
+C:\Users\blanca\Documents\Visual Studio 2013\Projects\Encuestas 7-05-2016\Softv\SoftvMVC\bin\Microsoft.AspNet.Identity.Owin.dll
+C:\Users\blanca\Documents\Visual Studio 2013\Projects\Encuestas 7-05-2016\Softv\SoftvMVC\bin\Microsoft.Owin.dll
+C:\Users\blanca\Documents\Visual Studio 2013\Projects\Encuestas 7-05-2016\Softv\SoftvMVC\bin\Microsoft.Owin.Host.SystemWeb.dll
+C:\Users\blanca\Documents\Visual Studio 2013\Projects\Encuestas 7-05-2016\Softv\SoftvMVC\bin\Microsoft.Owin.Security.Cookies.dll
+C:\Users\blanca\Documents\Visual Studio 2013\Projects\Encuestas 7-05-2016\Softv\SoftvMVC\bin\Microsoft.Owin.Security.dll
+C:\Users\blanca\Documents\Visual Studio 2013\Projects\Encuestas 7-05-2016\Softv\SoftvMVC\bin\Microsoft.Owin.Security.Facebook.dll
+C:\Users\blanca\Documents\Visual Studio 2013\Projects\Encuestas 7-05-2016\Softv\SoftvMVC\bin\Microsoft.Owin.Security.Google.dll
+C:\Users\blanca\Documents\Visual Studio 2013\Projects\Encuestas 7-05-2016\Softv\SoftvMVC\bin\Microsoft.Owin.Security.MicrosoftAccount.dll
+C:\Users\blanca\Documents\Visual Studio 2013\Projects\Encuestas 7-05-2016\Softv\SoftvMVC\bin\Microsoft.Owin.Security.OAuth.dll
+C:\Users\blanca\Documents\Visual Studio 2013\Projects\Encuestas 7-05-2016\Softv\SoftvMVC\bin\Microsoft.Owin.Security.Twitter.dll
+C:\Users\blanca\Documents\Visual Studio 2013\Projects\Encuestas 7-05-2016\Softv\SoftvMVC\bin\Microsoft.Web.Infrastructure.dll
+C:\Users\blanca\Documents\Visual Studio 2013\Projects\Encuestas 7-05-2016\Softv\SoftvMVC\bin\Newtonsoft.Json.dll
+C:\Users\blanca\Documents\Visual Studio 2013\Projects\Encuestas 7-05-2016\Softv\SoftvMVC\bin\Owin.dll
+C:\Users\blanca\Documents\Visual Studio 2013\Projects\Encuestas 7-05-2016\Softv\SoftvMVC\bin\PagedList.dll
+C:\Users\blanca\Documents\Visual Studio 2013\Projects\Encuestas 7-05-2016\Softv\SoftvMVC\bin\PagedList.Mvc.dll
+C:\Users\blanca\Documents\Visual Studio 2013\Projects\Encuestas 7-05-2016\Softv\SoftvMVC\bin\Remotion.Data.Linq.dll
+C:\Users\blanca\Documents\Visual Studio 2013\Projects\Encuestas 7-05-2016\Softv\SoftvMVC\bin\Remotion.dll
+C:\Users\blanca\Documents\Visual Studio 2013\Projects\Encuestas 7-05-2016\Softv\SoftvMVC\bin\Remotion.Interfaces.dll
+C:\Users\blanca\Documents\Visual Studio 2013\Projects\Encuestas 7-05-2016\Softv\SoftvMVC\bin\Softv.Entities.dll
+C:\Users\blanca\Documents\Visual Studio 2013\Projects\Encuestas 7-05-2016\Softv\SoftvMVC\bin\System.Net.Http.Extensions.dll
+C:\Users\blanca\Documents\Visual Studio 2013\Projects\Encuestas 7-05-2016\Softv\SoftvMVC\bin\System.Net.Http.Formatting.dll
+C:\Users\blanca\Documents\Visual Studio 2013\Projects\Encuestas 7-05-2016\Softv\SoftvMVC\bin\System.Net.Http.Primitives.dll
+C:\Users\blanca\Documents\Visual Studio 2013\Projects\Encuestas 7-05-2016\Softv\SoftvMVC\bin\System.Web.Helpers.dll
+C:\Users\blanca\Documents\Visual Studio 2013\Projects\Encuestas 7-05-2016\Softv\SoftvMVC\bin\System.Web.Http.dll
+C:\Users\blanca\Documents\Visual Studio 2013\Projects\Encuestas 7-05-2016\Softv\SoftvMVC\bin\System.Web.Http.WebHost.dll
+C:\Users\blanca\Documents\Visual Studio 2013\Projects\Encuestas 7-05-2016\Softv\SoftvMVC\bin\System.Web.Mvc.dll
+C:\Users\blanca\Documents\Visual Studio 2013\Projects\Encuestas 7-05-2016\Softv\SoftvMVC\bin\System.Web.Optimization.dll
+C:\Users\blanca\Documents\Visual Studio 2013\Projects\Encuestas 7-05-2016\Softv\SoftvMVC\bin\System.Web.Razor.dll
+C:\Users\blanca\Documents\Visual Studio 2013\Projects\Encuestas 7-05-2016\Softv\SoftvMVC\bin\System.Web.WebPages.Deployment.dll
+C:\Users\blanca\Documents\Visual Studio 2013\Projects\Encuestas 7-05-2016\Softv\SoftvMVC\bin\System.Web.WebPages.dll
+C:\Users\blanca\Documents\Visual Studio 2013\Projects\Encuestas 7-05-2016\Softv\SoftvMVC\bin\System.Web.WebPages.Razor.dll
+C:\Users\blanca\Documents\Visual Studio 2013\Projects\Encuestas 7-05-2016\Softv\SoftvMVC\bin\WebGrease.dll
+C:\Users\blanca\Documents\Visual Studio 2013\Projects\Encuestas 7-05-2016\Softv\SoftvMVC\bin\Globals.pdb
+C:\Users\blanca\Documents\Visual Studio 2013\Projects\Encuestas 7-05-2016\Softv\SoftvMVC\bin\Softv.Entities.pdb
+C:\Users\blanca\Documents\Visual Studio 2013\Projects\Encuestas 7-05-2016\Softv\SoftvMVC\bin\EntityFramework.xml
+C:\Users\blanca\Documents\Visual Studio 2013\Projects\Encuestas 7-05-2016\Softv\SoftvMVC\bin\EntityFramework.SqlServer.xml
+C:\Users\blanca\Documents\Visual Studio 2013\Projects\Encuestas 7-05-2016\Softv\SoftvMVC\bin\LinqToExcel.xml
+C:\Users\blanca\Documents\Visual Studio 2013\Projects\Encuestas 7-05-2016\Softv\SoftvMVC\bin\log4net.xml
+C:\Users\blanca\Documents\Visual Studio 2013\Projects\Encuestas 7-05-2016\Softv\SoftvMVC\bin\Microsoft.AspNet.Identity.Core.xml
+C:\Users\blanca\Documents\Visual Studio 2013\Projects\Encuestas 7-05-2016\Softv\SoftvMVC\bin\Microsoft.AspNet.Identity.EntityFramework.xml
+C:\Users\blanca\Documents\Visual Studio 2013\Projects\Encuestas 7-05-2016\Softv\SoftvMVC\bin\Microsoft.Owin.xml
+C:\Users\blanca\Documents\Visual Studio 2013\Projects\Encuestas 7-05-2016\Softv\SoftvMVC\bin\Microsoft.Owin.Host.SystemWeb.xml
+C:\Users\blanca\Documents\Visual Studio 2013\Projects\Encuestas 7-05-2016\Softv\SoftvMVC\bin\Newtonsoft.Json.xml
+C:\Users\blanca\Documents\Visual Studio 2013\Projects\Encuestas 7-05-2016\Softv\SoftvMVC\bin\PagedList.xml
+C:\Users\blanca\Documents\Visual Studio 2013\Projects\Encuestas 7-05-2016\Softv\SoftvMVC\bin\PagedList.Mvc.xml
+C:\Users\blanca\Documents\Visual Studio 2013\Projects\Encuestas 7-05-2016\Softv\SoftvMVC\bin\System.Net.Http.Extensions.xml
+C:\Users\blanca\Documents\Visual Studio 2013\Projects\Encuestas 7-05-2016\Softv\SoftvMVC\bin\System.Net.Http.Formatting.xml
+C:\Users\blanca\Documents\Visual Studio 2013\Projects\Encuestas 7-05-2016\Softv\SoftvMVC\bin\System.Net.Http.Primitives.xml
+C:\Users\blanca\Documents\Visual Studio 2013\Projects\Encuestas 7-05-2016\Softv\SoftvMVC\bin\System.Web.Helpers.xml
+C:\Users\blanca\Documents\Visual Studio 2013\Projects\Encuestas 7-05-2016\Softv\SoftvMVC\bin\System.Web.Http.xml
+C:\Users\blanca\Documents\Visual Studio 2013\Projects\Encuestas 7-05-2016\Softv\SoftvMVC\bin\System.Web.Http.WebHost.xml
+C:\Users\blanca\Documents\Visual Studio 2013\Projects\Encuestas 7-05-2016\Softv\SoftvMVC\bin\System.Web.Mvc.xml
+C:\Users\blanca\Documents\Visual Studio 2013\Projects\Encuestas 7-05-2016\Softv\SoftvMVC\bin\System.Web.Razor.xml
+C:\Users\blanca\Documents\Visual Studio 2013\Projects\Encuestas 7-05-2016\Softv\SoftvMVC\bin\System.Web.WebPages.xml
+C:\Users\blanca\Documents\Visual Studio 2013\Projects\Encuestas 7-05-2016\Softv\SoftvMVC\bin\System.Web.WebPages.Deployment.xml
+C:\Users\blanca\Documents\Visual Studio 2013\Projects\Encuestas 7-05-2016\Softv\SoftvMVC\bin\System.Web.WebPages.Razor.xml
+C:\Users\blanca\Documents\Visual Studio 2013\Projects\Encuestas 7-05-2016\Softv\SoftvMVC\bin\System.Web.Optimization.xml
+C:\Users\blanca\Documents\Visual Studio 2013\Projects\Encuestas 7-05-2016\Softv\SoftvMVC\bin\Antlr3.Runtime.pdb
+C:\Users\blanca\Documents\Visual Studio 2013\Projects\Encuestas 7-05-2016\Softv\SoftvMVC\bin\Microsoft.AspNet.Identity.Owin.xml
+C:\Users\blanca\Documents\Visual Studio 2013\Projects\Encuestas 7-05-2016\Softv\SoftvMVC\bin\Microsoft.Owin.Security.xml
+C:\Users\blanca\Documents\Visual Studio 2013\Projects\Encuestas 7-05-2016\Softv\SoftvMVC\bin\Microsoft.Owin.Security.Facebook.xml
+C:\Users\blanca\Documents\Visual Studio 2013\Projects\Encuestas 7-05-2016\Softv\SoftvMVC\bin\Microsoft.Owin.Security.Cookies.xml
+C:\Users\blanca\Documents\Visual Studio 2013\Projects\Encuestas 7-05-2016\Softv\SoftvMVC\bin\Microsoft.Owin.Security.OAuth.xml
+C:\Users\blanca\Documents\Visual Studio 2013\Projects\Encuestas 7-05-2016\Softv\SoftvMVC\bin\Microsoft.Owin.Security.Google.xml
+C:\Users\blanca\Documents\Visual Studio 2013\Projects\Encuestas 7-05-2016\Softv\SoftvMVC\bin\Microsoft.Owin.Security.Twitter.xml
+C:\Users\blanca\Documents\Visual Studio 2013\Projects\Encuestas 7-05-2016\Softv\SoftvMVC\bin\Microsoft.Owin.Security.MicrosoftAccount.xml
+C:\Users\blanca\Documents\Visual Studio 2013\Projects\Encuestas 7-05-2016\Softv\SoftvMVC\obj\Debug\SoftvMVC.csproj.App.config
+C:\Users\blanca\Documents\Visual Studio 2013\Projects\Encuestas 7-05-2016\Softv\SoftvMVC\obj\Debug\SoftvMVC.csprojResolveAssemblyReference.cache
+C:\Users\blanca\Documents\Visual Studio 2013\Projects\Encuestas 7-05-2016\Softv\SoftvMVC\obj\Debug\SoftvMVC.dll
+C:\Users\blanca\Documents\Visual Studio 2013\Projects\Encuestas 7-05-2016\Softv\SoftvMVC\obj\Debug\SoftvMVC.pdb
+C:\Users\blanca\Desktop\Encuestas\Encuestas\Softv\SoftvMVC\bin\SoftvMVC.dll.config
+C:\Users\blanca\Desktop\Encuestas\Encuestas\Softv\SoftvMVC\bin\SoftvMVC.dll
+C:\Users\blanca\Desktop\Encuestas\Encuestas\Softv\SoftvMVC\bin\SoftvMVC.pdb
+C:\Users\blanca\Desktop\Encuestas\Encuestas\Softv\SoftvMVC\bin\Antlr3.Runtime.dll
+C:\Users\blanca\Desktop\Encuestas\Encuestas\Softv\SoftvMVC\bin\EntityFramework.dll
+C:\Users\blanca\Desktop\Encuestas\Encuestas\Softv\SoftvMVC\bin\EntityFramework.SqlServer.dll
+C:\Users\blanca\Desktop\Encuestas\Encuestas\Softv\SoftvMVC\bin\Globals.dll
+C:\Users\blanca\Desktop\Encuestas\Encuestas\Softv\SoftvMVC\bin\LinqToExcel.dll
+C:\Users\blanca\Desktop\Encuestas\Encuestas\Softv\SoftvMVC\bin\log4net.dll
+C:\Users\blanca\Desktop\Encuestas\Encuestas\Softv\SoftvMVC\bin\Microsoft.AspNet.Identity.Core.dll
+C:\Users\blanca\Desktop\Encuestas\Encuestas\Softv\SoftvMVC\bin\Microsoft.AspNet.Identity.EntityFramework.dll
+C:\Users\blanca\Desktop\Encuestas\Encuestas\Softv\SoftvMVC\bin\Microsoft.AspNet.Identity.Owin.dll
+C:\Users\blanca\Desktop\Encuestas\Encuestas\Softv\SoftvMVC\bin\Microsoft.Owin.dll
+C:\Users\blanca\Desktop\Encuestas\Encuestas\Softv\SoftvMVC\bin\Microsoft.Owin.Host.SystemWeb.dll
+C:\Users\blanca\Desktop\Encuestas\Encuestas\Softv\SoftvMVC\bin\Microsoft.Owin.Security.Cookies.dll
+C:\Users\blanca\Desktop\Encuestas\Encuestas\Softv\SoftvMVC\bin\Microsoft.Owin.Security.dll
+C:\Users\blanca\Desktop\Encuestas\Encuestas\Softv\SoftvMVC\bin\Microsoft.Owin.Security.Facebook.dll
+C:\Users\blanca\Desktop\Encuestas\Encuestas\Softv\SoftvMVC\bin\Microsoft.Owin.Security.Google.dll
+C:\Users\blanca\Desktop\Encuestas\Encuestas\Softv\SoftvMVC\bin\Microsoft.Owin.Security.MicrosoftAccount.dll
+C:\Users\blanca\Desktop\Encuestas\Encuestas\Softv\SoftvMVC\bin\Microsoft.Owin.Security.OAuth.dll
+C:\Users\blanca\Desktop\Encuestas\Encuestas\Softv\SoftvMVC\bin\Microsoft.Owin.Security.Twitter.dll
+C:\Users\blanca\Desktop\Encuestas\Encuestas\Softv\SoftvMVC\bin\Microsoft.Web.Infrastructure.dll
+C:\Users\blanca\Desktop\Encuestas\Encuestas\Softv\SoftvMVC\bin\Newtonsoft.Json.dll
+C:\Users\blanca\Desktop\Encuestas\Encuestas\Softv\SoftvMVC\bin\Owin.dll
+C:\Users\blanca\Desktop\Encuestas\Encuestas\Softv\SoftvMVC\bin\PagedList.dll
+C:\Users\blanca\Desktop\Encuestas\Encuestas\Softv\SoftvMVC\bin\PagedList.Mvc.dll
+C:\Users\blanca\Desktop\Encuestas\Encuestas\Softv\SoftvMVC\bin\Remotion.Data.Linq.dll
+C:\Users\blanca\Desktop\Encuestas\Encuestas\Softv\SoftvMVC\bin\Remotion.dll
+C:\Users\blanca\Desktop\Encuestas\Encuestas\Softv\SoftvMVC\bin\Remotion.Interfaces.dll
+C:\Users\blanca\Desktop\Encuestas\Encuestas\Softv\SoftvMVC\bin\Softv.Entities.dll
+C:\Users\blanca\Desktop\Encuestas\Encuestas\Softv\SoftvMVC\bin\System.Net.Http.Extensions.dll
+C:\Users\blanca\Desktop\Encuestas\Encuestas\Softv\SoftvMVC\bin\System.Net.Http.Formatting.dll
+C:\Users\blanca\Desktop\Encuestas\Encuestas\Softv\SoftvMVC\bin\System.Net.Http.Primitives.dll
+C:\Users\blanca\Desktop\Encuestas\Encuestas\Softv\SoftvMVC\bin\System.Web.Helpers.dll
+C:\Users\blanca\Desktop\Encuestas\Encuestas\Softv\SoftvMVC\bin\System.Web.Http.dll
+C:\Users\blanca\Desktop\Encuestas\Encuestas\Softv\SoftvMVC\bin\System.Web.Http.WebHost.dll
+C:\Users\blanca\Desktop\Encuestas\Encuestas\Softv\SoftvMVC\bin\System.Web.Mvc.dll
+C:\Users\blanca\Desktop\Encuestas\Encuestas\Softv\SoftvMVC\bin\System.Web.Optimization.dll
+C:\Users\blanca\Desktop\Encuestas\Encuestas\Softv\SoftvMVC\bin\System.Web.Razor.dll
+C:\Users\blanca\Desktop\Encuestas\Encuestas\Softv\SoftvMVC\bin\System.Web.WebPages.Deployment.dll
+C:\Users\blanca\Desktop\Encuestas\Encuestas\Softv\SoftvMVC\bin\System.Web.WebPages.dll
+C:\Users\blanca\Desktop\Encuestas\Encuestas\Softv\SoftvMVC\bin\System.Web.WebPages.Razor.dll
+C:\Users\blanca\Desktop\Encuestas\Encuestas\Softv\SoftvMVC\bin\WebGrease.dll
+C:\Users\blanca\Desktop\Encuestas\Encuestas\Softv\SoftvMVC\bin\Globals.pdb
+C:\Users\blanca\Desktop\Encuestas\Encuestas\Softv\SoftvMVC\bin\Softv.Entities.pdb
+C:\Users\blanca\Desktop\Encuestas\Encuestas\Softv\SoftvMVC\bin\EntityFramework.xml
+C:\Users\blanca\Desktop\Encuestas\Encuestas\Softv\SoftvMVC\bin\EntityFramework.SqlServer.xml
+C:\Users\blanca\Desktop\Encuestas\Encuestas\Softv\SoftvMVC\bin\LinqToExcel.xml
+C:\Users\blanca\Desktop\Encuestas\Encuestas\Softv\SoftvMVC\bin\log4net.xml
+C:\Users\blanca\Desktop\Encuestas\Encuestas\Softv\SoftvMVC\bin\Microsoft.AspNet.Identity.Core.xml
+C:\Users\blanca\Desktop\Encuestas\Encuestas\Softv\SoftvMVC\bin\Microsoft.AspNet.Identity.EntityFramework.xml
+C:\Users\blanca\Desktop\Encuestas\Encuestas\Softv\SoftvMVC\bin\Microsoft.Owin.xml
+C:\Users\blanca\Desktop\Encuestas\Encuestas\Softv\SoftvMVC\bin\Microsoft.Owin.Host.SystemWeb.xml
+C:\Users\blanca\Desktop\Encuestas\Encuestas\Softv\SoftvMVC\bin\Newtonsoft.Json.xml
+C:\Users\blanca\Desktop\Encuestas\Encuestas\Softv\SoftvMVC\bin\PagedList.xml
+C:\Users\blanca\Desktop\Encuestas\Encuestas\Softv\SoftvMVC\bin\PagedList.Mvc.xml
+C:\Users\blanca\Desktop\Encuestas\Encuestas\Softv\SoftvMVC\bin\System.Net.Http.Extensions.xml
+C:\Users\blanca\Desktop\Encuestas\Encuestas\Softv\SoftvMVC\bin\System.Net.Http.Formatting.xml
+C:\Users\blanca\Desktop\Encuestas\Encuestas\Softv\SoftvMVC\bin\System.Net.Http.Primitives.xml
+C:\Users\blanca\Desktop\Encuestas\Encuestas\Softv\SoftvMVC\bin\System.Web.Helpers.xml
+C:\Users\blanca\Desktop\Encuestas\Encuestas\Softv\SoftvMVC\bin\System.Web.Http.xml
+C:\Users\blanca\Desktop\Encuestas\Encuestas\Softv\SoftvMVC\bin\System.Web.Http.WebHost.xml
+C:\Users\blanca\Desktop\Encuestas\Encuestas\Softv\SoftvMVC\bin\System.Web.Mvc.xml
+C:\Users\blanca\Desktop\Encuestas\Encuestas\Softv\SoftvMVC\bin\System.Web.Razor.xml
+C:\Users\blanca\Desktop\Encuestas\Encuestas\Softv\SoftvMVC\bin\System.Web.WebPages.xml
+C:\Users\blanca\Desktop\Encuestas\Encuestas\Softv\SoftvMVC\bin\System.Web.WebPages.Deployment.xml
+C:\Users\blanca\Desktop\Encuestas\Encuestas\Softv\SoftvMVC\bin\System.Web.WebPages.Razor.xml
+C:\Users\blanca\Desktop\Encuestas\Encuestas\Softv\SoftvMVC\bin\System.Web.Optimization.xml
+C:\Users\blanca\Desktop\Encuestas\Encuestas\Softv\SoftvMVC\bin\Antlr3.Runtime.pdb
+C:\Users\blanca\Desktop\Encuestas\Encuestas\Softv\SoftvMVC\bin\Microsoft.AspNet.Identity.Owin.xml
+C:\Users\blanca\Desktop\Encuestas\Encuestas\Softv\SoftvMVC\bin\Microsoft.Owin.Security.xml
+C:\Users\blanca\Desktop\Encuestas\Encuestas\Softv\SoftvMVC\bin\Microsoft.Owin.Security.Facebook.xml
+C:\Users\blanca\Desktop\Encuestas\Encuestas\Softv\SoftvMVC\bin\Microsoft.Owin.Security.Cookies.xml
+C:\Users\blanca\Desktop\Encuestas\Encuestas\Softv\SoftvMVC\bin\Microsoft.Owin.Security.OAuth.xml
+C:\Users\blanca\Desktop\Encuestas\Encuestas\Softv\SoftvMVC\bin\Microsoft.Owin.Security.Google.xml
+C:\Users\blanca\Desktop\Encuestas\Encuestas\Softv\SoftvMVC\bin\Microsoft.Owin.Security.Twitter.xml
+C:\Users\blanca\Desktop\Encuestas\Encuestas\Softv\SoftvMVC\bin\Microsoft.Owin.Security.MicrosoftAccount.xml
+C:\Users\blanca\Desktop\Encuestas\Encuestas\Softv\SoftvMVC\obj\Debug\SoftvMVC.csproj.App.config
+C:\Users\blanca\Desktop\Encuestas\Encuestas\Softv\SoftvMVC\obj\Debug\SoftvMVC.csprojResolveAssemblyReference.cache
+C:\Users\blanca\Desktop\Encuestas\Encuestas\Softv\SoftvMVC\obj\Debug\SoftvMVC.dll
+C:\Users\blanca\Desktop\Encuestas\Encuestas\Softv\SoftvMVC\obj\Debug\SoftvMVC.pdb
+C:\Users\blanca\Desktop\Encuestas\Encuestas con todas las vistas - copia\Softv\SoftvMVC\bin\SoftvMVC.dll.config
+C:\Users\blanca\Desktop\Encuestas\Encuestas con todas las vistas - copia\Softv\SoftvMVC\bin\SoftvMVC.dll
+C:\Users\blanca\Desktop\Encuestas\Encuestas con todas las vistas - copia\Softv\SoftvMVC\bin\SoftvMVC.pdb
+C:\Users\blanca\Desktop\Encuestas\Encuestas con todas las vistas - copia\Softv\SoftvMVC\bin\Antlr3.Runtime.dll
+C:\Users\blanca\Desktop\Encuestas\Encuestas con todas las vistas - copia\Softv\SoftvMVC\bin\EntityFramework.dll
+C:\Users\blanca\Desktop\Encuestas\Encuestas con todas las vistas - copia\Softv\SoftvMVC\bin\EntityFramework.SqlServer.dll
+C:\Users\blanca\Desktop\Encuestas\Encuestas con todas las vistas - copia\Softv\SoftvMVC\bin\Globals.dll
+C:\Users\blanca\Desktop\Encuestas\Encuestas con todas las vistas - copia\Softv\SoftvMVC\bin\LinqToExcel.dll
+C:\Users\blanca\Desktop\Encuestas\Encuestas con todas las vistas - copia\Softv\SoftvMVC\bin\log4net.dll
+C:\Users\blanca\Desktop\Encuestas\Encuestas con todas las vistas - copia\Softv\SoftvMVC\bin\Microsoft.AspNet.Identity.Core.dll
+C:\Users\blanca\Desktop\Encuestas\Encuestas con todas las vistas - copia\Softv\SoftvMVC\bin\Microsoft.AspNet.Identity.EntityFramework.dll
+C:\Users\blanca\Desktop\Encuestas\Encuestas con todas las vistas - copia\Softv\SoftvMVC\bin\Microsoft.AspNet.Identity.Owin.dll
+C:\Users\blanca\Desktop\Encuestas\Encuestas con todas las vistas - copia\Softv\SoftvMVC\bin\Microsoft.Owin.dll
+C:\Users\blanca\Desktop\Encuestas\Encuestas con todas las vistas - copia\Softv\SoftvMVC\bin\Microsoft.Owin.Host.SystemWeb.dll
+C:\Users\blanca\Desktop\Encuestas\Encuestas con todas las vistas - copia\Softv\SoftvMVC\bin\Microsoft.Owin.Security.Cookies.dll
+C:\Users\blanca\Desktop\Encuestas\Encuestas con todas las vistas - copia\Softv\SoftvMVC\bin\Microsoft.Owin.Security.dll
+C:\Users\blanca\Desktop\Encuestas\Encuestas con todas las vistas - copia\Softv\SoftvMVC\bin\Microsoft.Owin.Security.Facebook.dll
+C:\Users\blanca\Desktop\Encuestas\Encuestas con todas las vistas - copia\Softv\SoftvMVC\bin\Microsoft.Owin.Security.Google.dll
+C:\Users\blanca\Desktop\Encuestas\Encuestas con todas las vistas - copia\Softv\SoftvMVC\bin\Microsoft.Owin.Security.MicrosoftAccount.dll
+C:\Users\blanca\Desktop\Encuestas\Encuestas con todas las vistas - copia\Softv\SoftvMVC\bin\Microsoft.Owin.Security.OAuth.dll
+C:\Users\blanca\Desktop\Encuestas\Encuestas con todas las vistas - copia\Softv\SoftvMVC\bin\Microsoft.Owin.Security.Twitter.dll
+C:\Users\blanca\Desktop\Encuestas\Encuestas con todas las vistas - copia\Softv\SoftvMVC\bin\Microsoft.Web.Infrastructure.dll
+C:\Users\blanca\Desktop\Encuestas\Encuestas con todas las vistas - copia\Softv\SoftvMVC\bin\Newtonsoft.Json.dll
+C:\Users\blanca\Desktop\Encuestas\Encuestas con todas las vistas - copia\Softv\SoftvMVC\bin\Owin.dll
+C:\Users\blanca\Desktop\Encuestas\Encuestas con todas las vistas - copia\Softv\SoftvMVC\bin\PagedList.dll
+C:\Users\blanca\Desktop\Encuestas\Encuestas con todas las vistas - copia\Softv\SoftvMVC\bin\PagedList.Mvc.dll
+C:\Users\blanca\Desktop\Encuestas\Encuestas con todas las vistas - copia\Softv\SoftvMVC\bin\Remotion.Data.Linq.dll
+C:\Users\blanca\Desktop\Encuestas\Encuestas con todas las vistas - copia\Softv\SoftvMVC\bin\Remotion.dll
+C:\Users\blanca\Desktop\Encuestas\Encuestas con todas las vistas - copia\Softv\SoftvMVC\bin\Remotion.Interfaces.dll
+C:\Users\blanca\Desktop\Encuestas\Encuestas con todas las vistas - copia\Softv\SoftvMVC\bin\Softv.Entities.dll
+C:\Users\blanca\Desktop\Encuestas\Encuestas con todas las vistas - copia\Softv\SoftvMVC\bin\System.Net.Http.Extensions.dll
+C:\Users\blanca\Desktop\Encuestas\Encuestas con todas las vistas - copia\Softv\SoftvMVC\bin\System.Net.Http.Formatting.dll
+C:\Users\blanca\Desktop\Encuestas\Encuestas con todas las vistas - copia\Softv\SoftvMVC\bin\System.Net.Http.Primitives.dll
+C:\Users\blanca\Desktop\Encuestas\Encuestas con todas las vistas - copia\Softv\SoftvMVC\bin\System.Web.Helpers.dll
+C:\Users\blanca\Desktop\Encuestas\Encuestas con todas las vistas - copia\Softv\SoftvMVC\bin\System.Web.Http.dll
+C:\Users\blanca\Desktop\Encuestas\Encuestas con todas las vistas - copia\Softv\SoftvMVC\bin\System.Web.Http.WebHost.dll
+C:\Users\blanca\Desktop\Encuestas\Encuestas con todas las vistas - copia\Softv\SoftvMVC\bin\System.Web.Mvc.dll
+C:\Users\blanca\Desktop\Encuestas\Encuestas con todas las vistas - copia\Softv\SoftvMVC\bin\System.Web.Optimization.dll
+C:\Users\blanca\Desktop\Encuestas\Encuestas con todas las vistas - copia\Softv\SoftvMVC\bin\System.Web.Razor.dll
+C:\Users\blanca\Desktop\Encuestas\Encuestas con todas las vistas - copia\Softv\SoftvMVC\bin\System.Web.WebPages.Deployment.dll
+C:\Users\blanca\Desktop\Encuestas\Encuestas con todas las vistas - copia\Softv\SoftvMVC\bin\System.Web.WebPages.dll
+C:\Users\blanca\Desktop\Encuestas\Encuestas con todas las vistas - copia\Softv\SoftvMVC\bin\System.Web.WebPages.Razor.dll
+C:\Users\blanca\Desktop\Encuestas\Encuestas con todas las vistas - copia\Softv\SoftvMVC\bin\WebGrease.dll
+C:\Users\blanca\Desktop\Encuestas\Encuestas con todas las vistas - copia\Softv\SoftvMVC\bin\Globals.pdb
+C:\Users\blanca\Desktop\Encuestas\Encuestas con todas las vistas - copia\Softv\SoftvMVC\bin\Softv.Entities.pdb
+C:\Users\blanca\Desktop\Encuestas\Encuestas con todas las vistas - copia\Softv\SoftvMVC\bin\EntityFramework.xml
+C:\Users\blanca\Desktop\Encuestas\Encuestas con todas las vistas - copia\Softv\SoftvMVC\bin\EntityFramework.SqlServer.xml
+C:\Users\blanca\Desktop\Encuestas\Encuestas con todas las vistas - copia\Softv\SoftvMVC\bin\LinqToExcel.xml
+C:\Users\blanca\Desktop\Encuestas\Encuestas con todas las vistas - copia\Softv\SoftvMVC\bin\log4net.xml
+C:\Users\blanca\Desktop\Encuestas\Encuestas con todas las vistas - copia\Softv\SoftvMVC\bin\Microsoft.AspNet.Identity.Core.xml
+C:\Users\blanca\Desktop\Encuestas\Encuestas con todas las vistas - copia\Softv\SoftvMVC\bin\Microsoft.AspNet.Identity.EntityFramework.xml
+C:\Users\blanca\Desktop\Encuestas\Encuestas con todas las vistas - copia\Softv\SoftvMVC\bin\Microsoft.Owin.xml
+C:\Users\blanca\Desktop\Encuestas\Encuestas con todas las vistas - copia\Softv\SoftvMVC\bin\Microsoft.Owin.Host.SystemWeb.xml
+C:\Users\blanca\Desktop\Encuestas\Encuestas con todas las vistas - copia\Softv\SoftvMVC\bin\Newtonsoft.Json.xml
+C:\Users\blanca\Desktop\Encuestas\Encuestas con todas las vistas - copia\Softv\SoftvMVC\bin\PagedList.xml
+C:\Users\blanca\Desktop\Encuestas\Encuestas con todas las vistas - copia\Softv\SoftvMVC\bin\PagedList.Mvc.xml
+C:\Users\blanca\Desktop\Encuestas\Encuestas con todas las vistas - copia\Softv\SoftvMVC\bin\System.Net.Http.Extensions.xml
+C:\Users\blanca\Desktop\Encuestas\Encuestas con todas las vistas - copia\Softv\SoftvMVC\bin\System.Net.Http.Formatting.xml
+C:\Users\blanca\Desktop\Encuestas\Encuestas con todas las vistas - copia\Softv\SoftvMVC\bin\System.Net.Http.Primitives.xml
+C:\Users\blanca\Desktop\Encuestas\Encuestas con todas las vistas - copia\Softv\SoftvMVC\bin\System.Web.Helpers.xml
+C:\Users\blanca\Desktop\Encuestas\Encuestas con todas las vistas - copia\Softv\SoftvMVC\bin\System.Web.Http.xml
+C:\Users\blanca\Desktop\Encuestas\Encuestas con todas las vistas - copia\Softv\SoftvMVC\bin\System.Web.Http.WebHost.xml
+C:\Users\blanca\Desktop\Encuestas\Encuestas con todas las vistas - copia\Softv\SoftvMVC\bin\System.Web.Mvc.xml
+C:\Users\blanca\Desktop\Encuestas\Encuestas con todas las vistas - copia\Softv\SoftvMVC\bin\System.Web.Razor.xml
+C:\Users\blanca\Desktop\Encuestas\Encuestas con todas las vistas - copia\Softv\SoftvMVC\bin\System.Web.WebPages.xml
+C:\Users\blanca\Desktop\Encuestas\Encuestas con todas las vistas - copia\Softv\SoftvMVC\bin\System.Web.WebPages.Deployment.xml
+C:\Users\blanca\Desktop\Encuestas\Encuestas con todas las vistas - copia\Softv\SoftvMVC\bin\System.Web.WebPages.Razor.xml
+C:\Users\blanca\Desktop\Encuestas\Encuestas con todas las vistas - copia\Softv\SoftvMVC\bin\System.Web.Optimization.xml
+C:\Users\blanca\Desktop\Encuestas\Encuestas con todas las vistas - copia\Softv\SoftvMVC\bin\Antlr3.Runtime.pdb
+C:\Users\blanca\Desktop\Encuestas\Encuestas con todas las vistas - copia\Softv\SoftvMVC\bin\Microsoft.AspNet.Identity.Owin.xml
+C:\Users\blanca\Desktop\Encuestas\Encuestas con todas las vistas - copia\Softv\SoftvMVC\bin\Microsoft.Owin.Security.xml
+C:\Users\blanca\Desktop\Encuestas\Encuestas con todas las vistas - copia\Softv\SoftvMVC\bin\Microsoft.Owin.Security.Facebook.xml
+C:\Users\blanca\Desktop\Encuestas\Encuestas con todas las vistas - copia\Softv\SoftvMVC\bin\Microsoft.Owin.Security.Cookies.xml
+C:\Users\blanca\Desktop\Encuestas\Encuestas con todas las vistas - copia\Softv\SoftvMVC\bin\Microsoft.Owin.Security.OAuth.xml
+C:\Users\blanca\Desktop\Encuestas\Encuestas con todas las vistas - copia\Softv\SoftvMVC\bin\Microsoft.Owin.Security.Google.xml
+C:\Users\blanca\Desktop\Encuestas\Encuestas con todas las vistas - copia\Softv\SoftvMVC\bin\Microsoft.Owin.Security.Twitter.xml
+C:\Users\blanca\Desktop\Encuestas\Encuestas con todas las vistas - copia\Softv\SoftvMVC\bin\Microsoft.Owin.Security.MicrosoftAccount.xml
+C:\Users\blanca\Desktop\Encuestas\Encuestas con todas las vistas - copia\Softv\SoftvMVC\obj\Debug\SoftvMVC.csproj.App.config
+C:\Users\blanca\Desktop\Encuestas\Encuestas con todas las vistas - copia\Softv\SoftvMVC\obj\Debug\SoftvMVC.csprojResolveAssemblyReference.cache
+C:\Users\blanca\Desktop\Encuestas\Encuestas con todas las vistas - copia\Softv\SoftvMVC\obj\Debug\SoftvMVC.dll
+C:\Users\blanca\Desktop\Encuestas\Encuestas con todas las vistas - copia\Softv\SoftvMVC\obj\Debug\SoftvMVC.pdb
+C:\Users\blanca\Desktop\Encuestas\Encuestas con todas las vistas\Softv\SoftvMVC\bin\SoftvMVC.dll.config
+C:\Users\blanca\Desktop\Encuestas\Encuestas con todas las vistas\Softv\SoftvMVC\bin\SoftvMVC.dll
+C:\Users\blanca\Desktop\Encuestas\Encuestas con todas las vistas\Softv\SoftvMVC\bin\SoftvMVC.pdb
+C:\Users\blanca\Desktop\Encuestas\Encuestas con todas las vistas\Softv\SoftvMVC\bin\Antlr3.Runtime.dll
+C:\Users\blanca\Desktop\Encuestas\Encuestas con todas las vistas\Softv\SoftvMVC\bin\EntityFramework.dll
+C:\Users\blanca\Desktop\Encuestas\Encuestas con todas las vistas\Softv\SoftvMVC\bin\EntityFramework.SqlServer.dll
+C:\Users\blanca\Desktop\Encuestas\Encuestas con todas las vistas\Softv\SoftvMVC\bin\Globals.dll
+C:\Users\blanca\Desktop\Encuestas\Encuestas con todas las vistas\Softv\SoftvMVC\bin\LinqToExcel.dll
+C:\Users\blanca\Desktop\Encuestas\Encuestas con todas las vistas\Softv\SoftvMVC\bin\log4net.dll
+C:\Users\blanca\Desktop\Encuestas\Encuestas con todas las vistas\Softv\SoftvMVC\bin\Microsoft.AspNet.Identity.Core.dll
+C:\Users\blanca\Desktop\Encuestas\Encuestas con todas las vistas\Softv\SoftvMVC\bin\Microsoft.AspNet.Identity.EntityFramework.dll
+C:\Users\blanca\Desktop\Encuestas\Encuestas con todas las vistas\Softv\SoftvMVC\bin\Microsoft.AspNet.Identity.Owin.dll
+C:\Users\blanca\Desktop\Encuestas\Encuestas con todas las vistas\Softv\SoftvMVC\bin\Microsoft.Owin.dll
+C:\Users\blanca\Desktop\Encuestas\Encuestas con todas las vistas\Softv\SoftvMVC\bin\Microsoft.Owin.Host.SystemWeb.dll
+C:\Users\blanca\Desktop\Encuestas\Encuestas con todas las vistas\Softv\SoftvMVC\bin\Microsoft.Owin.Security.Cookies.dll
+C:\Users\blanca\Desktop\Encuestas\Encuestas con todas las vistas\Softv\SoftvMVC\bin\Microsoft.Owin.Security.dll
+C:\Users\blanca\Desktop\Encuestas\Encuestas con todas las vistas\Softv\SoftvMVC\bin\Microsoft.Owin.Security.Facebook.dll
+C:\Users\blanca\Desktop\Encuestas\Encuestas con todas las vistas\Softv\SoftvMVC\bin\Microsoft.Owin.Security.Google.dll
+C:\Users\blanca\Desktop\Encuestas\Encuestas con todas las vistas\Softv\SoftvMVC\bin\Microsoft.Owin.Security.MicrosoftAccount.dll
+C:\Users\blanca\Desktop\Encuestas\Encuestas con todas las vistas\Softv\SoftvMVC\bin\Microsoft.Owin.Security.OAuth.dll
+C:\Users\blanca\Desktop\Encuestas\Encuestas con todas las vistas\Softv\SoftvMVC\bin\Microsoft.Owin.Security.Twitter.dll
+C:\Users\blanca\Desktop\Encuestas\Encuestas con todas las vistas\Softv\SoftvMVC\bin\Microsoft.Web.Infrastructure.dll
+C:\Users\blanca\Desktop\Encuestas\Encuestas con todas las vistas\Softv\SoftvMVC\bin\Newtonsoft.Json.dll
+C:\Users\blanca\Desktop\Encuestas\Encuestas con todas las vistas\Softv\SoftvMVC\bin\Owin.dll
+C:\Users\blanca\Desktop\Encuestas\Encuestas con todas las vistas\Softv\SoftvMVC\bin\PagedList.dll
+C:\Users\blanca\Desktop\Encuestas\Encuestas con todas las vistas\Softv\SoftvMVC\bin\PagedList.Mvc.dll
+C:\Users\blanca\Desktop\Encuestas\Encuestas con todas las vistas\Softv\SoftvMVC\bin\Remotion.Data.Linq.dll
+C:\Users\blanca\Desktop\Encuestas\Encuestas con todas las vistas\Softv\SoftvMVC\bin\Remotion.dll
+C:\Users\blanca\Desktop\Encuestas\Encuestas con todas las vistas\Softv\SoftvMVC\bin\Remotion.Interfaces.dll
+C:\Users\blanca\Desktop\Encuestas\Encuestas con todas las vistas\Softv\SoftvMVC\bin\Softv.Entities.dll
+C:\Users\blanca\Desktop\Encuestas\Encuestas con todas las vistas\Softv\SoftvMVC\bin\System.Net.Http.Extensions.dll
+C:\Users\blanca\Desktop\Encuestas\Encuestas con todas las vistas\Softv\SoftvMVC\bin\System.Net.Http.Formatting.dll
+C:\Users\blanca\Desktop\Encuestas\Encuestas con todas las vistas\Softv\SoftvMVC\bin\System.Net.Http.Primitives.dll
+C:\Users\blanca\Desktop\Encuestas\Encuestas con todas las vistas\Softv\SoftvMVC\bin\System.Web.Helpers.dll
+C:\Users\blanca\Desktop\Encuestas\Encuestas con todas las vistas\Softv\SoftvMVC\bin\System.Web.Http.dll
+C:\Users\blanca\Desktop\Encuestas\Encuestas con todas las vistas\Softv\SoftvMVC\bin\System.Web.Http.WebHost.dll
+C:\Users\blanca\Desktop\Encuestas\Encuestas con todas las vistas\Softv\SoftvMVC\bin\System.Web.Mvc.dll
+C:\Users\blanca\Desktop\Encuestas\Encuestas con todas las vistas\Softv\SoftvMVC\bin\System.Web.Optimization.dll
+C:\Users\blanca\Desktop\Encuestas\Encuestas con todas las vistas\Softv\SoftvMVC\bin\System.Web.Razor.dll
+C:\Users\blanca\Desktop\Encuestas\Encuestas con todas las vistas\Softv\SoftvMVC\bin\System.Web.WebPages.Deployment.dll
+C:\Users\blanca\Desktop\Encuestas\Encuestas con todas las vistas\Softv\SoftvMVC\bin\System.Web.WebPages.dll
+C:\Users\blanca\Desktop\Encuestas\Encuestas con todas las vistas\Softv\SoftvMVC\bin\System.Web.WebPages.Razor.dll
+C:\Users\blanca\Desktop\Encuestas\Encuestas con todas las vistas\Softv\SoftvMVC\bin\WebGrease.dll
+C:\Users\blanca\Desktop\Encuestas\Encuestas con todas las vistas\Softv\SoftvMVC\bin\Globals.pdb
+C:\Users\blanca\Desktop\Encuestas\Encuestas con todas las vistas\Softv\SoftvMVC\bin\Softv.Entities.pdb
+C:\Users\blanca\Desktop\Encuestas\Encuestas con todas las vistas\Softv\SoftvMVC\bin\EntityFramework.xml
+C:\Users\blanca\Desktop\Encuestas\Encuestas con todas las vistas\Softv\SoftvMVC\bin\EntityFramework.SqlServer.xml
+C:\Users\blanca\Desktop\Encuestas\Encuestas con todas las vistas\Softv\SoftvMVC\bin\LinqToExcel.xml
+C:\Users\blanca\Desktop\Encuestas\Encuestas con todas las vistas\Softv\SoftvMVC\bin\log4net.xml
+C:\Users\blanca\Desktop\Encuestas\Encuestas con todas las vistas\Softv\SoftvMVC\bin\Microsoft.AspNet.Identity.Core.xml
+C:\Users\blanca\Desktop\Encuestas\Encuestas con todas las vistas\Softv\SoftvMVC\bin\Microsoft.AspNet.Identity.EntityFramework.xml
+C:\Users\blanca\Desktop\Encuestas\Encuestas con todas las vistas\Softv\SoftvMVC\bin\Microsoft.Owin.xml
+C:\Users\blanca\Desktop\Encuestas\Encuestas con todas las vistas\Softv\SoftvMVC\bin\Microsoft.Owin.Host.SystemWeb.xml
+C:\Users\blanca\Desktop\Encuestas\Encuestas con todas las vistas\Softv\SoftvMVC\bin\Newtonsoft.Json.xml
+C:\Users\blanca\Desktop\Encuestas\Encuestas con todas las vistas\Softv\SoftvMVC\bin\PagedList.xml
+C:\Users\blanca\Desktop\Encuestas\Encuestas con todas las vistas\Softv\SoftvMVC\bin\PagedList.Mvc.xml
+C:\Users\blanca\Desktop\Encuestas\Encuestas con todas las vistas\Softv\SoftvMVC\bin\System.Net.Http.Extensions.xml
+C:\Users\blanca\Desktop\Encuestas\Encuestas con todas las vistas\Softv\SoftvMVC\bin\System.Net.Http.Formatting.xml
+C:\Users\blanca\Desktop\Encuestas\Encuestas con todas las vistas\Softv\SoftvMVC\bin\System.Net.Http.Primitives.xml
+C:\Users\blanca\Desktop\Encuestas\Encuestas con todas las vistas\Softv\SoftvMVC\bin\System.Web.Helpers.xml
+C:\Users\blanca\Desktop\Encuestas\Encuestas con todas las vistas\Softv\SoftvMVC\bin\System.Web.Http.xml
+C:\Users\blanca\Desktop\Encuestas\Encuestas con todas las vistas\Softv\SoftvMVC\bin\System.Web.Http.WebHost.xml
+C:\Users\blanca\Desktop\Encuestas\Encuestas con todas las vistas\Softv\SoftvMVC\bin\System.Web.Mvc.xml
+C:\Users\blanca\Desktop\Encuestas\Encuestas con todas las vistas\Softv\SoftvMVC\bin\System.Web.Razor.xml
+C:\Users\blanca\Desktop\Encuestas\Encuestas con todas las vistas\Softv\SoftvMVC\bin\System.Web.WebPages.xml
+C:\Users\blanca\Desktop\Encuestas\Encuestas con todas las vistas\Softv\SoftvMVC\bin\System.Web.WebPages.Deployment.xml
+C:\Users\blanca\Desktop\Encuestas\Encuestas con todas las vistas\Softv\SoftvMVC\bin\System.Web.WebPages.Razor.xml
+C:\Users\blanca\Desktop\Encuestas\Encuestas con todas las vistas\Softv\SoftvMVC\bin\System.Web.Optimization.xml
+C:\Users\blanca\Desktop\Encuestas\Encuestas con todas las vistas\Softv\SoftvMVC\bin\Antlr3.Runtime.pdb
+C:\Users\blanca\Desktop\Encuestas\Encuestas con todas las vistas\Softv\SoftvMVC\bin\Microsoft.AspNet.Identity.Owin.xml
+C:\Users\blanca\Desktop\Encuestas\Encuestas con todas las vistas\Softv\SoftvMVC\bin\Microsoft.Owin.Security.xml
+C:\Users\blanca\Desktop\Encuestas\Encuestas con todas las vistas\Softv\SoftvMVC\bin\Microsoft.Owin.Security.Facebook.xml
+C:\Users\blanca\Desktop\Encuestas\Encuestas con todas las vistas\Softv\SoftvMVC\bin\Microsoft.Owin.Security.Cookies.xml
+C:\Users\blanca\Desktop\Encuestas\Encuestas con todas las vistas\Softv\SoftvMVC\bin\Microsoft.Owin.Security.OAuth.xml
+C:\Users\blanca\Desktop\Encuestas\Encuestas con todas las vistas\Softv\SoftvMVC\bin\Microsoft.Owin.Security.Google.xml
+C:\Users\blanca\Desktop\Encuestas\Encuestas con todas las vistas\Softv\SoftvMVC\bin\Microsoft.Owin.Security.Twitter.xml
+C:\Users\blanca\Desktop\Encuestas\Encuestas con todas las vistas\Softv\SoftvMVC\bin\Microsoft.Owin.Security.MicrosoftAccount.xml
+C:\Users\blanca\Desktop\Encuestas\Encuestas con todas las vistas\Softv\SoftvMVC\obj\Debug\SoftvMVC.csproj.App.config
+C:\Users\blanca\Desktop\Encuestas\Encuestas con todas las vistas\Softv\SoftvMVC\obj\Debug\SoftvMVC.csprojResolveAssemblyReference.cache
+C:\Users\blanca\Desktop\Encuestas\Encuestas con todas las vistas\Softv\SoftvMVC\obj\Debug\SoftvMVC.dll
+C:\Users\blanca\Desktop\Encuestas\Encuestas con todas las vistas\Softv\SoftvMVC\obj\Debug\SoftvMVC.pdb
+C:\Users\blanca\Desktop\Encuestas\EncuestasVistas respaldo\Softv\SoftvMVC\obj\Debug\SoftvMVC.csproj.App.config
+C:\Users\blanca\Desktop\Encuestas\EncuestasVistas respaldo\Softv\SoftvMVC\obj\Debug\SoftvMVC.csprojResolveAssemblyReference.cache
+C:\Users\blanca\Desktop\Encuestas\EncuestasVistas respaldo\Softv\SoftvMVC\obj\Debug\SoftvMVC.dll
+C:\Users\blanca\Desktop\Encuestas\EncuestasVistas respaldo\Softv\SoftvMVC\bin\SoftvMVC.dll.config
+C:\Users\blanca\Desktop\Encuestas\EncuestasVistas respaldo\Softv\SoftvMVC\bin\SoftvMVC.dll
+C:\Users\blanca\Desktop\Encuestas\EncuestasVistas respaldo\Softv\SoftvMVC\bin\SoftvMVC.pdb
+C:\Users\blanca\Desktop\Encuestas\EncuestasVistas respaldo\Softv\SoftvMVC\bin\Antlr3.Runtime.dll
+C:\Users\blanca\Desktop\Encuestas\EncuestasVistas respaldo\Softv\SoftvMVC\bin\EntityFramework.dll
+C:\Users\blanca\Desktop\Encuestas\EncuestasVistas respaldo\Softv\SoftvMVC\bin\EntityFramework.SqlServer.dll
+C:\Users\blanca\Desktop\Encuestas\EncuestasVistas respaldo\Softv\SoftvMVC\bin\Globals.dll
+C:\Users\blanca\Desktop\Encuestas\EncuestasVistas respaldo\Softv\SoftvMVC\bin\LinqToExcel.dll
+C:\Users\blanca\Desktop\Encuestas\EncuestasVistas respaldo\Softv\SoftvMVC\bin\log4net.dll
+C:\Users\blanca\Desktop\Encuestas\EncuestasVistas respaldo\Softv\SoftvMVC\bin\Microsoft.AspNet.Identity.Core.dll
+C:\Users\blanca\Desktop\Encuestas\EncuestasVistas respaldo\Softv\SoftvMVC\bin\Microsoft.AspNet.Identity.EntityFramework.dll
+C:\Users\blanca\Desktop\Encuestas\EncuestasVistas respaldo\Softv\SoftvMVC\bin\Microsoft.AspNet.Identity.Owin.dll
+C:\Users\blanca\Desktop\Encuestas\EncuestasVistas respaldo\Softv\SoftvMVC\bin\Microsoft.Owin.dll
+C:\Users\blanca\Desktop\Encuestas\EncuestasVistas respaldo\Softv\SoftvMVC\bin\Microsoft.Owin.Host.SystemWeb.dll
+C:\Users\blanca\Desktop\Encuestas\EncuestasVistas respaldo\Softv\SoftvMVC\bin\Microsoft.Owin.Security.Cookies.dll
+C:\Users\blanca\Desktop\Encuestas\EncuestasVistas respaldo\Softv\SoftvMVC\bin\Microsoft.Owin.Security.dll
+C:\Users\blanca\Desktop\Encuestas\EncuestasVistas respaldo\Softv\SoftvMVC\bin\Microsoft.Owin.Security.Facebook.dll
+C:\Users\blanca\Desktop\Encuestas\EncuestasVistas respaldo\Softv\SoftvMVC\bin\Microsoft.Owin.Security.Google.dll
+C:\Users\blanca\Desktop\Encuestas\EncuestasVistas respaldo\Softv\SoftvMVC\bin\Microsoft.Owin.Security.MicrosoftAccount.dll
+C:\Users\blanca\Desktop\Encuestas\EncuestasVistas respaldo\Softv\SoftvMVC\bin\Microsoft.Owin.Security.OAuth.dll
+C:\Users\blanca\Desktop\Encuestas\EncuestasVistas respaldo\Softv\SoftvMVC\bin\Microsoft.Owin.Security.Twitter.dll
+C:\Users\blanca\Desktop\Encuestas\EncuestasVistas respaldo\Softv\SoftvMVC\bin\Microsoft.Web.Infrastructure.dll
+C:\Users\blanca\Desktop\Encuestas\EncuestasVistas respaldo\Softv\SoftvMVC\bin\Newtonsoft.Json.dll
+C:\Users\blanca\Desktop\Encuestas\EncuestasVistas respaldo\Softv\SoftvMVC\bin\Owin.dll
+C:\Users\blanca\Desktop\Encuestas\EncuestasVistas respaldo\Softv\SoftvMVC\bin\PagedList.dll
+C:\Users\blanca\Desktop\Encuestas\EncuestasVistas respaldo\Softv\SoftvMVC\bin\PagedList.Mvc.dll
+C:\Users\blanca\Desktop\Encuestas\EncuestasVistas respaldo\Softv\SoftvMVC\bin\Remotion.Data.Linq.dll
+C:\Users\blanca\Desktop\Encuestas\EncuestasVistas respaldo\Softv\SoftvMVC\bin\Remotion.dll
+C:\Users\blanca\Desktop\Encuestas\EncuestasVistas respaldo\Softv\SoftvMVC\bin\Remotion.Interfaces.dll
+C:\Users\blanca\Desktop\Encuestas\EncuestasVistas respaldo\Softv\SoftvMVC\bin\Softv.Entities.dll
+C:\Users\blanca\Desktop\Encuestas\EncuestasVistas respaldo\Softv\SoftvMVC\bin\System.Net.Http.Extensions.dll
+C:\Users\blanca\Desktop\Encuestas\EncuestasVistas respaldo\Softv\SoftvMVC\bin\System.Net.Http.Formatting.dll
+C:\Users\blanca\Desktop\Encuestas\EncuestasVistas respaldo\Softv\SoftvMVC\bin\System.Net.Http.Primitives.dll
+C:\Users\blanca\Desktop\Encuestas\EncuestasVistas respaldo\Softv\SoftvMVC\bin\System.Web.Helpers.dll
+C:\Users\blanca\Desktop\Encuestas\EncuestasVistas respaldo\Softv\SoftvMVC\bin\System.Web.Http.dll
+C:\Users\blanca\Desktop\Encuestas\EncuestasVistas respaldo\Softv\SoftvMVC\bin\System.Web.Http.WebHost.dll
+C:\Users\blanca\Desktop\Encuestas\EncuestasVistas respaldo\Softv\SoftvMVC\bin\System.Web.Mvc.dll
+C:\Users\blanca\Desktop\Encuestas\EncuestasVistas respaldo\Softv\SoftvMVC\bin\System.Web.Optimization.dll
+C:\Users\blanca\Desktop\Encuestas\EncuestasVistas respaldo\Softv\SoftvMVC\bin\System.Web.Razor.dll
+C:\Users\blanca\Desktop\Encuestas\EncuestasVistas respaldo\Softv\SoftvMVC\bin\System.Web.WebPages.Deployment.dll
+C:\Users\blanca\Desktop\Encuestas\EncuestasVistas respaldo\Softv\SoftvMVC\bin\System.Web.WebPages.dll
+C:\Users\blanca\Desktop\Encuestas\EncuestasVistas respaldo\Softv\SoftvMVC\bin\System.Web.WebPages.Razor.dll
+C:\Users\blanca\Desktop\Encuestas\EncuestasVistas respaldo\Softv\SoftvMVC\bin\WebGrease.dll
+C:\Users\blanca\Desktop\Encuestas\EncuestasVistas respaldo\Softv\SoftvMVC\bin\Globals.pdb
+C:\Users\blanca\Desktop\Encuestas\EncuestasVistas respaldo\Softv\SoftvMVC\bin\Softv.Entities.pdb
+C:\Users\blanca\Desktop\Encuestas\EncuestasVistas respaldo\Softv\SoftvMVC\bin\EntityFramework.xml
+C:\Users\blanca\Desktop\Encuestas\EncuestasVistas respaldo\Softv\SoftvMVC\bin\EntityFramework.SqlServer.xml
+C:\Users\blanca\Desktop\Encuestas\EncuestasVistas respaldo\Softv\SoftvMVC\bin\LinqToExcel.xml
+C:\Users\blanca\Desktop\Encuestas\EncuestasVistas respaldo\Softv\SoftvMVC\bin\log4net.xml
+C:\Users\blanca\Desktop\Encuestas\EncuestasVistas respaldo\Softv\SoftvMVC\bin\Microsoft.AspNet.Identity.Core.xml
+C:\Users\blanca\Desktop\Encuestas\EncuestasVistas respaldo\Softv\SoftvMVC\bin\Microsoft.AspNet.Identity.EntityFramework.xml
+C:\Users\blanca\Desktop\Encuestas\EncuestasVistas respaldo\Softv\SoftvMVC\bin\Microsoft.Owin.xml
+C:\Users\blanca\Desktop\Encuestas\EncuestasVistas respaldo\Softv\SoftvMVC\bin\Microsoft.Owin.Host.SystemWeb.xml
+C:\Users\blanca\Desktop\Encuestas\EncuestasVistas respaldo\Softv\SoftvMVC\bin\Newtonsoft.Json.xml
+C:\Users\blanca\Desktop\Encuestas\EncuestasVistas respaldo\Softv\SoftvMVC\bin\PagedList.xml
+C:\Users\blanca\Desktop\Encuestas\EncuestasVistas respaldo\Softv\SoftvMVC\bin\PagedList.Mvc.xml
+C:\Users\blanca\Desktop\Encuestas\EncuestasVistas respaldo\Softv\SoftvMVC\bin\System.Net.Http.Extensions.xml
+C:\Users\blanca\Desktop\Encuestas\EncuestasVistas respaldo\Softv\SoftvMVC\bin\System.Net.Http.Formatting.xml
+C:\Users\blanca\Desktop\Encuestas\EncuestasVistas respaldo\Softv\SoftvMVC\bin\System.Net.Http.Primitives.xml
+C:\Users\blanca\Desktop\Encuestas\EncuestasVistas respaldo\Softv\SoftvMVC\bin\System.Web.Helpers.xml
+C:\Users\blanca\Desktop\Encuestas\EncuestasVistas respaldo\Softv\SoftvMVC\bin\System.Web.Http.xml
+C:\Users\blanca\Desktop\Encuestas\EncuestasVistas respaldo\Softv\SoftvMVC\bin\System.Web.Http.WebHost.xml
+C:\Users\blanca\Desktop\Encuestas\EncuestasVistas respaldo\Softv\SoftvMVC\bin\System.Web.Mvc.xml
+C:\Users\blanca\Desktop\Encuestas\EncuestasVistas respaldo\Softv\SoftvMVC\bin\System.Web.Razor.xml
+C:\Users\blanca\Desktop\Encuestas\EncuestasVistas respaldo\Softv\SoftvMVC\bin\System.Web.WebPages.xml
+C:\Users\blanca\Desktop\Encuestas\EncuestasVistas respaldo\Softv\SoftvMVC\bin\System.Web.WebPages.Deployment.xml
+C:\Users\blanca\Desktop\Encuestas\EncuestasVistas respaldo\Softv\SoftvMVC\bin\System.Web.WebPages.Razor.xml
+C:\Users\blanca\Desktop\Encuestas\EncuestasVistas respaldo\Softv\SoftvMVC\bin\System.Web.Optimization.xml
+C:\Users\blanca\Desktop\Encuestas\EncuestasVistas respaldo\Softv\SoftvMVC\bin\Antlr3.Runtime.pdb
+C:\Users\blanca\Desktop\Encuestas\EncuestasVistas respaldo\Softv\SoftvMVC\bin\Microsoft.AspNet.Identity.Owin.xml
+C:\Users\blanca\Desktop\Encuestas\EncuestasVistas respaldo\Softv\SoftvMVC\bin\Microsoft.Owin.Security.xml
+C:\Users\blanca\Desktop\Encuestas\EncuestasVistas respaldo\Softv\SoftvMVC\bin\Microsoft.Owin.Security.Facebook.xml
+C:\Users\blanca\Desktop\Encuestas\EncuestasVistas respaldo\Softv\SoftvMVC\bin\Microsoft.Owin.Security.Cookies.xml
+C:\Users\blanca\Desktop\Encuestas\EncuestasVistas respaldo\Softv\SoftvMVC\bin\Microsoft.Owin.Security.OAuth.xml
+C:\Users\blanca\Desktop\Encuestas\EncuestasVistas respaldo\Softv\SoftvMVC\bin\Microsoft.Owin.Security.Google.xml
+C:\Users\blanca\Desktop\Encuestas\EncuestasVistas respaldo\Softv\SoftvMVC\bin\Microsoft.Owin.Security.Twitter.xml
+C:\Users\blanca\Desktop\Encuestas\EncuestasVistas respaldo\Softv\SoftvMVC\bin\Microsoft.Owin.Security.MicrosoftAccount.xml
+C:\Users\blanca\Desktop\Encuestas\EncuestasVistas respaldo\Softv\SoftvMVC\obj\Debug\SoftvMVC.pdb
+C:\Users\blanca\Desktop\Encuestas\EncuestasVistas ex2\Softv\SoftvMVC\bin\SoftvMVC.dll.config
+C:\Users\blanca\Desktop\Encuestas\EncuestasVistas ex2\Softv\SoftvMVC\bin\SoftvMVC.dll
+C:\Users\blanca\Desktop\Encuestas\EncuestasVistas ex2\Softv\SoftvMVC\bin\SoftvMVC.pdb
+C:\Users\blanca\Desktop\Encuestas\EncuestasVistas ex2\Softv\SoftvMVC\bin\Antlr3.Runtime.dll
+C:\Users\blanca\Desktop\Encuestas\EncuestasVistas ex2\Softv\SoftvMVC\bin\EntityFramework.dll
+C:\Users\blanca\Desktop\Encuestas\EncuestasVistas ex2\Softv\SoftvMVC\bin\EntityFramework.SqlServer.dll
+C:\Users\blanca\Desktop\Encuestas\EncuestasVistas ex2\Softv\SoftvMVC\bin\Globals.dll
+C:\Users\blanca\Desktop\Encuestas\EncuestasVistas ex2\Softv\SoftvMVC\bin\LinqToExcel.dll
+C:\Users\blanca\Desktop\Encuestas\EncuestasVistas ex2\Softv\SoftvMVC\bin\log4net.dll
+C:\Users\blanca\Desktop\Encuestas\EncuestasVistas ex2\Softv\SoftvMVC\bin\Microsoft.AspNet.Identity.Core.dll
+C:\Users\blanca\Desktop\Encuestas\EncuestasVistas ex2\Softv\SoftvMVC\bin\Microsoft.AspNet.Identity.EntityFramework.dll
+C:\Users\blanca\Desktop\Encuestas\EncuestasVistas ex2\Softv\SoftvMVC\bin\Microsoft.AspNet.Identity.Owin.dll
+C:\Users\blanca\Desktop\Encuestas\EncuestasVistas ex2\Softv\SoftvMVC\bin\Microsoft.Owin.dll
+C:\Users\blanca\Desktop\Encuestas\EncuestasVistas ex2\Softv\SoftvMVC\bin\Microsoft.Owin.Host.SystemWeb.dll
+C:\Users\blanca\Desktop\Encuestas\EncuestasVistas ex2\Softv\SoftvMVC\bin\Microsoft.Owin.Security.Cookies.dll
+C:\Users\blanca\Desktop\Encuestas\EncuestasVistas ex2\Softv\SoftvMVC\bin\Microsoft.Owin.Security.dll
+C:\Users\blanca\Desktop\Encuestas\EncuestasVistas ex2\Softv\SoftvMVC\bin\Microsoft.Owin.Security.Facebook.dll
+C:\Users\blanca\Desktop\Encuestas\EncuestasVistas ex2\Softv\SoftvMVC\bin\Microsoft.Owin.Security.Google.dll
+C:\Users\blanca\Desktop\Encuestas\EncuestasVistas ex2\Softv\SoftvMVC\bin\Microsoft.Owin.Security.MicrosoftAccount.dll
+C:\Users\blanca\Desktop\Encuestas\EncuestasVistas ex2\Softv\SoftvMVC\bin\Microsoft.Owin.Security.OAuth.dll
+C:\Users\blanca\Desktop\Encuestas\EncuestasVistas ex2\Softv\SoftvMVC\bin\Microsoft.Owin.Security.Twitter.dll
+C:\Users\blanca\Desktop\Encuestas\EncuestasVistas ex2\Softv\SoftvMVC\bin\Microsoft.Web.Infrastructure.dll
+C:\Users\blanca\Desktop\Encuestas\EncuestasVistas ex2\Softv\SoftvMVC\bin\Newtonsoft.Json.dll
+C:\Users\blanca\Desktop\Encuestas\EncuestasVistas ex2\Softv\SoftvMVC\bin\Owin.dll
+C:\Users\blanca\Desktop\Encuestas\EncuestasVistas ex2\Softv\SoftvMVC\bin\PagedList.dll
+C:\Users\blanca\Desktop\Encuestas\EncuestasVistas ex2\Softv\SoftvMVC\bin\PagedList.Mvc.dll
+C:\Users\blanca\Desktop\Encuestas\EncuestasVistas ex2\Softv\SoftvMVC\bin\Remotion.Data.Linq.dll
+C:\Users\blanca\Desktop\Encuestas\EncuestasVistas ex2\Softv\SoftvMVC\bin\Remotion.dll
+C:\Users\blanca\Desktop\Encuestas\EncuestasVistas ex2\Softv\SoftvMVC\bin\Remotion.Interfaces.dll
+C:\Users\blanca\Desktop\Encuestas\EncuestasVistas ex2\Softv\SoftvMVC\bin\Softv.Entities.dll
+C:\Users\blanca\Desktop\Encuestas\EncuestasVistas ex2\Softv\SoftvMVC\bin\System.Net.Http.Extensions.dll
+C:\Users\blanca\Desktop\Encuestas\EncuestasVistas ex2\Softv\SoftvMVC\bin\System.Net.Http.Formatting.dll
+C:\Users\blanca\Desktop\Encuestas\EncuestasVistas ex2\Softv\SoftvMVC\bin\System.Net.Http.Primitives.dll
+C:\Users\blanca\Desktop\Encuestas\EncuestasVistas ex2\Softv\SoftvMVC\bin\System.Web.Helpers.dll
+C:\Users\blanca\Desktop\Encuestas\EncuestasVistas ex2\Softv\SoftvMVC\bin\System.Web.Http.dll
+C:\Users\blanca\Desktop\Encuestas\EncuestasVistas ex2\Softv\SoftvMVC\bin\System.Web.Http.WebHost.dll
+C:\Users\blanca\Desktop\Encuestas\EncuestasVistas ex2\Softv\SoftvMVC\bin\System.Web.Mvc.dll
+C:\Users\blanca\Desktop\Encuestas\EncuestasVistas ex2\Softv\SoftvMVC\bin\System.Web.Optimization.dll
+C:\Users\blanca\Desktop\Encuestas\EncuestasVistas ex2\Softv\SoftvMVC\bin\System.Web.Razor.dll
+C:\Users\blanca\Desktop\Encuestas\EncuestasVistas ex2\Softv\SoftvMVC\bin\System.Web.WebPages.Deployment.dll
+C:\Users\blanca\Desktop\Encuestas\EncuestasVistas ex2\Softv\SoftvMVC\bin\System.Web.WebPages.dll
+C:\Users\blanca\Desktop\Encuestas\EncuestasVistas ex2\Softv\SoftvMVC\bin\System.Web.WebPages.Razor.dll
+C:\Users\blanca\Desktop\Encuestas\EncuestasVistas ex2\Softv\SoftvMVC\bin\WebGrease.dll
+C:\Users\blanca\Desktop\Encuestas\EncuestasVistas ex2\Softv\SoftvMVC\bin\Globals.pdb
+C:\Users\blanca\Desktop\Encuestas\EncuestasVistas ex2\Softv\SoftvMVC\bin\Softv.Entities.pdb
+C:\Users\blanca\Desktop\Encuestas\EncuestasVistas ex2\Softv\SoftvMVC\bin\EntityFramework.xml
+C:\Users\blanca\Desktop\Encuestas\EncuestasVistas ex2\Softv\SoftvMVC\bin\EntityFramework.SqlServer.xml
+C:\Users\blanca\Desktop\Encuestas\EncuestasVistas ex2\Softv\SoftvMVC\bin\LinqToExcel.xml
+C:\Users\blanca\Desktop\Encuestas\EncuestasVistas ex2\Softv\SoftvMVC\bin\log4net.xml
+C:\Users\blanca\Desktop\Encuestas\EncuestasVistas ex2\Softv\SoftvMVC\bin\Microsoft.AspNet.Identity.Core.xml
+C:\Users\blanca\Desktop\Encuestas\EncuestasVistas ex2\Softv\SoftvMVC\bin\Microsoft.AspNet.Identity.EntityFramework.xml
+C:\Users\blanca\Desktop\Encuestas\EncuestasVistas ex2\Softv\SoftvMVC\bin\Microsoft.Owin.xml
+C:\Users\blanca\Desktop\Encuestas\EncuestasVistas ex2\Softv\SoftvMVC\bin\Microsoft.Owin.Host.SystemWeb.xml
+C:\Users\blanca\Desktop\Encuestas\EncuestasVistas ex2\Softv\SoftvMVC\bin\Newtonsoft.Json.xml
+C:\Users\blanca\Desktop\Encuestas\EncuestasVistas ex2\Softv\SoftvMVC\bin\PagedList.xml
+C:\Users\blanca\Desktop\Encuestas\EncuestasVistas ex2\Softv\SoftvMVC\bin\PagedList.Mvc.xml
+C:\Users\blanca\Desktop\Encuestas\EncuestasVistas ex2\Softv\SoftvMVC\bin\System.Net.Http.Extensions.xml
+C:\Users\blanca\Desktop\Encuestas\EncuestasVistas ex2\Softv\SoftvMVC\bin\System.Net.Http.Formatting.xml
+C:\Users\blanca\Desktop\Encuestas\EncuestasVistas ex2\Softv\SoftvMVC\bin\System.Net.Http.Primitives.xml
+C:\Users\blanca\Desktop\Encuestas\EncuestasVistas ex2\Softv\SoftvMVC\bin\System.Web.Helpers.xml
+C:\Users\blanca\Desktop\Encuestas\EncuestasVistas ex2\Softv\SoftvMVC\bin\System.Web.Http.xml
+C:\Users\blanca\Desktop\Encuestas\EncuestasVistas ex2\Softv\SoftvMVC\bin\System.Web.Http.WebHost.xml
+C:\Users\blanca\Desktop\Encuestas\EncuestasVistas ex2\Softv\SoftvMVC\bin\System.Web.Mvc.xml
+C:\Users\blanca\Desktop\Encuestas\EncuestasVistas ex2\Softv\SoftvMVC\bin\System.Web.Razor.xml
+C:\Users\blanca\Desktop\Encuestas\EncuestasVistas ex2\Softv\SoftvMVC\bin\System.Web.WebPages.xml
+C:\Users\blanca\Desktop\Encuestas\EncuestasVistas ex2\Softv\SoftvMVC\bin\System.Web.WebPages.Deployment.xml
+C:\Users\blanca\Desktop\Encuestas\EncuestasVistas ex2\Softv\SoftvMVC\bin\System.Web.WebPages.Razor.xml
+C:\Users\blanca\Desktop\Encuestas\EncuestasVistas ex2\Softv\SoftvMVC\bin\System.Web.Optimization.xml
+C:\Users\blanca\Desktop\Encuestas\EncuestasVistas ex2\Softv\SoftvMVC\bin\Antlr3.Runtime.pdb
+C:\Users\blanca\Desktop\Encuestas\EncuestasVistas ex2\Softv\SoftvMVC\bin\Microsoft.AspNet.Identity.Owin.xml
+C:\Users\blanca\Desktop\Encuestas\EncuestasVistas ex2\Softv\SoftvMVC\bin\Microsoft.Owin.Security.xml
+C:\Users\blanca\Desktop\Encuestas\EncuestasVistas ex2\Softv\SoftvMVC\bin\Microsoft.Owin.Security.Facebook.xml
+C:\Users\blanca\Desktop\Encuestas\EncuestasVistas ex2\Softv\SoftvMVC\bin\Microsoft.Owin.Security.Cookies.xml
+C:\Users\blanca\Desktop\Encuestas\EncuestasVistas ex2\Softv\SoftvMVC\bin\Microsoft.Owin.Security.OAuth.xml
+C:\Users\blanca\Desktop\Encuestas\EncuestasVistas ex2\Softv\SoftvMVC\bin\Microsoft.Owin.Security.Google.xml
+C:\Users\blanca\Desktop\Encuestas\EncuestasVistas ex2\Softv\SoftvMVC\bin\Microsoft.Owin.Security.Twitter.xml
+C:\Users\blanca\Desktop\Encuestas\EncuestasVistas ex2\Softv\SoftvMVC\bin\Microsoft.Owin.Security.MicrosoftAccount.xml
+C:\Users\blanca\Desktop\Encuestas\EncuestasVistas ex2\Softv\SoftvMVC\obj\Debug\SoftvMVC.csproj.App.config
+C:\Users\blanca\Desktop\Encuestas\EncuestasVistas ex2\Softv\SoftvMVC\obj\Debug\SoftvMVC.csprojResolveAssemblyReference.cache
+C:\Users\blanca\Desktop\Encuestas\EncuestasVistas ex2\Softv\SoftvMVC\obj\Debug\SoftvMVC.dll
+C:\Users\blanca\Desktop\Encuestas\EncuestasVistas ex2\Softv\SoftvMVC\obj\Debug\SoftvMVC.pdb
+C:\Users\blanca\Desktop\Encuestas\EncuestasVistasModales mod\Softv\SoftvMVC\bin\SoftvMVC.dll.config
+C:\Users\blanca\Desktop\Encuestas\EncuestasVistasModales mod\Softv\SoftvMVC\bin\SoftvMVC.dll
+C:\Users\blanca\Desktop\Encuestas\EncuestasVistasModales mod\Softv\SoftvMVC\bin\SoftvMVC.pdb
+C:\Users\blanca\Desktop\Encuestas\EncuestasVistasModales mod\Softv\SoftvMVC\bin\Antlr3.Runtime.dll
+C:\Users\blanca\Desktop\Encuestas\EncuestasVistasModales mod\Softv\SoftvMVC\bin\EntityFramework.dll
+C:\Users\blanca\Desktop\Encuestas\EncuestasVistasModales mod\Softv\SoftvMVC\bin\EntityFramework.SqlServer.dll
+C:\Users\blanca\Desktop\Encuestas\EncuestasVistasModales mod\Softv\SoftvMVC\bin\Globals.dll
+C:\Users\blanca\Desktop\Encuestas\EncuestasVistasModales mod\Softv\SoftvMVC\bin\LinqToExcel.dll
+C:\Users\blanca\Desktop\Encuestas\EncuestasVistasModales mod\Softv\SoftvMVC\bin\log4net.dll
+C:\Users\blanca\Desktop\Encuestas\EncuestasVistasModales mod\Softv\SoftvMVC\bin\Microsoft.AspNet.Identity.Core.dll
+C:\Users\blanca\Desktop\Encuestas\EncuestasVistasModales mod\Softv\SoftvMVC\bin\Microsoft.AspNet.Identity.EntityFramework.dll
+C:\Users\blanca\Desktop\Encuestas\EncuestasVistasModales mod\Softv\SoftvMVC\bin\Microsoft.AspNet.Identity.Owin.dll
+C:\Users\blanca\Desktop\Encuestas\EncuestasVistasModales mod\Softv\SoftvMVC\bin\Microsoft.Owin.dll
+C:\Users\blanca\Desktop\Encuestas\EncuestasVistasModales mod\Softv\SoftvMVC\bin\Microsoft.Owin.Host.SystemWeb.dll
+C:\Users\blanca\Desktop\Encuestas\EncuestasVistasModales mod\Softv\SoftvMVC\bin\Microsoft.Owin.Security.Cookies.dll
+C:\Users\blanca\Desktop\Encuestas\EncuestasVistasModales mod\Softv\SoftvMVC\bin\Microsoft.Owin.Security.dll
+C:\Users\blanca\Desktop\Encuestas\EncuestasVistasModales mod\Softv\SoftvMVC\bin\Microsoft.Owin.Security.Facebook.dll
+C:\Users\blanca\Desktop\Encuestas\EncuestasVistasModales mod\Softv\SoftvMVC\bin\Microsoft.Owin.Security.Google.dll
+C:\Users\blanca\Desktop\Encuestas\EncuestasVistasModales mod\Softv\SoftvMVC\bin\Microsoft.Owin.Security.MicrosoftAccount.dll
+C:\Users\blanca\Desktop\Encuestas\EncuestasVistasModales mod\Softv\SoftvMVC\bin\Microsoft.Owin.Security.OAuth.dll
+C:\Users\blanca\Desktop\Encuestas\EncuestasVistasModales mod\Softv\SoftvMVC\bin\Microsoft.Owin.Security.Twitter.dll
+C:\Users\blanca\Desktop\Encuestas\EncuestasVistasModales mod\Softv\SoftvMVC\bin\Microsoft.Web.Infrastructure.dll
+C:\Users\blanca\Desktop\Encuestas\EncuestasVistasModales mod\Softv\SoftvMVC\bin\Newtonsoft.Json.dll
+C:\Users\blanca\Desktop\Encuestas\EncuestasVistasModales mod\Softv\SoftvMVC\bin\Owin.dll
+C:\Users\blanca\Desktop\Encuestas\EncuestasVistasModales mod\Softv\SoftvMVC\bin\PagedList.dll
+C:\Users\blanca\Desktop\Encuestas\EncuestasVistasModales mod\Softv\SoftvMVC\bin\PagedList.Mvc.dll
+C:\Users\blanca\Desktop\Encuestas\EncuestasVistasModales mod\Softv\SoftvMVC\bin\Remotion.Data.Linq.dll
+C:\Users\blanca\Desktop\Encuestas\EncuestasVistasModales mod\Softv\SoftvMVC\bin\Remotion.dll
+C:\Users\blanca\Desktop\Encuestas\EncuestasVistasModales mod\Softv\SoftvMVC\bin\Remotion.Interfaces.dll
+C:\Users\blanca\Desktop\Encuestas\EncuestasVistasModales mod\Softv\SoftvMVC\bin\Softv.Entities.dll
+C:\Users\blanca\Desktop\Encuestas\EncuestasVistasModales mod\Softv\SoftvMVC\bin\System.Net.Http.Extensions.dll
+C:\Users\blanca\Desktop\Encuestas\EncuestasVistasModales mod\Softv\SoftvMVC\bin\System.Net.Http.Formatting.dll
+C:\Users\blanca\Desktop\Encuestas\EncuestasVistasModales mod\Softv\SoftvMVC\bin\System.Net.Http.Primitives.dll
+C:\Users\blanca\Desktop\Encuestas\EncuestasVistasModales mod\Softv\SoftvMVC\bin\System.Web.Helpers.dll
+C:\Users\blanca\Desktop\Encuestas\EncuestasVistasModales mod\Softv\SoftvMVC\bin\System.Web.Http.dll
+C:\Users\blanca\Desktop\Encuestas\EncuestasVistasModales mod\Softv\SoftvMVC\bin\System.Web.Http.WebHost.dll
+C:\Users\blanca\Desktop\Encuestas\EncuestasVistasModales mod\Softv\SoftvMVC\bin\System.Web.Mvc.dll
+C:\Users\blanca\Desktop\Encuestas\EncuestasVistasModales mod\Softv\SoftvMVC\bin\System.Web.Optimization.dll
+C:\Users\blanca\Desktop\Encuestas\EncuestasVistasModales mod\Softv\SoftvMVC\bin\System.Web.Razor.dll
+C:\Users\blanca\Desktop\Encuestas\EncuestasVistasModales mod\Softv\SoftvMVC\bin\System.Web.WebPages.Deployment.dll
+C:\Users\blanca\Desktop\Encuestas\EncuestasVistasModales mod\Softv\SoftvMVC\bin\System.Web.WebPages.dll
+C:\Users\blanca\Desktop\Encuestas\EncuestasVistasModales mod\Softv\SoftvMVC\bin\System.Web.WebPages.Razor.dll
+C:\Users\blanca\Desktop\Encuestas\EncuestasVistasModales mod\Softv\SoftvMVC\bin\WebGrease.dll
+C:\Users\blanca\Desktop\Encuestas\EncuestasVistasModales mod\Softv\SoftvMVC\bin\Globals.pdb
+C:\Users\blanca\Desktop\Encuestas\EncuestasVistasModales mod\Softv\SoftvMVC\bin\Softv.Entities.pdb
+C:\Users\blanca\Desktop\Encuestas\EncuestasVistasModales mod\Softv\SoftvMVC\bin\EntityFramework.xml
+C:\Users\blanca\Desktop\Encuestas\EncuestasVistasModales mod\Softv\SoftvMVC\bin\EntityFramework.SqlServer.xml
+C:\Users\blanca\Desktop\Encuestas\EncuestasVistasModales mod\Softv\SoftvMVC\bin\LinqToExcel.xml
+C:\Users\blanca\Desktop\Encuestas\EncuestasVistasModales mod\Softv\SoftvMVC\bin\log4net.xml
+C:\Users\blanca\Desktop\Encuestas\EncuestasVistasModales mod\Softv\SoftvMVC\bin\Microsoft.AspNet.Identity.Core.xml
+C:\Users\blanca\Desktop\Encuestas\EncuestasVistasModales mod\Softv\SoftvMVC\bin\Microsoft.AspNet.Identity.EntityFramework.xml
+C:\Users\blanca\Desktop\Encuestas\EncuestasVistasModales mod\Softv\SoftvMVC\bin\Microsoft.Owin.xml
+C:\Users\blanca\Desktop\Encuestas\EncuestasVistasModales mod\Softv\SoftvMVC\bin\Microsoft.Owin.Host.SystemWeb.xml
+C:\Users\blanca\Desktop\Encuestas\EncuestasVistasModales mod\Softv\SoftvMVC\bin\Newtonsoft.Json.xml
+C:\Users\blanca\Desktop\Encuestas\EncuestasVistasModales mod\Softv\SoftvMVC\bin\PagedList.xml
+C:\Users\blanca\Desktop\Encuestas\EncuestasVistasModales mod\Softv\SoftvMVC\bin\PagedList.Mvc.xml
+C:\Users\blanca\Desktop\Encuestas\EncuestasVistasModales mod\Softv\SoftvMVC\bin\System.Net.Http.Extensions.xml
+C:\Users\blanca\Desktop\Encuestas\EncuestasVistasModales mod\Softv\SoftvMVC\bin\System.Net.Http.Formatting.xml
+C:\Users\blanca\Desktop\Encuestas\EncuestasVistasModales mod\Softv\SoftvMVC\bin\System.Net.Http.Primitives.xml
+C:\Users\blanca\Desktop\Encuestas\EncuestasVistasModales mod\Softv\SoftvMVC\bin\System.Web.Helpers.xml
+C:\Users\blanca\Desktop\Encuestas\EncuestasVistasModales mod\Softv\SoftvMVC\bin\System.Web.Http.xml
+C:\Users\blanca\Desktop\Encuestas\EncuestasVistasModales mod\Softv\SoftvMVC\bin\System.Web.Http.WebHost.xml
+C:\Users\blanca\Desktop\Encuestas\EncuestasVistasModales mod\Softv\SoftvMVC\bin\System.Web.Mvc.xml
+C:\Users\blanca\Desktop\Encuestas\EncuestasVistasModales mod\Softv\SoftvMVC\bin\System.Web.Razor.xml
+C:\Users\blanca\Desktop\Encuestas\EncuestasVistasModales mod\Softv\SoftvMVC\bin\System.Web.WebPages.xml
+C:\Users\blanca\Desktop\Encuestas\EncuestasVistasModales mod\Softv\SoftvMVC\bin\System.Web.WebPages.Deployment.xml
+C:\Users\blanca\Desktop\Encuestas\EncuestasVistasModales mod\Softv\SoftvMVC\bin\System.Web.WebPages.Razor.xml
+C:\Users\blanca\Desktop\Encuestas\EncuestasVistasModales mod\Softv\SoftvMVC\bin\System.Web.Optimization.xml
+C:\Users\blanca\Desktop\Encuestas\EncuestasVistasModales mod\Softv\SoftvMVC\bin\Antlr3.Runtime.pdb
+C:\Users\blanca\Desktop\Encuestas\EncuestasVistasModales mod\Softv\SoftvMVC\bin\Microsoft.AspNet.Identity.Owin.xml
+C:\Users\blanca\Desktop\Encuestas\EncuestasVistasModales mod\Softv\SoftvMVC\bin\Microsoft.Owin.Security.xml
+C:\Users\blanca\Desktop\Encuestas\EncuestasVistasModales mod\Softv\SoftvMVC\bin\Microsoft.Owin.Security.Facebook.xml
+C:\Users\blanca\Desktop\Encuestas\EncuestasVistasModales mod\Softv\SoftvMVC\bin\Microsoft.Owin.Security.Cookies.xml
+C:\Users\blanca\Desktop\Encuestas\EncuestasVistasModales mod\Softv\SoftvMVC\bin\Microsoft.Owin.Security.OAuth.xml
+C:\Users\blanca\Desktop\Encuestas\EncuestasVistasModales mod\Softv\SoftvMVC\bin\Microsoft.Owin.Security.Google.xml
+C:\Users\blanca\Desktop\Encuestas\EncuestasVistasModales mod\Softv\SoftvMVC\bin\Microsoft.Owin.Security.Twitter.xml
+C:\Users\blanca\Desktop\Encuestas\EncuestasVistasModales mod\Softv\SoftvMVC\bin\Microsoft.Owin.Security.MicrosoftAccount.xml
+C:\Users\blanca\Desktop\Encuestas\EncuestasVistasModales mod\Softv\SoftvMVC\obj\Debug\SoftvMVC.csproj.App.config
+C:\Users\blanca\Desktop\Encuestas\EncuestasVistasModales mod\Softv\SoftvMVC\obj\Debug\SoftvMVC.csprojResolveAssemblyReference.cache
+C:\Users\blanca\Desktop\Encuestas\EncuestasVistasModales mod\Softv\SoftvMVC\obj\Debug\SoftvMVC.dll
+C:\Users\blanca\Desktop\Encuestas\EncuestasVistasModales mod\Softv\SoftvMVC\obj\Debug\SoftvMVC.pdb
+C:\Users\blanca\Desktop\Encuestas\EncuestasVistasModales mod 2\Softv\SoftvMVC\bin\SoftvMVC.dll.config
+C:\Users\blanca\Desktop\Encuestas\EncuestasVistasModales mod 2\Softv\SoftvMVC\bin\SoftvMVC.dll
+C:\Users\blanca\Desktop\Encuestas\EncuestasVistasModales mod 2\Softv\SoftvMVC\bin\SoftvMVC.pdb
+C:\Users\blanca\Desktop\Encuestas\EncuestasVistasModales mod 2\Softv\SoftvMVC\bin\Antlr3.Runtime.dll
+C:\Users\blanca\Desktop\Encuestas\EncuestasVistasModales mod 2\Softv\SoftvMVC\bin\EntityFramework.dll
+C:\Users\blanca\Desktop\Encuestas\EncuestasVistasModales mod 2\Softv\SoftvMVC\bin\EntityFramework.SqlServer.dll
+C:\Users\blanca\Desktop\Encuestas\EncuestasVistasModales mod 2\Softv\SoftvMVC\bin\Globals.dll
+C:\Users\blanca\Desktop\Encuestas\EncuestasVistasModales mod 2\Softv\SoftvMVC\bin\LinqToExcel.dll
+C:\Users\blanca\Desktop\Encuestas\EncuestasVistasModales mod 2\Softv\SoftvMVC\bin\log4net.dll
+C:\Users\blanca\Desktop\Encuestas\EncuestasVistasModales mod 2\Softv\SoftvMVC\bin\Microsoft.AspNet.Identity.Core.dll
+C:\Users\blanca\Desktop\Encuestas\EncuestasVistasModales mod 2\Softv\SoftvMVC\bin\Microsoft.AspNet.Identity.EntityFramework.dll
+C:\Users\blanca\Desktop\Encuestas\EncuestasVistasModales mod 2\Softv\SoftvMVC\bin\Microsoft.AspNet.Identity.Owin.dll
+C:\Users\blanca\Desktop\Encuestas\EncuestasVistasModales mod 2\Softv\SoftvMVC\bin\Microsoft.Owin.dll
+C:\Users\blanca\Desktop\Encuestas\EncuestasVistasModales mod 2\Softv\SoftvMVC\bin\Microsoft.Owin.Host.SystemWeb.dll
+C:\Users\blanca\Desktop\Encuestas\EncuestasVistasModales mod 2\Softv\SoftvMVC\bin\Microsoft.Owin.Security.Cookies.dll
+C:\Users\blanca\Desktop\Encuestas\EncuestasVistasModales mod 2\Softv\SoftvMVC\bin\Microsoft.Owin.Security.dll
+C:\Users\blanca\Desktop\Encuestas\EncuestasVistasModales mod 2\Softv\SoftvMVC\bin\Microsoft.Owin.Security.Facebook.dll
+C:\Users\blanca\Desktop\Encuestas\EncuestasVistasModales mod 2\Softv\SoftvMVC\bin\Microsoft.Owin.Security.Google.dll
+C:\Users\blanca\Desktop\Encuestas\EncuestasVistasModales mod 2\Softv\SoftvMVC\bin\Microsoft.Owin.Security.MicrosoftAccount.dll
+C:\Users\blanca\Desktop\Encuestas\EncuestasVistasModales mod 2\Softv\SoftvMVC\bin\Microsoft.Owin.Security.OAuth.dll
+C:\Users\blanca\Desktop\Encuestas\EncuestasVistasModales mod 2\Softv\SoftvMVC\bin\Microsoft.Owin.Security.Twitter.dll
+C:\Users\blanca\Desktop\Encuestas\EncuestasVistasModales mod 2\Softv\SoftvMVC\bin\Microsoft.Web.Infrastructure.dll
+C:\Users\blanca\Desktop\Encuestas\EncuestasVistasModales mod 2\Softv\SoftvMVC\bin\Newtonsoft.Json.dll
+C:\Users\blanca\Desktop\Encuestas\EncuestasVistasModales mod 2\Softv\SoftvMVC\bin\Owin.dll
+C:\Users\blanca\Desktop\Encuestas\EncuestasVistasModales mod 2\Softv\SoftvMVC\bin\PagedList.dll
+C:\Users\blanca\Desktop\Encuestas\EncuestasVistasModales mod 2\Softv\SoftvMVC\bin\PagedList.Mvc.dll
+C:\Users\blanca\Desktop\Encuestas\EncuestasVistasModales mod 2\Softv\SoftvMVC\bin\Remotion.Data.Linq.dll
+C:\Users\blanca\Desktop\Encuestas\EncuestasVistasModales mod 2\Softv\SoftvMVC\bin\Remotion.dll
+C:\Users\blanca\Desktop\Encuestas\EncuestasVistasModales mod 2\Softv\SoftvMVC\bin\Remotion.Interfaces.dll
+C:\Users\blanca\Desktop\Encuestas\EncuestasVistasModales mod 2\Softv\SoftvMVC\bin\Softv.Entities.dll
+C:\Users\blanca\Desktop\Encuestas\EncuestasVistasModales mod 2\Softv\SoftvMVC\bin\System.Net.Http.Extensions.dll
+C:\Users\blanca\Desktop\Encuestas\EncuestasVistasModales mod 2\Softv\SoftvMVC\bin\System.Net.Http.Formatting.dll
+C:\Users\blanca\Desktop\Encuestas\EncuestasVistasModales mod 2\Softv\SoftvMVC\bin\System.Net.Http.Primitives.dll
+C:\Users\blanca\Desktop\Encuestas\EncuestasVistasModales mod 2\Softv\SoftvMVC\bin\System.Web.Helpers.dll
+C:\Users\blanca\Desktop\Encuestas\EncuestasVistasModales mod 2\Softv\SoftvMVC\bin\System.Web.Http.dll
+C:\Users\blanca\Desktop\Encuestas\EncuestasVistasModales mod 2\Softv\SoftvMVC\bin\System.Web.Http.WebHost.dll
+C:\Users\blanca\Desktop\Encuestas\EncuestasVistasModales mod 2\Softv\SoftvMVC\bin\System.Web.Mvc.dll
+C:\Users\blanca\Desktop\Encuestas\EncuestasVistasModales mod 2\Softv\SoftvMVC\bin\System.Web.Optimization.dll
+C:\Users\blanca\Desktop\Encuestas\EncuestasVistasModales mod 2\Softv\SoftvMVC\bin\System.Web.Razor.dll
+C:\Users\blanca\Desktop\Encuestas\EncuestasVistasModales mod 2\Softv\SoftvMVC\bin\System.Web.WebPages.Deployment.dll
+C:\Users\blanca\Desktop\Encuestas\EncuestasVistasModales mod 2\Softv\SoftvMVC\bin\System.Web.WebPages.dll
+C:\Users\blanca\Desktop\Encuestas\EncuestasVistasModales mod 2\Softv\SoftvMVC\bin\System.Web.WebPages.Razor.dll
+C:\Users\blanca\Desktop\Encuestas\EncuestasVistasModales mod 2\Softv\SoftvMVC\bin\WebGrease.dll
+C:\Users\blanca\Desktop\Encuestas\EncuestasVistasModales mod 2\Softv\SoftvMVC\bin\Globals.pdb
+C:\Users\blanca\Desktop\Encuestas\EncuestasVistasModales mod 2\Softv\SoftvMVC\bin\Softv.Entities.pdb
+C:\Users\blanca\Desktop\Encuestas\EncuestasVistasModales mod 2\Softv\SoftvMVC\bin\EntityFramework.xml
+C:\Users\blanca\Desktop\Encuestas\EncuestasVistasModales mod 2\Softv\SoftvMVC\bin\EntityFramework.SqlServer.xml
+C:\Users\blanca\Desktop\Encuestas\EncuestasVistasModales mod 2\Softv\SoftvMVC\bin\LinqToExcel.xml
+C:\Users\blanca\Desktop\Encuestas\EncuestasVistasModales mod 2\Softv\SoftvMVC\bin\log4net.xml
+C:\Users\blanca\Desktop\Encuestas\EncuestasVistasModales mod 2\Softv\SoftvMVC\bin\Microsoft.AspNet.Identity.Core.xml
+C:\Users\blanca\Desktop\Encuestas\EncuestasVistasModales mod 2\Softv\SoftvMVC\bin\Microsoft.AspNet.Identity.EntityFramework.xml
+C:\Users\blanca\Desktop\Encuestas\EncuestasVistasModales mod 2\Softv\SoftvMVC\bin\Microsoft.Owin.xml
+C:\Users\blanca\Desktop\Encuestas\EncuestasVistasModales mod 2\Softv\SoftvMVC\bin\Microsoft.Owin.Host.SystemWeb.xml
+C:\Users\blanca\Desktop\Encuestas\EncuestasVistasModales mod 2\Softv\SoftvMVC\bin\Newtonsoft.Json.xml
+C:\Users\blanca\Desktop\Encuestas\EncuestasVistasModales mod 2\Softv\SoftvMVC\bin\PagedList.xml
+C:\Users\blanca\Desktop\Encuestas\EncuestasVistasModales mod 2\Softv\SoftvMVC\bin\PagedList.Mvc.xml
+C:\Users\blanca\Desktop\Encuestas\EncuestasVistasModales mod 2\Softv\SoftvMVC\bin\System.Net.Http.Extensions.xml
+C:\Users\blanca\Desktop\Encuestas\EncuestasVistasModales mod 2\Softv\SoftvMVC\bin\System.Net.Http.Formatting.xml
+C:\Users\blanca\Desktop\Encuestas\EncuestasVistasModales mod 2\Softv\SoftvMVC\bin\System.Net.Http.Primitives.xml
+C:\Users\blanca\Desktop\Encuestas\EncuestasVistasModales mod 2\Softv\SoftvMVC\bin\System.Web.Helpers.xml
+C:\Users\blanca\Desktop\Encuestas\EncuestasVistasModales mod 2\Softv\SoftvMVC\bin\System.Web.Http.xml
+C:\Users\blanca\Desktop\Encuestas\EncuestasVistasModales mod 2\Softv\SoftvMVC\bin\System.Web.Http.WebHost.xml
+C:\Users\blanca\Desktop\Encuestas\EncuestasVistasModales mod 2\Softv\SoftvMVC\bin\System.Web.Mvc.xml
+C:\Users\blanca\Desktop\Encuestas\EncuestasVistasModales mod 2\Softv\SoftvMVC\bin\System.Web.Razor.xml
+C:\Users\blanca\Desktop\Encuestas\EncuestasVistasModales mod 2\Softv\SoftvMVC\bin\System.Web.WebPages.xml
+C:\Users\blanca\Desktop\Encuestas\EncuestasVistasModales mod 2\Softv\SoftvMVC\bin\System.Web.WebPages.Deployment.xml
+C:\Users\blanca\Desktop\Encuestas\EncuestasVistasModales mod 2\Softv\SoftvMVC\bin\System.Web.WebPages.Razor.xml
+C:\Users\blanca\Desktop\Encuestas\EncuestasVistasModales mod 2\Softv\SoftvMVC\bin\System.Web.Optimization.xml
+C:\Users\blanca\Desktop\Encuestas\EncuestasVistasModales mod 2\Softv\SoftvMVC\bin\Antlr3.Runtime.pdb
+C:\Users\blanca\Desktop\Encuestas\EncuestasVistasModales mod 2\Softv\SoftvMVC\bin\Microsoft.AspNet.Identity.Owin.xml
+C:\Users\blanca\Desktop\Encuestas\EncuestasVistasModales mod 2\Softv\SoftvMVC\bin\Microsoft.Owin.Security.xml
+C:\Users\blanca\Desktop\Encuestas\EncuestasVistasModales mod 2\Softv\SoftvMVC\bin\Microsoft.Owin.Security.Facebook.xml
+C:\Users\blanca\Desktop\Encuestas\EncuestasVistasModales mod 2\Softv\SoftvMVC\bin\Microsoft.Owin.Security.Cookies.xml
+C:\Users\blanca\Desktop\Encuestas\EncuestasVistasModales mod 2\Softv\SoftvMVC\bin\Microsoft.Owin.Security.OAuth.xml
+C:\Users\blanca\Desktop\Encuestas\EncuestasVistasModales mod 2\Softv\SoftvMVC\bin\Microsoft.Owin.Security.Google.xml
+C:\Users\blanca\Desktop\Encuestas\EncuestasVistasModales mod 2\Softv\SoftvMVC\bin\Microsoft.Owin.Security.Twitter.xml
+C:\Users\blanca\Desktop\Encuestas\EncuestasVistasModales mod 2\Softv\SoftvMVC\bin\Microsoft.Owin.Security.MicrosoftAccount.xml
+C:\Users\blanca\Desktop\Encuestas\EncuestasVistasModales mod 2\Softv\SoftvMVC\obj\Debug\SoftvMVC.csproj.App.config
+C:\Users\blanca\Desktop\Encuestas\EncuestasVistasModales mod 2\Softv\SoftvMVC\obj\Debug\SoftvMVC.csprojResolveAssemblyReference.cache
+C:\Users\blanca\Desktop\Encuestas\EncuestasVistasModales mod 2\Softv\SoftvMVC\obj\Debug\SoftvMVC.dll
+C:\Users\blanca\Desktop\Encuestas\EncuestasVistasModales mod 2\Softv\SoftvMVC\obj\Debug\SoftvMVC.pdb
+C:\Users\blanca\Desktop\Encuestas\EncuestasVistasModales mod 3\Softv\SoftvMVC\bin\SoftvMVC.dll.config
+C:\Users\blanca\Desktop\Encuestas\EncuestasVistasModales mod 3\Softv\SoftvMVC\bin\SoftvMVC.dll
+C:\Users\blanca\Desktop\Encuestas\EncuestasVistasModales mod 3\Softv\SoftvMVC\bin\SoftvMVC.pdb
+C:\Users\blanca\Desktop\Encuestas\EncuestasVistasModales mod 3\Softv\SoftvMVC\bin\Antlr3.Runtime.dll
+C:\Users\blanca\Desktop\Encuestas\EncuestasVistasModales mod 3\Softv\SoftvMVC\bin\EntityFramework.dll
+C:\Users\blanca\Desktop\Encuestas\EncuestasVistasModales mod 3\Softv\SoftvMVC\bin\EntityFramework.SqlServer.dll
+C:\Users\blanca\Desktop\Encuestas\EncuestasVistasModales mod 3\Softv\SoftvMVC\bin\Globals.dll
+C:\Users\blanca\Desktop\Encuestas\EncuestasVistasModales mod 3\Softv\SoftvMVC\bin\LinqToExcel.dll
+C:\Users\blanca\Desktop\Encuestas\EncuestasVistasModales mod 3\Softv\SoftvMVC\bin\log4net.dll
+C:\Users\blanca\Desktop\Encuestas\EncuestasVistasModales mod 3\Softv\SoftvMVC\bin\Microsoft.AspNet.Identity.Core.dll
+C:\Users\blanca\Desktop\Encuestas\EncuestasVistasModales mod 3\Softv\SoftvMVC\bin\Microsoft.AspNet.Identity.EntityFramework.dll
+C:\Users\blanca\Desktop\Encuestas\EncuestasVistasModales mod 3\Softv\SoftvMVC\bin\Microsoft.AspNet.Identity.Owin.dll
+C:\Users\blanca\Desktop\Encuestas\EncuestasVistasModales mod 3\Softv\SoftvMVC\bin\Microsoft.Owin.dll
+C:\Users\blanca\Desktop\Encuestas\EncuestasVistasModales mod 3\Softv\SoftvMVC\bin\Microsoft.Owin.Host.SystemWeb.dll
+C:\Users\blanca\Desktop\Encuestas\EncuestasVistasModales mod 3\Softv\SoftvMVC\bin\Microsoft.Owin.Security.Cookies.dll
+C:\Users\blanca\Desktop\Encuestas\EncuestasVistasModales mod 3\Softv\SoftvMVC\bin\Microsoft.Owin.Security.dll
+C:\Users\blanca\Desktop\Encuestas\EncuestasVistasModales mod 3\Softv\SoftvMVC\bin\Microsoft.Owin.Security.Facebook.dll
+C:\Users\blanca\Desktop\Encuestas\EncuestasVistasModales mod 3\Softv\SoftvMVC\bin\Microsoft.Owin.Security.Google.dll
+C:\Users\blanca\Desktop\Encuestas\EncuestasVistasModales mod 3\Softv\SoftvMVC\bin\Microsoft.Owin.Security.MicrosoftAccount.dll
+C:\Users\blanca\Desktop\Encuestas\EncuestasVistasModales mod 3\Softv\SoftvMVC\bin\Microsoft.Owin.Security.OAuth.dll
+C:\Users\blanca\Desktop\Encuestas\EncuestasVistasModales mod 3\Softv\SoftvMVC\bin\Microsoft.Owin.Security.Twitter.dll
+C:\Users\blanca\Desktop\Encuestas\EncuestasVistasModales mod 3\Softv\SoftvMVC\bin\Microsoft.Web.Infrastructure.dll
+C:\Users\blanca\Desktop\Encuestas\EncuestasVistasModales mod 3\Softv\SoftvMVC\bin\Newtonsoft.Json.dll
+C:\Users\blanca\Desktop\Encuestas\EncuestasVistasModales mod 3\Softv\SoftvMVC\bin\Owin.dll
+C:\Users\blanca\Desktop\Encuestas\EncuestasVistasModales mod 3\Softv\SoftvMVC\bin\PagedList.dll
+C:\Users\blanca\Desktop\Encuestas\EncuestasVistasModales mod 3\Softv\SoftvMVC\bin\PagedList.Mvc.dll
+C:\Users\blanca\Desktop\Encuestas\EncuestasVistasModales mod 3\Softv\SoftvMVC\bin\Remotion.Data.Linq.dll
+C:\Users\blanca\Desktop\Encuestas\EncuestasVistasModales mod 3\Softv\SoftvMVC\bin\Remotion.dll
+C:\Users\blanca\Desktop\Encuestas\EncuestasVistasModales mod 3\Softv\SoftvMVC\bin\Remotion.Interfaces.dll
+C:\Users\blanca\Desktop\Encuestas\EncuestasVistasModales mod 3\Softv\SoftvMVC\bin\Softv.Entities.dll
+C:\Users\blanca\Desktop\Encuestas\EncuestasVistasModales mod 3\Softv\SoftvMVC\bin\System.Net.Http.Extensions.dll
+C:\Users\blanca\Desktop\Encuestas\EncuestasVistasModales mod 3\Softv\SoftvMVC\bin\System.Net.Http.Formatting.dll
+C:\Users\blanca\Desktop\Encuestas\EncuestasVistasModales mod 3\Softv\SoftvMVC\bin\System.Net.Http.Primitives.dll
+C:\Users\blanca\Desktop\Encuestas\EncuestasVistasModales mod 3\Softv\SoftvMVC\bin\System.Web.Helpers.dll
+C:\Users\blanca\Desktop\Encuestas\EncuestasVistasModales mod 3\Softv\SoftvMVC\bin\System.Web.Http.dll
+C:\Users\blanca\Desktop\Encuestas\EncuestasVistasModales mod 3\Softv\SoftvMVC\bin\System.Web.Http.WebHost.dll
+C:\Users\blanca\Desktop\Encuestas\EncuestasVistasModales mod 3\Softv\SoftvMVC\bin\System.Web.Mvc.dll
+C:\Users\blanca\Desktop\Encuestas\EncuestasVistasModales mod 3\Softv\SoftvMVC\bin\System.Web.Optimization.dll
+C:\Users\blanca\Desktop\Encuestas\EncuestasVistasModales mod 3\Softv\SoftvMVC\bin\System.Web.Razor.dll
+C:\Users\blanca\Desktop\Encuestas\EncuestasVistasModales mod 3\Softv\SoftvMVC\bin\System.Web.WebPages.Deployment.dll
+C:\Users\blanca\Desktop\Encuestas\EncuestasVistasModales mod 3\Softv\SoftvMVC\bin\System.Web.WebPages.dll
+C:\Users\blanca\Desktop\Encuestas\EncuestasVistasModales mod 3\Softv\SoftvMVC\bin\System.Web.WebPages.Razor.dll
+C:\Users\blanca\Desktop\Encuestas\EncuestasVistasModales mod 3\Softv\SoftvMVC\bin\WebGrease.dll
+C:\Users\blanca\Desktop\Encuestas\EncuestasVistasModales mod 3\Softv\SoftvMVC\bin\Globals.pdb
+C:\Users\blanca\Desktop\Encuestas\EncuestasVistasModales mod 3\Softv\SoftvMVC\bin\Softv.Entities.pdb
+C:\Users\blanca\Desktop\Encuestas\EncuestasVistasModales mod 3\Softv\SoftvMVC\bin\EntityFramework.xml
+C:\Users\blanca\Desktop\Encuestas\EncuestasVistasModales mod 3\Softv\SoftvMVC\bin\EntityFramework.SqlServer.xml
+C:\Users\blanca\Desktop\Encuestas\EncuestasVistasModales mod 3\Softv\SoftvMVC\bin\LinqToExcel.xml
+C:\Users\blanca\Desktop\Encuestas\EncuestasVistasModales mod 3\Softv\SoftvMVC\bin\log4net.xml
+C:\Users\blanca\Desktop\Encuestas\EncuestasVistasModales mod 3\Softv\SoftvMVC\bin\Microsoft.AspNet.Identity.Core.xml
+C:\Users\blanca\Desktop\Encuestas\EncuestasVistasModales mod 3\Softv\SoftvMVC\bin\Microsoft.AspNet.Identity.EntityFramework.xml
+C:\Users\blanca\Desktop\Encuestas\EncuestasVistasModales mod 3\Softv\SoftvMVC\bin\Microsoft.Owin.xml
+C:\Users\blanca\Desktop\Encuestas\EncuestasVistasModales mod 3\Softv\SoftvMVC\bin\Microsoft.Owin.Host.SystemWeb.xml
+C:\Users\blanca\Desktop\Encuestas\EncuestasVistasModales mod 3\Softv\SoftvMVC\bin\Newtonsoft.Json.xml
+C:\Users\blanca\Desktop\Encuestas\EncuestasVistasModales mod 3\Softv\SoftvMVC\bin\PagedList.xml
+C:\Users\blanca\Desktop\Encuestas\EncuestasVistasModales mod 3\Softv\SoftvMVC\bin\PagedList.Mvc.xml
+C:\Users\blanca\Desktop\Encuestas\EncuestasVistasModales mod 3\Softv\SoftvMVC\bin\System.Net.Http.Extensions.xml
+C:\Users\blanca\Desktop\Encuestas\EncuestasVistasModales mod 3\Softv\SoftvMVC\bin\System.Net.Http.Formatting.xml
+C:\Users\blanca\Desktop\Encuestas\EncuestasVistasModales mod 3\Softv\SoftvMVC\bin\System.Net.Http.Primitives.xml
+C:\Users\blanca\Desktop\Encuestas\EncuestasVistasModales mod 3\Softv\SoftvMVC\bin\System.Web.Helpers.xml
+C:\Users\blanca\Desktop\Encuestas\EncuestasVistasModales mod 3\Softv\SoftvMVC\bin\System.Web.Http.xml
+C:\Users\blanca\Desktop\Encuestas\EncuestasVistasModales mod 3\Softv\SoftvMVC\bin\System.Web.Http.WebHost.xml
+C:\Users\blanca\Desktop\Encuestas\EncuestasVistasModales mod 3\Softv\SoftvMVC\bin\System.Web.Mvc.xml
+C:\Users\blanca\Desktop\Encuestas\EncuestasVistasModales mod 3\Softv\SoftvMVC\bin\System.Web.Razor.xml
+C:\Users\blanca\Desktop\Encuestas\EncuestasVistasModales mod 3\Softv\SoftvMVC\bin\System.Web.WebPages.xml
+C:\Users\blanca\Desktop\Encuestas\EncuestasVistasModales mod 3\Softv\SoftvMVC\bin\System.Web.WebPages.Deployment.xml
+C:\Users\blanca\Desktop\Encuestas\EncuestasVistasModales mod 3\Softv\SoftvMVC\bin\System.Web.WebPages.Razor.xml
+C:\Users\blanca\Desktop\Encuestas\EncuestasVistasModales mod 3\Softv\SoftvMVC\bin\System.Web.Optimization.xml
+C:\Users\blanca\Desktop\Encuestas\EncuestasVistasModales mod 3\Softv\SoftvMVC\bin\Antlr3.Runtime.pdb
+C:\Users\blanca\Desktop\Encuestas\EncuestasVistasModales mod 3\Softv\SoftvMVC\bin\Microsoft.AspNet.Identity.Owin.xml
+C:\Users\blanca\Desktop\Encuestas\EncuestasVistasModales mod 3\Softv\SoftvMVC\bin\Microsoft.Owin.Security.xml
+C:\Users\blanca\Desktop\Encuestas\EncuestasVistasModales mod 3\Softv\SoftvMVC\bin\Microsoft.Owin.Security.Facebook.xml
+C:\Users\blanca\Desktop\Encuestas\EncuestasVistasModales mod 3\Softv\SoftvMVC\bin\Microsoft.Owin.Security.Cookies.xml
+C:\Users\blanca\Desktop\Encuestas\EncuestasVistasModales mod 3\Softv\SoftvMVC\bin\Microsoft.Owin.Security.OAuth.xml
+C:\Users\blanca\Desktop\Encuestas\EncuestasVistasModales mod 3\Softv\SoftvMVC\bin\Microsoft.Owin.Security.Google.xml
+C:\Users\blanca\Desktop\Encuestas\EncuestasVistasModales mod 3\Softv\SoftvMVC\bin\Microsoft.Owin.Security.Twitter.xml
+C:\Users\blanca\Desktop\Encuestas\EncuestasVistasModales mod 3\Softv\SoftvMVC\bin\Microsoft.Owin.Security.MicrosoftAccount.xml
+C:\Users\blanca\Desktop\Encuestas\EncuestasVistasModales mod 3\Softv\SoftvMVC\obj\Debug\SoftvMVC.csproj.App.config
+C:\Users\blanca\Desktop\Encuestas\EncuestasVistasModales mod 3\Softv\SoftvMVC\obj\Debug\SoftvMVC.csprojResolveAssemblyReference.cache
+C:\Users\blanca\Desktop\Encuestas\EncuestasVistasModales mod 3\Softv\SoftvMVC\obj\Debug\SoftvMVC.dll
+C:\Users\blanca\Desktop\Encuestas\EncuestasVistasModales mod 3\Softv\SoftvMVC\obj\Debug\SoftvMVC.pdb
+C:\Users\blanca\Desktop\Encuestas\EncuestasVistasModales mod 3 - copia\Softv\SoftvMVC\bin\SoftvMVC.dll.config
+C:\Users\blanca\Desktop\Encuestas\EncuestasVistasModales mod 3 - copia\Softv\SoftvMVC\bin\SoftvMVC.dll
+C:\Users\blanca\Desktop\Encuestas\EncuestasVistasModales mod 3 - copia\Softv\SoftvMVC\bin\SoftvMVC.pdb
+C:\Users\blanca\Desktop\Encuestas\EncuestasVistasModales mod 3 - copia\Softv\SoftvMVC\bin\Antlr3.Runtime.dll
+C:\Users\blanca\Desktop\Encuestas\EncuestasVistasModales mod 3 - copia\Softv\SoftvMVC\bin\EntityFramework.dll
+C:\Users\blanca\Desktop\Encuestas\EncuestasVistasModales mod 3 - copia\Softv\SoftvMVC\bin\EntityFramework.SqlServer.dll
+C:\Users\blanca\Desktop\Encuestas\EncuestasVistasModales mod 3 - copia\Softv\SoftvMVC\bin\Globals.dll
+C:\Users\blanca\Desktop\Encuestas\EncuestasVistasModales mod 3 - copia\Softv\SoftvMVC\bin\LinqToExcel.dll
+C:\Users\blanca\Desktop\Encuestas\EncuestasVistasModales mod 3 - copia\Softv\SoftvMVC\bin\log4net.dll
+C:\Users\blanca\Desktop\Encuestas\EncuestasVistasModales mod 3 - copia\Softv\SoftvMVC\bin\Microsoft.AspNet.Identity.Core.dll
+C:\Users\blanca\Desktop\Encuestas\EncuestasVistasModales mod 3 - copia\Softv\SoftvMVC\bin\Microsoft.AspNet.Identity.EntityFramework.dll
+C:\Users\blanca\Desktop\Encuestas\EncuestasVistasModales mod 3 - copia\Softv\SoftvMVC\bin\Microsoft.AspNet.Identity.Owin.dll
+C:\Users\blanca\Desktop\Encuestas\EncuestasVistasModales mod 3 - copia\Softv\SoftvMVC\bin\Microsoft.Owin.dll
+C:\Users\blanca\Desktop\Encuestas\EncuestasVistasModales mod 3 - copia\Softv\SoftvMVC\bin\Microsoft.Owin.Host.SystemWeb.dll
+C:\Users\blanca\Desktop\Encuestas\EncuestasVistasModales mod 3 - copia\Softv\SoftvMVC\bin\Microsoft.Owin.Security.Cookies.dll
+C:\Users\blanca\Desktop\Encuestas\EncuestasVistasModales mod 3 - copia\Softv\SoftvMVC\bin\Microsoft.Owin.Security.dll
+C:\Users\blanca\Desktop\Encuestas\EncuestasVistasModales mod 3 - copia\Softv\SoftvMVC\bin\Microsoft.Owin.Security.Facebook.dll
+C:\Users\blanca\Desktop\Encuestas\EncuestasVistasModales mod 3 - copia\Softv\SoftvMVC\bin\Microsoft.Owin.Security.Google.dll
+C:\Users\blanca\Desktop\Encuestas\EncuestasVistasModales mod 3 - copia\Softv\SoftvMVC\bin\Microsoft.Owin.Security.MicrosoftAccount.dll
+C:\Users\blanca\Desktop\Encuestas\EncuestasVistasModales mod 3 - copia\Softv\SoftvMVC\bin\Microsoft.Owin.Security.OAuth.dll
+C:\Users\blanca\Desktop\Encuestas\EncuestasVistasModales mod 3 - copia\Softv\SoftvMVC\bin\Microsoft.Owin.Security.Twitter.dll
+C:\Users\blanca\Desktop\Encuestas\EncuestasVistasModales mod 3 - copia\Softv\SoftvMVC\bin\Microsoft.Web.Infrastructure.dll
+C:\Users\blanca\Desktop\Encuestas\EncuestasVistasModales mod 3 - copia\Softv\SoftvMVC\bin\Newtonsoft.Json.dll
+C:\Users\blanca\Desktop\Encuestas\EncuestasVistasModales mod 3 - copia\Softv\SoftvMVC\bin\Owin.dll
+C:\Users\blanca\Desktop\Encuestas\EncuestasVistasModales mod 3 - copia\Softv\SoftvMVC\bin\PagedList.dll
+C:\Users\blanca\Desktop\Encuestas\EncuestasVistasModales mod 3 - copia\Softv\SoftvMVC\bin\PagedList.Mvc.dll
+C:\Users\blanca\Desktop\Encuestas\EncuestasVistasModales mod 3 - copia\Softv\SoftvMVC\bin\Remotion.Data.Linq.dll
+C:\Users\blanca\Desktop\Encuestas\EncuestasVistasModales mod 3 - copia\Softv\SoftvMVC\bin\Remotion.dll
+C:\Users\blanca\Desktop\Encuestas\EncuestasVistasModales mod 3 - copia\Softv\SoftvMVC\bin\Remotion.Interfaces.dll
+C:\Users\blanca\Desktop\Encuestas\EncuestasVistasModales mod 3 - copia\Softv\SoftvMVC\bin\Softv.Entities.dll
+C:\Users\blanca\Desktop\Encuestas\EncuestasVistasModales mod 3 - copia\Softv\SoftvMVC\bin\System.Net.Http.Extensions.dll
+C:\Users\blanca\Desktop\Encuestas\EncuestasVistasModales mod 3 - copia\Softv\SoftvMVC\bin\System.Net.Http.Formatting.dll
+C:\Users\blanca\Desktop\Encuestas\EncuestasVistasModales mod 3 - copia\Softv\SoftvMVC\bin\System.Net.Http.Primitives.dll
+C:\Users\blanca\Desktop\Encuestas\EncuestasVistasModales mod 3 - copia\Softv\SoftvMVC\bin\System.Web.Helpers.dll
+C:\Users\blanca\Desktop\Encuestas\EncuestasVistasModales mod 3 - copia\Softv\SoftvMVC\bin\System.Web.Http.dll
+C:\Users\blanca\Desktop\Encuestas\EncuestasVistasModales mod 3 - copia\Softv\SoftvMVC\bin\System.Web.Http.WebHost.dll
+C:\Users\blanca\Desktop\Encuestas\EncuestasVistasModales mod 3 - copia\Softv\SoftvMVC\bin\System.Web.Mvc.dll
+C:\Users\blanca\Desktop\Encuestas\EncuestasVistasModales mod 3 - copia\Softv\SoftvMVC\bin\System.Web.Optimization.dll
+C:\Users\blanca\Desktop\Encuestas\EncuestasVistasModales mod 3 - copia\Softv\SoftvMVC\bin\System.Web.Razor.dll
+C:\Users\blanca\Desktop\Encuestas\EncuestasVistasModales mod 3 - copia\Softv\SoftvMVC\bin\System.Web.WebPages.Deployment.dll
+C:\Users\blanca\Desktop\Encuestas\EncuestasVistasModales mod 3 - copia\Softv\SoftvMVC\bin\System.Web.WebPages.dll
+C:\Users\blanca\Desktop\Encuestas\EncuestasVistasModales mod 3 - copia\Softv\SoftvMVC\bin\System.Web.WebPages.Razor.dll
+C:\Users\blanca\Desktop\Encuestas\EncuestasVistasModales mod 3 - copia\Softv\SoftvMVC\bin\WebGrease.dll
+C:\Users\blanca\Desktop\Encuestas\EncuestasVistasModales mod 3 - copia\Softv\SoftvMVC\bin\Globals.pdb
+C:\Users\blanca\Desktop\Encuestas\EncuestasVistasModales mod 3 - copia\Softv\SoftvMVC\bin\Softv.Entities.pdb
+C:\Users\blanca\Desktop\Encuestas\EncuestasVistasModales mod 3 - copia\Softv\SoftvMVC\bin\EntityFramework.xml
+C:\Users\blanca\Desktop\Encuestas\EncuestasVistasModales mod 3 - copia\Softv\SoftvMVC\bin\EntityFramework.SqlServer.xml
+C:\Users\blanca\Desktop\Encuestas\EncuestasVistasModales mod 3 - copia\Softv\SoftvMVC\bin\LinqToExcel.xml
+C:\Users\blanca\Desktop\Encuestas\EncuestasVistasModales mod 3 - copia\Softv\SoftvMVC\bin\log4net.xml
+C:\Users\blanca\Desktop\Encuestas\EncuestasVistasModales mod 3 - copia\Softv\SoftvMVC\bin\Microsoft.AspNet.Identity.Core.xml
+C:\Users\blanca\Desktop\Encuestas\EncuestasVistasModales mod 3 - copia\Softv\SoftvMVC\bin\Microsoft.AspNet.Identity.EntityFramework.xml
+C:\Users\blanca\Desktop\Encuestas\EncuestasVistasModales mod 3 - copia\Softv\SoftvMVC\bin\Microsoft.Owin.xml
+C:\Users\blanca\Desktop\Encuestas\EncuestasVistasModales mod 3 - copia\Softv\SoftvMVC\bin\Microsoft.Owin.Host.SystemWeb.xml
+C:\Users\blanca\Desktop\Encuestas\EncuestasVistasModales mod 3 - copia\Softv\SoftvMVC\bin\Newtonsoft.Json.xml
+C:\Users\blanca\Desktop\Encuestas\EncuestasVistasModales mod 3 - copia\Softv\SoftvMVC\bin\PagedList.xml
+C:\Users\blanca\Desktop\Encuestas\EncuestasVistasModales mod 3 - copia\Softv\SoftvMVC\bin\PagedList.Mvc.xml
+C:\Users\blanca\Desktop\Encuestas\EncuestasVistasModales mod 3 - copia\Softv\SoftvMVC\bin\System.Net.Http.Extensions.xml
+C:\Users\blanca\Desktop\Encuestas\EncuestasVistasModales mod 3 - copia\Softv\SoftvMVC\bin\System.Net.Http.Formatting.xml
+C:\Users\blanca\Desktop\Encuestas\EncuestasVistasModales mod 3 - copia\Softv\SoftvMVC\bin\System.Net.Http.Primitives.xml
+C:\Users\blanca\Desktop\Encuestas\EncuestasVistasModales mod 3 - copia\Softv\SoftvMVC\bin\System.Web.Helpers.xml
+C:\Users\blanca\Desktop\Encuestas\EncuestasVistasModales mod 3 - copia\Softv\SoftvMVC\bin\System.Web.Http.xml
+C:\Users\blanca\Desktop\Encuestas\EncuestasVistasModales mod 3 - copia\Softv\SoftvMVC\bin\System.Web.Http.WebHost.xml
+C:\Users\blanca\Desktop\Encuestas\EncuestasVistasModales mod 3 - copia\Softv\SoftvMVC\bin\System.Web.Mvc.xml
+C:\Users\blanca\Desktop\Encuestas\EncuestasVistasModales mod 3 - copia\Softv\SoftvMVC\bin\System.Web.Razor.xml
+C:\Users\blanca\Desktop\Encuestas\EncuestasVistasModales mod 3 - copia\Softv\SoftvMVC\bin\System.Web.WebPages.xml
+C:\Users\blanca\Desktop\Encuestas\EncuestasVistasModales mod 3 - copia\Softv\SoftvMVC\bin\System.Web.WebPages.Deployment.xml
+C:\Users\blanca\Desktop\Encuestas\EncuestasVistasModales mod 3 - copia\Softv\SoftvMVC\bin\System.Web.WebPages.Razor.xml
+C:\Users\blanca\Desktop\Encuestas\EncuestasVistasModales mod 3 - copia\Softv\SoftvMVC\bin\System.Web.Optimization.xml
+C:\Users\blanca\Desktop\Encuestas\EncuestasVistasModales mod 3 - copia\Softv\SoftvMVC\bin\Antlr3.Runtime.pdb
+C:\Users\blanca\Desktop\Encuestas\EncuestasVistasModales mod 3 - copia\Softv\SoftvMVC\bin\Microsoft.AspNet.Identity.Owin.xml
+C:\Users\blanca\Desktop\Encuestas\EncuestasVistasModales mod 3 - copia\Softv\SoftvMVC\bin\Microsoft.Owin.Security.xml
+C:\Users\blanca\Desktop\Encuestas\EncuestasVistasModales mod 3 - copia\Softv\SoftvMVC\bin\Microsoft.Owin.Security.Facebook.xml
+C:\Users\blanca\Desktop\Encuestas\EncuestasVistasModales mod 3 - copia\Softv\SoftvMVC\bin\Microsoft.Owin.Security.Cookies.xml
+C:\Users\blanca\Desktop\Encuestas\EncuestasVistasModales mod 3 - copia\Softv\SoftvMVC\bin\Microsoft.Owin.Security.OAuth.xml
+C:\Users\blanca\Desktop\Encuestas\EncuestasVistasModales mod 3 - copia\Softv\SoftvMVC\bin\Microsoft.Owin.Security.Google.xml
+C:\Users\blanca\Desktop\Encuestas\EncuestasVistasModales mod 3 - copia\Softv\SoftvMVC\bin\Microsoft.Owin.Security.Twitter.xml
+C:\Users\blanca\Desktop\Encuestas\EncuestasVistasModales mod 3 - copia\Softv\SoftvMVC\bin\Microsoft.Owin.Security.MicrosoftAccount.xml
+C:\Users\blanca\Desktop\Encuestas\EncuestasVistasModales mod 3 - copia\Softv\SoftvMVC\obj\Debug\SoftvMVC.csproj.App.config
+C:\Users\blanca\Desktop\Encuestas\EncuestasVistasModales mod 3 - copia\Softv\SoftvMVC\obj\Debug\SoftvMVC.csprojResolveAssemblyReference.cache
+C:\Users\blanca\Desktop\Encuestas\EncuestasVistasModales mod 3 - copia\Softv\SoftvMVC\obj\Debug\SoftvMVC.dll
+C:\Users\blanca\Desktop\Encuestas\EncuestasVistasModales mod 3 - copia\Softv\SoftvMVC\obj\Debug\SoftvMVC.pdb
+C:\Users\blanca\Desktop\Encuestas\EncuestasVistasModales mod 3 - copia - copia\Softv\SoftvMVC\bin\SoftvMVC.dll.config
+C:\Users\blanca\Desktop\Encuestas\EncuestasVistasModales mod 3 - copia - copia\Softv\SoftvMVC\bin\SoftvMVC.dll
+C:\Users\blanca\Desktop\Encuestas\EncuestasVistasModales mod 3 - copia - copia\Softv\SoftvMVC\bin\SoftvMVC.pdb
+C:\Users\blanca\Desktop\Encuestas\EncuestasVistasModales mod 3 - copia - copia\Softv\SoftvMVC\bin\Antlr3.Runtime.dll
+C:\Users\blanca\Desktop\Encuestas\EncuestasVistasModales mod 3 - copia - copia\Softv\SoftvMVC\bin\EntityFramework.dll
+C:\Users\blanca\Desktop\Encuestas\EncuestasVistasModales mod 3 - copia - copia\Softv\SoftvMVC\bin\EntityFramework.SqlServer.dll
+C:\Users\blanca\Desktop\Encuestas\EncuestasVistasModales mod 3 - copia - copia\Softv\SoftvMVC\bin\Globals.dll
+C:\Users\blanca\Desktop\Encuestas\EncuestasVistasModales mod 3 - copia - copia\Softv\SoftvMVC\bin\LinqToExcel.dll
+C:\Users\blanca\Desktop\Encuestas\EncuestasVistasModales mod 3 - copia - copia\Softv\SoftvMVC\bin\log4net.dll
+C:\Users\blanca\Desktop\Encuestas\EncuestasVistasModales mod 3 - copia - copia\Softv\SoftvMVC\bin\Microsoft.AspNet.Identity.Core.dll
+C:\Users\blanca\Desktop\Encuestas\EncuestasVistasModales mod 3 - copia - copia\Softv\SoftvMVC\bin\Microsoft.AspNet.Identity.EntityFramework.dll
+C:\Users\blanca\Desktop\Encuestas\EncuestasVistasModales mod 3 - copia - copia\Softv\SoftvMVC\bin\Microsoft.AspNet.Identity.Owin.dll
+C:\Users\blanca\Desktop\Encuestas\EncuestasVistasModales mod 3 - copia - copia\Softv\SoftvMVC\bin\Microsoft.Owin.dll
+C:\Users\blanca\Desktop\Encuestas\EncuestasVistasModales mod 3 - copia - copia\Softv\SoftvMVC\bin\Microsoft.Owin.Host.SystemWeb.dll
+C:\Users\blanca\Desktop\Encuestas\EncuestasVistasModales mod 3 - copia - copia\Softv\SoftvMVC\bin\Microsoft.Owin.Security.Cookies.dll
+C:\Users\blanca\Desktop\Encuestas\EncuestasVistasModales mod 3 - copia - copia\Softv\SoftvMVC\bin\Microsoft.Owin.Security.dll
+C:\Users\blanca\Desktop\Encuestas\EncuestasVistasModales mod 3 - copia - copia\Softv\SoftvMVC\bin\Microsoft.Owin.Security.Facebook.dll
+C:\Users\blanca\Desktop\Encuestas\EncuestasVistasModales mod 3 - copia - copia\Softv\SoftvMVC\bin\Microsoft.Owin.Security.Google.dll
+C:\Users\blanca\Desktop\Encuestas\EncuestasVistasModales mod 3 - copia - copia\Softv\SoftvMVC\bin\Microsoft.Owin.Security.MicrosoftAccount.dll
+C:\Users\blanca\Desktop\Encuestas\EncuestasVistasModales mod 3 - copia - copia\Softv\SoftvMVC\bin\Microsoft.Owin.Security.OAuth.dll
+C:\Users\blanca\Desktop\Encuestas\EncuestasVistasModales mod 3 - copia - copia\Softv\SoftvMVC\bin\Microsoft.Owin.Security.Twitter.dll
+C:\Users\blanca\Desktop\Encuestas\EncuestasVistasModales mod 3 - copia - copia\Softv\SoftvMVC\bin\Microsoft.Web.Infrastructure.dll
+C:\Users\blanca\Desktop\Encuestas\EncuestasVistasModales mod 3 - copia - copia\Softv\SoftvMVC\bin\Newtonsoft.Json.dll
+C:\Users\blanca\Desktop\Encuestas\EncuestasVistasModales mod 3 - copia - copia\Softv\SoftvMVC\bin\Owin.dll
+C:\Users\blanca\Desktop\Encuestas\EncuestasVistasModales mod 3 - copia - copia\Softv\SoftvMVC\bin\PagedList.dll
+C:\Users\blanca\Desktop\Encuestas\EncuestasVistasModales mod 3 - copia - copia\Softv\SoftvMVC\bin\PagedList.Mvc.dll
+C:\Users\blanca\Desktop\Encuestas\EncuestasVistasModales mod 3 - copia - copia\Softv\SoftvMVC\bin\Remotion.Data.Linq.dll
+C:\Users\blanca\Desktop\Encuestas\EncuestasVistasModales mod 3 - copia - copia\Softv\SoftvMVC\bin\Remotion.dll
+C:\Users\blanca\Desktop\Encuestas\EncuestasVistasModales mod 3 - copia - copia\Softv\SoftvMVC\bin\Remotion.Interfaces.dll
+C:\Users\blanca\Desktop\Encuestas\EncuestasVistasModales mod 3 - copia - copia\Softv\SoftvMVC\bin\Softv.Entities.dll
+C:\Users\blanca\Desktop\Encuestas\EncuestasVistasModales mod 3 - copia - copia\Softv\SoftvMVC\bin\System.Net.Http.Extensions.dll
+C:\Users\blanca\Desktop\Encuestas\EncuestasVistasModales mod 3 - copia - copia\Softv\SoftvMVC\bin\System.Net.Http.Formatting.dll
+C:\Users\blanca\Desktop\Encuestas\EncuestasVistasModales mod 3 - copia - copia\Softv\SoftvMVC\bin\System.Net.Http.Primitives.dll
+C:\Users\blanca\Desktop\Encuestas\EncuestasVistasModales mod 3 - copia - copia\Softv\SoftvMVC\bin\System.Web.Helpers.dll
+C:\Users\blanca\Desktop\Encuestas\EncuestasVistasModales mod 3 - copia - copia\Softv\SoftvMVC\bin\System.Web.Http.dll
+C:\Users\blanca\Desktop\Encuestas\EncuestasVistasModales mod 3 - copia - copia\Softv\SoftvMVC\bin\System.Web.Http.WebHost.dll
+C:\Users\blanca\Desktop\Encuestas\EncuestasVistasModales mod 3 - copia - copia\Softv\SoftvMVC\bin\System.Web.Mvc.dll
+C:\Users\blanca\Desktop\Encuestas\EncuestasVistasModales mod 3 - copia - copia\Softv\SoftvMVC\bin\System.Web.Optimization.dll
+C:\Users\blanca\Desktop\Encuestas\EncuestasVistasModales mod 3 - copia - copia\Softv\SoftvMVC\bin\System.Web.Razor.dll
+C:\Users\blanca\Desktop\Encuestas\EncuestasVistasModales mod 3 - copia - copia\Softv\SoftvMVC\bin\System.Web.WebPages.Deployment.dll
+C:\Users\blanca\Desktop\Encuestas\EncuestasVistasModales mod 3 - copia - copia\Softv\SoftvMVC\bin\System.Web.WebPages.dll
+C:\Users\blanca\Desktop\Encuestas\EncuestasVistasModales mod 3 - copia - copia\Softv\SoftvMVC\bin\System.Web.WebPages.Razor.dll
+C:\Users\blanca\Desktop\Encuestas\EncuestasVistasModales mod 3 - copia - copia\Softv\SoftvMVC\bin\WebGrease.dll
+C:\Users\blanca\Desktop\Encuestas\EncuestasVistasModales mod 3 - copia - copia\Softv\SoftvMVC\bin\Globals.pdb
+C:\Users\blanca\Desktop\Encuestas\EncuestasVistasModales mod 3 - copia - copia\Softv\SoftvMVC\bin\Softv.Entities.pdb
+C:\Users\blanca\Desktop\Encuestas\EncuestasVistasModales mod 3 - copia - copia\Softv\SoftvMVC\bin\EntityFramework.xml
+C:\Users\blanca\Desktop\Encuestas\EncuestasVistasModales mod 3 - copia - copia\Softv\SoftvMVC\bin\EntityFramework.SqlServer.xml
+C:\Users\blanca\Desktop\Encuestas\EncuestasVistasModales mod 3 - copia - copia\Softv\SoftvMVC\bin\LinqToExcel.xml
+C:\Users\blanca\Desktop\Encuestas\EncuestasVistasModales mod 3 - copia - copia\Softv\SoftvMVC\bin\log4net.xml
+C:\Users\blanca\Desktop\Encuestas\EncuestasVistasModales mod 3 - copia - copia\Softv\SoftvMVC\bin\Microsoft.AspNet.Identity.Core.xml
+C:\Users\blanca\Desktop\Encuestas\EncuestasVistasModales mod 3 - copia - copia\Softv\SoftvMVC\bin\Microsoft.AspNet.Identity.EntityFramework.xml
+C:\Users\blanca\Desktop\Encuestas\EncuestasVistasModales mod 3 - copia - copia\Softv\SoftvMVC\bin\Microsoft.Owin.xml
+C:\Users\blanca\Desktop\Encuestas\EncuestasVistasModales mod 3 - copia - copia\Softv\SoftvMVC\bin\Microsoft.Owin.Host.SystemWeb.xml
+C:\Users\blanca\Desktop\Encuestas\EncuestasVistasModales mod 3 - copia - copia\Softv\SoftvMVC\bin\Newtonsoft.Json.xml
+C:\Users\blanca\Desktop\Encuestas\EncuestasVistasModales mod 3 - copia - copia\Softv\SoftvMVC\bin\PagedList.xml
+C:\Users\blanca\Desktop\Encuestas\EncuestasVistasModales mod 3 - copia - copia\Softv\SoftvMVC\bin\PagedList.Mvc.xml
+C:\Users\blanca\Desktop\Encuestas\EncuestasVistasModales mod 3 - copia - copia\Softv\SoftvMVC\bin\System.Net.Http.Extensions.xml
+C:\Users\blanca\Desktop\Encuestas\EncuestasVistasModales mod 3 - copia - copia\Softv\SoftvMVC\bin\System.Net.Http.Formatting.xml
+C:\Users\blanca\Desktop\Encuestas\EncuestasVistasModales mod 3 - copia - copia\Softv\SoftvMVC\bin\System.Net.Http.Primitives.xml
+C:\Users\blanca\Desktop\Encuestas\EncuestasVistasModales mod 3 - copia - copia\Softv\SoftvMVC\bin\System.Web.Helpers.xml
+C:\Users\blanca\Desktop\Encuestas\EncuestasVistasModales mod 3 - copia - copia\Softv\SoftvMVC\bin\System.Web.Http.xml
+C:\Users\blanca\Desktop\Encuestas\EncuestasVistasModales mod 3 - copia - copia\Softv\SoftvMVC\bin\System.Web.Http.WebHost.xml
+C:\Users\blanca\Desktop\Encuestas\EncuestasVistasModales mod 3 - copia - copia\Softv\SoftvMVC\bin\System.Web.Mvc.xml
+C:\Users\blanca\Desktop\Encuestas\EncuestasVistasModales mod 3 - copia - copia\Softv\SoftvMVC\bin\System.Web.Razor.xml
+C:\Users\blanca\Desktop\Encuestas\EncuestasVistasModales mod 3 - copia - copia\Softv\SoftvMVC\bin\System.Web.WebPages.xml
+C:\Users\blanca\Desktop\Encuestas\EncuestasVistasModales mod 3 - copia - copia\Softv\SoftvMVC\bin\System.Web.WebPages.Deployment.xml
+C:\Users\blanca\Desktop\Encuestas\EncuestasVistasModales mod 3 - copia - copia\Softv\SoftvMVC\bin\System.Web.WebPages.Razor.xml
+C:\Users\blanca\Desktop\Encuestas\EncuestasVistasModales mod 3 - copia - copia\Softv\SoftvMVC\bin\System.Web.Optimization.xml
+C:\Users\blanca\Desktop\Encuestas\EncuestasVistasModales mod 3 - copia - copia\Softv\SoftvMVC\bin\Antlr3.Runtime.pdb
+C:\Users\blanca\Desktop\Encuestas\EncuestasVistasModales mod 3 - copia - copia\Softv\SoftvMVC\bin\Microsoft.AspNet.Identity.Owin.xml
+C:\Users\blanca\Desktop\Encuestas\EncuestasVistasModales mod 3 - copia - copia\Softv\SoftvMVC\bin\Microsoft.Owin.Security.xml
+C:\Users\blanca\Desktop\Encuestas\EncuestasVistasModales mod 3 - copia - copia\Softv\SoftvMVC\bin\Microsoft.Owin.Security.Facebook.xml
+C:\Users\blanca\Desktop\Encuestas\EncuestasVistasModales mod 3 - copia - copia\Softv\SoftvMVC\bin\Microsoft.Owin.Security.Cookies.xml
+C:\Users\blanca\Desktop\Encuestas\EncuestasVistasModales mod 3 - copia - copia\Softv\SoftvMVC\bin\Microsoft.Owin.Security.OAuth.xml
+C:\Users\blanca\Desktop\Encuestas\EncuestasVistasModales mod 3 - copia - copia\Softv\SoftvMVC\bin\Microsoft.Owin.Security.Google.xml
+C:\Users\blanca\Desktop\Encuestas\EncuestasVistasModales mod 3 - copia - copia\Softv\SoftvMVC\bin\Microsoft.Owin.Security.Twitter.xml
+C:\Users\blanca\Desktop\Encuestas\EncuestasVistasModales mod 3 - copia - copia\Softv\SoftvMVC\bin\Microsoft.Owin.Security.MicrosoftAccount.xml
+C:\Users\blanca\Desktop\Encuestas\EncuestasVistasModales mod 3 - copia - copia\Softv\SoftvMVC\obj\Debug\SoftvMVC.csproj.App.config
+C:\Users\blanca\Desktop\Encuestas\EncuestasVistasModales mod 3 - copia - copia\Softv\SoftvMVC\obj\Debug\SoftvMVC.csprojResolveAssemblyReference.cache
+C:\Users\blanca\Desktop\Encuestas\EncuestasVistasModales mod 3 - copia - copia\Softv\SoftvMVC\obj\Debug\SoftvMVC.dll
+C:\Users\blanca\Desktop\Encuestas\EncuestasVistasModales mod 3 - copia - copia\Softv\SoftvMVC\obj\Debug\SoftvMVC.pdb
+D:\Exes\EncuestasVistasModales mod 3\Softv\SoftvMVC\bin\SoftvMVC.dll.config
+D:\Exes\EncuestasVistasModales mod 3\Softv\SoftvMVC\bin\SoftvMVC.dll
+D:\Exes\EncuestasVistasModales mod 3\Softv\SoftvMVC\bin\SoftvMVC.pdb
+D:\Exes\EncuestasVistasModales mod 3\Softv\SoftvMVC\bin\Antlr3.Runtime.dll
+D:\Exes\EncuestasVistasModales mod 3\Softv\SoftvMVC\bin\EntityFramework.dll
+D:\Exes\EncuestasVistasModales mod 3\Softv\SoftvMVC\bin\EntityFramework.SqlServer.dll
+D:\Exes\EncuestasVistasModales mod 3\Softv\SoftvMVC\bin\Globals.dll
+D:\Exes\EncuestasVistasModales mod 3\Softv\SoftvMVC\bin\LinqToExcel.dll
+D:\Exes\EncuestasVistasModales mod 3\Softv\SoftvMVC\bin\log4net.dll
+D:\Exes\EncuestasVistasModales mod 3\Softv\SoftvMVC\bin\Microsoft.AspNet.Identity.Core.dll
+D:\Exes\EncuestasVistasModales mod 3\Softv\SoftvMVC\bin\Microsoft.AspNet.Identity.EntityFramework.dll
+D:\Exes\EncuestasVistasModales mod 3\Softv\SoftvMVC\bin\Microsoft.AspNet.Identity.Owin.dll
+D:\Exes\EncuestasVistasModales mod 3\Softv\SoftvMVC\bin\Microsoft.Owin.dll
+D:\Exes\EncuestasVistasModales mod 3\Softv\SoftvMVC\bin\Microsoft.Owin.Host.SystemWeb.dll
+D:\Exes\EncuestasVistasModales mod 3\Softv\SoftvMVC\bin\Microsoft.Owin.Security.Cookies.dll
+D:\Exes\EncuestasVistasModales mod 3\Softv\SoftvMVC\bin\Microsoft.Owin.Security.dll
+D:\Exes\EncuestasVistasModales mod 3\Softv\SoftvMVC\bin\Microsoft.Owin.Security.Facebook.dll
+D:\Exes\EncuestasVistasModales mod 3\Softv\SoftvMVC\bin\Microsoft.Owin.Security.Google.dll
+D:\Exes\EncuestasVistasModales mod 3\Softv\SoftvMVC\bin\Microsoft.Owin.Security.MicrosoftAccount.dll
+D:\Exes\EncuestasVistasModales mod 3\Softv\SoftvMVC\bin\Microsoft.Owin.Security.OAuth.dll
+D:\Exes\EncuestasVistasModales mod 3\Softv\SoftvMVC\bin\Microsoft.Owin.Security.Twitter.dll
+D:\Exes\EncuestasVistasModales mod 3\Softv\SoftvMVC\bin\Microsoft.Web.Infrastructure.dll
+D:\Exes\EncuestasVistasModales mod 3\Softv\SoftvMVC\bin\Newtonsoft.Json.dll
+D:\Exes\EncuestasVistasModales mod 3\Softv\SoftvMVC\bin\Owin.dll
+D:\Exes\EncuestasVistasModales mod 3\Softv\SoftvMVC\bin\PagedList.dll
+D:\Exes\EncuestasVistasModales mod 3\Softv\SoftvMVC\bin\PagedList.Mvc.dll
+D:\Exes\EncuestasVistasModales mod 3\Softv\SoftvMVC\bin\Remotion.Data.Linq.dll
+D:\Exes\EncuestasVistasModales mod 3\Softv\SoftvMVC\bin\Remotion.dll
+D:\Exes\EncuestasVistasModales mod 3\Softv\SoftvMVC\bin\Remotion.Interfaces.dll
+D:\Exes\EncuestasVistasModales mod 3\Softv\SoftvMVC\bin\Softv.Entities.dll
+D:\Exes\EncuestasVistasModales mod 3\Softv\SoftvMVC\bin\System.Net.Http.Extensions.dll
+D:\Exes\EncuestasVistasModales mod 3\Softv\SoftvMVC\bin\System.Net.Http.Formatting.dll
+D:\Exes\EncuestasVistasModales mod 3\Softv\SoftvMVC\bin\System.Net.Http.Primitives.dll
+D:\Exes\EncuestasVistasModales mod 3\Softv\SoftvMVC\bin\System.Web.Helpers.dll
+D:\Exes\EncuestasVistasModales mod 3\Softv\SoftvMVC\bin\System.Web.Http.dll
+D:\Exes\EncuestasVistasModales mod 3\Softv\SoftvMVC\bin\System.Web.Http.WebHost.dll
+D:\Exes\EncuestasVistasModales mod 3\Softv\SoftvMVC\bin\System.Web.Mvc.dll
+D:\Exes\EncuestasVistasModales mod 3\Softv\SoftvMVC\bin\System.Web.Optimization.dll
+D:\Exes\EncuestasVistasModales mod 3\Softv\SoftvMVC\bin\System.Web.Razor.dll
+D:\Exes\EncuestasVistasModales mod 3\Softv\SoftvMVC\bin\System.Web.WebPages.Deployment.dll
+D:\Exes\EncuestasVistasModales mod 3\Softv\SoftvMVC\bin\System.Web.WebPages.dll
+D:\Exes\EncuestasVistasModales mod 3\Softv\SoftvMVC\bin\System.Web.WebPages.Razor.dll
+D:\Exes\EncuestasVistasModales mod 3\Softv\SoftvMVC\bin\WebGrease.dll
+D:\Exes\EncuestasVistasModales mod 3\Softv\SoftvMVC\bin\Globals.pdb
+D:\Exes\EncuestasVistasModales mod 3\Softv\SoftvMVC\bin\Softv.Entities.pdb
+D:\Exes\EncuestasVistasModales mod 3\Softv\SoftvMVC\bin\EntityFramework.xml
+D:\Exes\EncuestasVistasModales mod 3\Softv\SoftvMVC\bin\EntityFramework.SqlServer.xml
+D:\Exes\EncuestasVistasModales mod 3\Softv\SoftvMVC\bin\LinqToExcel.xml
+D:\Exes\EncuestasVistasModales mod 3\Softv\SoftvMVC\bin\log4net.xml
+D:\Exes\EncuestasVistasModales mod 3\Softv\SoftvMVC\bin\Microsoft.AspNet.Identity.Core.xml
+D:\Exes\EncuestasVistasModales mod 3\Softv\SoftvMVC\bin\Microsoft.AspNet.Identity.EntityFramework.xml
+D:\Exes\EncuestasVistasModales mod 3\Softv\SoftvMVC\bin\Microsoft.Owin.xml
+D:\Exes\EncuestasVistasModales mod 3\Softv\SoftvMVC\bin\Microsoft.Owin.Host.SystemWeb.xml
+D:\Exes\EncuestasVistasModales mod 3\Softv\SoftvMVC\bin\Newtonsoft.Json.xml
+D:\Exes\EncuestasVistasModales mod 3\Softv\SoftvMVC\bin\PagedList.xml
+D:\Exes\EncuestasVistasModales mod 3\Softv\SoftvMVC\bin\PagedList.Mvc.xml
+D:\Exes\EncuestasVistasModales mod 3\Softv\SoftvMVC\bin\System.Net.Http.Extensions.xml
+D:\Exes\EncuestasVistasModales mod 3\Softv\SoftvMVC\bin\System.Net.Http.Formatting.xml
+D:\Exes\EncuestasVistasModales mod 3\Softv\SoftvMVC\bin\System.Net.Http.Primitives.xml
+D:\Exes\EncuestasVistasModales mod 3\Softv\SoftvMVC\bin\System.Web.Helpers.xml
+D:\Exes\EncuestasVistasModales mod 3\Softv\SoftvMVC\bin\System.Web.Http.xml
+D:\Exes\EncuestasVistasModales mod 3\Softv\SoftvMVC\bin\System.Web.Http.WebHost.xml
+D:\Exes\EncuestasVistasModales mod 3\Softv\SoftvMVC\bin\System.Web.Mvc.xml
+D:\Exes\EncuestasVistasModales mod 3\Softv\SoftvMVC\bin\System.Web.Razor.xml
+D:\Exes\EncuestasVistasModales mod 3\Softv\SoftvMVC\bin\System.Web.WebPages.xml
+D:\Exes\EncuestasVistasModales mod 3\Softv\SoftvMVC\bin\System.Web.WebPages.Deployment.xml
+D:\Exes\EncuestasVistasModales mod 3\Softv\SoftvMVC\bin\System.Web.WebPages.Razor.xml
+D:\Exes\EncuestasVistasModales mod 3\Softv\SoftvMVC\bin\System.Web.Optimization.xml
+D:\Exes\EncuestasVistasModales mod 3\Softv\SoftvMVC\bin\Antlr3.Runtime.pdb
+D:\Exes\EncuestasVistasModales mod 3\Softv\SoftvMVC\bin\Microsoft.AspNet.Identity.Owin.xml
+D:\Exes\EncuestasVistasModales mod 3\Softv\SoftvMVC\bin\Microsoft.Owin.Security.xml
+D:\Exes\EncuestasVistasModales mod 3\Softv\SoftvMVC\bin\Microsoft.Owin.Security.Facebook.xml
+D:\Exes\EncuestasVistasModales mod 3\Softv\SoftvMVC\bin\Microsoft.Owin.Security.Cookies.xml
+D:\Exes\EncuestasVistasModales mod 3\Softv\SoftvMVC\bin\Microsoft.Owin.Security.OAuth.xml
+D:\Exes\EncuestasVistasModales mod 3\Softv\SoftvMVC\bin\Microsoft.Owin.Security.Google.xml
+D:\Exes\EncuestasVistasModales mod 3\Softv\SoftvMVC\bin\Microsoft.Owin.Security.Twitter.xml
+D:\Exes\EncuestasVistasModales mod 3\Softv\SoftvMVC\bin\Microsoft.Owin.Security.MicrosoftAccount.xml
+D:\Exes\EncuestasVistasModales mod 3\Softv\SoftvMVC\obj\Debug\SoftvMVC.csproj.App.config
+D:\Exes\EncuestasVistasModales mod 3\Softv\SoftvMVC\obj\Debug\SoftvMVC.csprojResolveAssemblyReference.cache
+D:\Exes\EncuestasVistasModales mod 3\Softv\SoftvMVC\obj\Debug\SoftvMVC.dll
+D:\Exes\EncuestasVistasModales mod 3\Softv\SoftvMVC\obj\Debug\SoftvMVC.pdb
+\\FABIAN-PC\Exes\EncuestasVistasModales mod 3\Softv\SoftvMVC\bin\SoftvMVC.dll.config
+\\FABIAN-PC\Exes\EncuestasVistasModales mod 3\Softv\SoftvMVC\bin\SoftvMVC.dll
+\\FABIAN-PC\Exes\EncuestasVistasModales mod 3\Softv\SoftvMVC\bin\SoftvMVC.pdb
+\\FABIAN-PC\Exes\EncuestasVistasModales mod 3\Softv\SoftvMVC\bin\Antlr3.Runtime.dll
+\\FABIAN-PC\Exes\EncuestasVistasModales mod 3\Softv\SoftvMVC\bin\EntityFramework.dll
+\\FABIAN-PC\Exes\EncuestasVistasModales mod 3\Softv\SoftvMVC\bin\EntityFramework.SqlServer.dll
+\\FABIAN-PC\Exes\EncuestasVistasModales mod 3\Softv\SoftvMVC\bin\Globals.dll
+\\FABIAN-PC\Exes\EncuestasVistasModales mod 3\Softv\SoftvMVC\bin\LinqToExcel.dll
+\\FABIAN-PC\Exes\EncuestasVistasModales mod 3\Softv\SoftvMVC\bin\log4net.dll
+\\FABIAN-PC\Exes\EncuestasVistasModales mod 3\Softv\SoftvMVC\bin\Microsoft.AspNet.Identity.Core.dll
+\\FABIAN-PC\Exes\EncuestasVistasModales mod 3\Softv\SoftvMVC\bin\Microsoft.AspNet.Identity.EntityFramework.dll
+\\FABIAN-PC\Exes\EncuestasVistasModales mod 3\Softv\SoftvMVC\bin\Microsoft.AspNet.Identity.Owin.dll
+\\FABIAN-PC\Exes\EncuestasVistasModales mod 3\Softv\SoftvMVC\bin\Microsoft.Owin.dll
+\\FABIAN-PC\Exes\EncuestasVistasModales mod 3\Softv\SoftvMVC\bin\Microsoft.Owin.Host.SystemWeb.dll
+\\FABIAN-PC\Exes\EncuestasVistasModales mod 3\Softv\SoftvMVC\bin\Microsoft.Owin.Security.Cookies.dll
+\\FABIAN-PC\Exes\EncuestasVistasModales mod 3\Softv\SoftvMVC\bin\Microsoft.Owin.Security.dll
+\\FABIAN-PC\Exes\EncuestasVistasModales mod 3\Softv\SoftvMVC\bin\Microsoft.Owin.Security.Facebook.dll
+\\FABIAN-PC\Exes\EncuestasVistasModales mod 3\Softv\SoftvMVC\bin\Microsoft.Owin.Security.Google.dll
+\\FABIAN-PC\Exes\EncuestasVistasModales mod 3\Softv\SoftvMVC\bin\Microsoft.Owin.Security.MicrosoftAccount.dll
+\\FABIAN-PC\Exes\EncuestasVistasModales mod 3\Softv\SoftvMVC\bin\Microsoft.Owin.Security.OAuth.dll
+\\FABIAN-PC\Exes\EncuestasVistasModales mod 3\Softv\SoftvMVC\bin\Microsoft.Owin.Security.Twitter.dll
+\\FABIAN-PC\Exes\EncuestasVistasModales mod 3\Softv\SoftvMVC\bin\Microsoft.Web.Infrastructure.dll
+\\FABIAN-PC\Exes\EncuestasVistasModales mod 3\Softv\SoftvMVC\bin\Newtonsoft.Json.dll
+\\FABIAN-PC\Exes\EncuestasVistasModales mod 3\Softv\SoftvMVC\bin\Owin.dll
+\\FABIAN-PC\Exes\EncuestasVistasModales mod 3\Softv\SoftvMVC\bin\PagedList.dll
+\\FABIAN-PC\Exes\EncuestasVistasModales mod 3\Softv\SoftvMVC\bin\PagedList.Mvc.dll
+\\FABIAN-PC\Exes\EncuestasVistasModales mod 3\Softv\SoftvMVC\bin\Remotion.Data.Linq.dll
+\\FABIAN-PC\Exes\EncuestasVistasModales mod 3\Softv\SoftvMVC\bin\Remotion.dll
+\\FABIAN-PC\Exes\EncuestasVistasModales mod 3\Softv\SoftvMVC\bin\Remotion.Interfaces.dll
+\\FABIAN-PC\Exes\EncuestasVistasModales mod 3\Softv\SoftvMVC\bin\Softv.Entities.dll
+\\FABIAN-PC\Exes\EncuestasVistasModales mod 3\Softv\SoftvMVC\bin\System.Net.Http.Extensions.dll
+\\FABIAN-PC\Exes\EncuestasVistasModales mod 3\Softv\SoftvMVC\bin\System.Net.Http.Formatting.dll
+\\FABIAN-PC\Exes\EncuestasVistasModales mod 3\Softv\SoftvMVC\bin\System.Net.Http.Primitives.dll
+\\FABIAN-PC\Exes\EncuestasVistasModales mod 3\Softv\SoftvMVC\bin\System.Web.Helpers.dll
+\\FABIAN-PC\Exes\EncuestasVistasModales mod 3\Softv\SoftvMVC\bin\System.Web.Http.dll
+\\FABIAN-PC\Exes\EncuestasVistasModales mod 3\Softv\SoftvMVC\bin\System.Web.Http.WebHost.dll
+\\FABIAN-PC\Exes\EncuestasVistasModales mod 3\Softv\SoftvMVC\bin\System.Web.Mvc.dll
+\\FABIAN-PC\Exes\EncuestasVistasModales mod 3\Softv\SoftvMVC\bin\System.Web.Optimization.dll
+\\FABIAN-PC\Exes\EncuestasVistasModales mod 3\Softv\SoftvMVC\bin\System.Web.Razor.dll
+\\FABIAN-PC\Exes\EncuestasVistasModales mod 3\Softv\SoftvMVC\bin\System.Web.WebPages.Deployment.dll
+\\FABIAN-PC\Exes\EncuestasVistasModales mod 3\Softv\SoftvMVC\bin\System.Web.WebPages.dll
+\\FABIAN-PC\Exes\EncuestasVistasModales mod 3\Softv\SoftvMVC\bin\System.Web.WebPages.Razor.dll
+\\FABIAN-PC\Exes\EncuestasVistasModales mod 3\Softv\SoftvMVC\bin\WebGrease.dll
+\\FABIAN-PC\Exes\EncuestasVistasModales mod 3\Softv\SoftvMVC\bin\Globals.pdb
+\\FABIAN-PC\Exes\EncuestasVistasModales mod 3\Softv\SoftvMVC\bin\Softv.Entities.pdb
+\\FABIAN-PC\Exes\EncuestasVistasModales mod 3\Softv\SoftvMVC\bin\EntityFramework.xml
+\\FABIAN-PC\Exes\EncuestasVistasModales mod 3\Softv\SoftvMVC\bin\EntityFramework.SqlServer.xml
+\\FABIAN-PC\Exes\EncuestasVistasModales mod 3\Softv\SoftvMVC\bin\LinqToExcel.xml
+\\FABIAN-PC\Exes\EncuestasVistasModales mod 3\Softv\SoftvMVC\bin\log4net.xml
+\\FABIAN-PC\Exes\EncuestasVistasModales mod 3\Softv\SoftvMVC\bin\Microsoft.AspNet.Identity.Core.xml
+\\FABIAN-PC\Exes\EncuestasVistasModales mod 3\Softv\SoftvMVC\bin\Microsoft.AspNet.Identity.EntityFramework.xml
+\\FABIAN-PC\Exes\EncuestasVistasModales mod 3\Softv\SoftvMVC\bin\Microsoft.Owin.xml
+\\FABIAN-PC\Exes\EncuestasVistasModales mod 3\Softv\SoftvMVC\bin\Microsoft.Owin.Host.SystemWeb.xml
+\\FABIAN-PC\Exes\EncuestasVistasModales mod 3\Softv\SoftvMVC\bin\Newtonsoft.Json.xml
+\\FABIAN-PC\Exes\EncuestasVistasModales mod 3\Softv\SoftvMVC\bin\PagedList.xml
+\\FABIAN-PC\Exes\EncuestasVistasModales mod 3\Softv\SoftvMVC\bin\PagedList.Mvc.xml
+\\FABIAN-PC\Exes\EncuestasVistasModales mod 3\Softv\SoftvMVC\bin\System.Net.Http.Extensions.xml
+\\FABIAN-PC\Exes\EncuestasVistasModales mod 3\Softv\SoftvMVC\bin\System.Net.Http.Formatting.xml
+\\FABIAN-PC\Exes\EncuestasVistasModales mod 3\Softv\SoftvMVC\bin\System.Net.Http.Primitives.xml
+\\FABIAN-PC\Exes\EncuestasVistasModales mod 3\Softv\SoftvMVC\bin\System.Web.Helpers.xml
+\\FABIAN-PC\Exes\EncuestasVistasModales mod 3\Softv\SoftvMVC\bin\System.Web.Http.xml
+\\FABIAN-PC\Exes\EncuestasVistasModales mod 3\Softv\SoftvMVC\bin\System.Web.Http.WebHost.xml
+\\FABIAN-PC\Exes\EncuestasVistasModales mod 3\Softv\SoftvMVC\bin\System.Web.Mvc.xml
+\\FABIAN-PC\Exes\EncuestasVistasModales mod 3\Softv\SoftvMVC\bin\System.Web.Razor.xml
+\\FABIAN-PC\Exes\EncuestasVistasModales mod 3\Softv\SoftvMVC\bin\System.Web.WebPages.xml
+\\FABIAN-PC\Exes\EncuestasVistasModales mod 3\Softv\SoftvMVC\bin\System.Web.WebPages.Deployment.xml
+\\FABIAN-PC\Exes\EncuestasVistasModales mod 3\Softv\SoftvMVC\bin\System.Web.WebPages.Razor.xml
+\\FABIAN-PC\Exes\EncuestasVistasModales mod 3\Softv\SoftvMVC\bin\System.Web.Optimization.xml
+\\FABIAN-PC\Exes\EncuestasVistasModales mod 3\Softv\SoftvMVC\bin\Antlr3.Runtime.pdb
+\\FABIAN-PC\Exes\EncuestasVistasModales mod 3\Softv\SoftvMVC\bin\Microsoft.AspNet.Identity.Owin.xml
+\\FABIAN-PC\Exes\EncuestasVistasModales mod 3\Softv\SoftvMVC\bin\Microsoft.Owin.Security.xml
+\\FABIAN-PC\Exes\EncuestasVistasModales mod 3\Softv\SoftvMVC\bin\Microsoft.Owin.Security.Facebook.xml
+\\FABIAN-PC\Exes\EncuestasVistasModales mod 3\Softv\SoftvMVC\bin\Microsoft.Owin.Security.Cookies.xml
+\\FABIAN-PC\Exes\EncuestasVistasModales mod 3\Softv\SoftvMVC\bin\Microsoft.Owin.Security.OAuth.xml
+\\FABIAN-PC\Exes\EncuestasVistasModales mod 3\Softv\SoftvMVC\bin\Microsoft.Owin.Security.Google.xml
+\\FABIAN-PC\Exes\EncuestasVistasModales mod 3\Softv\SoftvMVC\bin\Microsoft.Owin.Security.Twitter.xml
+\\FABIAN-PC\Exes\EncuestasVistasModales mod 3\Softv\SoftvMVC\bin\Microsoft.Owin.Security.MicrosoftAccount.xml
+\\FABIAN-PC\Exes\EncuestasVistasModales mod 3\Softv\SoftvMVC\obj\Debug\SoftvMVC.csproj.App.config
+\\FABIAN-PC\Exes\EncuestasVistasModales mod 3\Softv\SoftvMVC\obj\Debug\SoftvMVC.csprojResolveAssemblyReference.cache
+\\FABIAN-PC\Exes\EncuestasVistasModales mod 3\Softv\SoftvMVC\obj\Debug\SoftvMVC.dll
+\\FABIAN-PC\Exes\EncuestasVistasModales mod 3\Softv\SoftvMVC\obj\Debug\SoftvMVC.pdb

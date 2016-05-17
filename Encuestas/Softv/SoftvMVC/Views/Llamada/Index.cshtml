@@ -1,0 +1,321 @@
+﻿@*@{
+        ViewBag.Title = "Index";
+        Layout = "~/Views/Shared/_Layout.cshtml";
+    }
+
+    <h2>Index</h2>*@
+
+<section class="content-header">
+    <h1>
+        Encuestas
+        <small>Lista de Llamadas</small>
+    </h1>
+    <ol class="breadcrumb">
+        <li><a href="#"><i class="fa fa-dashboard"></i> Inicio</a></li>
+        <li class="active">Lista de Llamadas</li>
+    </ol>
+</section>
+
+<div class="row">
+    <div class="col-xs-12">
+        <div class="box">
+            <div class="box-header">
+                <h3 class="box-title">Lista de Llamadas</h3>
+
+            </div><!-- /.box-header -->
+            <div class="box-body">
+
+                <table id="TablaLlamadas" class="table table-bordered table-hover dataTable">
+                    <thead>
+                        <tr>
+                            <td><b>Id Llamada</b></td>
+                            <td><b>Id Usuario</b></td>
+                            <td><b>Tipo Llamada</b></td>
+                            <td><b>Contrato</b></td>
+                            @*<td><b>Detalle</b></td>*@
+                            @*<td><b>Solución</b></td>*@
+                            <td><b>Fecha</b></td>
+                            @*<td><b>Hora Inicio</b></td>
+                            <td><b>Hora Fin</b></td>
+                            <td><b>Id Turno</b></td>*@
+                            <td><b>Id Queja</b></td>
+                            <td><b>Id Conexión</b></td>
+                            @*<td><b>Clv_Trabajo</b></td>
+                            <td><b>Clv_TipSer</b></td>*@
+                            <td><b>Opciones</b></td>
+                        </tr>
+                    </thead>
+
+                    <tfoot>
+                        <tr>
+                            <td><b>Id Llamada</b></td>
+                            <td><b>Id Usuario</b></td>
+                            <td><b>Tipo Llamada</b></td>
+                            <td><b>Contrato</b></td>
+                            <td><b>Detalle</b></td>
+                            <td><b>Solución</b></td>
+                            <td><b>Fecha</b></td>
+                            @*<td><b>Hora Inicio</b></td>
+                            <td><b>Hora Fin</b></td>
+                            <td><b>Id Turno</b></td>
+                            <td><b>Id Queja</b></td>
+                            <td><b>Id Conexión</b></td>
+                            <td><b>Clv_Trabajo</b></td>
+                            <td><b>Clv_TipSer</b></td>*@
+                            <td><b>Opciones</b></td>
+                            
+                        </tr>
+                    </tfoot>
+
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+@*MODAL AGREGAR LLAMADA*@
+<div class="modal fade bs-example-modal-lg" id="ModalAgregarLlamada" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button class="close" aria-label="Close" type="button" data-dismiss="modal"><span aria-hidden="true">×</span></button>
+                <h4 class="modal-title">Agregar Llamada</h4>
+            </div>
+            <div class="modal-body">
+                <div class="nav-tabs-custom">
+                    <ul class="nav nav-tabs">
+                        <li class="active"><a href="#tab_1" data-toggle="tab" aria-expanded="true">Información principal</a></li>
+                        @*<li class=""><a href="#tab_2" id="tab-preguntas" data-toggle="tab" aria-expanded="false">Preguntas</a></li>*@
+                        <li class=""><a href="#tab_3" data-toggle="tab" aria-expanded="false">Configuración</a></li>
+
+                        <li class="pull-right"><a href="#" class="text-muted"><i class="fa fa-gear"></i></a></li>
+                    </ul>
+                    <div class="tab-content">
+                        <div class="tab-pane active" id="tab_1">
+                            <div class="row">
+                                <div class="col-xs-12">
+                                    <table class="table">
+                                        <thead>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <td><input type="text" class="form-control" placeholder="IdUsuario"></td>
+                                            </tr>
+                                            <tr>
+                                                <td><input type="text" class="form-control" placeholder="Tipo de Llamada"></td>
+                                                <td><input type="text" class="form-control" placeholder="Contrato"></td>
+                                            </tr>
+                                            <tr>
+                                                <td><input type="text" class="form-control" placeholder="Detalle"></td>
+                                                <td><input type="text" class="form-control" placeholder="Solución"></td>
+                                            </tr>
+                                            <tr>
+                                                <td><input type="text" class="form-control" placeholder="Fecha"></td>
+                                                <td><input type="text" class="form-control" placeholder="Hora Inicio"></td>
+                                            </tr>
+                                            <tr>
+                                                <td><input type="text" class="form-control" placeholder="HoraFin"></td>
+                                                <td><input type="text" class="form-control" placeholder="Turno"></td>
+                                            </tr>
+                                            <tr>
+                                                <td><input type="text" class="form-control" placeholder="IdQueja"></td>
+                                                <td><input type="text" class="form-control" placeholder="Plaza"></td>
+                                            </tr>
+                                            <tr>
+                                                <td><input type="text" class="form-control" placeholder="Trabajo">
+                                                <td><input type="text" class="form-control" placeholder="Tipo de Servicio"></td>
+                                            </tr>
+                                        </tbody>
+                                        </table>
+                                    </div>
+                            </div>
+                            @*<br />
+                            <div class="row">
+                                <div class="col-xs-12">
+                                    <textarea class="form-control" placeholder="Descripción del cliente"></textarea>
+                                </div>
+                            </div>*@
+                        </div><!-- /.tab-pane -->
+                        
+                        <div class="tab-pane" id="tab_3">
+                        </div><!-- /.tab-pane -->
+                    </div><!-- /.tab-content -->
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-default pull-left" type="button" data-dismiss="modal">cerrar</button>
+                <button class="btn btn-primary" type="button">Guardar Llamada</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+@*MODAL Editar Llamada*@
+<div class="modal fade bs-example-modal-lg" id="ModalEditarLlamada" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button class="close" aria-label="Close" type="button" data-dismiss="modal"><span aria-hidden="true">×</span></button>
+                <h4 class="modal-title">Editar Llamada</h4>
+            </div>
+            <div class="modal-body">
+                <div class="nav-tabs-custom">
+                    <ul class="nav nav-tabs">
+                        <li class="active"><a href="#tab_1" data-toggle="tab" aria-expanded="true">Información principal</a></li>
+                        @*<li class=""><a href="#tab_2" id="tab-preguntas" data-toggle="tab" aria-expanded="false">Preguntas</a></li>*@
+                        <li class=""><a href="#tab_3" data-toggle="tab" aria-expanded="false">Configuración</a></li>
+
+                        <li class="pull-right"><a href="#" class="text-muted"><i class="fa fa-gear"></i></a></li>
+                    </ul>
+                    <div class="tab-content">
+                        <div class="tab-pane active" id="tab_1">
+                            <div class="row">
+                                <div class="col-xs-12">
+                                    <table class="table">
+                                        <thead>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <td><input type="text" class="form-control" placeholder="IdLlamada"></td>
+                                                <td><input type="text" class="form-control" placeholder="IdUsuario"></td>
+                                            </tr>
+                                            <tr>
+                                                <td><input type="text" class="form-control" placeholder="Tipo_Llamada"></td> 
+                                                <td><input type="text" class="form-control" placeholder="Contrato"></td> 
+                                            </tr>
+                                            <tr>
+                                                <td><input type="text" class="form-control" placeholder="Detalle"></td>
+                                                <td><input type="text" class="form-control" placeholder="Solucion"></td>
+                                            </tr>
+                                            <tr>
+                                                <td><input type="text" class="form-control" placeholder="Fecha"></td> 
+                                                <td><input type="text" class="form-control" placeholder="HoraInicio"></td>
+                                            </tr>
+                                            <tr>
+                                                <td><input type="text" class="form-control" placeholder="HoraFin"></td>
+                                                <td><input type="text" class="form-control" placeholder="IdTurno"></td>
+                                            </tr>
+                                            <tr>
+                                                <td><input type="text" class="form-control" placeholder="IdQueja"></td> 
+                                                <td><input type="text" class="form-control" placeholder="IdConexion"></td> 
+                                            </tr>
+                                            <tr>
+                                                <td><input type="text" class="form-control" placeholder="Clv_Trabajo"> 
+                                                <td><input type="text" class="form-control" placeholder="Clv_TipSer"></td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                            @*<br />
+                                <div class="row">
+                                    <div class="col-xs-12">
+                                        <textarea class="form-control" placeholder="Descripción del cliente"></textarea>
+                                    </div>
+                                </div>*@
+                        </div><!-- /.tab-pane -->
+
+                        <div class="tab-pane" id="tab_3">
+                        </div><!-- /.tab-pane -->
+                    </div><!-- /.tab-content -->
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-default pull-left" type="button" data-dismiss="modal">cerrar</button>
+                <button class="btn btn-primary" type="button">Guardar Datos</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+@*MODAL Detalle Llamada*@
+<div class="modal fade bs-example-modal-lg" id="ModalDetalleLlamada" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button class="close" aria-label="Close" type="button" data-dismiss="modal"><span aria-hidden="true">×</span></button>
+                <h4 class="modal-title">Detalles de Llamada</h4>
+            </div>
+            <div class="modal-body">
+                <div class="nav-tabs-custom">
+                    <ul class="nav nav-tabs">
+                        <li class="active"><a href="#tab_1" data-toggle="tab" aria-expanded="true">Información principal</a></li>
+                        @*<li class=""><a href="#tab_2" id="tab-preguntas" data-toggle="tab" aria-expanded="false">Preguntas</a></li>*@
+                        <li class=""><a href="#tab_3" data-toggle="tab" aria-expanded="false">Configuración</a></li>
+
+                        <li class="pull-right"><a href="#" class="text-muted"><i class="fa fa-gear"></i></a></li>
+                    </ul>
+                    <div class="tab-content">
+                        <div class="tab-pane active" id="tab_1">
+                            <div class="row">
+                                <div class="col-xs-12">
+                                    <table class="table">
+                                        <thead>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <td><input type="text" class="form-control" placeholder="IdLlamada"></td>
+                                                <td><input type="text" class="form-control" placeholder="IdUsuario"></td>
+                                            </tr>
+                                            <tr>
+                                                <td><input type="text" class="form-control" placeholder="Tipo_Llamada"></td>
+                                                <td><input type="text" class="form-control" placeholder="Contrato"></td>
+                                            </tr>
+                                            <tr>
+                                                <td><input type="text" class="form-control" placeholder="Detalle"></td>
+                                                <td><input type="text" class="form-control" placeholder="Solucion"></td>
+                                            </tr>
+                                            <tr>
+                                                <td><input type="text" class="form-control" placeholder="Fecha"></td>
+                                                <td><input type="text" class="form-control" placeholder="HoraInicio"></td>
+                                            </tr>
+                                            <tr>
+                                                <td><input type="text" class="form-control" placeholder="HoraFin"></td>
+                                                <td><input type="text" class="form-control" placeholder="IdTurno"></td>
+                                            </tr>
+                                            <tr>
+                                                <td><input type="text" class="form-control" placeholder="IdQueja"></td>
+                                                <td><input type="text" class="form-control" placeholder="IdConexion"></td>
+                                            </tr>
+                                            <tr>
+                                                <td><input type="text" class="form-control" placeholder="Clv_Trabajo">
+                                                <td><input type="text" class="form-control" placeholder="Clv_TipSer"></td>
+                                            </tr>                                        
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                            @*<br />
+                                <div class="row">
+                                    <div class="col-xs-12">
+                                        <textarea class="form-control" placeholder="Descripción del cliente"></textarea>
+                                    </div>
+                                </div>*@
+                        </div><!-- /.tab-pane -->
+
+                        <div class="tab-pane" id="tab_3">
+                        </div><!-- /.tab-pane -->
+                    </div><!-- /.tab-content -->
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-default pull-left" type="button" data-dismiss="modal">cerrar</button>
+                <button class="btn btn-primary" type="button">Guardar Datos</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+<script src="~/dist/js/pages/Llamada/Lista.js">
+    //Ruta de lista.js
+
+</script>
+

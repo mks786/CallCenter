@@ -1,0 +1,276 @@
+﻿@*@{
+        ViewBag.Title = "Index";
+        Layout = "~/Views/Shared/_Layout.cshtml";
+    }
+
+    <h2>Index</h2>*@
+
+<section class="content-header">
+    <h1>
+        Encuestas
+        <small>Lista de Clientes</small>
+    </h1>
+    <ol class="breadcrumb">
+        <li><a href="#"><i class="fa fa-dashboard"></i> Inicio</a></li>
+        <li class="active">Lista de Clientes</li>
+    </ol>
+</section>
+
+<div class="row">
+    <div class="col-xs-12">
+        <div class="box">
+            <div class="box-header">
+                <h3 class="box-title">Lista de Clientes</h3>
+
+            </div><!-- /.box-header -->
+            <div class="box-body">
+
+                <table id="TablaClientes" class="table table-bordered table-hover dataTable">
+                    <thead>
+                        <tr>
+                            <td><b>Contrato</b></td>
+                            <td><b>Nombre</b></td>
+                            <td><b>Clv_Calle</b></td>
+                            @*<td><b>Número</b></td>*@
+                            <td><b>Entre Calles</b></td>
+                            <td><b>Clv_Colonia</b></td>
+                            @*<td><b>Código Postal</b></td>*@
+                            <td><b>Teléfono</b></td>
+                            @*<td><b>Celular</b></td>
+                            <td><b>Desglosa_Iva</b></td>*@
+                            <td><b>Solo Internet</b></td>
+                            <td><b>Es Hotel</b></td>
+                            <td><b>Clv_Ciudad</b></td>
+                            <td><b>Email</b></td>
+                            @*<td><b>Clv_sector</b></td>
+                            <td><b>Clv_Periodo</b></td>*@
+                            @*<td><b>Clv_Tap</b></td>*@
+                            @*<td><b>Zona 2</b></td> Este dato no se muestra*@
+                            <td><b>Opciones</b></td>
+                        </tr>
+                    </thead>
+                    <tfoot>
+                        <tr>
+
+                            <td><b>Contrato</b></td>
+                            <td><b>Nombre</b></td>
+                            <td><b>Clv_Calle</b></td>    
+                            @*<td><b>Número</b></td>*@
+                            <td><b>Entre Calles</b></td>
+                            <td><b>Clv_Colonia</b></td> 
+                            @*<td><b>Código Postal</b></td>*@ 
+                            <td><b>Teléfono</b></td>
+                            @*<td><b>Celular</b></td>
+                               <td><b>Desglosa_Iva</b></td>*@
+                            <td><b>Solo Internet</b></td>
+                            <td><b>Es Hotel</b></td>
+                            <td><b>Clv_Ciudad</b></td> 
+                            <td><b>Email</b></td>
+                            @*<td><b>Clv_sector</b></td>
+                            <td><b>Clv_Periodo</b></td>*@
+                            @*<td><b>Clv_Tap</b></td>*@
+                            @*<td><b>Zona 2</b></td> Este dato no se muestra*@
+                            <td><b>Opciones</b></td>
+                        </tr>
+                    </tfoot>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+@*MODAL EDITAR CLIENTE*@
+<div class="modal fade bs-example-modal-lg" id="ModalEditarCliente" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button class="close" aria-label="Close" type="button" data-dismiss="modal"><span aria-hidden="true">×</span></button>
+                <h4 class="modal-title">Actualizar Datos de Cliente</h4>
+            </div>
+            <div class="modal-body">
+                <div class="nav-tabs-custom">
+                    <ul class="nav nav-tabs">
+                        <li class="active"><a href="#tab_1" data-toggle="tab" aria-expanded="true">Información principal</a></li>
+                        @*<li class=""><a href="#tab_2" id="tab-preguntas" data-toggle="tab" aria-expanded="false">Preguntas</a></li>*@
+                        <li class=""><a href="#tab_3" data-toggle="tab" aria-expanded="false">Configuración</a></li>
+
+                        <li class="pull-right"><a href="#" class="text-muted"><i class="fa fa-gear"></i></a></li>
+                    </ul>
+                    <div class="tab-content">
+                        <div class="tab-pane active" id="tab_1">
+                            <div class="row">
+                                <div class="col-xs-12">
+                                    <table class="table">
+                                        <thead>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <td><input type="text" class="form-control" placeholder="Contrato"></td> @*Contrato*@                                                
+                                                <td><input type="text" class="form-control" placeholder="Primer Nombre"></td> @*Nombre de tabla Clientes_Apellidos*@
+                                            </tr>
+                                            <tr>
+                                                <td><input type="text" class="form-control" placeholder="Segundo Nombre"></td> @*Segundo_Nombre de tabla Clientes_Apellidos*@
+                                                <td><input type="text" class="form-control" placeholder="Apellido Paterno"></td> @*Apellido_Paterno de tabla Clientes_Apellidos*@
+                                            </tr>
+                                            <tr>     
+                                                <td><input type="text" class="form-control" placeholder="Apellido Materno"></td> @*Apellido_Materno de tabla Clientes_Apellidos*@
+                                                <td><input type="text" class="form-control" placeholder="Fecha de Nacimiento"></td> @*FechaNacimiento de tabla Clientes_Apellidos*@
+                                            </tr>
+                                            <tr>
+                                                <td><input type="text" class="form-control" placeholder="Calle"></td> @*Clv_Calle*@
+                                                <td><input type="text" class="form-control" placeholder="Número"></td> @*Numero*@
+                                            </tr>
+                                            <tr>
+                                                <td><input type="text" class="form-control" placeholder="Entre Calles"></td>@*EntreCalles*@
+                                                <td><input type="text" class="form-control" placeholder="Colonia"></td>@* Clv_Colonia*@
+                                            </tr>
+                                            <tr>
+                                                <td><input type="text" class="form-control" placeholder="Código Postal"></td> @*CodigoPostal*@
+                                                <td><input type="text" class="form-control" placeholder="Teléfono"></td> @* Telefono*@
+                                            </tr>
+                                            <tr>
+                                                <td><input type="text" class="form-control" placeholder="Celular"> @*Celular*@
+                                                <td><input type="text" class="form-control" placeholder="Desglosa_Iva"></td>@* Desglosa_Iva*@
+                                            </tr>
+                                            <tr>
+                                                <td><input type="text" class="form-control" placeholder="Solo Internet"></td> @* SoloInternet*@
+                                                <td><input type="text" class="form-control" placeholder="Es Hotel"></td>@* EsHotel*@
+                                            </tr>
+                                            <tr>
+                                                <td><input type="text" class="form-control" placeholder="Ciudad"></td> @* Clv_Ciudad*@
+                                                <td><input type="text" class="form-control" placeholder="Email"></td> @*Email*@
+                                            </tr>
+                                            <tr>
+                                                <td><input type="text" class="form-control" placeholder="Sector"></td>  @* Clv_Sector*@
+                                                <td><input type="text" class="form-control" placeholder="Periodo"></td> @* Clv_Periodo*@
+                                            </tr>
+                                            <tr>
+                                                <td><input type="text" class="form-control" placeholder="Tap"></td> @* Clv_Tap*@
+                                                <td><input type="text" class="form-control" placeholder="Es Fisica"></td>  @*EsFisica de Tabla Clientes_Apelidos*@ 
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                            @*<br />
+                                <div class="row">
+                                    <div class="col-xs-12">
+                                        <textarea class="form-control" placeholder="Descripción del cliente"></textarea>
+                                    </div>
+                                </div>*@
+                        </div><!-- /.tab-pane -->
+
+                        <div class="tab-pane" id="tab_3">
+                        </div><!-- /.tab-pane -->
+                    </div><!-- /.tab-content -->
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-default pull-left" type="button" data-dismiss="modal">cerrar</button>
+                <button class="btn btn-primary" type="button">Guardar Datos</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+@*MODAL DETALLE CLIENTE*@
+<div class="modal fade bs-example-modal-lg" id="ModalDetalleCliente" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button class="close" aria-label="Close" type="button" data-dismiss="modal"><span aria-hidden="true">×</span></button>
+                <h4 class="modal-title">Detalles de Cliente</h4>
+            </div>
+            <div class="modal-body">
+                <div class="nav-tabs-custom">
+                    <ul class="nav nav-tabs">
+                        <li class="active"><a href="#tab_1" data-toggle="tab" aria-expanded="true">Información principal</a></li>
+                        @*<li class=""><a href="#tab_2" id="tab-preguntas" data-toggle="tab" aria-expanded="false">Preguntas</a></li>*@
+                        <li class=""><a href="#tab_3" data-toggle="tab" aria-expanded="false">Configuración</a></li>
+
+                        <li class="pull-right"><a href="#" class="text-muted"><i class="fa fa-gear"></i></a></li>
+                    </ul>
+                    <div class="tab-content">
+                        <div class="tab-pane active" id="tab_1">
+                            <div class="row">
+                                <div class="col-xs-12">
+                                    <table class="table">
+                                        <thead>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <td><input type="text" class="form-control" placeholder="Contrato"></td> @*Contrato*@
+                                                <td><input type="text" class="form-control" placeholder="Primer Nombre"></td> @*Nombre de tabla Clientes_Apellidos*@
+                                            </tr>
+                                            <tr>
+                                                <td><input type="text" class="form-control" placeholder="Segundo Nombre"></td> @*Segundo_Nombre de tabla Clientes_Apellidos*@
+                                                <td><input type="text" class="form-control" placeholder="Apellido Paterno"></td> @*Apellido_Paterno de tabla Clientes_Apellidos*@
+                                            </tr>
+                                            <tr>
+                                                <td><input type="text" class="form-control" placeholder="Apellido Materno"></td> @*Apellido_Materno de tabla Clientes_Apellidos*@
+                                                <td><input type="text" class="form-control" placeholder="Fecha de Nacimiento"></td> @*FechaNacimiento de tabla Clientes_Apellidos*@
+                                            </tr>
+                                            <tr>
+                                                <td><input type="text" class="form-control" placeholder="Calle"></td> @*Clv_Calle*@
+                                                <td><input type="text" class="form-control" placeholder="Número"></td> @*Numero*@
+                                            </tr>
+                                            <tr>
+                                                <td><input type="text" class="form-control" placeholder="Entre Calles"></td>@*EntreCalles*@
+                                                <td><input type="text" class="form-control" placeholder="Colonia"></td>@* Clv_Colonia*@
+                                            </tr>
+                                            <tr>
+                                                <td><input type="text" class="form-control" placeholder="Código Postal"></td> @*CodigoPostal*@
+                                                <td><input type="text" class="form-control" placeholder="Teléfono"></td> @* Telefono*@
+                                            </tr>
+                                            <tr>
+                                                <td><input type="text" class="form-control" placeholder="Celular"> @*Celular*@
+                                                <td><input type="text" class="form-control" placeholder="Desglosa_Iva"></td>@* Desglosa_Iva*@
+                                            </tr>
+                                            <tr>
+                                                <td><input type="text" class="form-control" placeholder="Solo Internet"></td> @* SoloInternet*@
+                                                <td><input type="text" class="form-control" placeholder="Es Hotel"></td>@* EsHotel*@
+                                            </tr>
+                                            <tr>
+                                                <td><input type="text" class="form-control" placeholder="Ciudad"></td> @* Clv_Ciudad*@
+                                                <td><input type="text" class="form-control" placeholder="Email"></td> @*Email*@
+                                            </tr>
+                                            <tr>
+                                                <td><input type="text" class="form-control" placeholder="Sector"></td>  @* Clv_Sector*@
+                                                <td><input type="text" class="form-control" placeholder="Periodo"></td> @* Clv_Periodo*@
+                                            </tr>
+                                            <tr>
+                                                <td><input type="text" class="form-control" placeholder="Tap"></td> @* Clv_Tap*@
+                                                <td><input type="text" class="form-control" placeholder="Es Fisica"></td>  @*EsFisica de Tabla Clientes_Apelidos*@
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                            @*<br />
+                                <div class="row">
+                                    <div class="col-xs-12">
+                                        <textarea class="form-control" placeholder="Descripción del cliente"></textarea>
+                                    </div>
+                                </div>*@
+                        </div><!-- /.tab-pane -->
+
+                        <div class="tab-pane" id="tab_3">
+                        </div><!-- /.tab-pane -->
+                    </div><!-- /.tab-content -->
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-default pull-left" type="button" data-dismiss="modal">cerrar</button>
+                <button class="btn btn-primary" type="button">Aceptar</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+<script src="~/dist/js/pages/Cliente/Lista.js"></script>
+<script src="~/dist/js/pages/Cliente/Lista.js"></script>
+<script src="~/dist/js/pages/Client/Utilerias.js"></script>
