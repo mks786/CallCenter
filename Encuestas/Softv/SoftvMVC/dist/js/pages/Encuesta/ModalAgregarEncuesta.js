@@ -25,7 +25,9 @@ $('#guardarEncuesta').click(function () {
                 type: "POST",
                 data: { 'encuesta': encuesta, 'Preguntas': Lista_preguntas, 'respuestas': Lista_opciones, 'usuario': usuario },
                 success: function (data, textStatus, jqXHR) {
-                    //data - response from server
+                    $('#ModalAgregarEncuesta').modal('hide');
+                    location.href = "/Encuesta";
+                    swal("Hecho!", "Encuesta agregada exitosamente!", "success");
                 },
                 error: function (jqXHR, textStatus, errorThrown) {
 

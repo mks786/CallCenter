@@ -22,12 +22,12 @@ $(document).ready(function () {
 function LlenaTabla() {
 
     var objRoles = {};
-    var myJSONText = JSON.stringify(objRoles);
+    var data = JSON.stringify(objRoles);
 
     $('#TablaEncuesta').dataTable({
         "processing": true,
         "serverSide": true,
-        "bFilter": true,
+        "bFilter": false,
         "dom": '<"toolbar">frtip',
         "bDestroy": true,
         "info": true,
@@ -36,7 +36,7 @@ function LlenaTabla() {
         "ajax": {
             "url": "/Encuesta/GetList/",
             "type": "POST",
-            "data": { 'data': myJSONText },
+            "data": { 'data': data },
         },
         "fnInitComplete": function (oSettings, json) {
 
