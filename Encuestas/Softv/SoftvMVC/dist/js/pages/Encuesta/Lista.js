@@ -27,7 +27,7 @@ function LlenaTabla() {
     $('#TablaEncuesta').dataTable({
         "processing": true,
         "serverSide": true,
-        "bFilter": false,
+        "bFilter": true,
         "dom": '<"toolbar">frtip',
         "bDestroy": true,
         "info": true,
