@@ -15,7 +15,7 @@ $('#tablaPreguntas').on('click', '.EditarPregunta', function () {
 
     var id = $(this).attr('rel');
     $('#ModalEditarPregunta').modal('show');
-    var result = $.grep(Lista_preguntas, function (e) { return e.IdPregunta == id; });
+    var result = $.grep(Lista_preguntas, function (e) { return e.IdPregunta == id || e.IdPregunta2 == id; });
     console.log(result);
     console.log(result.length);
     for (var r = 0; r < result.length; r++) {

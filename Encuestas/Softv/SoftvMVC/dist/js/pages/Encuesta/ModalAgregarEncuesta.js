@@ -1,11 +1,9 @@
 ﻿
-
-
-$('#guardarEncuesta').click(function(){
+$('#guardarEncuesta').click(function () {
     //validamos que existan preguntas en la tabla y los detalles de la encuesta no esten vacios 
     var titulo_encuesta = $('#nombreEncuesta').val();
     var descripcion_encuesta = $('#Descripcion_encuesta').val();
-    
+
     if (titulo_encuesta == "") {
         swal("A ocurrido un error", "El titulo de la encuesta es obligatorio", "error");
     } else if (descripcion_encuesta == "") {
@@ -36,9 +34,9 @@ $('#guardarEncuesta').click(function(){
 
         }
     }
-   
-   
-   
+
+
+
 
 
 });

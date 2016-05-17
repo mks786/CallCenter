@@ -163,3 +163,14 @@ D:\Exes\EncuestasVistasModales mod 3\Softv\Softv.Providers\obj\Debug\Softv.Provi
 \\FABIAN-PC\Exes\EncuestasVistasModales mod 3\Softv\Softv.Providers\obj\Debug\Softv.Providers.csprojResolveAssemblyReference.cache
 \\FABIAN-PC\Exes\EncuestasVistasModales mod 3\Softv\Softv.Providers\obj\Debug\Softv.Providers.dll
 \\FABIAN-PC\Exes\EncuestasVistasModales mod 3\Softv\Softv.Providers\obj\Debug\Softv.Providers.pdb
+C:\Users\programador\Documents\GitHub\CallCenter\Encuestas\Softv\Softv.Providers\bin\Debug\Softv.Providers.dll
+C:\Users\programador\Documents\GitHub\CallCenter\Encuestas\Softv\Softv.Providers\bin\Debug\Softv.Providers.pdb
+C:\Users\programador\Documents\GitHub\CallCenter\Encuestas\Softv\Softv.Providers\bin\Debug\Globals.dll
+C:\Users\programador\Documents\GitHub\CallCenter\Encuestas\Softv\Softv.Providers\bin\Debug\Softv.Entities.dll
+C:\Users\programador\Documents\GitHub\CallCenter\Encuestas\Softv\Softv.Providers\bin\Debug\SoftvConfiguration.dll
+C:\Users\programador\Documents\GitHub\CallCenter\Encuestas\Softv\Softv.Providers\bin\Debug\Globals.pdb
+C:\Users\programador\Documents\GitHub\CallCenter\Encuestas\Softv\Softv.Providers\bin\Debug\SoftvConfiguration.pdb
+C:\Users\programador\Documents\GitHub\CallCenter\Encuestas\Softv\Softv.Providers\bin\Debug\Softv.Entities.pdb
+C:\Users\programador\Documents\GitHub\CallCenter\Encuestas\Softv\Softv.Providers\obj\Debug\Softv.Providers.csprojResolveAssemblyReference.cache
+C:\Users\programador\Documents\GitHub\CallCenter\Encuestas\Softv\Softv.Providers\obj\Debug\Softv.Providers.dll
+C:\Users\programador\Documents\GitHub\CallCenter\Encuestas\Softv\Softv.Providers\obj\Debug\Softv.Providers.pdb

@@ -1,7 +1,11 @@
-﻿$('#TablaEncuesta').on('click', '.Editar', function () {
+﻿var Preguntas_editar = [];
 
-    $('#ModalEditarEncuesta').modal('show');
-    
+
+
+$('#TablaEncuesta').on('click', '.Editar', function () {
+
+    $('#ModalAgregarEncuesta').modal('show');
+    $('#TbodyPreguntas').empty();
 
     var id = $(this).attr('rel');
 
@@ -10,17 +14,39 @@
         type: "POST",
         data: { 'id':id},
         success: function (data, textStatus, jqXHR) {
+        
             console.log(data);
-            console.log(data.Encuesta.Descripcion);
-            console.log(data.Encuesta.TituloEncuesta);
-            $('#ed_nombreEncuesta').val(data.Encuesta.TituloEncuesta);
-            $('#ed_Descripcion_encuesta').val(data.Encuesta.Descripcion);
-            $('#ed_tablaPreguntas').show();
-            $('#ed_msnTablavacia').hide();
+            $('#nombreEncuesta').val(data.Encuesta.TituloEncuesta);
+            $('#Descripcion_encuesta').val(data.Encuesta.Descripcion);
+            $('#tablaPreguntas').show();
+            $('#msnTablavacia').hide();
+
+
             for (var r = 0; r < data.Preguntas.length; r++) {
-                console.log(data.Preguntas[r].Pregunta.Pregunta);
-                console.log(data.Preguntas[r].Pregunta.TipoPreguntas.Descripcion);
-                $('#ed_TbodyPreguntas').append("<tr><td>" + data.Preguntas[r].Pregunta.Pregunta + "</td><td>" + data.Preguntas[r].Pregunta.TipoPreguntas.Descripcion + "</td><td><button class='btn btn-info btn-xs detallepregunta' rel='" + data.Preguntas[r].Pregunta.IdPregunta + "'>Detalles</button> <button class='btn btn-warning btn-xs EditarPregunta ' rel='" + data.Preguntas[r].Pregunta.IdPregunta + "'>Editar</button> <button class='btn btn-danger btn-xs EliminaPregunta' rel='" + data.Preguntas[r].Pregunta.IdPregunta + "'>Eliminar</button></td></tr>")
+                var detallePregunta = {};
+                detallePregunta.IdPregunta = generateUUID(); 
+                detallePregunta.IdPregunta2 = data.Preguntas[r].Pregunta.IdPregunta;
+                detallePregunta.Pregunta = data.Preguntas[r].Pregunta.Pregunta;
+                detallePregunta.IdTipoPregunta = data.Preguntas[r].Pregunta.IdTipoPregunta;
+                detallePregunta.txtTipoPregunta = data.Preguntas[r].Pregunta.TipoPreguntas.Descripcion;
+                detallePregunta.TipoControl =3;
+                detallePregunta.txtTipoControl ="control de prueba";
+                Lista_preguntas.push(detallePregunta);
+
+                for (var f = 0; f < data.Preguntas[r].Respuestas.length; f++) {
+                    Opciones = {};
+                    Opciones.Id_ResOpcMult = detallePregunta.IdPregunta;
+                    Opciones.Id_ResOpcMult2 = data.Preguntas[r].Respuestas[f].Id_ResOpcMult;
+                    Opciones.ResOpcMult = data.Preguntas[r].Respuestas[f].ResOpcMult;
+                    Lista_opciones.push(Opciones);
+                    
+
+                }
+
+               
+
+                
+                $('#TbodyPreguntas').append("<tr><td>" + data.Preguntas[r].Pregunta.Pregunta + "</td><td>" + data.Preguntas[r].Pregunta.TipoPreguntas.Descripcion + "</td><td><button class='btn btn-info btn-xs detallepregunta' rel='" + data.Preguntas[r].Pregunta.IdPregunta + "'>Detalles</button> <button class='btn btn-warning btn-xs EditarPregunta ' rel='" + data.Preguntas[r].Pregunta.IdPregunta + "'>Editar</button> <button class='btn btn-danger btn-xs EliminaPregunta' rel='" + data.Preguntas[r].Pregunta.IdPregunta + "'>Eliminar</button></td></tr>")
             }
             
         },
@@ -29,6 +55,7 @@
         }
     });
 
-
+    console.log(Preguntas_editar);
+    console.log(Lista_opciones);
 
 });

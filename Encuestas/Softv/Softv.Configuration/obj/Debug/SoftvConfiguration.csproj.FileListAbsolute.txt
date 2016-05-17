@@ -89,3 +89,10 @@ C:\Users\blanca\Desktop\Encuestas\EncuestasVistasModales mod 3 - copia\Softv\Sof
 \\FABIAN-PC\Exes\EncuestasVistasModales mod 3\Softv\Softv.Configuration\obj\Debug\SoftvConfiguration.csprojResolveAssemblyReference.cache
 \\FABIAN-PC\Exes\EncuestasVistasModales mod 3\Softv\Softv.Configuration\obj\Debug\SoftvConfiguration.dll
 \\FABIAN-PC\Exes\EncuestasVistasModales mod 3\Softv\Softv.Configuration\obj\Debug\SoftvConfiguration.pdb
+C:\Users\programador\Documents\GitHub\CallCenter\Encuestas\Softv\Softv.Configuration\bin\Debug\SoftvConfiguration.dll
+C:\Users\programador\Documents\GitHub\CallCenter\Encuestas\Softv\Softv.Configuration\bin\Debug\SoftvConfiguration.pdb
+C:\Users\programador\Documents\GitHub\CallCenter\Encuestas\Softv\Softv.Configuration\bin\Debug\Globals.dll
+C:\Users\programador\Documents\GitHub\CallCenter\Encuestas\Softv\Softv.Configuration\bin\Debug\Globals.pdb
+C:\Users\programador\Documents\GitHub\CallCenter\Encuestas\Softv\Softv.Configuration\obj\Debug\SoftvConfiguration.csprojResolveAssemblyReference.cache
+C:\Users\programador\Documents\GitHub\CallCenter\Encuestas\Softv\Softv.Configuration\obj\Debug\SoftvConfiguration.dll
+C:\Users\programador\Documents\GitHub\CallCenter\Encuestas\Softv\Softv.Configuration\obj\Debug\SoftvConfiguration.pdb

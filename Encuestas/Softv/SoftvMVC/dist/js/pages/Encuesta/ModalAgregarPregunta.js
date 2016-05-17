@@ -73,9 +73,9 @@ $('#GuardarPregunta').click(function () {
     console.log(tipo_control_abierta);
     if (nombre_pregunta == "") {
         swal("A ocurrido un error", "El nombre de la pregunta es obligatorio", "error");
-    } else if(tipo_pregunta == 0){
+    } else if (tipo_pregunta == 0) {
         swal("A ocurrido un error", "Por favor selecciona el tipo de pregunta", "error");
-    } else if (tipo_pregunta == 1 ) {
+    } else if (tipo_pregunta == 1) {
         if (tipo_control_abierta == 0) {
             swal("A ocurrido un error", "Por favor selecciona el tipo de control", "error");
         } else {
@@ -130,8 +130,8 @@ $('#GuardarPregunta').click(function () {
             console.log(Lista_preguntas);
             ActualizaListaPreguntas();
         }
-        
-    } else if(tipo_pregunta == 2 || tipo_pregunta == 3){
+
+    } else if (tipo_pregunta == 2 || tipo_pregunta == 3) {
         if (tipo_control == 0) {
             swal("A ocurrido un error", "Por favor selecciona el tipo de control", "error");
         } else {
@@ -187,5 +187,5 @@ $('#GuardarPregunta').click(function () {
             ActualizaListaPreguntas();
         }
     }
-        
+
 });

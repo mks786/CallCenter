@@ -70,3 +70,8 @@ D:\Exes\EncuestasVistasModales mod 3\Softv\Softv.Entities\obj\Debug\Softv.Entiti
 \\FABIAN-PC\Exes\EncuestasVistasModales mod 3\Softv\Softv.Entities\obj\Debug\Softv.Entities.csprojResolveAssemblyReference.cache
 \\FABIAN-PC\Exes\EncuestasVistasModales mod 3\Softv\Softv.Entities\obj\Debug\Softv.Entities.dll
 \\FABIAN-PC\Exes\EncuestasVistasModales mod 3\Softv\Softv.Entities\obj\Debug\Softv.Entities.pdb
+C:\Users\programador\Documents\GitHub\CallCenter\Encuestas\Softv\Softv.Entities\bin\Debug\Softv.Entities.dll
+C:\Users\programador\Documents\GitHub\CallCenter\Encuestas\Softv\Softv.Entities\bin\Debug\Softv.Entities.pdb
+C:\Users\programador\Documents\GitHub\CallCenter\Encuestas\Softv\Softv.Entities\obj\Debug\Softv.Entities.csprojResolveAssemblyReference.cache
+C:\Users\programador\Documents\GitHub\CallCenter\Encuestas\Softv\Softv.Entities\obj\Debug\Softv.Entities.dll
+C:\Users\programador\Documents\GitHub\CallCenter\Encuestas\Softv\Softv.Entities\obj\Debug\Softv.Entities.pdb
