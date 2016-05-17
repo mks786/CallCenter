@@ -18,6 +18,7 @@ $('#tablaPreguntas').on('click', '.EditarPregunta', function () {
     $('#ModalEditarPregunta').modal('show');
     var result = $.grep(Lista_preguntas, function (e) { return e.IdPregunta == id || e.IdPregunta2 == id; });
     console.log(result);
+
     for (var r = 0; r < result.length; r++) {
         $('#ed_NombrePregunta').val(result[r].Pregunta);
         $('#ed_TipoPregunta').val(result[r].IdTipoPregunta);
