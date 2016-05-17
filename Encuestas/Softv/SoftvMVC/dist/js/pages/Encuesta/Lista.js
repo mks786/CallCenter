@@ -106,7 +106,10 @@ $('#TablaEncuesta').on('click', '.Eliminar', function () {
 
 function ActualizaListaPreguntas(editar) {
 
-    console.log(Lista_preguntas);
+    if (Lista_preguntas.length == 0) {
+        $('#msnTablavacia').show();
+        $('#tablaPreguntas').hide();
+    }
     $('#TbodyPreguntas').empty();
     if (editar == true) {
         for (var b = 0; b < Lista_preguntas.length; b++) {

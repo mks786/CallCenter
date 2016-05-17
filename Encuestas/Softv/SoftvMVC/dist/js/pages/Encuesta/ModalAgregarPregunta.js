@@ -29,7 +29,7 @@ $('#TipoPregunta').change(function () {
     }
     if (tipo == "2") {
         $('#PanelPreguntaCerrada').show();
-        $('#tipodecontrol').show();
+        $('#tipodecontrol').hide();
         $('#tipodecontrolPAbierta').hide();
         $('#PanelPreguntaCerrada-tbody').empty()
     }
@@ -58,7 +58,7 @@ $('#TablaRespuestasOM').on('click', '.EliminarRespuestaOM', function () {
 
 //elimina las respuestas  de la tabla 
 $('#TablaRespuestasC').on('click', '.EliminarRespuestaC', function () {
-    $(this).closest('tr').remove();
+    $(this).closest('tr').remove();;
 });
 
 // funcion: al guardar 
