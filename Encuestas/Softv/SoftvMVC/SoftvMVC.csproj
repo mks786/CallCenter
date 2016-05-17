@@ -1238,6 +1238,8 @@
     <Content Include="plugins\slimScroll\jquery.slimscroll.min.js" />
     <Content Include="plugins\sparkline\jquery.sparkline.js" />
     <Content Include="plugins\sparkline\jquery.sparkline.min.js" />
+    <Content Include="plugins\sweetAlert\sweetalert.css" />
+    <Content Include="plugins\sweetAlert\sweetalert.min.js" />
     <Content Include="plugins\timepicker\bootstrap-timepicker.css" />
     <Content Include="plugins\timepicker\bootstrap-timepicker.js" />
     <Content Include="plugins\timepicker\bootstrap-timepicker.min.css" />
