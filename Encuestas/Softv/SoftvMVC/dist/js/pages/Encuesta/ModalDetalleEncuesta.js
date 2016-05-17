@@ -1,13 +1,4 @@
-﻿
-
-
-
-
-
-
-
-
-$('#TablaEncuesta').on('click', '.Detalle', function () {
+﻿$('#TablaEncuesta').on('click', '.Detalle', function () {
     var Lista_preguntas = [];
     var Lista_opciones = [];
 
@@ -20,6 +11,6 @@ $('#TablaEncuesta').on('click', '.Detalle', function () {
     var youtubeimgsrc = document.getElementById("ipreview").src;   
   
    
-    document.getElementById("ipreview").src = youtubeimgsrc + id;
+    document.getElementById("ipreview").src = "/Encuesta/Details/" + +id;
   
 });

@@ -28,7 +28,6 @@ $('#TipoPregunta').change(function () {
 
     }
     if (tipo == "2") {
-        console.log("soy 2");
         $('#PanelPreguntaCerrada').show();
         $('#tipodecontrol').show();
         $('#tipodecontrolPAbierta').hide();
@@ -63,6 +62,7 @@ $('#TablaRespuestasC').on('click', '.EliminarRespuestaC', function () {
 });
 
 // funcion: al guardar 
+var vacios = 0;
 $('#GuardarPregunta').click(function () {
 
     //validamos que los detalles de pregunta  esten definidos y si aplica,las opciones deben de estar 
@@ -70,7 +70,6 @@ $('#GuardarPregunta').click(function () {
     var tipo_pregunta = $("#TipoPregunta option:selected").val();
     var tipo_control = $('#tipodecontrol option:selected').val();
     var tipo_control_abierta = $('#tipodecontrolPAbierta option:selected').val();
-    console.log(tipo_control_abierta);
     if (nombre_pregunta == "") {
         swal("A ocurrido un error", "El nombre de la pregunta es obligatorio", "error");
     } else if (tipo_pregunta == 0) {
@@ -79,7 +78,7 @@ $('#GuardarPregunta').click(function () {
         if (tipo_control_abierta == 0) {
             swal("A ocurrido un error", "Por favor selecciona el tipo de control", "error");
         } else {
-            $('#ModalAgregarPregunta').modal("hide");
+           // $('#ModalAgregarPregunta').modal("hide");
             $('#tablaPreguntas').show();
             $('#msnTablavacia').hide();
 
@@ -88,46 +87,15 @@ $('#GuardarPregunta').click(function () {
             detallePregunta.Pregunta = nombre_pregunta;
             detallePregunta.IdTipoPregunta = tipo_pregunta;
             detallePregunta.txtTipoPregunta = $("#TipoPregunta option:selected").text();
-            detallePregunta.TipoControl = $('#tipodecontrol').val();
-            detallePregunta.txtTipoControl = $("#tipodecontrol option:selected").text();
+            detallePregunta.TipoControl = $('#tipodecontrolPAbierta').val();
+            detallePregunta.txtTipoControl = $("#tipodecontrolPAbierta option:selected").text();
             //detallePregunta.Respuestas = [];
 
             var tbody = $("#PanelPreguntaOptMultiple-tbody");
 
 
-            // si no hay opciones multiples
-            if (tbody.children().length == 0) {
-
-                $('#TablaRespuestasC > tbody  > tr').each(function () {
-                    var test1 = $(this).closest(".nrespuestac").find("input:text").map(function () { return $(this).val(); });
-                    for (var a = 0; a < test1.length; a++) {
-                        Opciones = {};
-                        Opciones.Id_ResOpcMult = detallePregunta.IdPregunta;
-                        Opciones.ResOpcMult = test1[a];
-                        console.log(Opciones);
-                        Lista_opciones.push(Opciones);
-                    }
-                });
-            }
-            else {
-
-                $('#TablaRespuestasOM > tbody  > tr').each(function () {
-                    var test1 = $(this).closest(".nrespuesta").find("input:text").map(function () { return $(this).val(); });
-                    for (var a = 0; a < test1.length; a++) {
-                        Opciones = {};
-                        Opciones.Id_ResOpcMult = detallePregunta.IdPregunta;
-                        Opciones.ResOpcMult = test1[a];
-                        console.log(Opciones);
-                        Lista_opciones.push(Opciones);
-
-                    }
-                });
-            }
-
-
+            
             Lista_preguntas.push(detallePregunta);
-            console.log(detallePregunta);
-            console.log(Lista_preguntas);
             ActualizaListaPreguntas();
         }
 
@@ -135,7 +103,7 @@ $('#GuardarPregunta').click(function () {
         if (tipo_control == 0) {
             swal("A ocurrido un error", "Por favor selecciona el tipo de control", "error");
         } else {
-            $('#ModalAgregarPregunta').modal("hide");
+           // $('#ModalAgregarPregunta').modal("hide");
             $('#tablaPreguntas').show();
             $('#msnTablavacia').hide();
 
@@ -148,43 +116,43 @@ $('#GuardarPregunta').click(function () {
             detallePregunta.txtTipoControl = $("#tipodecontrol option:selected").text();
             //detallePregunta.Respuestas = [];
 
-            var tbody = $("#PanelPreguntaOptMultiple-tbody");
+            var tbody = $("#PanelPreguntaCerrada-tbody");
 
 
             // si no hay opciones multiples
             if (tbody.children().length == 0) {
-
-                $('#TablaRespuestasC > tbody  > tr').each(function () {
-                    var test1 = $(this).closest(".nrespuestac").find("input:text").map(function () { return $(this).val(); });
-                    for (var a = 0; a < test1.length; a++) {
-                        Opciones = {};
-                        Opciones.Id_ResOpcMult = detallePregunta.IdPregunta;
-                        Opciones.ResOpcMult = test1[a];
-                        console.log(Opciones);
-                        Lista_opciones.push(Opciones);
-                    }
-                });
+                swal("A ocurrido un error", "Por favor agrega respuestas a la pregunta", "error");                
             }
             else {
-
-                $('#TablaRespuestasOM > tbody  > tr').each(function () {
-                    var test1 = $(this).closest(".nrespuesta").find("input:text").map(function () { return $(this).val(); });
+                vacios = 0;
+                $('#TablaRespuestasC > tbody  > tr').each(function () {
+                    var test1 = $(this).closest(".nrespuestac").find("input:text").map(function () { return $(this).val(); });     
                     for (var a = 0; a < test1.length; a++) {
                         Opciones = {};
                         Opciones.Id_ResOpcMult = detallePregunta.IdPregunta;
                         Opciones.ResOpcMult = test1[a];
-                        console.log(Opciones);
                         Lista_opciones.push(Opciones);
-
+                        if (test1[a] == "") {
+                            vacios = vacios + 1;
+                            console.log("entras");
+                        } 
                     }
                 });
+                console.log(vacios);
+                if (vacios > 0) {
+                    swal("A ocurrido un error", "Por favor llena todas las respuestas o elimina las vacias", "error");
+                } else {
+                    
+                    Lista_preguntas.push(detallePregunta);
+                    ActualizaListaPreguntas();
+                    $('#ModalAgregarPregunta').modal("hide");
+                }
+ 
             }
 
 
-            Lista_preguntas.push(detallePregunta);
-            console.log(detallePregunta);
-            console.log(Lista_preguntas);
-            ActualizaListaPreguntas();
+                
+            
         }
     }
 
