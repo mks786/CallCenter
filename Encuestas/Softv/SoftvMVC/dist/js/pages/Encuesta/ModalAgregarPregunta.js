@@ -97,6 +97,7 @@ $('#GuardarPregunta').click(function () {
             
             Lista_preguntas.push(detallePregunta);
             ActualizaListaPreguntas();
+            $('#ModalAgregarPregunta').modal("hide");
         }
 
     } else if (tipo_pregunta == 2 || tipo_pregunta == 3) {
