@@ -17,9 +17,7 @@ function generateUUID() {
 
 function EliminarDeArreglo(arr, attr, value) {
 
-    console.log(arr);
-    console.log(attr);
-    console.log(value);
+   
 
     var i = arr.length;
     while (i--) {
@@ -31,7 +29,7 @@ function EliminarDeArreglo(arr, attr, value) {
 
         }
     }
-    console.log(arr);
+  
     return arr;
 
    

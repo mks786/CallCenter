@@ -1,8 +1,12 @@
-﻿var Preguntas_editar = [];
+﻿
 
 
 
 $('#TablaEncuesta').on('click', '.Editar', function () {
+  
+    Lista_preguntas = [];
+    Lista_opciones = [];
+
 
     $('#ModalAgregarEncuesta').modal('show');
     $('#TbodyPreguntas').empty();
@@ -15,12 +19,12 @@ $('#TablaEncuesta').on('click', '.Editar', function () {
         data: { 'id':id},
         success: function (data, textStatus, jqXHR) {
         
-            console.log(data);
+        
             $('#nombreEncuesta').val(data.Encuesta.TituloEncuesta);
             $('#Descripcion_encuesta').val(data.Encuesta.Descripcion);
             $('#tablaPreguntas').show();
             $('#msnTablavacia').hide();
-
+           
 
             for (var r = 0; r < data.Preguntas.length; r++) {
                 var detallePregunta = {};
@@ -55,7 +59,7 @@ $('#TablaEncuesta').on('click', '.Editar', function () {
         }
     });
 
-    console.log(Preguntas_editar);
-    console.log(Lista_opciones);
+    
+    
 
 });
