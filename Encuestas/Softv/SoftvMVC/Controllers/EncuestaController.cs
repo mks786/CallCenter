@@ -267,6 +267,8 @@ namespace SoftvMVC.Controllers
             public String Pregunta { get; set; }
          
             public int IdTipoPregunta { get; set; }
+
+            public int TipoControl { get; set; }
            
         }
 
