@@ -117,15 +117,13 @@ function ActualizaListaPreguntas(editar) {
     $('#TbodyPreguntas').empty();
     if (editar == true) {
         for (var b = 0; b < Lista_preguntas.length; b++) {
-            console.log(Lista_preguntas[b].txtTipoControl);
-            $('#tablaPreguntas').append("<tr><td>" + Lista_preguntas[b].Pregunta + "</td><td>" + Lista_preguntas[b].txtTipoPregunta + "</td><td>" + Lista_preguntas[b].txtTipoControl + "</td><td><button class='btn btn-info btn-xs detallepregunta' rel='" + Lista_preguntas[b].IdPregunta2 + "'>Detalles</button> <button class='btn btn-warning btn-xs EditarPregunta ' rel='" + Lista_preguntas[b].IdPregunta2 + "'>Editar</button> <button class='btn btn-danger btn-xs EliminaPregunta' rel='" + Lista_preguntas[b].IdPregunta2 + "'>Eliminar</button></td></tr>");
+            $('#tablaPreguntas').append("<tr><td>dsgdfgdsdgsf" + Lista_preguntas[b].Pregunta + "</td><td>" + Lista_preguntas[b].txtTipoPregunta + "</td><button class='btn btn-info btn-xs detallepregunta' rel='" + Lista_preguntas[b].IdPregunta2 + "'>Detalles</button> <button class='btn btn-warning btn-xs EditarPregunta ' rel='" + Lista_preguntas[b].IdPregunta2 + "'>Editar</button> <button class='btn btn-danger btn-xs EliminaPregunta' rel='" + Lista_preguntas[b].IdPregunta2 + "'>Eliminar</button></td></tr>");
 
         }
 
     } else {
         for (var b = 0; b < Lista_preguntas.length; b++) {
-            console.log(Lista_preguntas[b].txtTipoControl);
-            $('#tablaPreguntas').append("<tr><td>" + Lista_preguntas[b].Pregunta + "</td><td>" + Lista_preguntas[b].txtTipoPregunta + "</td><td>" + Lista_preguntas[b].txtTipoControl + "</td><td><button class='btn btn-info btn-xs detallepregunta' rel='" + Lista_preguntas[b].IdPregunta + "'>Detalles</button> <button class='btn btn-warning btn-xs EditarPregunta ' rel='" + Lista_preguntas[b].IdPregunta + "'>Editar</button> <button class='btn btn-danger btn-xs EliminaPregunta' rel='" + Lista_preguntas[b].IdPregunta + "'>Eliminar</button></td></tr>");
+            $('#tablaPreguntas').append("<tr><td>" + Lista_preguntas[b].Pregunta + "</td><td>" + Lista_preguntas[b].txtTipoPregunta + "</td><td><button class='btn btn-info btn-xs detallepregunta' rel='" + Lista_preguntas[b].IdPregunta + "'>Detalles</button> <button class='btn btn-warning btn-xs EditarPregunta ' rel='" + Lista_preguntas[b].IdPregunta + "'>Editar</button> <button class='btn btn-danger btn-xs EliminaPregunta' rel='" + Lista_preguntas[b].IdPregunta + "'>Eliminar</button></td></tr>");
 
         }
     }

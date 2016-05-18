@@ -708,7 +708,7 @@
                     
 
 
-                </u l>
+                </ul>
             </section>
             <!-- /.sidebar -->
         </aside>
@@ -947,6 +947,15 @@
 
     <link href="~/plugins/sweetAlert/sweetalert.css" rel="stylesheet" />|
     <script src="~/plugins/sweetAlert/sweetalert.min.js"></script>
+    <script>
+        function active(){
+            $('#box li').click(function () {
+                $(this).siblings('li').removeClass('active');
+                $(this).addClass('active');
+                console.log("Activado");
+            });
+        }        
+    </script>
 
 </body>
 </html>

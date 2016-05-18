@@ -20,7 +20,7 @@
 
     <link rel="stylesheet" href="~/plugins/iCheck/square/blue.css">
     <link rel="stylesheet" href="~/plugins/iCheck/square/purple.css">
-
+    <link href="~/plugins/iCheck/square/orange.css" rel="stylesheet" />
     
 </head>
 <body>
@@ -56,14 +56,14 @@
 
                 if (a.Pregunta.IdTipoPregunta.Value == 2)
                 {
-                    <div class="checkbox icheck">
-                        <input id="" type="checkbox" name="">
-                        <label>Si</label>
-                    </div>
 
-                    <div class="checkbox icheck">
-                        <input type="checkbox">
-                        <label>No</label>
+                    <div class="radio icheck">
+                        <input type="radio" name="@a">
+                        <label for="">Si</label>
+                    </div>
+                    <div class="radio icheck">
+                        <input type="radio" name="@a">
+                        <label for="">No</label>
                     </div>
 
                 }
@@ -74,13 +74,11 @@
 
                         if (a.Pregunta.TipoControl == 1)
                         {
-
-
-
-                            <div class="radio icheck">
-                                <input type="radio">
-                                <label for="@b.ResOpcMult">@b.ResOpcMult</label>
+                            <div class="checkbox icheck">
+                                <input id="" type="checkbox" name="@b.ResOpcMult">
+                                <label>@b.ResOpcMult</label>
                             </div>
+
                         }
                         else if (a.Pregunta.TipoControl == 2)
                         {
@@ -95,9 +93,10 @@
 
                         else if (a.Pregunta.TipoControl == 3)
                         {
-                            <select class="form-control">
-                                <option>@b.ResOpcMult</option>
-                            </select>
+                            <div class="checkbox icheck">
+                                <input id="" type="checkbox" name="@b.ResOpcMult">
+                                <label>@b.ResOpcMult</label>
+                            </div>
 
 
                         }
@@ -117,11 +116,11 @@
 <script>
     $(function () {
         $('input').iCheck({
-            checkboxClass: 'icheckbox_square-blue',
-            radioClass: 'iradio_square-purple',
+            checkboxClass: 'icheckbox_square-orange',
+            radioClass: 'iradio_square-orange',
             increaseArea: '20%' // optional
         });
-    }); 
+    });
 </script>
 </html>
 

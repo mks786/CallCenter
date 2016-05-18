@@ -32,7 +32,7 @@ $('#tablaPreguntas').on('click', '.EditarPregunta', function () {
         }
         else {
             $('#ed_TipoPregunta').attr("disabled", false);
-            $('#ed_tipodecontrol').show();
+            $('#ed_tipodecontrol').hide();
             $('#ed_tipodecontrol').val(result[r].TipoControl);
         }   
 
@@ -102,7 +102,7 @@ $('#ed_TipoPregunta').change(function () {
     if (tipo == "3") {
         $('#edPanelPreguntaCerrada').hide();
         $('#edPanelPreguntaOptMultiple').show();
-        $('#ed_tipodecontrol').show();
+        $('#ed_tipodecontrol').hide();
         $('#edPanelPreguntaOptMultiple-tbody').empty();
 
     }
@@ -136,7 +136,11 @@ $('#EditarPregunta').click(function () {
             detallePregunta.txtTipoControl = "";
             EliminarDeArreglo(Lista_preguntas, "IdPregunta", IdPregunta);//se elimina la pregunta del arreglo de preguntas
             Lista_preguntas.push(detallePregunta);
-            ActualizaListaPreguntas(true);
+            if (IdPregunta2 == undefined) {
+                ActualizaListaPreguntas(true);
+            } else {
+                ActualizaListaPreguntas();
+            }
             $('#ModalEditarPregunta').modal("hide");
         }
         else if (seleccion == "2") {
@@ -145,15 +149,15 @@ $('#EditarPregunta').click(function () {
             $('#edPanelPreguntaCerrada').empty();
             EliminarDeArreglo(Lista_preguntas, "IdPregunta", IdPregunta);//se elimina la pregunta del arreglo de preguntas
             Lista_preguntas.push(detallePregunta);
-            ActualizaListaPreguntas(true);
+            if (IdPregunta2 == undefined) {
+                ActualizaListaPreguntas(true);
+            } else {
+                        ActualizaListaPreguntas();
+        }
             $('#ModalEditarPregunta').modal("hide");
         }
         else if (seleccion == "3") {
-            var tipo_dato = $('#ed_tipodecontrol').val();
-            console.log("mames"+tipo_dato);
-            if(tipo_dato == null){
-                swal("A ocurrido un error", "Por favor selecciona el tipo de control", "error");
-            } else if (tbody.children().length == 0) {
+            if (tbody.children().length == 0) {
                 swal("A ocurrido un error", "Por favor agrega respuestas a la pregunta", "error");
             } else {
                 vacios = 0;
