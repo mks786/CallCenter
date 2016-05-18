@@ -49,35 +49,34 @@
 
                 if (a.Pregunta.IdTipoPregunta.Value == 1)
                 {
-
-                    <textarea class="form-control"></textarea>
-
+                    <div style="padding-left:30px;">
+                        <textarea class="form-control"></textarea>
+                    </div>
                 }
 
                 if (a.Pregunta.IdTipoPregunta.Value == 2)
                 {
-
-                    <div class="radio icheck">
-                        <input type="radio" name="@a">
-                        <label for="">Si</label>
+                    <div style="padding-left:30px;">
+                        <div class="radio icheck">
+                            <input type="radio" name="@a">
+                            <label for="">Si</label>
+                        </div>
+                        <div class="radio icheck">
+                            <input type="radio" name="@a">
+                            <label for="">No</label>
+                        </div>
                     </div>
-                    <div class="radio icheck">
-                        <input type="radio" name="@a">
-                        <label for="">No</label>
-                    </div>
-
                 }
                 if (a.Pregunta.IdTipoPregunta.Value == 3)
                 {
                     foreach (var b in a.Respuestas)
                     {
-
-                        <div class="checkbox icheck">
-                            <input id="" type="checkbox" name="@b.ResOpcMult">
-                            <label>@b.ResOpcMult</label>
+                        <div style="padding-left:30px;">
+                            <div class="checkbox icheck">
+                                <input id="" type="checkbox" name="@b.ResOpcMult">
+                                <label>@b.ResOpcMult</label>
+                            </div>
                         </div>
-
-
                     }
 
 

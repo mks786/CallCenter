@@ -153,7 +153,7 @@ $('#EditarPregunta').click(function () {
                 ActualizaListaPreguntas(true);
             } else {
                         ActualizaListaPreguntas();
-        }
+             }
             $('#ModalEditarPregunta').modal("hide");
         }
         else if (seleccion == "3") {
@@ -187,7 +187,7 @@ $('#EditarPregunta').click(function () {
                         ActualizaListaPreguntas();
                     }
                     $('#ModalEditarPregunta').modal("hide");
-                    console.log("al actualizado");
+                    $('#PanelPreguntaCerrada').hide();
                 }
             }
         }

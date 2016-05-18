@@ -9,6 +9,7 @@ function DetallePreguntas() {
     $('#NombrePregunta').val('');
     $('#TipoPregunta').val(0);
     $('#tipodecontrol').val(0);
+    $('#PanelPreguntaCerrada').hide();
     $('#PanelPreguntaCerrada-tbody').empty();
     $('#PanelPreguntaOptMultiple-tbody').empty();;
 
@@ -165,6 +166,7 @@ $('#GuardarPregunta').click(function () {
                 Lista_preguntas.push(detallePregunta);
                 ActualizaListaPreguntas();
                 $('#ModalAgregarPregunta').modal("hide");
+                $('#PanelPreguntaCerrada').hide();
             }
 
         }
