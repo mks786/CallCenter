@@ -12,7 +12,7 @@ $('#tablaPreguntas').on('click', '.detallepregunta', function () {
    
     for (var i = 0; i < result.length; i++) {
 
-        $('#Detalle-tbody').append("<tr><td><b>Pregunta </b></td><td colspan='3'>" + result[i].Pregunta + "</td> </tr><tr><td><b>Tipo de pregunta</b></td><td class='tipopregunta'>aaaaaaa" + result[i].txtTipoPregunta + "</td></tr>");
+        $('#Detalle-tbody').append("<tr><td><b>Pregunta </b></td><td colspan='3'>" + result[i].Pregunta + "</td> </tr><tr><td><b>Tipo de pregunta</b></td><td class='tipopregunta'>" + result[i].txtTipoPregunta + "</td></tr>");
        
         if (result[i].TipoPregunta != "1") {
             var respuestas = $.grep(Lista_opciones, function (e) { return e.Id_ResOpcMult == result[i].IdPregunta; });

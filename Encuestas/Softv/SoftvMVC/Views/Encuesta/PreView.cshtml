@@ -41,11 +41,11 @@
     </div>
     <div class="container">
 
-            @foreach (var a in preguntas)
+    @foreach (var a in preguntas)
             {
 
 
-                <h4 style="color:#f60;"><b>@a.Pregunta.Pregunta</b></h4>
+        <h4 style="color:#f60;"><b>@a.Pregunta.Pregunta</b></h4>
 
                 if (a.Pregunta.IdTipoPregunta.Value == 1)
                 {
@@ -72,34 +72,10 @@
                     foreach (var b in a.Respuestas)
                     {
 
-                        if (a.Pregunta.TipoControl == 1)
-                        {
-                            <div class="checkbox icheck">
-                                <input id="" type="checkbox" name="@b.ResOpcMult">
-                                <label>@b.ResOpcMult</label>
-                            </div>
-
-                        }
-                        else if (a.Pregunta.TipoControl == 2)
-                        {
-
-                            <div class="checkbox icheck">
-                                <input id="@b.ResOpcMult" type="checkbox" name="@a.Pregunta.Pregunta">
-                                <label for="@b.ResOpcMult">@b.ResOpcMult</label>
-                            </div>
-
-                        }
-
-
-                        else if (a.Pregunta.TipoControl == 3)
-                        {
-                            <div class="checkbox icheck">
-                                <input id="" type="checkbox" name="@b.ResOpcMult">
-                                <label>@b.ResOpcMult</label>
-                            </div>
-
-
-                        }
+                        <div class="checkbox icheck">
+                            <input id="" type="checkbox" name="@b.ResOpcMult">
+                            <label>@b.ResOpcMult</label>
+                        </div>
 
 
                     }
