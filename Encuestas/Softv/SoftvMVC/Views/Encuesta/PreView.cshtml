@@ -22,87 +22,86 @@
     <link rel="stylesheet" href="~/plugins/iCheck/square/purple.css">
 
     
-    
 </head>
 <body>
 
     <div class="container">
-
         <div class="row">
-            <div class="col-md-12" style="background-color:#2a00ff; color:#ffffff;">
-                <p class="text-right" style="color:#f0ad4e; font-size:16px;">@ViewBag.FechaCreacion</p>
-                <h2 class="text-center"><strong>@ViewBag.NombreEncuesta</strong></h2>
-                <hr />
+            <p class="text-right" style="color:#00a9b2; font-size:16px;"><strong>@ViewBag.FechaCreacion</strong></p>
+            <h1 class="text-left" style="color:#f60;"><strong>@ViewBag.NombreEncuesta</strong></h1>
+        </div>
+    </div>
+            <div class="row">
+                <div class="page-title" style="background-color:#00a9b2;">
+                    <div class="container">
+                        <h3 style="color:#fff;">
+                            @ViewBag.Descripcion
+                        </h3>
+                    </div>
+                </div>
             </div>
-        </div>
-        <div class="row">
-            <p class="text"><strong>@ViewBag.Descripcion</strong></p>
-        </div>
+    <div class="container">
 
-
-
-
-
-
-
-        @foreach (var a in preguntas)
-        {
-
-
-            <h4 style="color:#428bca;"><b>@a.Pregunta.Pregunta</b></h4>
-            
-            if(a.Pregunta.IdTipoPregunta.Value==1){
-
-             <textarea class="form-control">
-
-             </textarea>
-
-            }
-
-            if (a.Pregunta.IdTipoPregunta.Value == 2)
+            @foreach (var a in preguntas)
             {
-                <div class="checkbox icheck">
-                    <input id="" type="checkbox" name="">
-                    <label>Si</label>
-                </div>
 
-                <div class="checkbox icheck">
-                    <input  type="checkbox" >
-                    <label >No</label>
-                </div>
 
-            }
-            if (a.Pregunta.IdTipoPregunta.Value == 3)
-            {
-                foreach (var b in a.Respuestas)
+                <h4 style="color:#f60;"><b>@a.Pregunta.Pregunta</b></h4>
+
+                if (a.Pregunta.IdTipoPregunta.Value == 1)
                 {
 
-                    if (a.Pregunta.TipoControl == 1)
+                    <textarea class="form-control"></textarea>
+
+                }
+
+                if (a.Pregunta.IdTipoPregunta.Value == 2)
+                {
+                    <div class="checkbox icheck">
+                        <input id="" type="checkbox" name="">
+                        <label>Si</label>
+                    </div>
+
+                    <div class="checkbox icheck">
+                        <input type="checkbox">
+                        <label>No</label>
+                    </div>
+
+                }
+                if (a.Pregunta.IdTipoPregunta.Value == 3)
+                {
+                    foreach (var b in a.Respuestas)
                     {
 
+                        if (a.Pregunta.TipoControl == 1)
+                        {
 
 
-                        <div class="radio icheck">
-                            <input type="radio">
-                            <label for="@b.ResOpcMult">@b.ResOpcMult</label>
-                        </div>
-                    }
-                    else if (a.Pregunta.TipoControl == 2)
-                    {
 
-                        <div class="checkbox icheck">
-                            <input id="@b.ResOpcMult" type="checkbox" name="@a.Pregunta.Pregunta">
-                            <label for="@b.ResOpcMult">@b.ResOpcMult</label>
-                        </div>
+                            <div class="radio icheck">
+                                <input type="radio">
+                                <label for="@b.ResOpcMult">@b.ResOpcMult</label>
+                            </div>
+                        }
+                        else if (a.Pregunta.TipoControl == 2)
+                        {
 
-                    }
+                            <div class="checkbox icheck">
+                                <input id="@b.ResOpcMult" type="checkbox" name="@a.Pregunta.Pregunta">
+                                <label for="@b.ResOpcMult">@b.ResOpcMult</label>
+                            </div>
+
+                        }
 
 
-                    else if (a.Pregunta.TipoControl == 3)
-                    {
-                        <select class="form-control">
-                            <option>@b.ResOpcMult</option>
-                        </select>
+                        else if (a.Pregunta.TipoControl == 3)
+                        {
+                            <select class="form-control">
+                                <option>@b.ResOpcMult</option>
+                            </select>
+
+
+                        }
 
 
                     }
@@ -110,24 +109,9 @@
 
                 }
 
-
             }
 
-
-
-
-
-
-
-
-
-
-
-
-
-        }
-
-    </div>
+        </div>
 
 </body>
 <script src="~/plugins/iCheck/icheck.min.js"></script>
@@ -138,11 +122,8 @@
             radioClass: 'iradio_square-purple',
             increaseArea: '20%' // optional
         });
-    });
+    }); 
 </script>
-
-
-
 </html>
 
 

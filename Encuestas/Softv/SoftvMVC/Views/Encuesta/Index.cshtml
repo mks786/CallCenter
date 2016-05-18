@@ -1,5 +1,20 @@
-﻿
+﻿<style type="text/css" media="screen">
+    #contenedor {
+        position: relative;      
+    }
 
+    #cubrir-frame {
+        position: absolute;
+        z-index: 3;
+        width: 100%;
+        height: 100%;
+    }
+
+    iframe {
+        position: relative;
+        z-index: 2;
+    }
+</style>
 
 
 
@@ -287,8 +302,12 @@
                 <h4 class="modal-title">Preview </h4>
             </div>
             <div class="modal-body"  style=" width:100%; overflow-y: auto; height: 800px;">
-              
-                <iframe id="ipreview" src="" style="width:100%; height:100%" ></iframe>
+
+                <div class="contenedor" style="height: 100%;">
+                    <div id="cubrir-frame"></div>
+                    <iframe id="ipreview" src="" style="width:100%; height:100%"></iframe>
+                </div>
+               
 
             </div>
             <div class="modal-footer">
@@ -464,3 +483,9 @@
 <script src="~/dist/js/pages/Encuesta/ModalAgregarEncuesta.js"></script>
 <script src="~/dist/js/pages/Encuesta/ModalDetalleEncuesta.js"></script>
 <script src="~/dist/js/pages/Encuesta/ModalEditarEncuesta.js"></script>
+<script>
+     var frame = document.getElementById('cubrir-frame');
+        frame.oncontextmenu = function () {
+        return false;
+   } 
+</script>
