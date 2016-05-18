@@ -31,15 +31,14 @@
             <h1 class="text-left" style="color:#f60;"><strong>@ViewBag.NombreEncuesta</strong></h1>
         </div>
     </div>
-            <div class="row">
-                <div class="page-title" style="background-color:#00a9b2;">
-                    <div class="container">
-                        <h3 style="color:#fff;">
-                            @ViewBag.Descripcion
-                        </h3>
-                    </div>
-                </div>
-            </div>
+
+    <div class="page-title" style="background-color:#00a9b2; width:100%;">
+        <div class="container">
+            <h3 style="color:#fff;">
+                @ViewBag.Descripcion
+            </h3>
+        </div>
+    </div>
     <div class="container">
 
             @foreach (var a in preguntas)

@@ -131,51 +131,60 @@ $('#EditarPregunta').click(function () {
     } else {
         var tbody = $("#edPanelPreguntaOptMultiple-tbody");
         var seleccion = $('#ed_TipoPregunta').val();
-        if (seleccion == "2") {
-            $('#edTablaRespuestasC > tbody  > tr').each(function () {
-                var test1 = $(this).closest(".nrespuestac").find("input:text").map(function () { return $(this).val(); });
-                for (var a = 0; a < test1.length; a++) {
-                    Opciones = {};
-                    Opciones.Id_ResOpcMult = detallePregunta.IdPregunta;
-                    Opciones.Id_ResOpcMult2 = IdPregunta2;
-                    Opciones.ResOpcMult = test1[a];
-                    Lista_opciones.push(Opciones);
-                }
-            });
+        if (seleccion == "1") {
+            detallePregunta.TipoControl = "0";
+            detallePregunta.txtTipoControl = "";
+            EliminarDeArreglo(Lista_preguntas, "IdPregunta", IdPregunta);//se elimina la pregunta del arreglo de preguntas
+            Lista_preguntas.push(detallePregunta);
+            ActualizaListaPreguntas(true);
+            $('#ModalEditarPregunta').modal("hide");
         }
-
-        if (tbody.children().length == 0) {
-            swal("A ocurrido un error", "Por favor agrega respuestas a la pregunta", "error");
+        else if (seleccion == "2") {
+            detallePregunta.TipoControl = "0";
+            detallePregunta.txtTipoControl = "";
+            $('#edPanelPreguntaCerrada').empty();
+            EliminarDeArreglo(Lista_preguntas, "IdPregunta", IdPregunta);//se elimina la pregunta del arreglo de preguntas
+            Lista_preguntas.push(detallePregunta);
+            ActualizaListaPreguntas(true);
+            $('#ModalEditarPregunta').modal("hide");
         }
-        else {
-            vacios = 0;
-            $('#edTablaRespuestasOM > tbody  > tr').each(function () {
-                var test1 = $(this).closest(".nrespuesta").find("input:text").map(function () { return $(this).val(); });
-                for (var a = 0; a < test1.length; a++) {
-                    Opciones = {};
-                    Opciones.Id_ResOpcMult = detallePregunta.IdPregunta;
-                    Opciones.Id_ResOpcMult2 = IdPregunta2;
-                    Opciones.ResOpcMult = test1[a];
-
-                    Lista_opciones.push(Opciones);
-                    if (test1[a] == "") {
-                        vacios = vacios + 1;
-                    }
-                }
-            });
-            if (vacios > 0) {
-                swal("A ocurrido un error", "Por favor llena todas las respuestas o elimina las vacias", "error");
+        else if (seleccion == "3") {
+            var tipo_dato = $('#ed_tipodecontrol').val();
+            console.log("mames"+tipo_dato);
+            if(tipo_dato == null){
+                swal("A ocurrido un error", "Por favor selecciona el tipo de control", "error");
+            } else if (tbody.children().length == 0) {
+                swal("A ocurrido un error", "Por favor agrega respuestas a la pregunta", "error");
             } else {
-
-                EliminarDeArreglo(Lista_preguntas, "IdPregunta", IdPregunta);//se elimina la pregunta del arreglo de preguntas
-                Lista_preguntas.push(detallePregunta);
-
-                if (IdPregunta2 == undefined) {
-                    ActualizaListaPreguntas(true);
+                vacios = 0;
+                $('#edTablaRespuestasOM > tbody  > tr').each(function () {
+                    var test1 = $(this).closest(".nrespuesta").find("input:text").map(function () { return $(this).val(); });
+                    for (var a = 0; a < test1.length; a++) {
+                        Opciones = {};
+                        Opciones.Id_ResOpcMult = detallePregunta.IdPregunta;
+                        Opciones.Id_ResOpcMult2 = IdPregunta2;
+                        Opciones.ResOpcMult = test1[a];
+                        Lista_opciones.push(Opciones);
+                        if (test1[a] == "") {
+                            vacios = vacios + 1;
+                        }
+                    } console.log("al for");
+                });
+                if (vacios > 0) {
+                    swal("A ocurrido un error", "Por favor llena todas las respuestas o elimina las vacias", "error");
                 } else {
-                    ActualizaListaPreguntas();
+
+                    EliminarDeArreglo(Lista_preguntas, "IdPregunta", IdPregunta);//se elimina la pregunta del arreglo de preguntas
+                    Lista_preguntas.push(detallePregunta);
+
+                    if (IdPregunta2 == undefined) {
+                        ActualizaListaPreguntas(true);
+                    } else {
+                        ActualizaListaPreguntas();
+                    }
+                    $('#ModalEditarPregunta').modal("hide");
+                    console.log("al actualizado");
                 }
-                $('#ModalEditarPregunta').modal("hide");
             }
         }
     }
