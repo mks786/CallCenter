@@ -265,12 +265,14 @@ namespace SoftvMVC.Controllers
             public string IdPregunta { get; set; }
 
             public string IdPregunta2 { get; set; }
+
+            
           
             public String Pregunta { get; set; }
          
             public int IdTipoPregunta { get; set; }
 
-            public int TipoControl { get; set; }
+           
            
         }
 
@@ -278,6 +280,8 @@ namespace SoftvMVC.Controllers
         {
             public string  Id_ResOpcMult { get; set; }           
             public String ResOpcMult { get; set; }
+
+            public string Id_ResOpcMult2 { get; set; }
         }
 
         public ActionResult Create(EncuestaEntity encuesta, List<PreguntaEntity1> Preguntas, List<ResOpcMultsEntity1> respuestas,string usuario)
@@ -296,7 +300,7 @@ namespace SoftvMVC.Controllers
 
             xe.Add(xmll,fg);
             int d = 0;
-             int result = proxy.AddEncuesta(xe.ToString());
+            // int result = proxy.AddEncuesta(xe.ToString());
             return null;
         }
 

@@ -51,8 +51,7 @@ namespace Softv.Entities
         [DataMember]
         public bool? Abierta { get; set; }
 
-        [DataMember]
-        public int? TipoControl { get; set; }
+        
 
         [DataMember]
         public TipoPreguntasEntity TipoPreguntas { get; set; }

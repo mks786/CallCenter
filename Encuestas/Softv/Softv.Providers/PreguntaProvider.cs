@@ -117,7 +117,7 @@ namespace Softv.Providers
                 entity_Pregunta.Cerrada = (bool?)(GetFromReader(reader, "Cerrada"));
                 entity_Pregunta.OpcMultiple = (bool?)(GetFromReader(reader, "OpcMultiple"));
                 entity_Pregunta.Abierta = (bool?)(GetFromReader(reader, "Abierta"));
-                entity_Pregunta.TipoControl = (int?)(GetFromReader(reader, "TipoControl"));
+               
 
              
             }
