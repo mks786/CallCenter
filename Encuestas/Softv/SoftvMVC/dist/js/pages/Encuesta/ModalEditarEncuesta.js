@@ -3,13 +3,17 @@
 
 
 $('#TablaEncuesta').on('click', '.Editar', function () {
-  
+
+
     Lista_preguntas = [];
     Lista_opciones = [];
 
-
-    $('#ModalAgregarEncuesta').modal('show');
+    document.getElementById("tituloModalAgregarEncuesta").innerHTML = "Editar Encuesta";
+    document.getElementById("guardarEncuesta").innerHTML = "Editar Encuesta";
+   
+    $('#ModalAgregarEncuesta').modal('show');  
     $('#TbodyPreguntas').empty();
+    
 
     var id = $(this).attr('rel');
 

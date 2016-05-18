@@ -263,6 +263,8 @@ namespace SoftvMVC.Controllers
         {
         
             public string IdPregunta { get; set; }
+
+            public string IdPregunta2 { get; set; }
           
             public String Pregunta { get; set; }
          

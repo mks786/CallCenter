@@ -14,6 +14,10 @@ $(document).ready(function () {
         $('#Descripcion_encuesta').val('');
         Lista_preguntas = [];
         Lista_opciones = [];
+       
+     
+        document.getElementById("tituloModalAgregarEncuesta").innerHTML = "Agregar Encuesta";
+        document.getElementById("guardarEncuesta").innerHTML = "Guardar Encuesta";
     });
 });
 
