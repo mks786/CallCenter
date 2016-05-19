@@ -278,6 +278,15 @@ namespace SoftvMVC.Controllers
 
         //Nuevas funciones 
 
+        public ActionResult GetClienteByNombre(string Nombre){
+        
+           List<CLIENTEEntity> Lista = proxy.GetCLIENTEList().Where(x=>x.NOMBRE==Nombre).ToList();
+            return Json(Lista,JsonRequestBehavior.AllowGet);
+        }
+
+
+
+
         public ActionResult GetList(string data, int draw, int start, int length)
         {
             DataTableData dataTableData = new DataTableData();
