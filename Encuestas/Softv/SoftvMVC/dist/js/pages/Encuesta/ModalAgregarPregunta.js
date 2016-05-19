@@ -8,7 +8,6 @@ function DetallePreguntas() {
     $('#ModalAgregarPregunta').modal('show');
     $('#NombrePregunta').val('');
     $('#TipoPregunta').val(0);
-    $('#tipodecontrol').val(0);
     $('#PanelPreguntaCerrada').hide();
     $('#PanelPreguntaCerrada-tbody').empty();
     $('#PanelPreguntaOptMultiple-tbody').empty();;
@@ -22,7 +21,6 @@ $('#TipoPregunta').change(function () {
 
     var tipo = $('#TipoPregunta').val();
     if (tipo == "1") {
-        $('#tipodecontrol').hide();
         $('#tipodecontrolPAbierta').show();
         $('#PanelPreguntaCerrada').hide();
         $('#PanelPreguntaOptMultiple').hide();
@@ -30,14 +28,10 @@ $('#TipoPregunta').change(function () {
     }
     if (tipo == "2") {
         $('#PanelPreguntaCerrada').hide();
-        $('#tipodecontrol').hide();
-        $('#tipodecontrolPAbierta').hide();
         $('#PanelPreguntaCerrada-tbody').empty()
     }
     if (tipo == "3") {
         $('#PanelPreguntaCerrada').show();;
-        $('#tipodecontrol').hide();
-        $('#tipodecontrolPAbierta').hide();
         $('#PanelPreguntaOptMultiple-tbody').empty();
 
     }
@@ -69,7 +63,6 @@ $('#GuardarPregunta').click(function () {
     //validamos que los detalles de pregunta  esten definidos y si aplica,las opciones deben de estar 
     var nombre_pregunta = $('#NombrePregunta').val();
     var tipo_pregunta = $("#TipoPregunta option:selected").val();
-    var tipo_control = $('#tipodecontrol option:selected').val();
     var tipo_control_abierta = $('#tipodecontrolPAbierta option:selected').val();
     if (nombre_pregunta == "") {
         swal("A ocurrido un error", "El nombre de la pregunta es obligatorio", "error");
@@ -86,8 +79,6 @@ $('#GuardarPregunta').click(function () {
         detallePregunta.Pregunta = nombre_pregunta;
         detallePregunta.IdTipoPregunta = tipo_pregunta;
         detallePregunta.txtTipoPregunta = $("#TipoPregunta option:selected").text();
-        detallePregunta.TipoControl = $('#tipodecontrolPAbierta').val();
-        detallePregunta.txtTipoControl = $("#tipodecontrolPAbierta option:selected").text();
         //detallePregunta.Respuestas = [];
 
         var tbody = $("#PanelPreguntaOptMultiple-tbody");
@@ -109,8 +100,6 @@ $('#GuardarPregunta').click(function () {
         detallePregunta.Pregunta = nombre_pregunta;
         detallePregunta.IdTipoPregunta = tipo_pregunta;
         detallePregunta.txtTipoPregunta = $("#TipoPregunta option:selected").text();
-        detallePregunta.TipoControl = $('#tipodecontrolPAbierta').val();
-        detallePregunta.txtTipoControl = $("#tipodecontrolPAbierta option:selected").text();
         //detallePregunta.Respuestas = [];
 
         var tbody = $("#PanelPreguntaOptMultiple-tbody");
@@ -132,8 +121,6 @@ $('#GuardarPregunta').click(function () {
         detallePregunta.Pregunta = nombre_pregunta;
         detallePregunta.IdTipoPregunta = tipo_pregunta;
         detallePregunta.txtTipoPregunta = $("#TipoPregunta option:selected").text();
-        detallePregunta.TipoControl = $('#tipodecontrol').val();
-        detallePregunta.txtTipoControl = $("#tipodecontrol option:selected").text();
         //detallePregunta.Respuestas = [];
 
         var tbody = $("#PanelPreguntaCerrada-tbody");

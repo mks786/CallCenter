@@ -21,6 +21,9 @@
     <link rel="stylesheet" href="~/plugins/iCheck/square/blue.css">
     <link rel="stylesheet" href="~/plugins/iCheck/square/purple.css">
     <link href="~/plugins/iCheck/square/orange.css" rel="stylesheet" />
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
+    <script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
+    <link rel="stylesheet" href="/resources/demos/style.css">
     
 </head>
 <body>
@@ -29,6 +32,15 @@
         <div class="row">
             <p class="text-right" style="color:#00a9b2; font-size:16px;"><strong>@ViewBag.FechaCreacion</strong></p>
             <h1 class="text-left" style="color:#f60;"><strong>@ViewBag.NombreEncuesta</strong></h1>
+            <div class="ui-widget">
+                <label for="birds">Birds: </label>
+                <input id="birds">
+            </div>
+
+            <div class="ui-widget" style="margin-top:2em; font-family:Arial">
+                Result:
+                <div id="log" style="height: 200px; width: 300px; overflow: auto;" class="ui-widget-content"></div>
+            </div>
         </div>
     </div>
 
@@ -96,6 +108,25 @@
             increaseArea: '20%' // optional
         });
     });
+
+
+    $(function () {
+        function log(message) {
+            $("<div>").text(message).prependTo("#log");
+            $("#log").scrollTop(0);
+        }
+
+        $("#birds").autocomplete({
+            source: "search.php",
+            minLength: 2,
+            select: function (event, ui) {
+                log(ui.item ?
+                  "Selected: " + ui.item.value + " aka " + ui.item.id :
+                  "Nothing selected, input was " + this.value);
+            }
+        });
+    });
+
 </script>
 </html>
 

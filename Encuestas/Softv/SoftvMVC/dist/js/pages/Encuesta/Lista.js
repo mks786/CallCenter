@@ -96,7 +96,7 @@ function LlenaTabla() {
 
 //funcion:retorna las opciones que tendra cada row en la tabla principal
 function Opciones(id) {
-    var opc = "<button class='btn btn-info btn-xs Detalle'  rel='"+id+"' type='button'>Detalles</button> <button class='btn btn-warning btn-xs Editar' rel='"+id+"' type='button'><i class='fa fa-pencil' aria-hidden='true'></i> Editar</button> <button class='btn btn-danger btn-xs eliminar' rel='"+id+"' type='button'> <i class='fa fa-trash-o' aria-hidden='true'></i> Eliminar</button>"
+    var opc = "<button class='btn btn-info btn-xs Detalle'  rel='" + id + "' type='button'>Detalles</button> <button class='btn btn-warning btn-xs Editar' rel='" + id + "' type='button'><i class='fa fa-pencil' aria-hidden='true'></i> Editar</button> <button class='btn btn-danger btn-xs eliminar' rel='" + id + "' type='button'> <i class='fa fa-trash-o' aria-hidden='true'></i> Eliminar</button> <a href='/Encuesta/Details/" + id + "' class='btn btn-success btn-xs'><i class='fa fa-pie-chart' aria-hidden='true'></i> Aplicar</a>"
     return opc;
 }
 
