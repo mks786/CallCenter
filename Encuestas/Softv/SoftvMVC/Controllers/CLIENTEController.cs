@@ -280,9 +280,20 @@ namespace SoftvMVC.Controllers
 
         public ActionResult GetClienteByNombre(string Nombre){
         
-           List<CLIENTEEntity> Lista = proxy.GetCLIENTEList().Where(x=>x.NOMBRE==Nombre).ToList();
+           List<CLIENTEEntity> Lista = proxy.GetCLIENTEList().Where(x=>x.NOMBRE.Contains(Nombre)).ToList();
             return Json(Lista,JsonRequestBehavior.AllowGet);
         }
+
+
+
+        public ActionResult ListaClientes()
+        {
+            List<CLIENTEEntity> Lista = proxy.GetCLIENTEList().ToList();
+            return Json(Lista, JsonRequestBehavior.AllowGet);
+
+        }
+
+
 
 
 
