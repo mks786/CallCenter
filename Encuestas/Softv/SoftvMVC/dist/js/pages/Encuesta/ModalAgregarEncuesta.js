@@ -29,9 +29,13 @@ $('#guardarEncuesta').click(function () {
                 type: "POST",
                 data: { 'encuesta': encuesta, 'Preguntas': Lista_preguntas, 'respuestas': Lista_opciones, 'usuario': usuario },
                 success: function (data, textStatus, jqXHR) {
-                    $('#ModalAgregarEncuesta').modal('hide');
-                    location.href = "/Encuesta";
+                    LlenaTabla();
+                    $('#ModalAgregarEncuesta').modal('hide');                    
                     swal("Hecho!", "Encuesta agregada exitosamente!", "success");
+                    
+                    //setTimeout(function () {
+                    //    location.href = "/Encuesta";
+                    //}, 3000);
                 },
                 error: function (jqXHR, textStatus, errorThrown) {
 

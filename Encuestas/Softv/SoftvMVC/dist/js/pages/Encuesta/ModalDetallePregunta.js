@@ -13,13 +13,17 @@ $('#tablaPreguntas').on('click', '.detallepregunta', function () {
     for (var i = 0; i < result.length; i++) {
 
         $('#Detalle-tbody').append("<tr><td><b>Pregunta </b></td><td colspan='3'>" + result[i].Pregunta + "</td> </tr><tr><td><b>Tipo de pregunta</b></td><td class='tipopregunta'>" + result[i].txtTipoPregunta + "</td></tr>");
-       
-        if (result[i].TipoPregunta != "1") {
+        alert(result[i].IdTipoPregunta);
+        console.log(result);
+        if (result[i].IdTipoPregunta != 1 || result[i].IdTipoPregunta != 2) {
             var respuestas = $.grep(Lista_opciones, function (e) { return e.Id_ResOpcMult == result[i].IdPregunta; });
             for(var s=0; s<respuestas.length; s++){
                $('#detalleresp').append("<option>" + respuestas[s].ResOpcMult + "</option>");
             }
             
+        }
+        else {
+            $('#detalleresp').hide();
         }
     }
     
