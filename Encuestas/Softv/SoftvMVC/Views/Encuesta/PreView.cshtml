@@ -181,6 +181,20 @@
                 }
             }
         }
+
+       
+        $.ajax({
+            url: "/Encuesta/DatosEncuesta/",
+            type: "POST",
+            data: { 'encuesta': datos },
+            success: function (data, textStatus, jqXHR) {
+                console.log(data);
+            },
+            error: function (jqXHR, textStatus, errorThrown) {
+
+            }
+        });
+
         console.log(datos);
     }
 </script>
