@@ -319,7 +319,10 @@ namespace SoftvMVC.Controllers
             return Json(mensaje, JsonRequestBehavior.AllowGet);
         }
 
-
+        public ActionResult DatosEncuesta()
+        {
+            return null;
+        }
 
 
     }
