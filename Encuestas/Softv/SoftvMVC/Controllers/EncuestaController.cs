@@ -322,7 +322,7 @@ namespace SoftvMVC.Controllers
 
         public class ObjEncuesta
         {
-            public  string cliente{get; set; }
+            public  int cliente{get; set; }
 
             public List<preguntas> pregunta { get; set; }
 
