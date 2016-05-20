@@ -250,7 +250,7 @@ namespace SoftvMVC.Controllers
                 return HttpNotFound();
             }
 
-
+            ViewBag.IdEncuesta = Encuesta.Encuesta.IdEncuesta;
             ViewBag.NombreEncuesta = Encuesta.Encuesta.TituloEncuesta;
             ViewBag.Descripcion = Encuesta.Encuesta.Descripcion;
             ViewBag.FechaCreacion = Encuesta.Encuesta.FechaCreacion;
