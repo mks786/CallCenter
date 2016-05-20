@@ -510,6 +510,7 @@
     <Content Include="dist\js\pages\Encuesta\Lista.js" />
     <Content Include="dist\js\pages\Encuesta\ModalAgregarEncuesta.js" />
     <Content Include="dist\js\pages\Encuesta\ModalAgregarPregunta.js" />
+    <Content Include="dist\js\pages\Encuesta\ModalCatalogoPreguntas.js" />
     <Content Include="dist\js\pages\Encuesta\ModalDetalleEncuesta.js" />
     <Content Include="dist\js\pages\Encuesta\ModalDetallePregunta.js" />
     <Content Include="dist\js\pages\Encuesta\ModalEditarEncuesta.js" />

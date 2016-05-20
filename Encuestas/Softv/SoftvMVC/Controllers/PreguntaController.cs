@@ -22,8 +22,9 @@ namespace SoftvMVC.Controllers
     public partial class PreguntaController : BaseController, IDisposable
     {
         private SoftvService.PreguntaClient proxy = null;
-
         private SoftvService.TipoPreguntasClient proxyTipoPreguntas = null;
+        private SoftvService.RelPreguntaOpcMultsClient relpregunta_resp = null;
+        private SoftvService.ResOpcMultsClient RespuestasOM = null;
 
         public PreguntaController()
         {
@@ -33,6 +34,9 @@ namespace SoftvMVC.Controllers
 
             proxyTipoPreguntas = new SoftvService.TipoPreguntasClient();
 
+             relpregunta_resp=new SoftvService.RelPreguntaOpcMultsClient();
+
+             RespuestasOM= new SoftvService.ResOpcMultsClient();
         }
 
         new public void Dispose()
@@ -76,157 +80,6 @@ namespace SoftvMVC.Controllers
             return View(new StaticPagedList<PreguntaEntity>(listResult.ToList(), pageNumber, pSize, listResult.totalCount));
         }
 
-        public ActionResult Details(int id = 0)
-        {
-            PreguntaEntity objPregunta = proxy.GetPregunta(id);
-            if (objPregunta == null)
-            {
-                return HttpNotFound();
-            }
-            return PartialView(objPregunta);
-        }
-
-        public ActionResult Create()
-        {
-            PermisosAccesoDeniedCreate("Pregunta");
-            ViewBag.CustomScriptsPageValid = BuildScriptPageValid();
-
-            ViewBag.VBTipoPreguntas = new SelectList(proxyTipoPreguntas.GetTipoPreguntasList().OrderBy(x => x.Descripcion.Trim()).ToList(), "IdTipoPregunta", "Descripcion");
-
-            return View();
-        }
-
-        [HttpPost]
-        public ActionResult Create(PreguntaEntity objPregunta)
-        {
-            if (ModelState.IsValid)
-            {
-
-                objPregunta.BaseRemoteIp = RemoteIp;
-                objPregunta.BaseIdUser = LoggedUserName;
-                int result = proxy.AddPregunta(objPregunta);
-                if (result == -1)
-                {
-
-                    ViewBag.VBTipoPreguntas = new SelectList(proxyTipoPreguntas.GetTipoPreguntasList().OrderBy(x => x.Descripcion.Trim()).ToList(), "IdTipoPregunta", "Descripcion", objPregunta.IdTipoPregunta);
-
-                    AssingMessageScript("La Pregunta ya existe en el sistema.", "error", "Error", true);
-                    CheckNotify();
-                    return View(objPregunta);
-                }
-                if (result > 0)
-                {
-                    AssingMessageScript("Se dio de alta la Pregunta en el sistema.", "success", "Éxito", true);
-                    return RedirectToAction("Index");
-                }
-
-            }
-            return View(objPregunta);
-        }
-
-        public ActionResult Edit(int id = 0)
-        {
-            PermisosAccesoDeniedEdit("Pregunta");
-            ViewBag.CustomScriptsPageValid = BuildScriptPageValid();
-            PreguntaEntity objPregunta = proxy.GetPregunta(id);
-
-            ViewBag.VBTipoPreguntas = new SelectList(proxyTipoPreguntas.GetTipoPreguntasList().OrderBy(x => x.Descripcion.Trim()).ToList(), "IdTipoPregunta", "Descripcion");
-
-            if (objPregunta == null)
-            {
-                return HttpNotFound();
-            }
-            return View(objPregunta);
-        }
-
-        //
-        // POST: /Pregunta/Edit/5
-        [HttpPost]
-        public ActionResult Edit(PreguntaEntity objPregunta)
-        {
-            if (ModelState.IsValid)
-            {
-                objPregunta.BaseRemoteIp = RemoteIp;
-                objPregunta.BaseIdUser = LoggedUserName;
-                int result = proxy.UpdatePregunta(objPregunta);
-                if (result == -1)
-                {
-                    PreguntaEntity objPreguntaOld = proxy.GetPregunta(objPregunta.IdPregunta);
-
-                    ViewBag.VBTipoPreguntas = new SelectList(proxyTipoPreguntas.GetTipoPreguntasList().Where(x => x.IdTipoPregunta == objPreguntaOld.IdTipoPregunta).OrderBy(x => x.Descripcion.Trim()).ToList(), "IdTipoPregunta", "Descripcion", objPregunta.IdTipoPregunta);
-
-                    AssingMessageScript("La Pregunta ya existe en el sistema, .", "error", "Error", true);
-                    CheckNotify();
-                    return View(objPregunta);
-                }
-                if (result > 0)
-                {
-                    AssingMessageScript("La Pregunta se modifico en el sistema.", "success", "Éxito", true);
-                    CheckNotify();
-                    return RedirectToAction("Index");
-                }
-                return RedirectToAction("Index");
-            }
-            return View(objPregunta);
-        }
-
-        public ActionResult QuickIndex(int? page, int? pageSize, String Pregunta, bool? Cerrada, bool? OpcMultiple, bool? Abierta, int? IdTipoPregunta)
-        {
-            int pageNumber = (page ?? 1);
-            int pSize = pageSize ?? SoftvMVC.Properties.Settings.Default.pagnum;
-            SoftvList<PreguntaEntity> listResult = null;
-            List<PreguntaEntity> listPregunta = new List<PreguntaEntity>();
-            PreguntaEntity objPregunta = new PreguntaEntity();
-            PreguntaEntity objGetPregunta = new PreguntaEntity();
-
-
-            if ((Pregunta != null && Pregunta.ToString() != ""))
-            {
-                objPregunta.Pregunta = Pregunta;
-            }
-
-            if ((Cerrada != null))
-            {
-                objPregunta.Cerrada = Cerrada;
-            }
-
-            if ((OpcMultiple != null))
-            {
-                objPregunta.OpcMultiple = OpcMultiple;
-            }
-
-            if ((Abierta != null))
-            {
-                objPregunta.Abierta = Abierta;
-            }
-
-            if ((IdTipoPregunta != null))
-            {
-                objPregunta.IdTipoPregunta = IdTipoPregunta;
-            }
-
-            pageNumber = pageNumber == 0 ? 1 : pageNumber;
-            listResult = proxy.GetPreguntaPagedListXml(pageNumber, pSize, Globals.SerializeTool.Serialize(objPregunta));
-            if (listResult.Count == 0)
-            {
-                int tempPageNumber = (int)(listResult.totalCount / pSize);
-                pageNumber = (int)(listResult.totalCount / pSize) == 0 ? 1 : tempPageNumber;
-                listResult = proxy.GetPreguntaPagedListXml(pageNumber, pSize, Globals.SerializeTool.Serialize(objPregunta));
-            }
-            listResult.ToList().ForEach(x => listPregunta.Add(x));
-
-            var PreguntaAsIPagedList = new StaticPagedList<PreguntaEntity>(listPregunta, pageNumber, pSize, listResult.totalCount);
-            if (PreguntaAsIPagedList.Count > 0)
-            {
-                return PartialView(PreguntaAsIPagedList);
-            }
-            else
-            {
-                var result = new { tipomsj = "warning", titulomsj = "Aviso", Success = "False", Message = "No se encontraron registros con los criterios de búsqueda ingresados." };
-                return Json(result, JsonRequestBehavior.AllowGet);
-            }
-        }
-
 
         public JsonResult Delete(int id)
         {
@@ -265,6 +118,72 @@ namespace SoftvMVC.Controllers
             public int recordsTotal { get; set; }
             public int recordsFiltered { get; set; }
             public List<PreguntaEntity> data { get; set; }
+        }
+
+        public class Detalle_pregunta
+        {
+            public PreguntaEntity Pregunta { get; set; }
+            public List<ResOpcMultsEntity> Respuestas { get; set; }
+
+        }
+        public ActionResult GetDetallePregunta(string data, int tipo, int draw, int start, int length)
+       {
+            List<Detalle_pregunta> datos = new List<Detalle_pregunta>();
+            DataTableDataDetalle dataTableData = new DataTableDataDetalle();
+            dataTableData.draw = draw;
+            dataTableData.recordsTotal = 0;
+            int recordsFiltered = 0;
+            if ( data != "" )
+            {
+               datos = FiltrarPreguntas(ref recordsFiltered, start, length).Where(x => x.Pregunta.Pregunta.Contains(data)).ToList();
+            }
+             if (tipo>0)
+            {
+                datos = FiltrarPreguntas(ref recordsFiltered, start, length).Where(x => x.Pregunta.IdTipoPregunta==tipo).ToList();
+            }
+            else
+            {
+              datos = FiltrarPreguntas(ref recordsFiltered, start, length);
+            }
+
+             dataTableData.data = datos;
+             dataTableData.recordsFiltered = recordsFiltered;
+
+
+           
+            return Json(dataTableData, JsonRequestBehavior.AllowGet);
+        }
+
+        private List<Detalle_pregunta> FiltrarPreguntas(ref int recordFiltered, int start, int length)
+        {
+            List<Detalle_pregunta> Lista_Preguntas = new List<Detalle_pregunta>();
+            List<PreguntaEntity> preguntas = proxy.GetPreguntaList().ToList();
+            foreach (var a in preguntas)
+            {
+                Detalle_pregunta Pregunta = new Detalle_pregunta();
+
+                List<ResOpcMultsEntity> Respuestas = new List<ResOpcMultsEntity>();
+                List<RelPreguntaOpcMultsEntity> relaciones = relpregunta_resp.GetRelPreguntaOpcMultsList().Where(x => x.IdPregunta == a.IdPregunta).ToList();
+                foreach (var resp in relaciones)
+                {
+                    ResOpcMultsEntity respuestas = RespuestasOM.GetResOpcMultsList().Where(o => o.Id_ResOpcMult == resp.Id_ResOpcMult).Select(o => o).First();
+                    Respuestas.Add(respuestas);
+                }
+                Pregunta.Pregunta = a;
+                Pregunta.Respuestas = Respuestas;
+                Lista_Preguntas.Add(Pregunta);
+
+            }            
+            recordFiltered = Lista_Preguntas.Count;
+            return Lista_Preguntas.Skip(start).Take(length).ToList();
+        }
+
+        public class DataTableDataDetalle
+        {
+            public int draw { get; set; }
+            public int recordsTotal { get; set; }
+            public int recordsFiltered { get; set; }
+            public List<Detalle_pregunta> data { get; set; }
         }
 
 
