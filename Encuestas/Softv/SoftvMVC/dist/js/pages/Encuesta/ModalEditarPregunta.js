@@ -8,8 +8,6 @@ $('#tablaPreguntas').on('click', '.EditarPregunta', function () {
     $('#edPanelPreguntaOptMultiple-tbody').empty();
     $('#ed_NombrePregunta').val('');
     $('#ed_TipoPregunta').val('');
-    $('#ed_tipodecontrol').show();
-    $('#ed_tipodecontrol').val('');
     $('#idParaEditar').val('');
     $('#idParaEditar2').val('');
 
@@ -24,16 +22,12 @@ $('#tablaPreguntas').on('click', '.EditarPregunta', function () {
         $('#ed_TipoPregunta').val(result[r].IdTipoPregunta);
 
         if (result[r].TipoPregunta == "1") {
-            $('#ed_tipodecontrol').hide();
-            $('#ed_tipodecontrol').val('');
             $('#ed_TipoPregunta').attr("disabled",true);
             
            
         }
         else {
             $('#ed_TipoPregunta').attr("disabled", false);
-            $('#ed_tipodecontrol').hide();
-            $('#ed_tipodecontrol').val(result[r].TipoControl);
         }   
 
         
@@ -96,13 +90,11 @@ $('#ed_TipoPregunta').change(function () {
     if (tipo == "2") {
         $('#edPanelPreguntaCerrada').hide();
         $('#edPanelPreguntaOptMultiple').hide();
-        $('#ed_tipodecontrol').hide();
         $('#edPanelPreguntaCerrada-tbody').empty()   
     }
     if (tipo == "3") {
         $('#edPanelPreguntaCerrada').hide();
         $('#edPanelPreguntaOptMultiple').show();
-        $('#ed_tipodecontrol').hide();
         $('#edPanelPreguntaOptMultiple-tbody').empty();
 
     }
@@ -122,8 +114,6 @@ $('#EditarPregunta').click(function () {
     detallePregunta.Pregunta = $('#ed_NombrePregunta').val();
     detallePregunta.IdTipoPregunta = $('#ed_TipoPregunta').val();
     detallePregunta.txtTipoPregunta = $("#ed_TipoPregunta option:selected").text();
-    detallePregunta.TipoControl = $('#ed_tipodecontrol').val();;
-    detallePregunta.txtTipoControl = $("#ed_tipodecontrol option:selected").text();
     var nombre_pregunta = $('#ed_NombrePregunta').val();
 
     if (nombre_pregunta == "") {
@@ -132,8 +122,6 @@ $('#EditarPregunta').click(function () {
         var tbody = $("#edPanelPreguntaOptMultiple-tbody");
         var seleccion = $('#ed_TipoPregunta').val();
         if (seleccion == "1") {
-            detallePregunta.TipoControl = "0";
-            detallePregunta.txtTipoControl = "";
             EliminarDeArreglo(Lista_preguntas, "IdPregunta", IdPregunta);//se elimina la pregunta del arreglo de preguntas
             Lista_preguntas.push(detallePregunta);
             if (IdPregunta2 == undefined) {
@@ -144,8 +132,6 @@ $('#EditarPregunta').click(function () {
             $('#ModalEditarPregunta').modal("hide");
         }
         else if (seleccion == "2") {
-            detallePregunta.TipoControl = "0";
-            detallePregunta.txtTipoControl = "";
             $('#edPanelPreguntaCerrada').empty();
             EliminarDeArreglo(Lista_preguntas, "IdPregunta", IdPregunta);//se elimina la pregunta del arreglo de preguntas
             Lista_preguntas.push(detallePregunta);

@@ -11,6 +11,7 @@
     var youtubeimgsrc = document.getElementById("ipreview").src;   
   
    
-    document.getElementById("ipreview").src = "/Encuesta/Details/" + +id;
+    document.getElementById("ipreview").src = "/Encuesta/Details/" + id;
+    console.log("/Encuesta/Details/" + id);
   
 });
