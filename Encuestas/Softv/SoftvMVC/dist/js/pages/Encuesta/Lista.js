@@ -51,7 +51,7 @@ function MostrarModalEncuesta() {
                 { "data": "Descripcion", "orderable": false },
                 { "data": "FechaCreacion", "orderable": false },
                 {sortable: false, "render": function (data, type, full, meta) {
-                    return "<button class='btn btn-info btn-xs Detalle'  rel='" + full.IdEncuesta + "' type='button'>Detalles</button> <button class='btn btn-warning btn-xs Editar' rel='" + full.IdEncuesta + "' type='button'><i class='fa fa-pencil' aria-hidden='true'></i> Editar</button> <button class='btn btn-danger btn-xs eliminar' rel='" + full.IdEncuesta + "' type='button'> <i class='fa fa-trash-o' aria-hidden='true'></i> Eliminar</button>";                     
+                    return "<button class='btn btn-info btn-xs Detalle'  rel='" + full.IdEncuesta + "' type='button'>Detalles</button> <button class='btn btn-warning btn-xs Editar' rel='" + full.IdEncuesta + "' type='button'><i class='fa fa-pencil' aria-hidden='true'></i> Editar</button> <button class='btn btn-danger btn-xs eliminar' rel='" + full.IdEncuesta + "' type='button'> <i class='fa fa-trash-o' aria-hidden='true'></i> Eliminar</button>  <a href='/Encuesta/Details/" + full.IdEncuesta + "' class='btn btn-success btn-xs'><i class='fa fa-pie-chart' aria-hidden='true'></i> Aplicar</a>";
                   }
                  }
             ],
@@ -87,14 +87,12 @@ function MostrarModalEncuesta() {
 
     }
 
-<<<<<<< HEAD
-=======
+
 //funcion:retorna las opciones que tendra cada row en la tabla principal
 function Opciones(id) {
     var opc = "<button class='btn btn-info btn-xs Detalle'  rel='" + id + "' type='button'>Detalles</button> <button class='btn btn-warning btn-xs Editar' rel='" + id + "' type='button'><i class='fa fa-pencil' aria-hidden='true'></i> Editar</button> <button class='btn btn-danger btn-xs eliminar' rel='" + id + "' type='button'> <i class='fa fa-trash-o' aria-hidden='true'></i> Eliminar</button> <a href='/Encuesta/Details/" + id + "' class='btn btn-success btn-xs'><i class='fa fa-pie-chart' aria-hidden='true'></i> Aplicar</a>"
     return opc;
 }
->>>>>>> antonio/master
 
 
 
