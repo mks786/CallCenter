@@ -54,6 +54,7 @@
                 </div>
             </div>
         </div><br />
+        <input type="hidden" id="encuesta_id" name="id_encuesta" value="@ViewBag.IdEncuesta">
         <div class="container">
 
             @foreach (var a in preguntas)
@@ -100,12 +101,12 @@
 
             }
 
-        </div>
+        </div><br />
         <div class="row">
             <div class="col-md-6 col-md-offset-5">
                 <div class="btn-group" role="group" aria-label="...">
-                    <button type="button" class="btn btn-success btn-lg" onclick="enviarEncuesta()">Guardar Encuesta</button>
-                    <button type="button" class="btn btn-danger btn-lg">Borrar Valores</button>
+                    <button type="button" class="btn btn-success" onclick="enviarEncuesta()">Guardar Encuesta</button>
+                    <button type="button" class="btn btn-danger">Borrar Valores</button>
                 </div>
             </div>
         </div>
@@ -138,6 +139,7 @@
     function enviarEncuesta() {
         var html = $('#encuestaForm');
         var datos = {};
+        datos.id_encuesta = new Array();
         datos.cliente = new Array();
         datos.pregunta = new Array();
         datos.respuestas = new Array();
@@ -146,7 +148,7 @@
         var datos_respuestas = [];
         var data = $('#encuestaForm').serializeArray().reduce(function (obj, item,indice) {
             obj[item.name] = item.value;
-            if (indice == "0") {
+            if (indice == "0") {               
                 var cliente_encuestado = {};
                 cliente_encuestado.id_cliente = item.value;
                 cliente.push(cliente_encuestado);
@@ -157,16 +159,19 @@
                     respuestas.respuesta = item.value;
                     datos_respuestas.push(respuestas);
                 } else {
-                    var preguntas = {};
-                    var getID = item.name.replace('p', '').replace('(', '').replace(')', '');
-                    preguntas.id_pregunta = parseInt(getID);
-                    preguntas.nombre = item.value;
-                    datos_preguntas.push(preguntas);
+                    if (item.name != "id_encuesta") {
+                        var preguntas = {};
+                        var getID = item.name.replace('p', '').replace('(', '').replace(')', '');
+                        preguntas.id_pregunta = parseInt(getID);
+                        preguntas.nombre = item.value;
+                        datos_preguntas.push(preguntas);
+                    } 
                 }
             }
             return obj;
         }, {});
         datos.cliente = parseInt(cliente[0].id_cliente);
+        datos.id_encuesta = parseInt($('#encuesta_id').val());
         for (var i = 0; i < datos_preguntas.length; i++) {
             var pregunta = {};
             pregunta.id_pregunta = datos_preguntas[i].id_pregunta;
@@ -182,20 +187,18 @@
             }
         }
 
-       
+        console.log(datos);
         $.ajax({
             url: "/Encuesta/DatosEncuesta/",
             type: "POST",
             data: { 'encuesta': datos },
             success: function (data, textStatus, jqXHR) {
-                console.log(data);
+
             },
             error: function (jqXHR, textStatus, errorThrown) {
 
             }
         });
-
-        console.log(datos);
     }
 </script>
 </html>

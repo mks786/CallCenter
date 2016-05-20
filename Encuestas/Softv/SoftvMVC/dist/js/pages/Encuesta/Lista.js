@@ -100,7 +100,6 @@ function Opciones(id) {
 
 
     $('#TablaEncuesta').on('click', '.Eliminar', function () {
-        alert("click");
     });
 
     function ActualizaListaPreguntas(editar) {
