@@ -25,17 +25,14 @@ $('#guardarEncuesta').click(function () {
             var usuario = document.getElementById("username").innerHTML;
 
             $.ajax({
-                url: "Encuesta/Create/",
+                url: "/Encuesta/Create/",
                 type: "POST",
                 data: { 'encuesta': encuesta, 'Preguntas': Lista_preguntas, 'respuestas': Lista_opciones, 'usuario': usuario },
                 success: function (data, textStatus, jqXHR) {
                     LlenaTabla();
                     $('#ModalAgregarEncuesta').modal('hide');                    
                     swal("Hecho!", "Encuesta agregada exitosamente!", "success");
-                    
-                    //setTimeout(function () {
-                    //    location.href = "/Encuesta";
-                    //}, 3000);
+                  
                 },
                 error: function (jqXHR, textStatus, errorThrown) {
 
