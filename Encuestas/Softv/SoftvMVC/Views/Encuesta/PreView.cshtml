@@ -166,7 +166,7 @@
             }
             return obj;
         }, {});
-        datos.cliente.id_cliente = cliente[0].id_cliente;
+        datos.cliente = parseInt(cliente[0].id_cliente);
         for (var i = 0; i < datos_preguntas.length; i++) {
             var pregunta = {};
             pregunta.id_pregunta = datos_preguntas[i].id_pregunta;
