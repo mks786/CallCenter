@@ -319,9 +319,34 @@ namespace SoftvMVC.Controllers
             return Json(mensaje, JsonRequestBehavior.AllowGet);
         }
 
-        public ActionResult DatosEncuesta()
+
+        public class ObjEncuesta
         {
-            return null;
+            public  string cliente{get; set; }
+
+            public List<preguntas> pregunta { get; set; }
+
+            public List<respuestas> respuestas { get; set; }
+
+        }
+
+        public class respuestas
+        {
+            public string id_pregunta { get; set; }
+            public string respuesta { get; set; }
+        }
+
+
+        public class preguntas
+        {
+            public string id_pregunta { get; set; }
+            public string nombre { get; set; }
+        }
+
+
+        public ActionResult DatosEncuesta(ObjEncuesta encuesta)
+        {
+            return Json(encuesta,JsonRequestBehavior.AllowGet);
         }
 
 
