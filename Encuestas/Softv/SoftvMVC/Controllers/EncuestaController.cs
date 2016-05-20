@@ -32,6 +32,9 @@ namespace SoftvMVC.Controllers
         private SoftvService.UsuarioClient proxyUsuario = null;
         private SoftvService.ResOpcMultsClient Respuestas = null;
         private SoftvService.RelPreguntaOpcMultsClient relpregunta_resp=null;
+        private SoftvService.RelEncuestaClientesClient relenc_clientes = null;
+        private SoftvService.RelEnProcesosClient rel_en_proces = null;
+
 
         public EncuestaController()
         {
@@ -44,6 +47,10 @@ namespace SoftvMVC.Controllers
             Respuestas = new SoftvService.ResOpcMultsClient();
 
             relpregunta_resp = new SoftvService.RelPreguntaOpcMultsClient();
+
+            relenc_clientes = new SoftvService.RelEncuestaClientesClient();
+
+            rel_en_proces = new SoftvService.RelEnProcesosClient();
         }
 
         new public void Dispose()
@@ -323,6 +330,7 @@ namespace SoftvMVC.Controllers
         public class ObjEncuesta
         {
             public  int cliente{get; set; }
+            public int IdEncuesta { get; set; }
 
             public List<preguntas> pregunta { get; set; }
 
@@ -332,20 +340,57 @@ namespace SoftvMVC.Controllers
 
         public class respuestas
         {
-            public string id_pregunta { get; set; }
+            public int id_pregunta { get; set; }
             public string respuesta { get; set; }
+
+           
         }
 
 
         public class preguntas
         {
-            public string id_pregunta { get; set; }
+            public int id_pregunta { get; set; }
+
+            public int IdTipoPregunta { get; set; }
             public string nombre { get; set; }
         }
 
 
         public ActionResult DatosEncuesta(ObjEncuesta encuesta)
         {
+            /*Creando objeto RelEncuestaClientes*/
+            RelEncuestaClientesEntity rel=new RelEncuestaClientesEntity();
+           
+            rel.IdEncuesta=encuesta.IdEncuesta;
+            rel.Contrato=encuesta.cliente; 
+            rel.FechaApli=DateTime.Now;
+            int  result =relenc_clientes.AddRelEncuestaClientes(rel);
+
+            
+            foreach(var a in encuesta.pregunta){
+               // a.id_pregunta
+                RelEnProcesosEntity re = new RelEnProcesosEntity();
+                re.IdPregunta = a.id_pregunta;
+                foreach (var b in encuesta.respuestas.Where(o => o.id_pregunta == a.id_pregunta))
+                {
+                    if(a.IdTipoPregunta==1){
+
+                        re.RespAbi = b.respuesta;
+                    }
+                    else if (a.IdTipoPregunta == 2)
+                    {
+                        re.RespCerrada = true;
+                    }
+                    else
+                    {
+                        re.Id_ResOpcMult = int.Parse(b.respuesta);
+                    }
+                }
+
+               int result2=rel_en_proces.AddRelEnProcesos(re);
+
+            }            
+
             return Json(encuesta,JsonRequestBehavior.AllowGet);
         }
 
