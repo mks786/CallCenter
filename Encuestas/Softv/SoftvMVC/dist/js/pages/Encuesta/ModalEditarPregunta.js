@@ -33,8 +33,6 @@ $('#tablaPreguntas').on('click', '.EditarPregunta', function () {
         
         $('#idParaEditar').val(result[r].IdPregunta);
         $('#idParaEditar2').val(result[r].IdPregunta2);
-        alert(result[r].IdPregunta);
-        alert(result[r].IdPregunta2);
         var respuestas = $.grep(Lista_opciones, function (e) { return e.Id_ResOpcMult == result[r].IdPregunta; });
 
    
