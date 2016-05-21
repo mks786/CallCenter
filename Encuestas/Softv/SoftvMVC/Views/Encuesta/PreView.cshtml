@@ -201,17 +201,17 @@
 
             console.log(datos);
             console.log($('#encuestaForm').serialize());
-            //$.ajax({
-            //    url: "/Encuesta/DatosEncuesta/",
-            //    type: "POST",
-            //    data: { 'encuesta': datos },
-            //    success: function (data, textStatus, jqXHR) {
+            $.ajax({
+                url: "/Encuesta/DatosEncuesta/",
+                type: "POST",
+                data: { 'encuesta': datos },
+                success: function (data, textStatus, jqXHR) {
+                    swal("Hecho!", "Encuesta se aplico exitosamente!", "success");
+                },
+                error: function (jqXHR, textStatus, errorThrown) {
 
-            //    },
-            //    error: function (jqXHR, textStatus, errorThrown) {
-
-            //    }
-            //});
+                }
+            });
         }
        
     }

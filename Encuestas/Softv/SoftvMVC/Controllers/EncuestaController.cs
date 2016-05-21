@@ -315,12 +315,10 @@ namespace SoftvMVC.Controllers
 
 
             xe.Add(xmll,fg);
-<<<<<<< HEAD
-            int d = 0;
-             int result = proxy.AddEncuesta(xe.ToString());
-=======
+
+
             int result = proxy.AddEncuesta(xe.ToString());
->>>>>>> antonio/master
+
             return null;
         }
 
@@ -390,7 +388,7 @@ namespace SoftvMVC.Controllers
         {
             public int id_pregunta { get; set; }
 
-            public int IdTipoPregunta { get; set; }
+            public int tipoPregunta { get; set; }
             public string nombre { get; set; }
         }
 
@@ -412,11 +410,12 @@ namespace SoftvMVC.Controllers
                 re.IdPregunta = a.id_pregunta;
                 foreach (var b in encuesta.respuestas.Where(o => o.id_pregunta == a.id_pregunta))
                 {
-                    if(a.IdTipoPregunta==1){
+                    if (a.tipoPregunta == 1)
+                    {
 
                         re.RespAbi = b.respuesta;
                     }
-                    else if (a.IdTipoPregunta == 2)
+                    else if (a.tipoPregunta == 2)
                     {
                         re.RespCerrada = true;
                     }

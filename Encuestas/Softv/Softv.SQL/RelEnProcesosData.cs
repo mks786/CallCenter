@@ -57,7 +57,7 @@ namespace Softv.DAO
                 {
                     connection.Close();
                 }
-                result = (int)comandoSql.Parameters["@IdRelEnProcesos"].Value;
+                
             }
             return result;
         }
