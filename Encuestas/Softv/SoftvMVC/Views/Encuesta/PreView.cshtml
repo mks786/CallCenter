@@ -160,9 +160,14 @@
                     cliente.push(cliente_encuestado);
                 } else {
                     if (parseInt(item.name)) {
+                        var id_respuesta = parseInt(item.name.split('_')[1]+item.value);
+                        var id_pregunta = parseInt(item.name.split('_')[0]);
                         var respuestas = {};
+                        if (id_respuesta != id_pregunta) {
+                            respuestas.id_respuesta = id_respuesta;
+                        }
                         count += 1;
-                        respuestas.id_pregunta = parseInt(item.name.split('_')[0]);
+                        respuestas.id_pregunta = id_pregunta;
                         respuestas.respuesta = item.value;
                         datos_respuestas.push(respuestas);
                     } else {
@@ -173,7 +178,6 @@
                             preguntas.id_pregunta = parseInt(idPregunta);
                             preguntas.tipo = parseInt(tipo);
                             preguntas.nombre = item.value;
-                            console.log(preguntas);
                             datos_preguntas.push(preguntas);
                             
                         }
@@ -192,6 +196,9 @@
                 for (var j = 0; j < datos_respuestas.length; j++) {
                     if (datos_preguntas[i].id_pregunta == datos_respuestas[j].id_pregunta) {
                         var respuestas = {};
+                        if (datos_respuestas[j].id_respuesta) {
+                            respuestas.id_respuesta = datos_respuestas[j].id_respuesta;
+                        }
                         respuestas.id_pregunta = datos_respuestas[j].id_pregunta;
                         respuestas.respuesta = datos_respuestas[j].respuesta;
                         datos.respuestas.push(respuestas);
