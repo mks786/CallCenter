@@ -33,6 +33,10 @@ $('#tablaPreguntas').on('click', '.EditarPregunta', function () {
         
         $('#idParaEditar').val(result[r].IdPregunta);
         $('#idParaEditar2').val(result[r].IdPregunta2);
+<<<<<<< HEAD
+       
+=======
+>>>>>>> antonio/master
         var respuestas = $.grep(Lista_opciones, function (e) { return e.Id_ResOpcMult == result[r].IdPregunta; });
 
    

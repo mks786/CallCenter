@@ -4,19 +4,21 @@
 
 $('#TablaEncuesta').on('click', '.Editar', function () {
 
-
+    $('#EditarEncuesta').show();
+    $('#guardarEncuesta').hide();
+   
     Lista_preguntas = [];
     Lista_opciones = [];
 
     document.getElementById("tituloModalAgregarEncuesta").innerHTML = "Editar Encuesta";
-    document.getElementById("guardarEncuesta").innerHTML = "Editar Encuesta";
+    
    
     $('#ModalAgregarEncuesta').modal('show');  
     $('#TbodyPreguntas').empty();
     
 
     var id = $(this).attr('rel');
-
+    $('#idEncuesta').val(id);
     $.ajax({
         url: "Encuesta/DeepDetails/",
         type: "POST",
@@ -62,5 +64,56 @@ $('#TablaEncuesta').on('click', '.Editar', function () {
 
     
     
+
+});
+
+
+
+$('#EditarEncuesta').click(function () {
+    //validamos que existan preguntas en la tabla y los detalles de la encuesta no esten vacios 
+
+   
+
+
+    var titulo_encuesta = $('#nombreEncuesta').val();
+    var descripcion_encuesta = $('#Descripcion_encuesta').val();
+
+    if (titulo_encuesta == "") {
+        swal("A ocurrido un error", "El titulo de la encuesta es obligatorio", "error");
+    } else if (descripcion_encuesta == "") {
+        swal("A ocurrido un error", "La descripción de la encuesta es obligatorio", "error");
+    } else {
+        if ($('#TbodyPreguntas').children().length == 0) {
+            swal("A ocurrido un error", "Tu encuesta no contiene preguntas", "error");
+        } else {
+            var encuesta = {
+                IdEncuesta: $('#idEncuesta').val(),
+                TituloEncuesta: titulo_encuesta,
+                Descripcion: descripcion_encuesta,
+
+            }
+            var usuario = document.getElementById("username").innerHTML;
+
+            $.ajax({
+                url: "/Encuesta/Update/",
+                type: "POST",
+                data: { 'encuesta': encuesta, 'Preguntas': Lista_preguntas, 'respuestas': Lista_opciones, 'usuario': usuario },
+                success: function (data, textStatus, jqXHR) {
+                    LlenaTabla();
+                    $('#ModalAgregarEncuesta').modal('hide');
+                    swal("Hecho!", "Encuesta agregada exitosamente!", "success");
+
+                },
+                error: function (jqXHR, textStatus, errorThrown) {
+
+                }
+            });
+
+        }
+    }
+
+
+
+
 
 });
