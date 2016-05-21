@@ -337,7 +337,7 @@ namespace SoftvMVC.Controllers
 
             xe.Add(xmll, fg);
             int d = 0;
-            int result = proxy.UpdateEncuesta(xe.ToString());
+            //int result = proxy.UpdateEncuesta(xe.ToString());
             return null;
         }
 
@@ -380,6 +380,8 @@ namespace SoftvMVC.Controllers
             public int id_pregunta { get; set; }
             public string respuesta { get; set; }
 
+            public int id_respuesta { get; set; } 
+
            
         }
 
@@ -408,24 +410,28 @@ namespace SoftvMVC.Controllers
                // a.id_pregunta
                 RelEnProcesosEntity re = new RelEnProcesosEntity();
                 re.IdPregunta = a.id_pregunta;
+                re.IdProceso = result;
                 foreach (var b in encuesta.respuestas.Where(o => o.id_pregunta == a.id_pregunta))
                 {
                     if (a.tipoPregunta == 1)
                     {
 
                         re.RespAbi = b.respuesta;
+                        int result2 = rel_en_proces.AddRelEnProcesos(re);
                     }
                     else if (a.tipoPregunta == 2)
                     {
                         re.RespCerrada = true;
+                        int result2 = rel_en_proces.AddRelEnProcesos(re);
                     }
                     else
                     {
-                        re.Id_ResOpcMult = int.Parse(b.respuesta);
+                        re.Id_ResOpcMult = b.id_respuesta;
+                        int result2 = rel_en_proces.AddRelEnProcesos(re);
                     }
                 }
 
-               int result2=rel_en_proces.AddRelEnProcesos(re);
+               
 
             }            
 

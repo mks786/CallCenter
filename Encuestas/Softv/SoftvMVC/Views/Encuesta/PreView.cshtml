@@ -213,7 +213,27 @@
                 type: "POST",
                 data: { 'encuesta': datos },
                 success: function (data, textStatus, jqXHR) {
-                    swal("Hecho!", "Encuesta se aplico exitosamente!", "success");
+                  
+                   
+
+                    swal({
+                        title: "!Hecho!", text: "Encuesta se aplico exitosamente!",
+                        type: "success",
+                        showCancelButton: false,
+                        confirmButtonColor: "#5cb85c",
+                        confirmButtonText: "Aceptar",
+                        cancelButtonText: "Aceptar",
+                        closeOnConfirm: false,
+                        closeOnCancel: false
+                    }, function (isConfirm) {
+                        location.reload();
+                    });
+
+
+
+
+                   
+
                 },
                 error: function (jqXHR, textStatus, errorThrown) {
 
