@@ -93,23 +93,15 @@ namespace Softv.DAO
         /// Edits a Encuesta
         ///</summary>
         /// <param name="Encuesta"> Objeto Encuesta a editar </param>
-        public override int EditEncuesta(EncuestaEntity entity_Encuesta)
+        public override int EditEncuesta(string data)
         {
             int result = 0;
             using (SqlConnection connection = new SqlConnection(SoftvSettings.Settings.Encuesta.ConnectionString))
             {
 
-                SqlCommand comandoSql = CreateCommand("Softv_EncuestaEdit", connection);
+                SqlCommand comandoSql = CreateCommand("SP_UpdateEncuestaL", connection);
+                AssingParameter(comandoSql, "@xml", data);
 
-                AssingParameter(comandoSql, "@IdEncuesta", entity_Encuesta.IdEncuesta);
-
-                AssingParameter(comandoSql, "@TituloEncuesta", entity_Encuesta.TituloEncuesta);
-
-                AssingParameter(comandoSql, "@Descripcion", entity_Encuesta.Descripcion);
-
-                AssingParameter(comandoSql, "@FechaCreacion", entity_Encuesta.FechaCreacion);
-
-                AssingParameter(comandoSql, "@IdUsuario", entity_Encuesta.IdUsuario);
 
                 try
                 {

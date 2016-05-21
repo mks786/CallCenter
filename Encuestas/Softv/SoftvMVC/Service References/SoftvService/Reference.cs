@@ -590,10 +590,10 @@ namespace SoftvMVC.SoftvService {
         System.Threading.Tasks.Task<int> AddEncuestaAsync(string data);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IEncuesta/UpdateEncuesta", ReplyAction="http://tempuri.org/IEncuesta/UpdateEncuestaResponse")]
-        int UpdateEncuesta(Softv.Entities.EncuestaEntity objEncuesta);
+        int UpdateEncuesta(string data);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IEncuesta/UpdateEncuesta", ReplyAction="http://tempuri.org/IEncuesta/UpdateEncuestaResponse")]
-        System.Threading.Tasks.Task<int> UpdateEncuestaAsync(Softv.Entities.EncuestaEntity objEncuesta);
+        System.Threading.Tasks.Task<int> UpdateEncuestaAsync(string data);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IEncuesta/DeleteEncuesta", ReplyAction="http://tempuri.org/IEncuesta/DeleteEncuestaResponse")]
         int DeleteEncuesta(System.Nullable<int> IdEncuesta);
@@ -683,12 +683,12 @@ namespace SoftvMVC.SoftvService {
             return base.Channel.AddEncuestaAsync(data);
         }
         
-        public int UpdateEncuesta(Softv.Entities.EncuestaEntity objEncuesta) {
-            return base.Channel.UpdateEncuesta(objEncuesta);
+        public int UpdateEncuesta(string data) {
+            return base.Channel.UpdateEncuesta(data);
         }
         
-        public System.Threading.Tasks.Task<int> UpdateEncuestaAsync(Softv.Entities.EncuestaEntity objEncuesta) {
-            return base.Channel.UpdateEncuestaAsync(objEncuesta);
+        public System.Threading.Tasks.Task<int> UpdateEncuestaAsync(string data) {
+            return base.Channel.UpdateEncuestaAsync(data);
         }
         
         public int DeleteEncuesta(System.Nullable<int> IdEncuesta) {

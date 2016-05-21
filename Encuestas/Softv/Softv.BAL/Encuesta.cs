@@ -57,9 +57,9 @@ namespace Softv.BAL
         ///Update Encuesta
         ///</summary>
         [DataObjectMethod(DataObjectMethodType.Update, true)]
-        public static int Edit(EncuestaEntity objEncuesta)
+        public static int Edit(string data)
         {
-            int result = ProviderSoftv.Encuesta.EditEncuesta(objEncuesta);
+            int result = ProviderSoftv.Encuesta.EditEncuesta(data);
             return result;
         }
 

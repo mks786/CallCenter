@@ -13,6 +13,8 @@ function Opciones(id) {
 }
 
 function MostrarModalEncuesta() {
+    $('#EditarEncuesta').hide();
+    $('#guardarEncuesta').show();
     $('#ModalAgregarEncuesta').modal('show');
     $('#msnTablavacia').show();
     $('#tablaPreguntas').hide();
@@ -22,14 +24,17 @@ function MostrarModalEncuesta() {
     Lista_preguntas = [];
     Lista_opciones = [];
     document.getElementById("tituloModalAgregarEncuesta").innerHTML = "Agregar Encuesta";
-    document.getElementById("guardarEncuesta").innerHTML = "Guardar Encuesta";
+    //document.getElementById("guardarEncuesta").innerHTML = "Guardar Encuesta";
 }
 
     //funcion:Cuando el documento este listo se llenara la tabla principal  con los registros de
     //las encuestas disponibles ,con el complemento DATATABLES para mostrar y paginar facilmente
-    function LlenaTabla() {
-        var objRoles = {};
-        var data = JSON.stringify(objRoles);
+    function LlenaTabla(buscar) {
+        
+        if (buscar == undefined) {
+           
+            buscar = "";
+        }
 
         $('#TablaEncuesta').dataTable({
             "processing": true,
@@ -43,7 +48,7 @@ function MostrarModalEncuesta() {
             "ajax": {
                 "url": "/Encuesta/GetList/",
                 "type": "POST",
-                "data": { 'data': data },
+                "data": { 'data': buscar },
             },           
             "columns": [
                 { "data": "IdEncuesta", "orderable": false },
@@ -83,7 +88,7 @@ function MostrarModalEncuesta() {
             "order": [[0, "asc"]]
         })
 
-        $("div.toolbar").html('<button class="btn bg-olive Agregar" style="float:right;" onclick="MostrarModalEncuesta();" ><i class="fa fa-bar-chart" aria-hidden="true"></i> Nueva encuesta</button> <div class="input-group input-group-sm"><input class="form-control" type="text"><span class="input-group-btn"><button class="btn btn-info btn-flat" type="button">Buscar</button></span></div>');
+        $("div.toolbar").html('<button class="btn bg-olive Agregar" style="float:right;" onclick="MostrarModalEncuesta();" ><i class="fa fa-bar-chart" aria-hidden="true"></i> Nueva encuesta</button> <div class="input-group input-group-sm"><input class="form-control" id="abuscar" type="text"><span class="input-group-btn"><button onclick="BuscarEncuesta();" class="btn btn-info btn-flat" type="button">Buscar</button></span></div>');
 
     }
 
@@ -95,7 +100,12 @@ function Opciones(id) {
 }
 
 
+function BuscarEncuesta(){
 
+    var id = $('#abuscar').val();
+    LlenaTabla(id);
+
+}
 
 
 

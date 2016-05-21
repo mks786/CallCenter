@@ -32,7 +32,7 @@ namespace SoftvWCFService.Contracts
         int AddEncuesta(string data);
 
         [OperationContract]
-        int UpdateEncuesta(EncuestaEntity objEncuesta);
+        int UpdateEncuesta(string data);
 
         [OperationContract]
         int DeleteEncuesta(int? IdEncuesta);
