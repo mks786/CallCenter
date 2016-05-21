@@ -212,9 +212,9 @@ namespace SoftvWCFService
             return Encuesta.Add(data);
         }
 
-        public int UpdateEncuesta(EncuestaEntity objEncuesta)
+        public int UpdateEncuesta(string data)
         {
-            return Encuesta.Edit(objEncuesta);
+            return Encuesta.Edit(data);
         }
 
         public int DeleteEncuesta(int? IdEncuesta)

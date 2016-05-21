@@ -68,7 +68,7 @@ namespace Softv.Providers
         /// <summary>
         /// Abstract method to update Encuesta
         /// </summary>
-        public abstract int EditEncuesta(EncuestaEntity entity_Encuesta);
+        public abstract int EditEncuesta(string data);
 
         /// <summary>
         /// Abstract method to get all Encuesta

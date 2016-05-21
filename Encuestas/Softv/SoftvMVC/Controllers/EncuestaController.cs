@@ -112,7 +112,16 @@ namespace SoftvMVC.Controllers
             dataTableData.draw = draw;
             dataTableData.recordsTotal = 0;
             int recordsFiltered = 0;
-            dataTableData.data = FiltrarContenido(ref recordsFiltered, start, length);
+
+            if (data != "" ){
+                dataTableData.data = FiltrarContenido(ref recordsFiltered, start, length).Where(o => o.TituloEncuesta.Contains(data) || o.Descripcion.Contains(data) || o.IdEncuesta.Value.ToString().Contains(data) || o.FechaCreacion.Contains(data)).ToList();
+            }
+            else
+            {
+                dataTableData.data = FiltrarContenido(ref recordsFiltered, start, length);
+            }
+
+           
             dataTableData.recordsFiltered = recordsFiltered;
 
             return Json(dataTableData, JsonRequestBehavior.AllowGet);
@@ -306,13 +315,44 @@ namespace SoftvMVC.Controllers
 
 
             xe.Add(xmll,fg);
+<<<<<<< HEAD
+            int d = 0;
+             int result = proxy.AddEncuesta(xe.ToString());
+=======
             int result = proxy.AddEncuesta(xe.ToString());
+>>>>>>> antonio/master
             return null;
         }
 
-      
 
-   
+        public ActionResult Update(EncuestaEntity encuesta, List<PreguntaEntity1> Preguntas, List<ResOpcMultsEntity1> respuestas, string usuario)
+        {
+            UsuarioEntity user = proxyUsuario.GetUsuarioList().Where(o => o.Usuario.ToLower() == usuario.ToLower()).FirstOrDefault();
+            encuesta.FechaCreacion = DateTime.Now.ToShortDateString();
+            encuesta.IdUsuario = user.IdUsuario.Value;
+
+            XElement xe = XElement.Parse(Globals.SerializeTool.Serialize<EncuestaEntity>(encuesta));
+
+            XElement xmll = XElement.Parse(Globals.SerializeTool.SerializeList<PreguntaEntity1>(Preguntas));
+
+            XElement fg = XElement.Parse(Globals.SerializeTool.SerializeList<ResOpcMultsEntity1>(respuestas));
+
+            xe.Add(xmll, fg);
+            int d = 0;
+            int result = proxy.UpdateEncuesta(xe.ToString());
+            return null;
+        }
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -329,7 +369,7 @@ namespace SoftvMVC.Controllers
         public class ObjEncuesta
         {
             public  int cliente{get; set; }
-            public int IdEncuesta { get; set; }
+            public int id_encuesta { get; set; }
 
             public List<preguntas> pregunta { get; set; }
 
@@ -359,8 +399,8 @@ namespace SoftvMVC.Controllers
         {
             /*Creando objeto RelEncuestaClientes*/
             RelEncuestaClientesEntity rel=new RelEncuestaClientesEntity();
-           
-            rel.IdEncuesta=encuesta.IdEncuesta;
+
+            rel.IdEncuesta = encuesta.id_encuesta;
             rel.Contrato=encuesta.cliente; 
             rel.FechaApli=DateTime.Now;
             int  result =relenc_clientes.AddRelEncuestaClientes(rel);
