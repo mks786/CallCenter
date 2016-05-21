@@ -47,6 +47,9 @@ namespace Softv.Entities
         public int? IdUsuario { get; set; }
 
         [DataMember]
+        public bool? Aplicada { get; set; }
+
+        [DataMember]
         public UsuarioEntity Usuario { get; set; }
 
         [DataMember]
