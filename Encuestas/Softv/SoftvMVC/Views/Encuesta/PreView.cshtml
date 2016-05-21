@@ -21,7 +21,8 @@
     <link rel="stylesheet" href="~/plugins/iCheck/square/blue.css">
     <link rel="stylesheet" href="~/plugins/iCheck/square/purple.css">
     <link href="~/plugins/iCheck/square/orange.css" rel="stylesheet" />
-
+    <link href="~/plugins/sweetAlert/sweetalert.css" rel="stylesheet" />
+    <script src="~/plugins/sweetAlert/sweetalert.min.js"></script>
 
 
     <link href="~/dist/js/jquery.flexdatalist.css" rel="stylesheet" />
@@ -43,13 +44,13 @@
             </h3>
         </div>
     </div><br />
-    <form id="encuestaForm" method="post" action="/Encuesta/DatosEncuesta">
+    <form id="encuestaForm">
          <div class="row">
             <div class="col-md-6 col-md-offset-1">
                 <div class="form-group">
                     <h4><label class="col-md-2 control-label" for="cliente"style="color:#f60;">Cliente</label></h4>
                     <div class="col-md-9" style="padding-top:-25px;">
-                        <input type="text" class="flexdatalist form-control" name="cliente" required/>
+                        <input type="text" class="flexdatalist form-control" name="cliente" id="cliente_id" required/>
                     </div>
                 </div>
             </div>
@@ -62,7 +63,7 @@
 
 
                 <h4 style="color:#f60;"><b>@a.Pregunta.Pregunta</b></h4>
-                <input type="hidden" name="p(@a.Pregunta.IdPregunta)"  value="@(a.Pregunta.Pregunta)"/>
+                <input type="hidden" name="p@(a.Pregunta.IdTipoPregunta)s(@a.Pregunta.IdPregunta)"  value="@(a.Pregunta.Pregunta)"/>
 
                 if (a.Pregunta.IdTipoPregunta.Value == 1)
                 {
@@ -137,68 +138,82 @@
 
 
     function enviarEncuesta() {
-        var html = $('#encuestaForm');
-        var datos = {};
-        datos.id_encuesta = new Array();
-        datos.cliente = new Array();
-        datos.pregunta = new Array();
-        datos.respuestas = new Array();
-        var cliente = [];
-        var datos_preguntas = [];
-        var datos_respuestas = [];
-        var data = $('#encuestaForm').serializeArray().reduce(function (obj, item,indice) {
-            obj[item.name] = item.value;
-            if (indice == "0") {               
-                var cliente_encuestado = {};
-                cliente_encuestado.id_cliente = item.value;
-                cliente.push(cliente_encuestado);
-            } else {
-                if (parseInt(item.name)) {
-                    var respuestas = {};
-                    respuestas.id_pregunta = parseInt(item.name.split('_')[0]);
-                    respuestas.respuesta = item.value;
-                    datos_respuestas.push(respuestas);
+        var cliente = $('#cliente_id').val();
+        if (cliente == "") {
+            swal("A ocurrido un error", "Agrega un cliente válido", "error");
+        } else {
+            var html = $('#encuestaForm');
+            var datos = {};
+            var count = 0;
+            datos.id_encuesta = new Array();
+            datos.cliente = new Array();
+            datos.pregunta = new Array();
+            datos.respuestas = new Array();
+            var cliente = [];
+            var datos_preguntas = [];
+            var datos_respuestas = [];
+            var data = $('#encuestaForm').serializeArray().reduce(function (obj, item, indice) {
+                obj[item.name] = item.value;
+                if (indice == "0") {
+                    var cliente_encuestado = {};
+                    cliente_encuestado.id_cliente = item.value;
+                    cliente.push(cliente_encuestado);
                 } else {
-                    if (item.name != "id_encuesta") {
-                        var preguntas = {};
-                        var getID = item.name.replace('p', '').replace('(', '').replace(')', '');
-                        preguntas.id_pregunta = parseInt(getID);
-                        preguntas.nombre = item.value;
-                        datos_preguntas.push(preguntas);
-                    } 
+                    if (parseInt(item.name)) {
+                        var respuestas = {};
+                        count += 1;
+                        respuestas.id_pregunta = parseInt(item.name.split('_')[0]);
+                        respuestas.respuesta = item.value;
+                        datos_respuestas.push(respuestas);
+                    } else {
+                        if (item.name != "id_encuesta") {
+                            var preguntas = {};
+                            var tipo = item.name.split('s')[0].replace('(', '').replace(')', '').replace('p','');
+                            var idPregunta = item.name.split('s')[1].replace('(', '').replace(')', '');
+                            preguntas.id_pregunta = parseInt(idPregunta);
+                            preguntas.tipo = parseInt(tipo);
+                            preguntas.nombre = item.value;
+                            console.log(preguntas);
+                            datos_preguntas.push(preguntas);
+                            
+                        }
+                    }
+                }
+                return obj;
+            }, {});
+            datos.cliente = parseInt(cliente[0].id_cliente);
+            datos.id_encuesta = parseInt($('#encuesta_id').val());
+            for (var i = 0; i < datos_preguntas.length; i++) {
+                var pregunta = {};
+                pregunta.id_pregunta = datos_preguntas[i].id_pregunta;
+                pregunta.nombre = datos_preguntas[i].nombre;
+                pregunta.tipoPregunta = datos_preguntas[i].tipo;
+                datos.pregunta.push(pregunta);
+                for (var j = 0; j < datos_respuestas.length; j++) {
+                    if (datos_preguntas[i].id_pregunta == datos_respuestas[j].id_pregunta) {
+                        var respuestas = {};
+                        respuestas.id_pregunta = datos_respuestas[j].id_pregunta;
+                        respuestas.respuesta = datos_respuestas[j].respuesta;
+                        datos.respuestas.push(respuestas);
+                    }
                 }
             }
-            return obj;
-        }, {});
-        datos.cliente = parseInt(cliente[0].id_cliente);
-        datos.id_encuesta = parseInt($('#encuesta_id').val());
-        for (var i = 0; i < datos_preguntas.length; i++) {
-            var pregunta = {};
-            pregunta.id_pregunta = datos_preguntas[i].id_pregunta;
-            pregunta.nombre = datos_preguntas[i].nombre;
-            datos.pregunta.push(pregunta);
-            for (var j = 0; j < datos_respuestas.length; j++) { 
-                if (datos_preguntas[i].id_pregunta == datos_respuestas[j].id_pregunta) {
-                    var respuestas = {};
-                    respuestas.id_pregunta = datos_respuestas[j].id_pregunta;
-                    respuestas.respuesta = datos_respuestas[j].respuesta;
-                    datos.respuestas.push(respuestas);
-                }
-            }
+
+            console.log(datos);
+            console.log($('#encuestaForm').serialize());
+            //$.ajax({
+            //    url: "/Encuesta/DatosEncuesta/",
+            //    type: "POST",
+            //    data: { 'encuesta': datos },
+            //    success: function (data, textStatus, jqXHR) {
+
+            //    },
+            //    error: function (jqXHR, textStatus, errorThrown) {
+
+            //    }
+            //});
         }
-
-        console.log(datos);
-        $.ajax({
-            url: "/Encuesta/DatosEncuesta/",
-            type: "POST",
-            data: { 'encuesta': datos },
-            success: function (data, textStatus, jqXHR) {
-
-            },
-            error: function (jqXHR, textStatus, errorThrown) {
-
-            }
-        });
+       
     }
 </script>
 </html>

@@ -315,8 +315,12 @@ namespace SoftvMVC.Controllers
 
 
             xe.Add(xmll,fg);
+<<<<<<< HEAD
             int d = 0;
              int result = proxy.AddEncuesta(xe.ToString());
+=======
+            int result = proxy.AddEncuesta(xe.ToString());
+>>>>>>> antonio/master
             return null;
         }
 

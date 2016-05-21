@@ -366,8 +366,28 @@
                 <h4 class="modal-title">Eliminar pregunta</h4>
             </div>
             <div class="modal-body">
-                <input type="hidden" id="idpregunta"/>
-                <p>¿Realmente deseas eliminar esta pregunta?</p>
+                <input type="hidden" id="idpregunta" />
+                <p class="red">¿Realmente deseas eliminar esta pregunta?</p>
+
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-default pull-left" type="button" data-dismiss="modal">cerrar</button>
+                <button class="btn btn-danger" type="button" id="confirmaEliminaPregunta">Eliminar</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="ModalEliminarEncuesta" role="dialog">
+    <div class="modal-dialog modal-md">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button class="close" aria-label="Close" type="button" data-dismiss="modal"><span aria-hidden="true">×</span></button>
+                <h4 class="modal-title">Eliminar pregunta</h4>
+            </div>
+            <div class="modal-body">
+                <input type="hidden" id="idpregunta" />
+                <p class="red">¿Realmente deseas eliminar esta pregunta?</p>
 
             </div>
             <div class="modal-footer">
@@ -565,6 +585,7 @@
 <script src="~/dist/js/pages/Encuesta/ModalDetalleEncuesta.js"></script>
 <script src="~/dist/js/pages/Encuesta/ModalEditarEncuesta.js"></script>
 <script src="~/dist/js/pages/Encuesta/ModalCatalogoPreguntas.js"></script>
+<script src="~/dist/js/pages/Encuesta/ModalEliminarEncuesta.js"></script>
 <script>
      var frame = document.getElementById('cubrir-frame');
         frame.oncontextmenu = function () {
