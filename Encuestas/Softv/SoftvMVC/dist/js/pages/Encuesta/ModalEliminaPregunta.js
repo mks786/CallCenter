@@ -7,6 +7,8 @@ $('#tablaPreguntas').on('click', '.EliminaPregunta', function () {
 });
 
 
+
+
 $('#confirmaEliminaPregunta').click(function () {
 
    var id= $('#idpregunta').val();

@@ -51,7 +51,8 @@ function MostrarModalEncuesta() {
                 { "data": "Descripcion", "orderable": false },
                 { "data": "FechaCreacion", "orderable": false },
                 {sortable: false, "render": function (data, type, full, meta) {
-                    return "<button class='btn btn-info btn-xs Detalle'  rel='" + full.IdEncuesta + "' type='button'>Detalles</button> <button class='btn btn-warning btn-xs Editar' rel='" + full.IdEncuesta + "' type='button'><i class='fa fa-pencil' aria-hidden='true'></i> Editar</button> <button class='btn btn-danger btn-xs eliminar' onclick='eliminarEncuesta(this.id)' id ='" + full.IdEncuesta + "' rel='" + full.IdEncuesta + "' type='button'> <i class='fa fa-trash-o' aria-hidden='true'></i> Eliminar</button>  <a href='/Encuesta/Details/" + full.IdEncuesta + "' class='btn btn-success btn-xs'><i class='fa fa-pie-chart' aria-hidden='true'></i> Aplicar</a>";
+                    console.log(full);
+                    return "<button class='btn btn-info btn-xs Detalle'  rel='" + full.IdEncuesta + "' type='button'>Detalles</button> <button class='btn btn-warning btn-xs Editar' rel='" + full.IdEncuesta + "' type='button'><i class='fa fa-pencil' aria-hidden='true'></i> Editar</button> <button class='btn btn-danger btn-xs eliminar' data-name='" + full.TituloEncuesta + "' onclick='eliminarEncuesta(this)' id ='" + full.IdEncuesta + "' rel='" + full.IdEncuesta + "' type='button'> <i class='fa fa-trash-o' aria-hidden='true'></i> Eliminar</button>  <a href='/Encuesta/Details/" + full.IdEncuesta + "' class='btn btn-success btn-xs'><i class='fa fa-pie-chart' aria-hidden='true'></i> Aplicar</a>";
                   }
                  }
             ],
@@ -115,14 +116,14 @@ function Opciones(id) {
         $('#TbodyPreguntas').empty();
         if (editar == true) {
             for (var b = 0; b < Lista_preguntas.length; b++) {
-                $('#tablaPreguntas').append("<tr><td>dsgdfgdsdgsf" + Lista_preguntas[b].Pregunta + "</td><td>" + Lista_preguntas[b].txtTipoPregunta + "</td><button class='btn btn-info btn-xs detallepregunta' rel='" + Lista_preguntas[b].IdPregunta2 + "'>Detalles</button> <button class='btn btn-warning btn-xs EditarPregunta ' rel='" + Lista_preguntas[b].IdPregunta2 + "'>Editar</button> <button class='btn btn-danger btn-xs EliminaPregunta' rel='" + Lista_preguntas[b].IdPregunta2 + "'>Eliminar</button></td></tr>");
+                $('#tablaPreguntas').append("<tr><td>" + Lista_preguntas[b].Pregunta + "</td><td>" + Lista_preguntas[b].txtTipoPregunta + "</td><button class='btn btn-info btn-xs detallepregunta' rel='" + Lista_preguntas[b].IdPregunta2 + "'>Detalles</button> <button class='btn btn-warning btn-xs EditarPregunta ' rel='" + Lista_preguntas[b].IdPregunta2 + "'>Editar</button> <button class='btn btn-danger btn-xs EliminaPregunta' data-name='" + Lista_preguntas[b].Pregunta + "' rel='" + Lista_preguntas[b].IdPregunta2 + "'>Eliminar</button></td></tr>");
 
             }
 
         }
         else {
             for (var b = 0; b < Lista_preguntas.length; b++) {
-                $('#tablaPreguntas').append("<tr><td>" + Lista_preguntas[b].Pregunta + "</td><td>" + Lista_preguntas[b].txtTipoPregunta + "</td><td><button class='btn btn-info btn-xs detallepregunta' rel='" + Lista_preguntas[b].IdPregunta + "'>Detalles</button> <button class='btn btn-warning btn-xs EditarPregunta ' rel='" + Lista_preguntas[b].IdPregunta + "'>Editar</button> <button class='btn btn-danger btn-xs EliminaPregunta' rel='" + Lista_preguntas[b].IdPregunta + "'>Eliminar</button></td></tr>");
+                $('#tablaPreguntas').append("<tr><td>" + Lista_preguntas[b].Pregunta + "</td><td>" + Lista_preguntas[b].txtTipoPregunta + "</td><td><button class='btn btn-info btn-xs detallepregunta' rel='" + Lista_preguntas[b].IdPregunta + "'>Detalles</button> <button class='btn btn-warning btn-xs EditarPregunta ' rel='" + Lista_preguntas[b].IdPregunta + "'>Editar</button> <button class='btn btn-danger btn-xs EliminaPregunta' data-name='" + Lista_preguntas[b].Pregunta + "' rel='" + Lista_preguntas[b].IdPregunta + "'>Eliminar</button></td></tr>");
 
             }
         }
