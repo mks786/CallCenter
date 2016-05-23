@@ -10,10 +10,9 @@ $('#tablaPreguntas').on('click', '.EliminaPregunta', function () {
 
 
 $('#confirmaEliminaPregunta').click(function () {
-
-   var id= $('#idpregunta').val();
+    var id = $('#idpregunta').val();
    EliminarDeArreglo(Lista_preguntas, 'IdPregunta', id);
-   swal("Correcto !", "Se ha eliminado la pregunta!", "success")
+   swal("Correcto !", "Se ha eliminado la pregunta!", "success");
    $('#ModalEliminaPregunta').modal('hide');
    ActualizaListaPreguntas();
 });

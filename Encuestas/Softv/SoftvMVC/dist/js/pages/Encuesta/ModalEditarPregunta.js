@@ -14,6 +14,7 @@ $('#tablaPreguntas').on('click', '.EditarPregunta', function () {
 
     var id = $(this).attr('rel');
     $('#ModalEditarPregunta').modal('show');
+    $('#ed_TipoPregunta').attr('disabled','');
     var result = $.grep(Lista_preguntas, function (e) { return e.IdPregunta == id || e.IdPregunta2 == id; });
     
 
@@ -29,7 +30,7 @@ $('#tablaPreguntas').on('click', '.EditarPregunta', function () {
         else {
             $('#ed_TipoPregunta').attr("disabled", false);
         }   
-
+        $('#ed_TipoPregunta').attr("disabled", true);
         
         $('#idParaEditar').val(result[r].IdPregunta);
         $('#idParaEditar2').val(result[r].IdPregunta2);
@@ -52,7 +53,7 @@ $('#tablaPreguntas').on('click', '.EditarPregunta', function () {
               
                 $('#edPanelPreguntaOptMultiple').show();
                 $('#edPanelPreguntaCerrada').hide();
-                $('#edPanelPreguntaOptMultiple-tbody').append("<tr class='nrespuesta'><td></td><td><input type='text' class='form-control' id='"+respuestas[t].Id_ResOpcMult2+"' value='" + respuestas[t].ResOpcMult + "'></td><td><button class='btn btn-danger btn-xs edEliminarRespuestaOM'>Quitar</button></td></tr>");
+                $('#edPanelPreguntaOptMultiple-tbody').append("<tr class='nrespuesta'><td></td><td><input type='text' class='flexdatalist form-control' id='" + respuestas[t].Id_ResOpcMult2 + "' value='" + respuestas[t].ResOpcMult + "' disabled></td><td><button class='btn btn-danger btn-xs edEliminarRespuestaOM'>Quitar</button></td></tr>");
             }
         }
 
@@ -64,13 +65,13 @@ $('#tablaPreguntas').on('click', '.EditarPregunta', function () {
 
 // agrega dinamicamnete al hacer click diferentes tipos de respuesta de la pregunta
 $('#edAgregarRespuestasC').click(function () {
-    $('#edPanelPreguntaCerrada-tbody').append("<tr class='nrespuestac'><td></td><td class='nrespuesta'><input class='form-control' class='resp' placeholder='Respuesta' type='text'></td><td><button class='btn btn-danger btn-xs edEliminarRespuestaC'>Quitar</button></td></tr>");
+    $('#edPanelPreguntaCerrada-tbody').append("<tr class='nrespuestac'><td></td><td class='nrespuesta'><input class='flexdatalist form-control' class='resp' placeholder='Respuesta' type='text'></td><td><button class='btn btn-danger btn-xs edEliminarRespuestaC'>Quitar</button></td></tr>");
 
 });
 
 // agrega dinamicamnete al hacer click diferentes tipos de respuesta de la pregunta
 $('#edAgregarRespuestasOM').click(function () {
-    $('#edPanelPreguntaOptMultiple-tbody').append("<tr class='nrespuesta'><td></td><td><input class='form-control' placeholder='Respuesta' type='text'></td><td><button class='btn btn-danger btn-xs edEliminarRespuestaOM'>Quitar</button></td></tr>");
+    $('#edPanelPreguntaOptMultiple-tbody').append("<tr class='nrespuesta'><td></td><td><input class='flexdatalist form-control' placeholder='Respuesta' type='text'></td><td><button class='btn btn-danger btn-xs edEliminarRespuestaOM'>Quitar</button></td></tr>");
 
 });
 

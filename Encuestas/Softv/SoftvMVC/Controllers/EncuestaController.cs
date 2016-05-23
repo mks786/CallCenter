@@ -400,6 +400,12 @@ namespace SoftvMVC.Controllers
             public string nombre { get; set; }
         }
 
+        public ActionResult ListaRespuestas()
+        {
+            List<ResOpcMultsEntity> Lista = Respuestas.GetResOpcMultsList().ToList();
+            return Json(Lista, JsonRequestBehavior.AllowGet);
+
+        }
 
         public ActionResult DatosEncuesta(ObjEncuesta encuesta)
         {
