@@ -41,7 +41,7 @@ $('#TipoPregunta').change(function () {
 
 // agrega dinamicamnete al hacer click diferentes tipos de respuesta de la pregunta
 function AgregarRespuesta() {
-    $('#PanelPreguntaCerrada-tbody').append("<tr class='nrespuestac'><td></td><td class='nrespuesta'><input class='form-control' class='resp' placeholder='Respuesta' type='text'></td><td><button class='btn btn-danger btn-xs EliminarRespuestaC'>Quitar</button></td></tr>");
+    $('#PanelPreguntaCerrada-tbody').append("<tr class='nrespuestac'><td></td><td class='nrespuesta'><input class='flexdatalist form-control' class='resp' placeholder='Respuesta' type='text'></td><td><button class='btn btn-danger btn-xs EliminarRespuestaC'>Quitar</button></td></tr>");
 
 }
 
@@ -164,3 +164,4 @@ $('#GuardarPregunta').click(function () {
     }
 
 });
+
