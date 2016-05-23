@@ -52,7 +52,7 @@ $('#tablaPreguntas').on('click', '.EditarPregunta', function () {
               
                 $('#edPanelPreguntaOptMultiple').show();
                 $('#edPanelPreguntaCerrada').hide();
-                $('#edPanelPreguntaOptMultiple-tbody').append("<tr class='nrespuesta'><td></td><td><input type='text' class='form-control' value='" + respuestas[t].ResOpcMult + "'></td><td><button class='btn btn-danger btn-xs edEliminarRespuestaOM'>Quitar</button></td></tr>");
+                $('#edPanelPreguntaOptMultiple-tbody').append("<tr class='nrespuesta'><td></td><td><input type='text' class='form-control' id='"+respuestas[t].Id_ResOpcMult2+"' value='" + respuestas[t].ResOpcMult + "'></td><td><button class='btn btn-danger btn-xs edEliminarRespuestaOM'>Quitar</button></td></tr>");
             }
         }
 
@@ -146,18 +146,37 @@ $('#EditarPregunta').click(function () {
                 swal("A ocurrido un error", "Por favor agrega respuestas a la pregunta", "error");
             } else {
                 vacios = 0;
+                EliminarDeArreglo(Lista_opciones, "Id_ResOpcMult", IdPregunta);
                 $('#edTablaRespuestasOM > tbody  > tr').each(function () {
+                    var x = $(this).closest(".nrespuesta").find("input:text").map(function () { return $(this); });
                     var test1 = $(this).closest(".nrespuesta").find("input:text").map(function () { return $(this).val(); });
-                    for (var a = 0; a < test1.length; a++) {
+                    for (var i = 0; i < x.length; i++) {
                         Opciones = {};
                         Opciones.Id_ResOpcMult = detallePregunta.IdPregunta;
-                        Opciones.Id_ResOpcMult2 = IdPregunta2;
-                        Opciones.ResOpcMult = test1[a];
+                        if (x[i].attr('id') == 'undefined') {
+                            Opciones.ResOpcMult = '';
+                        } else {
+                            Opciones.ResOpcMult = x[i].val();
+                        }
+                        Opciones.Id_ResOpcMult2 = x[i].attr('id');
                         Lista_opciones.push(Opciones);
-                        if (test1[a] == "") {
+                        ActualizaListaPreguntas(true);
+                        if (test1[x] == "") {
                             vacios = vacios + 1;
                         }
-                    } console.log("al for");
+                    }
+                    //for (var a = 0; a < test1.length; a++) {
+                    //    //console.log(a);
+                    //    Opciones = {};
+                    //    Opciones.Id_ResOpcMult = detallePregunta.IdPregunta;
+                    //    Opciones.Id_ResOpcMult2 = IdPregunta;
+                    //    Opciones.ResOpcMult = test1[a]; 
+                    //    Lista_opciones.push(Opciones);
+                    //    ActualizaListaPreguntas(true);
+                    //    if (test1[a] == "") {
+                    //        vacios = vacios + 1;
+                    //    }
+                    //}
                 });
                 if (vacios > 0) {
                     swal("A ocurrido un error", "Por favor llena todas las respuestas o elimina las vacias", "error");

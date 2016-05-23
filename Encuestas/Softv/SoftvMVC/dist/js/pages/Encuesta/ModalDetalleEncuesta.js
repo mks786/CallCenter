@@ -12,6 +12,5 @@
   
    
     document.getElementById("ipreview").src = "/Encuesta/Details/" + id;
-    console.log("/Encuesta/Details/" + id);
   
 });
