@@ -474,6 +474,16 @@
     <Content Include="Content\menu\script.js" />
     <Content Include="Content\menu\styles.css" />
     <Content Include="Content\PagedList.css" />
+    <Content Include="Content\Patterns\1.png" />
+    <Content Include="Content\Patterns\2.png" />
+    <Content Include="Content\Patterns\3.png" />
+    <Content Include="Content\Patterns\4.png" />
+    <Content Include="Content\Patterns\5.png" />
+    <Content Include="Content\Patterns\6.png" />
+    <Content Include="Content\Patterns\7.png" />
+    <Content Include="Content\Patterns\8.png" />
+    <Content Include="Content\Patterns\9.png" />
+    <Content Include="Content\Patterns\10.png" />
     <Content Include="Content\Plugin\Clock\bootstrap-clockpicker.min.css" />
     <Content Include="Content\Plugin\Clock\bootstrap-clockpicker.min.js" />
     <Content Include="Content\Plugin\NotifyMessage\pnotify.custom.min.css" />

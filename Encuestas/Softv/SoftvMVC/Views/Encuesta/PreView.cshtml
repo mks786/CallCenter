@@ -1,7 +1,9 @@
 ﻿@{
     Layout = "";
     List<SoftvMVC.Controllers.EncuestaController.Detalle_pregunta> preguntas = (List<SoftvMVC.Controllers.EncuestaController.Detalle_pregunta>)ViewData["preguntas"];
-
+    Random rnd = new Random();
+    int number = rnd.Next(1, 13);
+    int b45 = 0;
 
 }
 
@@ -17,103 +19,122 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
     <!-- Ionicons -->
     <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
-
+    <link href='https://fonts.googleapis.com/css?family=Arimo' rel='stylesheet' type='text/css'>
     <link rel="stylesheet" href="~/plugins/iCheck/square/blue.css">
     <link rel="stylesheet" href="~/plugins/iCheck/square/purple.css">
     <link href="~/plugins/iCheck/square/orange.css" rel="stylesheet" />
     <link href="~/plugins/sweetAlert/sweetalert.css" rel="stylesheet" />
     <script src="~/plugins/sweetAlert/sweetalert.min.js"></script>
+    <style>
 
+          @Html.Raw(@" body{background-image:url(../../Content/Patterns/" + @number + ".png); font-family: 'Arimo', sans-serif; } ")
+
+      
+
+    </style>
 
     <link href="~/dist/js/jquery.flexdatalist.css" rel="stylesheet" />
     <script src="~/dist/js/jquery.flexdatalist.js"></script>
 </head>
 <body>
+    <div class="container" style="background-color:#fff;  box-shadow: 2px 2px 5px #999; margin-top:10px;">
+       
+            <div class="row" >
+                <!--<p class="text-right" style="color:#00a9b2; font-size:16px;"><strong>@ViewBag.FechaCreacion</strong></p>-->
+                <h1 class="text-center" style="color:#f60;"><strong>@ViewBag.NombreEncuesta</strong></h1>
 
-    <div class="container">
-        <div class="row">
-            <p class="text-right" style="color:#00a9b2; font-size:16px;"><strong>@ViewBag.FechaCreacion</strong></p>
-            <h1 class="text-left" style="color:#f60;"><strong>@ViewBag.NombreEncuesta</strong></h1>
-        </div>  
-    </div>
-
-    <div class="page-title" style="background-color:#00a9b2; width:100%;">
-        <div class="container">
-            <h3 style="color:#fff;">
-                @ViewBag.Descripcion
-            </h3>
-        </div>
-    </div><br />
-    <form id="encuestaForm">
-         <div class="row">
-            <div class="col-md-6 col-md-offset-1">
-                <div class="form-group">
-                    <h4><label class="col-md-2 control-label" for="cliente"style="color:#f60;">Cliente</label></h4>
-                    <div class="col-md-9" style="padding-top:-25px;">
-                        <input type="text" class="flexdatalist form-control" name="cliente" id="cliente_id" required/>
+                <div class="page-title" style="background-color:#00a9b2; width:100%;">
+                    <div class="container">
+                        <h3 style="color:#fff;">
+                            @ViewBag.Descripcion
+                        </h3>
                     </div>
-                </div>
-            </div>
-        </div><br />
-        <input type="hidden" id="encuesta_id" name="id_encuesta" value="@ViewBag.IdEncuesta">
-        <div class="container">
-
-            @foreach (var a in preguntas)
-            {
-
-
-                <h4 style="color:#f60;"><b>@a.Pregunta.Pregunta</b></h4>
-                <input type="hidden" name="p@(a.Pregunta.IdTipoPregunta)s(@a.Pregunta.IdPregunta)"  value="@(a.Pregunta.Pregunta)"/>
-
-                if (a.Pregunta.IdTipoPregunta.Value == 1)
-                {
-                    <div style="padding-left:30px;">
-                        <textarea class="form-control" name="@(a.Pregunta.IdPregunta)_@a.Pregunta.IdPregunta" required></textarea>
-                    </div>
-                }
-
-                if (a.Pregunta.IdTipoPregunta.Value == 2)
-                {
-                    <div style="padding-left:30px;">
-                        <div class="radio icheck">
-                            <input type="radio" id="@a.Pregunta.IdPregunta s" name="@(a.Pregunta.IdPregunta)_@a.Pregunta.IdPregunta" value="1">
-                            <label for="@a.Pregunta.IdPregunta s">Si</label>
-                        </div>
-                        <div class="radio icheck">
-                            <input type="radio" id="@a.Pregunta.IdPregunta n" name="@(a.Pregunta.IdPregunta)_@a.Pregunta.IdPregunta" value="0">
-                            <label for="@a.Pregunta.IdPregunta n">No</label>
-                        </div>
-                    </div>
-                }
-                if (a.Pregunta.IdTipoPregunta.Value == 3)
-                {
-                    foreach (var b in a.Respuestas)
-                    {
-                        <div style="padding-left:30px;">
-                            <div class="checkbox icheck">
-                                <input id="@b.Id_ResOpcMult" type="checkbox" name="@(a.Pregunta.IdPregunta)_@b.Id_ResOpcMult" value="@b.ResOpcMult">
-                                <label for="@b.Id_ResOpcMult">@b.ResOpcMult</label>
+                </div><br />
+                <form id="encuestaForm">
+                    <div class="row">
+                        <div class="col-md-6 col-md-offset-1">
+                            <div class="form-group">
+                                <h4><label class="col-md-2 control-label" for="cliente" style="color:#f60;">Cliente</label></h4>
+                                <div class="col-md-9" style="padding-top:-25px;">
+                                    <input type="text" class="flexdatalist form-control" name="cliente" id="cliente_id" required />
+                                </div>
                             </div>
                         </div>
-                    }
+                    </div><br />
+                    <input type="hidden" id="encuesta_id" name="id_encuesta" value="@ViewBag.IdEncuesta">
+                    <div class="container">
+
+                        @foreach (var a in preguntas)
+                        {
 
 
-                }
+                            <h4 style="color:#f60;"><b>@a.Pregunta.Pregunta</b></h4>
+                            <input type="hidden" name="p@(a.Pregunta.IdTipoPregunta)s(@a.Pregunta.IdPregunta)" value="@(a.Pregunta.Pregunta)" />
 
-            }
+                            if (a.Pregunta.IdTipoPregunta.Value == 1)
+                            {
+                                <div style="padding-left:30px;">
+                                    <textarea class="form-control" name="@(a.Pregunta.IdPregunta)_@a.Pregunta.IdPregunta" required></textarea>
+                                </div>
+                            }
 
-        </div><br />
-        <div class="row">
-            <div class="col-md-6 col-md-offset-5">
-                <div class="btn-group" role="group" aria-label="...">
-                    <button type="button" class="btn btn-success" onclick="enviarEncuesta()">Guardar Encuesta</button>
-                    <button type="button" class="btn btn-danger">Borrar Valores</button>
-                </div>
+                            if (a.Pregunta.IdTipoPregunta.Value == 2)
+                            {
+                                <div style="padding-left:30px;">
+                                    <div class="radio icheck">
+                                        <input type="radio" id="@a.Pregunta.IdPregunta s" name="@(a.Pregunta.IdPregunta)_@a.Pregunta.IdPregunta" value="1">
+                                        <label for="@a.Pregunta.IdPregunta s">Si</label>
+                                    </div>
+                                    <div class="radio icheck">
+                                        <input type="radio" id="@a.Pregunta.IdPregunta n" name="@(a.Pregunta.IdPregunta)_@a.Pregunta.IdPregunta" value="0">
+                                        <label for="@a.Pregunta.IdPregunta n">No</label>
+                                    </div>
+                                </div>
+                            }
+                            if (a.Pregunta.IdTipoPregunta.Value == 3)
+                            {
+                                foreach (var b in a.Respuestas)
+                                {
+                                    <div style="padding-left:30px;">
+                                        <div class="checkbox icheck">
+                                            <input id="@b.Id_ResOpcMult" type="checkbox" name="@(a.Pregunta.IdPregunta)_@b.Id_ResOpcMult" value="@b.ResOpcMult">
+                                            <label for="@b.Id_ResOpcMult">@b.ResOpcMult</label>
+                                        </div>
+                                    </div>
+                                }
+
+
+                            }
+
+                        }
+
+                    </div><br />
+                    <div class="row">
+                        <div class="col-md-6 col-md-offset-5">
+                            <div class="" role="group" aria-label="...">
+                                <button type="button" class="btn btn-success" onclick="enviarEncuesta()"><i class="fa fa-check" aria-hidden="true"></i> Guardar Encuesta</button>
+                                <button type="reset" class="btn btn-danger">Borrar Valores</button>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+
+
+
+
+
+
+
+
+
+
             </div>
-        </div>
-    </form>
         
-   
+
+        
+      
+
+    </div>
 </body>
 <script src="~/plugins/iCheck/icheck.min.js"></script>
 <script>
