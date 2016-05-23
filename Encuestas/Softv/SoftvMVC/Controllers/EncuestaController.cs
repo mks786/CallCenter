@@ -34,7 +34,7 @@ namespace SoftvMVC.Controllers
         private SoftvService.RelPreguntaOpcMultsClient relpregunta_resp=null;
         private SoftvService.RelEncuestaClientesClient relenc_clientes = null;
         private SoftvService.RelEnProcesosClient rel_en_proces = null;
-
+        private SoftvService.RelPreguntaEncuestasClient rel_preg_encuesta = null;
 
         public EncuestaController()
         {
@@ -51,6 +51,8 @@ namespace SoftvMVC.Controllers
             relenc_clientes = new SoftvService.RelEncuestaClientesClient();
 
             rel_en_proces = new SoftvService.RelEnProcesosClient();
+
+            rel_preg_encuesta = new SoftvService.RelPreguntaEncuestasClient();
         }
 
         new public void Dispose()
@@ -170,14 +172,14 @@ namespace SoftvMVC.Controllers
 
             EncuestaEntity objEncuesta = proxy.GetEncuesta(id);
             Encuesta.Encuesta = objEncuesta;
-            List<PreguntaEntity> preguntas = preguntasService.GetPreguntaList().Where(o => o.RelPreguntaEncuestas.IdEncuesta == objEncuesta.IdEncuesta).ToList();
-
-            foreach (var a in preguntas)
+            //List<PreguntaEntity> preguntas = preguntasService.GetPreguntaList().Where(o => o.RelPreguntaEncuestas.IdEncuesta == objEncuesta.IdEncuesta).ToList();
+            List<RelPreguntaEncuestasEntity> lista_de_relaciones = rel_preg_encuesta.GetRelPreguntaEncuestasList().Where(x => x.IdEncuesta == objEncuesta.IdEncuesta).ToList();
+            foreach (var a in lista_de_relaciones)
             {
 
                 Detalle_pregunta pregunta = new Detalle_pregunta();
                 List<ResOpcMultsEntity> r = new List<ResOpcMultsEntity>();
-                pregunta.Pregunta = a;
+                pregunta.Pregunta = a.Pregunta;
 
                 List<RelPreguntaOpcMultsEntity> relaciones = relpregunta_resp.GetRelPreguntaOpcMultsList().Where(x => x.IdPregunta == a.IdPregunta).ToList();
 
@@ -227,14 +229,18 @@ namespace SoftvMVC.Controllers
 
             EncuestaEntity objEncuesta = proxy.GetEncuesta(id);
             Encuesta.Encuesta = objEncuesta;
-            List<PreguntaEntity> preguntas = preguntasService.GetPreguntaList().Where(o=>o.RelPreguntaEncuestas.IdEncuesta==objEncuesta.IdEncuesta).ToList();          
+            List<RelPreguntaEncuestasEntity> lista_de_relaciones = rel_preg_encuesta.GetRelPreguntaEncuestasList().Where(x => x.IdEncuesta == objEncuesta.IdEncuesta).ToList();
 
-             foreach (var a in preguntas)
+           // foreach( var a in lista_de_relaciones.)
+
+          //  List<PreguntaEntity> preguntas = preguntasService.GetPreguntaList().Where(o => o.RelPreguntaEncuestas.IdEncuesta == objEncuesta.IdEncuesta).ToList();
+           // preguntas.Where(o=> o.RelPreguntaEncuestas.IdEncuesta==objEncuesta.IdEncuesta);
+            foreach (var a in lista_de_relaciones)
             {
 
                 Detalle_pregunta pregunta = new Detalle_pregunta();
                 List<ResOpcMultsEntity> r = new List<ResOpcMultsEntity>();
-                 pregunta.Pregunta = a;
+                 pregunta.Pregunta = a.Pregunta;
 
                List<RelPreguntaOpcMultsEntity> relaciones=relpregunta_resp.GetRelPreguntaOpcMultsList().Where(x=>x.IdPregunta==a.IdPregunta).ToList();
 

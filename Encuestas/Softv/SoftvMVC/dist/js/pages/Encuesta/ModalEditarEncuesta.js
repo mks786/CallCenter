@@ -24,21 +24,37 @@ $('#TablaEncuesta').on('click', '.Editar', function () {
         type: "POST",
         data: { 'id':id},
         success: function (data, textStatus, jqXHR) {
-        
+            console.log(data);
         
             $('#nombreEncuesta').val(data.Encuesta.TituloEncuesta);
             $('#Descripcion_encuesta').val(data.Encuesta.Descripcion);
             $('#tablaPreguntas').show();
             $('#msnTablavacia').hide();
            
+            
+
+
 
             for (var r = 0; r < data.Preguntas.length; r++) {
                 var detallePregunta = {};
+
+                var tipo_pregunta = "";
+                if (data.Preguntas[r].Pregunta.IdTipoPregunta==1) {
+                    tipo_pregunta = "Abierta";
+                }
+                else if (data.Preguntas[r].Pregunta.IdTipoPregunta==2) {
+                    tipo_pregunta = "Cerrada";
+                }
+                else {
+                    tipo_pregunta = "Opcion Multiple";
+                }
+
+
                 detallePregunta.IdPregunta = generateUUID(); 
                 detallePregunta.IdPregunta2 = data.Preguntas[r].Pregunta.IdPregunta;
                 detallePregunta.Pregunta = data.Preguntas[r].Pregunta.Pregunta;
                 detallePregunta.IdTipoPregunta = data.Preguntas[r].Pregunta.IdTipoPregunta;
-                detallePregunta.txtTipoPregunta = data.Preguntas[r].Pregunta.TipoPreguntas.Descripcion;
+                detallePregunta.txtTipoPregunta = tipo_pregunta;
                 detallePregunta.TipoControl =3;
                 detallePregunta.txtTipoControl ="control de prueba";
                 Lista_preguntas.push(detallePregunta);
@@ -53,7 +69,8 @@ $('#TablaEncuesta').on('click', '.Editar', function () {
 
                 }
                 
-                $('#TbodyPreguntas').append("<tr><td>" + data.Preguntas[r].Pregunta.Pregunta + "</td><td>" + data.Preguntas[r].Pregunta.TipoPreguntas.Descripcion + "</td><td><button class='btn btn-info btn-xs detallepregunta' rel='" + data.Preguntas[r].Pregunta.IdPregunta + "'>Detalles</button> <button class='btn btn-warning btn-xs EditarPregunta ' rel='" + data.Preguntas[r].Pregunta.IdPregunta + "'>Editar</button> <button class='btn btn-danger btn-xs EliminaPregunta' data-name='" + data.Preguntas[r].Pregunta.Pregunta + "' rel='" + data.Preguntas[r].Pregunta.IdPregunta + "'>Eliminar</button></td></tr>")
+                $('#TbodyPreguntas').append("<tr><td>" + data.Preguntas[r].Pregunta.Pregunta + "</td><td>" + tipo_pregunta + "</td><td><button class='btn btn-info btn-xs detallepregunta' rel='" + data.Preguntas[r].Pregunta.IdPregunta + "'>Detalles</button> <button class='btn btn-warning btn-xs EditarPregunta ' rel='" + data.Preguntas[r].Pregunta.IdPregunta + "'>Editar</button> <button class='btn btn-danger btn-xs EliminaPregunta' data-name='" + data.Preguntas[r].Pregunta.Pregunta + "' rel='" + data.Preguntas[r].Pregunta.IdPregunta + "'>Eliminar</button></td></tr>")
+                // $('#TbodyPreguntas').append("<tr><td>" + data.Preguntas[r].Pregunta.Pregunta + "</td><td>" + data.Preguntas[r].Pregunta.TipoPreguntas.Descripcion + "</td><td><button class='btn btn-info btn-xs detallepregunta' rel='" + data.Preguntas[r].Pregunta.IdPregunta + "'>Detalles</button> <button class='btn btn-warning btn-xs EditarPregunta ' rel='" + data.Preguntas[r].Pregunta.IdPregunta + "'>Editar</button> <button class='btn btn-danger btn-xs EliminaPregunta' data-name='" + data.Preguntas[r].Pregunta.Pregunta + "' rel='" + data.Preguntas[r].Pregunta.IdPregunta + "'>Eliminar</button></td></tr>")
             }
             
         },
