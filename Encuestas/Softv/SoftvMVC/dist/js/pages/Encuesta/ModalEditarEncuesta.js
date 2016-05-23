@@ -24,7 +24,6 @@ $('#TablaEncuesta').on('click', '.Editar', function () {
         type: "POST",
         data: { 'id':id},
         success: function (data, textStatus, jqXHR) {
-            console.log(data);
         
             $('#nombreEncuesta').val(data.Encuesta.TituloEncuesta);
             $('#Descripcion_encuesta').val(data.Encuesta.Descripcion);

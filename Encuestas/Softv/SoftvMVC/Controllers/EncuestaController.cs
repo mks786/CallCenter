@@ -343,7 +343,7 @@ namespace SoftvMVC.Controllers
 
             xe.Add(xmll, fg);
             int d = 0;
-            //int result = proxy.UpdateEncuesta(xe.ToString());
+            int result = proxy.UpdateEncuesta(xe.ToString());
             return null;
         }
 
