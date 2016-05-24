@@ -2,10 +2,16 @@
     LlenarTabla();
 
 
-    //$(".Agregar").click(function () {
-    //    $('#ModalAgregarConexion').modal('show');
+    $(".Agregar").click(function () {
+        $('#ModalAgregarConexion').modal('show');
+        $('#Nombreplaza').val('');
+        $('#Servidor').val('');
+        $('#base').val('');
+        $('#user').val('');
+        $('#pass').val('');
 
-    //});
+
+    });
 
 });
 
@@ -59,45 +65,62 @@ function LlenarTabla() {
 
         "order": [[0, "asc"]]
     })
-    //Botones
+    $("div.toolbar").html('<button class="btn bg-olive Agregar" style="float:right;" onclick="MostrarModalConexion();" ><i class="fa fa-plug" aria-hidden="true"></i> Nueva conexión</button> <div class="input-group input-group-sm"><input class="form-control" id="abuscar" type="text"><span class="input-group-btn"><button onclick="BuscarEncuesta();" class="btn btn-info btn-flat" type="button">Buscar</button></span></div>');
 }
 
 
 
-//funcion:retorna las opciones que tendra cada row en la tabla principal
-function Opciones() {
-    var opc = "<button class='btn btn-info btn-xs Detalle' type='button'>Detalles</button> <button class='btn btn-warning btn-xs Editar' type='button'><i class='fa fa-pencil' aria-hidden='true'></i> Editar</button> <button class='btn btn-danger btn-xs eliminar'  type='button'> <i class='fa fa-trash-o' aria-hidden='true'></i> Eliminar</button>"
-    return opc;
-}
-
-$('#TablaConexiones').on('click', '.Detalle', function () {
-    $('#ModalDetalleConexion').modal('show');
-});
-
-$('#TablaConexiones').on('click', '.Editar', function () {
-    $('#ModalDetalleConexion').modal('show');
-});
-
-$('#TablaConexiones').on('click', '.Eliminar', function () {
-    alert("click");
-});
+$('#guardarConexion').click(function () {
 
 
 
-function ActualizaListaPreguntas() {
-    $('#TbodyPreguntas').empty();
-    for (var b = 0; b < Lista_preguntas.length; b++) {
-        $('#tablaPreguntas').append("<tr><td>" + Lista_preguntas[b].Nombre + "</td><td>" + Lista_preguntas[b].TipoControl + "</td><td><button class='btn btn-info btn-xs detallepregunta' rel='" + Lista_preguntas[b].id + "'>Detalles</button> <button class='btn btn-warning btn-xs EditarPregunta ' rel='" + Lista_preguntas[b].id + "'>Editar</button> <button class='btn btn-danger btn-xs EliminaPregunta' rel='" + Lista_preguntas[b].id + "'>Eliminar</button></td></tr>");
+
+    if ($('#Nombreplaza').val() == "") {
+        sweetAlert("Oops...", "El nombre de plaza es requerido!", "error");
+    }
+    else if ($('#Servidor').val() == "") {
+        sweetAlert("Oops...", "El nombre del servidor es requerido!", "error");
+    }
+    else if ($('#base').val() == "") {
+        sweetAlert("Oops...", "El nombre de la base de datos es requerido!", "error");
+    }
+    else if ($('#user').val() == "") {
+        sweetAlert("Oops...", "El nombre del usuario es requerido!", "error");
+    }
+    else if ($('#pass').val() == "") {
+        sweetAlert("Oops...", "la contraseña es requerida!", "error");
+    } else {
+
+
+
+        var conexion = {};
+        conexion.Plaza = $('#Nombreplaza').val();
+        conexion.Servidor = $('#Servidor').val();
+        conexion.BaseDeDatos = $('#base').val();
+        conexion.Usuario = $('#user').val();
+        conexion.Password = $('#pass').val();
+
+
+
+
+        $.ajax({
+            url: "/Conexion/AddConexion/",
+            type: "POST",
+            data: { 'conexion': conexion },
+            success: function (data, textStatus, jqXHR) {
+                console.log(data);
+                // LlenaTabla();
+                $('#ModalAgregarConexion').modal('hide');
+                swal("Hecho!", "Plaza agregada exitosamente!", "success");
+
+            },
+            error: function (jqXHR, textStatus, errorThrown) {
+
+            }
+        });
+
 
     }
 
-}
-
-$('#TablaClientes').on('click', '.EliminaCliente', function () {
-    var id = $(this).attr('rel');
-    $('#ModalEliminaCliente').modal('show');
-    //$('#contrato').val(id);
 
 });
-
-

@@ -10,31 +10,31 @@ editando este archivo MSBuild. Para conocer más acerca de esto, visite http://g
   </PropertyGroup>
   <ItemGroup>
     <File Include="bin/Globals.dll">
-      <publishTime>05/04/2016 11:06:28</publishTime>
+      <publishTime>05/23/2016 18:46:45</publishTime>
     </File>
     <File Include="bin/Softv.BAL.dll">
-      <publishTime>05/04/2016 11:06:30</publishTime>
+      <publishTime>05/23/2016 18:46:48</publishTime>
     </File>
     <File Include="bin/Softv.Entities.dll">
-      <publishTime>05/04/2016 11:06:28</publishTime>
+      <publishTime>05/23/2016 18:46:45</publishTime>
     </File>
     <File Include="bin/Softv.Providers.dll">
-      <publishTime>05/04/2016 11:06:29</publishTime>
+      <publishTime>05/23/2016 18:46:46</publishTime>
     </File>
     <File Include="bin/Softv.SQL.dll">
-      <publishTime>05/04/2016 11:06:29</publishTime>
+      <publishTime>05/23/2016 18:46:48</publishTime>
     </File>
     <File Include="bin/SoftvConfiguration.dll">
-      <publishTime>05/04/2016 11:06:29</publishTime>
+      <publishTime>05/23/2016 18:46:46</publishTime>
     </File>
     <File Include="bin/SoftvWCFService.dll">
-      <publishTime>05/04/2016 11:06:31</publishTime>
+      <publishTime>05/23/2016 18:46:49</publishTime>
     </File>
     <File Include="SoftvWCFService.svc">
-      <publishTime>10/27/2015 21:50:44</publishTime>
+      <publishTime>05/17/2016 11:48:30</publishTime>
     </File>
     <File Include="Web.config">
-      <publishTime>05/04/2016 11:06:31</publishTime>
+      <publishTime>05/23/2016 18:46:50</publishTime>
     </File>
   </ItemGroup>
 </Project>

@@ -2,3 +2,8 @@ C:\Users\egarcia\Desktop\Softv\Globals\bin\Release\Globals.dll
 C:\Users\egarcia\Desktop\Softv\Globals\bin\Release\Globals.pdb
 C:\Users\egarcia\Desktop\Softv\Globals\obj\Release\Globals.dll
 C:\Users\egarcia\Desktop\Softv\Globals\obj\Release\Globals.pdb
+C:\Users\programador\Documents\GitHub\CallCenter\Encuestas\Softv\Globals\bin\Release\Globals.dll
+C:\Users\programador\Documents\GitHub\CallCenter\Encuestas\Softv\Globals\bin\Release\Globals.pdb
+C:\Users\programador\Documents\GitHub\CallCenter\Encuestas\Softv\Globals\obj\Release\Globals.csprojResolveAssemblyReference.cache
+C:\Users\programador\Documents\GitHub\CallCenter\Encuestas\Softv\Globals\obj\Release\Globals.dll
+C:\Users\programador\Documents\GitHub\CallCenter\Encuestas\Softv\Globals\obj\Release\Globals.pdb

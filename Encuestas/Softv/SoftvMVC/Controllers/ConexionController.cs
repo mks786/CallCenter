@@ -42,6 +42,19 @@ namespace SoftvMVC.Controllers
 
         }
 
+
+        public ActionResult AddConexion(ConexionEntity conexion)
+        {
+            int result= proxy.AddConexion(conexion);
+            return Json(result,JsonRequestBehavior.AllowGet);
+        }
+
+
+
+
+
+
+
         public ActionResult Index(int? page, int? pageSize)
         {
             PermisosAcceso("Conexion");
