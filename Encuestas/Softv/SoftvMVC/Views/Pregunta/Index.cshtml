@@ -30,10 +30,7 @@
                         <tr>
                             <td><b>IdPregunta</b></td>
                             <td><b>Pregunta</b></td>
-                            <td><b>IdTipoPregunta</b></td>
-                            @*<td><b>Cerrada</b></td>
-                            <td><b>OpcMultiple</b></td>
-                            <td><b>Abierta</b></td>*@
+                            <td><b>Tipo Pregunta</b></td>
                             <td><b>Opciones</b></td>
                         </tr>
                     </thead>
@@ -42,10 +39,7 @@
                         <tr>
                             <td><b>IdPregunta</b></td>
                             <td><b>Pregunta</b></td>
-                            <td><b>IdTipoPregunta</b></td>
-                            @*<td><b>Cerrada</b></td>
-                            <td><b>OpcMultiple</b></td>
-                            <td><b>Abierta</b></td>*@
+                            <td><b>Tipo Pregunta</b></td>
                             <td><b>Opciones</b></td>
                         </tr>
                     </tfoot>
@@ -144,7 +138,16 @@
                 <h4 class="modal-title">Detalle de Preguntas</h4>
             </div>
             <div class="modal-body">
-                **Escribir las respuestas de la pregunta
+                <div class="row">
+                    <div class="col-md-6">
+                        <input type="text" class="form-control" id="nombre_pregunta" disabled />
+                    </div>
+                    <div class="col-md-6">
+                        <select class="form-control" disabled>
+                            <option value="0" id="tipo_pregunta" selected></option>
+                        </select>
+                    </div>
+                </div>
             </div>
             <div class="modal-footer">
                 <button class="btn btn-default pull-left" type="button" data-dismiss="modal">cerrar</button>

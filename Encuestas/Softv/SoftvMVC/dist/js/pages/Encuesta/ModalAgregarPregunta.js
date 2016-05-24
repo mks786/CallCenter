@@ -41,7 +41,7 @@ $('#TipoPregunta').change(function () {
 
 // agrega dinamicamnete al hacer click diferentes tipos de respuesta de la pregunta
 function AgregarRespuesta() {
-    $('#PanelPreguntaCerrada-tbody').append("<tr class='nrespuestac'><td></td><td class='nrespuesta'><input class='flexdatalist form-control' class='resp' placeholder='Respuesta' type='text'></td><td><button class='btn btn-danger btn-xs EliminarRespuestaC'>Quitar</button></td></tr>");
+    $('#PanelPreguntaCerrada-tbody').append("<tr class='nrespuestac'><td></td><td class='nrespuesta'><input class='form-control resp' class='' placeholder='Respuesta' type='text'></td><td><button class='btn btn-danger btn-xs EliminarRespuestaC'>Quitar</button></td></tr>");
 
 }
 
@@ -117,6 +117,7 @@ $('#GuardarPregunta').click(function () {
         $('#msnTablavacia').hide();
 
         var detallePregunta = {};
+        var duplicado = [];
         detallePregunta.IdPregunta = generateUUID();
         detallePregunta.Pregunta = nombre_pregunta;
         detallePregunta.IdTipoPregunta = tipo_pregunta;
@@ -138,17 +139,29 @@ $('#GuardarPregunta').click(function () {
                     Opciones = {};
                     Opciones.Id_ResOpcMult = detallePregunta.IdPregunta;
                     Opciones.ResOpcMult = test1[a];
+                    duplicado.push(test1[a]);
                     Lista_opciones.push(Opciones);
                     if (test1[a] == "") {
                         vacios = vacios + 1;
-                        console.log("entras");
+                       
                     }
                 }
             });
-            console.log(vacios);
+            var contador = 0;
+            for (var i = 0; i < duplicado.length-1; i++) {
+                for (var j = i + 1; j < duplicado.length; j++) {
+                    if (duplicado[i] == duplicado[j]) {
+                        contador += 1;
+                    }
+                }
+
+            }
             if (vacios > 0) {
                 swal("A ocurrido un error", "Por favor llena todas las respuestas o elimina las vacias", "error");
-            } else {
+            }else if(contador > 0){
+                swal("A ocurrido un error", "No puede haber respuestas duplicadas", "error");
+            }
+            else {
 
                 Lista_preguntas.push(detallePregunta);
                 ActualizaListaPreguntas();

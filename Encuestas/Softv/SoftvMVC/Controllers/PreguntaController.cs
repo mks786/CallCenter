@@ -79,7 +79,20 @@ namespace SoftvMVC.Controllers
             ViewBag.CustomScriptsDefault = BuildScriptsDefault("Pregunta");
             return View(new StaticPagedList<PreguntaEntity>(listResult.ToList(), pageNumber, pSize, listResult.totalCount));
         }
+        public ActionResult GetOnePregunta(int id)
+        {
+                   PreguntaEntity pregunta= proxy.GetPreguntaList().Where(x=>x.IdPregunta==id).FirstOrDefault();
+                   List<RelPreguntaOpcMultsEntity> rel=  relpregunta_resp.GetRelPreguntaOpcMultsList().Where(o => o.IdPregunta == id).ToList();
+                   foreach(var a in rel){
+                       List<ResOpcMultsEntity> resp = RespuestasOM.GetResOpcMultsList().Where(s => s.Id_ResOpcMult == a.Id_ResOpcMult).ToList();
+                   }
 
+
+                //int a = 0;
+
+                
+            return Json(null,JsonRequestBehavior.AllowGet);
+        }
 
         public JsonResult Delete(int id)
         {

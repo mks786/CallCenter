@@ -50,7 +50,7 @@ function LlenarTabla() {
         {
             sortable: false,
             "render": function (data, type, full, meta) {
-                return Opciones();  //Es el campo de opciones de la tabla.
+                return Opciones(full);  //Es el campo de opciones de la tabla.
             }
         }
         ],
@@ -94,18 +94,39 @@ function Opciones() {
 
 
 //funcion:retorna las opciones que tendra cada row en la tabla principal
-function Opciones() {
-    var opc = "<button class='btn btn-info btn-xs Detalle' type='button'>Detalles</button> <button class='btn btn-warning btn-xs Editar' type='button'><i class='fa fa-pencil' aria-hidden='true'></i> Editar</button> <button class='btn btn-danger btn-xs eliminar'  type='button'> <i class='fa fa-trash-o' aria-hidden='true'></i> Eliminar</button>"
+function Opciones(data) {
+    var opc = "<button class='btn btn-info btn-xs Detalle' data-pregunta='" + data.Pregunta + "' data-tipo='" + data.IdTipoPregunta + "' id=" + data.IdPregunta + " type='button' onclick='detalle(this)'>Detalles</button> <button class='btn btn-warning btn-xs Editar' type='button' id='" + data.IdPregunta + "' onclick='editar(this.id)'><i class='fa fa-pencil' aria-hidden='true'></i> Editar</button> <button class='btn btn-danger btn-xs eliminar'  type='button'> <i class='fa fa-trash-o' aria-hidden='true'></i> Eliminar</button>"
     return opc;
 }
 
-$('#TablaPreguntas').on('click', '.Detalle', function () {
+function detalle(e){
     $('#ModalDetallePregunta').modal('show');
-});
+    $('#nombre_pregunta').val(e.getAttribute("data-pregunta"));
+    var tipo = parseInt(e.getAttribute("data-tipo"));
+    var nombre_tipo = '';
+    if (tipo == 1) {
+        nombre_tipo = 'Pregunta Abierta';
+    } else if (tipo == 2) {
+        nombre_tipo = 'Pregunta Cerrada';
+    } else {
+        nombre_tipo = 'Pregunta con Opciones Múltiples';
+    }
+    $('#tipo_pregunta').text(nombre_tipo);
+}
+    
+function editar(id) {
+    $.ajax({
+        url: "/Pregunta/GetOnePregunta/",
+        type: "GET",
+        data: { 'id': id },
+        success: function (data, textStatus, jqXHR) {
+            console.log(data);
+        },
+        error: function (jqXHR, textStatus, errorThrown) {
 
-$('#TablaPreguntas').on('click', '.Editar', function () {
-    $('#ModalEditarPregunta').modal('show');
-});
+        }
+    });
+}
 
 $('#TablaPreguntas').on('click', '.Eliminar', function () {
     $('#ModalEliminarPregunta').modal('show');

@@ -7,11 +7,22 @@ $('#guardarEncuesta').click(function () {
 
     var titulo_encuesta = $('#nombreEncuesta').val();
     var descripcion_encuesta = $('#Descripcion_encuesta').val();
+    var contador_encuesta = 0;
+    console.log(Lista_preguntas);
+    for (var i = 0; i < Lista_preguntas.length - 1; i++) {
+        for (var j = i + 1; j < Lista_preguntas.length; j++) {
+            if (Lista_preguntas[i].Pregunta == Lista_preguntas[j].Pregunta) {
+                contador_encuesta += 1;
+            }
+        }
 
+    }
     if (titulo_encuesta == "") {
         swal("A ocurrido un error", "El titulo de la encuesta es obligatorio", "error");
     } else if (descripcion_encuesta == "") {
         swal("A ocurrido un error", "La descripción de la encuesta es obligatorio", "error");
+    } else if (contador_encuesta > 0) {
+        swal("A ocurrido un error", "No puede haber preguntas con el mismo nombre", "error");
     } else {
         if ($('#TbodyPreguntas').children().length == 0) {
             swal("A ocurrido un error", "Tu encuesta no contiene preguntas", "error");

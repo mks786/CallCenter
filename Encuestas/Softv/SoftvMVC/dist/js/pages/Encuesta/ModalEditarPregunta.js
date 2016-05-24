@@ -109,6 +109,7 @@ $('#EditarPregunta').click(function () {
    
 
     var detallePregunta = {};
+    var duplicado = [];
     detallePregunta.IdPregunta = generateUUID();
     detallePregunta.IdPregunta2 = IdPregunta2;
     detallePregunta.Pregunta = $('#ed_NombrePregunta').val();
@@ -155,32 +156,32 @@ $('#EditarPregunta').click(function () {
                         Opciones = {};
                         Opciones.Id_ResOpcMult = detallePregunta.IdPregunta;
                         if (x[i].attr('id') == 'undefined') {
-                            Opciones.ResOpcMult = '';
+                            Opciones.Id_ResOpcMult2 = '';
                         } else {
-                            Opciones.ResOpcMult = x[i].val();
+                            Opciones.Id_ResOpcMult2 = x[i].attr('id');
                         }
-                        Opciones.Id_ResOpcMult2 = x[i].attr('id');
+                        Opciones.ResOpcMult = x[i].val();
+                        duplicado.push(x[i].val());
                         Lista_opciones.push(Opciones);
                         ActualizaListaPreguntas(true);
-                        if (test1[x] == "") {
+                        if (x[i] == "") {
                             vacios = vacios + 1;
                         }
                     }
-                    //for (var a = 0; a < test1.length; a++) {
-                    //    //console.log(a);
-                    //    Opciones = {};
-                    //    Opciones.Id_ResOpcMult = detallePregunta.IdPregunta;
-                    //    Opciones.Id_ResOpcMult2 = IdPregunta;
-                    //    Opciones.ResOpcMult = test1[a]; 
-                    //    Lista_opciones.push(Opciones);
-                    //    ActualizaListaPreguntas(true);
-                    //    if (test1[a] == "") {
-                    //        vacios = vacios + 1;
-                    //    }
-                    //}
                 });
+                var contador = 0;
+                for (var i = 0; i < duplicado.length - 1; i++) {
+                    for (var j = i + 1; j < duplicado.length; j++) {
+                        if (duplicado[i] == duplicado[j]) {
+                            contador += 1;
+                        }
+                    }
+
+                }
                 if (vacios > 0) {
                     swal("A ocurrido un error", "Por favor llena todas las respuestas o elimina las vacias", "error");
+                } else if (contador > 0) {
+                    swal("A ocurrido un error", "No puede haber respuestas duplicadas", "error");
                 } else {
 
                     EliminarDeArreglo(Lista_preguntas, "IdPregunta", IdPregunta);//se elimina la pregunta del arreglo de preguntas
