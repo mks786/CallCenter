@@ -20,8 +20,8 @@
     <div class="col-xs-12">
         <div class="box">
             <div class="box-header">
-                <h3 class="box-title">Lista de Plazas</h3>
-
+                
+          
             </div><!-- /.box-header -->
             <div class="box-body">
 
@@ -54,6 +54,85 @@
         </div>
     </div>
 </div>
+
+
+<div class="modal fade bs-example-modal-lg" id="ModalAgregarConexion" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button class="close" aria-label="Close" type="button" data-dismiss="modal"><span aria-hidden="true">×</span></button>
+                <h4 class="modal-title" id="tituloModalAgregarEncuesta">Nueva conexión</h4>
+            </div>
+            <div class="modal-body">
+                <div class="row">
+                    <div class="col-xs-8">
+                        <div class="form-group">
+                            <label for="exampleInputEmail1">Nombre de la plaza</label>
+                            <input class="form-control" id="Nombreplaza" type="text">
+                        </div>
+                    </div>
+                    <div class="col-xs-4">
+                        <div class="form-group">
+                            <label for="exampleInputEmail1">IP del servidor</label>
+                            <input class="form-control" id="Servidor" type="text">
+                        </div>
+                    </div>
+
+
+                 </div>
+                <div class="row">
+
+                    <div class="col-xs-4">
+                        <div class="form-group">
+                            <label for="exampleInputEmail1">Nombre de la base de datos</label>
+                            <input class="form-control" id="base" type="text">
+                        </div>
+
+
+                    </div>
+
+                    <div class="col-xs-4">
+
+                        <div class="form-group">
+                            <label for="exampleInputEmail1">Usuario</label>
+                            <input class="form-control" id="user" type="text">
+                        </div>
+
+                    </div>
+                    <div class="col-xs-4">
+                        <div class="form-group">
+                            <label for="exampleInputEmail1">Contraseña</label>
+                            <input class="form-control" id="pass" type="text">
+                        </div>
+
+
+
+                    </div>
+
+                    </div>
+
+                
+
+               
+
+                
+
+                
+
+                
+             
+            </div>
+            <div class="modal-footer">
+                <input type="hidden" id="idEncuesta" />
+                <button class="btn btn-default pull-left" type="button" data-dismiss="modal">cerrar</button>
+                <button class="btn btn-primary" id="guardarConexion" type="button">Guardar conexion</button>
+               
+
+            </div>
+        </div>
+    </div>
+</div>
+
 
 
 

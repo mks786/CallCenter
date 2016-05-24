@@ -9,3 +9,14 @@ C:\Users\egarcia\Desktop\Softv\Softv.Providers\bin\Release\Softv.Entities.pdb
 C:\Users\egarcia\Desktop\Softv\Softv.Providers\obj\Release\Softv.Providers.csprojResolveAssemblyReference.cache
 C:\Users\egarcia\Desktop\Softv\Softv.Providers\obj\Release\Softv.Providers.dll
 C:\Users\egarcia\Desktop\Softv\Softv.Providers\obj\Release\Softv.Providers.pdb
+C:\Users\programador\Documents\GitHub\CallCenter\Encuestas\Softv\Softv.Providers\bin\Release\Softv.Providers.dll
+C:\Users\programador\Documents\GitHub\CallCenter\Encuestas\Softv\Softv.Providers\bin\Release\Softv.Providers.pdb
+C:\Users\programador\Documents\GitHub\CallCenter\Encuestas\Softv\Softv.Providers\bin\Release\Globals.dll
+C:\Users\programador\Documents\GitHub\CallCenter\Encuestas\Softv\Softv.Providers\bin\Release\Softv.Entities.dll
+C:\Users\programador\Documents\GitHub\CallCenter\Encuestas\Softv\Softv.Providers\bin\Release\SoftvConfiguration.dll
+C:\Users\programador\Documents\GitHub\CallCenter\Encuestas\Softv\Softv.Providers\bin\Release\Globals.pdb
+C:\Users\programador\Documents\GitHub\CallCenter\Encuestas\Softv\Softv.Providers\bin\Release\SoftvConfiguration.pdb
+C:\Users\programador\Documents\GitHub\CallCenter\Encuestas\Softv\Softv.Providers\bin\Release\Softv.Entities.pdb
+C:\Users\programador\Documents\GitHub\CallCenter\Encuestas\Softv\Softv.Providers\obj\Release\Softv.Providers.csprojResolveAssemblyReference.cache
+C:\Users\programador\Documents\GitHub\CallCenter\Encuestas\Softv\Softv.Providers\obj\Release\Softv.Providers.dll
+C:\Users\programador\Documents\GitHub\CallCenter\Encuestas\Softv\Softv.Providers\obj\Release\Softv.Providers.pdb

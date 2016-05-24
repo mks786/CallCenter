@@ -38,17 +38,17 @@ function LlenarTabla() {
         "columns": [
             { "data": "CONTRATO", "orderable": false },
             { "data": "NOMBRE", "orderable": false },
-            { "data": "Clv_Calle", "orderable": false }, //Calle
+            //{ "data": "Clv_Calle", "orderable": false }, //Calle
             //{ "data": "NUMERO", "orderable": false }, 
-            { "data": "ENTRECALLES", "orderable": false },
-            { "data": "Clv_Colonia", "orderable": false }, //Colonia
+            //{ "data": "ENTRECALLES", "orderable": false },
+           // { "data": "Clv_Colonia", "orderable": false }, //Colonia
             //{ "data": "CodigoPostal", "orderable": false }, 
             { "data": "TELEFONO", "orderable": false },
             //{ "data": "CELULAR", "orderable": false },
             //{ "data": "DESGLOSA_Iva", "orderable": false },
-            { "data": "SoloInternet", "orderable": false },
-            { "data": "eshotel", "orderable": false },
-            { "data": "Clv_Ciudad", "orderable": false }, //Ciudad
+            //{ "data": "SoloInternet", "orderable": false },
+           // { "data": "eshotel", "orderable": false },
+            //{ "data": "Clv_Ciudad", "orderable": false }, //Ciudad
             { "data": "Email", "orderable": false },
             //{ "data": "clv_sector", "orderable": false },
             //{ "data": "Clv_Periodo", "orderable": false },
