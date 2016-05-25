@@ -88,7 +88,7 @@ function Opciones() {
 
 //funcion:retorna las opciones que tendra cada row en la tabla principal
 function Opciones(e) {
-    var opc = "<button class='btn btn-info btn-xs Detalle' data-name='" + e.ResOpcMult + "' id='" + e.Id_ResOpcMult + "' onclick='detalle_respuesta(this)' type='button'>Detalles</button> <button class='btn btn-warning btn-xs Editar' data-name='" + e.ResOpcMult + "' id='" + e.Id_ResOpcMult + "' type='button' onclick='editar_respuesta(this)'><i class='fa fa-pencil' aria-hidden='true'></i> Editar</button> <button class='btn btn-danger btn-xs eliminar'  type='button'> <i class='fa fa-trash-o' aria-hidden='true'></i> Eliminar</button>"
+    var opc = "<button class='btn btn-info btn-xs Detalle' data-name='" + e.ResOpcMult + "' id='" + e.Id_ResOpcMult + "' onclick='detalle_respuesta(this)' type='button'>Detalles</button> <button class='btn btn-warning btn-xs Editar' data-name='" + e.ResOpcMult + "' id='" + e.Id_ResOpcMult + "' type='button' onclick='editar_respuesta(this)'><i class='fa fa-pencil' aria-hidden='true'></i> Editar</button> <button class='btn btn-danger btn-xs eliminar'  type='button' data-name='" + e.ResOpcMult + "' id='" + e.Id_ResOpcMult + "' onclick='eliminar_respuesta(this)'> <i class='fa fa-trash-o' aria-hidden='true'></i> Eliminar</button>"
     return opc;
 }
 

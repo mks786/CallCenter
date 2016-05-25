@@ -1,5 +1,4 @@
 ﻿function agregar() {
-    $('.maskara').mask("99/99/9999", { placeholder: "mm/dd/yyyy" });
     $('#ModalAgregarResOpcMults').modal('show');
 
 }
@@ -10,8 +9,14 @@ function detalle_respuesta(data) {
 }
 
 function editar_respuesta(data) {
-    console.log(data);
     $('.editar_respuesta').val(data.getAttribute('data-name'));
     $('.editar_respuesta').attr('id', data.getAttribute('id'));
     $('#ModalEditarResOpcMults').modal('show');
+}
+
+function eliminar_respuesta(data) {
+
+    $('#respuesta_texto').text(data.getAttribute('data-name'));
+    $('#id_respuesta').val(data.getAttribute('id'));
+    $('#eliminar_respuesta_modal').modal('show');
 }
