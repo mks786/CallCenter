@@ -87,7 +87,7 @@ namespace Softv.Providers
         {
             get { return TipServProvider.Instance; }
         }
-  
+
 
         public static TurnoProvider Turno
         {
@@ -133,6 +133,52 @@ namespace Softv.Providers
         {
             get { return TrabajoProvider.Instance; }
         }
+
+
+
+
+        public static MotivoCancelacionProvider MotivoCancelacion
+        {
+            get { return MotivoCancelacionProvider.Instance; }
+        }
+
+
+        public static RelEncuestaPreguntaResProvider RelEncuestaPreguntaRes
+        {
+            get { return RelEncuestaPreguntaResProvider.Instance; }
+        }
+
+        public static QuejaProvider Queja
+        {
+            get { return QuejaProvider.Instance; }
+        }
+
+        public static CIUDADProvider CIUDAD
+        {
+            get { return CIUDADProvider.Instance; }
+        }
+
+        public static CVECOLCIUProvider CVECOLCIU
+        {
+            get { return CVECOLCIUProvider.Instance; }
+        }
+
+        public static COLONIAProvider COLONIA
+        {
+            get { return COLONIAProvider.Instance; }
+        }
+
+        public static CVECAROLProvider CVECAROL
+        {
+            get { return CVECAROLProvider.Instance; }
+        }
+
+        public static CALLEProvider CALLE
+        {
+            get { return CALLEProvider.Instance; }
+        }
   
+
+
     }
 }

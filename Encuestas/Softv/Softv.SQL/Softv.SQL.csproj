@@ -40,18 +40,26 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="CALLEData.cs" />
     <Compile Include="CatalogoPeriodosCorteData.cs" />
+    <Compile Include="CIUDADData.cs" />
     <Compile Include="CLIENTEData.cs" />
     <Compile Include="Cliente_ApellidoData.cs" />
+    <Compile Include="COLONIAData.cs" />
     <Compile Include="ConexionData.cs" />
+    <Compile Include="CVECAROLData.cs" />
+    <Compile Include="CVECOLCIUData.cs" />
     <Compile Include="DatoFiscalData.cs" />
     <Compile Include="EncuestaData.cs" />
     <Compile Include="LlamadaData.cs" />
     <Compile Include="ModuleData.cs" />
+    <Compile Include="MotivoCancelacionData.cs" />
     <Compile Include="PermisoData.cs" />
     <Compile Include="PreguntaData.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="QuejaData.cs" />
     <Compile Include="RelEncuestaClientesData.cs" />
+    <Compile Include="RelEncuestaPreguntaResData.cs" />
     <Compile Include="RelEnProcesosData.cs" />
     <Compile Include="RelPreguntaEncuestasData.cs" />
     <Compile Include="RelPreguntaOpcMultsData.cs" />

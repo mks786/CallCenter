@@ -1,21 +1,21 @@
 ﻿
-    using Globals;
-    using Softv.Entities;
-    using System;
-    using System.Collections.Generic;
-    using System.Linq;
-    using System.ServiceModel;
-    using System.Text;
+using Globals;
+using Softv.Entities;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.ServiceModel;
+using System.Text;
 
-    namespace SoftvWCFService.Contracts
+namespace SoftvWCFService.Contracts
+{
+    [ServiceContract]
+    public interface ITrabajo
     {
-      [ServiceContract]
-      public interface ITrabajo
-      {
         [OperationContract]
-        TrabajoEntity GetTrabajo(int? Clv_Trabajo);
+        TrabajoEntity GetTrabajo(int? Clv_Trabajo);
         [OperationContract]
-        TrabajoEntity GetDeepTrabajo(int? Clv_Trabajo);
+        TrabajoEntity GetDeepTrabajo(int? Clv_Trabajo);
         [OperationContract]
         IEnumerable<TrabajoEntity> GetTrabajoList();
         [OperationContract]
@@ -27,9 +27,8 @@
         [OperationContract]
         int UpdateTrabajo(TrabajoEntity objTrabajo);
         [OperationContract]
-        int DeleteTrabajo(String BaseRemoteIp, int BaseIdUser,int? Clv_Trabajo);
-        
-      }
-    }
+        int DeleteTrabajo(String BaseRemoteIp, int BaseIdUser, int? Clv_Trabajo);
 
-  
+    }
+}
+

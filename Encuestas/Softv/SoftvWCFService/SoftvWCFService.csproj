@@ -65,17 +65,25 @@
     </Content>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Contracts\ICALLE.cs" />
     <Compile Include="Contracts\ICatalogoPeriodosCorte.cs" />
+    <Compile Include="Contracts\ICIUDAD.cs" />
     <Compile Include="Contracts\ICLIENTE.cs" />
     <Compile Include="Contracts\ICliente_Apellido.cs" />
+    <Compile Include="Contracts\ICOLONIA.cs" />
     <Compile Include="Contracts\IConexion.cs" />
+    <Compile Include="Contracts\ICVECAROL.cs" />
+    <Compile Include="Contracts\ICVECOLCIU.cs" />
     <Compile Include="Contracts\IDatoFiscal.cs" />
     <Compile Include="Contracts\IEncuesta.cs" />
     <Compile Include="Contracts\ILlamada.cs" />
     <Compile Include="Contracts\IModule.cs" />
+    <Compile Include="Contracts\IMotivoCancelacion.cs" />
     <Compile Include="Contracts\IPermiso.cs" />
     <Compile Include="Contracts\IPregunta.cs" />
+    <Compile Include="Contracts\IQueja.cs" />
     <Compile Include="Contracts\IRelEncuestaClientes.cs" />
+    <Compile Include="Contracts\IRelEncuestaPreguntaRes.cs" />
     <Compile Include="Contracts\IRelEnProcesos.cs" />
     <Compile Include="Contracts\IRelPreguntaEncuestas.cs" />
     <Compile Include="Contracts\IRelPreguntaOpcMults.cs" />

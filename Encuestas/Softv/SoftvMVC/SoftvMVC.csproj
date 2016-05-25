@@ -217,21 +217,29 @@
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\BaseController.cs" />
+    <Compile Include="Controllers\CALLEController.cs" />
     <Compile Include="Controllers\CatalogoPeriodosCorteController.cs" />
+    <Compile Include="Controllers\CIUDADController.cs" />
     <Compile Include="Controllers\CLIENTEController.cs" />
     <Compile Include="Controllers\Cliente_ApellidoController.cs" />
+    <Compile Include="Controllers\COLONIAController.cs" />
     <Compile Include="Controllers\ConexionController.cs" />
+    <Compile Include="Controllers\CVECAROLController.cs" />
+    <Compile Include="Controllers\CVECOLCIUController.cs" />
     <Compile Include="Controllers\DatoFiscalController.cs" />
     <Compile Include="Controllers\EncuestaController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\LlamadaController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\ModuleController.cs" />
+    <Compile Include="Controllers\MotivoCancelacionController.cs" />
     <Compile Include="Controllers\PartialClass\BaseControllerFunc.cs" />
     <Compile Include="Controllers\PartialClass\BaseControllerScripts.cs" />
     <Compile Include="Controllers\PartialClass\UsuarioController.cs" />
     <Compile Include="Controllers\PreguntaController.cs" />
+    <Compile Include="Controllers\QuejaController.cs" />
     <Compile Include="Controllers\RelEncuestaClientesController.cs" />
+    <Compile Include="Controllers\RelEncuestaPreguntaResController.cs" />
     <Compile Include="Controllers\RelEnProcesosController.cs" />
     <Compile Include="Controllers\RelPreguntaEncuestasController.cs" />
     <Compile Include="Controllers\RelPreguntaOpcMultsController.cs" />
@@ -1400,6 +1408,14 @@
     <Content Include="plugins\input-mask\phone-codes\phone-be.json" />
     <Content Include="plugins\input-mask\phone-codes\phone-codes.json" />
     <Content Include="bin\SoftvMVC.dll.config" />
+    <Content Include="Properties\DataSources\Softv.Entities.MotivoCancelacionEntity.datasource" />
+    <Content Include="Properties\DataSources\Softv.Entities.RelEncuestaPreguntaResEntity.datasource" />
+    <Content Include="Properties\DataSources\Softv.Entities.QuejaEntity.datasource" />
+    <Content Include="Properties\DataSources\Softv.Entities.CALLEEntity.datasource" />
+    <Content Include="Properties\DataSources\Softv.Entities.CIUDADEntity.datasource" />
+    <Content Include="Properties\DataSources\Softv.Entities.COLONIAEntity.datasource" />
+    <Content Include="Properties\DataSources\Softv.Entities.CVECAROLEntity.datasource" />
+    <Content Include="Properties\DataSources\Softv.Entities.CVECOLCIUEntity.datasource" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>

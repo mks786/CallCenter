@@ -1,25 +1,25 @@
 ﻿
-    using System;
-    using System.Configuration;
+using System;
+using System.Configuration;
 
-    namespace SoftvConfiguration
+namespace SoftvConfiguration
+{
+    public class TipoClienteElement : ConfigurationElement
     {
-      public class TipoClienteElement: ConfigurationElement
-      {
         /// <summary>
         /// Gets assembly name for TipoCliente class
         /// </summary>
-        [ConfigurationProperty( "Assembly")]
+        [ConfigurationProperty("Assembly")]
         public String Assembly
         {
-          get
-          {
-            string assembly = (string)base["Assembly"];
-            assembly = String.IsNullOrEmpty(assembly) ?
-            SoftvSettings.Settings.Assembly :
-            (string)base["Assembly"];
-            return assembly;
-          }
+            get
+            {
+                string assembly = (string)base["Assembly"];
+                assembly = String.IsNullOrEmpty(assembly) ?
+                SoftvSettings.Settings.Assembly :
+                (string)base["Assembly"];
+                return assembly;
+            }
         }
 
         /// <summary>
@@ -28,7 +28,7 @@
         [ConfigurationProperty("DataClassTipoCliente", DefaultValue = "Softv.DAO.TipoClienteData")]
         public String DataClass
         {
-          get { return (string)base["DataClassTipoCliente"]; }
+            get { return (string)base["DataClassTipoCliente"]; }
         }
 
         /// <summary>
@@ -37,14 +37,13 @@
         [ConfigurationProperty("ConnectionString")]
         public String ConnectionString
         {
-          get
-          {
-            string connectionString = (string)base["ConnectionString"];
-            connectionString = String.IsNullOrEmpty(connectionString) ? SoftvSettings.Settings.ConnectionString :  (string)base["ConnectionString"];
-            return connectionString;
-          }
+            get
+            {
+                string connectionString = (string)base["ConnectionString"];
+                connectionString = String.IsNullOrEmpty(connectionString) ? SoftvSettings.Settings.ConnectionString : (string)base["ConnectionString"];
+                return connectionString;
+            }
         }
-      }
     }
+}
 
-  

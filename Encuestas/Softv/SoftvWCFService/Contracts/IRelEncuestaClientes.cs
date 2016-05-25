@@ -1,21 +1,21 @@
 ﻿
-    using Globals;
-    using Softv.Entities;
-    using System;
-    using System.Collections.Generic;
-    using System.Linq;
-    using System.ServiceModel;
-    using System.Text;
+using Globals;
+using Softv.Entities;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.ServiceModel;
+using System.Text;
 
-    namespace SoftvWCFService.Contracts
+namespace SoftvWCFService.Contracts
+{
+    [ServiceContract]
+    public interface IRelEncuestaClientes
     {
-      [ServiceContract]
-      public interface IRelEncuestaClientes
-      {
         [OperationContract]
-        RelEncuestaClientesEntity GetRelEncuestaClientes(int? IdProceso);
+        RelEncuestaClientesEntity GetRelEncuestaClientes(int? IdProceso);
         [OperationContract]
-        RelEncuestaClientesEntity GetDeepRelEncuestaClientes(int? IdProceso);
+        RelEncuestaClientesEntity GetDeepRelEncuestaClientes(int? IdProceso);
         [OperationContract]
         IEnumerable<RelEncuestaClientesEntity> GetRelEncuestaClientesList();
         [OperationContract]
@@ -27,9 +27,8 @@
         [OperationContract]
         int UpdateRelEncuestaClientes(RelEncuestaClientesEntity objRelEncuestaClientes);
         [OperationContract]
-        int DeleteRelEncuestaClientes(int? IdProceso);
-        
-      }
-    }
+        int DeleteRelEncuestaClientes(int? IdProceso);
 
-  
+    }
+}
+

@@ -1,17 +1,17 @@
 ﻿
-    using Globals;
-    using Softv.Entities;
-    using System;
-    using System.Collections.Generic;
-    using System.Linq;
-    using System.ServiceModel;
-    using System.Text;
+using Globals;
+using Softv.Entities;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.ServiceModel;
+using System.Text;
 
-    namespace SoftvWCFService.Contracts
+namespace SoftvWCFService.Contracts
+{
+    [ServiceContract]
+    public interface IRel_Clientes_TiposClientes
     {
-      [ServiceContract]
-      public interface IRel_Clientes_TiposClientes
-      {
 
         [OperationContract]
         Rel_Clientes_TiposClientesEntity GetRel_Clientes_TiposClientes(long? CONTRATO);
@@ -36,8 +36,7 @@
 
         [OperationContract]
         int DeleteRel_Clientes_TiposClientes(String BaseRemoteIp, int BaseIdUser, long? CONTRATO);
-        
-      }
-    }
 
-  
+    }
+}
+

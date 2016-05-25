@@ -41,19 +41,27 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Base\BaseEntity.cs" />
+    <Compile Include="CALLEEntity.cs" />
     <Compile Include="CatalogoPeriodosCorteEntity.cs" />
+    <Compile Include="CIUDADEntity.cs" />
     <Compile Include="CLIENTEEntity.cs" />
     <Compile Include="Cliente_ApellidoEntity.cs" />
+    <Compile Include="COLONIAEntity.cs" />
     <Compile Include="ConexionEntity.cs" />
+    <Compile Include="CVECAROLEntity.cs" />
+    <Compile Include="CVECOLCIUEntity.cs" />
     <Compile Include="DatoFiscalEntity.cs" />
     <Compile Include="EncuestaEntity.cs" />
     <Compile Include="EnumEntity.cs" />
     <Compile Include="LlamadaEntity.cs" />
     <Compile Include="ModuleEntity.cs" />
+    <Compile Include="MotivoCancelacionEntity.cs" />
     <Compile Include="PermisoEntity.cs" />
     <Compile Include="PreguntaEntity.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="QuejaEntity.cs" />
     <Compile Include="RelEncuestaClientesEntity.cs" />
+    <Compile Include="RelEncuestaPreguntaResEntity.cs" />
     <Compile Include="RelEnProcesosEntity.cs" />
     <Compile Include="RelPreguntaEncuestasEntity.cs" />
     <Compile Include="RelPreguntaOpcMultsEntity.cs" />

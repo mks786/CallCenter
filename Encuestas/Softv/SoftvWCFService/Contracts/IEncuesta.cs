@@ -28,7 +28,7 @@ namespace SoftvWCFService.Contracts
         SoftvList<EncuestaEntity> GetEncuestaPagedListXml(int page, int pageSize, String xml);
 
         [OperationContract]
-     
+
         int AddEncuesta(string data);
 
         [OperationContract]

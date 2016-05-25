@@ -43,6 +43,22 @@ namespace SoftvMVC.Controllers
 
         }
 
+<<<<<<< HEAD
+=======
+
+        public ActionResult AddConexion(ConexionEntity conexion)
+        {
+            int result = proxy.AddConexion(conexion);
+            return Json(result, JsonRequestBehavior.AllowGet);
+        }
+
+
+
+
+
+
+
+>>>>>>> liz/master
         public ActionResult Index(int? page, int? pageSize)
         
         {

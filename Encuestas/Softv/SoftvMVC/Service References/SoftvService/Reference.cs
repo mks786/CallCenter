@@ -3494,4 +3494,1168 @@ namespace SoftvMVC.SoftvService {
             return base.Channel.DeleteTipServAsync(BaseRemoteIp, BaseIdUser, Clv_TipSer);
         }
     }
+    
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ServiceModel.ServiceContractAttribute(ConfigurationName="SoftvService.IMotivoCancelacion")]
+    public interface IMotivoCancelacion {
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IMotivoCancelacion/GetMotivoCancelacion", ReplyAction="http://tempuri.org/IMotivoCancelacion/GetMotivoCancelacionResponse")]
+        Softv.Entities.MotivoCancelacionEntity GetMotivoCancelacion(System.Nullable<int> Clv_MOTCAN);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IMotivoCancelacion/GetMotivoCancelacion", ReplyAction="http://tempuri.org/IMotivoCancelacion/GetMotivoCancelacionResponse")]
+        System.Threading.Tasks.Task<Softv.Entities.MotivoCancelacionEntity> GetMotivoCancelacionAsync(System.Nullable<int> Clv_MOTCAN);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IMotivoCancelacion/GetDeepMotivoCancelacion", ReplyAction="http://tempuri.org/IMotivoCancelacion/GetDeepMotivoCancelacionResponse")]
+        Softv.Entities.MotivoCancelacionEntity GetDeepMotivoCancelacion(System.Nullable<int> Clv_MOTCAN);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IMotivoCancelacion/GetDeepMotivoCancelacion", ReplyAction="http://tempuri.org/IMotivoCancelacion/GetDeepMotivoCancelacionResponse")]
+        System.Threading.Tasks.Task<Softv.Entities.MotivoCancelacionEntity> GetDeepMotivoCancelacionAsync(System.Nullable<int> Clv_MOTCAN);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IMotivoCancelacion/GetMotivoCancelacionList", ReplyAction="http://tempuri.org/IMotivoCancelacion/GetMotivoCancelacionListResponse")]
+        System.Collections.Generic.List<Softv.Entities.MotivoCancelacionEntity> GetMotivoCancelacionList();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IMotivoCancelacion/GetMotivoCancelacionList", ReplyAction="http://tempuri.org/IMotivoCancelacion/GetMotivoCancelacionListResponse")]
+        System.Threading.Tasks.Task<System.Collections.Generic.List<Softv.Entities.MotivoCancelacionEntity>> GetMotivoCancelacionListAsync();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IMotivoCancelacion/GetMotivoCancelacionPagedList", ReplyAction="http://tempuri.org/IMotivoCancelacion/GetMotivoCancelacionPagedListResponse")]
+        Globals.SoftvList<Softv.Entities.MotivoCancelacionEntity> GetMotivoCancelacionPagedList(int page, int pageSize);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IMotivoCancelacion/GetMotivoCancelacionPagedList", ReplyAction="http://tempuri.org/IMotivoCancelacion/GetMotivoCancelacionPagedListResponse")]
+        System.Threading.Tasks.Task<Globals.SoftvList<Softv.Entities.MotivoCancelacionEntity>> GetMotivoCancelacionPagedListAsync(int page, int pageSize);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IMotivoCancelacion/GetMotivoCancelacionPagedListXml", ReplyAction="http://tempuri.org/IMotivoCancelacion/GetMotivoCancelacionPagedListXmlResponse")]
+        Globals.SoftvList<Softv.Entities.MotivoCancelacionEntity> GetMotivoCancelacionPagedListXml(int page, int pageSize, string xml);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IMotivoCancelacion/GetMotivoCancelacionPagedListXml", ReplyAction="http://tempuri.org/IMotivoCancelacion/GetMotivoCancelacionPagedListXmlResponse")]
+        System.Threading.Tasks.Task<Globals.SoftvList<Softv.Entities.MotivoCancelacionEntity>> GetMotivoCancelacionPagedListXmlAsync(int page, int pageSize, string xml);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IMotivoCancelacion/AddMotivoCancelacion", ReplyAction="http://tempuri.org/IMotivoCancelacion/AddMotivoCancelacionResponse")]
+        int AddMotivoCancelacion(Softv.Entities.MotivoCancelacionEntity objMotivoCancelacion);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IMotivoCancelacion/AddMotivoCancelacion", ReplyAction="http://tempuri.org/IMotivoCancelacion/AddMotivoCancelacionResponse")]
+        System.Threading.Tasks.Task<int> AddMotivoCancelacionAsync(Softv.Entities.MotivoCancelacionEntity objMotivoCancelacion);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IMotivoCancelacion/UpdateMotivoCancelacion", ReplyAction="http://tempuri.org/IMotivoCancelacion/UpdateMotivoCancelacionResponse")]
+        int UpdateMotivoCancelacion(Softv.Entities.MotivoCancelacionEntity objMotivoCancelacion);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IMotivoCancelacion/UpdateMotivoCancelacion", ReplyAction="http://tempuri.org/IMotivoCancelacion/UpdateMotivoCancelacionResponse")]
+        System.Threading.Tasks.Task<int> UpdateMotivoCancelacionAsync(Softv.Entities.MotivoCancelacionEntity objMotivoCancelacion);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IMotivoCancelacion/DeleteMotivoCancelacion", ReplyAction="http://tempuri.org/IMotivoCancelacion/DeleteMotivoCancelacionResponse")]
+        int DeleteMotivoCancelacion(string BaseRemoteIp, int BaseIdUser, System.Nullable<int> Clv_MOTCAN);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IMotivoCancelacion/DeleteMotivoCancelacion", ReplyAction="http://tempuri.org/IMotivoCancelacion/DeleteMotivoCancelacionResponse")]
+        System.Threading.Tasks.Task<int> DeleteMotivoCancelacionAsync(string BaseRemoteIp, int BaseIdUser, System.Nullable<int> Clv_MOTCAN);
+    }
+    
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    public interface IMotivoCancelacionChannel : SoftvMVC.SoftvService.IMotivoCancelacion, System.ServiceModel.IClientChannel {
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    public partial class MotivoCancelacionClient : System.ServiceModel.ClientBase<SoftvMVC.SoftvService.IMotivoCancelacion>, SoftvMVC.SoftvService.IMotivoCancelacion {
+        
+        public MotivoCancelacionClient() {
+        }
+        
+        public MotivoCancelacionClient(string endpointConfigurationName) : 
+                base(endpointConfigurationName) {
+        }
+        
+        public MotivoCancelacionClient(string endpointConfigurationName, string remoteAddress) : 
+                base(endpointConfigurationName, remoteAddress) {
+        }
+        
+        public MotivoCancelacionClient(string endpointConfigurationName, System.ServiceModel.EndpointAddress remoteAddress) : 
+                base(endpointConfigurationName, remoteAddress) {
+        }
+        
+        public MotivoCancelacionClient(System.ServiceModel.Channels.Binding binding, System.ServiceModel.EndpointAddress remoteAddress) : 
+                base(binding, remoteAddress) {
+        }
+        
+        public Softv.Entities.MotivoCancelacionEntity GetMotivoCancelacion(System.Nullable<int> Clv_MOTCAN) {
+            return base.Channel.GetMotivoCancelacion(Clv_MOTCAN);
+        }
+        
+        public System.Threading.Tasks.Task<Softv.Entities.MotivoCancelacionEntity> GetMotivoCancelacionAsync(System.Nullable<int> Clv_MOTCAN) {
+            return base.Channel.GetMotivoCancelacionAsync(Clv_MOTCAN);
+        }
+        
+        public Softv.Entities.MotivoCancelacionEntity GetDeepMotivoCancelacion(System.Nullable<int> Clv_MOTCAN) {
+            return base.Channel.GetDeepMotivoCancelacion(Clv_MOTCAN);
+        }
+        
+        public System.Threading.Tasks.Task<Softv.Entities.MotivoCancelacionEntity> GetDeepMotivoCancelacionAsync(System.Nullable<int> Clv_MOTCAN) {
+            return base.Channel.GetDeepMotivoCancelacionAsync(Clv_MOTCAN);
+        }
+        
+        public System.Collections.Generic.List<Softv.Entities.MotivoCancelacionEntity> GetMotivoCancelacionList() {
+            return base.Channel.GetMotivoCancelacionList();
+        }
+        
+        public System.Threading.Tasks.Task<System.Collections.Generic.List<Softv.Entities.MotivoCancelacionEntity>> GetMotivoCancelacionListAsync() {
+            return base.Channel.GetMotivoCancelacionListAsync();
+        }
+        
+        public Globals.SoftvList<Softv.Entities.MotivoCancelacionEntity> GetMotivoCancelacionPagedList(int page, int pageSize) {
+            return base.Channel.GetMotivoCancelacionPagedList(page, pageSize);
+        }
+        
+        public System.Threading.Tasks.Task<Globals.SoftvList<Softv.Entities.MotivoCancelacionEntity>> GetMotivoCancelacionPagedListAsync(int page, int pageSize) {
+            return base.Channel.GetMotivoCancelacionPagedListAsync(page, pageSize);
+        }
+        
+        public Globals.SoftvList<Softv.Entities.MotivoCancelacionEntity> GetMotivoCancelacionPagedListXml(int page, int pageSize, string xml) {
+            return base.Channel.GetMotivoCancelacionPagedListXml(page, pageSize, xml);
+        }
+        
+        public System.Threading.Tasks.Task<Globals.SoftvList<Softv.Entities.MotivoCancelacionEntity>> GetMotivoCancelacionPagedListXmlAsync(int page, int pageSize, string xml) {
+            return base.Channel.GetMotivoCancelacionPagedListXmlAsync(page, pageSize, xml);
+        }
+        
+        public int AddMotivoCancelacion(Softv.Entities.MotivoCancelacionEntity objMotivoCancelacion) {
+            return base.Channel.AddMotivoCancelacion(objMotivoCancelacion);
+        }
+        
+        public System.Threading.Tasks.Task<int> AddMotivoCancelacionAsync(Softv.Entities.MotivoCancelacionEntity objMotivoCancelacion) {
+            return base.Channel.AddMotivoCancelacionAsync(objMotivoCancelacion);
+        }
+        
+        public int UpdateMotivoCancelacion(Softv.Entities.MotivoCancelacionEntity objMotivoCancelacion) {
+            return base.Channel.UpdateMotivoCancelacion(objMotivoCancelacion);
+        }
+        
+        public System.Threading.Tasks.Task<int> UpdateMotivoCancelacionAsync(Softv.Entities.MotivoCancelacionEntity objMotivoCancelacion) {
+            return base.Channel.UpdateMotivoCancelacionAsync(objMotivoCancelacion);
+        }
+        
+        public int DeleteMotivoCancelacion(string BaseRemoteIp, int BaseIdUser, System.Nullable<int> Clv_MOTCAN) {
+            return base.Channel.DeleteMotivoCancelacion(BaseRemoteIp, BaseIdUser, Clv_MOTCAN);
+        }
+        
+        public System.Threading.Tasks.Task<int> DeleteMotivoCancelacionAsync(string BaseRemoteIp, int BaseIdUser, System.Nullable<int> Clv_MOTCAN) {
+            return base.Channel.DeleteMotivoCancelacionAsync(BaseRemoteIp, BaseIdUser, Clv_MOTCAN);
+        }
+    }
+    
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ServiceModel.ServiceContractAttribute(ConfigurationName="SoftvService.IRelEncuestaPreguntaRes")]
+    public interface IRelEncuestaPreguntaRes {
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IRelEncuestaPreguntaRes/GetRelEncuestaPreguntaRes", ReplyAction="http://tempuri.org/IRelEncuestaPreguntaRes/GetRelEncuestaPreguntaResResponse")]
+        Softv.Entities.RelEncuestaPreguntaResEntity GetRelEncuestaPreguntaRes(System.Nullable<int> Id);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IRelEncuestaPreguntaRes/GetRelEncuestaPreguntaRes", ReplyAction="http://tempuri.org/IRelEncuestaPreguntaRes/GetRelEncuestaPreguntaResResponse")]
+        System.Threading.Tasks.Task<Softv.Entities.RelEncuestaPreguntaResEntity> GetRelEncuestaPreguntaResAsync(System.Nullable<int> Id);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IRelEncuestaPreguntaRes/GetDeepRelEncuestaPreguntaRes", ReplyAction="http://tempuri.org/IRelEncuestaPreguntaRes/GetDeepRelEncuestaPreguntaResResponse")]
+        Softv.Entities.RelEncuestaPreguntaResEntity GetDeepRelEncuestaPreguntaRes(System.Nullable<int> Id);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IRelEncuestaPreguntaRes/GetDeepRelEncuestaPreguntaRes", ReplyAction="http://tempuri.org/IRelEncuestaPreguntaRes/GetDeepRelEncuestaPreguntaResResponse")]
+        System.Threading.Tasks.Task<Softv.Entities.RelEncuestaPreguntaResEntity> GetDeepRelEncuestaPreguntaResAsync(System.Nullable<int> Id);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IRelEncuestaPreguntaRes/GetRelEncuestaPreguntaResList", ReplyAction="http://tempuri.org/IRelEncuestaPreguntaRes/GetRelEncuestaPreguntaResListResponse")]
+        System.Collections.Generic.List<Softv.Entities.RelEncuestaPreguntaResEntity> GetRelEncuestaPreguntaResList();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IRelEncuestaPreguntaRes/GetRelEncuestaPreguntaResList", ReplyAction="http://tempuri.org/IRelEncuestaPreguntaRes/GetRelEncuestaPreguntaResListResponse")]
+        System.Threading.Tasks.Task<System.Collections.Generic.List<Softv.Entities.RelEncuestaPreguntaResEntity>> GetRelEncuestaPreguntaResListAsync();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IRelEncuestaPreguntaRes/GetRelEncuestaPreguntaResPagedList", ReplyAction="http://tempuri.org/IRelEncuestaPreguntaRes/GetRelEncuestaPreguntaResPagedListResp" +
+            "onse")]
+        Globals.SoftvList<Softv.Entities.RelEncuestaPreguntaResEntity> GetRelEncuestaPreguntaResPagedList(int page, int pageSize);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IRelEncuestaPreguntaRes/GetRelEncuestaPreguntaResPagedList", ReplyAction="http://tempuri.org/IRelEncuestaPreguntaRes/GetRelEncuestaPreguntaResPagedListResp" +
+            "onse")]
+        System.Threading.Tasks.Task<Globals.SoftvList<Softv.Entities.RelEncuestaPreguntaResEntity>> GetRelEncuestaPreguntaResPagedListAsync(int page, int pageSize);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IRelEncuestaPreguntaRes/GetRelEncuestaPreguntaResPagedListXml", ReplyAction="http://tempuri.org/IRelEncuestaPreguntaRes/GetRelEncuestaPreguntaResPagedListXmlR" +
+            "esponse")]
+        Globals.SoftvList<Softv.Entities.RelEncuestaPreguntaResEntity> GetRelEncuestaPreguntaResPagedListXml(int page, int pageSize, string xml);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IRelEncuestaPreguntaRes/GetRelEncuestaPreguntaResPagedListXml", ReplyAction="http://tempuri.org/IRelEncuestaPreguntaRes/GetRelEncuestaPreguntaResPagedListXmlR" +
+            "esponse")]
+        System.Threading.Tasks.Task<Globals.SoftvList<Softv.Entities.RelEncuestaPreguntaResEntity>> GetRelEncuestaPreguntaResPagedListXmlAsync(int page, int pageSize, string xml);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IRelEncuestaPreguntaRes/AddRelEncuestaPreguntaRes", ReplyAction="http://tempuri.org/IRelEncuestaPreguntaRes/AddRelEncuestaPreguntaResResponse")]
+        int AddRelEncuestaPreguntaRes(Softv.Entities.RelEncuestaPreguntaResEntity objRelEncuestaPreguntaRes);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IRelEncuestaPreguntaRes/AddRelEncuestaPreguntaRes", ReplyAction="http://tempuri.org/IRelEncuestaPreguntaRes/AddRelEncuestaPreguntaResResponse")]
+        System.Threading.Tasks.Task<int> AddRelEncuestaPreguntaResAsync(Softv.Entities.RelEncuestaPreguntaResEntity objRelEncuestaPreguntaRes);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IRelEncuestaPreguntaRes/UpdateRelEncuestaPreguntaRes", ReplyAction="http://tempuri.org/IRelEncuestaPreguntaRes/UpdateRelEncuestaPreguntaResResponse")]
+        int UpdateRelEncuestaPreguntaRes(Softv.Entities.RelEncuestaPreguntaResEntity objRelEncuestaPreguntaRes);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IRelEncuestaPreguntaRes/UpdateRelEncuestaPreguntaRes", ReplyAction="http://tempuri.org/IRelEncuestaPreguntaRes/UpdateRelEncuestaPreguntaResResponse")]
+        System.Threading.Tasks.Task<int> UpdateRelEncuestaPreguntaResAsync(Softv.Entities.RelEncuestaPreguntaResEntity objRelEncuestaPreguntaRes);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IRelEncuestaPreguntaRes/DeleteRelEncuestaPreguntaRes", ReplyAction="http://tempuri.org/IRelEncuestaPreguntaRes/DeleteRelEncuestaPreguntaResResponse")]
+        int DeleteRelEncuestaPreguntaRes(string BaseRemoteIp, int BaseIdUser, System.Nullable<int> Id);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IRelEncuestaPreguntaRes/DeleteRelEncuestaPreguntaRes", ReplyAction="http://tempuri.org/IRelEncuestaPreguntaRes/DeleteRelEncuestaPreguntaResResponse")]
+        System.Threading.Tasks.Task<int> DeleteRelEncuestaPreguntaResAsync(string BaseRemoteIp, int BaseIdUser, System.Nullable<int> Id);
+    }
+    
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    public interface IRelEncuestaPreguntaResChannel : SoftvMVC.SoftvService.IRelEncuestaPreguntaRes, System.ServiceModel.IClientChannel {
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    public partial class RelEncuestaPreguntaResClient : System.ServiceModel.ClientBase<SoftvMVC.SoftvService.IRelEncuestaPreguntaRes>, SoftvMVC.SoftvService.IRelEncuestaPreguntaRes {
+        
+        public RelEncuestaPreguntaResClient() {
+        }
+        
+        public RelEncuestaPreguntaResClient(string endpointConfigurationName) : 
+                base(endpointConfigurationName) {
+        }
+        
+        public RelEncuestaPreguntaResClient(string endpointConfigurationName, string remoteAddress) : 
+                base(endpointConfigurationName, remoteAddress) {
+        }
+        
+        public RelEncuestaPreguntaResClient(string endpointConfigurationName, System.ServiceModel.EndpointAddress remoteAddress) : 
+                base(endpointConfigurationName, remoteAddress) {
+        }
+        
+        public RelEncuestaPreguntaResClient(System.ServiceModel.Channels.Binding binding, System.ServiceModel.EndpointAddress remoteAddress) : 
+                base(binding, remoteAddress) {
+        }
+        
+        public Softv.Entities.RelEncuestaPreguntaResEntity GetRelEncuestaPreguntaRes(System.Nullable<int> Id) {
+            return base.Channel.GetRelEncuestaPreguntaRes(Id);
+        }
+        
+        public System.Threading.Tasks.Task<Softv.Entities.RelEncuestaPreguntaResEntity> GetRelEncuestaPreguntaResAsync(System.Nullable<int> Id) {
+            return base.Channel.GetRelEncuestaPreguntaResAsync(Id);
+        }
+        
+        public Softv.Entities.RelEncuestaPreguntaResEntity GetDeepRelEncuestaPreguntaRes(System.Nullable<int> Id) {
+            return base.Channel.GetDeepRelEncuestaPreguntaRes(Id);
+        }
+        
+        public System.Threading.Tasks.Task<Softv.Entities.RelEncuestaPreguntaResEntity> GetDeepRelEncuestaPreguntaResAsync(System.Nullable<int> Id) {
+            return base.Channel.GetDeepRelEncuestaPreguntaResAsync(Id);
+        }
+        
+        public System.Collections.Generic.List<Softv.Entities.RelEncuestaPreguntaResEntity> GetRelEncuestaPreguntaResList() {
+            return base.Channel.GetRelEncuestaPreguntaResList();
+        }
+        
+        public System.Threading.Tasks.Task<System.Collections.Generic.List<Softv.Entities.RelEncuestaPreguntaResEntity>> GetRelEncuestaPreguntaResListAsync() {
+            return base.Channel.GetRelEncuestaPreguntaResListAsync();
+        }
+        
+        public Globals.SoftvList<Softv.Entities.RelEncuestaPreguntaResEntity> GetRelEncuestaPreguntaResPagedList(int page, int pageSize) {
+            return base.Channel.GetRelEncuestaPreguntaResPagedList(page, pageSize);
+        }
+        
+        public System.Threading.Tasks.Task<Globals.SoftvList<Softv.Entities.RelEncuestaPreguntaResEntity>> GetRelEncuestaPreguntaResPagedListAsync(int page, int pageSize) {
+            return base.Channel.GetRelEncuestaPreguntaResPagedListAsync(page, pageSize);
+        }
+        
+        public Globals.SoftvList<Softv.Entities.RelEncuestaPreguntaResEntity> GetRelEncuestaPreguntaResPagedListXml(int page, int pageSize, string xml) {
+            return base.Channel.GetRelEncuestaPreguntaResPagedListXml(page, pageSize, xml);
+        }
+        
+        public System.Threading.Tasks.Task<Globals.SoftvList<Softv.Entities.RelEncuestaPreguntaResEntity>> GetRelEncuestaPreguntaResPagedListXmlAsync(int page, int pageSize, string xml) {
+            return base.Channel.GetRelEncuestaPreguntaResPagedListXmlAsync(page, pageSize, xml);
+        }
+        
+        public int AddRelEncuestaPreguntaRes(Softv.Entities.RelEncuestaPreguntaResEntity objRelEncuestaPreguntaRes) {
+            return base.Channel.AddRelEncuestaPreguntaRes(objRelEncuestaPreguntaRes);
+        }
+        
+        public System.Threading.Tasks.Task<int> AddRelEncuestaPreguntaResAsync(Softv.Entities.RelEncuestaPreguntaResEntity objRelEncuestaPreguntaRes) {
+            return base.Channel.AddRelEncuestaPreguntaResAsync(objRelEncuestaPreguntaRes);
+        }
+        
+        public int UpdateRelEncuestaPreguntaRes(Softv.Entities.RelEncuestaPreguntaResEntity objRelEncuestaPreguntaRes) {
+            return base.Channel.UpdateRelEncuestaPreguntaRes(objRelEncuestaPreguntaRes);
+        }
+        
+        public System.Threading.Tasks.Task<int> UpdateRelEncuestaPreguntaResAsync(Softv.Entities.RelEncuestaPreguntaResEntity objRelEncuestaPreguntaRes) {
+            return base.Channel.UpdateRelEncuestaPreguntaResAsync(objRelEncuestaPreguntaRes);
+        }
+        
+        public int DeleteRelEncuestaPreguntaRes(string BaseRemoteIp, int BaseIdUser, System.Nullable<int> Id) {
+            return base.Channel.DeleteRelEncuestaPreguntaRes(BaseRemoteIp, BaseIdUser, Id);
+        }
+        
+        public System.Threading.Tasks.Task<int> DeleteRelEncuestaPreguntaResAsync(string BaseRemoteIp, int BaseIdUser, System.Nullable<int> Id) {
+            return base.Channel.DeleteRelEncuestaPreguntaResAsync(BaseRemoteIp, BaseIdUser, Id);
+        }
+    }
+    
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ServiceModel.ServiceContractAttribute(ConfigurationName="SoftvService.IQueja")]
+    public interface IQueja {
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IQueja/GetQueja", ReplyAction="http://tempuri.org/IQueja/GetQuejaResponse")]
+        Softv.Entities.QuejaEntity GetQueja(System.Nullable<long> Clv_Queja);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IQueja/GetQueja", ReplyAction="http://tempuri.org/IQueja/GetQuejaResponse")]
+        System.Threading.Tasks.Task<Softv.Entities.QuejaEntity> GetQuejaAsync(System.Nullable<long> Clv_Queja);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IQueja/GetDeepQueja", ReplyAction="http://tempuri.org/IQueja/GetDeepQuejaResponse")]
+        Softv.Entities.QuejaEntity GetDeepQueja(System.Nullable<long> Clv_Queja);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IQueja/GetDeepQueja", ReplyAction="http://tempuri.org/IQueja/GetDeepQuejaResponse")]
+        System.Threading.Tasks.Task<Softv.Entities.QuejaEntity> GetDeepQuejaAsync(System.Nullable<long> Clv_Queja);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IQueja/GetQuejaList", ReplyAction="http://tempuri.org/IQueja/GetQuejaListResponse")]
+        System.Collections.Generic.List<Softv.Entities.QuejaEntity> GetQuejaList();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IQueja/GetQuejaList", ReplyAction="http://tempuri.org/IQueja/GetQuejaListResponse")]
+        System.Threading.Tasks.Task<System.Collections.Generic.List<Softv.Entities.QuejaEntity>> GetQuejaListAsync();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IQueja/GetQuejaPagedList", ReplyAction="http://tempuri.org/IQueja/GetQuejaPagedListResponse")]
+        Globals.SoftvList<Softv.Entities.QuejaEntity> GetQuejaPagedList(int page, int pageSize);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IQueja/GetQuejaPagedList", ReplyAction="http://tempuri.org/IQueja/GetQuejaPagedListResponse")]
+        System.Threading.Tasks.Task<Globals.SoftvList<Softv.Entities.QuejaEntity>> GetQuejaPagedListAsync(int page, int pageSize);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IQueja/GetQuejaPagedListXml", ReplyAction="http://tempuri.org/IQueja/GetQuejaPagedListXmlResponse")]
+        Globals.SoftvList<Softv.Entities.QuejaEntity> GetQuejaPagedListXml(int page, int pageSize, string xml);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IQueja/GetQuejaPagedListXml", ReplyAction="http://tempuri.org/IQueja/GetQuejaPagedListXmlResponse")]
+        System.Threading.Tasks.Task<Globals.SoftvList<Softv.Entities.QuejaEntity>> GetQuejaPagedListXmlAsync(int page, int pageSize, string xml);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IQueja/AddQueja", ReplyAction="http://tempuri.org/IQueja/AddQuejaResponse")]
+        int AddQueja(Softv.Entities.QuejaEntity objQueja);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IQueja/AddQueja", ReplyAction="http://tempuri.org/IQueja/AddQuejaResponse")]
+        System.Threading.Tasks.Task<int> AddQuejaAsync(Softv.Entities.QuejaEntity objQueja);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IQueja/UpdateQueja", ReplyAction="http://tempuri.org/IQueja/UpdateQuejaResponse")]
+        int UpdateQueja(Softv.Entities.QuejaEntity objQueja);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IQueja/UpdateQueja", ReplyAction="http://tempuri.org/IQueja/UpdateQuejaResponse")]
+        System.Threading.Tasks.Task<int> UpdateQuejaAsync(Softv.Entities.QuejaEntity objQueja);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IQueja/DeleteQueja", ReplyAction="http://tempuri.org/IQueja/DeleteQuejaResponse")]
+        int DeleteQueja(string BaseRemoteIp, int BaseIdUser, System.Nullable<long> Clv_Queja);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IQueja/DeleteQueja", ReplyAction="http://tempuri.org/IQueja/DeleteQuejaResponse")]
+        System.Threading.Tasks.Task<int> DeleteQuejaAsync(string BaseRemoteIp, int BaseIdUser, System.Nullable<long> Clv_Queja);
+    }
+    
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    public interface IQuejaChannel : SoftvMVC.SoftvService.IQueja, System.ServiceModel.IClientChannel {
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    public partial class QuejaClient : System.ServiceModel.ClientBase<SoftvMVC.SoftvService.IQueja>, SoftvMVC.SoftvService.IQueja {
+        
+        public QuejaClient() {
+        }
+        
+        public QuejaClient(string endpointConfigurationName) : 
+                base(endpointConfigurationName) {
+        }
+        
+        public QuejaClient(string endpointConfigurationName, string remoteAddress) : 
+                base(endpointConfigurationName, remoteAddress) {
+        }
+        
+        public QuejaClient(string endpointConfigurationName, System.ServiceModel.EndpointAddress remoteAddress) : 
+                base(endpointConfigurationName, remoteAddress) {
+        }
+        
+        public QuejaClient(System.ServiceModel.Channels.Binding binding, System.ServiceModel.EndpointAddress remoteAddress) : 
+                base(binding, remoteAddress) {
+        }
+        
+        public Softv.Entities.QuejaEntity GetQueja(System.Nullable<long> Clv_Queja) {
+            return base.Channel.GetQueja(Clv_Queja);
+        }
+        
+        public System.Threading.Tasks.Task<Softv.Entities.QuejaEntity> GetQuejaAsync(System.Nullable<long> Clv_Queja) {
+            return base.Channel.GetQuejaAsync(Clv_Queja);
+        }
+        
+        public Softv.Entities.QuejaEntity GetDeepQueja(System.Nullable<long> Clv_Queja) {
+            return base.Channel.GetDeepQueja(Clv_Queja);
+        }
+        
+        public System.Threading.Tasks.Task<Softv.Entities.QuejaEntity> GetDeepQuejaAsync(System.Nullable<long> Clv_Queja) {
+            return base.Channel.GetDeepQuejaAsync(Clv_Queja);
+        }
+        
+        public System.Collections.Generic.List<Softv.Entities.QuejaEntity> GetQuejaList() {
+            return base.Channel.GetQuejaList();
+        }
+        
+        public System.Threading.Tasks.Task<System.Collections.Generic.List<Softv.Entities.QuejaEntity>> GetQuejaListAsync() {
+            return base.Channel.GetQuejaListAsync();
+        }
+        
+        public Globals.SoftvList<Softv.Entities.QuejaEntity> GetQuejaPagedList(int page, int pageSize) {
+            return base.Channel.GetQuejaPagedList(page, pageSize);
+        }
+        
+        public System.Threading.Tasks.Task<Globals.SoftvList<Softv.Entities.QuejaEntity>> GetQuejaPagedListAsync(int page, int pageSize) {
+            return base.Channel.GetQuejaPagedListAsync(page, pageSize);
+        }
+        
+        public Globals.SoftvList<Softv.Entities.QuejaEntity> GetQuejaPagedListXml(int page, int pageSize, string xml) {
+            return base.Channel.GetQuejaPagedListXml(page, pageSize, xml);
+        }
+        
+        public System.Threading.Tasks.Task<Globals.SoftvList<Softv.Entities.QuejaEntity>> GetQuejaPagedListXmlAsync(int page, int pageSize, string xml) {
+            return base.Channel.GetQuejaPagedListXmlAsync(page, pageSize, xml);
+        }
+        
+        public int AddQueja(Softv.Entities.QuejaEntity objQueja) {
+            return base.Channel.AddQueja(objQueja);
+        }
+        
+        public System.Threading.Tasks.Task<int> AddQuejaAsync(Softv.Entities.QuejaEntity objQueja) {
+            return base.Channel.AddQuejaAsync(objQueja);
+        }
+        
+        public int UpdateQueja(Softv.Entities.QuejaEntity objQueja) {
+            return base.Channel.UpdateQueja(objQueja);
+        }
+        
+        public System.Threading.Tasks.Task<int> UpdateQuejaAsync(Softv.Entities.QuejaEntity objQueja) {
+            return base.Channel.UpdateQuejaAsync(objQueja);
+        }
+        
+        public int DeleteQueja(string BaseRemoteIp, int BaseIdUser, System.Nullable<long> Clv_Queja) {
+            return base.Channel.DeleteQueja(BaseRemoteIp, BaseIdUser, Clv_Queja);
+        }
+        
+        public System.Threading.Tasks.Task<int> DeleteQuejaAsync(string BaseRemoteIp, int BaseIdUser, System.Nullable<long> Clv_Queja) {
+            return base.Channel.DeleteQuejaAsync(BaseRemoteIp, BaseIdUser, Clv_Queja);
+        }
+    }
+    
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ServiceModel.ServiceContractAttribute(ConfigurationName="SoftvService.ICIUDAD")]
+    public interface ICIUDAD {
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ICIUDAD/GetCIUDAD", ReplyAction="http://tempuri.org/ICIUDAD/GetCIUDADResponse")]
+        Softv.Entities.CIUDADEntity GetCIUDAD(System.Nullable<int> Clv_Ciudad);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ICIUDAD/GetCIUDAD", ReplyAction="http://tempuri.org/ICIUDAD/GetCIUDADResponse")]
+        System.Threading.Tasks.Task<Softv.Entities.CIUDADEntity> GetCIUDADAsync(System.Nullable<int> Clv_Ciudad);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ICIUDAD/GetDeepCIUDAD", ReplyAction="http://tempuri.org/ICIUDAD/GetDeepCIUDADResponse")]
+        Softv.Entities.CIUDADEntity GetDeepCIUDAD(System.Nullable<int> Clv_Ciudad);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ICIUDAD/GetDeepCIUDAD", ReplyAction="http://tempuri.org/ICIUDAD/GetDeepCIUDADResponse")]
+        System.Threading.Tasks.Task<Softv.Entities.CIUDADEntity> GetDeepCIUDADAsync(System.Nullable<int> Clv_Ciudad);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ICIUDAD/GetCIUDADList", ReplyAction="http://tempuri.org/ICIUDAD/GetCIUDADListResponse")]
+        System.Collections.Generic.List<Softv.Entities.CIUDADEntity> GetCIUDADList();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ICIUDAD/GetCIUDADList", ReplyAction="http://tempuri.org/ICIUDAD/GetCIUDADListResponse")]
+        System.Threading.Tasks.Task<System.Collections.Generic.List<Softv.Entities.CIUDADEntity>> GetCIUDADListAsync();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ICIUDAD/GetCIUDADPagedList", ReplyAction="http://tempuri.org/ICIUDAD/GetCIUDADPagedListResponse")]
+        Globals.SoftvList<Softv.Entities.CIUDADEntity> GetCIUDADPagedList(int page, int pageSize);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ICIUDAD/GetCIUDADPagedList", ReplyAction="http://tempuri.org/ICIUDAD/GetCIUDADPagedListResponse")]
+        System.Threading.Tasks.Task<Globals.SoftvList<Softv.Entities.CIUDADEntity>> GetCIUDADPagedListAsync(int page, int pageSize);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ICIUDAD/GetCIUDADPagedListXml", ReplyAction="http://tempuri.org/ICIUDAD/GetCIUDADPagedListXmlResponse")]
+        Globals.SoftvList<Softv.Entities.CIUDADEntity> GetCIUDADPagedListXml(int page, int pageSize, string xml);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ICIUDAD/GetCIUDADPagedListXml", ReplyAction="http://tempuri.org/ICIUDAD/GetCIUDADPagedListXmlResponse")]
+        System.Threading.Tasks.Task<Globals.SoftvList<Softv.Entities.CIUDADEntity>> GetCIUDADPagedListXmlAsync(int page, int pageSize, string xml);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ICIUDAD/AddCIUDAD", ReplyAction="http://tempuri.org/ICIUDAD/AddCIUDADResponse")]
+        int AddCIUDAD(Softv.Entities.CIUDADEntity objCIUDAD);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ICIUDAD/AddCIUDAD", ReplyAction="http://tempuri.org/ICIUDAD/AddCIUDADResponse")]
+        System.Threading.Tasks.Task<int> AddCIUDADAsync(Softv.Entities.CIUDADEntity objCIUDAD);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ICIUDAD/UpdateCIUDAD", ReplyAction="http://tempuri.org/ICIUDAD/UpdateCIUDADResponse")]
+        int UpdateCIUDAD(Softv.Entities.CIUDADEntity objCIUDAD);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ICIUDAD/UpdateCIUDAD", ReplyAction="http://tempuri.org/ICIUDAD/UpdateCIUDADResponse")]
+        System.Threading.Tasks.Task<int> UpdateCIUDADAsync(Softv.Entities.CIUDADEntity objCIUDAD);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ICIUDAD/DeleteCIUDAD", ReplyAction="http://tempuri.org/ICIUDAD/DeleteCIUDADResponse")]
+        int DeleteCIUDAD(string BaseRemoteIp, int BaseIdUser, System.Nullable<int> Clv_Ciudad);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ICIUDAD/DeleteCIUDAD", ReplyAction="http://tempuri.org/ICIUDAD/DeleteCIUDADResponse")]
+        System.Threading.Tasks.Task<int> DeleteCIUDADAsync(string BaseRemoteIp, int BaseIdUser, System.Nullable<int> Clv_Ciudad);
+    }
+    
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    public interface ICIUDADChannel : SoftvMVC.SoftvService.ICIUDAD, System.ServiceModel.IClientChannel {
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    public partial class CIUDADClient : System.ServiceModel.ClientBase<SoftvMVC.SoftvService.ICIUDAD>, SoftvMVC.SoftvService.ICIUDAD {
+        
+        public CIUDADClient() {
+        }
+        
+        public CIUDADClient(string endpointConfigurationName) : 
+                base(endpointConfigurationName) {
+        }
+        
+        public CIUDADClient(string endpointConfigurationName, string remoteAddress) : 
+                base(endpointConfigurationName, remoteAddress) {
+        }
+        
+        public CIUDADClient(string endpointConfigurationName, System.ServiceModel.EndpointAddress remoteAddress) : 
+                base(endpointConfigurationName, remoteAddress) {
+        }
+        
+        public CIUDADClient(System.ServiceModel.Channels.Binding binding, System.ServiceModel.EndpointAddress remoteAddress) : 
+                base(binding, remoteAddress) {
+        }
+        
+        public Softv.Entities.CIUDADEntity GetCIUDAD(System.Nullable<int> Clv_Ciudad) {
+            return base.Channel.GetCIUDAD(Clv_Ciudad);
+        }
+        
+        public System.Threading.Tasks.Task<Softv.Entities.CIUDADEntity> GetCIUDADAsync(System.Nullable<int> Clv_Ciudad) {
+            return base.Channel.GetCIUDADAsync(Clv_Ciudad);
+        }
+        
+        public Softv.Entities.CIUDADEntity GetDeepCIUDAD(System.Nullable<int> Clv_Ciudad) {
+            return base.Channel.GetDeepCIUDAD(Clv_Ciudad);
+        }
+        
+        public System.Threading.Tasks.Task<Softv.Entities.CIUDADEntity> GetDeepCIUDADAsync(System.Nullable<int> Clv_Ciudad) {
+            return base.Channel.GetDeepCIUDADAsync(Clv_Ciudad);
+        }
+        
+        public System.Collections.Generic.List<Softv.Entities.CIUDADEntity> GetCIUDADList() {
+            return base.Channel.GetCIUDADList();
+        }
+        
+        public System.Threading.Tasks.Task<System.Collections.Generic.List<Softv.Entities.CIUDADEntity>> GetCIUDADListAsync() {
+            return base.Channel.GetCIUDADListAsync();
+        }
+        
+        public Globals.SoftvList<Softv.Entities.CIUDADEntity> GetCIUDADPagedList(int page, int pageSize) {
+            return base.Channel.GetCIUDADPagedList(page, pageSize);
+        }
+        
+        public System.Threading.Tasks.Task<Globals.SoftvList<Softv.Entities.CIUDADEntity>> GetCIUDADPagedListAsync(int page, int pageSize) {
+            return base.Channel.GetCIUDADPagedListAsync(page, pageSize);
+        }
+        
+        public Globals.SoftvList<Softv.Entities.CIUDADEntity> GetCIUDADPagedListXml(int page, int pageSize, string xml) {
+            return base.Channel.GetCIUDADPagedListXml(page, pageSize, xml);
+        }
+        
+        public System.Threading.Tasks.Task<Globals.SoftvList<Softv.Entities.CIUDADEntity>> GetCIUDADPagedListXmlAsync(int page, int pageSize, string xml) {
+            return base.Channel.GetCIUDADPagedListXmlAsync(page, pageSize, xml);
+        }
+        
+        public int AddCIUDAD(Softv.Entities.CIUDADEntity objCIUDAD) {
+            return base.Channel.AddCIUDAD(objCIUDAD);
+        }
+        
+        public System.Threading.Tasks.Task<int> AddCIUDADAsync(Softv.Entities.CIUDADEntity objCIUDAD) {
+            return base.Channel.AddCIUDADAsync(objCIUDAD);
+        }
+        
+        public int UpdateCIUDAD(Softv.Entities.CIUDADEntity objCIUDAD) {
+            return base.Channel.UpdateCIUDAD(objCIUDAD);
+        }
+        
+        public System.Threading.Tasks.Task<int> UpdateCIUDADAsync(Softv.Entities.CIUDADEntity objCIUDAD) {
+            return base.Channel.UpdateCIUDADAsync(objCIUDAD);
+        }
+        
+        public int DeleteCIUDAD(string BaseRemoteIp, int BaseIdUser, System.Nullable<int> Clv_Ciudad) {
+            return base.Channel.DeleteCIUDAD(BaseRemoteIp, BaseIdUser, Clv_Ciudad);
+        }
+        
+        public System.Threading.Tasks.Task<int> DeleteCIUDADAsync(string BaseRemoteIp, int BaseIdUser, System.Nullable<int> Clv_Ciudad) {
+            return base.Channel.DeleteCIUDADAsync(BaseRemoteIp, BaseIdUser, Clv_Ciudad);
+        }
+    }
+    
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ServiceModel.ServiceContractAttribute(ConfigurationName="SoftvService.ICVECOLCIU")]
+    public interface ICVECOLCIU {
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ICVECOLCIU/GetCVECOLCIU", ReplyAction="http://tempuri.org/ICVECOLCIU/GetCVECOLCIUResponse")]
+        Softv.Entities.CVECOLCIUEntity GetCVECOLCIU(System.Nullable<int> Clv_Ciudad);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ICVECOLCIU/GetCVECOLCIU", ReplyAction="http://tempuri.org/ICVECOLCIU/GetCVECOLCIUResponse")]
+        System.Threading.Tasks.Task<Softv.Entities.CVECOLCIUEntity> GetCVECOLCIUAsync(System.Nullable<int> Clv_Ciudad);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ICVECOLCIU/GetDeepCVECOLCIU", ReplyAction="http://tempuri.org/ICVECOLCIU/GetDeepCVECOLCIUResponse")]
+        Softv.Entities.CVECOLCIUEntity GetDeepCVECOLCIU(System.Nullable<int> Clv_Colonia, System.Nullable<int> Clv_Ciudad);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ICVECOLCIU/GetDeepCVECOLCIU", ReplyAction="http://tempuri.org/ICVECOLCIU/GetDeepCVECOLCIUResponse")]
+        System.Threading.Tasks.Task<Softv.Entities.CVECOLCIUEntity> GetDeepCVECOLCIUAsync(System.Nullable<int> Clv_Colonia, System.Nullable<int> Clv_Ciudad);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ICVECOLCIU/GetCVECOLCIUList", ReplyAction="http://tempuri.org/ICVECOLCIU/GetCVECOLCIUListResponse")]
+        System.Collections.Generic.List<Softv.Entities.CVECOLCIUEntity> GetCVECOLCIUList();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ICVECOLCIU/GetCVECOLCIUList", ReplyAction="http://tempuri.org/ICVECOLCIU/GetCVECOLCIUListResponse")]
+        System.Threading.Tasks.Task<System.Collections.Generic.List<Softv.Entities.CVECOLCIUEntity>> GetCVECOLCIUListAsync();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ICVECOLCIU/GetCVECOLCIUPagedList", ReplyAction="http://tempuri.org/ICVECOLCIU/GetCVECOLCIUPagedListResponse")]
+        Globals.SoftvList<Softv.Entities.CVECOLCIUEntity> GetCVECOLCIUPagedList(int page, int pageSize);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ICVECOLCIU/GetCVECOLCIUPagedList", ReplyAction="http://tempuri.org/ICVECOLCIU/GetCVECOLCIUPagedListResponse")]
+        System.Threading.Tasks.Task<Globals.SoftvList<Softv.Entities.CVECOLCIUEntity>> GetCVECOLCIUPagedListAsync(int page, int pageSize);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ICVECOLCIU/GetCVECOLCIUPagedListXml", ReplyAction="http://tempuri.org/ICVECOLCIU/GetCVECOLCIUPagedListXmlResponse")]
+        Globals.SoftvList<Softv.Entities.CVECOLCIUEntity> GetCVECOLCIUPagedListXml(int page, int pageSize, string xml);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ICVECOLCIU/GetCVECOLCIUPagedListXml", ReplyAction="http://tempuri.org/ICVECOLCIU/GetCVECOLCIUPagedListXmlResponse")]
+        System.Threading.Tasks.Task<Globals.SoftvList<Softv.Entities.CVECOLCIUEntity>> GetCVECOLCIUPagedListXmlAsync(int page, int pageSize, string xml);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ICVECOLCIU/AddCVECOLCIU", ReplyAction="http://tempuri.org/ICVECOLCIU/AddCVECOLCIUResponse")]
+        int AddCVECOLCIU(Softv.Entities.CVECOLCIUEntity objCVECOLCIU);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ICVECOLCIU/AddCVECOLCIU", ReplyAction="http://tempuri.org/ICVECOLCIU/AddCVECOLCIUResponse")]
+        System.Threading.Tasks.Task<int> AddCVECOLCIUAsync(Softv.Entities.CVECOLCIUEntity objCVECOLCIU);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ICVECOLCIU/UpdateCVECOLCIU", ReplyAction="http://tempuri.org/ICVECOLCIU/UpdateCVECOLCIUResponse")]
+        int UpdateCVECOLCIU(Softv.Entities.CVECOLCIUEntity objCVECOLCIU);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ICVECOLCIU/UpdateCVECOLCIU", ReplyAction="http://tempuri.org/ICVECOLCIU/UpdateCVECOLCIUResponse")]
+        System.Threading.Tasks.Task<int> UpdateCVECOLCIUAsync(Softv.Entities.CVECOLCIUEntity objCVECOLCIU);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ICVECOLCIU/DeleteCVECOLCIU", ReplyAction="http://tempuri.org/ICVECOLCIU/DeleteCVECOLCIUResponse")]
+        int DeleteCVECOLCIU(System.Nullable<int> Clv_Ciudad);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ICVECOLCIU/DeleteCVECOLCIU", ReplyAction="http://tempuri.org/ICVECOLCIU/DeleteCVECOLCIUResponse")]
+        System.Threading.Tasks.Task<int> DeleteCVECOLCIUAsync(System.Nullable<int> Clv_Ciudad);
+    }
+    
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    public interface ICVECOLCIUChannel : SoftvMVC.SoftvService.ICVECOLCIU, System.ServiceModel.IClientChannel {
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    public partial class CVECOLCIUClient : System.ServiceModel.ClientBase<SoftvMVC.SoftvService.ICVECOLCIU>, SoftvMVC.SoftvService.ICVECOLCIU {
+        
+        public CVECOLCIUClient() {
+        }
+        
+        public CVECOLCIUClient(string endpointConfigurationName) : 
+                base(endpointConfigurationName) {
+        }
+        
+        public CVECOLCIUClient(string endpointConfigurationName, string remoteAddress) : 
+                base(endpointConfigurationName, remoteAddress) {
+        }
+        
+        public CVECOLCIUClient(string endpointConfigurationName, System.ServiceModel.EndpointAddress remoteAddress) : 
+                base(endpointConfigurationName, remoteAddress) {
+        }
+        
+        public CVECOLCIUClient(System.ServiceModel.Channels.Binding binding, System.ServiceModel.EndpointAddress remoteAddress) : 
+                base(binding, remoteAddress) {
+        }
+        
+        public Softv.Entities.CVECOLCIUEntity GetCVECOLCIU(System.Nullable<int> Clv_Ciudad) {
+            return base.Channel.GetCVECOLCIU(Clv_Ciudad);
+        }
+        
+        public System.Threading.Tasks.Task<Softv.Entities.CVECOLCIUEntity> GetCVECOLCIUAsync(System.Nullable<int> Clv_Ciudad) {
+            return base.Channel.GetCVECOLCIUAsync(Clv_Ciudad);
+        }
+        
+        public Softv.Entities.CVECOLCIUEntity GetDeepCVECOLCIU(System.Nullable<int> Clv_Colonia, System.Nullable<int> Clv_Ciudad) {
+            return base.Channel.GetDeepCVECOLCIU(Clv_Colonia, Clv_Ciudad);
+        }
+        
+        public System.Threading.Tasks.Task<Softv.Entities.CVECOLCIUEntity> GetDeepCVECOLCIUAsync(System.Nullable<int> Clv_Colonia, System.Nullable<int> Clv_Ciudad) {
+            return base.Channel.GetDeepCVECOLCIUAsync(Clv_Colonia, Clv_Ciudad);
+        }
+        
+        public System.Collections.Generic.List<Softv.Entities.CVECOLCIUEntity> GetCVECOLCIUList() {
+            return base.Channel.GetCVECOLCIUList();
+        }
+        
+        public System.Threading.Tasks.Task<System.Collections.Generic.List<Softv.Entities.CVECOLCIUEntity>> GetCVECOLCIUListAsync() {
+            return base.Channel.GetCVECOLCIUListAsync();
+        }
+        
+        public Globals.SoftvList<Softv.Entities.CVECOLCIUEntity> GetCVECOLCIUPagedList(int page, int pageSize) {
+            return base.Channel.GetCVECOLCIUPagedList(page, pageSize);
+        }
+        
+        public System.Threading.Tasks.Task<Globals.SoftvList<Softv.Entities.CVECOLCIUEntity>> GetCVECOLCIUPagedListAsync(int page, int pageSize) {
+            return base.Channel.GetCVECOLCIUPagedListAsync(page, pageSize);
+        }
+        
+        public Globals.SoftvList<Softv.Entities.CVECOLCIUEntity> GetCVECOLCIUPagedListXml(int page, int pageSize, string xml) {
+            return base.Channel.GetCVECOLCIUPagedListXml(page, pageSize, xml);
+        }
+        
+        public System.Threading.Tasks.Task<Globals.SoftvList<Softv.Entities.CVECOLCIUEntity>> GetCVECOLCIUPagedListXmlAsync(int page, int pageSize, string xml) {
+            return base.Channel.GetCVECOLCIUPagedListXmlAsync(page, pageSize, xml);
+        }
+        
+        public int AddCVECOLCIU(Softv.Entities.CVECOLCIUEntity objCVECOLCIU) {
+            return base.Channel.AddCVECOLCIU(objCVECOLCIU);
+        }
+        
+        public System.Threading.Tasks.Task<int> AddCVECOLCIUAsync(Softv.Entities.CVECOLCIUEntity objCVECOLCIU) {
+            return base.Channel.AddCVECOLCIUAsync(objCVECOLCIU);
+        }
+        
+        public int UpdateCVECOLCIU(Softv.Entities.CVECOLCIUEntity objCVECOLCIU) {
+            return base.Channel.UpdateCVECOLCIU(objCVECOLCIU);
+        }
+        
+        public System.Threading.Tasks.Task<int> UpdateCVECOLCIUAsync(Softv.Entities.CVECOLCIUEntity objCVECOLCIU) {
+            return base.Channel.UpdateCVECOLCIUAsync(objCVECOLCIU);
+        }
+        
+        public int DeleteCVECOLCIU(System.Nullable<int> Clv_Ciudad) {
+            return base.Channel.DeleteCVECOLCIU(Clv_Ciudad);
+        }
+        
+        public System.Threading.Tasks.Task<int> DeleteCVECOLCIUAsync(System.Nullable<int> Clv_Ciudad) {
+            return base.Channel.DeleteCVECOLCIUAsync(Clv_Ciudad);
+        }
+    }
+    
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ServiceModel.ServiceContractAttribute(ConfigurationName="SoftvService.ICOLONIA")]
+    public interface ICOLONIA {
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ICOLONIA/GetCOLONIA", ReplyAction="http://tempuri.org/ICOLONIA/GetCOLONIAResponse")]
+        Softv.Entities.COLONIAEntity GetCOLONIA(System.Nullable<int> Clv_Colonia);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ICOLONIA/GetCOLONIA", ReplyAction="http://tempuri.org/ICOLONIA/GetCOLONIAResponse")]
+        System.Threading.Tasks.Task<Softv.Entities.COLONIAEntity> GetCOLONIAAsync(System.Nullable<int> Clv_Colonia);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ICOLONIA/GetDeepCOLONIA", ReplyAction="http://tempuri.org/ICOLONIA/GetDeepCOLONIAResponse")]
+        Softv.Entities.COLONIAEntity GetDeepCOLONIA(System.Nullable<int> Clv_Colonia);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ICOLONIA/GetDeepCOLONIA", ReplyAction="http://tempuri.org/ICOLONIA/GetDeepCOLONIAResponse")]
+        System.Threading.Tasks.Task<Softv.Entities.COLONIAEntity> GetDeepCOLONIAAsync(System.Nullable<int> Clv_Colonia);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ICOLONIA/GetCOLONIAList", ReplyAction="http://tempuri.org/ICOLONIA/GetCOLONIAListResponse")]
+        System.Collections.Generic.List<Softv.Entities.COLONIAEntity> GetCOLONIAList();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ICOLONIA/GetCOLONIAList", ReplyAction="http://tempuri.org/ICOLONIA/GetCOLONIAListResponse")]
+        System.Threading.Tasks.Task<System.Collections.Generic.List<Softv.Entities.COLONIAEntity>> GetCOLONIAListAsync();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ICOLONIA/GetCOLONIAPagedList", ReplyAction="http://tempuri.org/ICOLONIA/GetCOLONIAPagedListResponse")]
+        Globals.SoftvList<Softv.Entities.COLONIAEntity> GetCOLONIAPagedList(int page, int pageSize);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ICOLONIA/GetCOLONIAPagedList", ReplyAction="http://tempuri.org/ICOLONIA/GetCOLONIAPagedListResponse")]
+        System.Threading.Tasks.Task<Globals.SoftvList<Softv.Entities.COLONIAEntity>> GetCOLONIAPagedListAsync(int page, int pageSize);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ICOLONIA/GetCOLONIAPagedListXml", ReplyAction="http://tempuri.org/ICOLONIA/GetCOLONIAPagedListXmlResponse")]
+        Globals.SoftvList<Softv.Entities.COLONIAEntity> GetCOLONIAPagedListXml(int page, int pageSize, string xml);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ICOLONIA/GetCOLONIAPagedListXml", ReplyAction="http://tempuri.org/ICOLONIA/GetCOLONIAPagedListXmlResponse")]
+        System.Threading.Tasks.Task<Globals.SoftvList<Softv.Entities.COLONIAEntity>> GetCOLONIAPagedListXmlAsync(int page, int pageSize, string xml);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ICOLONIA/AddCOLONIA", ReplyAction="http://tempuri.org/ICOLONIA/AddCOLONIAResponse")]
+        int AddCOLONIA(Softv.Entities.COLONIAEntity objCOLONIA);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ICOLONIA/AddCOLONIA", ReplyAction="http://tempuri.org/ICOLONIA/AddCOLONIAResponse")]
+        System.Threading.Tasks.Task<int> AddCOLONIAAsync(Softv.Entities.COLONIAEntity objCOLONIA);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ICOLONIA/UpdateCOLONIA", ReplyAction="http://tempuri.org/ICOLONIA/UpdateCOLONIAResponse")]
+        int UpdateCOLONIA(Softv.Entities.COLONIAEntity objCOLONIA);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ICOLONIA/UpdateCOLONIA", ReplyAction="http://tempuri.org/ICOLONIA/UpdateCOLONIAResponse")]
+        System.Threading.Tasks.Task<int> UpdateCOLONIAAsync(Softv.Entities.COLONIAEntity objCOLONIA);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ICOLONIA/DeleteCOLONIA", ReplyAction="http://tempuri.org/ICOLONIA/DeleteCOLONIAResponse")]
+        int DeleteCOLONIA(string BaseRemoteIp, int BaseIdUser, System.Nullable<int> Clv_Colonia);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ICOLONIA/DeleteCOLONIA", ReplyAction="http://tempuri.org/ICOLONIA/DeleteCOLONIAResponse")]
+        System.Threading.Tasks.Task<int> DeleteCOLONIAAsync(string BaseRemoteIp, int BaseIdUser, System.Nullable<int> Clv_Colonia);
+    }
+    
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    public interface ICOLONIAChannel : SoftvMVC.SoftvService.ICOLONIA, System.ServiceModel.IClientChannel {
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    public partial class COLONIAClient : System.ServiceModel.ClientBase<SoftvMVC.SoftvService.ICOLONIA>, SoftvMVC.SoftvService.ICOLONIA {
+        
+        public COLONIAClient() {
+        }
+        
+        public COLONIAClient(string endpointConfigurationName) : 
+                base(endpointConfigurationName) {
+        }
+        
+        public COLONIAClient(string endpointConfigurationName, string remoteAddress) : 
+                base(endpointConfigurationName, remoteAddress) {
+        }
+        
+        public COLONIAClient(string endpointConfigurationName, System.ServiceModel.EndpointAddress remoteAddress) : 
+                base(endpointConfigurationName, remoteAddress) {
+        }
+        
+        public COLONIAClient(System.ServiceModel.Channels.Binding binding, System.ServiceModel.EndpointAddress remoteAddress) : 
+                base(binding, remoteAddress) {
+        }
+        
+        public Softv.Entities.COLONIAEntity GetCOLONIA(System.Nullable<int> Clv_Colonia) {
+            return base.Channel.GetCOLONIA(Clv_Colonia);
+        }
+        
+        public System.Threading.Tasks.Task<Softv.Entities.COLONIAEntity> GetCOLONIAAsync(System.Nullable<int> Clv_Colonia) {
+            return base.Channel.GetCOLONIAAsync(Clv_Colonia);
+        }
+        
+        public Softv.Entities.COLONIAEntity GetDeepCOLONIA(System.Nullable<int> Clv_Colonia) {
+            return base.Channel.GetDeepCOLONIA(Clv_Colonia);
+        }
+        
+        public System.Threading.Tasks.Task<Softv.Entities.COLONIAEntity> GetDeepCOLONIAAsync(System.Nullable<int> Clv_Colonia) {
+            return base.Channel.GetDeepCOLONIAAsync(Clv_Colonia);
+        }
+        
+        public System.Collections.Generic.List<Softv.Entities.COLONIAEntity> GetCOLONIAList() {
+            return base.Channel.GetCOLONIAList();
+        }
+        
+        public System.Threading.Tasks.Task<System.Collections.Generic.List<Softv.Entities.COLONIAEntity>> GetCOLONIAListAsync() {
+            return base.Channel.GetCOLONIAListAsync();
+        }
+        
+        public Globals.SoftvList<Softv.Entities.COLONIAEntity> GetCOLONIAPagedList(int page, int pageSize) {
+            return base.Channel.GetCOLONIAPagedList(page, pageSize);
+        }
+        
+        public System.Threading.Tasks.Task<Globals.SoftvList<Softv.Entities.COLONIAEntity>> GetCOLONIAPagedListAsync(int page, int pageSize) {
+            return base.Channel.GetCOLONIAPagedListAsync(page, pageSize);
+        }
+        
+        public Globals.SoftvList<Softv.Entities.COLONIAEntity> GetCOLONIAPagedListXml(int page, int pageSize, string xml) {
+            return base.Channel.GetCOLONIAPagedListXml(page, pageSize, xml);
+        }
+        
+        public System.Threading.Tasks.Task<Globals.SoftvList<Softv.Entities.COLONIAEntity>> GetCOLONIAPagedListXmlAsync(int page, int pageSize, string xml) {
+            return base.Channel.GetCOLONIAPagedListXmlAsync(page, pageSize, xml);
+        }
+        
+        public int AddCOLONIA(Softv.Entities.COLONIAEntity objCOLONIA) {
+            return base.Channel.AddCOLONIA(objCOLONIA);
+        }
+        
+        public System.Threading.Tasks.Task<int> AddCOLONIAAsync(Softv.Entities.COLONIAEntity objCOLONIA) {
+            return base.Channel.AddCOLONIAAsync(objCOLONIA);
+        }
+        
+        public int UpdateCOLONIA(Softv.Entities.COLONIAEntity objCOLONIA) {
+            return base.Channel.UpdateCOLONIA(objCOLONIA);
+        }
+        
+        public System.Threading.Tasks.Task<int> UpdateCOLONIAAsync(Softv.Entities.COLONIAEntity objCOLONIA) {
+            return base.Channel.UpdateCOLONIAAsync(objCOLONIA);
+        }
+        
+        public int DeleteCOLONIA(string BaseRemoteIp, int BaseIdUser, System.Nullable<int> Clv_Colonia) {
+            return base.Channel.DeleteCOLONIA(BaseRemoteIp, BaseIdUser, Clv_Colonia);
+        }
+        
+        public System.Threading.Tasks.Task<int> DeleteCOLONIAAsync(string BaseRemoteIp, int BaseIdUser, System.Nullable<int> Clv_Colonia) {
+            return base.Channel.DeleteCOLONIAAsync(BaseRemoteIp, BaseIdUser, Clv_Colonia);
+        }
+    }
+    
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ServiceModel.ServiceContractAttribute(ConfigurationName="SoftvService.ICVECAROL")]
+    public interface ICVECAROL {
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ICVECAROL/GetCVECAROL", ReplyAction="http://tempuri.org/ICVECAROL/GetCVECAROLResponse")]
+        Softv.Entities.CVECAROLEntity GetCVECAROL(System.Nullable<int> Clv_Colonia);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ICVECAROL/GetCVECAROL", ReplyAction="http://tempuri.org/ICVECAROL/GetCVECAROLResponse")]
+        System.Threading.Tasks.Task<Softv.Entities.CVECAROLEntity> GetCVECAROLAsync(System.Nullable<int> Clv_Calle, System.Nullable<int> Clv_Colonia);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ICVECAROL/GetDeepCVECAROL", ReplyAction="http://tempuri.org/ICVECAROL/GetDeepCVECAROLResponse")]
+        Softv.Entities.CVECAROLEntity GetDeepCVECAROL(System.Nullable<int> Clv_Calle, System.Nullable<int> Clv_Colonia);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ICVECAROL/GetDeepCVECAROL", ReplyAction="http://tempuri.org/ICVECAROL/GetDeepCVECAROLResponse")]
+        System.Threading.Tasks.Task<Softv.Entities.CVECAROLEntity> GetDeepCVECAROLAsync(System.Nullable<int> Clv_Calle, System.Nullable<int> Clv_Colonia);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ICVECAROL/GetCVECAROLList", ReplyAction="http://tempuri.org/ICVECAROL/GetCVECAROLListResponse")]
+        System.Collections.Generic.List<Softv.Entities.CVECAROLEntity> GetCVECAROLList();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ICVECAROL/GetCVECAROLList", ReplyAction="http://tempuri.org/ICVECAROL/GetCVECAROLListResponse")]
+        System.Threading.Tasks.Task<System.Collections.Generic.List<Softv.Entities.CVECAROLEntity>> GetCVECAROLListAsync();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ICVECAROL/GetCVECAROLPagedList", ReplyAction="http://tempuri.org/ICVECAROL/GetCVECAROLPagedListResponse")]
+        Globals.SoftvList<Softv.Entities.CVECAROLEntity> GetCVECAROLPagedList(int page, int pageSize);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ICVECAROL/GetCVECAROLPagedList", ReplyAction="http://tempuri.org/ICVECAROL/GetCVECAROLPagedListResponse")]
+        System.Threading.Tasks.Task<Globals.SoftvList<Softv.Entities.CVECAROLEntity>> GetCVECAROLPagedListAsync(int page, int pageSize);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ICVECAROL/GetCVECAROLPagedListXml", ReplyAction="http://tempuri.org/ICVECAROL/GetCVECAROLPagedListXmlResponse")]
+        Globals.SoftvList<Softv.Entities.CVECAROLEntity> GetCVECAROLPagedListXml(int page, int pageSize, string xml);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ICVECAROL/GetCVECAROLPagedListXml", ReplyAction="http://tempuri.org/ICVECAROL/GetCVECAROLPagedListXmlResponse")]
+        System.Threading.Tasks.Task<Globals.SoftvList<Softv.Entities.CVECAROLEntity>> GetCVECAROLPagedListXmlAsync(int page, int pageSize, string xml);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ICVECAROL/AddCVECAROL", ReplyAction="http://tempuri.org/ICVECAROL/AddCVECAROLResponse")]
+        int AddCVECAROL(Softv.Entities.CVECAROLEntity objCVECAROL);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ICVECAROL/AddCVECAROL", ReplyAction="http://tempuri.org/ICVECAROL/AddCVECAROLResponse")]
+        System.Threading.Tasks.Task<int> AddCVECAROLAsync(Softv.Entities.CVECAROLEntity objCVECAROL);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ICVECAROL/UpdateCVECAROL", ReplyAction="http://tempuri.org/ICVECAROL/UpdateCVECAROLResponse")]
+        int UpdateCVECAROL(Softv.Entities.CVECAROLEntity objCVECAROL);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ICVECAROL/UpdateCVECAROL", ReplyAction="http://tempuri.org/ICVECAROL/UpdateCVECAROLResponse")]
+        System.Threading.Tasks.Task<int> UpdateCVECAROLAsync(Softv.Entities.CVECAROLEntity objCVECAROL);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ICVECAROL/DeleteCVECAROL", ReplyAction="http://tempuri.org/ICVECAROL/DeleteCVECAROLResponse")]
+        int DeleteCVECAROL(System.Nullable<int> Clv_Colonia);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ICVECAROL/DeleteCVECAROL", ReplyAction="http://tempuri.org/ICVECAROL/DeleteCVECAROLResponse")]
+        System.Threading.Tasks.Task<int> DeleteCVECAROLAsync(string BaseRemoteIp, int BaseIdUser, System.Nullable<int> Clv_Calle, System.Nullable<int> Clv_Colonia);
+    }
+    
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    public interface ICVECAROLChannel : SoftvMVC.SoftvService.ICVECAROL, System.ServiceModel.IClientChannel {
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    public partial class CVECAROLClient : System.ServiceModel.ClientBase<SoftvMVC.SoftvService.ICVECAROL>, SoftvMVC.SoftvService.ICVECAROL {
+        
+        public CVECAROLClient() {
+        }
+        
+        public CVECAROLClient(string endpointConfigurationName) : 
+                base(endpointConfigurationName) {
+        }
+        
+        public CVECAROLClient(string endpointConfigurationName, string remoteAddress) : 
+                base(endpointConfigurationName, remoteAddress) {
+        }
+        
+        public CVECAROLClient(string endpointConfigurationName, System.ServiceModel.EndpointAddress remoteAddress) : 
+                base(endpointConfigurationName, remoteAddress) {
+        }
+        
+        public CVECAROLClient(System.ServiceModel.Channels.Binding binding, System.ServiceModel.EndpointAddress remoteAddress) : 
+                base(binding, remoteAddress) {
+        }
+        
+        public Softv.Entities.CVECAROLEntity GetCVECAROL(System.Nullable<int> Clv_Colonia) {
+            return base.Channel.GetCVECAROL(Clv_Colonia);
+        }
+        
+        public System.Threading.Tasks.Task<Softv.Entities.CVECAROLEntity> GetCVECAROLAsync(System.Nullable<int> Clv_Calle, System.Nullable<int> Clv_Colonia) {
+            return base.Channel.GetCVECAROLAsync(Clv_Calle, Clv_Colonia);
+        }
+        
+        public Softv.Entities.CVECAROLEntity GetDeepCVECAROL(System.Nullable<int> Clv_Calle, System.Nullable<int> Clv_Colonia) {
+            return base.Channel.GetDeepCVECAROL(Clv_Calle, Clv_Colonia);
+        }
+        
+        public System.Threading.Tasks.Task<Softv.Entities.CVECAROLEntity> GetDeepCVECAROLAsync(System.Nullable<int> Clv_Calle, System.Nullable<int> Clv_Colonia) {
+            return base.Channel.GetDeepCVECAROLAsync(Clv_Calle, Clv_Colonia);
+        }
+        
+        public System.Collections.Generic.List<Softv.Entities.CVECAROLEntity> GetCVECAROLList() {
+            return base.Channel.GetCVECAROLList();
+        }
+        
+        public System.Threading.Tasks.Task<System.Collections.Generic.List<Softv.Entities.CVECAROLEntity>> GetCVECAROLListAsync() {
+            return base.Channel.GetCVECAROLListAsync();
+        }
+        
+        public Globals.SoftvList<Softv.Entities.CVECAROLEntity> GetCVECAROLPagedList(int page, int pageSize) {
+            return base.Channel.GetCVECAROLPagedList(page, pageSize);
+        }
+        
+        public System.Threading.Tasks.Task<Globals.SoftvList<Softv.Entities.CVECAROLEntity>> GetCVECAROLPagedListAsync(int page, int pageSize) {
+            return base.Channel.GetCVECAROLPagedListAsync(page, pageSize);
+        }
+        
+        public Globals.SoftvList<Softv.Entities.CVECAROLEntity> GetCVECAROLPagedListXml(int page, int pageSize, string xml) {
+            return base.Channel.GetCVECAROLPagedListXml(page, pageSize, xml);
+        }
+        
+        public System.Threading.Tasks.Task<Globals.SoftvList<Softv.Entities.CVECAROLEntity>> GetCVECAROLPagedListXmlAsync(int page, int pageSize, string xml) {
+            return base.Channel.GetCVECAROLPagedListXmlAsync(page, pageSize, xml);
+        }
+        
+        public int AddCVECAROL(Softv.Entities.CVECAROLEntity objCVECAROL) {
+            return base.Channel.AddCVECAROL(objCVECAROL);
+        }
+        
+        public System.Threading.Tasks.Task<int> AddCVECAROLAsync(Softv.Entities.CVECAROLEntity objCVECAROL) {
+            return base.Channel.AddCVECAROLAsync(objCVECAROL);
+        }
+        
+        public int UpdateCVECAROL(Softv.Entities.CVECAROLEntity objCVECAROL) {
+            return base.Channel.UpdateCVECAROL(objCVECAROL);
+        }
+        
+        public System.Threading.Tasks.Task<int> UpdateCVECAROLAsync(Softv.Entities.CVECAROLEntity objCVECAROL) {
+            return base.Channel.UpdateCVECAROLAsync(objCVECAROL);
+        }
+        
+        public int DeleteCVECAROL(System.Nullable<int> Clv_Colonia) {
+            return base.Channel.DeleteCVECAROL(Clv_Colonia);
+        }
+        
+        public System.Threading.Tasks.Task<int> DeleteCVECAROLAsync(string BaseRemoteIp, int BaseIdUser, System.Nullable<int> Clv_Calle, System.Nullable<int> Clv_Colonia) {
+            return base.Channel.DeleteCVECAROLAsync(BaseRemoteIp, BaseIdUser, Clv_Calle, Clv_Colonia);
+        }
+    }
+    
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ServiceModel.ServiceContractAttribute(ConfigurationName="SoftvService.ICALLE")]
+    public interface ICALLE {
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ICALLE/GetCALLE", ReplyAction="http://tempuri.org/ICALLE/GetCALLEResponse")]
+        Softv.Entities.CALLEEntity GetCALLE(System.Nullable<int> Clv_Calle);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ICALLE/GetCALLE", ReplyAction="http://tempuri.org/ICALLE/GetCALLEResponse")]
+        System.Threading.Tasks.Task<Softv.Entities.CALLEEntity> GetCALLEAsync(System.Nullable<int> Clv_Calle);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ICALLE/GetDeepCALLE", ReplyAction="http://tempuri.org/ICALLE/GetDeepCALLEResponse")]
+        Softv.Entities.CALLEEntity GetDeepCALLE(System.Nullable<int> Clv_Calle);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ICALLE/GetDeepCALLE", ReplyAction="http://tempuri.org/ICALLE/GetDeepCALLEResponse")]
+        System.Threading.Tasks.Task<Softv.Entities.CALLEEntity> GetDeepCALLEAsync(System.Nullable<int> Clv_Calle);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ICALLE/GetCALLEList", ReplyAction="http://tempuri.org/ICALLE/GetCALLEListResponse")]
+        System.Collections.Generic.List<Softv.Entities.CALLEEntity> GetCALLEList();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ICALLE/GetCALLEList", ReplyAction="http://tempuri.org/ICALLE/GetCALLEListResponse")]
+        System.Threading.Tasks.Task<System.Collections.Generic.List<Softv.Entities.CALLEEntity>> GetCALLEListAsync();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ICALLE/GetCALLEPagedList", ReplyAction="http://tempuri.org/ICALLE/GetCALLEPagedListResponse")]
+        Globals.SoftvList<Softv.Entities.CALLEEntity> GetCALLEPagedList(int page, int pageSize);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ICALLE/GetCALLEPagedList", ReplyAction="http://tempuri.org/ICALLE/GetCALLEPagedListResponse")]
+        System.Threading.Tasks.Task<Globals.SoftvList<Softv.Entities.CALLEEntity>> GetCALLEPagedListAsync(int page, int pageSize);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ICALLE/GetCALLEPagedListXml", ReplyAction="http://tempuri.org/ICALLE/GetCALLEPagedListXmlResponse")]
+        Globals.SoftvList<Softv.Entities.CALLEEntity> GetCALLEPagedListXml(int page, int pageSize, string xml);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ICALLE/GetCALLEPagedListXml", ReplyAction="http://tempuri.org/ICALLE/GetCALLEPagedListXmlResponse")]
+        System.Threading.Tasks.Task<Globals.SoftvList<Softv.Entities.CALLEEntity>> GetCALLEPagedListXmlAsync(int page, int pageSize, string xml);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ICALLE/AddCALLE", ReplyAction="http://tempuri.org/ICALLE/AddCALLEResponse")]
+        int AddCALLE(Softv.Entities.CALLEEntity objCALLE);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ICALLE/AddCALLE", ReplyAction="http://tempuri.org/ICALLE/AddCALLEResponse")]
+        System.Threading.Tasks.Task<int> AddCALLEAsync(Softv.Entities.CALLEEntity objCALLE);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ICALLE/UpdateCALLE", ReplyAction="http://tempuri.org/ICALLE/UpdateCALLEResponse")]
+        int UpdateCALLE(Softv.Entities.CALLEEntity objCALLE);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ICALLE/UpdateCALLE", ReplyAction="http://tempuri.org/ICALLE/UpdateCALLEResponse")]
+        System.Threading.Tasks.Task<int> UpdateCALLEAsync(Softv.Entities.CALLEEntity objCALLE);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ICALLE/DeleteCALLE", ReplyAction="http://tempuri.org/ICALLE/DeleteCALLEResponse")]
+        int DeleteCALLE(string BaseRemoteIp, int BaseIdUser, System.Nullable<int> Clv_Calle);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ICALLE/DeleteCALLE", ReplyAction="http://tempuri.org/ICALLE/DeleteCALLEResponse")]
+        System.Threading.Tasks.Task<int> DeleteCALLEAsync(string BaseRemoteIp, int BaseIdUser, System.Nullable<int> Clv_Calle);
+    }
+    
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    public interface ICALLEChannel : SoftvMVC.SoftvService.ICALLE, System.ServiceModel.IClientChannel {
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    public partial class CALLEClient : System.ServiceModel.ClientBase<SoftvMVC.SoftvService.ICALLE>, SoftvMVC.SoftvService.ICALLE {
+        
+        public CALLEClient() {
+        }
+        
+        public CALLEClient(string endpointConfigurationName) : 
+                base(endpointConfigurationName) {
+        }
+        
+        public CALLEClient(string endpointConfigurationName, string remoteAddress) : 
+                base(endpointConfigurationName, remoteAddress) {
+        }
+        
+        public CALLEClient(string endpointConfigurationName, System.ServiceModel.EndpointAddress remoteAddress) : 
+                base(endpointConfigurationName, remoteAddress) {
+        }
+        
+        public CALLEClient(System.ServiceModel.Channels.Binding binding, System.ServiceModel.EndpointAddress remoteAddress) : 
+                base(binding, remoteAddress) {
+        }
+        
+        public Softv.Entities.CALLEEntity GetCALLE(System.Nullable<int> Clv_Calle) {
+            return base.Channel.GetCALLE(Clv_Calle);
+        }
+        
+        public System.Threading.Tasks.Task<Softv.Entities.CALLEEntity> GetCALLEAsync(System.Nullable<int> Clv_Calle) {
+            return base.Channel.GetCALLEAsync(Clv_Calle);
+        }
+        
+        public Softv.Entities.CALLEEntity GetDeepCALLE(System.Nullable<int> Clv_Calle) {
+            return base.Channel.GetDeepCALLE(Clv_Calle);
+        }
+        
+        public System.Threading.Tasks.Task<Softv.Entities.CALLEEntity> GetDeepCALLEAsync(System.Nullable<int> Clv_Calle) {
+            return base.Channel.GetDeepCALLEAsync(Clv_Calle);
+        }
+        
+        public System.Collections.Generic.List<Softv.Entities.CALLEEntity> GetCALLEList() {
+            return base.Channel.GetCALLEList();
+        }
+        
+        public System.Threading.Tasks.Task<System.Collections.Generic.List<Softv.Entities.CALLEEntity>> GetCALLEListAsync() {
+            return base.Channel.GetCALLEListAsync();
+        }
+        
+        public Globals.SoftvList<Softv.Entities.CALLEEntity> GetCALLEPagedList(int page, int pageSize) {
+            return base.Channel.GetCALLEPagedList(page, pageSize);
+        }
+        
+        public System.Threading.Tasks.Task<Globals.SoftvList<Softv.Entities.CALLEEntity>> GetCALLEPagedListAsync(int page, int pageSize) {
+            return base.Channel.GetCALLEPagedListAsync(page, pageSize);
+        }
+        
+        public Globals.SoftvList<Softv.Entities.CALLEEntity> GetCALLEPagedListXml(int page, int pageSize, string xml) {
+            return base.Channel.GetCALLEPagedListXml(page, pageSize, xml);
+        }
+        
+        public System.Threading.Tasks.Task<Globals.SoftvList<Softv.Entities.CALLEEntity>> GetCALLEPagedListXmlAsync(int page, int pageSize, string xml) {
+            return base.Channel.GetCALLEPagedListXmlAsync(page, pageSize, xml);
+        }
+        
+        public int AddCALLE(Softv.Entities.CALLEEntity objCALLE) {
+            return base.Channel.AddCALLE(objCALLE);
+        }
+        
+        public System.Threading.Tasks.Task<int> AddCALLEAsync(Softv.Entities.CALLEEntity objCALLE) {
+            return base.Channel.AddCALLEAsync(objCALLE);
+        }
+        
+        public int UpdateCALLE(Softv.Entities.CALLEEntity objCALLE) {
+            return base.Channel.UpdateCALLE(objCALLE);
+        }
+        
+        public System.Threading.Tasks.Task<int> UpdateCALLEAsync(Softv.Entities.CALLEEntity objCALLE) {
+            return base.Channel.UpdateCALLEAsync(objCALLE);
+        }
+        
+        public int DeleteCALLE(string BaseRemoteIp, int BaseIdUser, System.Nullable<int> Clv_Calle) {
+            return base.Channel.DeleteCALLE(BaseRemoteIp, BaseIdUser, Clv_Calle);
+        }
+        
+        public System.Threading.Tasks.Task<int> DeleteCALLEAsync(string BaseRemoteIp, int BaseIdUser, System.Nullable<int> Clv_Calle) {
+            return base.Channel.DeleteCALLEAsync(BaseRemoteIp, BaseIdUser, Clv_Calle);
+        }
+    }
 }

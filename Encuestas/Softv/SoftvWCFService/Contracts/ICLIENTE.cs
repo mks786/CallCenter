@@ -1,21 +1,21 @@
 ﻿
-    using Globals;
-    using Softv.Entities;
-    using System;
-    using System.Collections.Generic;
-    using System.Linq;
-    using System.ServiceModel;
-    using System.Text;
+using Globals;
+using Softv.Entities;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.ServiceModel;
+using System.Text;
 
-    namespace SoftvWCFService.Contracts
+namespace SoftvWCFService.Contracts
+{
+    [ServiceContract]
+    public interface ICLIENTE
     {
-      [ServiceContract]
-      public interface ICLIENTE
-      {
         [OperationContract]
-        CLIENTEEntity GetCLIENTE(long? CONTRATO);
+        CLIENTEEntity GetCLIENTE(long? CONTRATO);
         [OperationContract]
-        CLIENTEEntity GetDeepCLIENTE(long? CONTRATO);
+        CLIENTEEntity GetDeepCLIENTE(long? CONTRATO);
         [OperationContract]
         IEnumerable<CLIENTEEntity> GetCLIENTEList();
         [OperationContract]
@@ -27,9 +27,8 @@
         [OperationContract]
         int UpdateCLIENTE(CLIENTEEntity objCLIENTE);
         [OperationContract]
-        int DeleteCLIENTE(String BaseRemoteIp, int BaseIdUser,long? CONTRATO);
-        
-      }
-    }
+        int DeleteCLIENTE(String BaseRemoteIp, int BaseIdUser, long? CONTRATO);
 
-  
+    }
+}
+

@@ -1,21 +1,21 @@
 ﻿
-    using Globals;
-    using Softv.Entities;
-    using System;
-    using System.Collections.Generic;
-    using System.Linq;
-    using System.ServiceModel;
-    using System.Text;
+using Globals;
+using Softv.Entities;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.ServiceModel;
+using System.Text;
 
-    namespace SoftvWCFService.Contracts
+namespace SoftvWCFService.Contracts
+{
+    [ServiceContract]
+    public interface IPregunta
     {
-      [ServiceContract]
-      public interface IPregunta
-      {
         [OperationContract]
-        PreguntaEntity GetPregunta(int? IdPregunta);
+        PreguntaEntity GetPregunta(int? IdPregunta);
         [OperationContract]
-        PreguntaEntity GetDeepPregunta(int? IdPregunta);
+        PreguntaEntity GetDeepPregunta(int? IdPregunta);
         [OperationContract]
         IEnumerable<PreguntaEntity> GetPreguntaList();
         [OperationContract]
@@ -27,9 +27,8 @@
         [OperationContract]
         int UpdatePregunta(PreguntaEntity objPregunta);
         [OperationContract]
-        int DeletePregunta(int? IdPregunta);
-        
-      }
-    }
+        int DeletePregunta(int? IdPregunta);
 
-  
+    }
+}
+
