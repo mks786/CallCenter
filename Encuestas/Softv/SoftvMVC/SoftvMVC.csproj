@@ -605,9 +605,13 @@
     <Content Include="dist\js\pages\Encuesta\ModalEliminarEncuesta.js" />
     <Content Include="dist\js\pages\Encuesta\Utilerias.js" />
     <Content Include="dist\js\pages\Llamada\Lista.js" />
+    <Content Include="dist\js\pages\Pregunta\editar_pregunta.js" />
     <Content Include="dist\js\pages\Pregunta\Lista.js" />
     <Content Include="dist\js\pages\RelEncuestaCliente\Lista.js" />
     <Content Include="dist\js\pages\ResOpcMult\Lista.js" />
+    <Content Include="dist\js\pages\ResOpcMult\mask.js" />
+    <Content Include="dist\js\pages\ResOpcMult\modales_respuestas.js" />
+    <Content Include="dist\js\pages\ResOpcMult\modal_detalle_pregunta.js" />
     <Content Include="dist\js\pages\TipoPregunta\Lista.js" />
     <Content Include="dist\js\pages\Usuario\Lista.js" />
     <Content Include="favicon.ico" />

@@ -1,11 +1,6 @@
 ﻿$(document).ready(function () {
     LlenarTabla();
 
-    $(".Agregar").click(function () {
-        $('#ModalAgregarResOpcMults').modal('show');
-
-    });
-
 });
 
 
@@ -47,7 +42,7 @@ function LlenarTabla() {
         {
             sortable: false,
             "render": function (data, type, full, meta) {
-                return Opciones();  //Es el campo de opciones de la tabla.
+                return Opciones(full);  //Es el campo de opciones de la tabla.
             }
         }
         ],
@@ -79,7 +74,7 @@ function LlenarTabla() {
         "order": [[0, "asc"]]
     })
 
-    $("div.toolbar").html('<button class="btn btn-success btn-sm Agregar" style="float:right;" ><i class="fa fa-plus" aria-hidden="true"></i> Nueva ResOpcMult </button> <div class="input-group input-group-sm"><input class="form-control" type="text"><span class="input-group-btn"><button class="btn btn-info btn-flat" type="button">Buscar</button></span></div>');
+    $("div.toolbar").html('<button class="btn btn-success btn-sm Agregar" style="float:right;" onclick="agregar()"><i class="fa fa-plus" aria-hidden="true"></i> Nueva ResOpcMult </button> <div class="input-group input-group-sm"><input class="form-control" type="text"><span class="input-group-btn"><button class="btn btn-info btn-flat" type="button">Buscar</button></span></div>');
 
 }
 
@@ -92,37 +87,8 @@ function Opciones() {
 
 
 //funcion:retorna las opciones que tendra cada row en la tabla principal
-function Opciones() {
-    var opc = "<button class='btn btn-info btn-xs Detalle' type='button'>Detalles</button> <button class='btn btn-warning btn-xs Editar' type='button'><i class='fa fa-pencil' aria-hidden='true'></i> Editar</button> <button class='btn btn-danger btn-xs eliminar'  type='button'> <i class='fa fa-trash-o' aria-hidden='true'></i> Eliminar</button>"
+function Opciones(e) {
+    var opc = "<button class='btn btn-info btn-xs Detalle' data-name='" + e.ResOpcMult + "' id='" + e.Id_ResOpcMult + "' onclick='detalle_respuesta(this)' type='button'>Detalles</button> <button class='btn btn-warning btn-xs Editar' data-name='" + e.ResOpcMult + "' id='" + e.Id_ResOpcMult + "' type='button' onclick='editar_respuesta(this)'><i class='fa fa-pencil' aria-hidden='true'></i> Editar</button> <button class='btn btn-danger btn-xs eliminar'  type='button'> <i class='fa fa-trash-o' aria-hidden='true'></i> Eliminar</button>"
     return opc;
 }
 
-$('#TablaResOpcMults').on('click', '.Detalle', function () {
-    $('#ModalDetalleResOpcMults').modal('show');
-});
-
-$('#TablaResOpcMults').on('click', '.Editar', function () {
-    $('#ModalDetalleResOpcMults').modal('show');
-});
-
-$('#TablaResOpcMults').on('click', '.Eliminar', function () {
-    alert("click");
-});
-
-
-
-//function ActualizaListaPreguntas() {
-//    $('#TbodyPreguntas').empty();
-//    for (var b = 0; b < Lista_preguntas.length; b++) {
-//        $('#tablaPreguntas').append("<tr><td>" + Lista_preguntas[b].Nombre + "</td><td>" + Lista_preguntas[b].TipoControl + "</td><td><button class='btn btn-info btn-xs detallepregunta' rel='" + Lista_preguntas[b].id + "'>Detalles</button> <button class='btn btn-warning btn-xs EditarPregunta ' rel='" + Lista_preguntas[b].id + "'>Editar</button> <button class='btn btn-danger btn-xs EliminaPregunta' rel='" + Lista_preguntas[b].id + "'>Eliminar</button></td></tr>");
-
-//    }
-
-//}
-
-//$('#TablaClientes').on('click', '.EliminaCliente', function () {
-//    var id = $(this).attr('rel');
-//    $('#ModalEliminaCliente').modal('show');
-//    //$('#contrato').val(id);
-
-//});

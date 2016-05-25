@@ -1,5 +1,7 @@
 ﻿$(document).ready(function () {
     LlenarTabla();
+    
+   
 
     $(".Agregar").click(function () {
         $('#ModalAgregarPregunta').modal('show');
@@ -7,7 +9,7 @@
     });
 
 });
-
+var preguntas_lista = [];
 
 function LlenarTabla() {
     $('#TablaPreguntas').dataTable({
@@ -95,23 +97,22 @@ function Opciones() {
 
 //funcion:retorna las opciones que tendra cada row en la tabla principal
 function Opciones(data) {
-    var opc = "<button class='btn btn-info btn-xs Detalle' data-pregunta='" + data.Pregunta + "' data-tipo='" + data.IdTipoPregunta + "' id=" + data.IdPregunta + " type='button' onclick='detalle(this)'>Detalles</button> <button class='btn btn-warning btn-xs Editar' type='button' id='" + data.IdPregunta + "' onclick='editar(this.id)'><i class='fa fa-pencil' aria-hidden='true'></i> Editar</button> <button class='btn btn-danger btn-xs eliminar'  type='button'> <i class='fa fa-trash-o' aria-hidden='true'></i> Eliminar</button>"
+    var opc = "<button class='btn btn-info btn-xs Detalle'  id=" + data.IdPregunta + " type='button' onclick='detalle(this.id)'>Detalles</button> <button class='btn btn-warning btn-xs Editar' type='button' id='" + data.IdPregunta + "' onclick='editar(this.id)'><i class='fa fa-pencil' aria-hidden='true'></i> Editar</button> <button class='btn btn-danger btn-xs eliminar'  type='button'> <i class='fa fa-trash-o' aria-hidden='true'></i> Eliminar</button>"
     return opc;
 }
 
-function detalle(e){
-    $('#ModalDetallePregunta').modal('show');
-    $('#nombre_pregunta').val(e.getAttribute("data-pregunta"));
-    var tipo = parseInt(e.getAttribute("data-tipo"));
-    var nombre_tipo = '';
-    if (tipo == 1) {
-        nombre_tipo = 'Pregunta Abierta';
-    } else if (tipo == 2) {
-        nombre_tipo = 'Pregunta Cerrada';
-    } else {
-        nombre_tipo = 'Pregunta con Opciones Múltiples';
-    }
-    $('#tipo_pregunta').text(nombre_tipo);
+function detalle(id){
+    $.ajax({
+        url: "/Pregunta/GetOnePregunta/",
+        type: "GET",
+        data: { 'id': id },
+        success: function (data, textStatus, jqXHR) {
+            detalle_dom(data);  
+        },
+        error: function (jqXHR, textStatus, errorThrown) {
+
+        }
+    });
 }
     
 function editar(id) {
@@ -120,7 +121,7 @@ function editar(id) {
         type: "GET",
         data: { 'id': id },
         success: function (data, textStatus, jqXHR) {
-            console.log(data);
+            editar_dom(data);
         },
         error: function (jqXHR, textStatus, errorThrown) {
 
@@ -128,11 +129,59 @@ function editar(id) {
     });
 }
 
+function editar_dom(datos) {
+    var datos = datos;
+    console.log(datos);
+    $('#pregunta_nombre').val(datos.pregunta.Pregunta);
+    var tipo = datos.pregunta.IdTipoPregunta;
+    $('#id_tipo_pregunta').val(tipo).change();
+    if (tipo == 1) {
+        $('#panel_opcion_multiple').hide();
+
+    } else if (tipo == 2) {
+        $('#panel_opcion_multiple').hide();
+    } else {
+        $('#panel_opcion_multiple').show();
+        for (var i = 0; i < datos.respuestas.length; i++) {
+            $('#body_opcion_multiple').append("<tr><td><input type='text' class='form-control' id='" + datos.respuestas[i].Id_ResOpcMult + "' value='" + datos.respuestas[i].ResOpcMult + "'> </td><td><button class='btn btn-danger eliminar_respuestas'>Eliminar</button></td></tr>");
+        }
+
+    }
+    $('#ModalEditarPregunta').modal('show');
+}
+
+//elimina las respuestas  de la tabla 
+$('#tabla_respuestas').on('click', '.eliminar_respuestas', function () {
+    $(this).closest('tr').remove();;
+});
+
+function detalle_dom(datos) {
+    var datos = datos;
+    $('#nombre_pregunta').val(datos.pregunta.Pregunta);
+    var tipo = datos.pregunta.IdTipoPregunta;
+    var nombre_tipo = '';
+    if (tipo == 1) {
+        $('#multiple_panel').hide();
+        var nombre_tipo = 'Pregunta Abierta';
+
+    } else if (tipo == 2) {
+        $('#multiple_panel').hide();
+        var nombre_tipo = 'Pregunta Cerrada';
+    } else {
+        var nombre_tipo = 'Pregunta Opción Múltiple';
+        $('#multiple_panel').show();
+        for (var i = 0; i < datos.respuestas.length; i++) {
+            $('#add_panel').append("<option>" + datos.respuestas[i].ResOpcMult + "</option>");
+        }
+
+    }
+    $('#tipo_pregunta').text(nombre_tipo);
+    $('#ModalDetallePregunta').modal('show');
+}
 $('#TablaPreguntas').on('click', '.Eliminar', function () {
     $('#ModalEliminarPregunta').modal('show');
     alert("click");
 });
-
 
 
 //function ActualizaListaPreguntas() {

@@ -79,7 +79,7 @@
                                 </div>
                             }
 
-                            if (a.Pregunta.IdTipoPregunta.Value == 2)
+                            else if (a.Pregunta.IdTipoPregunta.Value == 2)
                             {
                                 <div style="padding-left:30px;">
                                     <div class="radio icheck">
@@ -92,7 +92,7 @@
                                     </div>
                                 </div>
                             }
-                            if (a.Pregunta.IdTipoPregunta.Value == 3)
+                            else  if (a.Pregunta.IdTipoPregunta.Value == 3)
                             {
                                 foreach (var b in a.Respuestas)
                                 {
@@ -139,17 +139,16 @@
 </body>
 <script src="~/plugins/iCheck/icheck.min.js"></script>
 <script>
-    //$(function () {
-    //    $('input').iCheck({
-    //        checkboxClass: 'icheckbox_square-orange',
-    //        radioClass: 'iradio_square-orange',
-    //        increaseArea: '20%' // optional
-    //    });
-    //});
+    $(function () {
+        $('input').iCheck({
+            checkboxClass: 'icheckbox_square-orange',
+            radioClass: 'iradio_square-orange',
+            increaseArea: '20%' // optional
+        });
+    });
 
     $('.flexdatalist').flexdatalist({
-        minLength: 1,
-        
+        minLength: 1,   
         url: '/Cliente/ListaClientes/',
         selectionRequired: true,
         valueProperty: 'CONTRATO',
