@@ -1,21 +1,21 @@
 ﻿
-    using Globals;
-    using Softv.Entities;
-    using System;
-    using System.Collections.Generic;
-    using System.Linq;
-    using System.ServiceModel;
-    using System.Text;
+using Globals;
+using Softv.Entities;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.ServiceModel;
+using System.Text;
 
-    namespace SoftvWCFService.Contracts
+namespace SoftvWCFService.Contracts
+{
+    [ServiceContract]
+    public interface IConexion
     {
-      [ServiceContract]
-      public interface IConexion
-      {
         [OperationContract]
-        ConexionEntity GetConexion(int? IdConexion);
+        ConexionEntity GetConexion(int? IdConexion);
         [OperationContract]
-        ConexionEntity GetDeepConexion(int? IdConexion);
+        ConexionEntity GetDeepConexion(int? IdConexion);
         [OperationContract]
         IEnumerable<ConexionEntity> GetConexionList();
         [OperationContract]
@@ -27,9 +27,8 @@
         [OperationContract]
         int UpdateConexion(ConexionEntity objConexion);
         [OperationContract]
-        int DeleteConexion(String BaseRemoteIp, int BaseIdUser,int? IdConexion);
-        
-      }
-    }
+        int DeleteConexion(String BaseRemoteIp, int BaseIdUser, int? IdConexion);
 
-  
+    }
+}
+

@@ -31,7 +31,7 @@ namespace SoftvMVC.Controllers
         private SoftvService.TipoPreguntasClient TipoPreguntasService = null;
         private SoftvService.UsuarioClient proxyUsuario = null;
         private SoftvService.ResOpcMultsClient Respuestas = null;
-        private SoftvService.RelPreguntaOpcMultsClient relpregunta_resp=null;
+        private SoftvService.RelPreguntaOpcMultsClient relpregunta_resp = null;
         private SoftvService.RelEncuestaClientesClient relenc_clientes = null;
         private SoftvService.RelEnProcesosClient rel_en_proces = null;
         private SoftvService.RelPreguntaEncuestasClient rel_preg_encuesta = null;
@@ -77,7 +77,7 @@ namespace SoftvMVC.Controllers
         }
 
 
-   
+
 
 
         public ActionResult Index(int? page, int? pageSize)
@@ -85,8 +85,8 @@ namespace SoftvMVC.Controllers
             PermisosAcceso("Encuesta");
             ViewData["Title"] = "Encuesta";
             ViewData["Message"] = "Encuesta";
-            
-            
+
+
 
 
             List<UsuarioEntity> lstUsuario = new List<UsuarioEntity>();
@@ -109,13 +109,14 @@ namespace SoftvMVC.Controllers
 
         public ActionResult GetList(string data, int draw, int start, int length)
         {
-            
+
             DataTableData dataTableData = new DataTableData();
             dataTableData.draw = draw;
             dataTableData.recordsTotal = 0;
             int recordsFiltered = 0;
 
-            if (data != "" ){
+            if (data != "")
+            {
                 dataTableData.data = FiltrarContenido(ref recordsFiltered, start, length).Where(o => o.TituloEncuesta.Contains(data) || o.Descripcion.Contains(data) || o.IdEncuesta.Value.ToString().Contains(data) || o.FechaCreacion.Contains(data)).ToList();
             }
             else
@@ -123,7 +124,7 @@ namespace SoftvMVC.Controllers
                 dataTableData.data = FiltrarContenido(ref recordsFiltered, start, length);
             }
 
-           
+
             dataTableData.recordsFiltered = recordsFiltered;
 
             return Json(dataTableData, JsonRequestBehavior.AllowGet);
@@ -154,9 +155,9 @@ namespace SoftvMVC.Controllers
 
         public class Detalle_pregunta
         {
-           public PreguntaEntity Pregunta { get; set; }
-          public  List<ResOpcMultsEntity> Respuestas{get; set;}
-            
+            public PreguntaEntity Pregunta { get; set; }
+            public List<ResOpcMultsEntity> Respuestas { get; set; }
+
         }
 
 
@@ -213,9 +214,9 @@ namespace SoftvMVC.Controllers
             }
 
 
-           
 
-            return Json(Encuesta,JsonRequestBehavior.AllowGet);
+
+            return Json(Encuesta, JsonRequestBehavior.AllowGet);
         }
 
 
@@ -225,28 +226,29 @@ namespace SoftvMVC.Controllers
             Detalle_encuesta Encuesta = new Detalle_encuesta();
             List<Detalle_pregunta> Lista_de_preguntas = new List<Detalle_pregunta>();
 
-            
+
 
             EncuestaEntity objEncuesta = proxy.GetEncuesta(id);
             Encuesta.Encuesta = objEncuesta;
             List<RelPreguntaEncuestasEntity> lista_de_relaciones = rel_preg_encuesta.GetRelPreguntaEncuestasList().Where(x => x.IdEncuesta == objEncuesta.IdEncuesta).ToList();
 
-           // foreach( var a in lista_de_relaciones.)
+            // foreach( var a in lista_de_relaciones.)
 
-          //  List<PreguntaEntity> preguntas = preguntasService.GetPreguntaList().Where(o => o.RelPreguntaEncuestas.IdEncuesta == objEncuesta.IdEncuesta).ToList();
-           // preguntas.Where(o=> o.RelPreguntaEncuestas.IdEncuesta==objEncuesta.IdEncuesta);
+            //  List<PreguntaEntity> preguntas = preguntasService.GetPreguntaList().Where(o => o.RelPreguntaEncuestas.IdEncuesta == objEncuesta.IdEncuesta).ToList();
+            // preguntas.Where(o=> o.RelPreguntaEncuestas.IdEncuesta==objEncuesta.IdEncuesta);
             foreach (var a in lista_de_relaciones)
             {
 
                 Detalle_pregunta pregunta = new Detalle_pregunta();
                 List<ResOpcMultsEntity> r = new List<ResOpcMultsEntity>();
-                 pregunta.Pregunta = a.Pregunta;
+                pregunta.Pregunta = a.Pregunta;
 
-               List<RelPreguntaOpcMultsEntity> relaciones=relpregunta_resp.GetRelPreguntaOpcMultsList().Where(x=>x.IdPregunta==a.IdPregunta).ToList();
+                List<RelPreguntaOpcMultsEntity> relaciones = relpregunta_resp.GetRelPreguntaOpcMultsList().Where(x => x.IdPregunta == a.IdPregunta).ToList();
 
-                foreach(var resp in relaciones){
+                foreach (var resp in relaciones)
+                {
 
-                    ResOpcMultsEntity respuestas  = Respuestas.GetResOpcMultsList().Where(o=>o.Id_ResOpcMult==resp.Id_ResOpcMult).Select(o=>o).First();
+                    ResOpcMultsEntity respuestas = Respuestas.GetResOpcMultsList().Where(o => o.Id_ResOpcMult == resp.Id_ResOpcMult).Select(o => o).First();
 
                     r.Add(respuestas);
                 }
@@ -258,14 +260,14 @@ namespace SoftvMVC.Controllers
 
 
                 Lista_de_preguntas.Add(pregunta);
-                
 
-              
+
+
             }
 
 
-            
-           
+
+
 
             if (objEncuesta == null)
             {
@@ -283,44 +285,44 @@ namespace SoftvMVC.Controllers
 
         public class PreguntaEntity1
         {
-        
+
             public string IdPregunta { get; set; }
 
             public string IdPregunta2 { get; set; }
 
-            
-          
+
+
             public String Pregunta { get; set; }
-         
+
             public int IdTipoPregunta { get; set; }
 
-           
-           
+
+
         }
 
         public class ResOpcMultsEntity1
         {
-            public string  Id_ResOpcMult { get; set; }           
+            public string Id_ResOpcMult { get; set; }
             public String ResOpcMult { get; set; }
 
             public string Id_ResOpcMult2 { get; set; }
         }
 
-        public ActionResult Create(EncuestaEntity encuesta, List<PreguntaEntity1> Preguntas, List<ResOpcMultsEntity1> respuestas,string usuario)
+        public ActionResult Create(EncuestaEntity encuesta, List<PreguntaEntity1> Preguntas, List<ResOpcMultsEntity1> respuestas, string usuario)
         {
-            UsuarioEntity user = proxyUsuario.GetUsuarioList().Where(o=>o.Usuario.ToLower()==usuario.ToLower()).FirstOrDefault();
+            UsuarioEntity user = proxyUsuario.GetUsuarioList().Where(o => o.Usuario.ToLower() == usuario.ToLower()).FirstOrDefault();
             encuesta.FechaCreacion = DateTime.Now.ToShortDateString();
             encuesta.IdUsuario = user.IdUsuario.Value;
-            
+
             XElement xe = XElement.Parse(Globals.SerializeTool.Serialize<EncuestaEntity>(encuesta));
 
             XElement xmll = XElement.Parse(Globals.SerializeTool.SerializeList<PreguntaEntity1>(Preguntas));
 
             XElement fg = XElement.Parse(Globals.SerializeTool.SerializeList<ResOpcMultsEntity1>(respuestas));
-            
 
 
-            xe.Add(xmll,fg);
+
+            xe.Add(xmll, fg);
 
 
             int result = proxy.AddEncuesta(xe.ToString());
@@ -372,7 +374,7 @@ namespace SoftvMVC.Controllers
 
         public class ObjEncuesta
         {
-            public  int cliente{get; set; }
+            public int cliente { get; set; }
             public int id_encuesta { get; set; }
 
             public List<preguntas> pregunta { get; set; }
@@ -386,9 +388,9 @@ namespace SoftvMVC.Controllers
             public int id_pregunta { get; set; }
             public string respuesta { get; set; }
 
-            public int id_respuesta { get; set; } 
+            public int id_respuesta { get; set; }
 
-           
+
         }
 
 
@@ -410,16 +412,17 @@ namespace SoftvMVC.Controllers
         public ActionResult DatosEncuesta(ObjEncuesta encuesta)
         {
             /*Creando objeto RelEncuestaClientes*/
-            RelEncuestaClientesEntity rel=new RelEncuestaClientesEntity();
+            RelEncuestaClientesEntity rel = new RelEncuestaClientesEntity();
 
             rel.IdEncuesta = encuesta.id_encuesta;
-            rel.Contrato=encuesta.cliente; 
-            rel.FechaApli=DateTime.Now;
-            int  result =relenc_clientes.AddRelEncuestaClientes(rel);
+            rel.Contrato = encuesta.cliente;
+            rel.FechaApli = DateTime.Now;
+            int result = relenc_clientes.AddRelEncuestaClientes(rel);
 
-            
-            foreach(var a in encuesta.pregunta){
-               // a.id_pregunta
+
+            foreach (var a in encuesta.pregunta)
+            {
+                // a.id_pregunta
                 RelEnProcesosEntity re = new RelEnProcesosEntity();
                 re.IdPregunta = a.id_pregunta;
                 re.IdProceso = result;
@@ -443,11 +446,11 @@ namespace SoftvMVC.Controllers
                     }
                 }
 
-               
 
-            }            
 
-            return Json(encuesta,JsonRequestBehavior.AllowGet);
+            }
+
+            return Json(encuesta, JsonRequestBehavior.AllowGet);
         }
 
 

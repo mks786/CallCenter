@@ -83,7 +83,7 @@ namespace Softv.DAO
                 {
                     connection.Close();
                 }
-                result = (int)comandoSql.Parameters["@IdCLIENTE"].Value;
+                result = (int)comandoSql.Parameters["@CONTRATO"].Value;
             }
             return result;
         }

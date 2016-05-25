@@ -24,7 +24,7 @@ namespace SoftvMVC.Controllers
         private SoftvService.UsuarioClient proxy = null;
 
         private SoftvService.RoleClient proxyRole = null;
-        
+
         private SoftvService.PermisoClient proxyPermiso = null;
 
         private SoftvService.ModuleClient proxyModule = null;

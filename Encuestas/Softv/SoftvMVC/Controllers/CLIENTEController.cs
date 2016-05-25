@@ -278,10 +278,11 @@ namespace SoftvMVC.Controllers
 
         //Nuevas funciones 
 
-        public ActionResult GetClienteByNombre(string Nombre){
-        
-           List<CLIENTEEntity> Lista = proxy.GetCLIENTEList().Where(x=>x.NOMBRE.Contains(Nombre)).ToList();
-            return Json(Lista,JsonRequestBehavior.AllowGet);
+        public ActionResult GetClienteByNombre(string Nombre)
+        {
+
+            List<CLIENTEEntity> Lista = proxy.GetCLIENTEList().Where(x => x.NOMBRE.Contains(Nombre)).ToList();
+            return Json(Lista, JsonRequestBehavior.AllowGet);
         }
 
 
@@ -326,7 +327,7 @@ namespace SoftvMVC.Controllers
             public int recordsFiltered { get; set; }
             public List<CLIENTEEntity> data { get; set; }
         }
-        
+
     }
 
 }

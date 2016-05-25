@@ -34,9 +34,9 @@ namespace SoftvMVC.Controllers
 
             proxyTipoPreguntas = new SoftvService.TipoPreguntasClient();
 
-             relpregunta_resp=new SoftvService.RelPreguntaOpcMultsClient();
+            relpregunta_resp = new SoftvService.RelPreguntaOpcMultsClient();
 
-             RespuestasOM= new SoftvService.ResOpcMultsClient();
+            RespuestasOM = new SoftvService.ResOpcMultsClient();
         }
 
         new public void Dispose()
@@ -81,17 +81,18 @@ namespace SoftvMVC.Controllers
         }
         public ActionResult GetOnePregunta(int id)
         {
-                   PreguntaEntity pregunta= proxy.GetPreguntaList().Where(x=>x.IdPregunta==id).FirstOrDefault();
-                   List<RelPreguntaOpcMultsEntity> rel=  relpregunta_resp.GetRelPreguntaOpcMultsList().Where(o => o.IdPregunta == id).ToList();
-                   foreach(var a in rel){
-                       List<ResOpcMultsEntity> resp = RespuestasOM.GetResOpcMultsList().Where(s => s.Id_ResOpcMult == a.Id_ResOpcMult).ToList();
-                   }
+            PreguntaEntity pregunta = proxy.GetPreguntaList().Where(x => x.IdPregunta == id).FirstOrDefault();
+            List<RelPreguntaOpcMultsEntity> rel = relpregunta_resp.GetRelPreguntaOpcMultsList().Where(o => o.IdPregunta == id).ToList();
+            foreach (var a in rel)
+            {
+                List<ResOpcMultsEntity> resp = RespuestasOM.GetResOpcMultsList().Where(s => s.Id_ResOpcMult == a.Id_ResOpcMult).ToList();
+            }
 
 
-                //int a = 0;
+            //int a = 0;
 
-                
-            return Json(null,JsonRequestBehavior.AllowGet);
+
+            return Json(null, JsonRequestBehavior.AllowGet);
         }
 
         public JsonResult Delete(int id)
@@ -140,30 +141,30 @@ namespace SoftvMVC.Controllers
 
         }
         public ActionResult GetDetallePregunta(string data, int tipo, int draw, int start, int length)
-       {
+        {
             List<Detalle_pregunta> datos = new List<Detalle_pregunta>();
             DataTableDataDetalle dataTableData = new DataTableDataDetalle();
             dataTableData.draw = draw;
             dataTableData.recordsTotal = 0;
             int recordsFiltered = 0;
-            if ( data != "" )
+            if (data != "")
             {
-               datos = FiltrarPreguntas(ref recordsFiltered, start, length).Where(x => x.Pregunta.Pregunta.Contains(data)).ToList();
+                datos = FiltrarPreguntas(ref recordsFiltered, start, length).Where(x => x.Pregunta.Pregunta.Contains(data)).ToList();
             }
-             if (tipo>0)
+            if (tipo > 0)
             {
-                datos = FiltrarPreguntas(ref recordsFiltered, start, length).Where(x => x.Pregunta.IdTipoPregunta==tipo).ToList();
+                datos = FiltrarPreguntas(ref recordsFiltered, start, length).Where(x => x.Pregunta.IdTipoPregunta == tipo).ToList();
             }
             else
             {
-              datos = FiltrarPreguntas(ref recordsFiltered, start, length);
+                datos = FiltrarPreguntas(ref recordsFiltered, start, length);
             }
 
-             dataTableData.data = datos;
-             dataTableData.recordsFiltered = recordsFiltered;
+            dataTableData.data = datos;
+            dataTableData.recordsFiltered = recordsFiltered;
 
 
-           
+
             return Json(dataTableData, JsonRequestBehavior.AllowGet);
         }
 
@@ -186,7 +187,7 @@ namespace SoftvMVC.Controllers
                 Pregunta.Respuestas = Respuestas;
                 Lista_Preguntas.Add(Pregunta);
 
-            }            
+            }
             recordFiltered = Lista_Preguntas.Count;
             return Lista_Preguntas.Skip(start).Take(length).ToList();
         }

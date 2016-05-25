@@ -17,7 +17,7 @@ namespace SoftvWCFService
 {
     public partial class SoftvWCFService : IUsuario, IRole, IModule, IPermiso, IEncuesta, IPregunta, ITipoPreguntas, IRelEncuestaClientes, IRelPreguntaOpcMults,
         IRelPreguntaEncuestas, IResOpcMults, IRelEnProcesos, IConexion, ICLIENTE, ITurno, ILlamada, IRel_Clientes_TiposClientes, ITipoCliente, ICatalogoPeriodosCorte,
-        ICliente_Apellido, ITap, IDatoFiscal, ITrabajo, ITipServ
+        ICliente_Apellido, ITap, IDatoFiscal, ITrabajo, ITipServ, IMotivoCancelacion, IRelEncuestaPreguntaRes, IQueja, ICIUDAD, ICVECOLCIU, ICOLONIA, ICVECAROL, ICALLE
     {
         #region Usuario
         public UsuarioEntity GetUsuario(int? IdUsuario)
@@ -714,7 +714,7 @@ namespace SoftvWCFService
         }
 
         #endregion
-  
+
         #region Turno
         public TurnoEntity GetTurno(int? IdTurno)
         {
@@ -758,49 +758,6 @@ namespace SoftvWCFService
 
         #endregion
 
-        #region Llamada
-        public LlamadaEntity GetLlamada(int? IdLlamada)
-        {
-            return Llamada.GetOne(IdLlamada);
-        }
-
-        public LlamadaEntity GetDeepLlamada(int? IdLlamada)
-        {
-            return Llamada.GetOneDeep(IdLlamada);
-        }
-
-        public IEnumerable<LlamadaEntity> GetLlamadaList()
-        {
-            return Llamada.GetAll();
-        }
-
-        public SoftvList<LlamadaEntity> GetLlamadaPagedList(int page, int pageSize)
-        {
-            return Llamada.GetPagedList(page, pageSize);
-        }
-
-        public SoftvList<LlamadaEntity> GetLlamadaPagedListXml(int page, int pageSize, String xml)
-        {
-            return Llamada.GetPagedList(page, pageSize, xml);
-        }
-
-        public int AddLlamada(LlamadaEntity objLlamada)
-        {
-            return Llamada.Add(objLlamada);
-        }
-
-        public int UpdateLlamada(LlamadaEntity objLlamada)
-        {
-            return Llamada.Edit(objLlamada);
-        }
-
-        public int DeleteLlamada(String BaseRemoteIp, int BaseIdUser, int? IdLlamada)
-        {
-            return Llamada.Delete(IdLlamada);
-        }
-
-        #endregion
-  
         #region Rel_Clientes_TiposClientes
         public Rel_Clientes_TiposClientesEntity GetRel_Clientes_TiposClientes(long? CONTRATO)
         {
@@ -1101,6 +1058,399 @@ namespace SoftvWCFService
         }
 
         #endregion
+
+        #region Llamada
+        public LlamadaEntity GetLlamada(int? IdLlamada)
+        {
+            return Llamada.GetOne(IdLlamada);
+        }
+
+        public LlamadaEntity GetDeepLlamada(int? IdLlamada)
+        {
+            return Llamada.GetOneDeep(IdLlamada);
+        }
+
+        public IEnumerable<LlamadaEntity> GetLlamadaList()
+        {
+            return Llamada.GetAll();
+        }
+
+        public SoftvList<LlamadaEntity> GetLlamadaPagedList(int page, int pageSize)
+        {
+            return Llamada.GetPagedList(page, pageSize);
+        }
+
+        public SoftvList<LlamadaEntity> GetLlamadaPagedListXml(int page, int pageSize, String xml)
+        {
+            return Llamada.GetPagedList(page, pageSize, xml);
+        }
+
+        public int AddLlamada(LlamadaEntity objLlamada)
+        {
+            return Llamada.Add(objLlamada);
+        }
+
+        public int UpdateLlamada(LlamadaEntity objLlamada)
+        {
+            return Llamada.Edit(objLlamada);
+        }
+
+        public int DeleteLlamada(String BaseRemoteIp, int BaseIdUser, int? IdLlamada)
+        {
+            return Llamada.Delete(IdLlamada);
+        }
+
+        #endregion
+
+
+
+
+        #region MotivoCancelacion
+        public MotivoCancelacionEntity GetMotivoCancelacion(int? Clv_MOTCAN)
+        {
+            return MotivoCancelacion.GetOne(Clv_MOTCAN);
+        }
+
+        public MotivoCancelacionEntity GetDeepMotivoCancelacion(int? Clv_MOTCAN)
+        {
+            return MotivoCancelacion.GetOneDeep(Clv_MOTCAN);
+        }
+
+        public IEnumerable<MotivoCancelacionEntity> GetMotivoCancelacionList()
+        {
+            return MotivoCancelacion.GetAll();
+        }
+
+        public SoftvList<MotivoCancelacionEntity> GetMotivoCancelacionPagedList(int page, int pageSize)
+        {
+            return MotivoCancelacion.GetPagedList(page, pageSize);
+        }
+
+        public SoftvList<MotivoCancelacionEntity> GetMotivoCancelacionPagedListXml(int page, int pageSize, String xml)
+        {
+            return MotivoCancelacion.GetPagedList(page, pageSize, xml);
+        }
+
+        public int AddMotivoCancelacion(MotivoCancelacionEntity objMotivoCancelacion)
+        {
+            return MotivoCancelacion.Add(objMotivoCancelacion);
+        }
+
+        public int UpdateMotivoCancelacion(MotivoCancelacionEntity objMotivoCancelacion)
+        {
+            return MotivoCancelacion.Edit(objMotivoCancelacion);
+        }
+
+        public int DeleteMotivoCancelacion(String BaseRemoteIp, int BaseIdUser, int? Clv_MOTCAN)
+        {
+            return MotivoCancelacion.Delete(Clv_MOTCAN);
+        }
+
+        #endregion
+
+        #region RelEncuestaPreguntaRes
+        public RelEncuestaPreguntaResEntity GetRelEncuestaPreguntaRes(int? Id)
+        {
+            return RelEncuestaPreguntaRes.GetOne(Id);
+        }
+
+        public RelEncuestaPreguntaResEntity GetDeepRelEncuestaPreguntaRes(int? Id)
+        {
+            return RelEncuestaPreguntaRes.GetOneDeep(Id);
+        }
+
+        public IEnumerable<RelEncuestaPreguntaResEntity> GetRelEncuestaPreguntaResList()
+        {
+            return RelEncuestaPreguntaRes.GetAll();
+        }
+
+        public SoftvList<RelEncuestaPreguntaResEntity> GetRelEncuestaPreguntaResPagedList(int page, int pageSize)
+        {
+            return RelEncuestaPreguntaRes.GetPagedList(page, pageSize);
+        }
+
+        public SoftvList<RelEncuestaPreguntaResEntity> GetRelEncuestaPreguntaResPagedListXml(int page, int pageSize, String xml)
+        {
+            return RelEncuestaPreguntaRes.GetPagedList(page, pageSize, xml);
+        }
+
+        public int AddRelEncuestaPreguntaRes(RelEncuestaPreguntaResEntity objRelEncuestaPreguntaRes)
+        {
+            return RelEncuestaPreguntaRes.Add(objRelEncuestaPreguntaRes);
+        }
+
+        public int UpdateRelEncuestaPreguntaRes(RelEncuestaPreguntaResEntity objRelEncuestaPreguntaRes)
+        {
+            return RelEncuestaPreguntaRes.Edit(objRelEncuestaPreguntaRes);
+        }
+
+        public int DeleteRelEncuestaPreguntaRes(String BaseRemoteIp, int BaseIdUser, int? Id)
+        {
+            return RelEncuestaPreguntaRes.Delete(Id);
+        }
+
+        #endregion
+
+        #region Queja
+        public QuejaEntity GetQueja(long? Clv_Queja)
+        {
+            return Queja.GetOne(Clv_Queja);
+        }
+
+        public QuejaEntity GetDeepQueja(long? Clv_Queja)
+        {
+            return Queja.GetOneDeep(Clv_Queja);
+        }
+
+        public IEnumerable<QuejaEntity> GetQuejaList()
+        {
+            return Queja.GetAll();
+        }
+
+        public SoftvList<QuejaEntity> GetQuejaPagedList(int page, int pageSize)
+        {
+            return Queja.GetPagedList(page, pageSize);
+        }
+
+        public SoftvList<QuejaEntity> GetQuejaPagedListXml(int page, int pageSize, String xml)
+        {
+            return Queja.GetPagedList(page, pageSize, xml);
+        }
+
+        public int AddQueja(QuejaEntity objQueja)
+        {
+            return Queja.Add(objQueja);
+        }
+
+        public int UpdateQueja(QuejaEntity objQueja)
+        {
+            return Queja.Edit(objQueja);
+        }
+
+        public int DeleteQueja(String BaseRemoteIp, int BaseIdUser, long? Clv_Queja)
+        {
+            return Queja.Delete(Clv_Queja);
+        }
+
+        #endregion
+
+        #region CIUDAD
+        public CIUDADEntity GetCIUDAD(int? Clv_Ciudad)
+        {
+            return CIUDAD.GetOne(Clv_Ciudad);
+        }
+
+        public CIUDADEntity GetDeepCIUDAD(int? Clv_Ciudad)
+        {
+            return CIUDAD.GetOneDeep(Clv_Ciudad);
+        }
+
+        public IEnumerable<CIUDADEntity> GetCIUDADList()
+        {
+            return CIUDAD.GetAll();
+        }
+
+        public SoftvList<CIUDADEntity> GetCIUDADPagedList(int page, int pageSize)
+        {
+            return CIUDAD.GetPagedList(page, pageSize);
+        }
+
+        public SoftvList<CIUDADEntity> GetCIUDADPagedListXml(int page, int pageSize, String xml)
+        {
+            return CIUDAD.GetPagedList(page, pageSize, xml);
+        }
+
+        public int AddCIUDAD(CIUDADEntity objCIUDAD)
+        {
+            return CIUDAD.Add(objCIUDAD);
+        }
+
+        public int UpdateCIUDAD(CIUDADEntity objCIUDAD)
+        {
+            return CIUDAD.Edit(objCIUDAD);
+        }
+
+        public int DeleteCIUDAD(String BaseRemoteIp, int BaseIdUser, int? Clv_Ciudad)
+        {
+            return CIUDAD.Delete(Clv_Ciudad);
+        }
+
+        #endregion
+
+        #region CVECOLCIU
+        public CVECOLCIUEntity GetCVECOLCIU(int? Clv_Ciudad)
+        {
+            return CVECOLCIU.GetOne(Clv_Ciudad);
+        }
+
+        public CVECOLCIUEntity GetDeepCVECOLCIU(int? Clv_Colonia, int? Clv_Ciudad)
+        {
+            return CVECOLCIU.GetOneDeep(Clv_Colonia, Clv_Ciudad);
+        }
+
+        public IEnumerable<CVECOLCIUEntity> GetCVECOLCIUList()
+        {
+            return CVECOLCIU.GetAll();
+        }
+
+        public SoftvList<CVECOLCIUEntity> GetCVECOLCIUPagedList(int page, int pageSize)
+        {
+            return CVECOLCIU.GetPagedList(page, pageSize);
+        }
+
+        public SoftvList<CVECOLCIUEntity> GetCVECOLCIUPagedListXml(int page, int pageSize, String xml)
+        {
+            return CVECOLCIU.GetPagedList(page, pageSize, xml);
+        }
+
+        public int AddCVECOLCIU(CVECOLCIUEntity objCVECOLCIU)
+        {
+            return CVECOLCIU.Add(objCVECOLCIU);
+        }
+
+        public int UpdateCVECOLCIU(CVECOLCIUEntity objCVECOLCIU)
+        {
+            return CVECOLCIU.Edit(objCVECOLCIU);
+        }
+
+        public int DeleteCVECOLCIU(int? Clv_Ciudad)
+        {
+            return CVECOLCIU.Delete(Clv_Ciudad);
+        }
+
+        #endregion
+
+        #region COLONIA
+        public COLONIAEntity GetCOLONIA(int? Clv_Colonia)
+        {
+            return COLONIA.GetOne(Clv_Colonia);
+        }
+
+        public COLONIAEntity GetDeepCOLONIA(int? Clv_Colonia)
+        {
+            return COLONIA.GetOneDeep(Clv_Colonia);
+        }
+
+        public IEnumerable<COLONIAEntity> GetCOLONIAList()
+        {
+            return COLONIA.GetAll();
+        }
+
+        public SoftvList<COLONIAEntity> GetCOLONIAPagedList(int page, int pageSize)
+        {
+            return COLONIA.GetPagedList(page, pageSize);
+        }
+
+        public SoftvList<COLONIAEntity> GetCOLONIAPagedListXml(int page, int pageSize, String xml)
+        {
+            return COLONIA.GetPagedList(page, pageSize, xml);
+        }
+
+        public int AddCOLONIA(COLONIAEntity objCOLONIA)
+        {
+            return COLONIA.Add(objCOLONIA);
+        }
+
+        public int UpdateCOLONIA(COLONIAEntity objCOLONIA)
+        {
+            return COLONIA.Edit(objCOLONIA);
+        }
+
+        public int DeleteCOLONIA(String BaseRemoteIp, int BaseIdUser, int? Clv_Colonia)
+        {
+            return COLONIA.Delete(Clv_Colonia);
+        }
+
+        #endregion
+
+        #region CVECAROL
+        public CVECAROLEntity GetCVECAROL(int? Clv_Colonia)
+        {
+            return CVECAROL.GetOne(Clv_Colonia);
+        }
+
+        public CVECAROLEntity GetDeepCVECAROL(int? Clv_Calle, int? Clv_Colonia)
+        {
+            return CVECAROL.GetOneDeep(Clv_Calle, Clv_Colonia);
+        }
+
+        public IEnumerable<CVECAROLEntity> GetCVECAROLList()
+        {
+            return CVECAROL.GetAll();
+        }
+
+        public SoftvList<CVECAROLEntity> GetCVECAROLPagedList(int page, int pageSize)
+        {
+            return CVECAROL.GetPagedList(page, pageSize);
+        }
+
+        public SoftvList<CVECAROLEntity> GetCVECAROLPagedListXml(int page, int pageSize, String xml)
+        {
+            return CVECAROL.GetPagedList(page, pageSize, xml);
+        }
+
+        public int AddCVECAROL(CVECAROLEntity objCVECAROL)
+        {
+            return CVECAROL.Add(objCVECAROL);
+        }
+
+        public int UpdateCVECAROL(CVECAROLEntity objCVECAROL)
+        {
+            return CVECAROL.Edit(objCVECAROL);
+        }
+
+        public int DeleteCVECAROL(int? Clv_Colonia)
+        {
+            return CVECAROL.Delete(Clv_Colonia);
+        }
+
+        #endregion
+
+        #region CALLE
+        public CALLEEntity GetCALLE(int? Clv_Calle)
+        {
+            return CALLE.GetOne(Clv_Calle);
+        }
+
+        public CALLEEntity GetDeepCALLE(int? Clv_Calle)
+        {
+            return CALLE.GetOneDeep(Clv_Calle);
+        }
+
+        public IEnumerable<CALLEEntity> GetCALLEList()
+        {
+            return CALLE.GetAll();
+        }
+
+        public SoftvList<CALLEEntity> GetCALLEPagedList(int page, int pageSize)
+        {
+            return CALLE.GetPagedList(page, pageSize);
+        }
+
+        public SoftvList<CALLEEntity> GetCALLEPagedListXml(int page, int pageSize, String xml)
+        {
+            return CALLE.GetPagedList(page, pageSize, xml);
+        }
+
+        public int AddCALLE(CALLEEntity objCALLE)
+        {
+            return CALLE.Add(objCALLE);
+        }
+
+        public int UpdateCALLE(CALLEEntity objCALLE)
+        {
+            return CALLE.Edit(objCALLE);
+        }
+
+        public int DeleteCALLE(String BaseRemoteIp, int BaseIdUser, int? Clv_Calle)
+        {
+            return CALLE.Delete(Clv_Calle);
+        }
+
+        #endregion
+
+
+
 
     }
 }

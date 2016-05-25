@@ -1148,6 +1148,390 @@
   <wsdl:message name="ITipServ_DeleteTipServ_OutputMessage">
     <wsdl:part name="parameters" element="tns:DeleteTipServResponse" />
   </wsdl:message>
+  <wsdl:message name="IMotivoCancelacion_GetMotivoCancelacion_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetMotivoCancelacion" />
+  </wsdl:message>
+  <wsdl:message name="IMotivoCancelacion_GetMotivoCancelacion_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetMotivoCancelacionResponse" />
+  </wsdl:message>
+  <wsdl:message name="IMotivoCancelacion_GetDeepMotivoCancelacion_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetDeepMotivoCancelacion" />
+  </wsdl:message>
+  <wsdl:message name="IMotivoCancelacion_GetDeepMotivoCancelacion_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetDeepMotivoCancelacionResponse" />
+  </wsdl:message>
+  <wsdl:message name="IMotivoCancelacion_GetMotivoCancelacionList_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetMotivoCancelacionList" />
+  </wsdl:message>
+  <wsdl:message name="IMotivoCancelacion_GetMotivoCancelacionList_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetMotivoCancelacionListResponse" />
+  </wsdl:message>
+  <wsdl:message name="IMotivoCancelacion_GetMotivoCancelacionPagedList_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetMotivoCancelacionPagedList" />
+  </wsdl:message>
+  <wsdl:message name="IMotivoCancelacion_GetMotivoCancelacionPagedList_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetMotivoCancelacionPagedListResponse" />
+  </wsdl:message>
+  <wsdl:message name="IMotivoCancelacion_GetMotivoCancelacionPagedListXml_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetMotivoCancelacionPagedListXml" />
+  </wsdl:message>
+  <wsdl:message name="IMotivoCancelacion_GetMotivoCancelacionPagedListXml_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetMotivoCancelacionPagedListXmlResponse" />
+  </wsdl:message>
+  <wsdl:message name="IMotivoCancelacion_AddMotivoCancelacion_InputMessage">
+    <wsdl:part name="parameters" element="tns:AddMotivoCancelacion" />
+  </wsdl:message>
+  <wsdl:message name="IMotivoCancelacion_AddMotivoCancelacion_OutputMessage">
+    <wsdl:part name="parameters" element="tns:AddMotivoCancelacionResponse" />
+  </wsdl:message>
+  <wsdl:message name="IMotivoCancelacion_UpdateMotivoCancelacion_InputMessage">
+    <wsdl:part name="parameters" element="tns:UpdateMotivoCancelacion" />
+  </wsdl:message>
+  <wsdl:message name="IMotivoCancelacion_UpdateMotivoCancelacion_OutputMessage">
+    <wsdl:part name="parameters" element="tns:UpdateMotivoCancelacionResponse" />
+  </wsdl:message>
+  <wsdl:message name="IMotivoCancelacion_DeleteMotivoCancelacion_InputMessage">
+    <wsdl:part name="parameters" element="tns:DeleteMotivoCancelacion" />
+  </wsdl:message>
+  <wsdl:message name="IMotivoCancelacion_DeleteMotivoCancelacion_OutputMessage">
+    <wsdl:part name="parameters" element="tns:DeleteMotivoCancelacionResponse" />
+  </wsdl:message>
+  <wsdl:message name="IRelEncuestaPreguntaRes_GetRelEncuestaPreguntaRes_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetRelEncuestaPreguntaRes" />
+  </wsdl:message>
+  <wsdl:message name="IRelEncuestaPreguntaRes_GetRelEncuestaPreguntaRes_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetRelEncuestaPreguntaResResponse" />
+  </wsdl:message>
+  <wsdl:message name="IRelEncuestaPreguntaRes_GetDeepRelEncuestaPreguntaRes_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetDeepRelEncuestaPreguntaRes" />
+  </wsdl:message>
+  <wsdl:message name="IRelEncuestaPreguntaRes_GetDeepRelEncuestaPreguntaRes_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetDeepRelEncuestaPreguntaResResponse" />
+  </wsdl:message>
+  <wsdl:message name="IRelEncuestaPreguntaRes_GetRelEncuestaPreguntaResList_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetRelEncuestaPreguntaResList" />
+  </wsdl:message>
+  <wsdl:message name="IRelEncuestaPreguntaRes_GetRelEncuestaPreguntaResList_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetRelEncuestaPreguntaResListResponse" />
+  </wsdl:message>
+  <wsdl:message name="IRelEncuestaPreguntaRes_GetRelEncuestaPreguntaResPagedList_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetRelEncuestaPreguntaResPagedList" />
+  </wsdl:message>
+  <wsdl:message name="IRelEncuestaPreguntaRes_GetRelEncuestaPreguntaResPagedList_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetRelEncuestaPreguntaResPagedListResponse" />
+  </wsdl:message>
+  <wsdl:message name="IRelEncuestaPreguntaRes_GetRelEncuestaPreguntaResPagedListXml_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetRelEncuestaPreguntaResPagedListXml" />
+  </wsdl:message>
+  <wsdl:message name="IRelEncuestaPreguntaRes_GetRelEncuestaPreguntaResPagedListXml_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetRelEncuestaPreguntaResPagedListXmlResponse" />
+  </wsdl:message>
+  <wsdl:message name="IRelEncuestaPreguntaRes_AddRelEncuestaPreguntaRes_InputMessage">
+    <wsdl:part name="parameters" element="tns:AddRelEncuestaPreguntaRes" />
+  </wsdl:message>
+  <wsdl:message name="IRelEncuestaPreguntaRes_AddRelEncuestaPreguntaRes_OutputMessage">
+    <wsdl:part name="parameters" element="tns:AddRelEncuestaPreguntaResResponse" />
+  </wsdl:message>
+  <wsdl:message name="IRelEncuestaPreguntaRes_UpdateRelEncuestaPreguntaRes_InputMessage">
+    <wsdl:part name="parameters" element="tns:UpdateRelEncuestaPreguntaRes" />
+  </wsdl:message>
+  <wsdl:message name="IRelEncuestaPreguntaRes_UpdateRelEncuestaPreguntaRes_OutputMessage">
+    <wsdl:part name="parameters" element="tns:UpdateRelEncuestaPreguntaResResponse" />
+  </wsdl:message>
+  <wsdl:message name="IRelEncuestaPreguntaRes_DeleteRelEncuestaPreguntaRes_InputMessage">
+    <wsdl:part name="parameters" element="tns:DeleteRelEncuestaPreguntaRes" />
+  </wsdl:message>
+  <wsdl:message name="IRelEncuestaPreguntaRes_DeleteRelEncuestaPreguntaRes_OutputMessage">
+    <wsdl:part name="parameters" element="tns:DeleteRelEncuestaPreguntaResResponse" />
+  </wsdl:message>
+  <wsdl:message name="IQueja_GetQueja_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetQueja" />
+  </wsdl:message>
+  <wsdl:message name="IQueja_GetQueja_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetQuejaResponse" />
+  </wsdl:message>
+  <wsdl:message name="IQueja_GetDeepQueja_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetDeepQueja" />
+  </wsdl:message>
+  <wsdl:message name="IQueja_GetDeepQueja_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetDeepQuejaResponse" />
+  </wsdl:message>
+  <wsdl:message name="IQueja_GetQuejaList_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetQuejaList" />
+  </wsdl:message>
+  <wsdl:message name="IQueja_GetQuejaList_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetQuejaListResponse" />
+  </wsdl:message>
+  <wsdl:message name="IQueja_GetQuejaPagedList_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetQuejaPagedList" />
+  </wsdl:message>
+  <wsdl:message name="IQueja_GetQuejaPagedList_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetQuejaPagedListResponse" />
+  </wsdl:message>
+  <wsdl:message name="IQueja_GetQuejaPagedListXml_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetQuejaPagedListXml" />
+  </wsdl:message>
+  <wsdl:message name="IQueja_GetQuejaPagedListXml_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetQuejaPagedListXmlResponse" />
+  </wsdl:message>
+  <wsdl:message name="IQueja_AddQueja_InputMessage">
+    <wsdl:part name="parameters" element="tns:AddQueja" />
+  </wsdl:message>
+  <wsdl:message name="IQueja_AddQueja_OutputMessage">
+    <wsdl:part name="parameters" element="tns:AddQuejaResponse" />
+  </wsdl:message>
+  <wsdl:message name="IQueja_UpdateQueja_InputMessage">
+    <wsdl:part name="parameters" element="tns:UpdateQueja" />
+  </wsdl:message>
+  <wsdl:message name="IQueja_UpdateQueja_OutputMessage">
+    <wsdl:part name="parameters" element="tns:UpdateQuejaResponse" />
+  </wsdl:message>
+  <wsdl:message name="IQueja_DeleteQueja_InputMessage">
+    <wsdl:part name="parameters" element="tns:DeleteQueja" />
+  </wsdl:message>
+  <wsdl:message name="IQueja_DeleteQueja_OutputMessage">
+    <wsdl:part name="parameters" element="tns:DeleteQuejaResponse" />
+  </wsdl:message>
+  <wsdl:message name="ICIUDAD_GetCIUDAD_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetCIUDAD" />
+  </wsdl:message>
+  <wsdl:message name="ICIUDAD_GetCIUDAD_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetCIUDADResponse" />
+  </wsdl:message>
+  <wsdl:message name="ICIUDAD_GetDeepCIUDAD_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetDeepCIUDAD" />
+  </wsdl:message>
+  <wsdl:message name="ICIUDAD_GetDeepCIUDAD_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetDeepCIUDADResponse" />
+  </wsdl:message>
+  <wsdl:message name="ICIUDAD_GetCIUDADList_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetCIUDADList" />
+  </wsdl:message>
+  <wsdl:message name="ICIUDAD_GetCIUDADList_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetCIUDADListResponse" />
+  </wsdl:message>
+  <wsdl:message name="ICIUDAD_GetCIUDADPagedList_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetCIUDADPagedList" />
+  </wsdl:message>
+  <wsdl:message name="ICIUDAD_GetCIUDADPagedList_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetCIUDADPagedListResponse" />
+  </wsdl:message>
+  <wsdl:message name="ICIUDAD_GetCIUDADPagedListXml_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetCIUDADPagedListXml" />
+  </wsdl:message>
+  <wsdl:message name="ICIUDAD_GetCIUDADPagedListXml_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetCIUDADPagedListXmlResponse" />
+  </wsdl:message>
+  <wsdl:message name="ICIUDAD_AddCIUDAD_InputMessage">
+    <wsdl:part name="parameters" element="tns:AddCIUDAD" />
+  </wsdl:message>
+  <wsdl:message name="ICIUDAD_AddCIUDAD_OutputMessage">
+    <wsdl:part name="parameters" element="tns:AddCIUDADResponse" />
+  </wsdl:message>
+  <wsdl:message name="ICIUDAD_UpdateCIUDAD_InputMessage">
+    <wsdl:part name="parameters" element="tns:UpdateCIUDAD" />
+  </wsdl:message>
+  <wsdl:message name="ICIUDAD_UpdateCIUDAD_OutputMessage">
+    <wsdl:part name="parameters" element="tns:UpdateCIUDADResponse" />
+  </wsdl:message>
+  <wsdl:message name="ICIUDAD_DeleteCIUDAD_InputMessage">
+    <wsdl:part name="parameters" element="tns:DeleteCIUDAD" />
+  </wsdl:message>
+  <wsdl:message name="ICIUDAD_DeleteCIUDAD_OutputMessage">
+    <wsdl:part name="parameters" element="tns:DeleteCIUDADResponse" />
+  </wsdl:message>
+  <wsdl:message name="ICVECOLCIU_GetCVECOLCIU_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetCVECOLCIU" />
+  </wsdl:message>
+  <wsdl:message name="ICVECOLCIU_GetCVECOLCIU_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetCVECOLCIUResponse" />
+  </wsdl:message>
+  <wsdl:message name="ICVECOLCIU_GetDeepCVECOLCIU_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetDeepCVECOLCIU" />
+  </wsdl:message>
+  <wsdl:message name="ICVECOLCIU_GetDeepCVECOLCIU_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetDeepCVECOLCIUResponse" />
+  </wsdl:message>
+  <wsdl:message name="ICVECOLCIU_GetCVECOLCIUList_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetCVECOLCIUList" />
+  </wsdl:message>
+  <wsdl:message name="ICVECOLCIU_GetCVECOLCIUList_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetCVECOLCIUListResponse" />
+  </wsdl:message>
+  <wsdl:message name="ICVECOLCIU_GetCVECOLCIUPagedList_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetCVECOLCIUPagedList" />
+  </wsdl:message>
+  <wsdl:message name="ICVECOLCIU_GetCVECOLCIUPagedList_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetCVECOLCIUPagedListResponse" />
+  </wsdl:message>
+  <wsdl:message name="ICVECOLCIU_GetCVECOLCIUPagedListXml_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetCVECOLCIUPagedListXml" />
+  </wsdl:message>
+  <wsdl:message name="ICVECOLCIU_GetCVECOLCIUPagedListXml_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetCVECOLCIUPagedListXmlResponse" />
+  </wsdl:message>
+  <wsdl:message name="ICVECOLCIU_AddCVECOLCIU_InputMessage">
+    <wsdl:part name="parameters" element="tns:AddCVECOLCIU" />
+  </wsdl:message>
+  <wsdl:message name="ICVECOLCIU_AddCVECOLCIU_OutputMessage">
+    <wsdl:part name="parameters" element="tns:AddCVECOLCIUResponse" />
+  </wsdl:message>
+  <wsdl:message name="ICVECOLCIU_UpdateCVECOLCIU_InputMessage">
+    <wsdl:part name="parameters" element="tns:UpdateCVECOLCIU" />
+  </wsdl:message>
+  <wsdl:message name="ICVECOLCIU_UpdateCVECOLCIU_OutputMessage">
+    <wsdl:part name="parameters" element="tns:UpdateCVECOLCIUResponse" />
+  </wsdl:message>
+  <wsdl:message name="ICVECOLCIU_DeleteCVECOLCIU_InputMessage">
+    <wsdl:part name="parameters" element="tns:DeleteCVECOLCIU" />
+  </wsdl:message>
+  <wsdl:message name="ICVECOLCIU_DeleteCVECOLCIU_OutputMessage">
+    <wsdl:part name="parameters" element="tns:DeleteCVECOLCIUResponse" />
+  </wsdl:message>
+  <wsdl:message name="ICOLONIA_GetCOLONIA_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetCOLONIA" />
+  </wsdl:message>
+  <wsdl:message name="ICOLONIA_GetCOLONIA_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetCOLONIAResponse" />
+  </wsdl:message>
+  <wsdl:message name="ICOLONIA_GetDeepCOLONIA_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetDeepCOLONIA" />
+  </wsdl:message>
+  <wsdl:message name="ICOLONIA_GetDeepCOLONIA_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetDeepCOLONIAResponse" />
+  </wsdl:message>
+  <wsdl:message name="ICOLONIA_GetCOLONIAList_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetCOLONIAList" />
+  </wsdl:message>
+  <wsdl:message name="ICOLONIA_GetCOLONIAList_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetCOLONIAListResponse" />
+  </wsdl:message>
+  <wsdl:message name="ICOLONIA_GetCOLONIAPagedList_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetCOLONIAPagedList" />
+  </wsdl:message>
+  <wsdl:message name="ICOLONIA_GetCOLONIAPagedList_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetCOLONIAPagedListResponse" />
+  </wsdl:message>
+  <wsdl:message name="ICOLONIA_GetCOLONIAPagedListXml_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetCOLONIAPagedListXml" />
+  </wsdl:message>
+  <wsdl:message name="ICOLONIA_GetCOLONIAPagedListXml_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetCOLONIAPagedListXmlResponse" />
+  </wsdl:message>
+  <wsdl:message name="ICOLONIA_AddCOLONIA_InputMessage">
+    <wsdl:part name="parameters" element="tns:AddCOLONIA" />
+  </wsdl:message>
+  <wsdl:message name="ICOLONIA_AddCOLONIA_OutputMessage">
+    <wsdl:part name="parameters" element="tns:AddCOLONIAResponse" />
+  </wsdl:message>
+  <wsdl:message name="ICOLONIA_UpdateCOLONIA_InputMessage">
+    <wsdl:part name="parameters" element="tns:UpdateCOLONIA" />
+  </wsdl:message>
+  <wsdl:message name="ICOLONIA_UpdateCOLONIA_OutputMessage">
+    <wsdl:part name="parameters" element="tns:UpdateCOLONIAResponse" />
+  </wsdl:message>
+  <wsdl:message name="ICOLONIA_DeleteCOLONIA_InputMessage">
+    <wsdl:part name="parameters" element="tns:DeleteCOLONIA" />
+  </wsdl:message>
+  <wsdl:message name="ICOLONIA_DeleteCOLONIA_OutputMessage">
+    <wsdl:part name="parameters" element="tns:DeleteCOLONIAResponse" />
+  </wsdl:message>
+  <wsdl:message name="ICVECAROL_GetCVECAROL_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetCVECAROL" />
+  </wsdl:message>
+  <wsdl:message name="ICVECAROL_GetCVECAROL_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetCVECAROLResponse" />
+  </wsdl:message>
+  <wsdl:message name="ICVECAROL_GetDeepCVECAROL_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetDeepCVECAROL" />
+  </wsdl:message>
+  <wsdl:message name="ICVECAROL_GetDeepCVECAROL_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetDeepCVECAROLResponse" />
+  </wsdl:message>
+  <wsdl:message name="ICVECAROL_GetCVECAROLList_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetCVECAROLList" />
+  </wsdl:message>
+  <wsdl:message name="ICVECAROL_GetCVECAROLList_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetCVECAROLListResponse" />
+  </wsdl:message>
+  <wsdl:message name="ICVECAROL_GetCVECAROLPagedList_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetCVECAROLPagedList" />
+  </wsdl:message>
+  <wsdl:message name="ICVECAROL_GetCVECAROLPagedList_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetCVECAROLPagedListResponse" />
+  </wsdl:message>
+  <wsdl:message name="ICVECAROL_GetCVECAROLPagedListXml_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetCVECAROLPagedListXml" />
+  </wsdl:message>
+  <wsdl:message name="ICVECAROL_GetCVECAROLPagedListXml_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetCVECAROLPagedListXmlResponse" />
+  </wsdl:message>
+  <wsdl:message name="ICVECAROL_AddCVECAROL_InputMessage">
+    <wsdl:part name="parameters" element="tns:AddCVECAROL" />
+  </wsdl:message>
+  <wsdl:message name="ICVECAROL_AddCVECAROL_OutputMessage">
+    <wsdl:part name="parameters" element="tns:AddCVECAROLResponse" />
+  </wsdl:message>
+  <wsdl:message name="ICVECAROL_UpdateCVECAROL_InputMessage">
+    <wsdl:part name="parameters" element="tns:UpdateCVECAROL" />
+  </wsdl:message>
+  <wsdl:message name="ICVECAROL_UpdateCVECAROL_OutputMessage">
+    <wsdl:part name="parameters" element="tns:UpdateCVECAROLResponse" />
+  </wsdl:message>
+  <wsdl:message name="ICVECAROL_DeleteCVECAROL_InputMessage">
+    <wsdl:part name="parameters" element="tns:DeleteCVECAROL" />
+  </wsdl:message>
+  <wsdl:message name="ICVECAROL_DeleteCVECAROL_OutputMessage">
+    <wsdl:part name="parameters" element="tns:DeleteCVECAROLResponse" />
+  </wsdl:message>
+  <wsdl:message name="ICALLE_GetCALLE_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetCALLE" />
+  </wsdl:message>
+  <wsdl:message name="ICALLE_GetCALLE_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetCALLEResponse" />
+  </wsdl:message>
+  <wsdl:message name="ICALLE_GetDeepCALLE_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetDeepCALLE" />
+  </wsdl:message>
+  <wsdl:message name="ICALLE_GetDeepCALLE_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetDeepCALLEResponse" />
+  </wsdl:message>
+  <wsdl:message name="ICALLE_GetCALLEList_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetCALLEList" />
+  </wsdl:message>
+  <wsdl:message name="ICALLE_GetCALLEList_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetCALLEListResponse" />
+  </wsdl:message>
+  <wsdl:message name="ICALLE_GetCALLEPagedList_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetCALLEPagedList" />
+  </wsdl:message>
+  <wsdl:message name="ICALLE_GetCALLEPagedList_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetCALLEPagedListResponse" />
+  </wsdl:message>
+  <wsdl:message name="ICALLE_GetCALLEPagedListXml_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetCALLEPagedListXml" />
+  </wsdl:message>
+  <wsdl:message name="ICALLE_GetCALLEPagedListXml_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetCALLEPagedListXmlResponse" />
+  </wsdl:message>
+  <wsdl:message name="ICALLE_AddCALLE_InputMessage">
+    <wsdl:part name="parameters" element="tns:AddCALLE" />
+  </wsdl:message>
+  <wsdl:message name="ICALLE_AddCALLE_OutputMessage">
+    <wsdl:part name="parameters" element="tns:AddCALLEResponse" />
+  </wsdl:message>
+  <wsdl:message name="ICALLE_UpdateCALLE_InputMessage">
+    <wsdl:part name="parameters" element="tns:UpdateCALLE" />
+  </wsdl:message>
+  <wsdl:message name="ICALLE_UpdateCALLE_OutputMessage">
+    <wsdl:part name="parameters" element="tns:UpdateCALLEResponse" />
+  </wsdl:message>
+  <wsdl:message name="ICALLE_DeleteCALLE_InputMessage">
+    <wsdl:part name="parameters" element="tns:DeleteCALLE" />
+  </wsdl:message>
+  <wsdl:message name="ICALLE_DeleteCALLE_OutputMessage">
+    <wsdl:part name="parameters" element="tns:DeleteCALLEResponse" />
+  </wsdl:message>
   <wsdl:portType name="IUsuario">
     <wsdl:operation name="GetUsuario">
       <wsdl:input wsaw:Action="http://tempuri.org/IUsuario/GetUsuario" message="tns:IUsuario_GetUsuario_InputMessage" />
@@ -1954,6 +2338,278 @@
     <wsdl:operation name="DeleteTipServ">
       <wsdl:input wsaw:Action="http://tempuri.org/ITipServ/DeleteTipServ" message="tns:ITipServ_DeleteTipServ_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/ITipServ/DeleteTipServResponse" message="tns:ITipServ_DeleteTipServ_OutputMessage" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:portType name="IMotivoCancelacion">
+    <wsdl:operation name="GetMotivoCancelacion">
+      <wsdl:input wsaw:Action="http://tempuri.org/IMotivoCancelacion/GetMotivoCancelacion" message="tns:IMotivoCancelacion_GetMotivoCancelacion_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IMotivoCancelacion/GetMotivoCancelacionResponse" message="tns:IMotivoCancelacion_GetMotivoCancelacion_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetDeepMotivoCancelacion">
+      <wsdl:input wsaw:Action="http://tempuri.org/IMotivoCancelacion/GetDeepMotivoCancelacion" message="tns:IMotivoCancelacion_GetDeepMotivoCancelacion_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IMotivoCancelacion/GetDeepMotivoCancelacionResponse" message="tns:IMotivoCancelacion_GetDeepMotivoCancelacion_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetMotivoCancelacionList">
+      <wsdl:input wsaw:Action="http://tempuri.org/IMotivoCancelacion/GetMotivoCancelacionList" message="tns:IMotivoCancelacion_GetMotivoCancelacionList_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IMotivoCancelacion/GetMotivoCancelacionListResponse" message="tns:IMotivoCancelacion_GetMotivoCancelacionList_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetMotivoCancelacionPagedList">
+      <wsdl:input wsaw:Action="http://tempuri.org/IMotivoCancelacion/GetMotivoCancelacionPagedList" message="tns:IMotivoCancelacion_GetMotivoCancelacionPagedList_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IMotivoCancelacion/GetMotivoCancelacionPagedListResponse" message="tns:IMotivoCancelacion_GetMotivoCancelacionPagedList_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetMotivoCancelacionPagedListXml">
+      <wsdl:input wsaw:Action="http://tempuri.org/IMotivoCancelacion/GetMotivoCancelacionPagedListXml" message="tns:IMotivoCancelacion_GetMotivoCancelacionPagedListXml_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IMotivoCancelacion/GetMotivoCancelacionPagedListXmlResponse" message="tns:IMotivoCancelacion_GetMotivoCancelacionPagedListXml_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="AddMotivoCancelacion">
+      <wsdl:input wsaw:Action="http://tempuri.org/IMotivoCancelacion/AddMotivoCancelacion" message="tns:IMotivoCancelacion_AddMotivoCancelacion_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IMotivoCancelacion/AddMotivoCancelacionResponse" message="tns:IMotivoCancelacion_AddMotivoCancelacion_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="UpdateMotivoCancelacion">
+      <wsdl:input wsaw:Action="http://tempuri.org/IMotivoCancelacion/UpdateMotivoCancelacion" message="tns:IMotivoCancelacion_UpdateMotivoCancelacion_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IMotivoCancelacion/UpdateMotivoCancelacionResponse" message="tns:IMotivoCancelacion_UpdateMotivoCancelacion_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="DeleteMotivoCancelacion">
+      <wsdl:input wsaw:Action="http://tempuri.org/IMotivoCancelacion/DeleteMotivoCancelacion" message="tns:IMotivoCancelacion_DeleteMotivoCancelacion_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IMotivoCancelacion/DeleteMotivoCancelacionResponse" message="tns:IMotivoCancelacion_DeleteMotivoCancelacion_OutputMessage" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:portType name="IRelEncuestaPreguntaRes">
+    <wsdl:operation name="GetRelEncuestaPreguntaRes">
+      <wsdl:input wsaw:Action="http://tempuri.org/IRelEncuestaPreguntaRes/GetRelEncuestaPreguntaRes" message="tns:IRelEncuestaPreguntaRes_GetRelEncuestaPreguntaRes_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IRelEncuestaPreguntaRes/GetRelEncuestaPreguntaResResponse" message="tns:IRelEncuestaPreguntaRes_GetRelEncuestaPreguntaRes_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetDeepRelEncuestaPreguntaRes">
+      <wsdl:input wsaw:Action="http://tempuri.org/IRelEncuestaPreguntaRes/GetDeepRelEncuestaPreguntaRes" message="tns:IRelEncuestaPreguntaRes_GetDeepRelEncuestaPreguntaRes_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IRelEncuestaPreguntaRes/GetDeepRelEncuestaPreguntaResResponse" message="tns:IRelEncuestaPreguntaRes_GetDeepRelEncuestaPreguntaRes_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetRelEncuestaPreguntaResList">
+      <wsdl:input wsaw:Action="http://tempuri.org/IRelEncuestaPreguntaRes/GetRelEncuestaPreguntaResList" message="tns:IRelEncuestaPreguntaRes_GetRelEncuestaPreguntaResList_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IRelEncuestaPreguntaRes/GetRelEncuestaPreguntaResListResponse" message="tns:IRelEncuestaPreguntaRes_GetRelEncuestaPreguntaResList_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetRelEncuestaPreguntaResPagedList">
+      <wsdl:input wsaw:Action="http://tempuri.org/IRelEncuestaPreguntaRes/GetRelEncuestaPreguntaResPagedList" message="tns:IRelEncuestaPreguntaRes_GetRelEncuestaPreguntaResPagedList_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IRelEncuestaPreguntaRes/GetRelEncuestaPreguntaResPagedListResponse" message="tns:IRelEncuestaPreguntaRes_GetRelEncuestaPreguntaResPagedList_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetRelEncuestaPreguntaResPagedListXml">
+      <wsdl:input wsaw:Action="http://tempuri.org/IRelEncuestaPreguntaRes/GetRelEncuestaPreguntaResPagedListXml" message="tns:IRelEncuestaPreguntaRes_GetRelEncuestaPreguntaResPagedListXml_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IRelEncuestaPreguntaRes/GetRelEncuestaPreguntaResPagedListXmlResponse" message="tns:IRelEncuestaPreguntaRes_GetRelEncuestaPreguntaResPagedListXml_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="AddRelEncuestaPreguntaRes">
+      <wsdl:input wsaw:Action="http://tempuri.org/IRelEncuestaPreguntaRes/AddRelEncuestaPreguntaRes" message="tns:IRelEncuestaPreguntaRes_AddRelEncuestaPreguntaRes_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IRelEncuestaPreguntaRes/AddRelEncuestaPreguntaResResponse" message="tns:IRelEncuestaPreguntaRes_AddRelEncuestaPreguntaRes_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="UpdateRelEncuestaPreguntaRes">
+      <wsdl:input wsaw:Action="http://tempuri.org/IRelEncuestaPreguntaRes/UpdateRelEncuestaPreguntaRes" message="tns:IRelEncuestaPreguntaRes_UpdateRelEncuestaPreguntaRes_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IRelEncuestaPreguntaRes/UpdateRelEncuestaPreguntaResResponse" message="tns:IRelEncuestaPreguntaRes_UpdateRelEncuestaPreguntaRes_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="DeleteRelEncuestaPreguntaRes">
+      <wsdl:input wsaw:Action="http://tempuri.org/IRelEncuestaPreguntaRes/DeleteRelEncuestaPreguntaRes" message="tns:IRelEncuestaPreguntaRes_DeleteRelEncuestaPreguntaRes_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IRelEncuestaPreguntaRes/DeleteRelEncuestaPreguntaResResponse" message="tns:IRelEncuestaPreguntaRes_DeleteRelEncuestaPreguntaRes_OutputMessage" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:portType name="IQueja">
+    <wsdl:operation name="GetQueja">
+      <wsdl:input wsaw:Action="http://tempuri.org/IQueja/GetQueja" message="tns:IQueja_GetQueja_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IQueja/GetQuejaResponse" message="tns:IQueja_GetQueja_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetDeepQueja">
+      <wsdl:input wsaw:Action="http://tempuri.org/IQueja/GetDeepQueja" message="tns:IQueja_GetDeepQueja_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IQueja/GetDeepQuejaResponse" message="tns:IQueja_GetDeepQueja_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetQuejaList">
+      <wsdl:input wsaw:Action="http://tempuri.org/IQueja/GetQuejaList" message="tns:IQueja_GetQuejaList_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IQueja/GetQuejaListResponse" message="tns:IQueja_GetQuejaList_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetQuejaPagedList">
+      <wsdl:input wsaw:Action="http://tempuri.org/IQueja/GetQuejaPagedList" message="tns:IQueja_GetQuejaPagedList_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IQueja/GetQuejaPagedListResponse" message="tns:IQueja_GetQuejaPagedList_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetQuejaPagedListXml">
+      <wsdl:input wsaw:Action="http://tempuri.org/IQueja/GetQuejaPagedListXml" message="tns:IQueja_GetQuejaPagedListXml_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IQueja/GetQuejaPagedListXmlResponse" message="tns:IQueja_GetQuejaPagedListXml_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="AddQueja">
+      <wsdl:input wsaw:Action="http://tempuri.org/IQueja/AddQueja" message="tns:IQueja_AddQueja_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IQueja/AddQuejaResponse" message="tns:IQueja_AddQueja_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="UpdateQueja">
+      <wsdl:input wsaw:Action="http://tempuri.org/IQueja/UpdateQueja" message="tns:IQueja_UpdateQueja_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IQueja/UpdateQuejaResponse" message="tns:IQueja_UpdateQueja_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="DeleteQueja">
+      <wsdl:input wsaw:Action="http://tempuri.org/IQueja/DeleteQueja" message="tns:IQueja_DeleteQueja_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IQueja/DeleteQuejaResponse" message="tns:IQueja_DeleteQueja_OutputMessage" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:portType name="ICIUDAD">
+    <wsdl:operation name="GetCIUDAD">
+      <wsdl:input wsaw:Action="http://tempuri.org/ICIUDAD/GetCIUDAD" message="tns:ICIUDAD_GetCIUDAD_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ICIUDAD/GetCIUDADResponse" message="tns:ICIUDAD_GetCIUDAD_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetDeepCIUDAD">
+      <wsdl:input wsaw:Action="http://tempuri.org/ICIUDAD/GetDeepCIUDAD" message="tns:ICIUDAD_GetDeepCIUDAD_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ICIUDAD/GetDeepCIUDADResponse" message="tns:ICIUDAD_GetDeepCIUDAD_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetCIUDADList">
+      <wsdl:input wsaw:Action="http://tempuri.org/ICIUDAD/GetCIUDADList" message="tns:ICIUDAD_GetCIUDADList_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ICIUDAD/GetCIUDADListResponse" message="tns:ICIUDAD_GetCIUDADList_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetCIUDADPagedList">
+      <wsdl:input wsaw:Action="http://tempuri.org/ICIUDAD/GetCIUDADPagedList" message="tns:ICIUDAD_GetCIUDADPagedList_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ICIUDAD/GetCIUDADPagedListResponse" message="tns:ICIUDAD_GetCIUDADPagedList_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetCIUDADPagedListXml">
+      <wsdl:input wsaw:Action="http://tempuri.org/ICIUDAD/GetCIUDADPagedListXml" message="tns:ICIUDAD_GetCIUDADPagedListXml_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ICIUDAD/GetCIUDADPagedListXmlResponse" message="tns:ICIUDAD_GetCIUDADPagedListXml_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="AddCIUDAD">
+      <wsdl:input wsaw:Action="http://tempuri.org/ICIUDAD/AddCIUDAD" message="tns:ICIUDAD_AddCIUDAD_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ICIUDAD/AddCIUDADResponse" message="tns:ICIUDAD_AddCIUDAD_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="UpdateCIUDAD">
+      <wsdl:input wsaw:Action="http://tempuri.org/ICIUDAD/UpdateCIUDAD" message="tns:ICIUDAD_UpdateCIUDAD_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ICIUDAD/UpdateCIUDADResponse" message="tns:ICIUDAD_UpdateCIUDAD_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="DeleteCIUDAD">
+      <wsdl:input wsaw:Action="http://tempuri.org/ICIUDAD/DeleteCIUDAD" message="tns:ICIUDAD_DeleteCIUDAD_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ICIUDAD/DeleteCIUDADResponse" message="tns:ICIUDAD_DeleteCIUDAD_OutputMessage" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:portType name="ICVECOLCIU">
+    <wsdl:operation name="GetCVECOLCIU">
+      <wsdl:input wsaw:Action="http://tempuri.org/ICVECOLCIU/GetCVECOLCIU" message="tns:ICVECOLCIU_GetCVECOLCIU_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ICVECOLCIU/GetCVECOLCIUResponse" message="tns:ICVECOLCIU_GetCVECOLCIU_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetDeepCVECOLCIU">
+      <wsdl:input wsaw:Action="http://tempuri.org/ICVECOLCIU/GetDeepCVECOLCIU" message="tns:ICVECOLCIU_GetDeepCVECOLCIU_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ICVECOLCIU/GetDeepCVECOLCIUResponse" message="tns:ICVECOLCIU_GetDeepCVECOLCIU_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetCVECOLCIUList">
+      <wsdl:input wsaw:Action="http://tempuri.org/ICVECOLCIU/GetCVECOLCIUList" message="tns:ICVECOLCIU_GetCVECOLCIUList_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ICVECOLCIU/GetCVECOLCIUListResponse" message="tns:ICVECOLCIU_GetCVECOLCIUList_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetCVECOLCIUPagedList">
+      <wsdl:input wsaw:Action="http://tempuri.org/ICVECOLCIU/GetCVECOLCIUPagedList" message="tns:ICVECOLCIU_GetCVECOLCIUPagedList_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ICVECOLCIU/GetCVECOLCIUPagedListResponse" message="tns:ICVECOLCIU_GetCVECOLCIUPagedList_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetCVECOLCIUPagedListXml">
+      <wsdl:input wsaw:Action="http://tempuri.org/ICVECOLCIU/GetCVECOLCIUPagedListXml" message="tns:ICVECOLCIU_GetCVECOLCIUPagedListXml_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ICVECOLCIU/GetCVECOLCIUPagedListXmlResponse" message="tns:ICVECOLCIU_GetCVECOLCIUPagedListXml_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="AddCVECOLCIU">
+      <wsdl:input wsaw:Action="http://tempuri.org/ICVECOLCIU/AddCVECOLCIU" message="tns:ICVECOLCIU_AddCVECOLCIU_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ICVECOLCIU/AddCVECOLCIUResponse" message="tns:ICVECOLCIU_AddCVECOLCIU_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="UpdateCVECOLCIU">
+      <wsdl:input wsaw:Action="http://tempuri.org/ICVECOLCIU/UpdateCVECOLCIU" message="tns:ICVECOLCIU_UpdateCVECOLCIU_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ICVECOLCIU/UpdateCVECOLCIUResponse" message="tns:ICVECOLCIU_UpdateCVECOLCIU_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="DeleteCVECOLCIU">
+      <wsdl:input wsaw:Action="http://tempuri.org/ICVECOLCIU/DeleteCVECOLCIU" message="tns:ICVECOLCIU_DeleteCVECOLCIU_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ICVECOLCIU/DeleteCVECOLCIUResponse" message="tns:ICVECOLCIU_DeleteCVECOLCIU_OutputMessage" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:portType name="ICOLONIA">
+    <wsdl:operation name="GetCOLONIA">
+      <wsdl:input wsaw:Action="http://tempuri.org/ICOLONIA/GetCOLONIA" message="tns:ICOLONIA_GetCOLONIA_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ICOLONIA/GetCOLONIAResponse" message="tns:ICOLONIA_GetCOLONIA_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetDeepCOLONIA">
+      <wsdl:input wsaw:Action="http://tempuri.org/ICOLONIA/GetDeepCOLONIA" message="tns:ICOLONIA_GetDeepCOLONIA_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ICOLONIA/GetDeepCOLONIAResponse" message="tns:ICOLONIA_GetDeepCOLONIA_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetCOLONIAList">
+      <wsdl:input wsaw:Action="http://tempuri.org/ICOLONIA/GetCOLONIAList" message="tns:ICOLONIA_GetCOLONIAList_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ICOLONIA/GetCOLONIAListResponse" message="tns:ICOLONIA_GetCOLONIAList_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetCOLONIAPagedList">
+      <wsdl:input wsaw:Action="http://tempuri.org/ICOLONIA/GetCOLONIAPagedList" message="tns:ICOLONIA_GetCOLONIAPagedList_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ICOLONIA/GetCOLONIAPagedListResponse" message="tns:ICOLONIA_GetCOLONIAPagedList_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetCOLONIAPagedListXml">
+      <wsdl:input wsaw:Action="http://tempuri.org/ICOLONIA/GetCOLONIAPagedListXml" message="tns:ICOLONIA_GetCOLONIAPagedListXml_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ICOLONIA/GetCOLONIAPagedListXmlResponse" message="tns:ICOLONIA_GetCOLONIAPagedListXml_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="AddCOLONIA">
+      <wsdl:input wsaw:Action="http://tempuri.org/ICOLONIA/AddCOLONIA" message="tns:ICOLONIA_AddCOLONIA_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ICOLONIA/AddCOLONIAResponse" message="tns:ICOLONIA_AddCOLONIA_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="UpdateCOLONIA">
+      <wsdl:input wsaw:Action="http://tempuri.org/ICOLONIA/UpdateCOLONIA" message="tns:ICOLONIA_UpdateCOLONIA_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ICOLONIA/UpdateCOLONIAResponse" message="tns:ICOLONIA_UpdateCOLONIA_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="DeleteCOLONIA">
+      <wsdl:input wsaw:Action="http://tempuri.org/ICOLONIA/DeleteCOLONIA" message="tns:ICOLONIA_DeleteCOLONIA_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ICOLONIA/DeleteCOLONIAResponse" message="tns:ICOLONIA_DeleteCOLONIA_OutputMessage" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:portType name="ICVECAROL">
+    <wsdl:operation name="GetCVECAROL">
+      <wsdl:input wsaw:Action="http://tempuri.org/ICVECAROL/GetCVECAROL" message="tns:ICVECAROL_GetCVECAROL_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ICVECAROL/GetCVECAROLResponse" message="tns:ICVECAROL_GetCVECAROL_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetDeepCVECAROL">
+      <wsdl:input wsaw:Action="http://tempuri.org/ICVECAROL/GetDeepCVECAROL" message="tns:ICVECAROL_GetDeepCVECAROL_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ICVECAROL/GetDeepCVECAROLResponse" message="tns:ICVECAROL_GetDeepCVECAROL_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetCVECAROLList">
+      <wsdl:input wsaw:Action="http://tempuri.org/ICVECAROL/GetCVECAROLList" message="tns:ICVECAROL_GetCVECAROLList_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ICVECAROL/GetCVECAROLListResponse" message="tns:ICVECAROL_GetCVECAROLList_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetCVECAROLPagedList">
+      <wsdl:input wsaw:Action="http://tempuri.org/ICVECAROL/GetCVECAROLPagedList" message="tns:ICVECAROL_GetCVECAROLPagedList_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ICVECAROL/GetCVECAROLPagedListResponse" message="tns:ICVECAROL_GetCVECAROLPagedList_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetCVECAROLPagedListXml">
+      <wsdl:input wsaw:Action="http://tempuri.org/ICVECAROL/GetCVECAROLPagedListXml" message="tns:ICVECAROL_GetCVECAROLPagedListXml_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ICVECAROL/GetCVECAROLPagedListXmlResponse" message="tns:ICVECAROL_GetCVECAROLPagedListXml_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="AddCVECAROL">
+      <wsdl:input wsaw:Action="http://tempuri.org/ICVECAROL/AddCVECAROL" message="tns:ICVECAROL_AddCVECAROL_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ICVECAROL/AddCVECAROLResponse" message="tns:ICVECAROL_AddCVECAROL_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="UpdateCVECAROL">
+      <wsdl:input wsaw:Action="http://tempuri.org/ICVECAROL/UpdateCVECAROL" message="tns:ICVECAROL_UpdateCVECAROL_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ICVECAROL/UpdateCVECAROLResponse" message="tns:ICVECAROL_UpdateCVECAROL_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="DeleteCVECAROL">
+      <wsdl:input wsaw:Action="http://tempuri.org/ICVECAROL/DeleteCVECAROL" message="tns:ICVECAROL_DeleteCVECAROL_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ICVECAROL/DeleteCVECAROLResponse" message="tns:ICVECAROL_DeleteCVECAROL_OutputMessage" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:portType name="ICALLE">
+    <wsdl:operation name="GetCALLE">
+      <wsdl:input wsaw:Action="http://tempuri.org/ICALLE/GetCALLE" message="tns:ICALLE_GetCALLE_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ICALLE/GetCALLEResponse" message="tns:ICALLE_GetCALLE_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetDeepCALLE">
+      <wsdl:input wsaw:Action="http://tempuri.org/ICALLE/GetDeepCALLE" message="tns:ICALLE_GetDeepCALLE_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ICALLE/GetDeepCALLEResponse" message="tns:ICALLE_GetDeepCALLE_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetCALLEList">
+      <wsdl:input wsaw:Action="http://tempuri.org/ICALLE/GetCALLEList" message="tns:ICALLE_GetCALLEList_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ICALLE/GetCALLEListResponse" message="tns:ICALLE_GetCALLEList_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetCALLEPagedList">
+      <wsdl:input wsaw:Action="http://tempuri.org/ICALLE/GetCALLEPagedList" message="tns:ICALLE_GetCALLEPagedList_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ICALLE/GetCALLEPagedListResponse" message="tns:ICALLE_GetCALLEPagedList_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetCALLEPagedListXml">
+      <wsdl:input wsaw:Action="http://tempuri.org/ICALLE/GetCALLEPagedListXml" message="tns:ICALLE_GetCALLEPagedListXml_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ICALLE/GetCALLEPagedListXmlResponse" message="tns:ICALLE_GetCALLEPagedListXml_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="AddCALLE">
+      <wsdl:input wsaw:Action="http://tempuri.org/ICALLE/AddCALLE" message="tns:ICALLE_AddCALLE_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ICALLE/AddCALLEResponse" message="tns:ICALLE_AddCALLE_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="UpdateCALLE">
+      <wsdl:input wsaw:Action="http://tempuri.org/ICALLE/UpdateCALLE" message="tns:ICALLE_UpdateCALLE_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ICALLE/UpdateCALLEResponse" message="tns:ICALLE_UpdateCALLE_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="DeleteCALLE">
+      <wsdl:input wsaw:Action="http://tempuri.org/ICALLE/DeleteCALLE" message="tns:ICALLE_DeleteCALLE_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ICALLE/DeleteCALLEResponse" message="tns:ICALLE_DeleteCALLE_OutputMessage" />
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:binding name="BasicHttpBinding_IUsuario" type="tns:IUsuario">
@@ -3738,6 +4394,606 @@
       </wsdl:output>
     </wsdl:operation>
   </wsdl:binding>
+  <wsdl:binding name="BasicHttpBinding_IMotivoCancelacion" type="tns:IMotivoCancelacion">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="GetMotivoCancelacion">
+      <soap:operation soapAction="http://tempuri.org/IMotivoCancelacion/GetMotivoCancelacion" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetDeepMotivoCancelacion">
+      <soap:operation soapAction="http://tempuri.org/IMotivoCancelacion/GetDeepMotivoCancelacion" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetMotivoCancelacionList">
+      <soap:operation soapAction="http://tempuri.org/IMotivoCancelacion/GetMotivoCancelacionList" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetMotivoCancelacionPagedList">
+      <soap:operation soapAction="http://tempuri.org/IMotivoCancelacion/GetMotivoCancelacionPagedList" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetMotivoCancelacionPagedListXml">
+      <soap:operation soapAction="http://tempuri.org/IMotivoCancelacion/GetMotivoCancelacionPagedListXml" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AddMotivoCancelacion">
+      <soap:operation soapAction="http://tempuri.org/IMotivoCancelacion/AddMotivoCancelacion" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdateMotivoCancelacion">
+      <soap:operation soapAction="http://tempuri.org/IMotivoCancelacion/UpdateMotivoCancelacion" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DeleteMotivoCancelacion">
+      <soap:operation soapAction="http://tempuri.org/IMotivoCancelacion/DeleteMotivoCancelacion" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="BasicHttpBinding_IRelEncuestaPreguntaRes" type="tns:IRelEncuestaPreguntaRes">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="GetRelEncuestaPreguntaRes">
+      <soap:operation soapAction="http://tempuri.org/IRelEncuestaPreguntaRes/GetRelEncuestaPreguntaRes" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetDeepRelEncuestaPreguntaRes">
+      <soap:operation soapAction="http://tempuri.org/IRelEncuestaPreguntaRes/GetDeepRelEncuestaPreguntaRes" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetRelEncuestaPreguntaResList">
+      <soap:operation soapAction="http://tempuri.org/IRelEncuestaPreguntaRes/GetRelEncuestaPreguntaResList" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetRelEncuestaPreguntaResPagedList">
+      <soap:operation soapAction="http://tempuri.org/IRelEncuestaPreguntaRes/GetRelEncuestaPreguntaResPagedList" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetRelEncuestaPreguntaResPagedListXml">
+      <soap:operation soapAction="http://tempuri.org/IRelEncuestaPreguntaRes/GetRelEncuestaPreguntaResPagedListXml" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AddRelEncuestaPreguntaRes">
+      <soap:operation soapAction="http://tempuri.org/IRelEncuestaPreguntaRes/AddRelEncuestaPreguntaRes" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdateRelEncuestaPreguntaRes">
+      <soap:operation soapAction="http://tempuri.org/IRelEncuestaPreguntaRes/UpdateRelEncuestaPreguntaRes" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DeleteRelEncuestaPreguntaRes">
+      <soap:operation soapAction="http://tempuri.org/IRelEncuestaPreguntaRes/DeleteRelEncuestaPreguntaRes" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="BasicHttpBinding_IQueja" type="tns:IQueja">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="GetQueja">
+      <soap:operation soapAction="http://tempuri.org/IQueja/GetQueja" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetDeepQueja">
+      <soap:operation soapAction="http://tempuri.org/IQueja/GetDeepQueja" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetQuejaList">
+      <soap:operation soapAction="http://tempuri.org/IQueja/GetQuejaList" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetQuejaPagedList">
+      <soap:operation soapAction="http://tempuri.org/IQueja/GetQuejaPagedList" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetQuejaPagedListXml">
+      <soap:operation soapAction="http://tempuri.org/IQueja/GetQuejaPagedListXml" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AddQueja">
+      <soap:operation soapAction="http://tempuri.org/IQueja/AddQueja" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdateQueja">
+      <soap:operation soapAction="http://tempuri.org/IQueja/UpdateQueja" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DeleteQueja">
+      <soap:operation soapAction="http://tempuri.org/IQueja/DeleteQueja" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="BasicHttpBinding_ICIUDAD" type="tns:ICIUDAD">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="GetCIUDAD">
+      <soap:operation soapAction="http://tempuri.org/ICIUDAD/GetCIUDAD" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetDeepCIUDAD">
+      <soap:operation soapAction="http://tempuri.org/ICIUDAD/GetDeepCIUDAD" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetCIUDADList">
+      <soap:operation soapAction="http://tempuri.org/ICIUDAD/GetCIUDADList" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetCIUDADPagedList">
+      <soap:operation soapAction="http://tempuri.org/ICIUDAD/GetCIUDADPagedList" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetCIUDADPagedListXml">
+      <soap:operation soapAction="http://tempuri.org/ICIUDAD/GetCIUDADPagedListXml" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AddCIUDAD">
+      <soap:operation soapAction="http://tempuri.org/ICIUDAD/AddCIUDAD" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdateCIUDAD">
+      <soap:operation soapAction="http://tempuri.org/ICIUDAD/UpdateCIUDAD" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DeleteCIUDAD">
+      <soap:operation soapAction="http://tempuri.org/ICIUDAD/DeleteCIUDAD" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="BasicHttpBinding_ICVECOLCIU" type="tns:ICVECOLCIU">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="GetCVECOLCIU">
+      <soap:operation soapAction="http://tempuri.org/ICVECOLCIU/GetCVECOLCIU" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetDeepCVECOLCIU">
+      <soap:operation soapAction="http://tempuri.org/ICVECOLCIU/GetDeepCVECOLCIU" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetCVECOLCIUList">
+      <soap:operation soapAction="http://tempuri.org/ICVECOLCIU/GetCVECOLCIUList" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetCVECOLCIUPagedList">
+      <soap:operation soapAction="http://tempuri.org/ICVECOLCIU/GetCVECOLCIUPagedList" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetCVECOLCIUPagedListXml">
+      <soap:operation soapAction="http://tempuri.org/ICVECOLCIU/GetCVECOLCIUPagedListXml" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AddCVECOLCIU">
+      <soap:operation soapAction="http://tempuri.org/ICVECOLCIU/AddCVECOLCIU" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdateCVECOLCIU">
+      <soap:operation soapAction="http://tempuri.org/ICVECOLCIU/UpdateCVECOLCIU" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DeleteCVECOLCIU">
+      <soap:operation soapAction="http://tempuri.org/ICVECOLCIU/DeleteCVECOLCIU" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="BasicHttpBinding_ICOLONIA" type="tns:ICOLONIA">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="GetCOLONIA">
+      <soap:operation soapAction="http://tempuri.org/ICOLONIA/GetCOLONIA" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetDeepCOLONIA">
+      <soap:operation soapAction="http://tempuri.org/ICOLONIA/GetDeepCOLONIA" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetCOLONIAList">
+      <soap:operation soapAction="http://tempuri.org/ICOLONIA/GetCOLONIAList" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetCOLONIAPagedList">
+      <soap:operation soapAction="http://tempuri.org/ICOLONIA/GetCOLONIAPagedList" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetCOLONIAPagedListXml">
+      <soap:operation soapAction="http://tempuri.org/ICOLONIA/GetCOLONIAPagedListXml" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AddCOLONIA">
+      <soap:operation soapAction="http://tempuri.org/ICOLONIA/AddCOLONIA" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdateCOLONIA">
+      <soap:operation soapAction="http://tempuri.org/ICOLONIA/UpdateCOLONIA" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DeleteCOLONIA">
+      <soap:operation soapAction="http://tempuri.org/ICOLONIA/DeleteCOLONIA" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="BasicHttpBinding_ICVECAROL" type="tns:ICVECAROL">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="GetCVECAROL">
+      <soap:operation soapAction="http://tempuri.org/ICVECAROL/GetCVECAROL" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetDeepCVECAROL">
+      <soap:operation soapAction="http://tempuri.org/ICVECAROL/GetDeepCVECAROL" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetCVECAROLList">
+      <soap:operation soapAction="http://tempuri.org/ICVECAROL/GetCVECAROLList" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetCVECAROLPagedList">
+      <soap:operation soapAction="http://tempuri.org/ICVECAROL/GetCVECAROLPagedList" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetCVECAROLPagedListXml">
+      <soap:operation soapAction="http://tempuri.org/ICVECAROL/GetCVECAROLPagedListXml" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AddCVECAROL">
+      <soap:operation soapAction="http://tempuri.org/ICVECAROL/AddCVECAROL" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdateCVECAROL">
+      <soap:operation soapAction="http://tempuri.org/ICVECAROL/UpdateCVECAROL" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DeleteCVECAROL">
+      <soap:operation soapAction="http://tempuri.org/ICVECAROL/DeleteCVECAROL" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="BasicHttpBinding_ICALLE" type="tns:ICALLE">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="GetCALLE">
+      <soap:operation soapAction="http://tempuri.org/ICALLE/GetCALLE" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetDeepCALLE">
+      <soap:operation soapAction="http://tempuri.org/ICALLE/GetDeepCALLE" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetCALLEList">
+      <soap:operation soapAction="http://tempuri.org/ICALLE/GetCALLEList" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetCALLEPagedList">
+      <soap:operation soapAction="http://tempuri.org/ICALLE/GetCALLEPagedList" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetCALLEPagedListXml">
+      <soap:operation soapAction="http://tempuri.org/ICALLE/GetCALLEPagedListXml" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AddCALLE">
+      <soap:operation soapAction="http://tempuri.org/ICALLE/AddCALLE" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdateCALLE">
+      <soap:operation soapAction="http://tempuri.org/ICALLE/UpdateCALLE" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DeleteCALLE">
+      <soap:operation soapAction="http://tempuri.org/ICALLE/DeleteCALLE" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
   <wsdl:service name="SoftvWCFService">
     <wsdl:port name="BasicHttpBinding_IUsuario" binding="tns:BasicHttpBinding_IUsuario">
       <soap:address location="http://localhost:64481/SoftvWCFService.svc" />
@@ -3809,6 +5065,30 @@
       <soap:address location="http://localhost:64481/SoftvWCFService.svc" />
     </wsdl:port>
     <wsdl:port name="BasicHttpBinding_ITipServ" binding="tns:BasicHttpBinding_ITipServ">
+      <soap:address location="http://localhost:64481/SoftvWCFService.svc" />
+    </wsdl:port>
+    <wsdl:port name="BasicHttpBinding_IMotivoCancelacion" binding="tns:BasicHttpBinding_IMotivoCancelacion">
+      <soap:address location="http://localhost:64481/SoftvWCFService.svc" />
+    </wsdl:port>
+    <wsdl:port name="BasicHttpBinding_IRelEncuestaPreguntaRes" binding="tns:BasicHttpBinding_IRelEncuestaPreguntaRes">
+      <soap:address location="http://localhost:64481/SoftvWCFService.svc" />
+    </wsdl:port>
+    <wsdl:port name="BasicHttpBinding_IQueja" binding="tns:BasicHttpBinding_IQueja">
+      <soap:address location="http://localhost:64481/SoftvWCFService.svc" />
+    </wsdl:port>
+    <wsdl:port name="BasicHttpBinding_ICIUDAD" binding="tns:BasicHttpBinding_ICIUDAD">
+      <soap:address location="http://localhost:64481/SoftvWCFService.svc" />
+    </wsdl:port>
+    <wsdl:port name="BasicHttpBinding_ICVECOLCIU" binding="tns:BasicHttpBinding_ICVECOLCIU">
+      <soap:address location="http://localhost:64481/SoftvWCFService.svc" />
+    </wsdl:port>
+    <wsdl:port name="BasicHttpBinding_ICOLONIA" binding="tns:BasicHttpBinding_ICOLONIA">
+      <soap:address location="http://localhost:64481/SoftvWCFService.svc" />
+    </wsdl:port>
+    <wsdl:port name="BasicHttpBinding_ICVECAROL" binding="tns:BasicHttpBinding_ICVECAROL">
+      <soap:address location="http://localhost:64481/SoftvWCFService.svc" />
+    </wsdl:port>
+    <wsdl:port name="BasicHttpBinding_ICALLE" binding="tns:BasicHttpBinding_ICALLE">
       <soap:address location="http://localhost:64481/SoftvWCFService.svc" />
     </wsdl:port>
   </wsdl:service>

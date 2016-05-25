@@ -219,3 +219,16 @@ C:\Users\Israel\Documents\projects\CallCenter\Encuestas\Softv\Softv.SQL\bin\Debu
 C:\Users\Israel\Documents\projects\CallCenter\Encuestas\Softv\Softv.SQL\obj\Debug\Softv.SQL.csprojResolveAssemblyReference.cache
 C:\Users\Israel\Documents\projects\CallCenter\Encuestas\Softv\Softv.SQL\obj\Debug\Softv.SQL.dll
 C:\Users\Israel\Documents\projects\CallCenter\Encuestas\Softv\Softv.SQL\obj\Debug\Softv.SQL.pdb
+C:\Users\Lizeth\Documents\CallCenter\Encuestas\Softv\Softv.SQL\bin\Debug\Softv.SQL.dll
+C:\Users\Lizeth\Documents\CallCenter\Encuestas\Softv\Softv.SQL\bin\Debug\Softv.SQL.pdb
+C:\Users\Lizeth\Documents\CallCenter\Encuestas\Softv\Softv.SQL\bin\Debug\Globals.dll
+C:\Users\Lizeth\Documents\CallCenter\Encuestas\Softv\Softv.SQL\bin\Debug\Softv.Entities.dll
+C:\Users\Lizeth\Documents\CallCenter\Encuestas\Softv\Softv.SQL\bin\Debug\Softv.Providers.dll
+C:\Users\Lizeth\Documents\CallCenter\Encuestas\Softv\Softv.SQL\bin\Debug\SoftvConfiguration.dll
+C:\Users\Lizeth\Documents\CallCenter\Encuestas\Softv\Softv.SQL\bin\Debug\Globals.pdb
+C:\Users\Lizeth\Documents\CallCenter\Encuestas\Softv\Softv.SQL\bin\Debug\SoftvConfiguration.pdb
+C:\Users\Lizeth\Documents\CallCenter\Encuestas\Softv\Softv.SQL\bin\Debug\Softv.Entities.pdb
+C:\Users\Lizeth\Documents\CallCenter\Encuestas\Softv\Softv.SQL\bin\Debug\Softv.Providers.pdb
+C:\Users\Lizeth\Documents\CallCenter\Encuestas\Softv\Softv.SQL\obj\Debug\Softv.SQL.csprojResolveAssemblyReference.cache
+C:\Users\Lizeth\Documents\CallCenter\Encuestas\Softv\Softv.SQL\obj\Debug\Softv.SQL.dll
+C:\Users\Lizeth\Documents\CallCenter\Encuestas\Softv\Softv.SQL\obj\Debug\Softv.SQL.pdb

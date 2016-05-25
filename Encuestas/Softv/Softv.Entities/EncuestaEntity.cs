@@ -58,7 +58,7 @@ namespace Softv.Entities
         [DataMember]
         public RelEncuestaClientesEntity RelEncuestaClientes { get; set; }
 
-        
+
 
 
         //relacion con preguntas

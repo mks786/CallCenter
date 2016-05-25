@@ -176,7 +176,7 @@ namespace SoftvConfiguration
         {
             get { return (TipServElement)base["TipServ"]; }
         }
-  
+
 
         /// <summary>
         /// Gets Turno configuration data
@@ -259,6 +259,83 @@ namespace SoftvConfiguration
         {
             get { return (TrabajoElement)base["Trabajo"]; }
         }
+
+        /// <summary>
+        /// Gets MotivoCancelacion configuration data
+        /// </summary>
+        [ConfigurationProperty("MotivoCancelacion")]
+        public MotivoCancelacionElement MotivoCancelacion
+        {
+            get { return (MotivoCancelacionElement)base["MotivoCancelacion"]; }
+        }
+
+
+        /// <summary>
+        /// Gets RelEncuestaPreguntaRes configuration data
+        /// </summary>
+        [ConfigurationProperty("RelEncuestaPreguntaRes")]
+        public RelEncuestaPreguntaResElement RelEncuestaPreguntaRes
+        {
+            get { return (RelEncuestaPreguntaResElement)base["RelEncuestaPreguntaRes"]; }
+        }
+
+
+        /// <summary>
+        /// Gets Queja configuration data
+        /// </summary>
+        [ConfigurationProperty("Queja")]
+        public QuejaElement Queja
+        {
+            get { return (QuejaElement)base["Queja"]; }
+        }
+
+
+        /// <summary>
+        /// Gets CIUDAD configuration data
+        /// </summary>
+        [ConfigurationProperty("CIUDAD")]
+        public CIUDADElement CIUDAD
+        {
+            get { return (CIUDADElement)base["CIUDAD"]; }
+        }
+
+        /// <summary>
+        /// Gets CVECOLCIU configuration data
+        /// </summary>
+        [ConfigurationProperty("CVECOLCIU")]
+        public CVECOLCIUElement CVECOLCIU
+        {
+            get { return (CVECOLCIUElement)base["CVECOLCIU"]; }
+        }
+
+        /// <summary>
+        /// Gets COLONIA configuration data
+        /// </summary>
+        [ConfigurationProperty("COLONIA")]
+        public COLONIAElement COLONIA
+        {
+            get { return (COLONIAElement)base["COLONIA"]; }
+        }
+
+        /// <summary>
+        /// Gets CVECAROL configuration data
+        /// </summary>
+        [ConfigurationProperty("CVECAROL")]
+        public CVECAROLElement CVECAROL
+        {
+            get { return (CVECAROLElement)base["CVECAROL"]; }
+        }
+
+
+        /// <summary>
+        /// Gets CALLE configuration data
+        /// </summary>
+        [ConfigurationProperty("CALLE")]
+        public CALLEElement CALLE
+        {
+            get { return (CALLEElement)base["CALLE"]; }
+        }
   
+
     }
 }

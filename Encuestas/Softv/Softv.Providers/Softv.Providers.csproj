@@ -41,18 +41,26 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="BaseConf\ProviderSoftvMSS.cs" />
+    <Compile Include="CALLEProvider.cs" />
     <Compile Include="CatalogoPeriodosCorteProvider.cs" />
+    <Compile Include="CIUDADProvider.cs" />
     <Compile Include="CLIENTEProvider.cs" />
     <Compile Include="Cliente_ApellidoProvider.cs" />
+    <Compile Include="COLONIAProvider.cs" />
     <Compile Include="ConexionProvider.cs" />
+    <Compile Include="CVECAROLProvider.cs" />
+    <Compile Include="CVECOLCIUProvider.cs" />
     <Compile Include="DatoFiscalProvider.cs" />
     <Compile Include="EncuestaProvider.cs" />
     <Compile Include="LlamadaProvider.cs" />
     <Compile Include="ModuleProvider.cs" />
+    <Compile Include="MotivoCancelacionProvider.cs" />
     <Compile Include="PermisoProvider.cs" />
     <Compile Include="PreguntaProvider.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="QuejaProvider.cs" />
     <Compile Include="RelEncuestaClientesProvider.cs" />
+    <Compile Include="RelEncuestaPreguntaResProvider.cs" />
     <Compile Include="RelEnProcesosProvider.cs" />
     <Compile Include="RelPreguntaEncuestasProvider.cs" />
     <Compile Include="RelPreguntaOpcMultsProvider.cs" />

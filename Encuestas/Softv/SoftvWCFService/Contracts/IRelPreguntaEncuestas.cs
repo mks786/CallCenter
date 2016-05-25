@@ -1,17 +1,17 @@
 ﻿
-    using Globals;
-    using Softv.Entities;
-    using System;
-    using System.Collections.Generic;
-    using System.Linq;
-    using System.ServiceModel;
-    using System.Text;
+using Globals;
+using Softv.Entities;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.ServiceModel;
+using System.Text;
 
-    namespace SoftvWCFService.Contracts
+namespace SoftvWCFService.Contracts
+{
+    [ServiceContract]
+    public interface IRelPreguntaEncuestas
     {
-      [ServiceContract]
-      public interface IRelPreguntaEncuestas
-      {
         [OperationContract]
         RelPreguntaEncuestasEntity GetRelPreguntaEncuestas(int? IdPregunta);
         [OperationContract]
@@ -28,8 +28,7 @@
         int UpdateRelPreguntaEncuestas(RelPreguntaEncuestasEntity objRelPreguntaEncuestas);
         [OperationContract]
         int DeleteRelPreguntaEncuestas(String BaseRemoteIp, int BaseIdUser, int? IdPregunta);
-        
-      }
-    }
 
-  
+    }
+}
+
