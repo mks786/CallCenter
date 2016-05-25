@@ -18,14 +18,14 @@ $('#guardarEncuesta').click(function () {
 
     }
     if (titulo_encuesta == "") {
-        swal("A ocurrido un error", "El titulo de la encuesta es obligatorio", "error");
+        swal("El titulo de la encuesta es obligatorio","", "error");
     } else if (descripcion_encuesta == "") {
-        swal("A ocurrido un error", "La descripción de la encuesta es obligatorio", "error");
+        swal("La descripción de la encuesta es obligatorio", "", "error");
     } else if (contador_encuesta > 0) {
-        swal("A ocurrido un error", "No puede haber preguntas con el mismo nombre", "error");
+        swal("No puede haber preguntas con el mismo nombre", "", "error");
     } else {
         if ($('#TbodyPreguntas').children().length == 0) {
-            swal("A ocurrido un error", "Tu encuesta no contiene preguntas", "error");
+            swal("Tu encuesta no contiene preguntas", "", "error");
         } else {
             var encuesta = {
                 IdEncuesta: 4,

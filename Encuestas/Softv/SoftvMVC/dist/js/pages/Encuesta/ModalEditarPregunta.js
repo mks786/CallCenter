@@ -118,7 +118,7 @@ $('#EditarPregunta').click(function () {
     var nombre_pregunta = $('#ed_NombrePregunta').val();
 
     if (nombre_pregunta == "") {
-        swal("A ocurrido un error", "El nombre de la pregunta es obligatorio", "error");
+        swal("El nombre de la pregunta es obligatorio", "", "error");
     } else {
         var tbody = $("#edPanelPreguntaOptMultiple-tbody");
         var seleccion = $('#ed_TipoPregunta').val();
@@ -145,7 +145,7 @@ $('#EditarPregunta').click(function () {
         }
         else if (seleccion == "3") {
             if (tbody.children().length == 0) {
-                swal("A ocurrido un error", "Por favor agrega respuestas a la pregunta", "error");
+                swal("Por favor agrega respuestas a la pregunta", "", "error");
             } else {
                 var vacios = 0;
                 EliminarDeArreglo(Lista_opciones, "Id_ResOpcMult", IdPregunta);
@@ -179,9 +179,9 @@ $('#EditarPregunta').click(function () {
 
                 }
                 if (vacios > 0) {
-                    swal("A ocurrido un error", "Por favor llena todas las respuestas o elimina las vacias", "error");
+                    swal("Por favor llena todas las respuestas o elimina las vacias", "", "error");
                 } else if (contador > 0) {
-                    swal("A ocurrido un error", "No puede haber respuestas duplicadas", "error");
+                    swal( "No puede haber respuestas duplicadas","", "error");
                 } else {
 
                     EliminarDeArreglo(Lista_preguntas, "IdPregunta", IdPregunta);//se elimina la pregunta del arreglo de preguntas
