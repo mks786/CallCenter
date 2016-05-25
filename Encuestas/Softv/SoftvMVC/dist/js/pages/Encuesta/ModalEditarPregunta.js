@@ -147,7 +147,7 @@ $('#EditarPregunta').click(function () {
             if (tbody.children().length == 0) {
                 swal("A ocurrido un error", "Por favor agrega respuestas a la pregunta", "error");
             } else {
-                vacios = 0;
+                var vacios = 0;
                 EliminarDeArreglo(Lista_opciones, "Id_ResOpcMult", IdPregunta);
                 $('#edTablaRespuestasOM > tbody  > tr').each(function () {
                     var x = $(this).closest(".nrespuesta").find("input:text").map(function () { return $(this); });
@@ -164,7 +164,7 @@ $('#EditarPregunta').click(function () {
                         duplicado.push(x[i].val());
                         Lista_opciones.push(Opciones);
                         ActualizaListaPreguntas(true);
-                        if (x[i] == "") {
+                        if (x[i].val() == "") {
                             vacios = vacios + 1;
                         }
                     }

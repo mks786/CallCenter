@@ -147,11 +147,16 @@
                             <option value="0" id="tipo_pregunta" selected></option>
                         </select>
                     </div>
+                </div><br />
+                <div class="row" style="display:none;" id="multiple_panel">
+                    <div class="col-xs-12">
+                        <h5 class="text-muted">Posibles respuestas :</h5>
+                        <select multiple="" class="form-control" id="add_panel" style="width:60%;"></select>
+                    </div>
                 </div>
             </div>
             <div class="modal-footer">
                 <button class="btn btn-default pull-left" type="button" data-dismiss="modal">cerrar</button>
-                <button class="btn btn-primary" type="button">Aceptar</button>
             </div>
         </div>
     </div>
@@ -173,53 +178,30 @@
                             <tr>
                                 <td>PREGUNTA</td>
                                 <td>TIPO RESPUESTA</td>
-                                <td>OPCIONES</td>
                             </tr>
                         </thead>
                         <tbody id="TbodyPreguntas">
                             <tr>
-                                <td><input type='text' id="NombrePregunta" class='form-control' placeholder='Modifica la pregunta'></td>
+                                <td><input type='text' id="pregunta_nombre" class='form-control' placeholder='Modifica la pregunta'></td>
                                 <td>
-                                    <select id='TipoPregunta' class='form-control'>
-                                        <option disabled value="0">Selecciona el tipo de pregunta</option>
-                                        <option value='1'>Pregunta abierta</option>
-                                        <option value='2'>Pregunta cerrada</option>
-                                        <option value='3'>Pregunta con opciones multiples</option>
-                                    </select>
-                                </td>
-                                <td>
-                                    <select class="form-control" style="display:none;" id="tipodecontrol">
-                                        <option disabled value="0">Selecciona el tipo de control</option>
-                                        <option value="1">Radio button</option>
-                                        <option value="2">Checkbox</option>
-                                        <option value="2">Combo box</option>
+                                    <select id='id_tipo_pregunta' class='form-control'>
+                                        <option value=1>Pregunta abierta</option>
+                                        <option value=2>Pregunta cerrada</option>
+                                        <option value=3>Pregunta con opciones multiples</option>
                                     </select>
                                 </td>
                             </tr>
                         </tbody>
                     </table>
                     <div class="container">
-                        <div class="row" id="PanelPreguntaAbierta" style="display:none;">
+                        <div class="row" id="panel_opcion_multiple" style="display:none;">
 
-
-                        </div>
-                        <div class="row" id="PanelPreguntaCerrada" style="display:none;">
-                            <button id="AgregarRespuestasC" class="btn bg-navy margin"><i class="fa fa-plus" aria-hidden="true"></i> Agregar respuesta</button>
-                            <table class="table" id="TablaRespuestasC" style="width:50%; margin-left:30px;">
+                            <button id="agregar_respuestas" class="btn bg-navy margin"><i class="fa fa-plus" aria-hidden="true"></i> Agregar opción</button>
+                            <table class="table" id="tabla_respuestas" style="width:50%; margin-left:30px;">
                                 <thead>
-                                    <tr><td></td><td>Descripción</td><td>Opciones</td></tr>
+                                    <tr><td>Descripción</td><td>Opciones</td></tr>
                                 </thead>
-                                <tbody id="PanelPreguntaCerrada-tbody"></tbody>
-                            </table>
-                        </div>
-                        <div class="row" id="PanelPreguntaOptMultiple" style="display:none;">
-
-                            <button id="AgregarRespuestasOM" class="btn bg-navy margin"><i class="fa fa-plus" aria-hidden="true"></i> Agregar opción</button>
-                            <table class="table" id="TablaRespuestasOM" style="width:50%; margin-left:30px;">
-                                <thead>
-                                    <tr><td></td><td>Descripción</td><td>Opciones</td></tr>
-                                </thead>
-                                <tbody id="PanelPreguntaOptMultiple-tbody"></tbody>
+                                <tbody id="body_opcion_multiple"></tbody>
 
                             </table>
                         </div>
@@ -228,7 +210,7 @@
             </div>
             <div class="modal-footer">
                 <button class="btn btn-default pull-left" type="button" data-dismiss="modal">cerrar</button>
-                <button class="btn btn-primary" id="GuardarPregunta" type="button">Guardar pregunta</button>
+                <button class="btn btn-primary" id="guardar_pregunta" type="button">Guardar pregunta</button>
             </div>
         </div>
     </div>
@@ -236,8 +218,6 @@
 
 
 
-<script src="~/dist/js/pages/Pregunta/Lista.js">
-    //Ruta de lista.js
-
-</script>
+<script src="~/dist/js/pages/Pregunta/Lista.js"></script>
+<script src="~/dist/js/pages/Pregunta/editar_pregunta.js"></script>
 
