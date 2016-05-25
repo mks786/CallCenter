@@ -58,7 +58,6 @@ $('#tablaPreguntas').on('click', '.EditarPregunta', function () {
         }
 
 
-
     }
 
 });
@@ -66,13 +65,17 @@ $('#tablaPreguntas').on('click', '.EditarPregunta', function () {
 // agrega dinamicamnete al hacer click diferentes tipos de respuesta de la pregunta
 $('#edAgregarRespuestasC').click(function () {
     $('#edPanelPreguntaCerrada-tbody').append("<tr class='nrespuestac'><td></td><td class='nrespuesta'><input class='flexdatalist form-control' class='resp' placeholder='Respuesta' type='text'></td><td><button class='btn btn-danger btn-xs edEliminarRespuestaC'>Quitar</button></td></tr>");
-
+    
 });
+
+function quitAutofocus() {
+    $('#focus').removeAttr("id");
+}
 
 // agrega dinamicamnete al hacer click diferentes tipos de respuesta de la pregunta
 $('#edAgregarRespuestasOM').click(function () {
-    $('#edPanelPreguntaOptMultiple-tbody').append("<tr class='nrespuesta'><td></td><td><input class='flexdatalist form-control' placeholder='Respuesta' type='text'></td><td><button class='btn btn-danger btn-xs edEliminarRespuestaOM'>Quitar</button></td></tr>");
-
+    $('#edPanelPreguntaOptMultiple-tbody').append("<tr class='nrespuesta'><td></td><td><input class='flexdatalist form-control' placeholder='Respuesta' type='text'  id='focus' onkeypress='quitAutofocus()'></td><td><button class='btn btn-danger btn-xs edEliminarRespuestaOM'>Quitar</button></td></tr>");
+    $('#focus').focus();
 });
 
 //funcion: cuando se hace cambio del select tipo pregunta  se ocultan y muestran los paneles correspondientes
