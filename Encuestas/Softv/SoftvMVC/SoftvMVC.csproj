@@ -532,6 +532,7 @@
     <Content Include="Content\timepicki.css" />
     <Content Include="dist\css\AdminLTE.css" />
     <Content Include="dist\css\AdminLTE.min.css" />
+    <Content Include="dist\css\pace.css" />
     <Content Include="dist\css\skins\skin-black-light.css" />
     <Content Include="dist\css\skins\skin-black-light.min.css" />
     <Content Include="dist\css\skins\skin-black.css" />
@@ -589,6 +590,7 @@
     <Content Include="dist\js\app.js" />
     <Content Include="dist\js\app.min.js" />
     <Content Include="dist\js\demo.js" />
+    <Content Include="dist\js\pace.min.js" />
     <Content Include="dist\js\pages\Cliente\Lista.js" />
     <Content Include="dist\js\pages\Conexion\Lista.js" />
     <Content Include="dist\js\pages\dashboard.js" />

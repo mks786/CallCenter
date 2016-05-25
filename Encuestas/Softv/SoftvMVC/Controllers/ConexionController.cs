@@ -23,6 +23,7 @@ namespace SoftvMVC.Controllers
     {
         private SoftvService.ConexionClient proxy = null;
 
+
         public ConexionController()
         {
 
@@ -42,6 +43,14 @@ namespace SoftvMVC.Controllers
 
         }
 
+        public ActionResult Index(int? page, int? pageSize)
+        
+        {
+
+            List<ConexionEntity> conexiones =proxy.GetConexionList();
+            ViewData["Conexiones"] = conexiones;
+            return View();
+        }
 
         public ActionResult AddConexion(ConexionEntity conexion)
         {
@@ -49,185 +58,19 @@ namespace SoftvMVC.Controllers
             return Json(result,JsonRequestBehavior.AllowGet);
         }
 
+        public string DameConexion(int idConexion ){
 
-
-
-
-
-
-        public ActionResult Index(int? page, int? pageSize)
-        {
-            PermisosAcceso("Conexion");
-            ViewData["Title"] = "Conexion";
-            ViewData["Message"] = "Conexion";
-            int pSize = pageSize ?? SoftvMVC.Properties.Settings.Default.pagnum;
-            int pageNumber = (page ?? 1);
-            SoftvList<ConexionEntity> listResult = proxy.GetConexionPagedListXml(pageNumber, pSize, SerializeTool.Serialize<ConexionEntity>(new ConexionEntity()));
-
-
-            CheckNotify();
-            ViewBag.CustomScriptsDefault = BuildScriptsDefault("Conexion");
-            return View(new StaticPagedList<ConexionEntity>(listResult.ToList(), pageNumber, pSize, listResult.totalCount));
+           ConexionEntity Conexion= proxy.GetConexionList().Where(y=>y.IdConexion==idConexion).First();
+            
+           string con = "Data Source=" + Conexion.Servidor + ";Initial Catalog="+Conexion.BaseDeDatos+";User ID="+Conexion.Usuario+";Password="+Conexion.Password+"; ";
+            return con;
         }
+          
 
-        public ActionResult Details(int id = 0)
-        {
-            ConexionEntity objConexion = proxy.GetConexion(id);
-            if (objConexion == null)
-            {
-                return HttpNotFound();
-            }
-            return PartialView(objConexion);
-        }
+     
 
-        public ActionResult Create()
-        {
-            PermisosAccesoDeniedCreate("Conexion");
-            ViewBag.CustomScriptsPageValid = BuildScriptPageValid();
-
-            return View();
-        }
-
-        [HttpPost]
-        public ActionResult Create(ConexionEntity objConexion)
-        {
-            if (ModelState.IsValid)
-            {
-
-                objConexion.BaseRemoteIp = RemoteIp;
-                objConexion.BaseIdUser = LoggedUserName;
-                int result = proxy.AddConexion(objConexion);
-                if (result == -1)
-                {
-
-                    AssingMessageScript("El Conexion ya existe en el sistema.", "error", "Error", true);
-                    CheckNotify();
-                    return View(objConexion);
-                }
-                if (result > 0)
-                {
-                    AssingMessageScript("Se dio de alta el Conexion en el sistema.", "success", "Éxito", true);
-                    return RedirectToAction("Index");
-                }
-
-            }
-            return View(objConexion);
-        }
-
-        public ActionResult Edit(int id = 0)
-        {
-            PermisosAccesoDeniedEdit("Conexion");
-            ViewBag.CustomScriptsPageValid = BuildScriptPageValid();
-            ConexionEntity objConexion = proxy.GetConexion(id);
-
-            if (objConexion == null)
-            {
-                return HttpNotFound();
-            }
-            return View(objConexion);
-        }
-
-        //
-        // POST: /Conexion/Edit/5
-        [HttpPost]
-        public ActionResult Edit(ConexionEntity objConexion)
-        {
-            if (ModelState.IsValid)
-            {
-                objConexion.BaseRemoteIp = RemoteIp;
-                objConexion.BaseIdUser = LoggedUserName;
-                int result = proxy.UpdateConexion(objConexion);
-                if (result == -1)
-                {
-                    ConexionEntity objConexionOld = proxy.GetConexion(objConexion.IdConexion);
-
-                    AssingMessageScript("El Conexion ya existe en el sistema, .", "error", "Error", true);
-                    CheckNotify();
-                    return View(objConexion);
-                }
-                if (result > 0)
-                {
-                    AssingMessageScript("El Conexion se modifico en el sistema.", "success", "Éxito", true);
-                    CheckNotify();
-                    return RedirectToAction("Index");
-                }
-                return RedirectToAction("Index");
-            }
-            return View(objConexion);
-        }
-
-        public ActionResult QuickIndex(int? page, int? pageSize, String Plaza, String Servidor, String BaseDeDatos, String Usuario, String Password)
-        {
-            int pageNumber = (page ?? 1);
-            int pSize = pageSize ?? SoftvMVC.Properties.Settings.Default.pagnum;
-            SoftvList<ConexionEntity> listResult = null;
-            List<ConexionEntity> listConexion = new List<ConexionEntity>();
-            ConexionEntity objConexion = new ConexionEntity();
-            ConexionEntity objGetConexion = new ConexionEntity();
-
-
-            if ((Plaza != null && Plaza.ToString() != ""))
-            {
-                objConexion.Plaza = Plaza;
-            }
-
-            if ((Servidor != null && Servidor.ToString() != ""))
-            {
-                objConexion.Servidor = Servidor;
-            }
-
-            if ((BaseDeDatos != null && BaseDeDatos.ToString() != ""))
-            {
-                objConexion.BaseDeDatos = BaseDeDatos;
-            }
-
-            if ((Usuario != null && Usuario.ToString() != ""))
-            {
-                objConexion.Usuario = Usuario;
-            }
-
-            if ((Password != null && Password.ToString() != ""))
-            {
-                objConexion.Password = Password;
-            }
-
-            pageNumber = pageNumber == 0 ? 1 : pageNumber;
-            listResult = proxy.GetConexionPagedListXml(pageNumber, pSize, Globals.SerializeTool.Serialize(objConexion));
-            if (listResult.Count == 0)
-            {
-                int tempPageNumber = (int)(listResult.totalCount / pSize);
-                pageNumber = (int)(listResult.totalCount / pSize) == 0 ? 1 : tempPageNumber;
-                listResult = proxy.GetConexionPagedListXml(pageNumber, pSize, Globals.SerializeTool.Serialize(objConexion));
-            }
-            listResult.ToList().ForEach(x => listConexion.Add(x));
-
-            var ConexionAsIPagedList = new StaticPagedList<ConexionEntity>(listConexion, pageNumber, pSize, listResult.totalCount);
-            if (ConexionAsIPagedList.Count > 0)
-            {
-                return PartialView(ConexionAsIPagedList);
-            }
-            else
-            {
-                var result = new { tipomsj = "warning", titulomsj = "Aviso", Success = "False", Message = "No se encontraron registros con los criterios de búsqueda ingresados." };
-                return Json(result, JsonRequestBehavior.AllowGet);
-            }
-        }
-
-        public ActionResult Delete(int id = 0)
-        {
-            int result = proxy.DeleteConexion(RemoteIp, LoggedUserName, id);
-            if (result > 0)
-            {
-                var resultOk = new { tipomsj = "success", titulomsj = "Aviso", Success = "True", Message = "Registro de Conexion Eliminado." };
-                return Json(resultOk, JsonRequestBehavior.AllowGet);
-            }
-            else
-            {
-                var resultNg = new { tipomsj = "warning", titulomsj = "Aviso", Success = "False", Message = "El Registro de Conexion No puede ser Eliminado validar dependencias." };
-                return Json(resultNg, JsonRequestBehavior.AllowGet);
-            }
-        }
-
+    
+     
         //Nuevas funciones 
 
         public ActionResult GetList(string data, int draw, int start, int length)

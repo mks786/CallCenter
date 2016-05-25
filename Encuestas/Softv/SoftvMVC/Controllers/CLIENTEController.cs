@@ -8,6 +8,8 @@ using System.Web.Mvc;
 using PagedList;
 using Softv.Entities;
 using Globals;
+using System.Data.SqlClient;
+using SoftvMVC.Controllers;
 
 namespace SoftvMVC.Controllers
 {
@@ -22,13 +24,13 @@ namespace SoftvMVC.Controllers
     public partial class CLIENTEController : BaseController, IDisposable
     {
         private SoftvService.CLIENTEClient proxy = null;
-
+        private SoftvService.ConexionClient proxycon = null;
         public CLIENTEController()
         {
 
 
             proxy = new SoftvService.CLIENTEClient();
-
+            proxycon = new SoftvService.ConexionClient();
         }
 
         new public void Dispose()
@@ -45,17 +47,12 @@ namespace SoftvMVC.Controllers
 
         public ActionResult Index(int? page, int? pageSize)
         {
-            PermisosAcceso("CLIENTE");
-            ViewData["Title"] = "CLIENTE";
-            ViewData["Message"] = "CLIENTE";
-            int pSize = pageSize ?? SoftvMVC.Properties.Settings.Default.pagnum;
-            int pageNumber = (page ?? 1);
-            SoftvList<CLIENTEEntity> listResult = proxy.GetCLIENTEPagedListXml(pageNumber, pSize, SerializeTool.Serialize<CLIENTEEntity>(new CLIENTEEntity()));
+            PermisosAcceso("CLIENTE");           
+            List<ConexionEntity> conexiones = proxycon.GetConexionList();
+            ViewData["Conexiones"] = conexiones;
+            return View();
 
-
-            CheckNotify();
-            ViewBag.CustomScriptsDefault = BuildScriptsDefault("CLIENTE");
-            return View(new StaticPagedList<CLIENTEEntity>(listResult.ToList(), pageNumber, pSize, listResult.totalCount));
+           
         }
 
         public ActionResult Details(int id = 0)
@@ -278,10 +275,11 @@ namespace SoftvMVC.Controllers
 
         //Nuevas funciones 
 
-        public ActionResult GetClienteByNombre(string Nombre){
-        
-           List<CLIENTEEntity> Lista = proxy.GetCLIENTEList().Where(x=>x.NOMBRE.Contains(Nombre)).ToList();
-            return Json(Lista,JsonRequestBehavior.AllowGet);
+        public ActionResult GetClienteByNombre(string Nombre)
+        {
+
+            List<CLIENTEEntity> Lista = proxy.GetCLIENTEList().Where(x => x.NOMBRE.Contains(Nombre)).ToList();
+            return Json(Lista, JsonRequestBehavior.AllowGet);
         }
 
 
@@ -294,39 +292,146 @@ namespace SoftvMVC.Controllers
         }
 
 
+        
 
 
 
-
-        public ActionResult GetList(string data, int draw, int start, int length)
+        public ActionResult GetList(int data, int draw, int start, int length)
         {
             DataTableData dataTableData = new DataTableData();
             dataTableData.draw = draw;
             dataTableData.recordsTotal = 0;
             int recordsFiltered = 0;
-            dataTableData.data = FiltrarContenido(ref recordsFiltered, start, length);
+            dataTableData.data = FiltrarContenido(data,ref recordsFiltered, start, length);
             dataTableData.recordsFiltered = recordsFiltered;
-
+            
             return Json(dataTableData, JsonRequestBehavior.AllowGet);
         }
 
-        private List<CLIENTEEntity> FiltrarContenido(ref int recordFiltered, int start, int length)
+        private List<CLIENTEEntity2> FiltrarContenido(int data,ref int recordFiltered, int start, int length)
+        {
+            recordFiltered = GetClientesporPlaza(data,0).Count;
+            int rango = start + length;
+            return GetClientesporPlaza(data,0).Skip(start).Take(length).ToList();
+        }
+
+        public ActionResult DetalleCliente(int id, int contrato)
+        {
+            List<CLIENTEEntity2> LISTA = GetClientesporPlaza(id, contrato);
+            return Json(LISTA,JsonRequestBehavior.AllowGet);
+        }
+
+        public List<CLIENTEEntity2> GetClientesporPlaza(int id,int contrato)
         {
 
-            List<CLIENTEEntity> lista = proxy.GetCLIENTEList();
-            recordFiltered = lista.Count;
-            int rango = start + length;
-            return lista.Skip(start).Take(length).ToList();
+            ConexionController c = new ConexionController();
+            SqlCommand comandoSql;
+            List<CLIENTEEntity2> lista = new List<CLIENTEEntity2>();
+            SqlConnection conexionSQL = new SqlConnection(c.DameConexion(id));
+            try
+            {
+                conexionSQL.Open();
+            }
+            catch
+            { }
+            if (contrato > 0)
+            {
+                 comandoSql = new SqlCommand("SELECT * FROM CLIENTES where contrato="+contrato);
+            }
+            else
+            {
+                 comandoSql = new SqlCommand("SELECT * FROM CLIENTES");
+            }
+            
+            comandoSql.Connection = conexionSQL;
+            SqlDataReader reader = comandoSql.ExecuteReader();
+            if (reader.HasRows)
+            {
+                while (reader.Read())
+                {
+                    CLIENTEEntity2 cliente = new CLIENTEEntity2();
+                    cliente.CONTRATO = Int32.Parse(reader[0].ToString());
+                    cliente.NOMBRE = reader[1].ToString();
+                    cliente.Clv_Calle = Int32.Parse(reader[2].ToString());
+                    cliente.NUMERO = reader[3].ToString();
+                    cliente.ENTRECALLES = reader[4].ToString();
+                    cliente.Clv_Colonia = Int32.Parse(reader[5].ToString());
+                    cliente.CodigoPostal = reader[6].ToString();
+                    cliente.TELEFONO = reader[7].ToString();
+                    cliente.CELULAR = reader[8].ToString();
+
+                    cliente.DESGLOSA_Iva = bool.Parse(reader[9].ToString());
+                    cliente.SoloInternet = bool.Parse(reader[10].ToString());
+                    cliente.eshotel = bool.Parse(reader[11].ToString());
+                    cliente.Clv_Ciudad = Int32.Parse(reader[12].ToString());
+                    cliente.Email = reader[13].ToString();
+                    cliente.clv_sector = Int32.Parse(reader[14].ToString());
+                    cliente.Clv_Periodo = Int32.Parse(reader[15].ToString());
+                    cliente.Clv_Tap = Int32.Parse(reader[16].ToString());
+                    cliente.Zona2 = bool.Parse(reader[17].ToString());
+                    cliente.conexion = id;
+                    lista.Add(cliente);
+
+                }
+            }
+            return lista;
         }
+
 
         public class DataTableData
         {
             public int draw { get; set; }
             public int recordsTotal { get; set; }
             public int recordsFiltered { get; set; }
-            public List<CLIENTEEntity> data { get; set; }
+            public List<CLIENTEEntity2> data { get; set; }
         }
-        
+
+        public class CLIENTEEntity2
+        {
+            
+            public long? CONTRATO { get; set; }      
+            
+            public String NOMBRE { get; set; }
+           
+            public int? Clv_Calle { get; set; }
+          
+            public String NUMERO { get; set; }
+         
+            public String ENTRECALLES { get; set; }
+            
+            public int? Clv_Colonia { get; set; }
+          
+            public String CodigoPostal { get; set; }
+           
+           
+            public String TELEFONO { get; set; }
+          
+            public String CELULAR { get; set; }
+           
+            public bool? DESGLOSA_Iva { get; set; }
+          
+            public bool? SoloInternet { get; set; }
+           
+            public bool? eshotel { get; set; }
+            
+            public int? Clv_Ciudad { get; set; }
+            
+            public String Email { get; set; }
+         
+            public int? clv_sector { get; set; }
+          
+            public int? Clv_Periodo { get; set; }
+            
+            public int? Clv_Tap { get; set; }
+            
+            public bool? Zona2 { get; set; }
+
+            public int conexion { get; set; }
+          
+        }
+
+
+
     }
 
 }

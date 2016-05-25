@@ -1,17 +1,43 @@
 ﻿
 
 $(document).ready(function () {
-    LlenarTabla();
+    LlenarTabla(5);
+    $('#contrato').val('');
+    $('#nombre').val('');
+    $('#calle').val('');
+    $('#numero').val('');
+    $('#cp').val('');
+    $('#calles').val('');
+    $('#colonia').val('');
+    $('.telefono').mask('000-000-0000');
+    $('#celular').mask('000-000-0000');
+    $('#correo').val('');
 
-    //$(".Agregar").click(function () {
-    //    $('#ModalAgregarCliente').modal('show');
 
-    //});
+
+
 
 });
 
 
-function LlenarTabla() {
+
+
+
+
+
+$("#conexiones").change(function () {
+    var id=$(this).val();
+    LlenarTabla(id);
+
+
+});
+
+
+
+function LlenarTabla(con) {
+
+    
+
     $('#TablaClientes').dataTable({
         "processing": true,
         "serverSide": true,
@@ -24,7 +50,7 @@ function LlenarTabla() {
         "ajax": {
             "url": "/Cliente/GetList/",
             "type": "POST",
-            "data": { 'data': 1 },
+            "data": { 'data': con },
         },
         "fnInitComplete": function (oSettings, json) {
 
@@ -37,35 +63,14 @@ function LlenarTabla() {
 
         "columns": [
             { "data": "CONTRATO", "orderable": false },
-            { "data": "NOMBRE", "orderable": false },
-            //{ "data": "Clv_Calle", "orderable": false }, //Calle
-            //{ "data": "NUMERO", "orderable": false }, 
-            //{ "data": "ENTRECALLES", "orderable": false },
-           // { "data": "Clv_Colonia", "orderable": false }, //Colonia
-            //{ "data": "CodigoPostal", "orderable": false }, 
-            { "data": "TELEFONO", "orderable": false },
-            //{ "data": "CELULAR", "orderable": false },
-            //{ "data": "DESGLOSA_Iva", "orderable": false },
-            //{ "data": "SoloInternet", "orderable": false },
-           // { "data": "eshotel", "orderable": false },
-            //{ "data": "Clv_Ciudad", "orderable": false }, //Ciudad
+            { "data": "NOMBRE", "orderable": false },            
+            { "data": "TELEFONO", "orderable": false },            
             { "data": "Email", "orderable": false },
-            //{ "data": "clv_sector", "orderable": false },
-            //{ "data": "Clv_Periodo", "orderable": false },
-            //{ "data": "Clv_Tap", "orderable": false },
-            //{ "data": "Zona2", "orderable": false },
-
-            ////{
-            ////    sortable: false,
-            ////    "render": function (data, type, full, meta) {
-            ////        console.log(full);                   
-            ////    }
-            ////},
 
         {
             sortable: false,
             "render": function (data, type, full, meta) {
-                return Opciones();  //Es el campo de opciones de la tabla.
+                return "<button class='btn btn-info btn-xs detalleCliente' rel='" + full.conexion + "' id='"+full.CONTRATO+"'>Detalles</button> <button rel='" + full.conexion + "'class='btn btn-warning btn-xs editarCliente' id='"+full.CONTRATO+"'>Editar</button>";
             }
         }
         ],
@@ -101,10 +106,7 @@ function LlenarTabla() {
 
 }
 
-function Opciones() {
-    var botones = "<button class='btn btn-info btn-xs detalleCliente' id='detalleCliente'>Detalles</button> <button class='btn btn-warning btn-xs editarCliente' id='editarCliente'>Editar</button>"; // <button class='btn btn-danger btn-xs eliminarCliente' id='eliminarCliente'> Eliminar</button> ";
-    return botones;
-}
+
 
 
 
@@ -114,32 +116,82 @@ function Opciones() {
     return opc;
 }
 
-$('#TablaClientes').on('click', '.Detalle', function () {
+$('#TablaClientes').on('click', '.detalleCliente', function () {
     $('#ModalDetalleCliente').modal('show');
 });
 
-$('#TablaClientes').on('click', '.Editar', function () {
+$('#TablaClientes').on('click', '.editarCliente', function () {
+
+    $('#contrato').val('');
+    $('#nombre').val('');
+    $('#calle').val('');
+    $('#numero').val('');
+    $('#cp').val('');
+    $('#calles').val('');
+    $('#colonia').val('');
+    $('#telefono').val('');
+    $('#celular').val('');
+    $('#correo').val('');
+
+
+   var id= $(this).attr('rel');
+    var contrato=$(this).attr('id');
     $('#ModalEditarCliente').modal('show');
+
+    $.ajax({
+        url: "/CLIENTE/DetalleCliente/",
+        type: "POST",
+        data: { 'id': id, 'contrato': contrato },
+        success: function (data, textStatus, jqXHR) {
+            console.log(data);
+            console.log(data.CONTRATO);
+
+
+            $('#contrato').val(data[0].CONTRATO);
+            $('#nombre').val(data[0].NOMBRE);
+            $('#calle').val(data[0].Clv_Calle);
+            $('#numero').val(data[0].NUMERO);
+            $('#cp').val(data[0].CodigoPostal);
+            $('#calles').val(data[0].ENTRECALLES);
+            $('#colonia').val(data[0].Clv_Colonia);
+            $('#telefono').val(data[0].TELEFONO);
+            $('#celular').val(data[0].CELULAR);
+            $('#correo').val(data[0].Email);
+        },
+        error: function (jqXHR, textStatus, errorThrown) {
+
+        }
+    });
+
+
+
+
+
 });
 
-$('#TablaClientes').on('click', '.Eliminar', function () {
-    alert("click");
+
+
+$('#Editar').click(function () {
+
+    var cliente = {};
+    cliente.CONTRATO = $('#contrato').val();
+    cliente.NOMBRE = $('#nombre').val();
+    cliente.Clv_Calle = $('#calle').val();
+    cliente.NUMERO = $('#numero').val();
+    cliente.ENTRECALLES = $('#calles').val();
+    cliente.Clv_Colonia = $('#colonia').val();
+    cliente.CodigoPostal =  $('#cp').val();
+    cliente.TELEFONO = $('#telefono').val();
+    cliente.CELULAR = $('#celular').val();
+    cliente.DESGLOSA_Iva = "";
+    cliente.SoloInternet = "";
+    cliente.eshotel ="";
+    cliente.Clv_Ciudad =""; 
+    cliente.Email = $('#correo').val();
+    cliente.clv_sector = "";
+    cliente.Clv_Periodo = "";
+    cliente.Clv_Tap = "";
+    cliente.Zona2 = "";
+    
 });
 
-
-
-//function ActualizaListaPreguntas() {
-//    $('#TbodyPreguntas').empty();
-//    for (var b = 0; b < Lista_preguntas.length; b++) {
-//        $('#tablaPreguntas').append("<tr><td>" + Lista_preguntas[b].Nombre + "</td><td>" + Lista_preguntas[b].TipoControl + "</td><td><button class='btn btn-info btn-xs detallepregunta' rel='" + Lista_preguntas[b].id + "'>Detalles</button> <button class='btn btn-warning btn-xs EditarPregunta ' rel='" + Lista_preguntas[b].id + "'>Editar</button> <button class='btn btn-danger btn-xs EliminaPregunta' rel='" + Lista_preguntas[b].id + "'>Eliminar</button></td></tr>");
-
-//    }
-
-//}
-
-//$('#TablaClientes').on('click', '.EliminaCliente', function () {
-//    var id = $(this).attr('rel');
-//    $('#ModalEliminaCliente').modal('show');
-//    //$('#contrato').val(id);
-
-//});
