@@ -100,6 +100,15 @@ editando este archivo MSBuild. Para conocer más acerca de esto, visite http://g
       <publishTime>01/01/0001 00:00:00</publishTime>
     </File>
     <File Include="bin/SoftvMVC.dll">
+<<<<<<< HEAD
+      <publishTime>05/24/2016 18:07:17</publishTime>
+    </File>
+    <File Include="bin/SoftvMVC.dll.config">
+      <publishTime>05/24/2016 16:33:34</publishTime>
+    </File>
+    <File Include="bin/SoftvMVC.pdb">
+      <publishTime>05/24/2016 18:07:17</publishTime>
+=======
       <publishTime>01/01/0001 00:00:00</publishTime>
     </File>
     <File Include="bin/SoftvMVC.dll.config">
@@ -107,6 +116,7 @@ editando este archivo MSBuild. Para conocer más acerca de esto, visite http://g
     </File>
     <File Include="bin/SoftvMVC.pdb">
       <publishTime>01/01/0001 00:00:00</publishTime>
+>>>>>>> antonio/master
     </File>
     <File Include="bin/System.Net.Http.Extensions.dll">
       <publishTime>01/01/0001 00:00:00</publishTime>
@@ -738,6 +748,9 @@ editando este archivo MSBuild. Para conocer más acerca de esto, visite http://g
     <File Include="dist/css/AdminLTE.min.css">
       <publishTime>01/01/0001 00:00:00</publishTime>
     </File>
+    <File Include="dist/css/pace.css">
+      <publishTime>05/24/2016 16:42:47</publishTime>
+    </File>
     <File Include="dist/css/skins/skin-black-light.css">
       <publishTime>01/01/0001 00:00:00</publishTime>
     </File>
@@ -909,11 +922,21 @@ editando este archivo MSBuild. Para conocer más acerca de esto, visite http://g
     <File Include="dist/js/demo.js">
       <publishTime>01/01/0001 00:00:00</publishTime>
     </File>
+    <File Include="dist/js/pace.min.js">
+      <publishTime>05/24/2016 16:28:06</publishTime>
+    </File>
     <File Include="dist/js/pages/Cliente/Lista.js">
+<<<<<<< HEAD
+      <publishTime>05/24/2016 19:07:41</publishTime>
+    </File>
+    <File Include="dist/js/pages/Conexion/Lista.js">
+      <publishTime>05/24/2016 12:04:07</publishTime>
+=======
       <publishTime>01/01/0001 00:00:00</publishTime>
     </File>
     <File Include="dist/js/pages/Conexion/Lista.js">
       <publishTime>01/01/0001 00:00:00</publishTime>
+>>>>>>> antonio/master
     </File>
     <File Include="dist/js/pages/dashboard.js">
       <publishTime>01/01/0001 00:00:00</publishTime>
@@ -925,6 +948,15 @@ editando este archivo MSBuild. Para conocer más acerca de esto, visite http://g
       <publishTime>03/05/2016 12:24:11</publishTime>
     </File>
     <File Include="dist/js/pages/Encuesta/Lista.js">
+<<<<<<< HEAD
+      <publishTime>05/24/2016 10:58:35</publishTime>
+    </File>
+    <File Include="dist/js/pages/Encuesta/ModalAgregarEncuesta.js">
+      <publishTime>05/24/2016 12:16:51</publishTime>
+    </File>
+    <File Include="dist/js/pages/Encuesta/ModalAgregarPregunta.js">
+      <publishTime>05/24/2016 12:16:51</publishTime>
+=======
       <publishTime>01/01/0001 00:00:00</publishTime>
     </File>
     <File Include="dist/js/pages/Encuesta/ModalAgregarEncuesta.js">
@@ -932,6 +964,7 @@ editando este archivo MSBuild. Para conocer más acerca de esto, visite http://g
     </File>
     <File Include="dist/js/pages/Encuesta/ModalAgregarPregunta.js">
       <publishTime>01/01/0001 00:00:00</publishTime>
+>>>>>>> antonio/master
     </File>
     <File Include="dist/js/pages/Encuesta/ModalCatalogoPreguntas.js">
       <publishTime>01/01/0001 00:00:00</publishTime>
@@ -946,7 +979,11 @@ editando este archivo MSBuild. Para conocer más acerca de esto, visite http://g
       <publishTime>01/01/0001 00:00:00</publishTime>
     </File>
     <File Include="dist/js/pages/Encuesta/ModalEditarPregunta.js">
+<<<<<<< HEAD
+      <publishTime>05/24/2016 12:16:51</publishTime>
+=======
       <publishTime>01/01/0001 00:00:00</publishTime>
+>>>>>>> antonio/master
     </File>
     <File Include="dist/js/pages/Encuesta/ModalEliminaPregunta.js">
       <publishTime>01/01/0001 00:00:00</publishTime>
@@ -961,7 +998,11 @@ editando este archivo MSBuild. Para conocer más acerca de esto, visite http://g
       <publishTime>01/01/0001 00:00:00</publishTime>
     </File>
     <File Include="dist/js/pages/Pregunta/Lista.js">
+<<<<<<< HEAD
+      <publishTime>05/24/2016 12:16:51</publishTime>
+=======
       <publishTime>01/01/0001 00:00:00</publishTime>
+>>>>>>> antonio/master
     </File>
     <File Include="dist/js/pages/RelEncuestaCliente/Lista.js">
       <publishTime>01/01/0001 00:00:00</publishTime>
@@ -3547,10 +3588,17 @@ editando este archivo MSBuild. Para conocer más acerca de esto, visite http://g
       <publishTime>01/01/0001 00:00:00</publishTime>
     </File>
     <File Include="Views/Cliente/Index.cshtml">
+<<<<<<< HEAD
+      <publishTime>05/24/2016 19:05:23</publishTime>
+    </File>
+    <File Include="Views/Conexion/Index.cshtml">
+      <publishTime>05/24/2016 11:18:18</publishTime>
+=======
       <publishTime>01/01/0001 00:00:00</publishTime>
     </File>
     <File Include="Views/Conexion/Index.cshtml">
       <publishTime>01/01/0001 00:00:00</publishTime>
+>>>>>>> antonio/master
     </File>
     <File Include="Views/Encuesta/Create.cshtml">
       <publishTime>01/01/0001 00:00:00</publishTime>
@@ -3601,7 +3649,11 @@ editando este archivo MSBuild. Para conocer más acerca de esto, visite http://g
       <publishTime>01/01/0001 00:00:00</publishTime>
     </File>
     <File Include="Views/Pregunta/Index.cshtml">
+<<<<<<< HEAD
+      <publishTime>05/24/2016 12:16:51</publishTime>
+=======
       <publishTime>01/01/0001 00:00:00</publishTime>
+>>>>>>> antonio/master
     </File>
     <File Include="Views/Pregunta/QuickIndex.cshtml">
       <publishTime>01/01/0001 00:00:00</publishTime>
@@ -3652,7 +3704,11 @@ editando este archivo MSBuild. Para conocer más acerca de esto, visite http://g
       <publishTime>01/01/0001 00:00:00</publishTime>
     </File>
     <File Include="Views/Shared/_Layout.cshtml">
+<<<<<<< HEAD
+      <publishTime>05/24/2016 17:18:00</publishTime>
+=======
       <publishTime>01/01/0001 00:00:00</publishTime>
+>>>>>>> antonio/master
     </File>
     <File Include="Views/Shared/_LoginPartial.cshtml">
       <publishTime>01/01/0001 00:00:00</publishTime>
