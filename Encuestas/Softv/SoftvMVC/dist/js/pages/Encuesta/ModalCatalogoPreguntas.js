@@ -51,7 +51,7 @@ function ShowCatalogoPreguntas(valor, tipo) {
                     detalle += "*" + full.Respuestas[o].Id_ResOpcMult + "," + full.Respuestas[o].ResOpcMult ;
                 }
                 
-                return "<button class='btn btn-info btn-xs AgregarPreguntaCatalogo' rel='"+detalle+"'><span class='fa-exchange'><span> Agrega a encuesta</button>";
+                return "<button class='btn btn-info btn-xs AgregarPreguntaCatalogo' rel='"+detalle+"'><i class='fa fa-exchange' aria-hidden='true'></i> Agrega a encuesta</button>";
             }
         }
         ],

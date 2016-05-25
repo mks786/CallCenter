@@ -163,9 +163,11 @@ namespace SoftvMVC.Controllers
             int recordsFiltered = 0;
             if (data != "")
             {
-                datos = FiltrarPreguntas(ref recordsFiltered, start, length).Where(x => x.Pregunta.Pregunta.Contains(data)).ToList();
+
+                datos = FiltrarPreguntas(ref recordsFiltered, start, 100).Where(x => x.Pregunta.Pregunta.Contains(data)).ToList();
+
             }
-            if (tipo > 0)
+            else if (tipo > 0)
             {
                 datos = FiltrarPreguntas(ref recordsFiltered, start, length).Where(x => x.Pregunta.IdTipoPregunta == tipo).ToList();
             }

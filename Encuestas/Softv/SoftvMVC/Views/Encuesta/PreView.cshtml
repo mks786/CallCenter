@@ -39,16 +39,16 @@
     <script src="~/dist/js/jquery.flexdatalist.js"></script>
 </head>
 <body>
-    <div class="container" style="background-color:#fff;  box-shadow: 2px 2px 5px #999; margin-top:10px;">
+    <div class="container" style="background-color:#fff;  box-shadow: 2px 2px 5px #999; margin-top:10px; width:70%;">
        
-            <div class="row" >
+            <div class="rowf" >
 
                 <!--<p class="text-right" style="color:#00a9b2; font-size:16px;"><strong>@ViewBag.FechaCreacion</strong></p>-->
-                <h1 class="text-center" style="color:#4b646f;"><strong>@ViewBag.NombreEncuesta</strong></h1>
+                <h1 class="text-center" style="color:#4b646f; font-size:22px;"><strong>@ViewBag.NombreEncuesta</strong></h1>
 
                 <div class="page-title" style="background-color:#3c8dbc; color:#fff; width:100%;">
                     <div class="container">
-                        <h3 style="color:#fff;">
+                        <h3 style="color:#fff; font-size:16px;">
                             @ViewBag.Descripcion
                         </h3>
                     </div>
@@ -57,7 +57,7 @@
                     <div class="row">
                         <div class="col-md-6 col-md-offset-1">
                             <div class="form-group">
-                                <h4><label class="col-md-2 control-label" for="cliente" style="color:#4b646f;">Cliente</label></h4>
+                                <h4><label class="col-md-2 control-label" for="cliente" style="color:#4b646f; font-size:14px;">Cliente</label></h4>
                                 <div class="col-md-9" style="padding-top:-25px;">
                                     <input type="text" class="flexdatalist form-control" placeholder="Nombre del cliente" name="cliente" id="cliente_id" required />
                                 </div>
@@ -71,7 +71,7 @@
                         {
 
 
-                            <h4 style="color:#4b646f;"><b>@a.Pregunta.Pregunta</b></h4>
+                            <h4 style="color:#4b646f; font-size:14px;"><b>@a.Pregunta.Pregunta</b></h4>
                             <input type="hidden" name="p@(a.Pregunta.IdTipoPregunta)s(@a.Pregunta.IdPregunta)" value="@(a.Pregunta.Pregunta)" />
 
                             if (a.Pregunta.IdTipoPregunta.Value == 1)
@@ -111,12 +111,12 @@
 
                         }
 
-                    </div><br />
+                    </div><hr />
                     <div class="row">
-                        <div class="col-md-6 col-md-offset-5">
+                        <div class="col-md-5 col-md-offset-7">
                             <div class="" role="group" aria-label="...">
-                                <button type="button" class="btn btn-success" onclick="enviarEncuesta()"><i class="fa fa-check" aria-hidden="true"></i> Guardar Encuesta</button>
-                                <button type="reset" class="btn btn-danger">Borrar Valores</button>
+                                <button type="button" class="btn btn-primary" onclick="enviarEncuesta()"><i class="fa fa-check" aria-hidden="true"></i> Guardar Encuesta</button>
+                                @Html.ActionLink("Regresar", "Index", "Encuesta", null, new { @class = "btn btn-info" })
                             </div>
                         </div>
                     </div>
