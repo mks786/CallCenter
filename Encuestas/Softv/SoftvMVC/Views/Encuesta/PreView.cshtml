@@ -26,9 +26,11 @@
     <link href="~/plugins/sweetAlert/sweetalert.css" rel="stylesheet" />
     <script src="~/plugins/sweetAlert/sweetalert.min.js"></script>
     <style>
-
-          @Html.Raw(@" body{background-image:url(../../Content/Patterns/" + @number + ".png); font-family: 'Arimo', sans-serif; } ")
-
+        
+          
+        body{
+            background-color:#ECF0F5;
+        }
       
 
     </style>
@@ -42,9 +44,9 @@
             <div class="row" >
 
                 <!--<p class="text-right" style="color:#00a9b2; font-size:16px;"><strong>@ViewBag.FechaCreacion</strong></p>-->
-                <h1 class="text-center" style="color:#f60;"><strong>@ViewBag.NombreEncuesta</strong></h1>
+                <h1 class="text-center" style="color:#4b646f;"><strong>@ViewBag.NombreEncuesta</strong></h1>
 
-                <div class="page-title" style="background-color:#00a9b2; width:100%;">
+                <div class="page-title" style="background-color:#3c8dbc; color:#fff; width:100%;">
                     <div class="container">
                         <h3 style="color:#fff;">
                             @ViewBag.Descripcion
@@ -55,9 +57,9 @@
                     <div class="row">
                         <div class="col-md-6 col-md-offset-1">
                             <div class="form-group">
-                                <h4><label class="col-md-2 control-label" for="cliente" style="color:#f60;">Cliente</label></h4>
+                                <h4><label class="col-md-2 control-label" for="cliente" style="color:#4b646f;">Cliente</label></h4>
                                 <div class="col-md-9" style="padding-top:-25px;">
-                                    <input type="text" class="flexdatalist form-control" name="cliente" id="cliente_id" required />
+                                    <input type="text" class="flexdatalist form-control" placeholder="Nombre del cliente" name="cliente" id="cliente_id" required />
                                 </div>
                             </div>
                         </div>
@@ -69,7 +71,7 @@
                         {
 
 
-                            <h4 style="color:#f60;"><b>@a.Pregunta.Pregunta</b></h4>
+                            <h4 style="color:#4b646f;"><b>@a.Pregunta.Pregunta</b></h4>
                             <input type="hidden" name="p@(a.Pregunta.IdTipoPregunta)s(@a.Pregunta.IdPregunta)" value="@(a.Pregunta.Pregunta)" />
 
                             if (a.Pregunta.IdTipoPregunta.Value == 1)
@@ -141,8 +143,8 @@
 <script>
     $(function () {
         $('input').iCheck({
-            checkboxClass: 'icheckbox_square-orange',
-            radioClass: 'iradio_square-orange',
+            checkboxClass: 'icheckbox_square-blue',
+            radioClass: 'iradio_square-blue',
             increaseArea: '20%' // optional
         });
     });
@@ -161,7 +163,7 @@
     function enviarEncuesta() {
         var cliente = $('#cliente_id').val();
         if (cliente == "") {
-            swal("A ocurrido un error", "Agrega un cliente válido", "error");
+            swal("Agrega un cliente válido", "", "error");
         } else {
             var html = $('#encuestaForm');
             var datos = {};

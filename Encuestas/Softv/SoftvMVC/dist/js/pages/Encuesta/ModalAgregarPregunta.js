@@ -65,9 +65,9 @@ $('#GuardarPregunta').click(function () {
     var tipo_pregunta = $("#TipoPregunta option:selected").val();
     var tipo_control_abierta = $('#tipodecontrolPAbierta option:selected').val();
     if (nombre_pregunta == "") {
-        swal("A ocurrido un error", "El nombre de la pregunta es obligatorio", "error");
+        swal("El nombre de la pregunta es obligatorio", "", "error");
     } else if (tipo_pregunta == 0) {
-        swal("A ocurrido un error", "Por favor selecciona el tipo de respuesta", "error");
+        swal("Por favor selecciona el tipo de respuesta", "", "error");
     }
     else if (tipo_pregunta == 1) {
         // $('#ModalAgregarPregunta').modal("hide");
@@ -129,7 +129,7 @@ $('#GuardarPregunta').click(function () {
 
         // si no hay opciones multiples
         if (tbody.children().length == 0) {
-            swal("A ocurrido un error", "Por favor agrega respuestas a la pregunta", "error");
+            swal("Por favor agrega respuestas a la pregunta","" , "error");
         }
         else {
             vacios = 0;
@@ -157,9 +157,9 @@ $('#GuardarPregunta').click(function () {
 
             }
             if (vacios > 0) {
-                swal("A ocurrido un error", "Por favor llena todas las respuestas o elimina las vacias", "error");
+                swal("Por favor llena todas las respuestas o elimina las vacias","",  "error");
             }else if(contador > 0){
-                swal("A ocurrido un error", "No puede haber respuestas duplicadas", "error");
+                swal("No puede haber respuestas duplicadas", "", "error");
             }
             else {
 
