@@ -386,7 +386,6 @@ namespace SoftvMVC.Controllers
             public List<CLIENTEEntity2> data { get; set; }
         }
 
-<<<<<<< HEAD
         public class CLIENTEEntity2
         {
             
@@ -433,8 +432,6 @@ namespace SoftvMVC.Controllers
 
 
 
-=======
->>>>>>> liz/master
     }
 
 }

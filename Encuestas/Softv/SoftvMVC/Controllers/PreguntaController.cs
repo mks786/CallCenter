@@ -94,7 +94,6 @@ namespace SoftvMVC.Controllers
 
         public ActionResult GetOnePregunta(int id)
         {
-<<<<<<< HEAD
                    PreguntaEntity pregunta= proxy.GetPreguntaList().Where(x=>x.IdPregunta==id).FirstOrDefault();
                    Pregunta p = new Pregunta();
                    p.pregunta = pregunta;
@@ -107,22 +106,7 @@ namespace SoftvMVC.Controllers
                    p.respuestas = respuestas;
 
 
-                
-            return Json(p,JsonRequestBehavior.AllowGet);
-=======
-            PreguntaEntity pregunta = proxy.GetPreguntaList().Where(x => x.IdPregunta == id).FirstOrDefault();
-            List<RelPreguntaOpcMultsEntity> rel = relpregunta_resp.GetRelPreguntaOpcMultsList().Where(o => o.IdPregunta == id).ToList();
-            foreach (var a in rel)
-            {
-                List<ResOpcMultsEntity> resp = RespuestasOM.GetResOpcMultsList().Where(s => s.Id_ResOpcMult == a.Id_ResOpcMult).ToList();
-            }
-
-
-            //int a = 0;
-
-
             return Json(null, JsonRequestBehavior.AllowGet);
->>>>>>> liz/master
         }
 
         public JsonResult Delete(int id)

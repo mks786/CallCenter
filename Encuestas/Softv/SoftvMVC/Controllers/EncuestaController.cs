@@ -344,7 +344,6 @@ namespace SoftvMVC.Controllers
             XElement fg = XElement.Parse(Globals.SerializeTool.SerializeList<ResOpcMultsEntity1>(respuestas));
 
             xe.Add(xmll, fg);
-            int d = 0;
             int result = proxy.UpdateEncuesta(xe.ToString());
             return null;
         }

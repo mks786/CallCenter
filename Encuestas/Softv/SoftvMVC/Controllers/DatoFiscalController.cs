@@ -218,10 +218,6 @@ namespace SoftvMVC.Controllers
                 objDatoFiscal.FAX_RS = FAX_RS;
             }
 
-            if ((TIPO != null))
-            {
-                objDatoFiscal.TIPO = TIPO;
-            }
 
             if ((IDENTIFICADOR != null))
             {

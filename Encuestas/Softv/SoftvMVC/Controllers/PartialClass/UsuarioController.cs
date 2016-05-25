@@ -15,7 +15,6 @@ namespace SoftvMVC.Controllers
         [HttpPost, ActionName("logon")]
         public ActionResult logon(string user, string pass)
         {
-            List<UsuarioEntity> list = null;
             List<UsuarioEntity> listUsuario = new List<UsuarioEntity>();
 
             UsuarioEntity objUser = proxy.GetusuarioByUserAndPass(user,pass);
