@@ -137,21 +137,37 @@ $('#TablaClientes').on('click', '.editarCliente', function () {
     $('#telefono').val('');
     $('#celular').val('');
     $('#correo').val('');
-
+    $('#ciudad').val('');
+    
 
    var id= $(this).attr('rel');
-    var contrato=$(this).attr('id');
-    $('#ModalEditarCliente').modal('show');
+   var contrato = $(this).attr('id');
+
+   $('#ModalEditarCliente').modal('show');
+
+
+   $.ajax({
+       url: "/CIUDAD/GetCiudadByPlaza/",
+       type: "POST",
+       data: { 'plaza': id },
+       success: function (data, textStatus, jqXHR) {
+           for(var a=0; )
+           $('#ciudad').append("<option value='"++"'></option>");
+       },
+       error: function (jqXHR, textStatus, errorThrown) {
+
+       }
+   });
+
+
+
+
 
     $.ajax({
         url: "/CLIENTE/DetalleCliente/",
         type: "POST",
         data: { 'id': id, 'contrato': contrato },
         success: function (data, textStatus, jqXHR) {
-            console.log(data);
-            console.log(data.CONTRATO);
-
-
             $('#contrato').val(data[0].CONTRATO);
             $('#nombre').val(data[0].NOMBRE);
             $('#calle').val(data[0].Clv_Calle);
