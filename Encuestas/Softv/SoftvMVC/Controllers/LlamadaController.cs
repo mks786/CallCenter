@@ -438,6 +438,35 @@ namespace SoftvMVC.Controllers
         }
 
 
+        public ActionResult GetList(string data, int draw, int start, int length)
+        {
+            DataTableData dataTableData = new DataTableData();
+            dataTableData.draw = draw;
+            dataTableData.recordsTotal = 0;
+            int recordsFiltered = 0;
+            dataTableData.data = FiltrarContenido(ref recordsFiltered, start, length);
+            dataTableData.recordsFiltered = recordsFiltered;
+
+            return Json(dataTableData, JsonRequestBehavior.AllowGet);
+        }
+
+        private List<LlamadaEntity> FiltrarContenido(ref int recordFiltered, int start, int length)
+        {
+
+            List<LlamadaEntity> lista = proxy.GetLlamadaList();
+            recordFiltered = lista.Count;
+            int rango = start + length;
+            return lista.Skip(start).Take(length).ToList();
+        }
+
+        public class DataTableData
+        {
+            public int draw { get; set; }
+            public int recordsTotal { get; set; }
+            public int recordsFiltered { get; set; }
+            public List<LlamadaEntity> data { get; set; }
+        }
+
     }
 
 }

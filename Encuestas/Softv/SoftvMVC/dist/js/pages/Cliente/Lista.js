@@ -2,6 +2,8 @@
 
 $(document).ready(function () {
     LlenarTabla(5);
+
+    /*DATOS GENERALES*/
     $('#contrato').val('');
     $('#nombre').val('');
     $('#calle').val('');
@@ -13,8 +15,11 @@ $(document).ready(function () {
     $('#celular').mask('000-000-0000');
     $('#correo').val('');
 
-
-
+    /*DATOS FISCALES*/
+    $('#rfc').mask('AAAA-000-000');
+    $('#curp').mask('AAAA-000000-AAAAAA-00');
+    $('#rsocial').mask('AAAA-000000-AAAAAA-00');
+    
 
 
 });
@@ -70,7 +75,7 @@ function LlenarTabla(con) {
         {
             sortable: false,
             "render": function (data, type, full, meta) {
-                return "<button class='btn btn-info btn-xs detalleCliente' rel='" + full.conexion + "' id='"+full.CONTRATO+"'>Detalles</button> <button rel='" + full.conexion + "'class='btn btn-warning btn-xs editarCliente' id='"+full.CONTRATO+"'>Editar</button>";
+                return "<button class='btn btn-info btn-xs detalleCliente' rel='" + full.conexion + "' id='"+full.CONTRATO+"'><i class='fa fa-info' aria-hidden='true'></i> Detalles</button> <button rel='" + full.conexion + "'class='btn btn-warning btn-xs editarCliente' id='"+full.CONTRATO+"'><i class='fa fa-pencil' aria-hidden='true'></i> Editar</button>";
             }
         }
         ],
@@ -110,11 +115,8 @@ function LlenarTabla(con) {
 
 
 
-//funcion:retorna las opciones que tendra cada row en la tabla principal
-function Opciones() {
-    var opc = "<button class='btn btn-info btn-xs Detalle' type='button'>Detalles</button> <button class='btn btn-warning btn-xs Editar' type='button'><i class='fa fa-pencil' aria-hidden='true'></i> Editar</button> ";//<button class='btn btn-danger btn-xs eliminar'  type='button'> <i class='fa fa-trash-o' aria-hidden='true'></i> Eliminar</button>"
-    return opc;
-}
+
+
 
 $('#TablaClientes').on('click', '.detalleCliente', function () {
     $('#ModalDetalleCliente').modal('show');
