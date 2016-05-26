@@ -55,10 +55,14 @@
                 </div><br />
                 <form id="encuestaForm">
                     <div class="row">
-                        <div class="col-md-6 col-md-offset-1">
+                        <div class="col-md-4 col-md-offset-1">
+                            <select class="form-control" id="conexion_plaza">
+                                <option value="default" selected disabled>Selecciona la plaza</option>
+                            </select>
+                        </div>
+                        <div class="col-md-7">
                             <div class="form-group">
-                                <h4><label class="col-md-2 control-label" for="cliente" style="color:#4b646f; font-size:14px;">Cliente</label></h4>
-                                <div class="col-md-9" style="padding-top:-25px;">
+                                <div class="col-md-11" style="padding-top:-25px;">
                                     <input type="text" class="flexdatalist form-control" placeholder="Nombre del cliente" name="cliente" id="cliente_id" required />
                                 </div>
                             </div>
@@ -147,6 +151,22 @@
             radioClass: 'iradio_square-blue',
             increaseArea: '20%' // optional
         });
+        $.ajax({
+            url: "/Conexion/ListaConexiones/",
+            type: "GET",
+            success: function (data, textStatus, jqXHR) {
+                for (var i = 0; i < data.length; i++) {
+                    $('#conexion_plaza').append($('<option>', {
+                        value: data[i].IdConexion,
+                        text: data[i].Plaza
+                    }));
+                }
+            },
+            error: function (jqXHR, textStatus, errorThrown) {
+
+            }
+        });
+
     });
 
     $('.flexdatalist').flexdatalist({
@@ -162,7 +182,11 @@
 
     function enviarEncuesta() {
         var cliente = $('#cliente_id').val();
-        if (cliente == "") {
+        var plaza = $('#conexion_plaza').val();
+        console.log(plaza);
+        if (plaza == null) {
+            swal("Selecciona una plaza válida", "", "error");
+        } else if (cliente == "") {
             swal("Agrega un cliente válido", "", "error");
         } else {
             var html = $('#encuestaForm');
