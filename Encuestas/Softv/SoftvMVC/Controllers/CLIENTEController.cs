@@ -379,6 +379,55 @@ namespace SoftvMVC.Controllers
         }
 
 
+        public List<CLIENTEEntity2> GetClientesPorCoincidencia(int conexion,string abuscar)
+        {
+            ConexionController c = new ConexionController();
+            SqlCommand comandoSql;
+            List<CLIENTEEntity2> lista = new List<CLIENTEEntity2>();
+            SqlConnection conexionSQL = new SqlConnection(c.DameConexion(conexion));
+            try
+            {
+                conexionSQL.Open();
+            }
+            catch
+            { }
+
+            comandoSql = new SqlCommand("SELECT * FROM CLIENTES where Nombre Like %"+abuscar+"%");
+            comandoSql.Connection = conexionSQL;
+            SqlDataReader reader = comandoSql.ExecuteReader();
+            if (reader.HasRows)
+            {
+                while (reader.Read())
+                {
+                    CLIENTEEntity2 cliente = new CLIENTEEntity2();
+                    cliente.CONTRATO = Int32.Parse(reader[0].ToString());
+                    cliente.NOMBRE = reader[1].ToString();
+                    cliente.Clv_Calle = Int32.Parse(reader[2].ToString());
+                    cliente.NUMERO = reader[3].ToString();
+                    cliente.ENTRECALLES = reader[4].ToString();
+                    cliente.Clv_Colonia = Int32.Parse(reader[5].ToString());
+                    cliente.CodigoPostal = reader[6].ToString();
+                    cliente.TELEFONO = reader[7].ToString();
+                    cliente.CELULAR = reader[8].ToString();
+
+                    cliente.DESGLOSA_Iva = bool.Parse(reader[9].ToString());
+                    cliente.SoloInternet = bool.Parse(reader[10].ToString());
+                    cliente.eshotel = bool.Parse(reader[11].ToString());
+                    cliente.Clv_Ciudad = Int32.Parse(reader[12].ToString());
+                    cliente.Email = reader[13].ToString();
+                    cliente.clv_sector = Int32.Parse(reader[14].ToString());
+                    cliente.Clv_Periodo = Int32.Parse(reader[15].ToString());
+                    cliente.Clv_Tap = Int32.Parse(reader[16].ToString());
+                    cliente.Zona2 = bool.Parse(reader[17].ToString());
+                    cliente.conexion = conexion;
+                    lista.Add(cliente);
+
+                }
+            }
+            return lista;
+        }
+
+
         public class DataTableData
         {
             public int draw { get; set; }

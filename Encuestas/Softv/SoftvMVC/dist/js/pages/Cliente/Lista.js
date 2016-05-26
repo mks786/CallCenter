@@ -122,6 +122,9 @@ $('#TablaClientes').on('click', '.detalleCliente', function () {
     $('#ModalDetalleCliente').modal('show');
 });
 
+
+
+
 $('#TablaClientes').on('click', '.editarCliente', function () {
 
     $('#contrato').val('');
