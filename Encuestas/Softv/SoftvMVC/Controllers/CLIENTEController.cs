@@ -379,7 +379,7 @@ namespace SoftvMVC.Controllers
         }
 
 
-        public List<CLIENTEEntity2> GetClientesPorCoincidencia(int conexion)
+        public ActionResult GetClientesPorCoincidencia(int conexion)
         {
             ConexionController c = new ConexionController();
             SqlCommand comandoSql;
@@ -424,7 +424,7 @@ namespace SoftvMVC.Controllers
 
                 }
             }
-            return lista;
+            return Json(lista,JsonRequestBehavior.AllowGet);
         }
 
 
