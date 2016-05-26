@@ -80,13 +80,14 @@ namespace SoftvMVC.Controllers
                 while (reader.Read())
                 {
                     CIUDADEntity ciudad = new CIUDADEntity();
-                    ciudad.Clv_Ciudad=
-                    ciudad.Nombre=
+                    ciudad.Clv_Ciudad=Int32.Parse(reader[0].ToString());
+                    ciudad.Nombre=reader[1].ToString();
+                    lista.Add(ciudad);
                 }
             }
 
 
-            return null;
+            return Json(lista,JsonRequestBehavior.AllowGet);
         }
        
 
