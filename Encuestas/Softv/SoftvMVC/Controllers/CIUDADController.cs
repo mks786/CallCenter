@@ -8,6 +8,7 @@ using System.Web.Mvc;
 using PagedList;
 using Softv.Entities;
 using Globals;
+using System.Data.SqlClient;
 
 namespace SoftvMVC.Controllers
 {
@@ -57,148 +58,42 @@ namespace SoftvMVC.Controllers
             return View(new StaticPagedList<CIUDADEntity>(listResult.ToList(), pageNumber, pSize, listResult.totalCount));
         }
 
-        public ActionResult Details(int id = 0)
-        {
-            CIUDADEntity objCIUDAD = proxy.GetCIUDAD(id);
-            if (objCIUDAD == null)
+        public ActionResult GetCiudadByPlaza(int plaza){
+             ConexionController c = new ConexionController();
+            SqlCommand comandoSql;
+            
+            List<CIUDADEntity> lista = new List<CIUDADEntity>();
+            SqlConnection conexionSQL = new SqlConnection(c.DameConexion(plaza));
+            try
             {
-                return HttpNotFound();
+                conexionSQL.Open();
             }
-            return PartialView(objCIUDAD);
-        }
-
-        public ActionResult Create()
-        {
-            PermisosAccesoDeniedCreate("CIUDAD");
-            ViewBag.CustomScriptsPageValid = BuildScriptPageValid();
-
-            return View();
-        }
-
-        [HttpPost]
-        public ActionResult Create(CIUDADEntity objCIUDAD)
-        {
-            if (ModelState.IsValid)
+            catch
+            { }
+              comandoSql = new SqlCommand("SELECT * FROM CIUDADES");
+            
+            
+            comandoSql.Connection = conexionSQL;
+            SqlDataReader reader = comandoSql.ExecuteReader();
+            if (reader.HasRows)
             {
-
-                objCIUDAD.BaseRemoteIp = RemoteIp;
-                objCIUDAD.BaseIdUser = LoggedUserName;
-                int result = proxy.AddCIUDAD(objCIUDAD);
-                if (result == -1)
+                while (reader.Read())
                 {
-
-                    AssingMessageScript("El CIUDAD ya existe en el sistema.", "error", "Error", true);
-                    CheckNotify();
-                    return View(objCIUDAD);
+                    CIUDADEntity ciudad = new CIUDADEntity();
+                    ciudad.Clv_Ciudad=
+                    ciudad.Nombre=
                 }
-                if (result > 0)
-                {
-                    AssingMessageScript("Se dio de alta el CIUDAD en el sistema.", "success", "Éxito", true);
-                    return RedirectToAction("Index");
-                }
-
             }
-            return View(objCIUDAD);
+
+
+            return null;
         }
+       
 
-        public ActionResult Edit(int id = 0)
-        {
-            PermisosAccesoDeniedEdit("CIUDAD");
-            ViewBag.CustomScriptsPageValid = BuildScriptPageValid();
-            CIUDADEntity objCIUDAD = proxy.GetCIUDAD(id);
+     
 
-            if (objCIUDAD == null)
-            {
-                return HttpNotFound();
-            }
-            return View(objCIUDAD);
-        }
+        
 
-        //
-        // POST: /CIUDAD/Edit/5
-        [HttpPost]
-        public ActionResult Edit(CIUDADEntity objCIUDAD)
-        {
-            if (ModelState.IsValid)
-            {
-                objCIUDAD.BaseRemoteIp = RemoteIp;
-                objCIUDAD.BaseIdUser = LoggedUserName;
-                int result = proxy.UpdateCIUDAD(objCIUDAD);
-                if (result == -1)
-                {
-                    CIUDADEntity objCIUDADOld = proxy.GetCIUDAD(objCIUDAD.Clv_Ciudad);
-
-                    AssingMessageScript("El CIUDAD ya existe en el sistema, .", "error", "Error", true);
-                    CheckNotify();
-                    return View(objCIUDAD);
-                }
-                if (result > 0)
-                {
-                    AssingMessageScript("El CIUDAD se modifico en el sistema.", "success", "Éxito", true);
-                    CheckNotify();
-                    return RedirectToAction("Index");
-                }
-                return RedirectToAction("Index");
-            }
-            return View(objCIUDAD);
-        }
-
-        public ActionResult QuickIndex(int? page, int? pageSize, String Nombre, int? CobroEspecial)
-        {
-            int pageNumber = (page ?? 1);
-            int pSize = pageSize ?? SoftvMVC.Properties.Settings.Default.pagnum;
-            SoftvList<CIUDADEntity> listResult = null;
-            List<CIUDADEntity> listCIUDAD = new List<CIUDADEntity>();
-            CIUDADEntity objCIUDAD = new CIUDADEntity();
-            CIUDADEntity objGetCIUDAD = new CIUDADEntity();
-
-
-            if ((Nombre != null && Nombre.ToString() != ""))
-            {
-                objCIUDAD.Nombre = Nombre;
-            }
-
-            if ((CobroEspecial != null))
-            {
-                objCIUDAD.CobroEspecial = CobroEspecial;
-            }
-
-            pageNumber = pageNumber == 0 ? 1 : pageNumber;
-            listResult = proxy.GetCIUDADPagedListXml(pageNumber, pSize, Globals.SerializeTool.Serialize(objCIUDAD));
-            if (listResult.Count == 0)
-            {
-                int tempPageNumber = (int)(listResult.totalCount / pSize);
-                pageNumber = (int)(listResult.totalCount / pSize) == 0 ? 1 : tempPageNumber;
-                listResult = proxy.GetCIUDADPagedListXml(pageNumber, pSize, Globals.SerializeTool.Serialize(objCIUDAD));
-            }
-            listResult.ToList().ForEach(x => listCIUDAD.Add(x));
-
-            var CIUDADAsIPagedList = new StaticPagedList<CIUDADEntity>(listCIUDAD, pageNumber, pSize, listResult.totalCount);
-            if (CIUDADAsIPagedList.Count > 0)
-            {
-                return PartialView(CIUDADAsIPagedList);
-            }
-            else
-            {
-                var result = new { tipomsj = "warning", titulomsj = "Aviso", Success = "False", Message = "No se encontraron registros con los criterios de búsqueda ingresados." };
-                return Json(result, JsonRequestBehavior.AllowGet);
-            }
-        }
-
-        public ActionResult Delete(int id = 0)
-        {
-            int result = proxy.DeleteCIUDAD(RemoteIp, LoggedUserName, id);
-            if (result > 0)
-            {
-                var resultOk = new { tipomsj = "success", titulomsj = "Aviso", Success = "True", Message = "Registro de CIUDAD Eliminado." };
-                return Json(resultOk, JsonRequestBehavior.AllowGet);
-            }
-            else
-            {
-                var resultNg = new { tipomsj = "warning", titulomsj = "Aviso", Success = "False", Message = "El Registro de CIUDAD No puede ser Eliminado validar dependencias." };
-                return Json(resultNg, JsonRequestBehavior.AllowGet);
-            }
-        }
 
 
     }

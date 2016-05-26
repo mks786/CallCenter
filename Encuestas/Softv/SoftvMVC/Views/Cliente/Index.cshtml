@@ -27,15 +27,15 @@
 
             </div><!-- /.box-header -->
             <div class="box-body">
-
-                <select class="form-control" id="conexiones">
+                <label>Selecciona una plaza</label>
+                <select class="form-control" id="conexiones" style="width:50%">
                     @foreach (var a in conexiones)
                     {
                         <option value="@a.IdConexion.Value">@a.Plaza</option>
                     }
 
                 </select>
-
+                <br />
                 <table id="TablaClientes" class="table table-bordered table-hover dataTable">
                     <thead>
                         <tr>
