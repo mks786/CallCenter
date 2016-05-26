@@ -624,6 +624,7 @@
     <Content Include="dist\js\pages\ResOpcMult\modales_respuestas.js" />
     <Content Include="dist\js\pages\ResOpcMult\modal_detalle_pregunta.js" />
     <Content Include="dist\js\pages\TipoPregunta\Lista.js" />
+    <Content Include="dist\js\pages\Usuario\AgregarUsuario.js" />
     <Content Include="dist\js\pages\Usuario\Lista.js" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />

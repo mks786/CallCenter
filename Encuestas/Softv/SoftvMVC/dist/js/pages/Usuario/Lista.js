@@ -40,15 +40,15 @@ function LlenarTabla() {
             { "data": "Email", "orderable": false },
             { "data": "Usuario", "orderable": false },
             { "data": "Password", "orderable": false },
-            { "data": "Estado", "orderable": false },
-            ////{
-            ////    sortable: false,
-            ////    "render": function (data, type, full, meta) {
-            ////        console.log(full);                   
-            ////    }
-            ////},
-
-        {
+            {
+                sortable: false,
+                "render": function (data, type, full, meta) {
+                    var status = full.Estado;
+                    var res = status.toString().replace("true", "Activo").replace("false","Desactivado");
+                    return res;
+                }
+            },
+            {
             sortable: false,
             "render": function (data, type, full, meta) {
                 return Opciones();  //Es el campo de opciones de la tabla.
@@ -94,38 +94,8 @@ function Opciones() {
 
 
 
-//funcion:retorna las opciones que tendra cada row en la tabla principal
-function Opciones() {
-    var opc = "<button class='btn btn-info btn-xs Detalle' type='button'>Detalles</button> <button class='btn btn-warning btn-xs Editar' type='button'><i class='fa fa-pencil' aria-hidden='true'></i> Editar</button> <button class='btn btn-danger btn-xs eliminar'  type='button'> <i class='fa fa-trash-o' aria-hidden='true'></i> Eliminar</button>"
-    return opc;
-}
-
-$('#TablaUsuarios').on('click', '.Detalle', function () {
-    $('#ModalDetalleUsuarios').modal('show');
-});
-
-$('#TablaUsuarios').on('click', '.Editar', function () {
-    $('#ModalDetalleUsuarios').modal('show');
-});
-
-$('#TablaUsuarios').on('click', '.Eliminar', function () {
-    alert("click");
-});
 
 
 
-//function ActualizaListaPreguntas() {
-//    $('#TbodyPreguntas').empty();
-//    for (var b = 0; b < Lista_preguntas.length; b++) {
-//        $('#tablaPreguntas').append("<tr><td>" + Lista_preguntas[b].Nombre + "</td><td>" + Lista_preguntas[b].TipoControl + "</td><td><button class='btn btn-info btn-xs detallepregunta' rel='" + Lista_preguntas[b].id + "'>Detalles</button> <button class='btn btn-warning btn-xs EditarPregunta ' rel='" + Lista_preguntas[b].id + "'>Editar</button> <button class='btn btn-danger btn-xs EliminaPregunta' rel='" + Lista_preguntas[b].id + "'>Eliminar</button></td></tr>");
 
-//    }
 
-//}
-
-//$('#TablaClientes').on('click', '.EliminaCliente', function () {
-//    var id = $(this).attr('rel');
-//    $('#ModalEliminaCliente').modal('show');
-//    //$('#contrato').val(id);
-
-//});
