@@ -36,12 +36,12 @@
                             @*<td><b>Solución</b></td>*@
                             <td><b>Fecha</b></td>
                             @*<td><b>Hora Inicio</b></td>
-                            <td><b>Hora Fin</b></td>
-                            <td><b>Id Turno</b></td>*@
+                                <td><b>Hora Fin</b></td>
+                                <td><b>Id Turno</b></td>*@
                             <td><b>Id Queja</b></td>
                             <td><b>Id Conexión</b></td>
                             @*<td><b>Clv_Trabajo</b></td>
-                            <td><b>Clv_TipSer</b></td>*@
+                                <td><b>Clv_TipSer</b></td>*@
                             <td><b>Opciones</b></td>
                         </tr>
                     </thead>
@@ -52,18 +52,17 @@
                             <td><b>Id Usuario</b></td>
                             <td><b>Tipo Llamada</b></td>
                             <td><b>Contrato</b></td>
-                            <td><b>Detalle</b></td>
-                            <td><b>Solución</b></td>
+                            @*<td><b>Detalle</b></td>*@
+                            @*<td><b>Solución</b></td>*@
                             <td><b>Fecha</b></td>
                             @*<td><b>Hora Inicio</b></td>
-                            <td><b>Hora Fin</b></td>
-                            <td><b>Id Turno</b></td>
+                                <td><b>Hora Fin</b></td>
+                                <td><b>Id Turno</b></td>*@
                             <td><b>Id Queja</b></td>
                             <td><b>Id Conexión</b></td>
-                            <td><b>Clv_Trabajo</b></td>
-                            <td><b>Clv_TipSer</b></td>*@
+                            @*<td><b>Clv_Trabajo</b></td>
+                                <td><b>Clv_TipSer</b></td>*@
                             <td><b>Opciones</b></td>
-                            
                         </tr>
                     </tfoot>
 
@@ -75,7 +74,7 @@
 
 
 @*MODAL AGREGAR LLAMADA*@
-<div class="modal fade bs-example-modal-lg" id="ModalAgregarLlamada" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel">
+<div class="modal fade bs-example-modal-lg" id="ModalAgregarLlamada" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" data-backdrop="static" data-keyboard="false">
     <div class="modal-dialog modal-lg">
         <div class="modal-content">
             <div class="modal-header">
@@ -85,72 +84,92 @@
             <div class="modal-body">
                 <div class="nav-tabs-custom">
                     <ul class="nav nav-tabs">
-                        <li class="active"><a href="#tab_1" data-toggle="tab" aria-expanded="true">Información principal</a></li>
-                        @*<li class=""><a href="#tab_2" id="tab-preguntas" data-toggle="tab" aria-expanded="false">Preguntas</a></li>*@
-                        <li class=""><a href="#tab_3" data-toggle="tab" aria-expanded="false">Configuración</a></li>
-
-                        <li class="pull-right"><a href="#" class="text-muted"><i class="fa fa-gear"></i></a></li>
+                        <li class="active"><a href="#tab_1a" data-toggle="tab" aria-expanded="true">Información principal</a></li>
                     </ul>
-                    <div class="tab-content">
-                        <div class="tab-pane active" id="tab_1">
+                    <div class="tab-content" style="margin:200px, 20px, 20px, 20px">
+                        <div class="tab-pane active" id="tab_1a">
                             <div class="row">
-                                <div class="col-xs-12">
-                                    <table class="table">
-                                        <thead>
-                                        </thead>
-                                        <tbody>
-                                            <tr>
-                                                <td><input type="text" class="form-control" placeholder="IdUsuario"></td>
-                                            </tr>
-                                            <tr>
-                                                <td><input type="text" class="form-control" placeholder="Tipo de Llamada"></td>
-                                                <td><input type="text" class="form-control" placeholder="Contrato"></td>
-                                            </tr>
-                                            <tr>
-                                                <td><input type="text" class="form-control" placeholder="Detalle"></td>
-                                                <td><input type="text" class="form-control" placeholder="Solución"></td>
-                                            </tr>
-                                            <tr>
-                                                <td><input type="text" class="form-control" placeholder="Fecha"></td>
-                                                <td><input type="text" class="form-control" placeholder="Hora Inicio"></td>
-                                            </tr>
-                                            <tr>
-                                                <td><input type="text" class="form-control" placeholder="HoraFin"></td>
-                                                <td><input type="text" class="form-control" placeholder="Turno"></td>
-                                            </tr>
-                                            <tr>
-                                                <td><input type="text" class="form-control" placeholder="IdQueja"></td>
-                                                <td><input type="text" class="form-control" placeholder="Plaza"></td>
-                                            </tr>
-                                            <tr>
-                                                <td><input type="text" class="form-control" placeholder="Trabajo">
-                                                <td><input type="text" class="form-control" placeholder="Tipo de Servicio"></td>
-                                            </tr>
-                                        </tbody>
-                                        </table>
+                                <div class=col-md-4>
+                                    <div class="form-group">
+                                        <select id="tipo_llamada" class="form-control">
+                                            <option value="0" selected disabled>¿Quíen llama?</option>
+                                            <option value="1">Cliente</option>
+                                            <option value="2">No Cliente</option>
+                                        </select>
                                     </div>
-                            </div>
-                            @*<br />
-                            <div class="row">
-                                <div class="col-xs-12">
-                                    <textarea class="form-control" placeholder="Descripción del cliente"></textarea>
                                 </div>
-                            </div>*@
-                        </div><!-- /.tab-pane -->
-                        
-                        <div class="tab-pane" id="tab_3">
-                        </div><!-- /.tab-pane -->
+                                <div class="col-md-7" id="nombre_llamada" style="display:none;">
+                                    <div class="form-group">
+                                        <div class="col-md-11">
+                                            <input type="text" class="form-control" placeholder="Nombre completo" />
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-7" id="no_contrato" style="display:none;">
+                                    <div class="form-group">
+                                        <div class="col-md-6">
+                                            <input type="text" class="form-control" placeholder="No. Contrato" />
+                                        </div>
+                                        <div class="col-md-6">
+                                            <select id="plaza" class="form-control">
+                                                <option value="0" selected disabled>Seleccione la Plaza</option>
+                                                <option value="1">Aguascalientes</option>
+                                                <option value="2">Plaza 2</option>
+                                                <option value="3">Plaza 3 multiples</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div><br/><!-- row 1 -->
+                            <div class="row">
+                                <div class="col-md-4">
+                                    <div class="form-group">
+                                        <select id="motivo_llamada" class="form-control">
+                                            <option value="0" selected disabled>Motivo de la llamada</option>  
+                                            <option value="1">Información</option>
+                                            <option value="2">Queja</option>
+                                            <option value="3">Asesoría Técnica</option>
+                                        </select>
+                                    </div>
+                                </div>
+                            </div><br/><!-- row 2 -->
+                            <div class="row" id="panel_queja" style="display:none;">
+                                <div class="form-group">
+                                    <div class="col-md-6">
+                                        <textarea placeholder="Redactar la queja" class="form-control"></textarea>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <select id="accion_queja" class="form-control">
+                                            <option value="0" selected disabled>Acción a realizar</option>
+                                            <option value="1">Solucionado</option>
+                                            <option value="2">Realizar Reporte</option>
+                                        </select>
+                                    </div>
+                                </div>
+                            </div><br /><!-- row 3 -->
+                            <div class="row" id="panel_reporte" style="display:none;">
+                                <div class="form-group">
+                                    <div class="col-md-6">
+                                        <select id="reporte_turno" class="form-control">
+                                            <option value="0" selected disabled>¿Turno en el que esta disponible?</option>
+                                            <option value="1">Mañana</option>
+                                            <option value="2">Tarde</option>
+                                        </select>
+                                    </div>
+                                </div>
+                            </div><br /><!-- row 3 -->
+                       </div><!-- /.tab-pane -->
                     </div><!-- /.tab-content -->
                 </div>
             </div>
             <div class="modal-footer">
-                <button class="btn btn-default pull-left" type="button" data-dismiss="modal">cerrar</button>
-                <button class="btn btn-primary" type="button">Guardar Llamada</button>
+
+                <button class="btn btn-primary" type="button" data-dismiss="modal">Cancelar</button>
+                <button class="btn btn-success" type="button">Guardar Llamada</button>
             </div>
         </div>
     </div>
 </div>
-
 
 
 @*MODAL Editar Llamada*@
@@ -164,68 +183,185 @@
             <div class="modal-body">
                 <div class="nav-tabs-custom">
                     <ul class="nav nav-tabs">
-                        <li class="active"><a href="#tab_1" data-toggle="tab" aria-expanded="true">Información principal</a></li>
-                        @*<li class=""><a href="#tab_2" id="tab-preguntas" data-toggle="tab" aria-expanded="false">Preguntas</a></li>*@
-                        <li class=""><a href="#tab_3" data-toggle="tab" aria-expanded="false">Configuración</a></li>
-
-                        <li class="pull-right"><a href="#" class="text-muted"><i class="fa fa-gear"></i></a></li>
+                        <li class="active"><a href="#tab_1b" data-toggle="tab" aria-expanded="true">Información principal</a></li>
+                        <li class=""><a href="#tabla_1q" data-toggle="tab" aria-expanded="true">Queja</a></li>
                     </ul>
                     <div class="tab-content">
-                        <div class="tab-pane active" id="tab_1">
-                            <div class="row">
-                                <div class="col-xs-12">
-                                    <table class="table">
-                                        <thead>
-                                        </thead>
-                                        <tbody>
-                                            <tr>
-                                                <td><input type="text" class="form-control" placeholder="IdLlamada"></td>
-                                                <td><input type="text" class="form-control" placeholder="IdUsuario"></td>
-                                            </tr>
-                                            <tr>
-                                                <td><input type="text" class="form-control" placeholder="Tipo_Llamada"></td> 
-                                                <td><input type="text" class="form-control" placeholder="Contrato"></td> 
-                                            </tr>
-                                            <tr>
-                                                <td><input type="text" class="form-control" placeholder="Detalle"></td>
-                                                <td><input type="text" class="form-control" placeholder="Solucion"></td>
-                                            </tr>
-                                            <tr>
-                                                <td><input type="text" class="form-control" placeholder="Fecha"></td> 
-                                                <td><input type="text" class="form-control" placeholder="HoraInicio"></td>
-                                            </tr>
-                                            <tr>
-                                                <td><input type="text" class="form-control" placeholder="HoraFin"></td>
-                                                <td><input type="text" class="form-control" placeholder="IdTurno"></td>
-                                            </tr>
-                                            <tr>
-                                                <td><input type="text" class="form-control" placeholder="IdQueja"></td> 
-                                                <td><input type="text" class="form-control" placeholder="IdConexion"></td> 
-                                            </tr>
-                                            <tr>
-                                                <td><input type="text" class="form-control" placeholder="Clv_Trabajo"> 
-                                                <td><input type="text" class="form-control" placeholder="Clv_TipSer"></td>
-                                            </tr>
-                                        </tbody>
-                                    </table>
+                        <div class="tab-pane active" id="tab_1b">
+                            <div class="row form-group ">
+                                <div class="col-lg-3 col-lg-offset-1    col-md-3 col-md-offset-1    col-sm-4    col-xs-7">
+                                    <label>Usuario</label>@*IdUsuario de tabla Usuarios*@
+                                    <input type="text" class="form-control" placeholder="Usuario" readonly>
+                                </div>
+                                <div class="col-lg-2    col-md-2    col-sm-3    col-xs-5">
+                                    <label>Contrato</label>@*Contrato*@
+                                    <input type="text" class="form-control" placeholder="Contrato">
+                                </div>
+                                <div class="col-lg-5    col-md-5    col-sm-    col-xs-12">
+                                    <label>Plaza</label>@*IdConexion*@
+                                    <select id='Plaza' class='form-control'>
+                                        <option disabled value="0">Seleccione la Plaza</option>
+                                        <option value='1'>Aguascalientes</option>
+                                        <option value='2'>Plaza 2</option>
+                                        <option value='3'>Plaza 3 multiples</option>
+                                    </select>
+                                </div>
+                                @*<div class="col-lg-2    col-md-2    col-sm-3    col-xs-5">
+                                        <label>IdQueja</label>
+                                        <input type="text" class="form-control" placeholder="IdQueja">
+                                    </div>*@
+                            </div><!--FIN ROW 1-->
+                            <div class="row form-group ">
+                                <div class="col-lg-4 col-lg-offset-1    col-md-4 col-md-offset-1    col-sm-6 col-sm-offset-1        col-xs-12">
+                                    <label>Tipo de Llamada</label>@*Tipo_Llamada*@
+                                    <input type="text" class="form-control" placeholder="Tipo de Llamada">
+                                </div>
+                                <div class="col-lg-2    col-md-2 col-md-offset-0    col-sm-3 col-sm-offset-1    col-xs-7">
+                                    <label>Fecha</label>
+                                    <input type="text" class="form-control" placeholder="Fecha">
+                                </div>
+                                <div class="col-lg-2    col-md-2 col-md-offset-0    col-sm-3 col-sm-offset-3    col-xs-5">
+                                    <label>Hora Inicio</label>
+                                    <input type="text" class="form-control" placeholder="Hora Inicio">
+                                </div>
+                                <div class="col-lg-2    col-md-2    col-sm-3    col-xs-7">
+                                    <label>Hora Fin</label>
+                                    <input type="text" class="form-control" placeholder="Hora Fin">
+                                </div>
+                            </div><!--FIN ROW 2-->
+                            <div class="row form-group ">
+                                @*ROW 3*@
+                                <div class="col-lg-5 col-lg-offset-1    col-md-5 col-md-offset-1    col-sm-6    col-xs-12">
+                                    <label>Detalle</label>
+                                    <textarea class="form-control" placeholder="Detalle"></textarea>
+                                </div>
+                                <div class="col-lg-5    col-md-5    col-sm-6    col-xs-12">
+                                    <label>Solución</label>
+                                    <textarea class="form-control" placeholder="Solución"></textarea>
+                                </div>
+                            </div><!--FIN ROW 3-->
+                            <div class="row form-group ">
+                                @*ROW 4*@
+                                <div class="col-lg-4 col-lg-offset-1    col-md-4 col-md-offset-1    col-sm-5    col-xs-12">
+                                    <label>Trabajo</label> @*Clv_Trabajo*@
+                                    <textarea class="form-control" placeholder="Trabajo"></textarea>
+                                </div>
+                                <div class="col-lg-4    col-md-4    col-sm-4        col-xs-8">
+                                    <label>Concepto</label>@*Clv_TipSer*@
+                                    <textarea class="form-control" placeholder="Concepto"></textarea>
+                                </div>
+                                <div class="col-lg-2    col-md-2    col-sm-3    col-xs-4">
+                                    <label>Turno</label>@*IdTurno*@
+                                    <select id='Turno' class='form-control'>
+                                        <option disabled value="0">Selecciona el turno</option>
+                                        <option value='1'>Mañana</option>
+                                        <option value='2'>Tarde</option>
+                                    </select>
+                                </div>
+                            </div><!--FIN ROW 4-->
+                        </div><!-- /.tab-pane -->
+                        <div class="tab-pane" id="tabla_1q">
+                            <div class="row form-group ">
+                                <div class="col-lg-2 col-lg-offset-0    col-md-2 col-md-offset-0    col-sm-3 col-sm-offset-1    col-xs-6">
+                                    <label>Contrato</label>@*Contrato*@
+                                    <input type="text" class="form-control" placeholder="Contrato">
+                                </div>
+                                <div class="col-lg-4    col-md-4 col-md-offset-0    col-sm-7    col-xs-12 ">
+                                    <label>Concepto de Tipo de Servicio</label>@*Clv_TipSer*@
+                                    <input type="text" class="form-control" placeholder="Concepto Tipo de Servicio">
+                                </div>
+                                <div class="col-lg-3 col-lg-offset-0    col-md-3 col-md-offset-0    col-sm-4 col-sm-offset-2    col-xs-7">
+                                    <label>Fecha de Solicitud</label>@*Fecha_Solicitud*@
+                                    <input type="text" class="form-control" placeholder="Fecha de Solicitud">
+                                </div>
+                                <div class="col-lg-3    col-md-3    col-sm-4    col-xs-7">
+                                    <label>Fecha de Captura</label>@*Fecha_Captura*@
+                                    <input type="text" class="form-control" placeholder="Fecha de Captura">
                                 </div>
                             </div>
-                            @*<br />
-                                <div class="row">
-                                    <div class="col-xs-12">
-                                        <textarea class="form-control" placeholder="Descripción del cliente"></textarea>
-                                    </div>
-                                </div>*@
-                        </div><!-- /.tab-pane -->
-
-                        <div class="tab-pane" id="tab_3">
+                            <div class="row form-group ">
+                                <div class="col-lg-2    col-md-2    col-sm-3    col-xs-12">
+                                    <label>Status</label>@*Status*@
+                                    <input type="text" class="form-control" placeholder="Status">
+                                </div>
+                                <div class="col-lg-5    col-md-5    col-sm-9    col-xs-12">
+                                    <label>Trabajo</label>@*Clv_Trabajo*@
+                                    <textarea class="form-control" placeholder="Trabajo"></textarea>
+                                </div>
+                                <div class="col-lg-2 col-lg-offset-0    col-md-2 col-md-offset-0    col-sm-4 col-sm-offset-2    col-xs-7">
+                                    <label>Hora de Ejecución</label>@*Hora_Ejecucion*@
+                                    <input type="text" class="form-control" placeholder="Hora de Ejecución">
+                                </div>
+                                <div class="col-lg-3    col-md-3    col-sm-4    col-xs-8">
+                                    <label>Fecha de Ejecución</label>@*Fecha_Ejecución*@
+                                    <input type="text" class="form-control" placeholder="Fecha de Ejecución">
+                                </div>
+                            </div>
+                            <div class="row form-group ">
+                                <div class="col-lg-2    col-md-2    col-sm-3    col-xs-6">
+                                    <label>Clave Técnico</label>@*Clave_Tecnico*@
+                                    <input type="text" class="form-control" placeholder="Clave Técnico">
+                                </div>
+                                <div class="col-lg-3    col-md-3    col-sm-5    col-xs-12">
+                                    <label>Tipo de Queja</label>@*Clv_TipoQueja*@
+                                    <input type="text" class="form-control" placeholder="Tipo de Queja">
+                                </div>
+                                <div class="col-lg-2    col-md-2    col-sm-4    col-xs-8">
+                                    <label>Prioridad de Queja</label>@*clvPrioridadQueja    Descripcion de tabla tblPrioridadQueja*@
+                                    <input type="text" class="form-control" placeholder="Prioridad de Queja">
+                                </div>
+                                <div class="col-lg-2 col-lg-offset-0    col-md-2 col-md-offset-0    col-sm-4 col-sm-offset-2    col-xs-6">
+                                    <label>Clasificación</label>@*Clasificación*@
+                                    <input type="text" class="form-control" placeholder="Clasificación">
+                                </div>
+                                <div class="col-lg-3    col-md-2    col-sm-4 col-xs-6">
+                                    <label>Impresa</label>@*Impresa*@
+                                    <input type="text" class="form-control" placeholder="Impresa">
+                                </div>
+                            </div>
+                            <div class="row form-group ">
+                                <div class="col-lg-4    col-md-4    col-sm-6    col-xs-12">
+                                    <label>Problema</label>@*Problema*@
+                                    <textarea class="form-control" placeholder="Problema"></textarea>
+                                </div>
+                                <div class="col-lg-4    col-md-4    col-sm-6    col-xs-12">
+                                    <label>Solución</label>@*Solucion*@
+                                    <textarea class="form-control" placeholder="Solución"></textarea>
+                                </div>
+                                <div class="col-lg-4    col-md-4    col-sm-6    col-xs-12">
+                                    <label>Observaciones</label>@*Observaciones*@
+                                    <textarea class="form-control" placeholder="Observaciones"></textarea>
+                                </div>
+                            </div>
+                            <div class="row form-group ">
+                                <div class="col-lg-2    col-md-2    col-sm-4    col-xs-7">
+                                    <label>Visita 1</label>@*Visita1*@
+                                    <input type="text" class="form-control" placeholder="Visita 1">
+                                </div>
+                                <div class="col-lg-2    col-md-2    col-sm-4    col-xs-7">
+                                    <label>Visita 2</label>@*Visita2*@
+                                    <input type="text" class="form-control" placeholder="Visita 2">
+                                </div>
+                                <div class="col-lg-2    col-md-2    col-sm-4    col-xs-7">
+                                    <label>Visita 3</label>@*Visita3*@
+                                    <input type="text" class="form-control" placeholder="Visita 3">
+                                </div>
+                                <div class="col-lg-3 col-lg-offset-0    col-md-3 col-md-offset-0    col-sm-4 col-sm-offset-2    col-xs-7">
+                                    <label>Fecha de Actualización</label>@*Fecha_Actualización*@
+                                    <input type="text" class="form-control" placeholder="Fecha de Actualización">
+                                </div>
+                                <div class="col-lg-3    col-md-3    col-sm-4    col-xs-5">
+                                    <label>Imp</label>@*Imp*@
+                                    <input type="text" class="form-control" placeholder="Imp">
+                                </div>
+                            </div>
                         </div><!-- /.tab-pane -->
                     </div><!-- /.tab-content -->
                 </div>
             </div>
             <div class="modal-footer">
-                <button class="btn btn-default pull-left" type="button" data-dismiss="modal">cerrar</button>
-                <button class="btn btn-primary" type="button">Guardar Datos</button>
+                <button class="btn btn-default pull-left" type="button" data-dismiss="modal">Cerrar</button>
+                <button class="btn btn-primary" type="button">Guardar Cambios</button>
             </div>
         </div>
     </div>
@@ -244,68 +380,312 @@
             <div class="modal-body">
                 <div class="nav-tabs-custom">
                     <ul class="nav nav-tabs">
-                        <li class="active"><a href="#tab_1" data-toggle="tab" aria-expanded="true">Información principal</a></li>
-                        @*<li class=""><a href="#tab_2" id="tab-preguntas" data-toggle="tab" aria-expanded="false">Preguntas</a></li>*@
-                        <li class=""><a href="#tab_3" data-toggle="tab" aria-expanded="false">Configuración</a></li>
-
-                        <li class="pull-right"><a href="#" class="text-muted"><i class="fa fa-gear"></i></a></li>
+                        <li class="active"><a href="#tab_1c" data-toggle="tab" aria-expanded="true">Información principal</a></li>
+                        <li class=""><a href="#tabla_1q" data-toggle="tab" aria-expanded="true">Queja</a></li>
                     </ul>
                     <div class="tab-content">
-                        <div class="tab-pane active" id="tab_1">
-                            <div class="row">
-                                <div class="col-xs-12">
-                                    <table class="table">
-                                        <thead>
-                                        </thead>
-                                        <tbody>
-                                            <tr>
-                                                <td><input type="text" class="form-control" placeholder="IdLlamada"></td>
-                                                <td><input type="text" class="form-control" placeholder="IdUsuario"></td>
-                                            </tr>
-                                            <tr>
-                                                <td><input type="text" class="form-control" placeholder="Tipo_Llamada"></td>
-                                                <td><input type="text" class="form-control" placeholder="Contrato"></td>
-                                            </tr>
-                                            <tr>
-                                                <td><input type="text" class="form-control" placeholder="Detalle"></td>
-                                                <td><input type="text" class="form-control" placeholder="Solucion"></td>
-                                            </tr>
-                                            <tr>
-                                                <td><input type="text" class="form-control" placeholder="Fecha"></td>
-                                                <td><input type="text" class="form-control" placeholder="HoraInicio"></td>
-                                            </tr>
-                                            <tr>
-                                                <td><input type="text" class="form-control" placeholder="HoraFin"></td>
-                                                <td><input type="text" class="form-control" placeholder="IdTurno"></td>
-                                            </tr>
-                                            <tr>
-                                                <td><input type="text" class="form-control" placeholder="IdQueja"></td>
-                                                <td><input type="text" class="form-control" placeholder="IdConexion"></td>
-                                            </tr>
-                                            <tr>
-                                                <td><input type="text" class="form-control" placeholder="Clv_Trabajo">
-                                                <td><input type="text" class="form-control" placeholder="Clv_TipSer"></td>
-                                            </tr>                                        
-                                        </tbody>
-                                    </table>
+                        <div class="tab-pane active" id="tab_1c">
+                            <div class="row form-group ">
+                                <div class="col-lg-3 col-lg-offset-1    col-md-3 col-md-offset-1    col-sm-4    col-xs-7">
+                                    <label>Usuario</label>@*IdUsuario de tabla Usuarios*@
+                                    <input type="text" class="form-control" placeholder="Usuario" readonly>
+                                </div>
+                                <div class="col-lg-2    col-md-2    col-sm-3    col-xs-5">
+                                    <label>Contrato</label>@*Contrato*@
+                                    <input type="text" class="form-control" placeholder="Contrato">
+                                </div>
+                                <div class="col-lg-5    col-md-5    col-sm-    col-xs-12">
+                                    <label>Plaza</label>@*IdConexion*@
+                                    <input type="text" class="form-control" placeholder="Plaza">
+                                </div>
+                                @*<div class="col-lg-2    col-md-2    col-sm-3    col-xs-5">
+                                        <label>IdQueja</label>
+                                        <input type="text" class="form-control" placeholder="IdQueja">
+                                    </div>*@
+                            </div><!--FIN ROW 1-->
+                            <div class="row form-group ">
+                                <div class="col-lg-4 col-lg-offset-1    col-md-4 col-md-offset-1    col-sm-6 col-sm-offset-1        col-xs-12">
+                                    <label>Tipo de Llamada</label>@*Tipo_Llamada*@
+                                    <input type="text" class="form-control" placeholder="Tipo de Llamada">
+                                </div>
+                                <div class="col-lg-2    col-md-2 col-md-offset-0    col-sm-3 col-sm-offset-1    col-xs-7">
+                                    <label>Fecha</label>
+                                    <input type="text" class="form-control" placeholder="Fecha">
+                                </div>
+                                <div class="col-lg-2    col-md-2 col-md-offset-0    col-sm-3 col-sm-offset-3    col-xs-5">
+                                    <label>Hora Inicio</label>
+                                    <input type="text" class="form-control" placeholder="Hora Inicio">
+                                </div>
+                                <div class="col-lg-2    col-md-2    col-sm-3    col-xs-7">
+                                    <label>Hora Fin</label>
+                                    <input type="text" class="form-control" placeholder="Hora Fin">
+                                </div>
+                            </div><!--FIN ROW 2-->
+                            <div class="row form-group ">
+                                @*ROW 3*@
+                                <div class="col-lg-5 col-lg-offset-1    col-md-5 col-md-offset-1    col-sm-6    col-xs-12">
+                                    <label>Detalle</label>
+                                    <textarea class="form-control" placeholder="Detalle"></textarea>
+                                </div>
+                                <div class="col-lg-5    col-md-5    col-sm-6    col-xs-12">
+                                    <label>Solución</label>
+                                    <textarea class="form-control" placeholder="Solución"></textarea>
+                                </div>
+                            </div><!--FIN ROW 3-->
+                            <div class="row form-group ">
+                                @*ROW 4*@
+                                <div class="col-lg-4 col-lg-offset-1    col-md-4 col-md-offset-1    col-sm-5    col-xs-12">
+                                    <label>Trabajo</label> @*Clv_Trabajo*@
+                                    <textarea class="form-control" placeholder="Trabajo"></textarea>
+                                </div>
+                                <div class="col-lg-4    col-md-4    col-sm-4        col-xs-8">
+                                    <label>Concepto</label>@*Clv_TipSer*@
+                                    <textarea class="form-control" placeholder="Concepto"></textarea>
+                                </div>
+                                <div class="col-lg-2    col-md-2    col-sm-3    col-xs-4">
+                                    <label>Turno</label>@*IdTurno*@
+                                    <select id='Turno' class='form-control'>
+                                        <option disabled value="0">Selecciona el turno</option>
+                                        <option value='1'>Mañana</option>
+                                        <option value='2'>Tarde</option>
+                                    </select>
+                                </div>
+                            </div><!--FIN ROW 4-->
+                        </div><!-- /.tab-pane -->
+                        <div class="tab-pane" id="tabla_1q">
+                            <div class="row form-group ">
+                                <div class="col-lg-2 col-lg-offset-0    col-md-2 col-md-offset-0    col-sm-3 col-sm-offset-1    col-xs-6">
+                                    <label>Contrato</label>@*Contrato*@
+                                    <input type="text" class="form-control" placeholder="Contrato">
+                                </div>
+                                <div class="col-lg-4    col-md-4 col-md-offset-0    col-sm-7    col-xs-12 ">
+                                    <label>Concepto de Tipo de Servicio</label>@*Clv_TipSer*@
+                                    <input type="text" class="form-control" placeholder="Concepto Tipo de Servicio">
+                                </div>
+                                <div class="col-lg-3 col-lg-offset-0    col-md-3 col-md-offset-0    col-sm-4 col-sm-offset-2    col-xs-7">
+                                    <label>Fecha de Solicitud</label>@*Fecha_Solicitud*@
+                                    <input type="text" class="form-control" placeholder="Fecha de Solicitud">
+                                </div>
+                                <div class="col-lg-3    col-md-3    col-sm-4    col-xs-7">
+                                    <label>Fecha de Captura</label>@*Fecha_Captura*@
+                                    <input type="text" class="form-control" placeholder="Fecha de Captura">
                                 </div>
                             </div>
-                            @*<br />
-                                <div class="row">
-                                    <div class="col-xs-12">
-                                        <textarea class="form-control" placeholder="Descripción del cliente"></textarea>
-                                    </div>
-                                </div>*@
-                        </div><!-- /.tab-pane -->
-
-                        <div class="tab-pane" id="tab_3">
+                            <div class="row form-group ">
+                                <div class="col-lg-2    col-md-2    col-sm-3    col-xs-12">
+                                    <label>Status</label>@*Status*@
+                                    <input type="text" class="form-control" placeholder="Status">
+                                </div>
+                                <div class="col-lg-5    col-md-5    col-sm-9    col-xs-12">
+                                    <label>Trabajo</label>@*Clv_Trabajo*@
+                                    <textarea class="form-control" placeholder="Trabajo"></textarea>
+                                </div>
+                                <div class="col-lg-2 col-lg-offset-0    col-md-2 col-md-offset-0    col-sm-4 col-sm-offset-2    col-xs-7">
+                                    <label>Hora de Ejecución</label>@*Hora_Ejecucion*@
+                                    <input type="text" class="form-control" placeholder="Hora de Ejecución">
+                                </div>
+                                <div class="col-lg-3    col-md-3    col-sm-4    col-xs-8">
+                                    <label>Fecha de Ejecución</label>@*Fecha_Ejecución*@
+                                    <input type="text" class="form-control" placeholder="Fecha de Ejecución">
+                                </div>
+                            </div>
+                            <div class="row form-group ">
+                                <div class="col-lg-2    col-md-2    col-sm-3    col-xs-6">
+                                    <label>Clave Técnico</label>@*Clave_Tecnico*@
+                                    <input type="text" class="form-control" placeholder="Clave Técnico">
+                                </div>
+                                <div class="col-lg-3    col-md-3    col-sm-5    col-xs-12">
+                                    <label>Tipo de Queja</label>@*Clv_TipoQueja*@
+                                    <input type="text" class="form-control" placeholder="Tipo de Queja">
+                                </div>
+                                <div class="col-lg-2    col-md-2    col-sm-4    col-xs-8">
+                                    <label>Prioridad de Queja</label>@*clvPrioridadQueja    Descripcion de tabla tblPrioridadQueja*@
+                                    <input type="text" class="form-control" placeholder="Prioridad de Queja">
+                                </div>
+                                <div class="col-lg-2 col-lg-offset-0    col-md-2 col-md-offset-0    col-sm-4 col-sm-offset-2    col-xs-6">
+                                    <label>Clasificación</label>@*Clasificación*@
+                                    <input type="text" class="form-control" placeholder="Clasificación">
+                                </div>
+                                <div class="col-lg-3    col-md-2    col-sm-4 col-xs-6">
+                                    <label>Impresa</label>@*Impresa*@
+                                    <input type="text" class="form-control" placeholder="Impresa">
+                                </div>
+                            </div>
+                            <div class="row form-group ">
+                                <div class="col-lg-4    col-md-4    col-sm-6    col-xs-12">
+                                    <label>Problema</label>@*Problema*@
+                                    <textarea class="form-control" placeholder="Problema"></textarea>
+                                </div>
+                                <div class="col-lg-4    col-md-4    col-sm-6    col-xs-12">
+                                    <label>Solución</label>@*Solucion*@
+                                    <textarea class="form-control" placeholder="Solución"></textarea>
+                                </div>
+                                <div class="col-lg-4    col-md-4    col-sm-6    col-xs-12">
+                                    <label>Observaciones</label>@*Observaciones*@
+                                    <textarea class="form-control" placeholder="Observaciones"></textarea>
+                                </div>
+                            </div>
+                            <div class="row form-group ">
+                                <div class="col-lg-2    col-md-2    col-sm-4    col-xs-7">
+                                    <label>Visita 1</label>@*Visita1*@
+                                    <input type="text" class="form-control" placeholder="Visita 1">
+                                </div>
+                                <div class="col-lg-2    col-md-2    col-sm-4    col-xs-7">
+                                    <label>Visita 2</label>@*Visita2*@
+                                    <input type="text" class="form-control" placeholder="Visita 2">
+                                </div>
+                                <div class="col-lg-2    col-md-2    col-sm-4    col-xs-7">
+                                    <label>Visita 3</label>@*Visita3*@
+                                    <input type="text" class="form-control" placeholder="Visita 3">
+                                </div>
+                                <div class="col-lg-3 col-lg-offset-0    col-md-3 col-md-offset-0    col-sm-4 col-sm-offset-2    col-xs-7">
+                                    <label>Fecha de Actualización</label>@*Fecha_Actualización*@
+                                    <input type="text" class="form-control" placeholder="Fecha de Actualización">
+                                </div>
+                                <div class="col-lg-3    col-md-3    col-sm-4    col-xs-5">
+                                    <label>Imp</label>@*Imp*@
+                                    <input type="text" class="form-control" placeholder="Imp">
+                                </div>
+                            </div>
                         </div><!-- /.tab-pane -->
                     </div><!-- /.tab-content -->
                 </div>
             </div>
             <div class="modal-footer">
-                <button class="btn btn-default pull-left" type="button" data-dismiss="modal">cerrar</button>
-                <button class="btn btn-primary" type="button">Guardar Datos</button>
+                <button class="btn btn-default pull-left" type="button" data-dismiss="modal">Cerrar</button>
+                <button class="btn btn-primary" type="button">Aceptar</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+@*MODAL AGREGAR QUEJA*@
+<div class="modal fade bs-example-modal-lg" id="ModalAgregarQueja" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button class="close" aria-label="Close" type="button" data-dismiss="modal"><span aria-hidden="true">×</span></button>
+                <h4 class="modal-title">Generar Queja</h4>
+            </div>
+            <div class="modal-body">
+                <div class="nav-tabs-custom">
+                    <ul class="nav nav-tabs">
+                        <li class="active"><a href="#tabla_2q" data-toggle="tab" aria-expanded="true">Información principal</a></li>
+                    </ul>
+                    <div class="tab-content">
+                        <div class="tab-pane active" id="tabla_2q">
+                            <div class="row form-group ">
+                                @*ROW 1*@
+                                @*<div class="col-lg-2">
+                                        <label>Clv_Queja</label>
+                                        <input type="text" class="form-control" placeholder="Clv_Queja" readonly>
+                                    </div>*@
+                                <div class="col-lg-2 col-lg-offset-0    col-md-2 col-md-offset-0    col-sm-3 col-sm-offset-1    col-xs-6">
+                                    <label>Contrato</label>@*Contrato*@
+                                    <input type="text" class="form-control" placeholder="Contrato">
+                                </div>
+                                <div class="col-lg-4    col-md-4 col-md-offset-0    col-sm-7    col-xs-12 ">
+                                    <label>Concepto de Tipo de Servicio</label>@*Clv_TipSer*@
+                                    <input type="text" class="form-control" placeholder="Concepto Tipo de Servicio">
+                                </div>
+                                <div class="col-lg-3 col-lg-offset-0    col-md-3 col-md-offset-0    col-sm-4 col-sm-offset-2    col-xs-7">
+                                    <label>Fecha de Solicitud</label>@*Fecha_Solicitud*@
+                                    <input type="text" class="form-control" placeholder="Fecha de Solicitud">
+                                </div>
+                                <div class="col-lg-3    col-md-3    col-sm-4    col-xs-7">
+                                    <label>Fecha de Captura</label>@*Fecha_Captura*@
+                                    <input type="text" class="form-control" placeholder="Fecha de Captura">
+                                </div>
+                            </div>
+                            <div class="row form-group ">
+                                @*ROW 5*@
+                                <div class="col-lg-2    col-md-2    col-sm-3    col-xs-12">
+                                    <label>Status</label>@*Status*@
+                                    <input type="text" class="form-control" placeholder="Status">
+                                </div>
+                                <div class="col-lg-5    col-md-5    col-sm-9    col-xs-12">
+                                    <label>Trabajo</label>@*Clv_Trabajo*@
+                                    <textarea class="form-control" placeholder="Trabajo"></textarea>
+                                </div>
+                                <div class="col-lg-2 col-lg-offset-0    col-md-2 col-md-offset-0    col-sm-4 col-sm-offset-2    col-xs-7">
+                                    <label>Hora de Ejecución</label>@*Hora_Ejecucion*@
+                                    <input type="text" class="form-control" placeholder="Hora de Ejecución">
+                                </div>
+                                <div class="col-lg-3    col-md-3    col-sm-4    col-xs-8">
+                                    <label>Fecha de Ejecución</label>@*Fecha_Ejecución*@
+                                    <input type="text" class="form-control" placeholder="Fecha de Ejecución">
+                                </div>
+                            </div>
+                            <div class="row form-group ">
+                                @*ROW 2*@
+                                <div class="col-lg-2    col-md-2    col-sm-3    col-xs-6">
+                                    <label>Clave Técnico</label>@*Clave_Tecnico*@
+                                    <input type="text" class="form-control" placeholder="Clave Técnico">
+                                </div>
+
+                                <div class="col-lg-3    col-md-3    col-sm-5    col-xs-12">
+                                    <label>Tipo de Queja</label>@*Clv_TipoQueja*@
+                                    <input type="text" class="form-control" placeholder="Tipo de Queja">
+                                </div>
+                                <div class="col-lg-2    col-md-2    col-sm-4    col-xs-8">
+                                    <label>Prioridad de Queja</label>@*clvPrioridadQueja    Descripcion de tabla tblPrioridadQueja*@
+                                    <input type="text" class="form-control" placeholder="Prioridad de Queja">
+                                </div>
+                                <div class="col-lg-2 col-lg-offset-0    col-md-2 col-md-offset-0    col-sm-4 col-sm-offset-2    col-xs-6">
+                                    <label>Clasificación</label>@*Clasificación*@
+                                    <input type="text" class="form-control" placeholder="Clasificación">
+                                </div>
+                                <div class="col-lg-3    col-md-2    col-sm-4 col-xs-6">
+                                    <label>Impresa</label>@*Impresa*@
+                                    <input type="text" class="form-control" placeholder="Impresa">
+                                </div>
+                            </div>
+                            <div class="row form-group ">
+                                @*ROW 3*@
+                                <div class="col-lg-4    col-md-4    col-sm-6    col-xs-12">
+                                    <label>Problema</label>@*Problema*@
+                                    <textarea class="form-control" placeholder="Problema"></textarea>
+                                </div>
+                                <div class="col-lg-4    col-md-4    col-sm-6    col-xs-12">
+                                    <label>Solución</label>@*Solucion*@
+                                    <textarea class="form-control" placeholder="Solución"></textarea>
+                                </div>
+                                <div class="col-lg-4    col-md-4    col-sm-6    col-xs-12">
+                                    <label>Observaciones</label>@*Observaciones*@
+                                    <textarea class="form-control" placeholder="Observaciones"></textarea>
+                                </div>
+                            </div>
+                            <div class="row form-group ">
+                                @*ROW 4*@
+                                <div class="col-lg-2    col-md-2    col-sm-4    col-xs-7">
+                                    <label>Visita 1</label>@*Visita1*@
+                                    <input type="text" class="form-control" placeholder="Visita 1">
+                                </div>
+                                <div class="col-lg-2    col-md-2    col-sm-4    col-xs-7">
+                                    <label>Visita 2</label>@*Visita2*@
+                                    <input type="text" class="form-control" placeholder="Visita 2">
+                                </div>
+                                <div class="col-lg-2    col-md-2    col-sm-4    col-xs-7">
+                                    <label>Visita 3</label>@*Visita3*@
+                                    <input type="text" class="form-control" placeholder="Visita 3">
+                                </div>
+                                <div class="col-lg-3 col-lg-offset-0    col-md-3 col-md-offset-0    col-sm-4 col-sm-offset-2    col-xs-7">
+                                    <label>Fecha de Actualización</label>@*Fecha_Actualización*@
+                                    <input type="text" class="form-control" placeholder="Fecha de Actualización">
+                                </div>
+                                <div class="col-lg-3    col-md-3    col-sm-4    col-xs-5">
+                                    <label>Imp</label>@*Imp*@
+                                    <input type="text" class="form-control" placeholder="Imp">
+                                </div>
+                            </div>
+                        </div><!-- /.tab-pane -->
+                    </div><!-- /.tab-content -->
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-default pull-left" type="button" data-dismiss="modal">Cancelar</button>
+                <button class="btn btn-primary" type="button">Guardar Queja</button>
             </div>
         </div>
     </div>
@@ -313,9 +693,5 @@
 
 
 
-
-<script src="~/dist/js/pages/Llamada/Lista.js">
-    //Ruta de lista.js
-
-</script>
-
+<script src="~/dist/js/pages/Llamada/Lista.js"></script>
+<script src="~/dist/js/pages/Llamada/agregar_llamada.js"></script>

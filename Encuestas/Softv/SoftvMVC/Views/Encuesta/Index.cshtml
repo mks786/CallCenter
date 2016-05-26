@@ -136,78 +136,6 @@
     </div>
 </div>
 
-@*<div class="modal fade bs-example-modal-lg" id="ModalEditarEncuesta" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel">
-    <div class="modal-dialog modal-lg">
-        <div class="modal-content">
-            <div class="modal-header">
-                <button class="close" aria-label="Close" type="button" data-dismiss="modal"><span aria-hidden="true">×</span></button>
-                <h4 class="modal-title">Editar Encuesta</h4>
-            </div>
-            <div class="modal-body">
-                <div class="nav-tabs-custom">
-                    <ul class="nav nav-tabs">
-                        <li class="active"><a href="#tab_1_ed" data-toggle="tab" aria-expanded="true">Información principal</a></li>
-                        <li class=""><a href="#tab_2_ed" id="tab-preguntas" data-toggle="tab" aria-expanded="false">Preguntas</a></li>
-                        <li class=""><a href="#tab_3_ed" data-toggle="tab" aria-expanded="false">Configuración</a></li>
-
-                        <li class="pull-right"><a href="#" class="text-muted"><i class="fa fa-gear"></i></a></li>
-                    </ul>
-                    <div class="tab-content">
-                        <div class="tab-pane active" id="tab_1_ed">
-                            <div class="row">
-                                <div class="col-xs-12">
-                                    <input type="text" class="form-control" id="ed_nombreEncuesta" placeholder="Nombre de la encuesta">
-                                </div>
-                            </div>
-                            <br />
-                            <div class="row">
-                                <div class="col-xs-12">
-                                    <textarea class="form-control" id="ed_Descripcion_encuesta" placeholder="Descripción de la encuesta"></textarea>
-                                </div>
-                            </div>
-                        </div><!-- /.tab-pane -->
-                        <div class="tab-pane" id="tab_2_ed">
-                            <button class="btn btn-success btn-xs" id="AddPregunta" onclick="DetallePreguntas();"><i class="fa fa-plus" aria-hidden="true"></i> Agregar pregunta</button>
-                            <hr style="color:#0094ff; background-color:#0094ff;" />
-                            <div class="row">
-                                <table class="table" id="ed_tablaPreguntas" style="display:none;">
-                                    <thead>
-                                        <tr>
-                                            <td><b>PREGUNTA</b></td>
-                                            <td><b>TIPO RESPUESTA</b></td>
-                                            <td><b>TIPO CONTROL</b></td>
-                                            <td><b>OPCIONES</b></td>
-                                        </tr>
-                                    </thead>
-                                    <tbody id="ed_TbodyPreguntas"></tbody>
-
-
-                                </table>
-                                <div class="alert alert-info" id="ed_msnTablavacia" style="width: 50%; align-content: center; margin-top:20px; margin-bottom:20px; margin-left:60px;">
-
-                                    <h4><i class="icon fa fa-info"></i> Atención!</h4>
-                                    Aun no tienes preguntas para tu encuesta .
-                                </div>
-
-                            </div>
-                        </div><!-- /.tab-pane -->
-                        <div class="tab-pane" id="tab_3_ed">
-
-                        </div><!-- /.tab-pane -->
-                    </div><!-- /.tab-content -->
-                </div>
-            </div>
-            <div class="modal-footer">
-                <button class="btn btn-default pull-left" type="button" data-dismiss="modal">cerrar</button>
-                <button class="btn btn-primary" id="guardarEncuesta" type="button">Guardar encuesta</button>
-            </div>
-        </div>
-    </div>
-</div>*@
-
-
-
-
 <div class="modal fade bs-example-modal-lg" id="ModalAgregarPregunta" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" data-backdrop="static" data-keyboard="false">
     <div class="modal-dialog modal-lg">
         <div class="modal-content">
@@ -237,13 +165,7 @@
                                     </select>
                                 </td>
                             </tr>
-
-
-
-
                         </tbody>
-
-
                     </table>
                     <div class="container">
                         <div class="row" id="PanelPreguntaAbierta" style="display:none;">
