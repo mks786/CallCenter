@@ -68,7 +68,8 @@ namespace SoftvMVC.Controllers
 
         public ActionResult ListaConexiones()
         {
-            return Json(proxy.GetConexionList());
+            var lista=proxy.GetConexionList().Select(o => new { o.IdConexion, o.Plaza });
+            return Json(lista,JsonRequestBehavior.AllowGet);
 
         }
 
