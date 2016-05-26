@@ -379,7 +379,7 @@ namespace SoftvMVC.Controllers
         }
 
 
-        public List<CLIENTEEntity2> GetClientesPorCoincidencia(int conexion,string abuscar)
+        public List<CLIENTEEntity2> GetClientesPorCoincidencia(int conexion)
         {
             ConexionController c = new ConexionController();
             SqlCommand comandoSql;
@@ -392,7 +392,7 @@ namespace SoftvMVC.Controllers
             catch
             { }
 
-            comandoSql = new SqlCommand("SELECT * FROM CLIENTES where Nombre Like %"+abuscar+"%");
+            comandoSql = new SqlCommand("SELECT * FROM CLIENTES");
             comandoSql.Connection = conexionSQL;
             SqlDataReader reader = comandoSql.ExecuteReader();
             if (reader.HasRows)
