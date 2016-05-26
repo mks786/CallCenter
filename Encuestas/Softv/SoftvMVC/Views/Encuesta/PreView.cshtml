@@ -56,13 +56,19 @@
                 <form id="encuestaForm">
                     <div class="row">
                         <div class="col-md-4 col-md-offset-1">
-                            <select class="form-control" id="conexion_plaza">
-                                <option value="default" selected disabled>Selecciona la plaza</option>
-                            </select>
+                            <div class="col-md-9">
+                                <select class="form-control" id="conexion_plaza">
+                                    <option value="default" selected disabled>Selecciona la plaza</option>
+                                </select>
+                            </div>
+                           
+                            <div class="col-md-3" id="recargar_pagina" style="display:none;">
+                                <a href="javascript:window.location.href=window.location.href" class="btn btn-primary"><i class="fa fa-refresh" aria-hidden="true"></i></a>
+                            </div>
                         </div>
-                        <div class="col-md-7">
+                        <div class="col-md-6" id="panel_cliente" style="display:none;">
                             <div class="form-group">
-                                <div class="col-md-11" style="padding-top:-25px;">
+                                <div class="col-md-11">
                                     <input type="text" class="flexdatalist form-control" placeholder="Nombre del cliente" name="cliente" id="cliente_id" required />
                                 </div>
                             </div>
@@ -170,33 +176,24 @@
     });
 
 
-
     $("#conexion_plaza").change(function () {
+        $('#conexion_plaza').attr('disabled', '');
+        $('#recargar_pagina').show();
         var id_plaza = $('#conexion_plaza').val();
-        $.ajax({
-            url: "/CLIENTE/GetClientesPorCoincidencia/",
-            type: "POST",
-            data: { "conexion": id_plaza },
-            success: function (data, textStatus, jqXHR) {
-                console.log(data);
-            },
-            error: function (data,jqXHR, textStatus, errorThrown) {
-                console.log(data);
-            }
+        var api = '/CLIENTE/GetClientesPorCoincidencia/?conexion=' + id_plaza;
+        $('#panel_cliente').show();
+        $('.flexdatalist').flexdatalist({
+            minLength: 1,
+            url: api,
+            selectionRequired: true,
+            valueProperty: 'CONTRATO',
+            textProperty: '{NOMBRE},{CONTRATO}',
+            visibleProperties: ["NOMBRE", "CONTRATO"],
+            searchIn: "NOMBRE",
         });
-        
     });
-
-    $('.flexdatalist').flexdatalist({
-        minLength: 1,   
-        url: '/Cliente/ListaClientes/',
-        selectionRequired: true,
-        valueProperty: 'CONTRATO',
-        textProperty: '{NOMBRE},{CONTRATO}',
-        visibleProperties: ["NOMBRE", "CONTRATO"],
-        searchIn: "NOMBRE",
-    });
-
+    
+  
 
     function enviarEncuesta() {
         var cliente = $('#cliente_id').val();
@@ -212,6 +209,7 @@
             var count = 0;
             datos.id_encuesta = new Array();
             datos.cliente = new Array();
+            datos.id_plaza = new Array();
             datos.pregunta = new Array();
             datos.respuestas = new Array();
             var cliente = [];
@@ -250,6 +248,7 @@
                 }
                 return obj;
             }, {});
+            datos.id_plaza = parseInt(plaza);
             datos.cliente = parseInt(cliente[0].id_cliente);
             datos.id_encuesta = parseInt($('#encuesta_id').val());
             for (var i = 0; i < datos_preguntas.length; i++) {
@@ -271,8 +270,6 @@
                 }
             }
 
-            console.log(datos);
-            console.log($('#encuestaForm').serialize());
             $.ajax({
                 url: "/Encuesta/DatosEncuesta/",
                 type: "POST",

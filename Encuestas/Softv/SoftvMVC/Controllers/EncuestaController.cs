@@ -375,7 +375,7 @@ namespace SoftvMVC.Controllers
         {
             public int cliente { get; set; }
             public int id_encuesta { get; set; }
-
+            public int id_plaza{ get; set; }
             public List<preguntas> pregunta { get; set; }
 
             public List<respuestas> respuestas { get; set; }
