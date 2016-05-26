@@ -49,6 +49,7 @@ namespace SoftvMVC.Controllers
         {
             PermisosAcceso("CLIENTE");           
             List<ConexionEntity> conexiones = proxycon.GetConexionList();
+
             ViewData["Conexiones"] = conexiones;
             return View();
 

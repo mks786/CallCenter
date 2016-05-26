@@ -1,13 +1,11 @@
-﻿@*@{
-        ViewBag.Title = "Index";
-        Layout = "~/Views/Shared/_Layout.cshtml";
-    }
-
-    <h2>Index</h2>*@
-
+﻿@{
+    List<Softv.Entities.RoleEntity> Roles = (List<Softv.Entities.RoleEntity>)ViewData["Roles"];
+}
+<link rel="stylesheet" href="~/plugins/iCheck/square/blue.css">
+<script src="~/plugins/iCheck/icheck.min.js"></script>
 <section class="content-header">
     <h1>
-        Encuestas
+        Usuarios
         <small>Lista de Usuarios</small>
     </h1>
     <ol class="breadcrumb">
@@ -15,12 +13,12 @@
         <li class="active">Lista de Usuarios</li>
     </ol>
 </section>
-
+<br />
 <div class="row">
     <div class="col-xs-12">
         <div class="box">
             <div class="box-header">
-                <h3 class="box-title">Lista de Usuarios</h3>
+                
 
             </div><!-- /.box-header -->
             <div class="box-body">
@@ -64,7 +62,7 @@
 
 
 
-@*MODAL AGREGAR Usuario*@
+
 <div class="modal fade bs-example-modal-lg" id="ModalAgregarUsuario" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel">
     <div class="modal-dialog modal-lg">
         <div class="modal-content">
@@ -76,8 +74,8 @@
                 <div class="nav-tabs-custom">
                     <ul class="nav nav-tabs">
                         <li class="active"><a href="#tab_1" data-toggle="tab" aria-expanded="true">Información principal</a></li>
-                        @*<li class=""><a href="#tab_2" id="tab-preguntas" data-toggle="tab" aria-expanded="false">Preguntas</a></li>*@
-                        <li class=""><a href="#tab_3" data-toggle="tab" aria-expanded="false">Configuración</a></li>
+
+
 
                         <li class="pull-right"><a href="#" class="text-muted"><i class="fa fa-gear"></i></a></li>
                     </ul>
@@ -85,61 +83,71 @@
                         <div class="tab-pane active" id="tab_1">
                             <div class="row">
                                 <div class="col-xs-12">
-                                    <table class="table">
-                                        <thead>
-                                        </thead>
-                                        <tbody>
-                                            <tr>
-                                                <td><input type="text" class="form-control" placeholder="Nombre del usuario"> @*Nombre*@
-                                                <td><input type="text" class="form-control" placeholder="Email"></td>
-                                            </tr>
-                                           
-                                            <tr>
-                                                <td><input type="text" class="form-control" placeholder="Rol"></td> @*IdRol*@
-                                                @*<td><input type="text" class="form-control" placeholder="Password"></td>*@
-                                                <td><input type="text" class="form-control" placeholder="Estado"></td>
-                                            </tr>
-                                        </tbody>
-                                    </table>
+                                    
+                                        <div class="row">
+                                            <div class="col-sm-5">
+                                                <input type="text" class="form-control" id="Nombre" placeholder="Nombre del usuario">
+                                            </div>
+                                            <div class="col-sm-5">
+                                                <input type="email" class="form-control" id="email" placeholder="Email" >
+                                            </div>                                           
+                                        </div>
+                                        <br />
+
+                                    <div class="row">
+                                        <div class="col-sm-5">
+                                            
+                                            <input id="pass" type="password" class="form-control" placeholder="teclea la contraseña" />
+                                        </div>
+                                        <div class="col-sm-5">
+                                            <input id="cpass" type="password" class="form-control" placeholder="confirma contraseña" />
+                                        </div>
+                                    </div>
+
+
+
+
+                                        <div class="row">
+                                            <div class="col-sm-5">
+                                                <select class="form-control" id="rol">
+                                                    <option disabled selected> Selecciona un Rol</option>
+                                                    @foreach (var a in Roles)
+                                                    {
+                                                        <option value="@a.IdRol">@a.Nombre</option>
+                                                    }
+
+                                                </select>
+
+                                            </div>
+                                            <div class="col-sm-5">
+                                                <div class="checkbox icheck">
+                                                    <input id="Status" type="checkbox" name="" value="status">
+                                                    <label for=""> Activo</label>
+                                                </div>
+                                            </div>
+                                        </div>
+
+
+                                   
                                 </div>
                             </div>
                             <br />
-                            @*<div class="row">
-                                <div class="col-xs-12">
-                                    <textarea class="form-control" placeholder="Descripción del usuario"></textarea>
-                                </div>
-                            </div>*@
-                        </div><!-- /.tab-pane -->
-                        @*<div class="tab-pane" id="tab_2">
-                            <button class="btn btn-success" id="AddPregunta" onclick="DetallePreguntas();"><i class="fa fa-plus" aria-hidden="true"></i> Agregar pregunta</button>
-                            <div class="row">
-                                <table class="table" id="tablaPreguntas">
-                                    <thead>
-                                        <tr>
-                                            <td>PREGUNTA</td>
-                                            <td>TIPO RESPUESTA</td>
-                                            <td>OPCIONES</td>
-                                        </tr>
-                                    </thead>
-                                    <tbody id="TbodyPreguntas"></tbody>
-                                </table>
-                            </div>
-                        </div>*@<!-- /.tab-pane -->
-                        <div class="tab-pane" id="tab_3">
-                        </div><!-- /.tab-pane -->
-                    </div><!-- /.tab-content -->
+
+
+                        </div><!-- /.tab-content -->
+                    </div>
                 </div>
-            </div>
-            <div class="modal-footer">
-                <button class="btn btn-default pull-left" type="button" data-dismiss="modal">cerrar</button>
-                <button class="btn btn-primary" type="button">Guardar Usuario</button>
+                <div class="modal-footer">
+                    <button class="btn btn-primary" type="button" data-dismiss="modal">Salir</button>
+                    <button class="btn btn-success" onclick="GuardaUsuario();" type="button"> <i class="fa fa-check" aria-hidden="true"></i> Guardar Usuario</button>
+                </div>
+               
             </div>
         </div>
     </div>
+
+
 </div>
-
-
-
 
 
 @*MODAL DETALLE USUARIOS*@
@@ -164,9 +172,20 @@
 
 
 
-<script src="~/dist/js/pages/Usuario/Lista.js">
- //Ruta de lista.js
+<script src="~/dist/js/pages/Usuario/Lista.js"></script>
+    <script src="~/dist/js/pages/Usuario/AgregarUsuario.js"></script>
+    <script>
+        $(function () {
+            $('input').iCheck({
+                checkboxClass: 'icheckbox_square-blue',
+                radioClass: 'iradio_square-blue',
+                increaseArea: '20%' // optional
+            });
+        });
 
-</script>
+
+
+    </script>
+    
 
 

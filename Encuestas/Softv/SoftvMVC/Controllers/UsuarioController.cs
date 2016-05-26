@@ -81,25 +81,11 @@ namespace SoftvMVC.Controllers
 
         public ActionResult Index(int? page, int? pageSize)
         {
-            PermisosAcceso("Usuario");
-            ViewData["Title"] = "Usuario";
-            ViewData["Message"] = "Usuario";
-            int pSize = pageSize ?? SoftvMVC.Properties.Settings.Default.pagnum;
-            int pageNumber = (page ?? 1);
-            SoftvList<UsuarioEntity> listResult = null;
-            List<UsuarioEntity> listUsuario = new List<UsuarioEntity>();
-
-            listResult = proxy.GetUsuarioPagedListXml(pageNumber, pSize, SerializeTool.Serialize<UsuarioEntity>(new UsuarioEntity() { Estado = true }));
-            listResult.ToList().ForEach(x => listUsuario.Add(x));
-
-            List<RoleEntity> lge = new List<RoleEntity>();
-            lge.Add(new RoleEntity() { IdRol = null, Nombre = "Todos" });
-            lge.AddRange(proxyRole.GetRoleList().OrderBy(x => x.Nombre.Trim()));
-            ViewBag.IdRoltxt = new SelectList(lge, "IdRol", "Nombre");
-
+            PermisosAcceso("Usuario");            
+            ViewData["Roles"] = proxyRole.GetRoleList();
             CheckNotify();
             ViewBag.CustomScriptsDefault = BuildScriptsDefault("Usuario");
-            return View(new StaticPagedList<UsuarioEntity>(listUsuario, pageNumber, pSize, listResult.totalCount));
+            return View();
         }
 
         public ActionResult Details(int id = 0)
