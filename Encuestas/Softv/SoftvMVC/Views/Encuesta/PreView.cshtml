@@ -169,6 +169,24 @@
 
     });
 
+
+
+    $("#conexion_plaza").change(function () {
+        var id_plaza = $('#conexion_plaza').val();
+        $.ajax({
+            url: "/CLIENTE/GetClientesPorCoincidencia/",
+            type: "POST",
+            data: { "conexion": id_plaza },
+            success: function (data, textStatus, jqXHR) {
+                console.log(data);
+            },
+            error: function (data,jqXHR, textStatus, errorThrown) {
+                console.log(data);
+            }
+        });
+        
+    });
+
     $('.flexdatalist').flexdatalist({
         minLength: 1,   
         url: '/Cliente/ListaClientes/',
