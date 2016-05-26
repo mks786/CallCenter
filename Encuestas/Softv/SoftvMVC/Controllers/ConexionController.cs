@@ -65,7 +65,14 @@ namespace SoftvMVC.Controllers
            string con = "Data Source=" + Conexion.Servidor + ";Initial Catalog="+Conexion.BaseDeDatos+";User ID="+Conexion.Usuario+";Password="+Conexion.Password+"; ";
             return con;
         }
-          
+
+        public ActionResult ListaConexiones()
+        {
+            return Json(proxy.GetConexionList());
+
+        }
+
+
 
      
 
