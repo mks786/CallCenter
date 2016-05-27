@@ -10,7 +10,7 @@
 }
 <section class="content-header">
     <h1>
-        Encuestas
+        Clientes
         <small>Lista de Clientes</small>
     </h1>
     <ol class="breadcrumb">
@@ -18,7 +18,7 @@
         <li class="active">Lista de Clientes</li>
     </ol>
 </section>
-
+<br />
 <div class="row">
     <div class="col-xs-12">
         <div class="box">
@@ -27,14 +27,34 @@
 
             </div><!-- /.box-header -->
             <div class="box-body">
-                <label>Selecciona una plaza</label>
-                <select class="form-control" id="conexiones" style="width:50%">
-                    @foreach (var a in conexiones)
-                    {
-                        <option value="@a.IdConexion.Value">@a.Plaza</option>
-                    }
+                <div class="row">
+                    <div class="col-md-4">
+                        <label>Selecciona una plaza</label>
+                        <select class="form-control" id="conexiones">
+                            @foreach (var a in conexiones)
+                            {
+                                <option value="@a.IdConexion.Value">@a.Plaza</option>
+                            }
 
-                </select>
+                        </select>
+
+                    </div>
+                    <div class="col-md-4">
+                        <label>Buscar por:</label>
+                        <select class="form-control">
+                            <option value="1">Contrato</option>
+                            <option value="2">Nombre</option>
+                            <option value="3">Colonia</option>
+                        </select>
+
+                    </div>
+                    <div class="col-md-4">
+
+
+                    </div>
+
+                </div>
+               
                 <br />
                 <table id="TablaClientes" class="table table-bordered table-hover dataTable">
                     <thead>
@@ -75,8 +95,8 @@
 
                 <div class="nav-tabs-custom">
                     <ul class="nav nav-tabs">
-                        <li class="active"><a href="#tab_1" data-toggle="tab" aria-expanded="true">Información principal</a></li>
-                        <li class=""><a href="#tab_2a" id="tab-preguntas" data-toggle="tab" aria-expanded="false">Datos Fiscales</a></li>
+                        <li class="active"><a href="#tab_1" data-toggle="tab" aria-expanded="true"><i class="fa fa-folder" aria-hidden="true"></i> Información principal</a></li>
+                        <li class=""><a href="#tab_2a" id="tab-preguntas" data-toggle="tab" aria-expanded="false"><i class="fa fa-book" aria-hidden="true"></i> Datos Fiscales</a></li>
                     </ul>
                     <div class="tab-content">
                         <div class="tab-pane active" id="tab_1">
@@ -324,6 +344,15 @@
                         <h3 class="box-title box-primary">Datos personales</h3>
                     </div>
                     <div class="box-body">
+
+                        <div class="info-box">
+                            <span class="info-box-icon bg-aqua"><i class="fa fa-envelope-o"></i></span>
+                            <div class="info-box-content">
+                                <span class="info-box-text">Messages</span>
+                                <span class="info-box-number">1,410</span>
+                            </div><!-- /.info-box-content -->
+                        </div>
+
 
                         <div class="row">
                             <div class="col-xs-6">

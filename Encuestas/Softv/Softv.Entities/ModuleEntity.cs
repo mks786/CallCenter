@@ -70,6 +70,9 @@ namespace Softv.Entities
         /// </summary>
         [DataMember]
         public bool? OptDelete { get; set; }
+
+        [DataMember]
+        public string Icono { get; set; }
         [DataMember]
         public PermisoEntity Permiso { get; set; }
 

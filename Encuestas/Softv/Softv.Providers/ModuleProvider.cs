@@ -117,6 +117,7 @@ namespace Softv.Providers
                 entity_Module.OptSelect = (bool?)(GetFromReader(reader, "OptSelect"));
                 entity_Module.OptUpdate = (bool?)(GetFromReader(reader, "OptUpdate"));
                 entity_Module.OptDelete = (bool?)(GetFromReader(reader, "OptDelete"));
+                entity_Module.Icono = (String)(GetFromReader(reader, "Icono"));
 
             }
             catch (Exception ex)

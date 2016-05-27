@@ -23,13 +23,13 @@
                 String StrUri = String.Format("{0}://{1}{2}{3}", MyUri.Scheme, MyUri.Host, MyUri.IsDefaultPort ? "" : ":" + MyUri.Port.ToString(), mp.ModulePath);
 
 
+                
 
-
-                <a href="#"><i class="fa fa-dashboard"></i> <span>@mp.Description</span> <i class="fa fa-angle-left pull-right"></i></a>
+                <a href="#"><i class="@mp.Icono"></i> <span>@mp.Description</span> <i class="fa fa-angle-left pull-right"></i></a>
             }
             else
             {
-                <a href="#"><i class="fa fa-dashboard"></i> <span>@mp.Description</span> <i class="fa fa-angle-left pull-right"></i></a>
+                <a href="#"><i class="@mp.Icono"></i> <span>@mp.Description</span> <i class="fa fa-angle-left pull-right"></i></a>
             }
 
 
@@ -45,7 +45,7 @@
         <li class="active treeview">
             @if (mp.ModuleView != "index")
             {
-                <a href="#"><i class="fa fa-dashboard"></i> <span>@mp.Description</span> <i class="fa fa-angle-left pull-right"></i></a>
+                <a href="#"><i class="@mp.Icono"></i> <span>@mp.Description</span> <i class="fa fa-angle-left pull-right"></i></a>
 
             }
             else
@@ -54,11 +54,11 @@
                 {
                     var MyUri = HttpContext.Current.Request.Url;
                     String StrUri = String.Format("{0}://{1}{2}{3}", MyUri.Scheme, MyUri.Host, MyUri.IsDefaultPort ? "" : ":" + MyUri.Port.ToString(), mp.ModulePath);
-                    <a href="#"><i class="fa fa-dashboard"></i> <span>@mp.Description</span> <i class="fa fa-angle-left pull-right"></i></a>
+                    <a href="#"><i class="@mp.Icono"></i> <span>@mp.Description</span> <i class="fa fa-angle-left pull-right"></i></a>
                 }
                 else
                 {
-                    <a href="#"><i class="fa fa-dashboard"></i> <span>@mp.Description</span> <i class="fa fa-angle-left pull-right"></i></a>
+                    <a href="#"><i class="@mp.Icono"></i> <span>@mp.Description</span> <i class="fa fa-angle-left pull-right"></i></a>
                 }
 
             }
@@ -105,7 +105,7 @@
                     }
                     else
                     {
-                        @:<a href="@Url.Action(@cp.ModuleView, @cp.ModulePath)" id="@cp.ParentId" onclick="active()">@cp.Description</a>
+                        @:<a href="@Url.Action(@cp.ModuleView, @cp.ModulePath)" id="@cp.ParentId" onclick="active()"><i class="fa fa-circle-o"></i> @cp.Description</a>
                         
 
                     }
