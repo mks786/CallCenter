@@ -416,7 +416,9 @@ namespace SoftvMVC.Controllers
             rel.IdEncuesta = encuesta.id_encuesta;
             rel.Contrato = encuesta.cliente;
             rel.FechaApli = DateTime.Now;
+            rel.IdConexion = encuesta.id_plaza;
             int result = relenc_clientes.AddRelEncuestaClientes(rel);
+
 
 
             foreach (var a in encuesta.pregunta)

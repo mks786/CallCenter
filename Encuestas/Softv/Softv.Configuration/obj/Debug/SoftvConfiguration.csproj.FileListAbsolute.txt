@@ -96,13 +96,6 @@ C:\Users\programador\Documents\GitHub\CallCenter\Encuestas\Softv\Softv.Configura
 C:\Users\programador\Documents\GitHub\CallCenter\Encuestas\Softv\Softv.Configuration\obj\Debug\SoftvConfiguration.csprojResolveAssemblyReference.cache
 C:\Users\programador\Documents\GitHub\CallCenter\Encuestas\Softv\Softv.Configuration\obj\Debug\SoftvConfiguration.dll
 C:\Users\programador\Documents\GitHub\CallCenter\Encuestas\Softv\Softv.Configuration\obj\Debug\SoftvConfiguration.pdb
-C:\Users\Israel\Documents\projects\CallCenter\Encuestas\Softv\Softv.Configuration\bin\Debug\SoftvConfiguration.dll
-C:\Users\Israel\Documents\projects\CallCenter\Encuestas\Softv\Softv.Configuration\bin\Debug\SoftvConfiguration.pdb
-C:\Users\Israel\Documents\projects\CallCenter\Encuestas\Softv\Softv.Configuration\bin\Debug\Globals.dll
-C:\Users\Israel\Documents\projects\CallCenter\Encuestas\Softv\Softv.Configuration\bin\Debug\Globals.pdb
-C:\Users\Israel\Documents\projects\CallCenter\Encuestas\Softv\Softv.Configuration\obj\Debug\SoftvConfiguration.csprojResolveAssemblyReference.cache
-C:\Users\Israel\Documents\projects\CallCenter\Encuestas\Softv\Softv.Configuration\obj\Debug\SoftvConfiguration.dll
-C:\Users\Israel\Documents\projects\CallCenter\Encuestas\Softv\Softv.Configuration\obj\Debug\SoftvConfiguration.pdb
 C:\Users\Lizeth\Documents\CallCenter\Encuestas\Softv\Softv.Configuration\bin\Debug\SoftvConfiguration.dll
 C:\Users\Lizeth\Documents\CallCenter\Encuestas\Softv\Softv.Configuration\bin\Debug\SoftvConfiguration.pdb
 C:\Users\Lizeth\Documents\CallCenter\Encuestas\Softv\Softv.Configuration\bin\Debug\Globals.dll
@@ -110,3 +103,10 @@ C:\Users\Lizeth\Documents\CallCenter\Encuestas\Softv\Softv.Configuration\bin\Deb
 C:\Users\Lizeth\Documents\CallCenter\Encuestas\Softv\Softv.Configuration\obj\Debug\SoftvConfiguration.csprojResolveAssemblyReference.cache
 C:\Users\Lizeth\Documents\CallCenter\Encuestas\Softv\Softv.Configuration\obj\Debug\SoftvConfiguration.dll
 C:\Users\Lizeth\Documents\CallCenter\Encuestas\Softv\Softv.Configuration\obj\Debug\SoftvConfiguration.pdb
+C:\Users\Israel\Documents\projects\CallCenter\Encuestas\Softv\Softv.Configuration\bin\Debug\SoftvConfiguration.dll
+C:\Users\Israel\Documents\projects\CallCenter\Encuestas\Softv\Softv.Configuration\bin\Debug\SoftvConfiguration.pdb
+C:\Users\Israel\Documents\projects\CallCenter\Encuestas\Softv\Softv.Configuration\bin\Debug\Globals.dll
+C:\Users\Israel\Documents\projects\CallCenter\Encuestas\Softv\Softv.Configuration\bin\Debug\Globals.pdb
+C:\Users\Israel\Documents\projects\CallCenter\Encuestas\Softv\Softv.Configuration\obj\Debug\SoftvConfiguration.csprojResolveAssemblyReference.cache
+C:\Users\Israel\Documents\projects\CallCenter\Encuestas\Softv\Softv.Configuration\obj\Debug\SoftvConfiguration.dll
+C:\Users\Israel\Documents\projects\CallCenter\Encuestas\Softv\Softv.Configuration\obj\Debug\SoftvConfiguration.pdb
