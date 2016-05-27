@@ -601,6 +601,8 @@
     <Content Include="dist\js\jquery.flexdatalist.css" />
     <Content Include="dist\js\jquery.flexdatalist.js" />
     <Content Include="dist\js\pace.min.js" />
+    <Content Include="dist\js\pages\Cliente\DetalleCliente.js" />
+    <Content Include="dist\js\pages\Cliente\EditaCliente.js" />
     <Content Include="dist\js\pages\Cliente\Lista.js" />
     <Content Include="dist\js\pages\Conexion\Lista.js" />
     <Content Include="dist\js\pages\dashboard.js" />
