@@ -4377,7 +4377,7 @@ namespace SoftvMVC.SoftvService {
         Softv.Entities.CVECAROLEntity GetCVECAROL(System.Nullable<int> Clv_Colonia);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ICVECAROL/GetCVECAROL", ReplyAction="http://tempuri.org/ICVECAROL/GetCVECAROLResponse")]
-        System.Threading.Tasks.Task<Softv.Entities.CVECAROLEntity> GetCVECAROLAsync(System.Nullable<int> Clv_Calle, System.Nullable<int> Clv_Colonia);
+        System.Threading.Tasks.Task<Softv.Entities.CVECAROLEntity> GetCVECAROLAsync(System.Nullable<int> Clv_Colonia);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ICVECAROL/GetDeepCVECAROL", ReplyAction="http://tempuri.org/ICVECAROL/GetDeepCVECAROLResponse")]
         Softv.Entities.CVECAROLEntity GetDeepCVECAROL(System.Nullable<int> Clv_Calle, System.Nullable<int> Clv_Colonia);
@@ -4419,7 +4419,7 @@ namespace SoftvMVC.SoftvService {
         int DeleteCVECAROL(System.Nullable<int> Clv_Colonia);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ICVECAROL/DeleteCVECAROL", ReplyAction="http://tempuri.org/ICVECAROL/DeleteCVECAROLResponse")]
-        System.Threading.Tasks.Task<int> DeleteCVECAROLAsync(string BaseRemoteIp, int BaseIdUser, System.Nullable<int> Clv_Calle, System.Nullable<int> Clv_Colonia);
+        System.Threading.Tasks.Task<int> DeleteCVECAROLAsync(System.Nullable<int> Clv_Colonia);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -4453,8 +4453,8 @@ namespace SoftvMVC.SoftvService {
             return base.Channel.GetCVECAROL(Clv_Colonia);
         }
         
-        public System.Threading.Tasks.Task<Softv.Entities.CVECAROLEntity> GetCVECAROLAsync(System.Nullable<int> Clv_Calle, System.Nullable<int> Clv_Colonia) {
-            return base.Channel.GetCVECAROLAsync(Clv_Calle, Clv_Colonia);
+        public System.Threading.Tasks.Task<Softv.Entities.CVECAROLEntity> GetCVECAROLAsync(System.Nullable<int> Clv_Colonia) {
+            return base.Channel.GetCVECAROLAsync(Clv_Colonia);
         }
         
         public Softv.Entities.CVECAROLEntity GetDeepCVECAROL(System.Nullable<int> Clv_Calle, System.Nullable<int> Clv_Colonia) {
@@ -4509,8 +4509,8 @@ namespace SoftvMVC.SoftvService {
             return base.Channel.DeleteCVECAROL(Clv_Colonia);
         }
         
-        public System.Threading.Tasks.Task<int> DeleteCVECAROLAsync(string BaseRemoteIp, int BaseIdUser, System.Nullable<int> Clv_Calle, System.Nullable<int> Clv_Colonia) {
-            return base.Channel.DeleteCVECAROLAsync(BaseRemoteIp, BaseIdUser, Clv_Calle, Clv_Colonia);
+        public System.Threading.Tasks.Task<int> DeleteCVECAROLAsync(System.Nullable<int> Clv_Colonia) {
+            return base.Channel.DeleteCVECAROLAsync(Clv_Colonia);
         }
     }
     

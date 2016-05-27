@@ -114,6 +114,7 @@ namespace Softv.Providers
                 entity_RelEncuestaClientes.IdProceso = (int?)(GetFromReader(reader, "IdProceso"));
                 entity_RelEncuestaClientes.IdEncuesta = (int?)(GetFromReader(reader, "IdEncuesta"));
                 entity_RelEncuestaClientes.Contrato = (long?)(GetFromReader(reader, "Contrato"));
+                entity_RelEncuestaClientes.IdConexion = (int?)(GetFromReader(reader, "IdConexion"));
                 entity_RelEncuestaClientes.FechaApli = (DateTime?)(GetFromReader(reader, "FechaApli"));
 
             }

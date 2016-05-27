@@ -38,6 +38,11 @@ namespace Softv.Entities
         /// <summary>
         /// Property FechaApli
         /// </summary>
+        ///  [DataMember]
+        public int? IdConexion { get; set; }
+        /// <summary>
+        /// Property IdConexion
+        /// </summary>
         [DataMember]
         public DateTime? FechaApli { get; set; }
         [DataMember]

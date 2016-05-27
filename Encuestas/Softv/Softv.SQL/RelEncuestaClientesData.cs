@@ -41,6 +41,8 @@ namespace Softv.DAO
 
                 AssingParameter(comandoSql, "@FechaApli", entity_RelEncuestaClientes.FechaApli);
 
+                AssingParameter(comandoSql, "@IdConexion", entity_RelEncuestaClientes.IdConexion);
+
                 try
                 {
                     if (connection.State == ConnectionState.Closed)
