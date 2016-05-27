@@ -1,0 +1,240 @@
+﻿@{
+    Layout = "";
+
+}
+
+<html>
+
+<head>
+    <script src="~/plugins/jQuery/jQuery-2.1.4.min.js"></script>
+    <!-- Tell the browser to be responsive to screen width -->
+    <!-- Bootstrap 3.3.5 -->
+    <title>Nueva Llamada</title>
+    <link rel="stylesheet" href="~/bootstrap/css/bootstrap.css">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+    <!-- Ionicons -->
+    <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
+    <link href='https://fonts.googleapis.com/css?family=Arimo' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" href="~/plugins/iCheck/square/blue.css">
+    <link rel="stylesheet" href="~/plugins/iCheck/square/purple.css">
+    <link href="~/plugins/iCheck/square/orange.css" rel="stylesheet" />
+    <link href="~/plugins/sweetAlert/sweetalert.css" rel="stylesheet" />
+    <script src="~/plugins/sweetAlert/sweetalert.min.js"></script>
+    <style>
+        body {
+            background-color: #ECF0F5;
+        }
+    </style>
+
+    <link href="~/dist/js/jquery.flexdatalist.css" rel="stylesheet" />
+    <script src="~/dist/js/jquery.flexdatalist.js"></script>
+</head>
+<body>
+    <div class="container" style="background-color:#fff;  box-shadow: 2px 2px 5px #999; margin-top:10px; width:70%;">
+
+        <div class="rowf">
+
+            <h1 class="text-center" style="color:#4b646f; font-size:22px;"><strong>NUEVA LLAMADA</strong></h1>
+
+            <div class="page-title" style="background-color:#3c8dbc; color:#fff; width:100%;">
+                <div class="container">
+                    <h3 style="color:#fff; font-size:16px;">
+                        
+                    </h3>
+                </div>
+            </div><br />
+            <form id="encuestaForm">
+                <div class="row">
+                    <div class="col-md-4">
+                        <div class="col-md-9">
+                            <select class="form-control" id="conexion_plaza">
+                                <option value="default" selected disabled>Selecciona la plaza</option>
+                            </select>
+                        </div>
+
+                        <div class="col-md-3" id="recargar_pagina" style="display:none;">
+                            <a href="javascript:window.location.href=window.location.href" class="btn btn-primary"><i class="fa fa-refresh" aria-hidden="true"></i></a>
+                        </div>
+                    </div>
+                    <div class="col-md-6" id="panel_cliente" style="display:none;">
+                        <div class="form-group">
+                            <div class="col-md-11">
+                                <input type="text" class="flexdatalist form-control" placeholder="Nombre del cliente" name="cliente" id="cliente_id"  />
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6" id="panel_llamante" style="display:none;">
+                        <div class="form-group">
+                            <div class="col-md-11">
+                                <input type="text" class="form-control" placeholder="Nombre de la presona que llamó" name="persona_llamda" id="persona_llamda" />
+                            </div>
+                        </div>
+                    </div>
+                </div><br />
+                <div class="row">
+                    <div class="col-md-4">
+                        <div class="col-md-9">
+                            <select class="form-control" id="tipo_cliente">
+                                <option value="default" selected disabled>¿Quíen llama?</option>
+                                <option value="1">Cliente</option>
+                                <option value="2">No Cliente</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="col-md-12">
+                            <select class="form-control" id="motivo_llamada">
+                                <option value="default" selected disabled>¿Motivo de la llamada?</option>
+                                <option value="1">Informacíon</option>
+                                <option value="2">Queja</option>
+                                <option value="3">Asesoria Técnica</option>
+                            </select>
+                        </div>
+                    </div>
+                </div><br />
+                <div class="row" id="panel_informacion" style="display:none;">
+                    <div class="col-md-12">
+                        <div class="col-md-6">
+                            <textarea placeholder="Describa que información solicitó la persona que llamó" class="form-control"></textarea>
+                        </div>
+                    </div>
+                </div>
+                <div class="row" id="panel_queja" style="display:none;">
+                    <div class="col-md-12">
+                        <div class="col-md-6">
+                            <textarea placeholder="Describa la queja de la persona que habló" class="form-control"></textarea>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group" style="padding-top:20px;">
+                                <label class="col-md-2" for="radios">Solicionado</label>
+                                <div class="col-md-10">
+                                    <label class="radio-inline" for="id_sol_si">
+                                        <input type="radio" name="solucionado" id="id_sol_si" value="1">
+                                        SI
+                                    </label>
+                                    <label class="radio-inline" for="id_sol_no">
+                                        <input type="radio" name="solucionado" id="id_sol_no" value="2">
+                                        NO
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="container" style="margin-left:50px;">
+
+                </div><hr />
+                <div class="row">
+                    <div class="col-md-5 col-md-offset-7">
+                        <div class="" role="group" aria-label="...">
+                            <button type="button" class="btn btn-primary" onclick="enviarEncuesta()"><i class="fa fa-check" aria-hidden="true"></i> Guardar Llamada</button>
+                            @Html.ActionLink("Regresar", "Index", "Llamada", null, new { @class = "btn btn-info" })
+                        </div>
+                    </div>
+                </div>
+            </form>
+
+
+
+
+
+
+
+
+
+
+        </div>
+
+
+
+
+
+    </div>
+</body>
+<script src="~/plugins/iCheck/icheck.min.js"></script>
+<script>
+    $(function () {
+        $('input').iCheck({
+            checkboxClass: 'icheckbox_square-blue',
+            radioClass: 'iradio_square-blue',
+            increaseArea: '20%' // optional
+        });
+        $.ajax({
+            url: "/Conexion/ListaConexiones/",
+            type: "GET",
+            success: function (data, textStatus, jqXHR) {
+                for (var i = 0; i < data.length; i++) {
+                    $('#conexion_plaza').append($('<option>', {
+                        value: data[i].IdConexion,
+                        text: data[i].Plaza
+                    }));
+                }
+            },
+            error: function (jqXHR, textStatus, errorThrown) {
+
+            }
+        });
+
+    });
+
+
+    $("#conexion_plaza").change(function () {
+        $('#conexion_plaza').attr('disabled', '');
+        $('#recargar_pagina').show();
+        var id_plaza = $('#conexion_plaza').val();
+        var api = '/CLIENTE/GetClientesPorCoincidencia/?conexion=' + id_plaza;
+        
+        $('.flexdatalist').flexdatalist({
+            minLength: 1,
+            url: api,
+            selectionRequired: true,
+            valueProperty: 'CONTRATO',
+            textProperty: '{NOMBRE},{CONTRATO}',
+            visibleProperties: ["NOMBRE", "CONTRATO"],
+            searchIn: "NOMBRE",
+        });
+    });
+
+    $("#tipo_cliente").change(function () {
+        var tipo = $("#tipo_cliente").val();
+        if (tipo == 1) {
+            $('#panel_cliente').show();
+            $('#panel_llamante').hide();
+        } else if (tipo == 2) {
+            $('#panel_cliente').hide();
+            $('#panel_llamante').show();
+        }
+        
+    });
+    $('#motivo_llamada').change(function () {
+        var tipo = $('#motivo_llamada').val();
+        if (tipo == 1) {
+            $('#panel_informacion').show();
+            $('#panel_queja').hide();
+        } else if (tipo == 2) {
+            $('#panel_queja').show();
+            $('#panel_informacion').hide();
+        } else if (tipo == 3) {
+            $('#panel_informacion').hide();
+            $('#panel_queja').hide();
+        }
+    });
+
+    $('input:radio[name="solucionado"]').change(function () {
+        console.log($(this).val());
+        if ($(this).val() == '1') {
+            console.log('presionado');
+        } else {
+            console.log('no presionado');
+        }
+    });
+    
+
+</script>
+</html>
+
+
+
+
+

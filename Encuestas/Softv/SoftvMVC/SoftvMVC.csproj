@@ -1584,6 +1584,7 @@
     <Content Include="Views\RelEncuestaClientes\Index.cshtml" />
     <Content Include="Views\Cliente\Index.cshtml" />
     <Content Include="Views\Encuesta\PreView.cshtml" />
+    <Content Include="Views\Llamada\nueva_llamada.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
