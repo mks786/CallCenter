@@ -59,7 +59,7 @@ namespace SoftvMVC.Controllers
             }
             catch
             { }
-            comandoSql = new SqlCommand("select x3.Clv_Calle,x3.Nombre,x2.Clv_Colonia from CVECAROL x1 join COLONIAS x2 on x1.Clv_Colonia=x2.Clv_Colonia   join CALLES x3 on x3.Clv_Calle=x1.Clv_Calle where x2.Clv_Colonia=1 order by x3.Nombre");
+            comandoSql = new SqlCommand("select x3.Clv_Calle,x3.Nombre,x2.Clv_Colonia from CVECAROL x1 join COLONIAS x2 on x1.Clv_Colonia=x2.Clv_Colonia   join CALLES x3 on x3.Clv_Calle=x1.Clv_Calle where x2.Clv_Colonia=" + colonia + " order by x3.Nombre");
             comandoSql.Connection = conexionSQL;
             SqlDataReader reader = comandoSql.ExecuteReader();
             if (reader.HasRows)

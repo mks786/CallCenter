@@ -379,6 +379,52 @@ namespace SoftvMVC.Controllers
         }
 
 
+        public ActionResult GetDetalleFiscal(int contrato,int plaza)
+        {
+
+            ConexionController c = new ConexionController();
+            SqlCommand comandoSql;
+            DatoFiscalEntity datos = new DatoFiscalEntity();
+            List<CLIENTEEntity2> lista = new List<CLIENTEEntity2>();
+            SqlConnection conexionSQL = new SqlConnection(c.DameConexion(plaza));
+            try
+            {
+                conexionSQL.Open();
+            }
+            catch
+            { }           
+            comandoSql = new SqlCommand("SELECT * FROM DatosFiscales where Contrato=" + contrato);
+            
+            
+            comandoSql.Connection = conexionSQL;
+            SqlDataReader reader = comandoSql.ExecuteReader();
+            if (reader.HasRows)
+            {
+                while (reader.Read())
+                {
+                    
+                    datos.Contrato=Int32.Parse(reader[0].ToString());
+                    datos.RAZON_SOCIAL=reader[2].ToString();
+                    datos.RFC=reader[3].ToString();
+                    datos.CALLE_RS=reader[4].ToString();
+                    datos.NUMERO_RS=reader[5].ToString();
+                    datos.ENTRECALLES=reader[6].ToString();
+                    datos.COLONIA_RS=reader[7].ToString();
+                    datos.CIUDAD_RS=reader[8].ToString();
+                    datos.ESTADO_RS=reader[9].ToString();
+                    datos.CP_RS=reader[10].ToString();
+                    datos.TELEFONO_RS=reader[11].ToString();
+                    datos.FAX_RS=reader[12].ToString();                    
+                    datos.IDENTIFICADOR=Int32.Parse(reader[14].ToString());
+                    datos.CURP=reader[15].ToString();
+                    datos.id_asociado=Int32.Parse(reader[16].ToString());
+
+                }
+            }
+
+            return Json(datos,JsonRequestBehavior.AllowGet);
+        }
+
         public ActionResult GetClientesPorCoincidencia(int conexion)
         {
             ConexionController c = new ConexionController();
@@ -424,7 +470,7 @@ namespace SoftvMVC.Controllers
 
                 }
             }
-            return Json(lista,JsonRequestBehavior.AllowGet);
+           return Json(lista,JsonRequestBehavior.AllowGet);
         }
 
 
