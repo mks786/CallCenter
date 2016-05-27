@@ -255,6 +255,11 @@ namespace SoftvMVC.Controllers
             return View(objLlamada);
         }
 
+        public ActionResult nueva()
+        {
+            return View("nueva_llamada");
+        }
+
         public ActionResult Edit(int id = 0)
         {
             PermisosAccesoDeniedEdit("Llamada");
