@@ -25,6 +25,8 @@
     <link href="~/plugins/iCheck/square/orange.css" rel="stylesheet" />
     <link href="~/plugins/sweetAlert/sweetalert.css" rel="stylesheet" />
     <script src="~/plugins/sweetAlert/sweetalert.min.js"></script>
+    <link href="~/dist/js/jquery.flexdatalist.css" rel="stylesheet" />
+    <script src="~/dist/js/jquery.flexdatalist.js"></script>
     <style>
         
           
@@ -35,8 +37,7 @@
 
     </style>
 
-    <link href="~/dist/js/jquery.flexdatalist.css" rel="stylesheet" />
-    <script src="~/dist/js/jquery.flexdatalist.js"></script>
+    
 </head>
 <body>
     <div class="container" style="background-color:#fff;  box-shadow: 2px 2px 5px #999; margin-top:10px; width:70%;">
@@ -250,12 +251,7 @@
                         closeOnCancel: false
                     }, function (isConfirm) {
                         location.reload();
-                    });
-
-
-
-
-                   
+                    });        
 
                 },
                 error: function (jqXHR, textStatus, errorThrown) {

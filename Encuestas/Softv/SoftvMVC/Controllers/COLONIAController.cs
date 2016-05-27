@@ -8,6 +8,7 @@ using System.Web.Mvc;
 using PagedList;
 using Softv.Entities;
 using Globals;
+using System.Data.SqlClient;
 
 namespace SoftvMVC.Controllers
 {
@@ -58,143 +59,50 @@ namespace SoftvMVC.Controllers
             return View(new StaticPagedList<COLONIAEntity>(listResult.ToList(), pageNumber, pSize, listResult.totalCount));
         }
 
-        public ActionResult Details(int id = 0)
+        public class ColoniaWrapper
         {
-            COLONIAEntity objCOLONIA = proxy.GetCOLONIA(id);
-            if (objCOLONIA == null)
+            public int clv_colonia { get; set; }
+            public string Nombre { get; set; }
+
+            public int ciudad { get; set; }
+            public int plaza { get; set; }
+        }
+        public ActionResult GetColoniaByCiudad(int idciudad,int plaza)
+        {
+            ConexionController c = new ConexionController();
+            SqlCommand comandoSql;
+
+            List<ColoniaWrapper> lista = new List<ColoniaWrapper>();
+            SqlConnection conexionSQL = new SqlConnection(c.DameConexion(plaza));
+            try
             {
-                return HttpNotFound();
+                conexionSQL.Open();
             }
-            return PartialView(objCOLONIA);
-        }
-
-        public ActionResult Create()
-        {
-            PermisosAccesoDeniedCreate("COLONIA");
-            ViewBag.CustomScriptsPageValid = BuildScriptPageValid();
-
-            return View();
-        }
-
-        [HttpPost]
-        public ActionResult Create(COLONIAEntity objCOLONIA)
-        {
-            if (ModelState.IsValid)
+            catch
+            { }
+            comandoSql = new SqlCommand("SELECT x1.Clv_Colonia,x1.Nombre,x2.Clv_Ciudad FROM COLONIAS X1 JOIN CVECOLCIU X2 ON X1.Clv_Colonia=X2.Clv_Colonia WHERE X2.Clv_Ciudad="+idciudad+"order by Nombre");
+            comandoSql.Connection = conexionSQL;
+            SqlDataReader reader = comandoSql.ExecuteReader();
+            if (reader.HasRows)
             {
-
-                objCOLONIA.BaseRemoteIp = RemoteIp;
-                objCOLONIA.BaseIdUser = LoggedUserName;
-                int result = proxy.AddCOLONIA(objCOLONIA);
-                if (result == -1)
+                while (reader.Read())
                 {
-
-                    AssingMessageScript("El COLONIA ya existe en el sistema.", "error", "Error", true);
-                    CheckNotify();
-                    return View(objCOLONIA);
+                    ColoniaWrapper COLONIA = new ColoniaWrapper();
+                    COLONIA.clv_colonia = Int32.Parse(reader[0].ToString());
+                    COLONIA.Nombre = reader[1].ToString();
+                    COLONIA.plaza = plaza;
+                    COLONIA.ciudad = Int32.Parse(reader[2].ToString());
+                    lista.Add(COLONIA);
                 }
-                if (result > 0)
-                {
-                    AssingMessageScript("Se dio de alta el COLONIA en el sistema.", "success", "Éxito", true);
-                    return RedirectToAction("Index");
-                }
-
             }
-            return View(objCOLONIA);
+
+
+            return Json(lista, JsonRequestBehavior.AllowGet);
         }
 
-        public ActionResult Edit(int id = 0)
-        {
-            PermisosAccesoDeniedEdit("COLONIA");
-            ViewBag.CustomScriptsPageValid = BuildScriptPageValid();
-            COLONIAEntity objCOLONIA = proxy.GetCOLONIA(id);
-
-            if (objCOLONIA == null)
-            {
-                return HttpNotFound();
-            }
-            return View(objCOLONIA);
-        }
-
-        //
-        // POST: /COLONIA/Edit/5
-        [HttpPost]
-        public ActionResult Edit(COLONIAEntity objCOLONIA)
-        {
-            if (ModelState.IsValid)
-            {
-                objCOLONIA.BaseRemoteIp = RemoteIp;
-                objCOLONIA.BaseIdUser = LoggedUserName;
-                int result = proxy.UpdateCOLONIA(objCOLONIA);
-                if (result == -1)
-                {
-                    COLONIAEntity objCOLONIAOld = proxy.GetCOLONIA(objCOLONIA.Clv_Colonia);
-
-                    AssingMessageScript("El COLONIA ya existe en el sistema, .", "error", "Error", true);
-                    CheckNotify();
-                    return View(objCOLONIA);
-                }
-                if (result > 0)
-                {
-                    AssingMessageScript("El COLONIA se modifico en el sistema.", "success", "Éxito", true);
-                    CheckNotify();
-                    return RedirectToAction("Index");
-                }
-                return RedirectToAction("Index");
-            }
-            return View(objCOLONIA);
-        }
-
-        public ActionResult QuickIndex(int? page, int? pageSize, String Nombre)
-        {
-            int pageNumber = (page ?? 1);
-            int pSize = pageSize ?? SoftvMVC.Properties.Settings.Default.pagnum;
-            SoftvList<COLONIAEntity> listResult = null;
-            List<COLONIAEntity> listCOLONIA = new List<COLONIAEntity>();
-            COLONIAEntity objCOLONIA = new COLONIAEntity();
-            COLONIAEntity objGetCOLONIA = new COLONIAEntity();
-
-
-            if ((Nombre != null && Nombre.ToString() != ""))
-            {
-                objCOLONIA.Nombre = Nombre;
-            }
-
-            pageNumber = pageNumber == 0 ? 1 : pageNumber;
-            listResult = proxy.GetCOLONIAPagedListXml(pageNumber, pSize, Globals.SerializeTool.Serialize(objCOLONIA));
-            if (listResult.Count == 0)
-            {
-                int tempPageNumber = (int)(listResult.totalCount / pSize);
-                pageNumber = (int)(listResult.totalCount / pSize) == 0 ? 1 : tempPageNumber;
-                listResult = proxy.GetCOLONIAPagedListXml(pageNumber, pSize, Globals.SerializeTool.Serialize(objCOLONIA));
-            }
-            listResult.ToList().ForEach(x => listCOLONIA.Add(x));
-
-            var COLONIAAsIPagedList = new StaticPagedList<COLONIAEntity>(listCOLONIA, pageNumber, pSize, listResult.totalCount);
-            if (COLONIAAsIPagedList.Count > 0)
-            {
-                return PartialView(COLONIAAsIPagedList);
-            }
-            else
-            {
-                var result = new { tipomsj = "warning", titulomsj = "Aviso", Success = "False", Message = "No se encontraron registros con los criterios de búsqueda ingresados." };
-                return Json(result, JsonRequestBehavior.AllowGet);
-            }
-        }
-
-        public ActionResult Delete(int id = 0)
-        {
-            int result = proxy.DeleteCOLONIA(RemoteIp, LoggedUserName, id);
-            if (result > 0)
-            {
-                var resultOk = new { tipomsj = "success", titulomsj = "Aviso", Success = "True", Message = "Registro de COLONIA Eliminado." };
-                return Json(resultOk, JsonRequestBehavior.AllowGet);
-            }
-            else
-            {
-                var resultNg = new { tipomsj = "warning", titulomsj = "Aviso", Success = "False", Message = "El Registro de COLONIA No puede ser Eliminado validar dependencias." };
-                return Json(resultNg, JsonRequestBehavior.AllowGet);
-            }
-        }
+       
+     
+       
 
 
     }

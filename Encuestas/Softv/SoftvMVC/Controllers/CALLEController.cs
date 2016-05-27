@@ -8,6 +8,7 @@ using System.Web.Mvc;
 using PagedList;
 using Softv.Entities;
 using Globals;
+using System.Data.SqlClient;
 
 namespace SoftvMVC.Controllers
 {
@@ -43,157 +44,37 @@ namespace SoftvMVC.Controllers
 
         }
 
-        public ActionResult Index(int? page, int? pageSize)
+
+
+        public ActionResult GetCalleByColonia(int colonia, int plaza)
         {
-            PermisosAcceso("CALLE");
-            ViewData["Title"] = "CALLE";
-            ViewData["Message"] = "CALLE";
-            int pSize = pageSize ?? SoftvMVC.Properties.Settings.Default.pagnum;
-            int pageNumber = (page ?? 1);
-            SoftvList<CALLEEntity> listResult = proxy.GetCALLEPagedListXml(pageNumber, pSize, SerializeTool.Serialize<CALLEEntity>(new CALLEEntity()));
+            ConexionController c = new ConexionController();
+            SqlCommand comandoSql;
 
-
-            CheckNotify();
-            ViewBag.CustomScriptsDefault = BuildScriptsDefault("CALLE");
-            return View(new StaticPagedList<CALLEEntity>(listResult.ToList(), pageNumber, pSize, listResult.totalCount));
-        }
-
-        public ActionResult Details(int id = 0)
-        {
-            CALLEEntity objCALLE = proxy.GetCALLE(id);
-            if (objCALLE == null)
+            List<CALLEEntity> lista = new List<CALLEEntity>();
+            SqlConnection conexionSQL = new SqlConnection(c.DameConexion(plaza));
+            try
             {
-                return HttpNotFound();
+                conexionSQL.Open();
             }
-            return PartialView(objCALLE);
-        }
-
-        public ActionResult Create()
-        {
-            PermisosAccesoDeniedCreate("CALLE");
-            ViewBag.CustomScriptsPageValid = BuildScriptPageValid();
-
-            return View();
-        }
-
-        [HttpPost]
-        public ActionResult Create(CALLEEntity objCALLE)
-        {
-            if (ModelState.IsValid)
+            catch
+            { }
+            comandoSql = new SqlCommand("select x3.Clv_Calle,x3.Nombre,x2.Clv_Colonia from CVECAROL x1 join COLONIAS x2 on x1.Clv_Colonia=x2.Clv_Colonia   join CALLES x3 on x3.Clv_Calle=x1.Clv_Calle where x2.Clv_Colonia=1 order by x3.Nombre");
+            comandoSql.Connection = conexionSQL;
+            SqlDataReader reader = comandoSql.ExecuteReader();
+            if (reader.HasRows)
             {
-
-                objCALLE.BaseRemoteIp = RemoteIp;
-                objCALLE.BaseIdUser = LoggedUserName;
-                int result = proxy.AddCALLE(objCALLE);
-                if (result == -1)
+                while (reader.Read())
                 {
-
-                    AssingMessageScript("El CALLE ya existe en el sistema.", "error", "Error", true);
-                    CheckNotify();
-                    return View(objCALLE);
+                    CALLEEntity calle = new CALLEEntity();
+                    calle.Clv_Calle = Int32.Parse(reader[0].ToString());
+                    calle.Nombre = reader[1].ToString();
+                    lista.Add(calle);
                 }
-                if (result > 0)
-                {
-                    AssingMessageScript("Se dio de alta el CALLE en el sistema.", "success", "Éxito", true);
-                    return RedirectToAction("Index");
-                }
-
-            }
-            return View(objCALLE);
-        }
-
-        public ActionResult Edit(int id = 0)
-        {
-            PermisosAccesoDeniedEdit("CALLE");
-            ViewBag.CustomScriptsPageValid = BuildScriptPageValid();
-            CALLEEntity objCALLE = proxy.GetCALLE(id);
-
-            if (objCALLE == null)
-            {
-                return HttpNotFound();
-            }
-            return View(objCALLE);
-        }
-
-        //
-        // POST: /CALLE/Edit/5
-        [HttpPost]
-        public ActionResult Edit(CALLEEntity objCALLE)
-        {
-            if (ModelState.IsValid)
-            {
-                objCALLE.BaseRemoteIp = RemoteIp;
-                objCALLE.BaseIdUser = LoggedUserName;
-                int result = proxy.UpdateCALLE(objCALLE);
-                if (result == -1)
-                {
-                    CALLEEntity objCALLEOld = proxy.GetCALLE(objCALLE.Clv_Calle);
-
-                    AssingMessageScript("El CALLE ya existe en el sistema, .", "error", "Error", true);
-                    CheckNotify();
-                    return View(objCALLE);
-                }
-                if (result > 0)
-                {
-                    AssingMessageScript("El CALLE se modifico en el sistema.", "success", "Éxito", true);
-                    CheckNotify();
-                    return RedirectToAction("Index");
-                }
-                return RedirectToAction("Index");
-            }
-            return View(objCALLE);
-        }
-
-        public ActionResult QuickIndex(int? page, int? pageSize, String Nombre)
-        {
-            int pageNumber = (page ?? 1);
-            int pSize = pageSize ?? SoftvMVC.Properties.Settings.Default.pagnum;
-            SoftvList<CALLEEntity> listResult = null;
-            List<CALLEEntity> listCALLE = new List<CALLEEntity>();
-            CALLEEntity objCALLE = new CALLEEntity();
-            CALLEEntity objGetCALLE = new CALLEEntity();
-
-
-            if ((Nombre != null && Nombre.ToString() != ""))
-            {
-                objCALLE.Nombre = Nombre;
             }
 
-            pageNumber = pageNumber == 0 ? 1 : pageNumber;
-            listResult = proxy.GetCALLEPagedListXml(pageNumber, pSize, Globals.SerializeTool.Serialize(objCALLE));
-            if (listResult.Count == 0)
-            {
-                int tempPageNumber = (int)(listResult.totalCount / pSize);
-                pageNumber = (int)(listResult.totalCount / pSize) == 0 ? 1 : tempPageNumber;
-                listResult = proxy.GetCALLEPagedListXml(pageNumber, pSize, Globals.SerializeTool.Serialize(objCALLE));
-            }
-            listResult.ToList().ForEach(x => listCALLE.Add(x));
 
-            var CALLEAsIPagedList = new StaticPagedList<CALLEEntity>(listCALLE, pageNumber, pSize, listResult.totalCount);
-            if (CALLEAsIPagedList.Count > 0)
-            {
-                return PartialView(CALLEAsIPagedList);
-            }
-            else
-            {
-                var result = new { tipomsj = "warning", titulomsj = "Aviso", Success = "False", Message = "No se encontraron registros con los criterios de búsqueda ingresados." };
-                return Json(result, JsonRequestBehavior.AllowGet);
-            }
-        }
-
-        public ActionResult Delete(int id = 0)
-        {
-            int result = proxy.DeleteCALLE(RemoteIp, LoggedUserName, id);
-            if (result > 0)
-            {
-                var resultOk = new { tipomsj = "success", titulomsj = "Aviso", Success = "True", Message = "Registro de CALLE Eliminado." };
-                return Json(resultOk, JsonRequestBehavior.AllowGet);
-            }
-            else
-            {
-                var resultNg = new { tipomsj = "warning", titulomsj = "Aviso", Success = "False", Message = "El Registro de CALLE No puede ser Eliminado validar dependencias." };
-                return Json(resultNg, JsonRequestBehavior.AllowGet);
-            }
+            return Json(lista, JsonRequestBehavior.AllowGet);
         }
 
 

@@ -58,11 +58,20 @@ namespace SoftvMVC.Controllers
             return View(new StaticPagedList<CIUDADEntity>(listResult.ToList(), pageNumber, pSize, listResult.totalCount));
         }
 
+
+
+        public class CIUDADEntity2
+        {
+            public int Clv_Ciudad{get; set;}
+            public string Nombre{get; set; }
+            public int plaza { get; set; }
+        }
+
         public ActionResult GetCiudadByPlaza(int plaza){
              ConexionController c = new ConexionController();
             SqlCommand comandoSql;
             
-            List<CIUDADEntity> lista = new List<CIUDADEntity>();
+            List<CIUDADEntity2> lista = new List<CIUDADEntity2>();
             SqlConnection conexionSQL = new SqlConnection(c.DameConexion(plaza));
             try
             {
@@ -79,9 +88,10 @@ namespace SoftvMVC.Controllers
             {
                 while (reader.Read())
                 {
-                    CIUDADEntity ciudad = new CIUDADEntity();
+                    CIUDADEntity2 ciudad = new CIUDADEntity2();
                     ciudad.Clv_Ciudad=Int32.Parse(reader[0].ToString());
                     ciudad.Nombre=reader[1].ToString();
+                    ciudad.plaza = plaza;
                     lista.Add(ciudad);
                 }
             }
