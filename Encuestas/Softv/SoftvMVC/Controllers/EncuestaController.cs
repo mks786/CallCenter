@@ -12,6 +12,10 @@ using Globals;
 using Newtonsoft.Json;
 using System.Xml;
 using System.Xml.Linq;
+using iTextSharp.text.pdf;
+using System.IO;
+using iTextSharp.text;
+using System.Text;
 
 namespace SoftvMVC.Controllers
 {
@@ -407,6 +411,80 @@ namespace SoftvMVC.Controllers
             return Json(Lista, JsonRequestBehavior.AllowGet);
 
         }
+
+        public ActionResult EncuestaPDF(int idencuesta)
+        {
+         
+            Guid g = Guid.NewGuid();
+
+            string rutaarchivo = Server.MapPath("/Reportes") + g.ToString() + "Encuesta.pdf";
+            iTextSharp.text.Document document = new iTextSharp.text.Document(PageSize.A4, 20, 20, 20, 20);
+            PdfWriter writer = PdfWriter.GetInstance(document, new FileStream(rutaarchivo, FileMode.Create));
+            document.Open();
+            iTextSharp.text.html.simpleparser.HTMLWorker hw = new iTextSharp.text.html.simpleparser.HTMLWorker(document, null, null);
+            string Contenido = contenidopdf(idencuesta);           
+            hw.Parse(new StringReader(Contenido));
+            document.Close();
+            return File(rutaarchivo, "application/pdf", "Encuesta.pdf");
+        
+
+
+        }
+
+        public string contenidopdf(int IdEncuesta)
+        {
+
+
+
+            StringBuilder sb = new StringBuilder();
+            
+
+            EncuestaEntity objEncuesta = proxy.GetEncuesta(IdEncuesta);
+            sb.Append("<br>");
+            sb.Append(@"<table ><tr><td bgcolor=""#9fa6ad"">");
+            
+            sb.Append(@"<h3 align=""center"" style=""font-size:24px; align:center;"" >" + objEncuesta.TituloEncuesta + "</h3>");
+            sb.Append(@"<h4 align=""center"" >" + objEncuesta.Descripcion + "</h4>");            
+            sb.Append("<h5>Nombre cliente:___________________________ &nbsp;&nbsp;Contrato________ &nbsp;&nbsp;Fecha:__________________</h5>         ");
+            sb.Append("</td></tr></table>");
+
+            
+            List<RelPreguntaEncuestasEntity> lista_de_relaciones = rel_preg_encuesta.GetRelPreguntaEncuestasList().Where(x => x.IdEncuesta == objEncuesta.IdEncuesta).ToList();
+
+            foreach (var a in lista_de_relaciones)
+            {
+                sb.Append("<h5><b>"+a.Pregunta.Pregunta+"</b></h5><br>");       
+                 
+                if (a.Pregunta.IdTipoPregunta==1){
+                    sb.Append(@"<table border=1 width=""400"" ><tr><td>&nbsp;</td></tr></table>");
+                }
+                else if (a.Pregunta.IdTipoPregunta == 2)
+                {
+                    sb.Append(@"<h5>Si_______ No _______</h5>");
+                }
+                else
+                {
+                    List<RelPreguntaOpcMultsEntity> relaciones = relpregunta_resp.GetRelPreguntaOpcMultsList().Where(x => x.IdPregunta == a.IdPregunta).ToList();
+                    sb.Append(@"<table border=""0""><tr>");
+                    foreach (var resp in relaciones)
+                    {
+
+                        ResOpcMultsEntity respuestas = Respuestas.GetResOpcMultsList().Where(o => o.Id_ResOpcMult == resp.Id_ResOpcMult).Select(o => o).First();
+                        sb.Append(@"<td><h5 style=""font-size:8px;"">[ ]" + respuestas.ResOpcMult + "</h5></td>");
+
+                    }
+                    sb.Append("</tr></table>");
+
+                }
+               
+
+
+
+            }
+            return sb.ToString();
+        }
+
+
 
         public ActionResult DatosEncuesta(ObjEncuesta encuesta)
         {

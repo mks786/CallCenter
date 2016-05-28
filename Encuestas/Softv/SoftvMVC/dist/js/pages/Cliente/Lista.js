@@ -1,5 +1,5 @@
 ﻿$(document).ready(function () {
-    LlenarTabla(5);
+    //LlenarTabla(5);
 
     /*DATOS GENERALES*/
     $('#contrato').val('');
@@ -21,12 +21,12 @@
 
 $("#conexiones").change(function () {
     var id=$(this).val();
-    LlenarTabla(id);
+    LlenarTabla(id,"","","");
 
 
 });
 
-function LlenarTabla(con) {
+function LlenarTabla(plaza,contrato,cliente,direccion) {
 
 
 
@@ -42,7 +42,7 @@ function LlenarTabla(con) {
         "ajax": {
             "url": "/Cliente/GetList/",
             "type": "POST",
-            "data": { 'data': con },
+            "data": { 'plaza': plaza,'contrato':contrato,'cliente':cliente,'direccion':direccion },
         },
         "fnInitComplete": function (oSettings, json) {
 
@@ -96,6 +96,43 @@ function LlenarTabla(con) {
 }
 
 
+
+$('#filtros').change(function () {
+    var filtro = $(this).val();
+
+    if (filtro == "1") {
+        $('#Pcontrato').show();
+        $('#Pdireccion').hide();
+        $('#Pnombre').hide();
+    }
+    else if (filtro == "2") {
+        $('#Pcontrato').hide();
+        $('#Pdireccion').hide();
+        $('#Pnombre').show();
+    }
+    else if (filtro == "3") {
+        $('#Pcontrato').hide();
+        $('#Pdireccion').show();
+        $('#Pnombre').hide();
+    }
+    
+
+});
+
+$('#bcontrato').click(function () {
+    
+    LlenarTabla($("#conexiones").val(),$('#fcontrato').val(), "", "")
+});
+
+$('#bnombre').click(function () {
+
+    LlenarTabla($("#conexiones").val(), "", $('#fnombre').val(), "")
+});
+
+$('#bdireccion').click(function () {
+
+    LlenarTabla($("#conexiones").val(), "", "", $('#fdireccion').val())
+});
 
 
 
