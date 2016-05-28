@@ -152,7 +152,7 @@ namespace SoftvMVC.Controllers
             }
             else if (direccion !="")
             {
-                comandoSql = new SqlCommand("select * from CLIENTES x1 join CALLES x2 on x1.Clv_Calle=x2.Clv_Calle JOIN COLONIAS X3 ON X3.Clv_Colonia=x1.Clv_Colonia JOIN CIUDADES X4 ON X4.Clv_Ciudad=x1.Clv_Ciudad where x1.Nombre like '%"+direccion+"%'");
+                comandoSql = new SqlCommand("select * from CLIENTES x1 join CALLES x2 on x1.Clv_Calle=x2.Clv_Calle JOIN COLONIAS X3 ON X3.Clv_Colonia=x1.Clv_Colonia JOIN CIUDADES X4 ON X4.Clv_Ciudad=x1.Clv_Ciudad where x2.Nombre like '%"+direccion+"%'");
             }
             else
             {
