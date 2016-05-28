@@ -144,19 +144,19 @@ namespace SoftvMVC.Controllers
             { }
             if (contrato !="")
             {
-                 comandoSql = new SqlCommand("SELECT * FROM CLIENTES where contrato="+contrato);
+                 comandoSql = new SqlCommand("select * from CLIENTES x1 join CALLES x2 on x1.Clv_Calle=x2.Clv_Calle JOIN COLONIAS X3 ON X3.Clv_Colonia=x1.Clv_Colonia JOIN CIUDADES X4 ON X4.Clv_Ciudad=x1.Clv_Ciudad where x1.contrato="+contrato);
             }
             else if (cliente1 !="")
             {
-                comandoSql = new SqlCommand(" select * from CLIENTES where Nombre like '%"+cliente1+"%' ");
+                comandoSql = new SqlCommand(" select * from CLIENTES x1 join CALLES x2 on x1.Clv_Calle=x2.Clv_Calle JOIN COLONIAS X3 ON X3.Clv_Colonia=x1.Clv_Colonia JOIN CIUDADES X4 ON X4.Clv_Ciudad=x1.Clv_Ciudad where x1.Nombre like '%"+cliente1+"%' ");
             }
             else if (direccion !="")
             {
-                comandoSql = new SqlCommand("select * from CLIENTES x1 join CALLES x2 on x1.Clv_Calle=x2.Clv_Calle where x2.Nombre like '%"+direccion+"%'");
+                comandoSql = new SqlCommand("select * from CLIENTES x1 join CALLES x2 on x1.Clv_Calle=x2.Clv_Calle JOIN COLONIAS X3 ON X3.Clv_Colonia=x1.Clv_Colonia JOIN CIUDADES X4 ON X4.Clv_Ciudad=x1.Clv_Ciudad where x1.Nombre like '%"+direccion+"%'");
             }
             else
             {
-                 comandoSql = new SqlCommand("SELECT * FROM CLIENTES");
+                 comandoSql = new SqlCommand("select * from CLIENTES x1 join CALLES x2 on x1.Clv_Calle=x2.Clv_Calle JOIN COLONIAS X3 ON X3.Clv_Colonia=x1.Clv_Colonia JOIN CIUDADES X4 ON X4.Clv_Ciudad=x1.Clv_Ciudad");
             }
             
             comandoSql.Connection = conexionSQL;
@@ -186,6 +186,10 @@ namespace SoftvMVC.Controllers
                     cliente.Clv_Tap = Int32.Parse(reader[16].ToString());
                     cliente.Zona2 = bool.Parse(reader[17].ToString());
                     cliente.conexion = id;
+                    cliente.Calle = reader[19].ToString();
+                    cliente.Colonia = reader[21].ToString();
+                    cliente.Ciudad = reader[23].ToString();
+
                     lista.Add(cliente);
 
                 }
@@ -338,6 +342,12 @@ namespace SoftvMVC.Controllers
             public bool? Zona2 { get; set; }
 
             public int conexion { get; set; }
+
+            public string Calle { get; set; }
+
+            public string Colonia { get; set; }
+
+            public string Ciudad { get; set; }
           
         }
 
