@@ -56,223 +56,15 @@ namespace SoftvMVC.Controllers
            
         }
 
-        public ActionResult Details(int id = 0)
-        {
-            CLIENTEEntity objCLIENTE = proxy.GetCLIENTE(id);
-            if (objCLIENTE == null)
-            {
-                return HttpNotFound();
-            }
-            return PartialView(objCLIENTE);
-        }
-
-        public ActionResult Create()
-        {
-            PermisosAccesoDeniedCreate("CLIENTE");
-            ViewBag.CustomScriptsPageValid = BuildScriptPageValid();
-
-            return View();
-        }
-
-        [HttpPost]
-        public ActionResult Create(CLIENTEEntity objCLIENTE)
-        {
-            if (ModelState.IsValid)
-            {
-
-                objCLIENTE.BaseRemoteIp = RemoteIp;
-                objCLIENTE.BaseIdUser = LoggedUserName;
-                int result = proxy.AddCLIENTE(objCLIENTE);
-                if (result == -1)
-                {
-
-                    AssingMessageScript("El CLIENTE ya existe en el sistema.", "error", "Error", true);
-                    CheckNotify();
-                    return View(objCLIENTE);
-                }
-                if (result > 0)
-                {
-                    AssingMessageScript("Se dio de alta el CLIENTE en el sistema.", "success", "Éxito", true);
-                    return RedirectToAction("Index");
-                }
-
-            }
-            return View(objCLIENTE);
-        }
-
-        public ActionResult Edit(int id = 0)
-        {
-            PermisosAccesoDeniedEdit("CLIENTE");
-            ViewBag.CustomScriptsPageValid = BuildScriptPageValid();
-            CLIENTEEntity objCLIENTE = proxy.GetCLIENTE(id);
-
-            if (objCLIENTE == null)
-            {
-                return HttpNotFound();
-            }
-            return View(objCLIENTE);
-        }
-
-        //
-        // POST: /CLIENTE/Edit/5
-        [HttpPost]
-        public ActionResult Edit(CLIENTEEntity objCLIENTE)
-        {
-            if (ModelState.IsValid)
-            {
-                objCLIENTE.BaseRemoteIp = RemoteIp;
-                objCLIENTE.BaseIdUser = LoggedUserName;
-                int result = proxy.UpdateCLIENTE(objCLIENTE);
-                if (result == -1)
-                {
-                    CLIENTEEntity objCLIENTEOld = proxy.GetCLIENTE(objCLIENTE.CONTRATO);
-
-                    AssingMessageScript("El CLIENTE ya existe en el sistema, .", "error", "Error", true);
-                    CheckNotify();
-                    return View(objCLIENTE);
-                }
-                if (result > 0)
-                {
-                    AssingMessageScript("El CLIENTE se modifico en el sistema.", "success", "Éxito", true);
-                    CheckNotify();
-                    return RedirectToAction("Index");
-                }
-                return RedirectToAction("Index");
-            }
-            return View(objCLIENTE);
-        }
-
-        public ActionResult QuickIndex(int? page, int? pageSize, String NOMBRE, int? Clv_Calle, String NUMERO, String ENTRECALLES, int? Clv_Colonia, String CodigoPostal, String TELEFONO, String CELULAR, bool? DESGLOSA_Iva, bool? SoloInternet, bool? eshotel, int? Clv_Ciudad, String Email, int? clv_sector, int? Clv_Periodo, int? Clv_Tap, bool? Zona2)
-        {
-            int pageNumber = (page ?? 1);
-            int pSize = pageSize ?? SoftvMVC.Properties.Settings.Default.pagnum;
-            SoftvList<CLIENTEEntity> listResult = null;
-            List<CLIENTEEntity> listCLIENTE = new List<CLIENTEEntity>();
-            CLIENTEEntity objCLIENTE = new CLIENTEEntity();
-            CLIENTEEntity objGetCLIENTE = new CLIENTEEntity();
 
 
-            if ((NOMBRE != null && NOMBRE.ToString() != ""))
-            {
-                objCLIENTE.NOMBRE = NOMBRE;
-            }
 
-            if ((Clv_Calle != null))
-            {
-                objCLIENTE.Clv_Calle = Clv_Calle;
-            }
+  
 
-            if ((NUMERO != null && NUMERO.ToString() != ""))
-            {
-                objCLIENTE.NUMERO = NUMERO;
-            }
+       
+ 
 
-            if ((ENTRECALLES != null && ENTRECALLES.ToString() != ""))
-            {
-                objCLIENTE.ENTRECALLES = ENTRECALLES;
-            }
-
-            if ((Clv_Colonia != null))
-            {
-                objCLIENTE.Clv_Colonia = Clv_Colonia;
-            }
-
-            if ((CodigoPostal != null && CodigoPostal.ToString() != ""))
-            {
-                objCLIENTE.CodigoPostal = CodigoPostal;
-            }
-
-            if ((TELEFONO != null && TELEFONO.ToString() != ""))
-            {
-                objCLIENTE.TELEFONO = TELEFONO;
-            }
-
-            if ((CELULAR != null && CELULAR.ToString() != ""))
-            {
-                objCLIENTE.CELULAR = CELULAR;
-            }
-
-            if ((DESGLOSA_Iva != null))
-            {
-                objCLIENTE.DESGLOSA_Iva = DESGLOSA_Iva;
-            }
-
-            if ((SoloInternet != null))
-            {
-                objCLIENTE.SoloInternet = SoloInternet;
-            }
-
-            if ((eshotel != null))
-            {
-                objCLIENTE.eshotel = eshotel;
-            }
-
-            if ((Clv_Ciudad != null))
-            {
-                objCLIENTE.Clv_Ciudad = Clv_Ciudad;
-            }
-
-            if ((Email != null && Email.ToString() != ""))
-            {
-                objCLIENTE.Email = Email;
-            }
-
-            if ((clv_sector != null))
-            {
-                objCLIENTE.clv_sector = clv_sector;
-            }
-
-            if ((Clv_Periodo != null))
-            {
-                objCLIENTE.Clv_Periodo = Clv_Periodo;
-            }
-
-            if ((Clv_Tap != null))
-            {
-                objCLIENTE.Clv_Tap = Clv_Tap;
-            }
-
-            if ((Zona2 != null))
-            {
-                objCLIENTE.Zona2 = Zona2;
-            }
-
-            pageNumber = pageNumber == 0 ? 1 : pageNumber;
-            listResult = proxy.GetCLIENTEPagedListXml(pageNumber, pSize, Globals.SerializeTool.Serialize(objCLIENTE));
-            if (listResult.Count == 0)
-            {
-                int tempPageNumber = (int)(listResult.totalCount / pSize);
-                pageNumber = (int)(listResult.totalCount / pSize) == 0 ? 1 : tempPageNumber;
-                listResult = proxy.GetCLIENTEPagedListXml(pageNumber, pSize, Globals.SerializeTool.Serialize(objCLIENTE));
-            }
-            listResult.ToList().ForEach(x => listCLIENTE.Add(x));
-
-            var CLIENTEAsIPagedList = new StaticPagedList<CLIENTEEntity>(listCLIENTE, pageNumber, pSize, listResult.totalCount);
-            if (CLIENTEAsIPagedList.Count > 0)
-            {
-                return PartialView(CLIENTEAsIPagedList);
-            }
-            else
-            {
-                var result = new { tipomsj = "warning", titulomsj = "Aviso", Success = "False", Message = "No se encontraron registros con los criterios de búsqueda ingresados." };
-                return Json(result, JsonRequestBehavior.AllowGet);
-            }
-        }
-
-        public ActionResult Delete(int id = 0)
-        {
-            int result = proxy.DeleteCLIENTE(RemoteIp, LoggedUserName, id);
-            if (result > 0)
-            {
-                var resultOk = new { tipomsj = "success", titulomsj = "Aviso", Success = "True", Message = "Registro de CLIENTE Eliminado." };
-                return Json(resultOk, JsonRequestBehavior.AllowGet);
-            }
-            else
-            {
-                var resultNg = new { tipomsj = "warning", titulomsj = "Aviso", Success = "False", Message = "El Registro de CLIENTE No puede ser Eliminado validar dependencias." };
-                return Json(resultNg, JsonRequestBehavior.AllowGet);
-            }
-        }
+  
 
         //Nuevas funciones 
 
@@ -297,32 +89,37 @@ namespace SoftvMVC.Controllers
 
 
 
-        public ActionResult GetList(int data, int draw, int start, int length)
+        public ActionResult GetList(int plaza,string contrato,string cliente,string direccion, int draw, int start, int length)
         {
             DataTableData dataTableData = new DataTableData();
             dataTableData.draw = draw;
             dataTableData.recordsTotal = 0;
             int recordsFiltered = 0;
-            dataTableData.data = FiltrarContenido(data,ref recordsFiltered, start, length);
+            dataTableData.data = FiltrarContenido(plaza, contrato, cliente, direccion ,ref recordsFiltered, start, length);
             dataTableData.recordsFiltered = recordsFiltered;
             
             return Json(dataTableData, JsonRequestBehavior.AllowGet);
         }
 
-        private List<CLIENTEEntity2> FiltrarContenido(int data,ref int recordFiltered, int start, int length)
+
+
+
+        private List<CLIENTEEntity2> FiltrarContenido(int plaza, string contrato, string cliente, string direccion, ref int recordFiltered, int start, int length)
         {
-            recordFiltered = GetClientesporPlaza(data,0).Count;
+            recordFiltered = GetClientesporPlaza(plaza, contrato, cliente, direccion).Count;
             int rango = start + length;
-            return GetClientesporPlaza(data,0).Skip(start).Take(length).ToList();
+            return GetClientesporPlaza(plaza, contrato, cliente, direccion).Skip(start).Take(length).ToList();
         }
 
-        public ActionResult DetalleCliente(int id, int contrato)
+
+
+        public ActionResult DetalleCliente(int id, string contrato)
         {
-            List<CLIENTEEntity2> LISTA = GetClientesporPlaza(id, contrato);
+            List<CLIENTEEntity2> LISTA = GetClientesporPlaza(id, contrato,"","");
             return Json(LISTA,JsonRequestBehavior.AllowGet);
         }
 
-        public List<CLIENTEEntity2> GetClientesporPlaza(int id,int contrato)
+        public List<CLIENTEEntity2> GetClientesporPlaza(int id,string  contrato, string cliente1, string direccion)
         {
 
             ConexionController c = new ConexionController();
@@ -335,9 +132,17 @@ namespace SoftvMVC.Controllers
             }
             catch
             { }
-            if (contrato > 0)
+            if (contrato !="")
             {
                  comandoSql = new SqlCommand("SELECT * FROM CLIENTES where contrato="+contrato);
+            }
+            else if (cliente1 =="")
+            {
+                comandoSql = new SqlCommand(" select * from CLIENTES where Nombre like '%"+cliente1+"%' ");
+            }
+            else if (direccion !="")
+            {
+                comandoSql = new SqlCommand("select * from CLIENTES x1 join CALLES x2 on x1.Clv_Calle=x2.Clv_Calle where x2.Nombre like '%a%'");
             }
             else
             {

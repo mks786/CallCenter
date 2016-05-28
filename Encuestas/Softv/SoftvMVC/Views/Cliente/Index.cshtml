@@ -23,10 +23,6 @@
     <div class="col-xs-12">
         <div class="box">
             <div class="box-header">
-
-
-            </div><!-- /.box-header -->
-            <div class="box-body">
                 <div class="row">
                     <div class="col-md-4">
                         <label>Selecciona una plaza</label>
@@ -41,19 +37,46 @@
                     </div>
                     <div class="col-md-4">
                         <label>Buscar por:</label>
-                        <select class="form-control">
+                        <select class="form-control" id="filtros">
+                            <option selected disabled>Selecciona un filtro</option>
                             <option value="1">Contrato</option>
                             <option value="2">Nombre</option>
-                            <option value="3">Colonia</option>
+                            <option value="3">Dirección</option>
                         </select>
 
                     </div>
                     <div class="col-md-4">
+                        <label></label>
+                        <div class="input-group input-group-sm" id="Pcontrato" style="display:none;">
+                            <input class="form-control" type="text" id="fcontrato" placeholder="digite el contrato con el sig. formato ej.(227-2)">
+                            <span class="input-group-btn">
+                                <button class="btn btn-info btn-flat" type="button" id="bcontrato">Buscar</button>
+                            </span>
+                            
+                        </div>
 
+                        <div class="input-group input-group-sm" id="Pnombre" style="display:none;">
+                            <input class="form-control" type="text" id="fnombre" placeholder="Nombre completo del cliente">
+                            <span class="input-group-btn">
+                                <button class="btn btn-info btn-flat" type="button" id="bnombre">Buscar</button>
+                            </span>
+
+                        </div>
+                        <div class="input-group input-group-sm" id="Pdireccion" style="display:none;">
+                            <input class="form-control" type="text" id="fdireccion" placeholder="Direccion del cliente">
+                            <span class="input-group-btn">
+                                <button class="btn btn-info btn-flat" type="button" id="bdireccion">Buscar</button>
+                            </span>
+
+                        </div>
 
                     </div>
 
                 </div>
+
+            </div><!-- /.box-header -->
+            <div class="box-body">
+               
                
                 <br />
                 <table id="TablaClientes" class="table table-bordered table-hover dataTable">
@@ -346,91 +369,66 @@
                     <div class="box-body">
 
                         <div class="info-box">
-                            <span class="info-box-icon bg-aqua"><i class="fa fa-envelope-o"></i></span>
+                            <span class="info-box-icon bg-aqua"><i class="fa fa-user" aria-hidden="true"></i></span>
                             <div class="info-box-content">
-                                <span class="info-box-text">Messages</span>
-                                <span class="info-box-number">1,410</span>
+
+                                <span class="info-box-number">Eric Alejandro Chávez Gómez</span>
+
+                                <span class="info-box-text"><label>Contrato: </label> 2123</span>
+
+                                <div class="row">
+                                    <div class="col-xs-3">
+                                        <label><i class="fa fa-phone"></i> Télefono</label><p>4658558888</p>
+                                    </div>
+                                    <div class="col-xs-3">
+                                        <label><i class="fa fa-mobile-phone"></i> Celular:</label><p>45658888</p>
+                                    </div>
+                                    <div class="col-xs-3">
+                                        <label><i class="fa fa-envelope"></i> Correo:</label><p>erictics@gmail.com</p>
+
+                                    </div>
+                                </div>
                             </div><!-- /.info-box-content -->
                         </div>
 
+                        <div class="info-box">
+                            <span class="info-box-icon bg-green"><i class="fa fa-home" aria-hidden="true"></i></span>
+                            <div class="info-box-content">
+                                <div class="row">
+                                    <div class="col-xs-3">
+                                        <label> Estado</label><p>Aguascalientes</p>
+                                    </div>
+                                    <div class="col-xs-3">
+                                        <label>Ciudad:</label><p>Aguascalientes</p>
+                                    </div>
+                                    <div class="col-xs-3">
+                                        <label>Colonia:</label><p>Trojes de oriente</p>
 
-                        <div class="row">
-                            <div class="col-xs-6">
-                                <label>Nombre:</label><p>Eric Alejandro Chávez Gómez</p>
-                            </div>
-                            <div class="col-xs-3">
-                                <label>Contrato:</label><p>2123</p>
-                            </div>
-                            <div class="col-xs-3">
+                                    </div>
+                                    <div class="col-xs-3">
+                                        <label> Calle:</label><p>Trojes del vivero</p>
+                                    </div>
+                                    <div class="col-xs-3">
+                                        <label>Número:</label><p>25</p>
+                                    </div>
+                                    <div class="col-xs-3">
+                                        <label>CP:</label><p>206685</p>
 
-                            </div>
-                        </div>
-
-                        <div class="row">
-                            <div class="col-xs-6">
-                                <label><i class="fa fa-phone"></i> Télefono</label><p>4658558888</p>
-                            </div>
-                            <div class="col-xs-3">
-                                <label><i class="fa fa-mobile-phone"></i> Celular:</label><p>45658888</p>
-                            </div>
-                            <div class="col-xs-3">
-                                <label><i class="fa fa-envelope"></i> Correo:</label><p>erictics@gmail.com</p>
-
-                            </div>
-                        </div>
-
-                        <div class="row">
-                            <div class="col-xs-6">
-                                <label> Estado</label><p>Aguascalientes</p>
-                            </div>
-                            <div class="col-xs-3">
-                                <label>Ciudad:</label><p>Aguascalientes</p>
-                            </div>
-                            <div class="col-xs-3">
-                                <label>Colonia:</label><p>Trojes de oriente</p>
+                                    </div>
+                                </div>
+                                
 
                             </div>
                         </div>
 
-                        <div class="row">
-                            <div class="col-xs-6">
-                                <label> Calle</label><p>Trojes del vivero</p>
-                            </div>
-                            <div class="col-xs-3">
-                                <label>Número:</label><p>25</p>
-                            </div>
-                            <div class="col-xs-3">
-                                <label>CP:</label><p>206685</p>
+                                                    
 
+                              
                             </div>
                         </div>
+                        
+
                     </div>
-                </div>
-                <div class="box-group" id="accordion">
-                    <!-- we are adding the .panel class so bootstrap.js collapse plugin detects it -->
-                    <div class="panel box box-primary">
-                        <div class="box-header with-border">
-                            <h4 class="box-title">
-                                <a class="collapsed" aria-expanded="false" href="#collapseOne" data-toggle="collapse" data-parent="#accordion">
-                                    Datos personales
-                                </a>
-                            </h4>
-                        </div>
-                        <div class="panel-collapse collapse" id="collapseOne" aria-expanded="false" style="height: 0px;">
-                            <div class="box-body">
-
-                            </div>
-                        </div>
-                
-                      
-                   
-                    </div>
-
-
-
-                </div>
-              
-                </div>
                
 
                 
