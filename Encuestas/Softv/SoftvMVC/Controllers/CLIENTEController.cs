@@ -119,6 +119,16 @@ namespace SoftvMVC.Controllers
             return Json(LISTA,JsonRequestBehavior.AllowGet);
         }
 
+
+        public ActionResult GetClientesporPlazaJson(int id, string contrato, string cliente1, string direccion)
+        {
+            List<CLIENTEEntity2> lista= GetClientesporPlaza(id,  contrato,  cliente1,  direccion);
+
+            return Json(lista, JsonRequestBehavior.AllowGet);
+        }
+
+
+
         public List<CLIENTEEntity2> GetClientesporPlaza(int id,string  contrato, string cliente1, string direccion)
         {
 
@@ -136,13 +146,13 @@ namespace SoftvMVC.Controllers
             {
                  comandoSql = new SqlCommand("SELECT * FROM CLIENTES where contrato="+contrato);
             }
-            else if (cliente1 =="")
+            else if (cliente1 !="")
             {
                 comandoSql = new SqlCommand(" select * from CLIENTES where Nombre like '%"+cliente1+"%' ");
             }
             else if (direccion !="")
             {
-                comandoSql = new SqlCommand("select * from CLIENTES x1 join CALLES x2 on x1.Clv_Calle=x2.Clv_Calle where x2.Nombre like '%a%'");
+                comandoSql = new SqlCommand("select * from CLIENTES x1 join CALLES x2 on x1.Clv_Calle=x2.Clv_Calle where x2.Nombre like '%"+direccion+"%'");
             }
             else
             {
