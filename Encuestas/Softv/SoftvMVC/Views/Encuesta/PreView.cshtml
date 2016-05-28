@@ -113,8 +113,27 @@
                         </div>
                     </div><br />
                     <div class="row">
-                        <div class="col-md-5 col-md-offset-1">
+                        <div class="col-md-3 col-md-offset-1">
+                            <select id="busqueda" class="form-control">
+                                <option value="0" selected disabled>Buscar cliente por:</option>
+                                <option value="1">Nombre</option>
+                                <option value="2">Dirección</option>
+                                <option value="3">Contrato</option>
+                            </select>
+                        </div>
+                        <div class="col-md-5" id="por_nombre" style="display:none;">
                             <input type="text" class="flexdatalist form-control" id="cliente_id" placeholder="Nombre del cliente" />
+                        </div>
+                        <div class="col-md-5" id="por_direccion" style="display:none;">
+                            <input type="text" class="flexdatalist form-control" id="direccion" placeholder="Direccion del cliente" />
+                        </div>
+                        <div class="col-md-5" id="por_contrato" style="display:none;">
+                            <div class="col-md-6">
+                                <input type="text" class="flexdatalist form-control" id="cliente_id" placeholder="Número de contrato" />
+                            </div>
+                            <div class="col-md-6">
+                                <p class="btn btn-app">Valdiar</p>
+                            </div>  
                         </div>
                     </div><br />
                     <input type="hidden" id="encuesta_id" name="id_encuesta" value="@ViewBag.IdEncuesta">
@@ -265,7 +284,22 @@
         });
     }
     
-  
+    $('#busqueda').change(function () {
+        var tipo = $('#busqueda').val();
+        if (tipo == 1) {
+            $('#por_nombre').show();
+            $('#por_direccion').hide();
+            $('#por_contrato').hide();
+        } else if (tipo == 2) {
+            $('#por_direccion').show();
+            $('#por_contrato').hide();
+            $('#por_nombre').hide();
+        } else if (tipo == 3) {
+            $('#por_contrato').show();
+            $('#por_nombre').hide();
+            $('#por_direccion').hide();
+        }
+    });
 
     function enviarEncuesta() {
         var cliente = $('#cliente_id').val();
