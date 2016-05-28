@@ -121,7 +121,7 @@
                                 <option value="3">Contrato</option>
                             </select>
                         </div>
-                        <div class="col-md-5" id="por_nombre" style="display:none;">
+                        <div class="col-md-6" id="por_nombre" style="display:none;">
                             <input type="text" class="flexdatalist form-control" id="cliente_id" placeholder="Nombre del cliente" />
                         </div>
                         <div class="col-md-5" id="por_direccion" style="display:none;">
@@ -271,7 +271,7 @@
         $('#encuestaForm').show();
         $('#texto_plaxa').text('Plaza '+$( "#conexion_plaza option:selected" ).text());
         var id_plaza = $('#conexion_plaza').val();
-        var api = '/CLIENTE/GetClientesPorCoincidencia/?conexion=' + id_plaza;
+        var api = '/CLIENTE/GetClientesporPlazaJson/?id=' + id_plaza + '&contrato=&cliente1=&direccion=';
         $('#panel_cliente').show();
         $('.flexdatalist').flexdatalist({
             minLength: 1,
@@ -279,8 +279,8 @@
             selectionRequired: true,
             valueProperty: 'CONTRATO',
             textProperty: '{NOMBRE},{CONTRATO}',
-            visibleProperties: ["NOMBRE", "CONTRATO"],
-            searchIn: "NOMBRE",
+            visibleProperties: ["NOMBRE", "CONTRATO", "Calle"],
+            searchIn: ["NOMBRE","ENTRECALLES"],
         });
     }
     
