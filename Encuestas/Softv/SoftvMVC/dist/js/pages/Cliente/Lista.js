@@ -1,5 +1,7 @@
 ﻿$(document).ready(function () {
-    //LlenarTabla(5);
+
+
+    LlenarTabla($("#conexiones").val(),"","","");
 
     /*DATOS GENERALES*/
     $('#contrato').val('');
@@ -56,12 +58,13 @@ function LlenarTabla(plaza,contrato,cliente,direccion) {
         "columns": [
             { "data": "CONTRATO", "orderable": false },
             { "data": "NOMBRE", "orderable": false },
-            { "data": "TELEFONO", "orderable": false },
-            { "data": "Email", "orderable": false },
+            { "data": "Colonia", "orderable": false },
+            { "data": "Calle", "orderable": false },
 
         {
             sortable: false,
             "render": function (data, type, full, meta) {
+                console.log(full);
                 return "<button class='btn btn-info btn-xs detalleCliente' rel='" + full.conexion + "' id='" + full.CONTRATO + "'><i class='fa fa-info' aria-hidden='true'></i> Detalles</button> <button rel='" + full.conexion + "'class='btn btn-warning btn-xs editarCliente' id='" + full.CONTRATO + "'><i class='fa fa-pencil' aria-hidden='true'></i> Editar</button>";
             }
         }
