@@ -32,15 +32,18 @@ $('#TablaClientes').on('click', '.editarCliente', function () {
         type: "POST",
         data: { 'id': id, 'contrato': contrato },
         success: function (data, textStatus, jqXHR) {
-
+            console.log(data);
             Getcolonias(data[0].Clv_Ciudad, id);
-            getCalle(id, data[0].Clv_Colonia);
+           // getCalle(id, data[0].Clv_Colonia);
             $('#contrato').val(data[0].CONTRATO);
             $('#nombre').val(data[0].NOMBRE);
-            $('#calles').val(data[0].ENTRECALLES);
+            $('#calles').val(data[0].ENTRECALLES);            
             $("#ciudad").val(data[0].Clv_Ciudad);
-            $('#colonia').val(data[0].Clv_Colonia);
-            $('#calle').val(data[0].Clv_Calle);
+            asignar(data[0].Clv_Colonia);
+           
+            //$('select[name="calle"]').find('option[value="' + data[0].Clv_Calle + '"]').attr("selected", true);
+            //$('#colonia').val(data[0].Clv_Colonia);            
+           // $('#calle').val(data[0].Clv_Calle);
             $('#numero').val(data[0].NUMERO);
             $('#cp').val(data[0].CodigoPostal);
             $('#calles').val(data[0].ENTRECALLES);
@@ -92,6 +95,9 @@ $('#TablaClientes').on('click', '.editarCliente', function () {
     
 });
 
+function asignar(id){
+    $('select[name="colonia"]').find('option[value="' + id + '"]').attr("selected", true);
+}
 
 
 
@@ -100,6 +106,7 @@ $('#Editar').click(function () {
     cliente.CONTRATO = $('#contrato').val();
     cliente.NOMBRE = $('#nombre').val();
     cliente.Clv_Calle = $('#calle').val();
+    alert($('#calle').val());
     cliente.NUMERO = $('#numero').val();
     cliente.ENTRECALLES = $('#calles').val();
     cliente.Clv_Colonia = $('#colonia').val();
@@ -207,6 +214,7 @@ function Getcolonias(ciudad, plaza) {
         type: "POST",
         data: { 'idciudad': ciudad, 'plaza': plaza },
         success: function (data, textStatus, jqXHR) {
+            console.log('colonias');
             console.log(data);
             for (var a = 0; a < data.length; a++) {
                 $('#colonia').append("<option id='" + data[a].plaza + "' value='" + data[a].clv_colonia + "'>" + data[a].Nombre + "</option>");
@@ -227,6 +235,7 @@ function getCalle(plaza, idcolonia) {
         type: "POST",
         data: { 'colonia': idcolonia, 'plaza': plaza },
         success: function (data, textStatus, jqXHR) {
+            console.log("calles");
             console.log(data);
             for (var a = 0; a < data.length; a++) {
                 $('#calle').append("<option value='" + data[a].Clv_Calle + "'>" + data[a].Nombre + "</option>");

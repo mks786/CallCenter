@@ -181,7 +181,7 @@
                                     {
 
                                     <div class="radio icheck">
-                                        <input id="@b.ResOpcMult" type="radio" name="@a.Pregunta.IdPregunta" value="@b.ResOpcMult">
+                                        <input id="@b.ResOpcMult" type="radio" name="@a.Pregunta.IdPregunta" value="@b.Id_ResOpcMult">
                                         <label for="@b.ResOpcMult">@b.ResOpcMult</label>
                                     </div>
 
@@ -352,11 +352,11 @@
             var html = $('#encuestaForm');
             var datos = {};
             var count = 0;
-            datos.id_encuesta = new Array();
-            datos.cliente = new Array();
-            datos.id_plaza = new Array();
+            
             datos.pregunta = new Array();
             datos.respuestas = new Array();
+
+
             var cliente = [];
             var datos_preguntas = [];
             var datos_respuestas = [];

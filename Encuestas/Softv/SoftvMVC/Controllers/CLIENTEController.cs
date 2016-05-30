@@ -308,8 +308,18 @@ namespace SoftvMVC.Controllers
             { }
             try
             {
-                comandoSql = new SqlCommand("UPDATE CLIENTES SET Nombre="+cliente.NOMBRE+",Clv_Calle="+cliente.Clv_Calle+",Numero="+cliente.NUMERO+",EntreCalles="+cliente.ENTRECALLES+",Clv_Colonia="+cliente.Clv_Colonia+",CodigoPostal="+cliente.CodigoPostal+",Telefono="+cliente.TELEFONO+",Celular="+cliente.CELULAR+",Clv_Ciudad="+cliente.Clv_Ciudad+",Email="+cliente.Email+" where contrato="+cliente.CONTRATO);
+                comandoSql = new SqlCommand(@"UPDATE CLIENTES SET Nombre=@nombre,Clv_Calle=@calle,Numero=@numero,EntreCalles=@calles,Clv_Colonia=@colonia,CodigoPostal=@cp,Telefono=@telefono,Celular=@celular,Clv_Ciudad=@cuidad,Email=@email where contrato="+cliente.CONTRATO);
                 comandoSql.Connection = conexionSQL;
+                comandoSql.Parameters.AddWithValue("@nombre", cliente.NOMBRE);
+                comandoSql.Parameters.AddWithValue("@calle", cliente.Clv_Calle);
+                comandoSql.Parameters.AddWithValue("@numero",cliente.NUMERO);
+                comandoSql.Parameters.AddWithValue("@calles", cliente.ENTRECALLES);
+                comandoSql.Parameters.AddWithValue("@colonia", cliente.Clv_Colonia);
+                comandoSql.Parameters.AddWithValue("@cp", cliente.CodigoPostal);
+                comandoSql.Parameters.AddWithValue("@telefono", cliente.TELEFONO);
+                comandoSql.Parameters.AddWithValue("@celular", cliente.CELULAR);
+                comandoSql.Parameters.AddWithValue("@cuidad", cliente.Clv_Ciudad);
+                comandoSql.Parameters.AddWithValue("@email", cliente.Email);
                 comandoSql.ExecuteNonQuery();
                 result = 1;
             }
@@ -318,7 +328,9 @@ namespace SoftvMVC.Controllers
             try
             {
                 comandoSql2 = new SqlCommand("UPDATE DatosFiscales set Razon_Social=" + fiscales.RAZON_SOCIAL + ",RFC=" + fiscales.RFC + ",Calle_RS=" + fiscales.CALLE_RS + ",Numero_RS=" + fiscales.NUMERO_RS + ",EntreCalles=" + fiscales.ENTRECALLES + ",Colonia_RS=" + fiscales.COLONIA_RS + ",Ciudad_RS=" + fiscales.CIUDAD_RS + ",Estado_RS=" + fiscales.ESTADO_RS + ",CP_RS=" + fiscales.CP_RS + ",Telefono_RS=" + fiscales.TELEFONO_RS + ",Fax_RS=" + fiscales.FAX_RS + ",CURP="+fiscales.CURP+" where contrato="+cliente.CONTRATO);
+                comandoSql2.Connection = conexionSQL;
 
+                comandoSql2.ExecuteNonQuery();
             }
             catch { }
 
