@@ -591,6 +591,7 @@
     <Content Include="dist\js\pages\Encuesta\ModalEditarPregunta.js" />
     <Content Include="dist\js\pages\Encuesta\ModalEliminaPregunta.js" />
     <Content Include="dist\js\pages\Encuesta\ModalEliminarEncuesta.js" />
+    <Content Include="dist\js\pages\Encuesta\preview_scripts.js" />
     <Content Include="dist\js\pages\Encuesta\Utilerias.js" />
     <Content Include="dist\js\pages\Llamada\Lista.js" />
     <Content Include="dist\js\pages\Pregunta\editar_pregunta.js" />

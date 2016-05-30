@@ -24,3 +24,16 @@ C:\Users\programador\Documents\GitHub\CallCenter\Encuestas\Softv\Softv.SQL\bin\R
 C:\Users\programador\Documents\GitHub\CallCenter\Encuestas\Softv\Softv.SQL\obj\Release\Softv.SQL.csprojResolveAssemblyReference.cache
 C:\Users\programador\Documents\GitHub\CallCenter\Encuestas\Softv\Softv.SQL\obj\Release\Softv.SQL.dll
 C:\Users\programador\Documents\GitHub\CallCenter\Encuestas\Softv\Softv.SQL\obj\Release\Softv.SQL.pdb
+C:\Users\Israel\Documents\projects\CallCenter\Encuestas\Softv\Softv.SQL\bin\Release\Softv.SQL.dll
+C:\Users\Israel\Documents\projects\CallCenter\Encuestas\Softv\Softv.SQL\bin\Release\Softv.SQL.pdb
+C:\Users\Israel\Documents\projects\CallCenter\Encuestas\Softv\Softv.SQL\bin\Release\Globals.dll
+C:\Users\Israel\Documents\projects\CallCenter\Encuestas\Softv\Softv.SQL\bin\Release\Softv.Entities.dll
+C:\Users\Israel\Documents\projects\CallCenter\Encuestas\Softv\Softv.SQL\bin\Release\Softv.Providers.dll
+C:\Users\Israel\Documents\projects\CallCenter\Encuestas\Softv\Softv.SQL\bin\Release\SoftvConfiguration.dll
+C:\Users\Israel\Documents\projects\CallCenter\Encuestas\Softv\Softv.SQL\bin\Release\Globals.pdb
+C:\Users\Israel\Documents\projects\CallCenter\Encuestas\Softv\Softv.SQL\bin\Release\SoftvConfiguration.pdb
+C:\Users\Israel\Documents\projects\CallCenter\Encuestas\Softv\Softv.SQL\bin\Release\Softv.Entities.pdb
+C:\Users\Israel\Documents\projects\CallCenter\Encuestas\Softv\Softv.SQL\bin\Release\Softv.Providers.pdb
+C:\Users\Israel\Documents\projects\CallCenter\Encuestas\Softv\Softv.SQL\obj\Release\Softv.SQL.csprojResolveAssemblyReference.cache
+C:\Users\Israel\Documents\projects\CallCenter\Encuestas\Softv\Softv.SQL\obj\Release\Softv.SQL.dll
+C:\Users\Israel\Documents\projects\CallCenter\Encuestas\Softv\Softv.SQL\obj\Release\Softv.SQL.pdb

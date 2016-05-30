@@ -38,7 +38,8 @@ $('#TablaClientes').on('click', '.editarCliente', function () {
             $('#contrato').val(data[0].CONTRATO);
             $('#nombre').val(data[0].NOMBRE);
             $('#calles').val(data[0].ENTRECALLES);
-            $("#ciudad").val(data[0].Clv_Ciudad);
+            $("#ciudad").val(data[0].Clv_Ciudad).change();
+            console.log(data[0].Clv_Ciudad);
             $('#colonia').val(data[0].Clv_Colonia);
             $('#calle').val(data[0].Clv_Calle);
             $('#numero').val(data[0].NUMERO);

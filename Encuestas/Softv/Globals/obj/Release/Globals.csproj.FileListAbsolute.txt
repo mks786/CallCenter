@@ -7,3 +7,8 @@ C:\Users\programador\Documents\GitHub\CallCenter\Encuestas\Softv\Globals\bin\Rel
 C:\Users\programador\Documents\GitHub\CallCenter\Encuestas\Softv\Globals\obj\Release\Globals.csprojResolveAssemblyReference.cache
 C:\Users\programador\Documents\GitHub\CallCenter\Encuestas\Softv\Globals\obj\Release\Globals.dll
 C:\Users\programador\Documents\GitHub\CallCenter\Encuestas\Softv\Globals\obj\Release\Globals.pdb
+C:\Users\Israel\Documents\projects\CallCenter\Encuestas\Softv\Globals\bin\Release\Globals.dll
+C:\Users\Israel\Documents\projects\CallCenter\Encuestas\Softv\Globals\bin\Release\Globals.pdb
+C:\Users\Israel\Documents\projects\CallCenter\Encuestas\Softv\Globals\obj\Release\Globals.csprojResolveAssemblyReference.cache
+C:\Users\Israel\Documents\projects\CallCenter\Encuestas\Softv\Globals\obj\Release\Globals.dll
+C:\Users\Israel\Documents\projects\CallCenter\Encuestas\Softv\Globals\obj\Release\Globals.pdb

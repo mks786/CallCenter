@@ -12,3 +12,10 @@ C:\Users\programador\Documents\GitHub\CallCenter\Encuestas\Softv\Softv.Configura
 C:\Users\programador\Documents\GitHub\CallCenter\Encuestas\Softv\Softv.Configuration\obj\Release\SoftvConfiguration.csprojResolveAssemblyReference.cache
 C:\Users\programador\Documents\GitHub\CallCenter\Encuestas\Softv\Softv.Configuration\obj\Release\SoftvConfiguration.dll
 C:\Users\programador\Documents\GitHub\CallCenter\Encuestas\Softv\Softv.Configuration\obj\Release\SoftvConfiguration.pdb
+C:\Users\Israel\Documents\projects\CallCenter\Encuestas\Softv\Softv.Configuration\bin\Release\SoftvConfiguration.dll
+C:\Users\Israel\Documents\projects\CallCenter\Encuestas\Softv\Softv.Configuration\bin\Release\SoftvConfiguration.pdb
+C:\Users\Israel\Documents\projects\CallCenter\Encuestas\Softv\Softv.Configuration\bin\Release\Globals.dll
+C:\Users\Israel\Documents\projects\CallCenter\Encuestas\Softv\Softv.Configuration\bin\Release\Globals.pdb
+C:\Users\Israel\Documents\projects\CallCenter\Encuestas\Softv\Softv.Configuration\obj\Release\SoftvConfiguration.csprojResolveAssemblyReference.cache
+C:\Users\Israel\Documents\projects\CallCenter\Encuestas\Softv\Softv.Configuration\obj\Release\SoftvConfiguration.dll
+C:\Users\Israel\Documents\projects\CallCenter\Encuestas\Softv\Softv.Configuration\obj\Release\SoftvConfiguration.pdb
