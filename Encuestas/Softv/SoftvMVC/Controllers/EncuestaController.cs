@@ -520,7 +520,7 @@ namespace SoftvMVC.Controllers
                     }
                     else
                     {
-                        re.Id_ResOpcMult = b.id_respuesta;
+                        re.Id_ResOpcMult = Int32.Parse(b.respuesta);
                         int result2 = rel_en_proces.AddRelEnProcesos(re);
                     }
                 }
