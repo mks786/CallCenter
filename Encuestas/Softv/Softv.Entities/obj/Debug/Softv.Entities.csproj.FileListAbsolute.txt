@@ -83,4 +83,3 @@ C:\Users\Israel\Documents\projects\CallCenter\Encuestas\Softv\Softv.Entities\bin
 C:\Users\Israel\Documents\projects\CallCenter\Encuestas\Softv\Softv.Entities\bin\Debug\Softv.Entities.pdb
 C:\Users\Israel\Documents\projects\CallCenter\Encuestas\Softv\Softv.Entities\obj\Debug\Softv.Entities.dll
 C:\Users\Israel\Documents\projects\CallCenter\Encuestas\Softv\Softv.Entities\obj\Debug\Softv.Entities.pdb
-C:\Users\Israel\Documents\projects\CallCenter\Encuestas\Softv\Softv.Entities\obj\Debug\Softv.Entities.csprojResolveAssemblyReference.cache
