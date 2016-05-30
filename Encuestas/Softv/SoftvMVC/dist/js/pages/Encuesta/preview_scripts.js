@@ -170,12 +170,12 @@ function enviarEncuesta() {
                 type: "POST",
                 data: { 'encuesta': datos },
                 success: function (data, textStatus, jqXHR) {
+                    document.getElementById("encuestaForm").reset();
                     $('#por_nombre').hide();
                     $('#por_contrato').hide();
                     $('#datos_contacto').hide();
                     $('#datos_contacto_error').hide();
                     swal("La Encuesta se guaró exitosamente", "", "success");
-                    document.getElementById("encuestaForm").reset();
 
                 },
                 error: function (jqXHR, textStatus, errorThrown) {
