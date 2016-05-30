@@ -6,7 +6,7 @@
 *.user
 *.userosscache
 *.sln.docstates
-
+Encuestas/Softv/Softv.v12.suo
 # User-specific files (MonoDevelop/Xamarin Studio)
 *.userprefs
 
@@ -234,3 +234,6 @@ _Pvt_Extensions
 
 # FAKE - F# Make
 .fake/
+Encuestas/Softv/SoftvMVC/bin/SoftvMVC.dll
+*.dll
+Encuestas/Softv/Softv.v12.suo

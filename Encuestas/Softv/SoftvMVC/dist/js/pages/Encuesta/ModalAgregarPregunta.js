@@ -41,12 +41,13 @@ $('#TipoPregunta').change(function () {
 
 // agrega dinamicamnete al hacer click diferentes tipos de respuesta de la pregunta
 function AgregarRespuesta() {
-    $('#PanelPreguntaCerrada-tbody').append("<tr class='nrespuestac'><td></td><td class='nrespuesta'><input class='form-control resp' placeholder='Respuestas' type='text' id='focus' onkeypress='quitAutofocus()'></td><td><button class='btn btn-danger btn-xs EliminarRespuestaC'>Quitar</button></td></tr>");
+    $('#PanelPreguntaCerrada-tbody').append("<tr class='nrespuestac'><td></td><td class='nrespuesta'><input class='agregar_reciclado form-control resp' placeholder='Respuestas' type='text' id='focus' onkeypress='quitAutofocus()'></td><td><button class='btn btn-danger btn-xs EliminarRespuestaC'>Quitar</button></td></tr>");
     $('#focus').focus();
 }
 
 function quitAutofocus() {
     $('#focus').removeAttr("id");
+    $('#focus').removeClass("agregar_reciclado");
 }
 
 //elimina las respuestas  de la tabla 

@@ -72,4 +72,3 @@ C:\Users\Israel\Documents\projects\CallCenter\Encuestas\Softv\Globals\bin\Debug\
 C:\Users\Israel\Documents\projects\CallCenter\Encuestas\Softv\Globals\bin\Debug\Globals.pdb
 C:\Users\Israel\Documents\projects\CallCenter\Encuestas\Softv\Globals\obj\Debug\Globals.dll
 C:\Users\Israel\Documents\projects\CallCenter\Encuestas\Softv\Globals\obj\Debug\Globals.pdb
-C:\Users\Israel\Documents\projects\CallCenter\Encuestas\Softv\Globals\obj\Debug\Globals.csprojResolveAssemblyReference.cache

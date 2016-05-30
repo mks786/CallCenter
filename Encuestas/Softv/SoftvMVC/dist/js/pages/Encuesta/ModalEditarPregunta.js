@@ -53,7 +53,7 @@ $('#tablaPreguntas').on('click', '.EditarPregunta', function () {
               
                 $('#edPanelPreguntaOptMultiple').show();
                 $('#edPanelPreguntaCerrada').hide();
-                $('#edPanelPreguntaOptMultiple-tbody').append("<tr class='nrespuesta'><td></td><td><input type='text' class='flexdatalist form-control' id='" + respuestas[t].Id_ResOpcMult2 + "' value='" + respuestas[t].ResOpcMult + "' disabled></td><td><button class='btn btn-danger btn-xs edEliminarRespuestaOM'>Quitar</button></td></tr>");
+                $('#edPanelPreguntaOptMultiple-tbody').append("<tr class='nrespuesta'><td></td><td><input type='text' class='form-control' id='" + respuestas[t].Id_ResOpcMult2 + "' value='" + respuestas[t].ResOpcMult + "' disabled></td><td><button class='btn btn-danger btn-xs edEliminarRespuestaOM'>Quitar</button></td></tr>");
             }
         }
 

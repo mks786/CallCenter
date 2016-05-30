@@ -82,7 +82,9 @@
 
     </style>
 
-    
+    <script>
+        var contador_preguntas = 0;
+    </script>
 </head>
 <body>
     <div class="container" style="background-color:#fff;  box-shadow: 2px 2px 5px #999; margin-top:10px; width:70%;">
@@ -128,12 +130,12 @@
                                 <input type="text" class="form-control" id="contrato_id" placeholder="Número de contrato" />
                             </div>
                             <div class="col-md-6">
-                                <p class="btn btn-app" onclick="validar_contrato()">Valdiar</p>
+                                <a class="btn btn-success" onclick="validar_contrato()">Valdiar</a>
                             </div>  
                         </div>
                     </div><br />
                     <div class="row" style="display:none;" id="datos_contacto">
-                        <div class="col-md-12 col-md-offset-1">
+                        <div class="col-md-12 col-md-offset-1" style="color:#4b646f;">
                             <h4 id="nombre_contrato"></h4>
                             <h5 id="calle_contrato"></h5>
                             <h5 id="colonia_contrato"></h5>
@@ -150,14 +152,16 @@
                         @foreach (var a in preguntas)
                         {
 
-
+                            <script>
+                                contador_preguntas += 1;
+                            </script>
                             <h4 style="color:#4b646f; font-size:14px;"><b>@a.Pregunta.Pregunta</b></h4>
                             <input type="hidden" name="p@(a.Pregunta.IdTipoPregunta)s(@a.Pregunta.IdPregunta)" value="@(a.Pregunta.Pregunta)" />
 
                             if (a.Pregunta.IdTipoPregunta.Value == 1)
                             {
                                 <div style="padding-left:30px;">
-                                    <textarea class="form-control" style="width:50%" name="@a.Pregunta.IdPregunta" required></textarea>
+                                    <textarea class="form-control" style="width:50%" name="@a.Pregunta.IdPregunta"></textarea>
                                 </div>
                             }
 
@@ -197,28 +201,13 @@
                     <div class="row">
                         <div class="col-md-5 col-md-offset-7">
                             <div class="" role="group" aria-label="...">
+                                <a href="/Encuesta" class="btn btn-info"><i class="fa fa-arrow-left" aria-hidden="true"></i> Regresar</a>
                                 <button type="button" class="btn btn-primary" onclick="enviarEncuesta()"><i class="fa fa-check" aria-hidden="true"></i> Guardar Encuesta</button>
-                                @Html.ActionLink("Regresar", "Index", "Encuesta", null, new { @class = "btn btn-info" })
                             </div>
                         </div>
                     </div>
                 </form>
-
-
-
-
-
-
-
-
-
-
             </div>
-        
-
-        
-      
-
     </div>
     
 
@@ -245,8 +234,10 @@
             </div>
         </div>
     </div>
+
 </body>
 <script src="~/plugins/iCheck/icheck.min.js"></script>
+<<<<<<< HEAD
 <script>
     $(function () {
         
@@ -436,5 +427,8 @@
        
     }
 </script>
+=======
+<script src="~/dist/js/pages/Encuesta/preview_scripts.js"></script>
+>>>>>>> antonio/master
 </html>
 
