@@ -116,26 +116,34 @@
                         <div class="col-md-3 col-md-offset-1">
                             <select id="busqueda" class="form-control">
                                 <option value="0" selected disabled>Buscar cliente por:</option>
-                                <option value="1">Nombre</option>
-                                <option value="2">Dirección</option>
-                                <option value="3">Contrato</option>
+                                <option value="1">Nombre y/o Dirección</option>
+                                <option value="2">Contrato</option>
                             </select>
                         </div>
                         <div class="col-md-6" id="por_nombre" style="display:none;">
-                            <input type="text" class="flexdatalist form-control" id="cliente_id" placeholder="Nombre del cliente" />
-                        </div>
-                        <div class="col-md-5" id="por_direccion" style="display:none;">
-                            <input type="text" class="flexdatalist form-control" id="direccion" placeholder="Direccion del cliente" />
+                            <input type="text" class="flexdatalist form-control" id="cliente_id" placeholder="Nombre ó driección del cliente" />
                         </div>
                         <div class="col-md-5" id="por_contrato" style="display:none;">
                             <div class="col-md-6">
-                                <input type="text" class="flexdatalist form-control" id="cliente_id" placeholder="Número de contrato" />
+                                <input type="text" class="form-control" id="contrato_id" placeholder="Número de contrato" />
                             </div>
                             <div class="col-md-6">
-                                <p class="btn btn-app">Valdiar</p>
+                                <p class="btn btn-app" onclick="validar_contrato()">Valdiar</p>
                             </div>  
                         </div>
                     </div><br />
+                    <div class="row" style="display:none;" id="datos_contacto">
+                        <div class="col-md-12 col-md-offset-1">
+                            <h4 id="nombre_contrato"></h4>
+                            <h5 id="calle_contrato"></h5>
+                            <h5 id="colonia_contrato"></h5>
+                        </div>
+                    </div>
+                    <div class="row" style="display:none;" id="datos_contacto_error">
+                        <div class="col-md-10 col-md-offset-1">
+                            <div class="alert alert-warning alert-dismissible fade in" role="alert"> <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">×</span></button> <strong>Opsss!</strong> El número de contrrato es inválido. </div>
+                        </div>
+                    </div>
                     <input type="hidden" id="encuesta_id" name="id_encuesta" value="@ViewBag.IdEncuesta">
                     <div class="container" style="margin-left:50px;">
 
@@ -280,7 +288,7 @@
             valueProperty: 'CONTRATO',
             textProperty: '{NOMBRE},{CONTRATO}',
             visibleProperties: ["NOMBRE", "CONTRATO", "Calle"],
-            searchIn: ["NOMBRE","ENTRECALLES"],
+            searchIn: ["NOMBRE","Calle"],
         });
     }
     
@@ -288,26 +296,59 @@
         var tipo = $('#busqueda').val();
         if (tipo == 1) {
             $('#por_nombre').show();
-            $('#por_direccion').hide();
             $('#por_contrato').hide();
+            $('#datos_contacto').hide();
+            $('#datos_contacto_error').hide();
+            $('#contrato_id').val('');
         } else if (tipo == 2) {
-            $('#por_direccion').show();
-            $('#por_contrato').hide();
-            $('#por_nombre').hide();
-        } else if (tipo == 3) {
             $('#por_contrato').show();
             $('#por_nombre').hide();
-            $('#por_direccion').hide();
-        }
+            $('.flexdatalist').text('');
+        } 
     });
+
+    function validar_contrato() {
+        var contrato = $('#contrato_id').val();
+        var id_plaza = $('#conexion_plaza').val();
+        $.ajax({
+            url: "/CLIENTE/GetClientesporPlazaJson/",
+            type: "GET",
+            data: { 'id': id_plaza, "contrato": contrato, "cliente1": "", "direccion": "" },
+            success: function (data, textStatus, jqXHR) {
+                console.log();
+                if (data.length == 0) {
+                    $('#datos_contacto_error').show();
+                    $('#datos_contacto').hide(); 
+                } else {
+                    $('#nombre_contrato').text(data[0].NOMBRE);
+                    $('#calle_contrato').text('Calle: ' + data[0].Calle);
+                    $('#colonia_contrato').text('Colonia: ' + data[0].Colonia);
+                    $('#datos_contacto').show();
+                    $('#datos_contacto_error').hide();
+                }
+                
+            },
+            error: function (data,jqXHR, textStatus) {
+                console.log(data);
+            }
+        });
+    }
 
     function enviarEncuesta() {
         var cliente = $('#cliente_id').val();
+        var contrato_id = $('#contrato_id').val();
+        var no_contrato = 0;
+        var tipo_busqueda = $('#busqueda').val();
+        if (tipo_busqueda == 1) {
+            no_contrato = cliente;
+        } else if(tipo_busqueda == 2) {
+            console.log('id');
+            no_contrato = contrato_id;
+        }
         var plaza = $('#conexion_plaza').val();
-        console.log(plaza);
-        if (cliente == "") {
+        if (no_contrato == 0) {
             swal("Agrega un cliente válido", "", "error");
-        } else {
+        }else {
             var html = $('#encuestaForm');
             var datos = {};
             var count = 0;
@@ -321,37 +362,29 @@
             var datos_respuestas = [];
             var data = $('#encuestaForm').serializeArray().reduce(function (obj, item, indice) {
                 obj[item.name] = item.value;
-                //console.log(obj);
-                console.log(item);
-                if (indice == "0") {
-                    var cliente_encuestado = {};
-                    cliente_encuestado.id_cliente = item.value;
-                    cliente.push(cliente_encuestado);
+                if (parseInt(item.name)) {
+                    var id_pregunta = parseInt(item.name);
+                    var respuestas = {};
+                    count += 1;
+                    respuestas.id_pregunta = id_pregunta;
+                    respuestas.respuesta = item.value;
+                    datos_respuestas.push(respuestas);
                 } else {
-                    if (parseInt(item.name)) {
-                        var id_pregunta = parseInt(item.name);
-                        var respuestas = {};
-                        count += 1;
-                        respuestas.id_pregunta = id_pregunta;
-                        respuestas.respuesta = item.value;
-                        datos_respuestas.push(respuestas);
-                    } else {
-                        if (item.name != "id_encuesta") {
-                            var preguntas = {};
-                            var tipo = item.name.split('s')[0].replace('(', '').replace(')', '').replace('p','');
-                            var idPregunta = item.name.split('s')[1].replace('(', '').replace(')', '');
-                            preguntas.id_pregunta = parseInt(idPregunta);
-                            preguntas.tipo = parseInt(tipo);
-                            preguntas.nombre = item.value;
-                            datos_preguntas.push(preguntas);
+                    if (item.name != "id_encuesta") {
+                        var preguntas = {};
+                        var tipo = item.name.split('s')[0].replace('(', '').replace(')', '').replace('p','');
+                        var idPregunta = item.name.split('s')[1].replace('(', '').replace(')', '');
+                        preguntas.id_pregunta = parseInt(idPregunta);
+                        preguntas.tipo = parseInt(tipo);
+                        preguntas.nombre = item.value;
+                        datos_preguntas.push(preguntas);
                             
-                        }
                     }
                 }
                 return obj;
             }, {});
             datos.id_plaza = parseInt(plaza);
-            datos.cliente = parseInt(cliente[0].id_cliente);
+            datos.cliente = parseInt(no_contrato);
             datos.id_encuesta = parseInt($('#encuesta_id').val());
             for (var i = 0; i < datos_preguntas.length; i++) {
                 var pregunta = {};
