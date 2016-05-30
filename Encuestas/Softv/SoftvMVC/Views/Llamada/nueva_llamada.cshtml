@@ -11,6 +11,7 @@
     <!-- Bootstrap 3.3.5 -->
     <title>Nueva Llamada</title>
     <link rel="stylesheet" href="~/bootstrap/css/bootstrap.css">
+    <script src="~/bootstrap/js/bootstrap.min.js"></script>
     <!-- Font Awesome -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
     <!-- Ionicons -->
@@ -33,7 +34,7 @@
 <body>
     <div class="container" style="background-color:#fff;  box-shadow: 2px 2px 5px #999; margin-top:10px; width:70%;">
 
-        <div class="rowf">
+        <div class="row">
 
             <h1 class="text-center" style="color:#4b646f; font-size:22px;"><strong>NUEVA LLAMADA</strong></h1>
 
@@ -44,19 +45,20 @@
                     </h3>
                 </div>
             </div><br />
-            <form id="encuestaForm">
+            <div class="row" id="contenedor_llamda">
+                <div class="col-md-12">
+                    <p class="text-center">
+                        <button class="btn btn-warning" onclick="AbrirModal()"><i class="fa fa-map-marker" aria-hidden="true"></i> SELECCIONAR PLAZA</button>
+                    </p>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12">
+                    <h3 class="text-center" style="color:#4b646f;" id="texto_llamda"></h3>
+                </div>
+            </div><br /><br />
+            <form id="llamdaForm" style="display:none;">
                 <div class="row">
-                    <div class="col-md-4">
-                        <div class="col-md-9">
-                            <select class="form-control" id="conexion_plaza">
-                                <option value="default" selected disabled>Selecciona la plaza</option>
-                            </select>
-                        </div>
-
-                        <div class="col-md-3" id="recargar_pagina" style="display:none;">
-                            <a href="javascript:window.location.href=window.location.href" class="btn btn-primary"><i class="fa fa-refresh" aria-hidden="true"></i></a>
-                        </div>
-                    </div>
                     <div class="col-md-6" id="panel_cliente" style="display:none;">
                         <div class="form-group">
                             <div class="col-md-11">
@@ -151,6 +153,31 @@
 
 
     </div>
+
+
+    <div class="modal fade" id="Modal_Plaza" role="dialog">
+        <div class="modal-dialog modal-md">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button class="close" aria-label="Close" type="button" data-dismiss="modal"><span aria-hidden="true">×</span></button>
+                    <h4 class="modal-title">Selecciona la plaza</h4>
+                </div>
+                <div class="modal-body">
+                    <div class="col-md-6 col-md-offset-3">
+                        <select class="form-control" id="conectando_plaza">
+                            <option value="default" selected disabled>Selecciona la plaza</option>
+                        </select>
+                    </div>
+                    <br />
+                    <br />
+                </div>
+                <div class="modal-footer">
+                    <button class="btn btn-primary " type="button" data-dismiss="modal">Cerrar</button>
+                    <button class="btn btn-success" onclick="plaza_conexion()" type="button" id="aceptar_plaza">Conectar</button>
+                </div>
+            </div>
+        </div>
+    </div>
 </body>
 <script src="~/plugins/iCheck/icheck.min.js"></script>
 <script>
@@ -165,7 +192,7 @@
             type: "GET",
             success: function (data, textStatus, jqXHR) {
                 for (var i = 0; i < data.length; i++) {
-                    $('#conexion_plaza').append($('<option>', {
+                    $('#conectando_plaza').append($('<option>', {
                         value: data[i].IdConexion,
                         text: data[i].Plaza
                     }));
@@ -175,26 +202,31 @@
 
             }
         });
-
     });
 
+    function AbrirModal() {
+        $('#Modal_Plaza').modal("show");
+    }
 
-    $("#conexion_plaza").change(function () {
-        $('#conexion_plaza').attr('disabled', '');
-        $('#recargar_pagina').show();
-        var id_plaza = $('#conexion_plaza').val();
-        var api = '/CLIENTE/GetClientesPorCoincidencia/?conexion=' + id_plaza;
-        
+
+    function plaza_conexion() {
+        $('#contenedor_llamda').hide();
+        $('#llamdaForm').show();
+        $('#texto_llamda').text('Plaza ' + $("#conectando_plaza option:selected").text());
+        $('#Modal_Plaza').modal("hide");
+        var id_plaza = $('#conectando_plaza').val();
+        var api = '/CLIENTE/GetClientesporPlazaJson/?id=' + id_plaza + '&contrato=&cliente1=&direccion=';
+        $('#panel_cliente').show();
         $('.flexdatalist').flexdatalist({
             minLength: 1,
             url: api,
             selectionRequired: true,
             valueProperty: 'CONTRATO',
             textProperty: '{NOMBRE},{CONTRATO}',
-            visibleProperties: ["NOMBRE", "CONTRATO"],
-            searchIn: "NOMBRE",
+            visibleProperties: ["CONTRATO", "NOMBRE", "Calle", "NUMERO", "Colonia"],
+            searchIn: ["NOMBRE", "Calle", "Colonia"],
         });
-    });
+    }
 
     $("#tipo_cliente").change(function () {
         var tipo = $("#tipo_cliente").val();
