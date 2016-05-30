@@ -4,42 +4,10 @@
 
 $('#TablaClientes').on('click', '.editarCliente', function () {
 
-    $('#contrato').val('');
-    $('#nombre').val('');
-    $('#calles').val('');
-    $("#ciudad").val('');
-    $('#colonia').val('');
-    $('#calle').val('');
-    $('#numero').val('');
-    $('#cp').val('');
-    $('#calles').val('');
-    $('#telefono').val('');
-    $('#celular').val('');
-    $('#correo').val('');
-
-    $('#rfc').val('');
-    $('#curp').val('');
-    $('#rsocial').val('');
-    $('#EstadoFiscal').val('');
-    $('#CiudadFiscal').val('');
-    $('#ColoniaFiscal').val('');
-    $('#calleFiscal').val('');
-    $('#callesFiscal').val('');
-    $('#NumeroFiscal').val('');
-    $('#postafiscal').val('');
-    $('#TelefonoFiscal').val('');
-    $('#FaxFiscal').val('');
-
-    $('#ciudad').find('option').remove();
-    $('#colonia').find('option').remove();
-    $('#calle').find('option').remove();
-
+    BorraFormulario();
     var id = $(this).attr('rel');
     var contrato = $(this).attr('id');
-
-
     $('#ModalEditarCliente').modal('show');
-
 
     $.ajax({
         url: "/CIUDAD/GetCiudadByPlaza/",
@@ -79,7 +47,13 @@ $('#TablaClientes').on('click', '.editarCliente', function () {
             $('#telefono').val(data[0].TELEFONO);
             $('#celular').val(data[0].CELULAR);
             $('#correo').val(data[0].Email);
-        },
+            $('#iva').val(data[0].DESGLOSA_Iva);
+            $('#solointernet').val(data[0].SoloInternet);
+            $('#eshotel').val(data[0].eshotel);
+            $('#sector').val(data[0].clv_sector);
+            $('#periodo').val(data[0].Clv_Periodo);
+            $('#tap').val(data[0].Clv_Tap);
+            $('#zona2').val(data[0].Zona2);        },
         error: function (jqXHR, textStatus, errorThrown) {
 
         }
@@ -103,6 +77,10 @@ $('#TablaClientes').on('click', '.editarCliente', function () {
             $('#postafiscal').val(data.CP_RS);
             $('#TelefonoFiscal').val(data.TELEFONO_RS);
             $('#FaxFiscal').val(data.FAX_RS);
+            $('#ivafiscal').val(data.IVADESGLOSADO);
+            $('#idasociadofiscal').val(data.id_asociado);
+            $('#identificadorfiscal').val(data.IDENTIFICADOR);
+            $('#tipofiscal').val(data.TIPO);
             
         },
         error: function (jqXHR, textStatus, errorThrown) {
@@ -114,48 +92,10 @@ $('#TablaClientes').on('click', '.editarCliente', function () {
     
 });
 
-function Getcolonias( ciudad,plaza) {
-    $.ajax({
-        url: '/COLONIA/GetColoniaByCiudad/',
-        type: "POST",
-        data: { 'idciudad': ciudad, 'plaza': plaza },
-        success: function (data, textStatus, jqXHR) {
-            console.log(data);
-            for (var a = 0; a < data.length; a++) {
-                $('#colonia').append("<option id='" + data[a].plaza + "' value='" + data[a].clv_colonia + "'>" + data[a].Nombre + "</option>");
-            }
 
-        },
-        error: function (jqXHR, textStatus, errorThrown) {
-
-        }
-    });
-
-}
-
-function getCalle(plaza,idcolonia) {
-
-    $.ajax({
-        url: '/CALLE/GetCalleByColonia/',
-        type: "POST",
-        data: { 'colonia': idcolonia, 'plaza': plaza },
-        success: function (data, textStatus, jqXHR) {
-            console.log(data);
-            for (var a = 0; a < data.length; a++) {
-                $('#calle').append("<option value='" + data[a].Clv_Calle + "'>" + data[a].Nombre + "</option>");
-            }
-
-        },
-        error: function (jqXHR, textStatus, errorThrown) {
-
-        }
-    });
-
-}
 
 
 $('#Editar').click(function () {
-
     var cliente = {};
     cliente.CONTRATO = $('#contrato').val();
     cliente.NOMBRE = $('#nombre').val();
@@ -166,15 +106,50 @@ $('#Editar').click(function () {
     cliente.CodigoPostal = $('#cp').val();
     cliente.TELEFONO = $('#telefono').val();
     cliente.CELULAR = $('#celular').val();
-    cliente.DESGLOSA_Iva = "";
-    cliente.SoloInternet = "";
-    cliente.eshotel = "";
-    cliente.Clv_Ciudad = "";
+    cliente.DESGLOSA_Iva = $('#iva').val();
+    cliente.SoloInternet = $('#solointernet').val();
+    cliente.eshotel = $('#eshotel').val();
+    cliente.Clv_Ciudad = $('#ciudad').val();
     cliente.Email = $('#correo').val();
-    cliente.clv_sector = "";
-    cliente.Clv_Periodo = "";
-    cliente.Clv_Tap = "";
-    cliente.Zona2 = "";
+    cliente.clv_sector = $('#sector').val();
+    cliente.Clv_Periodo = $('#periodo').val();
+    cliente.Clv_Tap = $('#tap').val();
+    cliente.Zona2 = $('#zona2').val();
+    cliente.conexion = $('#conexiones').val();
+
+    var Datosfiscales = {};
+    Datosfiscales.Contrato = $('#contrato').val();
+    Datosfiscales.IVADESGLOSADO = $('#ivafiscal').val();
+    Datosfiscales.RAZON_SOCIAL = $('#rsocial').val();
+    Datosfiscales.RFC = $('#rfc').val();
+    Datosfiscales.CALLE_RS = $('#calleFiscal').val();
+    Datosfiscales.NUMERO_RS = $('#NumeroFiscal').val();
+    Datosfiscales.ENTRECALLES = $('#callesFiscal').val();
+    Datosfiscales.COLONIA_RS = $('#ColoniaFiscal').val();
+    Datosfiscales.CIUDAD_RS = $('#CiudadFiscal').val();
+    Datosfiscales.ESTADO_RS = $('#EstadoFiscal').val();
+    Datosfiscales.CP_RS = $('#postafiscal').val();
+    Datosfiscales.TELEFONO_RS = $('#TelefonoFiscal').val();
+    Datosfiscales.FAX_RS = $('#FaxFiscal').val();
+    Datosfiscales.TIPO="";
+    Datosfiscales.IDENTIFICADOR = $('#identificadorfiscal').val();
+    Datosfiscales.CURP = $('#curp').val();
+    Datosfiscales.id_asociado = $('#idasociadofiscal').val();
+
+    $.ajax({
+        url: "/CLIENTE/UpdateCliente/",
+        type: "POST",
+        data: { 'cliente': cliente, 'fiscales': Datosfiscales },
+        success: function (data, textStatus, jqXHR) {
+            swal("Hecho!", "El cliente se edito correctamente!", "success");
+
+        },
+        error: function (jqXHR, textStatus, errorThrown) {
+
+        }
+    });
+   
+  
 
 });
 
@@ -225,3 +200,89 @@ $('#colonia').change(function () {
 
 
 });
+
+function Getcolonias(ciudad, plaza) {
+    $.ajax({
+        url: '/COLONIA/GetColoniaByCiudad/',
+        type: "POST",
+        data: { 'idciudad': ciudad, 'plaza': plaza },
+        success: function (data, textStatus, jqXHR) {
+            console.log(data);
+            for (var a = 0; a < data.length; a++) {
+                $('#colonia').append("<option id='" + data[a].plaza + "' value='" + data[a].clv_colonia + "'>" + data[a].Nombre + "</option>");
+            }
+
+        },
+        error: function (jqXHR, textStatus, errorThrown) {
+
+        }
+    });
+
+}
+
+function getCalle(plaza, idcolonia) {
+
+    $.ajax({
+        url: '/CALLE/GetCalleByColonia/',
+        type: "POST",
+        data: { 'colonia': idcolonia, 'plaza': plaza },
+        success: function (data, textStatus, jqXHR) {
+            console.log(data);
+            for (var a = 0; a < data.length; a++) {
+                $('#calle').append("<option value='" + data[a].Clv_Calle + "'>" + data[a].Nombre + "</option>");
+            }
+
+        },
+        error: function (jqXHR, textStatus, errorThrown) {
+
+        }
+    });
+
+}
+
+
+
+function BorraFormulario() {
+
+    $('#contrato').val('');
+    $('#nombre').val('');
+    $('#calles').val('');
+    $("#ciudad").val('');
+    $('#colonia').val('');
+    $('#calle').val('');
+    $('#numero').val('');
+    $('#cp').val('');
+    $('#calles').val('');
+    $('#telefono').val('');
+    $('#celular').val('');
+    $('#correo').val('');
+    $('#iva').val('');
+    $('#solointernet').val('');
+    $('#eshotel').val('');
+    $('#sector').val('');
+    $('#periodo').val('');
+    $('#tap').val('');
+    $('#zona2').val('');
+
+    $('#contrato').val('');
+    $('#ivafiscal').val('');
+    $('#rsocial').val('');
+    $('#rfc').val('');
+    $('#calleFiscal').val('');
+    $('#NumeroFiscal').val('');
+    $('#callesFiscal').val('');
+    $('#ColoniaFiscal').val('');
+    $('#CiudadFiscal').val('');
+    $('#EstadoFiscal').val('');
+    $('#postafiscal').val('');
+    $('#TelefonoFiscal').val('');
+    $('#FaxFiscal').val('');
+    $('#identificadorfiscal').val('');
+    $('#curp').val('');
+    $('#idasociadofiscal').val('');
+
+    $('#ciudad').find('option').remove();
+    $('#colonia').find('option').remove();
+    $('#calle').find('option').remove();
+
+}

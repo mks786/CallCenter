@@ -293,6 +293,40 @@ namespace SoftvMVC.Controllers
         }
 
 
+        public ActionResult UpdateCliente(CLIENTEEntity2 cliente, DatoFiscalEntity fiscales)
+        {
+            ConexionController c = new ConexionController();
+            SqlCommand comandoSql;
+            SqlCommand comandoSql2;         
+            SqlConnection conexionSQL = new SqlConnection(c.DameConexion(cliente.conexion));
+            int result = 0;
+            try
+            {
+                conexionSQL.Open();
+            }
+            catch
+            { }
+            try
+            {
+                comandoSql = new SqlCommand("UPDATE CLIENTES SET Nombre="+cliente.NOMBRE+",Clv_Calle="+cliente.Clv_Calle+",Numero="+cliente.NUMERO+",EntreCalles="+cliente.ENTRECALLES+",Clv_Colonia="+cliente.Clv_Colonia+",CodigoPostal="+cliente.CodigoPostal+",Telefono="+cliente.TELEFONO+",Celular="+cliente.CELULAR+",Clv_Ciudad="+cliente.Clv_Ciudad+",Email="+cliente.Email+" where contrato="+cliente.CONTRATO);
+                comandoSql.Connection = conexionSQL;
+                comandoSql.ExecuteNonQuery();
+                result = 1;
+            }
+            catch { }
+
+            try
+            {
+                comandoSql2 = new SqlCommand("UPDATE DatosFiscales set Razon_Social=" + fiscales.RAZON_SOCIAL + ",RFC=" + fiscales.RFC + ",Calle_RS=" + fiscales.CALLE_RS + ",Numero_RS=" + fiscales.NUMERO_RS + ",EntreCalles=" + fiscales.ENTRECALLES + ",Colonia_RS=" + fiscales.COLONIA_RS + ",Ciudad_RS=" + fiscales.CIUDAD_RS + ",Estado_RS=" + fiscales.ESTADO_RS + ",CP_RS=" + fiscales.CP_RS + ",Telefono_RS=" + fiscales.TELEFONO_RS + ",Fax_RS=" + fiscales.FAX_RS + ",CURP="+fiscales.CURP+" where contrato="+cliente.CONTRATO);
+
+            }
+            catch { }
+
+            return Json(result,JsonRequestBehavior.AllowGet);
+        }
+
+
+
         public class DataTableData
         {
             public int draw { get; set; }
