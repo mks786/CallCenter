@@ -174,18 +174,8 @@ function enviarEncuesta() {
                     $('#por_contrato').hide();
                     $('#datos_contacto').hide();
                     $('#datos_contacto_error').hide();
-                    swal({
-                        title: "!Hecho!", text: "Encuesta se aplico exitosamente!",
-                        type: "success",
-                        showCancelButton: false,
-                        confirmButtonColor: "#5cb85c",
-                        confirmButtonText: "Aceptar",
-                        cancelButtonText: "Aceptar",
-                        closeOnConfirm: false,
-                        closeOnCancel: false
-                    }, function (isConfirm) {
-                        document.getElementById("encuestaForm").reset();
-                    });
+                    swal("La Encuesta se guaró exitosamente", "", "success");
+                    document.getElementById("encuestaForm").reset();
 
                 },
                 error: function (jqXHR, textStatus, errorThrown) {
