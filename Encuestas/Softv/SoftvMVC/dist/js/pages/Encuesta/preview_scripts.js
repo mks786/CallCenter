@@ -170,9 +170,10 @@ function enviarEncuesta() {
                 type: "POST",
                 data: { 'encuesta': datos },
                 success: function (data, textStatus, jqXHR) {
-
-
-
+                    $('#por_nombre').hide();
+                    $('#por_contrato').hide();
+                    $('#datos_contacto').hide();
+                    $('#datos_contacto_error').hide();
                     swal({
                         title: "!Hecho!", text: "Encuesta se aplico exitosamente!",
                         type: "success",
@@ -188,8 +189,11 @@ function enviarEncuesta() {
 
                 },
                 error: function (jqXHR, textStatus, errorThrown) {
-                    swal("Error al envair la encuesta", "", "error");
                     document.getElementById("encuestaForm").reset();
+                    $('#por_nombre').hide();
+                    $('#por_contrato').hide();
+                    $('#datos_contacto').hide();
+                    swal("Error al envair la encuesta", "", "error"); 
                 }
             });
         }
