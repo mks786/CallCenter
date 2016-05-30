@@ -15,6 +15,7 @@
     <!-- Bootstrap 3.3.5 -->
     <title>PreView | @ViewBag.NombreEncuesta</title>
     <link rel="stylesheet" href="~/bootstrap/css/bootstrap.css">
+    <script src="~/bootstrap/js/bootstrap.min.js"></script>
     <!-- Font Awesome -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
     <!-- Ionicons -->
@@ -33,7 +34,51 @@
         body{
             background-color:#ECF0F5;
         }
-      
+        input[type=radio],
+        input[type=checkbox] {
+	        display: none;
+        }
+        label:before {
+	        content: "";
+	        display: inline-block;
+
+	        width: 16px;
+	        height: 16px;
+
+	        margin-right: 10px;
+	        position: absolute;
+	        left: 0;
+	        bottom: 1px;
+	        background-color: #aaa;
+	        box-shadow: inset 0px 2px 3px 0px rgba(0, 0, 0, .3), 0px 1px 0px 0px rgba(255, 255, 255, .8);
+        }
+
+        .radio label:before {
+	        border-radius: 8px;
+        }
+        .checkbox label {
+	        margin-bottom: 10px;
+        }
+        .checkbox label:before {
+            border-radius: 3px;
+        }
+
+        input[type=radio]:checked + label:before {
+            content: "\2022";
+            color: #f3f3f3;
+            font-size: 30px;
+            text-align: center;
+            line-height: 18px;
+        }
+
+        input[type=checkbox]:checked + label:before {
+	        content: "\2713";
+	        text-shadow: 1px 1px 1px rgba(0, 0, 0, .2);
+	        font-size: 15px;
+	        color: #f3f3f3;
+	        text-align: center;
+            line-height: 15px;
+        }
 
     </style>
 
@@ -45,7 +90,7 @@
             <div class="rowf" >
 
                 <!--<p class="text-right" style="color:#00a9b2; font-size:16px;"><strong>@ViewBag.FechaCreacion</strong></p>-->
-                <h1 class="text-center" style="color:#4b646f; font-size:22px;"><strong>@ViewBag.NombreEncuesta</strong></h1>
+                <h1 class="text-center" style="color:#4b646f;"><strong>@ViewBag.NombreEncuesta</strong></h1>
 
                 <div class="page-title" style="background-color:#3c8dbc; color:#fff; width:100%;">
                     <div class="container">
@@ -54,27 +99,51 @@
                         </h3>
                     </div>
                 </div><br />
-                <form id="encuestaForm">
+                <div class="row" id="conetar_plaza">
+                    <div class="col-md-6 col-md-offset-4">
+                        <button class="btn btn-warning" onclick="AbrirModal()"><i class="fa fa-map-marker" aria-hidden="true"></i> SELECCIONAR PLAZA</button>
+                    </div>
+                </div><br /><br />
+
+
+                <form id="encuestaForm" style="display:none;">
                     <div class="row">
-                        <div class="col-md-4 col-md-offset-1">
-                            <div class="col-md-9">
-                                <select class="form-control" id="conexion_plaza">
-                                    <option value="default" selected disabled>Selecciona la plaza</option>
-                                </select>
-                            </div>
-                           
-                            <div class="col-md-3" id="recargar_pagina" style="display:none;">
-                                <a href="javascript:window.location.href=window.location.href" class="btn btn-primary"><i class="fa fa-refresh" aria-hidden="true"></i></a>
-                            </div>
-                        </div>
-                        <div class="col-md-6" id="panel_cliente" style="display:none;">
-                            <div class="form-group">
-                                <div class="col-md-11">
-                                    <input type="text" class="flexdatalist form-control" placeholder="Nombre del cliente" name="cliente" id="cliente_id" required />
-                                </div>
-                            </div>
+                        <div class="col-md-12">
+                            <h1 id="texto_plaxa" class="text-center" style="color:#4b646f;"></h1>
                         </div>
                     </div><br />
+                    <div class="row">
+                        <div class="col-md-3 col-md-offset-1">
+                            <select id="busqueda" class="form-control">
+                                <option value="0" selected disabled>Buscar cliente por:</option>
+                                <option value="1">Nombre y/o Dirección</option>
+                                <option value="2">Contrato</option>
+                            </select>
+                        </div>
+                        <div class="col-md-6" id="por_nombre" style="display:none;">
+                            <input type="text" class="flexdatalist form-control" id="cliente_id" placeholder="Nombre ó driección del cliente" />
+                        </div>
+                        <div class="col-md-5" id="por_contrato" style="display:none;">
+                            <div class="col-md-6">
+                                <input type="text" class="form-control" id="contrato_id" placeholder="Número de contrato" />
+                            </div>
+                            <div class="col-md-6">
+                                <p class="btn btn-app" onclick="validar_contrato()">Valdiar</p>
+                            </div>  
+                        </div>
+                    </div><br />
+                    <div class="row" style="display:none;" id="datos_contacto">
+                        <div class="col-md-12 col-md-offset-1">
+                            <h4 id="nombre_contrato"></h4>
+                            <h5 id="calle_contrato"></h5>
+                            <h5 id="colonia_contrato"></h5>
+                        </div>
+                    </div>
+                    <div class="row" style="display:none;" id="datos_contacto_error">
+                        <div class="col-md-10 col-md-offset-1">
+                            <div class="alert alert-warning alert-dismissible fade in" role="alert"> <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">×</span></button> <strong>Opsss!</strong> El número de contrrato es inválido. </div>
+                        </div>
+                    </div>
                     <input type="hidden" id="encuesta_id" name="id_encuesta" value="@ViewBag.IdEncuesta">
                     <div class="container" style="margin-left:50px;">
 
@@ -88,34 +157,36 @@
                             if (a.Pregunta.IdTipoPregunta.Value == 1)
                             {
                                 <div style="padding-left:30px;">
-                                    <textarea class="form-control" style="width:50%" name="@(a.Pregunta.IdPregunta)_@a.Pregunta.IdPregunta" required></textarea>
+                                    <textarea class="form-control" style="width:50%" name="@a.Pregunta.IdPregunta" required></textarea>
                                 </div>
                             }
 
                             else if (a.Pregunta.IdTipoPregunta.Value == 2)
                             {
-                                <div style="padding-left:30px;">
+                                <div style="padding-left:30px;" class="wrapper">
                                     <div class="radio icheck">
-                                        <input type="radio" id="@a.Pregunta.IdPregunta s" name="@(a.Pregunta.IdPregunta)_@a.Pregunta.IdPregunta" value="1">
+                                        <input type="radio" id="@a.Pregunta.IdPregunta s" name="@a.Pregunta.IdPregunta" value="1">
                                         <label for="@a.Pregunta.IdPregunta s">Si</label>
                                     </div>
                                     <div class="radio icheck">
-                                        <input type="radio" id="@a.Pregunta.IdPregunta n" name="@(a.Pregunta.IdPregunta)_@a.Pregunta.IdPregunta" value="0">
+                                        <input type="radio" id="@a.Pregunta.IdPregunta n" name="@a.Pregunta.IdPregunta" value="0">
                                         <label for="@a.Pregunta.IdPregunta n">No</label>
                                     </div>
                                 </div>
                             }
-                            else  if (a.Pregunta.IdTipoPregunta.Value == 3)
+                            else if (a.Pregunta.IdTipoPregunta.Value == 3)
                             {
-                                foreach (var b in a.Respuestas)
-                                {
-                                    <div style="padding-left:30px;">
-                                        <div class="checkbox icheck">
-                                            <input id="@b.Id_ResOpcMult" type="checkbox" name="@(a.Pregunta.IdPregunta)_@b.Id_ResOpcMult" value="@b.ResOpcMult">
-                                            <label for="@b.Id_ResOpcMult">@b.ResOpcMult</label>
-                                        </div>
+                                <div style="padding-left:30px;" class="wrapper">
+                                    @foreach (var b in a.Respuestas)
+                                    {
+
+                                    <div class="radio icheck">
+                                        <input id="@b.ResOpcMult" type="radio" name="@a.Pregunta.IdPregunta" value="@b.ResOpcMult">
+                                        <label for="@b.ResOpcMult">@b.ResOpcMult</label>
                                     </div>
-                                }
+
+                                    }
+                                </div>
 
 
                             }
@@ -149,15 +220,36 @@
       
 
     </div>
+    
+
+    <div class="modal fade" id="Modal_Plaza" role="dialog">
+        <div class="modal-dialog modal-md">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button class="close" aria-label="Close" type="button" data-dismiss="modal"><span aria-hidden="true">×</span></button>
+                    <h4 class="modal-title">Selecciona la plaza</h4>
+                </div>
+                <div class="modal-body">
+                    <div class="col-md-6 col-md-offset-3">
+                        <select class="form-control" id="conexion_plaza">
+                            <option value="default" selected disabled>Selecciona la plaza</option>
+                        </select>
+                    </div>
+                    <br />
+                    <br />
+                </div>
+                <div class="modal-footer">
+                    <button class="btn btn-primary " type="button" data-dismiss="modal">Cerrar</button>
+                    <button class="btn btn-success" onclick="plaza_conexion()" type="button" id="aceptar_plaza">Conectar</button>
+                </div>
+            </div>
+        </div>
+    </div>
 </body>
 <script src="~/plugins/iCheck/icheck.min.js"></script>
 <script>
     $(function () {
-        $('input').iCheck({
-            checkboxClass: 'icheckbox_square-blue',
-            radioClass: 'iradio_square-blue',
-            increaseArea: '20%' // optional
-        });
+        
         $.ajax({
             url: "/Conexion/ListaConexiones/",
             type: "GET",
@@ -177,11 +269,17 @@
     });
 
 
-    $("#conexion_plaza").change(function () {
-        $('#conexion_plaza').attr('disabled', '');
-        $('#recargar_pagina').show();
+    function AbrirModal() {
+        $('#Modal_Plaza').modal("show");
+    }
+
+    function plaza_conexion() {
+        $('#Modal_Plaza').modal("hide");
+        $('#conetar_plaza').hide();
+        $('#encuestaForm').show();
+        $('#texto_plaxa').text('Plaza '+$( "#conexion_plaza option:selected" ).text());
         var id_plaza = $('#conexion_plaza').val();
-        var api = '/CLIENTE/GetClientesPorCoincidencia/?conexion=' + id_plaza;
+        var api = '/CLIENTE/GetClientesporPlazaJson/?id=' + id_plaza + '&contrato=&cliente1=&direccion=';
         $('#panel_cliente').show();
         $('.flexdatalist').flexdatalist({
             minLength: 1,
@@ -189,22 +287,68 @@
             selectionRequired: true,
             valueProperty: 'CONTRATO',
             textProperty: '{NOMBRE},{CONTRATO}',
-            visibleProperties: ["NOMBRE", "CONTRATO"],
-            searchIn: "NOMBRE",
+            visibleProperties: ["NOMBRE", "CONTRATO", "Calle"],
+            searchIn: ["NOMBRE","Calle"],
         });
-    });
+    }
     
-  
+    $('#busqueda').change(function () {
+        var tipo = $('#busqueda').val();
+        if (tipo == 1) {
+            $('#por_nombre').show();
+            $('#por_contrato').hide();
+            $('#datos_contacto').hide();
+            $('#datos_contacto_error').hide();
+            $('#contrato_id').val('');
+        } else if (tipo == 2) {
+            $('#por_contrato').show();
+            $('#por_nombre').hide();
+            $('.flexdatalist').text('');
+        } 
+    });
+
+    function validar_contrato() {
+        var contrato = $('#contrato_id').val();
+        var id_plaza = $('#conexion_plaza').val();
+        $.ajax({
+            url: "/CLIENTE/GetClientesporPlazaJson/",
+            type: "GET",
+            data: { 'id': id_plaza, "contrato": contrato, "cliente1": "", "direccion": "" },
+            success: function (data, textStatus, jqXHR) {
+                console.log();
+                if (data.length == 0) {
+                    $('#datos_contacto_error').show();
+                    $('#datos_contacto').hide(); 
+                } else {
+                    $('#nombre_contrato').text(data[0].NOMBRE);
+                    $('#calle_contrato').text('Calle: ' + data[0].Calle);
+                    $('#colonia_contrato').text('Colonia: ' + data[0].Colonia);
+                    $('#datos_contacto').show();
+                    $('#datos_contacto_error').hide();
+                }
+                
+            },
+            error: function (data,jqXHR, textStatus) {
+                console.log(data);
+            }
+        });
+    }
 
     function enviarEncuesta() {
         var cliente = $('#cliente_id').val();
+        var contrato_id = $('#contrato_id').val();
+        var no_contrato = 0;
+        var tipo_busqueda = $('#busqueda').val();
+        if (tipo_busqueda == 1) {
+            no_contrato = cliente;
+        } else if(tipo_busqueda == 2) {
+            console.log('id');
+            no_contrato = contrato_id;
+        }
         var plaza = $('#conexion_plaza').val();
-        console.log(plaza);
-        if (plaza == null) {
-            swal("Selecciona una plaza válida", "", "error");
-        } else if (cliente == "") {
+        if (no_contrato == 0) {
             swal("Agrega un cliente válido", "", "error");
-        } else {
+        }else {
             var html = $('#encuestaForm');
             var datos = {};
             var count = 0;
@@ -218,39 +362,29 @@
             var datos_respuestas = [];
             var data = $('#encuestaForm').serializeArray().reduce(function (obj, item, indice) {
                 obj[item.name] = item.value;
-                if (indice == "0") {
-                    var cliente_encuestado = {};
-                    cliente_encuestado.id_cliente = item.value;
-                    cliente.push(cliente_encuestado);
+                if (parseInt(item.name)) {
+                    var id_pregunta = parseInt(item.name);
+                    var respuestas = {};
+                    count += 1;
+                    respuestas.id_pregunta = id_pregunta;
+                    respuestas.respuesta = item.value;
+                    datos_respuestas.push(respuestas);
                 } else {
-                    if (parseInt(item.name)) {
-                        var id_respuesta = parseInt(item.name.split('_')[1]+item.value);
-                        var id_pregunta = parseInt(item.name.split('_')[0]);
-                        var respuestas = {};
-                        if (id_respuesta != id_pregunta) {
-                            respuestas.id_respuesta = id_respuesta;
-                        }
-                        count += 1;
-                        respuestas.id_pregunta = id_pregunta;
-                        respuestas.respuesta = item.value;
-                        datos_respuestas.push(respuestas);
-                    } else {
-                        if (item.name != "id_encuesta") {
-                            var preguntas = {};
-                            var tipo = item.name.split('s')[0].replace('(', '').replace(')', '').replace('p','');
-                            var idPregunta = item.name.split('s')[1].replace('(', '').replace(')', '');
-                            preguntas.id_pregunta = parseInt(idPregunta);
-                            preguntas.tipo = parseInt(tipo);
-                            preguntas.nombre = item.value;
-                            datos_preguntas.push(preguntas);
+                    if (item.name != "id_encuesta") {
+                        var preguntas = {};
+                        var tipo = item.name.split('s')[0].replace('(', '').replace(')', '').replace('p','');
+                        var idPregunta = item.name.split('s')[1].replace('(', '').replace(')', '');
+                        preguntas.id_pregunta = parseInt(idPregunta);
+                        preguntas.tipo = parseInt(tipo);
+                        preguntas.nombre = item.value;
+                        datos_preguntas.push(preguntas);
                             
-                        }
                     }
                 }
                 return obj;
             }, {});
             datos.id_plaza = parseInt(plaza);
-            datos.cliente = parseInt(cliente[0].id_cliente);
+            datos.cliente = parseInt(no_contrato);
             datos.id_encuesta = parseInt($('#encuesta_id').val());
             for (var i = 0; i < datos_preguntas.length; i++) {
                 var pregunta = {};
@@ -270,7 +404,7 @@
                     }
                 }
             }
-
+            console.log(datos);
             $.ajax({
                 url: "/Encuesta/DatosEncuesta/",
                 type: "POST",
@@ -289,12 +423,13 @@
                         closeOnConfirm: false,
                         closeOnCancel: false
                     }, function (isConfirm) {
-                        location.reload();
+                        document.getElementById("encuestaForm").reset();
                     });        
 
                 },
                 error: function (jqXHR, textStatus, errorThrown) {
-
+                    swal("Good job!", "Encuesta guardada exitosamente!", "success");
+                    document.getElementById("encuestaForm").reset();
                 }
             });
         }
