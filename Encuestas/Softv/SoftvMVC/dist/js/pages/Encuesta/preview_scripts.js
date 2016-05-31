@@ -26,7 +26,7 @@ function AbrirModal() {
 function plaza_conexion() {
     $('#Modal_Plaza').modal("hide");
     $('#conetar_plaza').hide();
-    $('#encuestaForm').show();
+    //$('#encuestaForm').show();
     $('#texto_plaxa').text('Plaza ' + $("#conexion_plaza option:selected").text());
     var id_plaza = $('#conexion_plaza').val();
     var api = '/CLIENTE/GetClientesporPlazaJson/?id=' + id_plaza + '&contrato=&cliente1=&direccion=';
