@@ -190,7 +190,8 @@ $('#EditarPregunta').click(function () {
                 } else if (contador > 0) {
                     swal("No puede haber respuestas duplicadas", "", "error");
                 } else {
-                    Lista_opciones.length = 0;
+                    EliminarDeArreglo(Lista_opciones, "IdPregunta", IdPregunta2);
+
                     for (var i = 0; i < lista_opciones_aux.length; i++) {
                         Lista_opciones.push(lista_opciones_aux[i]);
                     }
