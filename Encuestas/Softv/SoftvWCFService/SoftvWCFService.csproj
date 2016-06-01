@@ -65,6 +65,7 @@
     </Content>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Contracts\IBusquedaIndividual.cs" />
     <Compile Include="Contracts\ICALLE.cs" />
     <Compile Include="Contracts\ICatalogoPeriodosCorte.cs" />
     <Compile Include="Contracts\ICIUDAD.cs" />

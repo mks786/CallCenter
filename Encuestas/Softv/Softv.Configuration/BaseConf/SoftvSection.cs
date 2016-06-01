@@ -335,6 +335,17 @@ namespace SoftvConfiguration
         {
             get { return (CALLEElement)base["CALLE"]; }
         }
+
+
+        /// <summary>
+        /// Gets BusquedaIndividual configuration data
+        /// </summary>
+        [ConfigurationProperty("BusquedaIndividual")]
+        public BusquedaIndividualElement BusquedaIndividual
+        {
+            get { return (BusquedaIndividualElement)base["BusquedaIndividual"]; }
+        }
+  
   
 
     }

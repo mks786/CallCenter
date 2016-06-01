@@ -39,6 +39,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="BusquedaIndividual.cs" />
     <Compile Include="CALLE.cs" />
     <Compile Include="CatalogoPeriodosCorte.cs" />
     <Compile Include="CIUDAD.cs" />

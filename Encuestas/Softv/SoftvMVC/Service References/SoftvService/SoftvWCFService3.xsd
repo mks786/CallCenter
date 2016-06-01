@@ -449,4 +449,18 @@
     </xs:sequence>
   </xs:complexType>
   <xs:element name="SoftvListOfCALLEEntitykmseq5jn" nillable="true" type="tns:SoftvListOfCALLEEntitykmseq5jn" />
+  <xs:complexType name="SoftvListOfBusquedaIndividualEntitykmseq5jn">
+    <xs:annotation>
+      <xs:appinfo>
+        <GenericType Name="SoftvListOf{0}{#}" Namespace="http://schemas.datacontract.org/2004/07/Globals" xmlns="http://schemas.microsoft.com/2003/10/Serialization/">
+          <GenericParameter Name="BusquedaIndividualEntity" Namespace="http://schemas.datacontract.org/2004/07/Softv.Entities" />
+        </GenericType>
+      </xs:appinfo>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element xmlns:q33="http://schemas.datacontract.org/2004/07/Softv.Entities" minOccurs="0" name="Entities" nillable="true" type="q33:ArrayOfBusquedaIndividualEntity" />
+      <xs:element minOccurs="0" name="totalCount" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="SoftvListOfBusquedaIndividualEntitykmseq5jn" nillable="true" type="tns:SoftvListOfBusquedaIndividualEntitykmseq5jn" />
 </xs:schema>

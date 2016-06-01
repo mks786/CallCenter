@@ -222,6 +222,7 @@
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\BaseController.cs" />
+    <Compile Include="Controllers\BusquedaIndividualController.cs" />
     <Compile Include="Controllers\CALLEController.cs" />
     <Compile Include="Controllers\CatalogoPeriodosCorteController.cs" />
     <Compile Include="Controllers\CIUDADController.cs" />
@@ -1395,6 +1396,7 @@
     <Content Include="Properties\DataSources\Softv.Entities.COLONIAEntity.datasource" />
     <Content Include="Properties\DataSources\Softv.Entities.CVECAROLEntity.datasource" />
     <Content Include="Properties\DataSources\Softv.Entities.CVECOLCIUEntity.datasource" />
+    <Content Include="Properties\DataSources\Softv.Entities.BusquedaIndividualEntity.datasource" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>

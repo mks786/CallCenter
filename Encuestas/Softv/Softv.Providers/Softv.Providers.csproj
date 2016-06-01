@@ -41,6 +41,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="BaseConf\ProviderSoftvMSS.cs" />
+    <Compile Include="BusquedaIndividualProvider.cs" />
     <Compile Include="CALLEProvider.cs" />
     <Compile Include="CatalogoPeriodosCorteProvider.cs" />
     <Compile Include="CIUDADProvider.cs" />

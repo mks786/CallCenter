@@ -40,6 +40,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="BusquedaIndividualData.cs" />
     <Compile Include="CALLEData.cs" />
     <Compile Include="CatalogoPeriodosCorteData.cs" />
     <Compile Include="CIUDADData.cs" />

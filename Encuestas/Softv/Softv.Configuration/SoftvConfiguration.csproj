@@ -42,6 +42,7 @@
   <ItemGroup>
     <Compile Include="BaseConf\SoftvSection.cs" />
     <Compile Include="BaseConf\SoftvSettings.cs" />
+    <Compile Include="BusquedaIndividualElement.cs" />
     <Compile Include="CALLEElement.cs" />
     <Compile Include="CatalogoPeriodosCorteElement.cs" />
     <Compile Include="CIUDADElement.cs" />

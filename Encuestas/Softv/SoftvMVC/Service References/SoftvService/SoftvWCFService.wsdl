@@ -1532,6 +1532,54 @@
   <wsdl:message name="ICALLE_DeleteCALLE_OutputMessage">
     <wsdl:part name="parameters" element="tns:DeleteCALLEResponse" />
   </wsdl:message>
+  <wsdl:message name="IBusquedaIndividual_GetBusquedaIndividual_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetBusquedaIndividual" />
+  </wsdl:message>
+  <wsdl:message name="IBusquedaIndividual_GetBusquedaIndividual_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetBusquedaIndividualResponse" />
+  </wsdl:message>
+  <wsdl:message name="IBusquedaIndividual_GetDeepBusquedaIndividual_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetDeepBusquedaIndividual" />
+  </wsdl:message>
+  <wsdl:message name="IBusquedaIndividual_GetDeepBusquedaIndividual_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetDeepBusquedaIndividualResponse" />
+  </wsdl:message>
+  <wsdl:message name="IBusquedaIndividual_GetBusquedaIndividualList_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetBusquedaIndividualList" />
+  </wsdl:message>
+  <wsdl:message name="IBusquedaIndividual_GetBusquedaIndividualList_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetBusquedaIndividualListResponse" />
+  </wsdl:message>
+  <wsdl:message name="IBusquedaIndividual_GetBusquedaIndividualPagedList_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetBusquedaIndividualPagedList" />
+  </wsdl:message>
+  <wsdl:message name="IBusquedaIndividual_GetBusquedaIndividualPagedList_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetBusquedaIndividualPagedListResponse" />
+  </wsdl:message>
+  <wsdl:message name="IBusquedaIndividual_GetBusquedaIndividualPagedListXml_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetBusquedaIndividualPagedListXml" />
+  </wsdl:message>
+  <wsdl:message name="IBusquedaIndividual_GetBusquedaIndividualPagedListXml_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetBusquedaIndividualPagedListXmlResponse" />
+  </wsdl:message>
+  <wsdl:message name="IBusquedaIndividual_AddBusquedaIndividual_InputMessage">
+    <wsdl:part name="parameters" element="tns:AddBusquedaIndividual" />
+  </wsdl:message>
+  <wsdl:message name="IBusquedaIndividual_AddBusquedaIndividual_OutputMessage">
+    <wsdl:part name="parameters" element="tns:AddBusquedaIndividualResponse" />
+  </wsdl:message>
+  <wsdl:message name="IBusquedaIndividual_UpdateBusquedaIndividual_InputMessage">
+    <wsdl:part name="parameters" element="tns:UpdateBusquedaIndividual" />
+  </wsdl:message>
+  <wsdl:message name="IBusquedaIndividual_UpdateBusquedaIndividual_OutputMessage">
+    <wsdl:part name="parameters" element="tns:UpdateBusquedaIndividualResponse" />
+  </wsdl:message>
+  <wsdl:message name="IBusquedaIndividual_DeleteBusquedaIndividual_InputMessage">
+    <wsdl:part name="parameters" element="tns:DeleteBusquedaIndividual" />
+  </wsdl:message>
+  <wsdl:message name="IBusquedaIndividual_DeleteBusquedaIndividual_OutputMessage">
+    <wsdl:part name="parameters" element="tns:DeleteBusquedaIndividualResponse" />
+  </wsdl:message>
   <wsdl:portType name="IUsuario">
     <wsdl:operation name="GetUsuario">
       <wsdl:input wsaw:Action="http://tempuri.org/IUsuario/GetUsuario" message="tns:IUsuario_GetUsuario_InputMessage" />
@@ -2610,6 +2658,40 @@
     <wsdl:operation name="DeleteCALLE">
       <wsdl:input wsaw:Action="http://tempuri.org/ICALLE/DeleteCALLE" message="tns:ICALLE_DeleteCALLE_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/ICALLE/DeleteCALLEResponse" message="tns:ICALLE_DeleteCALLE_OutputMessage" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:portType name="IBusquedaIndividual">
+    <wsdl:operation name="GetBusquedaIndividual">
+      <wsdl:input wsaw:Action="http://tempuri.org/IBusquedaIndividual/GetBusquedaIndividual" message="tns:IBusquedaIndividual_GetBusquedaIndividual_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IBusquedaIndividual/GetBusquedaIndividualResponse" message="tns:IBusquedaIndividual_GetBusquedaIndividual_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetDeepBusquedaIndividual">
+      <wsdl:input wsaw:Action="http://tempuri.org/IBusquedaIndividual/GetDeepBusquedaIndividual" message="tns:IBusquedaIndividual_GetDeepBusquedaIndividual_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IBusquedaIndividual/GetDeepBusquedaIndividualResponse" message="tns:IBusquedaIndividual_GetDeepBusquedaIndividual_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetBusquedaIndividualList">
+      <wsdl:input wsaw:Action="http://tempuri.org/IBusquedaIndividual/GetBusquedaIndividualList" message="tns:IBusquedaIndividual_GetBusquedaIndividualList_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IBusquedaIndividual/GetBusquedaIndividualListResponse" message="tns:IBusquedaIndividual_GetBusquedaIndividualList_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetBusquedaIndividualPagedList">
+      <wsdl:input wsaw:Action="http://tempuri.org/IBusquedaIndividual/GetBusquedaIndividualPagedList" message="tns:IBusquedaIndividual_GetBusquedaIndividualPagedList_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IBusquedaIndividual/GetBusquedaIndividualPagedListResponse" message="tns:IBusquedaIndividual_GetBusquedaIndividualPagedList_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetBusquedaIndividualPagedListXml">
+      <wsdl:input wsaw:Action="http://tempuri.org/IBusquedaIndividual/GetBusquedaIndividualPagedListXml" message="tns:IBusquedaIndividual_GetBusquedaIndividualPagedListXml_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IBusquedaIndividual/GetBusquedaIndividualPagedListXmlResponse" message="tns:IBusquedaIndividual_GetBusquedaIndividualPagedListXml_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="AddBusquedaIndividual">
+      <wsdl:input wsaw:Action="http://tempuri.org/IBusquedaIndividual/AddBusquedaIndividual" message="tns:IBusquedaIndividual_AddBusquedaIndividual_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IBusquedaIndividual/AddBusquedaIndividualResponse" message="tns:IBusquedaIndividual_AddBusquedaIndividual_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="UpdateBusquedaIndividual">
+      <wsdl:input wsaw:Action="http://tempuri.org/IBusquedaIndividual/UpdateBusquedaIndividual" message="tns:IBusquedaIndividual_UpdateBusquedaIndividual_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IBusquedaIndividual/UpdateBusquedaIndividualResponse" message="tns:IBusquedaIndividual_UpdateBusquedaIndividual_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="DeleteBusquedaIndividual">
+      <wsdl:input wsaw:Action="http://tempuri.org/IBusquedaIndividual/DeleteBusquedaIndividual" message="tns:IBusquedaIndividual_DeleteBusquedaIndividual_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IBusquedaIndividual/DeleteBusquedaIndividualResponse" message="tns:IBusquedaIndividual_DeleteBusquedaIndividual_OutputMessage" />
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:binding name="BasicHttpBinding_IUsuario" type="tns:IUsuario">
@@ -4994,6 +5076,81 @@
       </wsdl:output>
     </wsdl:operation>
   </wsdl:binding>
+  <wsdl:binding name="BasicHttpBinding_IBusquedaIndividual" type="tns:IBusquedaIndividual">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="GetBusquedaIndividual">
+      <soap:operation soapAction="http://tempuri.org/IBusquedaIndividual/GetBusquedaIndividual" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetDeepBusquedaIndividual">
+      <soap:operation soapAction="http://tempuri.org/IBusquedaIndividual/GetDeepBusquedaIndividual" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetBusquedaIndividualList">
+      <soap:operation soapAction="http://tempuri.org/IBusquedaIndividual/GetBusquedaIndividualList" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetBusquedaIndividualPagedList">
+      <soap:operation soapAction="http://tempuri.org/IBusquedaIndividual/GetBusquedaIndividualPagedList" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetBusquedaIndividualPagedListXml">
+      <soap:operation soapAction="http://tempuri.org/IBusquedaIndividual/GetBusquedaIndividualPagedListXml" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AddBusquedaIndividual">
+      <soap:operation soapAction="http://tempuri.org/IBusquedaIndividual/AddBusquedaIndividual" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdateBusquedaIndividual">
+      <soap:operation soapAction="http://tempuri.org/IBusquedaIndividual/UpdateBusquedaIndividual" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DeleteBusquedaIndividual">
+      <soap:operation soapAction="http://tempuri.org/IBusquedaIndividual/DeleteBusquedaIndividual" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
   <wsdl:service name="SoftvWCFService">
     <wsdl:port name="BasicHttpBinding_IUsuario" binding="tns:BasicHttpBinding_IUsuario">
       <soap:address location="http://localhost:64481/SoftvWCFService.svc" />
@@ -5089,6 +5246,9 @@
       <soap:address location="http://localhost:64481/SoftvWCFService.svc" />
     </wsdl:port>
     <wsdl:port name="BasicHttpBinding_ICALLE" binding="tns:BasicHttpBinding_ICALLE">
+      <soap:address location="http://localhost:64481/SoftvWCFService.svc" />
+    </wsdl:port>
+    <wsdl:port name="BasicHttpBinding_IBusquedaIndividual" binding="tns:BasicHttpBinding_IBusquedaIndividual">
       <soap:address location="http://localhost:64481/SoftvWCFService.svc" />
     </wsdl:port>
   </wsdl:service>

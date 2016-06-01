@@ -4658,4 +4658,149 @@ namespace SoftvMVC.SoftvService {
             return base.Channel.DeleteCALLEAsync(BaseRemoteIp, BaseIdUser, Clv_Calle);
         }
     }
+    
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ServiceModel.ServiceContractAttribute(ConfigurationName="SoftvService.IBusquedaIndividual")]
+    public interface IBusquedaIndividual {
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IBusquedaIndividual/GetBusquedaIndividual", ReplyAction="http://tempuri.org/IBusquedaIndividual/GetBusquedaIndividualResponse")]
+        Softv.Entities.BusquedaIndividualEntity GetBusquedaIndividual(System.Nullable<int> Id);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IBusquedaIndividual/GetBusquedaIndividual", ReplyAction="http://tempuri.org/IBusquedaIndividual/GetBusquedaIndividualResponse")]
+        System.Threading.Tasks.Task<Softv.Entities.BusquedaIndividualEntity> GetBusquedaIndividualAsync(System.Nullable<int> Id);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IBusquedaIndividual/GetDeepBusquedaIndividual", ReplyAction="http://tempuri.org/IBusquedaIndividual/GetDeepBusquedaIndividualResponse")]
+        Softv.Entities.BusquedaIndividualEntity GetDeepBusquedaIndividual(System.Nullable<int> Id);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IBusquedaIndividual/GetDeepBusquedaIndividual", ReplyAction="http://tempuri.org/IBusquedaIndividual/GetDeepBusquedaIndividualResponse")]
+        System.Threading.Tasks.Task<Softv.Entities.BusquedaIndividualEntity> GetDeepBusquedaIndividualAsync(System.Nullable<int> Id);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IBusquedaIndividual/GetBusquedaIndividualList", ReplyAction="http://tempuri.org/IBusquedaIndividual/GetBusquedaIndividualListResponse")]
+        System.Collections.Generic.List<Softv.Entities.BusquedaIndividualEntity> GetBusquedaIndividualList();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IBusquedaIndividual/GetBusquedaIndividualList", ReplyAction="http://tempuri.org/IBusquedaIndividual/GetBusquedaIndividualListResponse")]
+        System.Threading.Tasks.Task<System.Collections.Generic.List<Softv.Entities.BusquedaIndividualEntity>> GetBusquedaIndividualListAsync();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IBusquedaIndividual/GetBusquedaIndividualPagedList", ReplyAction="http://tempuri.org/IBusquedaIndividual/GetBusquedaIndividualPagedListResponse")]
+        Globals.SoftvList<Softv.Entities.BusquedaIndividualEntity> GetBusquedaIndividualPagedList(int page, int pageSize);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IBusquedaIndividual/GetBusquedaIndividualPagedList", ReplyAction="http://tempuri.org/IBusquedaIndividual/GetBusquedaIndividualPagedListResponse")]
+        System.Threading.Tasks.Task<Globals.SoftvList<Softv.Entities.BusquedaIndividualEntity>> GetBusquedaIndividualPagedListAsync(int page, int pageSize);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IBusquedaIndividual/GetBusquedaIndividualPagedListXml", ReplyAction="http://tempuri.org/IBusquedaIndividual/GetBusquedaIndividualPagedListXmlResponse")]
+        Globals.SoftvList<Softv.Entities.BusquedaIndividualEntity> GetBusquedaIndividualPagedListXml(int page, int pageSize, string xml);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IBusquedaIndividual/GetBusquedaIndividualPagedListXml", ReplyAction="http://tempuri.org/IBusquedaIndividual/GetBusquedaIndividualPagedListXmlResponse")]
+        System.Threading.Tasks.Task<Globals.SoftvList<Softv.Entities.BusquedaIndividualEntity>> GetBusquedaIndividualPagedListXmlAsync(int page, int pageSize, string xml);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IBusquedaIndividual/AddBusquedaIndividual", ReplyAction="http://tempuri.org/IBusquedaIndividual/AddBusquedaIndividualResponse")]
+        int AddBusquedaIndividual(Softv.Entities.BusquedaIndividualEntity objBusquedaIndividual);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IBusquedaIndividual/AddBusquedaIndividual", ReplyAction="http://tempuri.org/IBusquedaIndividual/AddBusquedaIndividualResponse")]
+        System.Threading.Tasks.Task<int> AddBusquedaIndividualAsync(Softv.Entities.BusquedaIndividualEntity objBusquedaIndividual);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IBusquedaIndividual/UpdateBusquedaIndividual", ReplyAction="http://tempuri.org/IBusquedaIndividual/UpdateBusquedaIndividualResponse")]
+        int UpdateBusquedaIndividual(Softv.Entities.BusquedaIndividualEntity objBusquedaIndividual);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IBusquedaIndividual/UpdateBusquedaIndividual", ReplyAction="http://tempuri.org/IBusquedaIndividual/UpdateBusquedaIndividualResponse")]
+        System.Threading.Tasks.Task<int> UpdateBusquedaIndividualAsync(Softv.Entities.BusquedaIndividualEntity objBusquedaIndividual);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IBusquedaIndividual/DeleteBusquedaIndividual", ReplyAction="http://tempuri.org/IBusquedaIndividual/DeleteBusquedaIndividualResponse")]
+        int DeleteBusquedaIndividual(string BaseRemoteIp, int BaseIdUser, System.Nullable<int> Id);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IBusquedaIndividual/DeleteBusquedaIndividual", ReplyAction="http://tempuri.org/IBusquedaIndividual/DeleteBusquedaIndividualResponse")]
+        System.Threading.Tasks.Task<int> DeleteBusquedaIndividualAsync(string BaseRemoteIp, int BaseIdUser, System.Nullable<int> Id);
+    }
+    
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    public interface IBusquedaIndividualChannel : SoftvMVC.SoftvService.IBusquedaIndividual, System.ServiceModel.IClientChannel {
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    public partial class BusquedaIndividualClient : System.ServiceModel.ClientBase<SoftvMVC.SoftvService.IBusquedaIndividual>, SoftvMVC.SoftvService.IBusquedaIndividual {
+        
+        public BusquedaIndividualClient() {
+        }
+        
+        public BusquedaIndividualClient(string endpointConfigurationName) : 
+                base(endpointConfigurationName) {
+        }
+        
+        public BusquedaIndividualClient(string endpointConfigurationName, string remoteAddress) : 
+                base(endpointConfigurationName, remoteAddress) {
+        }
+        
+        public BusquedaIndividualClient(string endpointConfigurationName, System.ServiceModel.EndpointAddress remoteAddress) : 
+                base(endpointConfigurationName, remoteAddress) {
+        }
+        
+        public BusquedaIndividualClient(System.ServiceModel.Channels.Binding binding, System.ServiceModel.EndpointAddress remoteAddress) : 
+                base(binding, remoteAddress) {
+        }
+        
+        public Softv.Entities.BusquedaIndividualEntity GetBusquedaIndividual(System.Nullable<int> Id) {
+            return base.Channel.GetBusquedaIndividual(Id);
+        }
+        
+        public System.Threading.Tasks.Task<Softv.Entities.BusquedaIndividualEntity> GetBusquedaIndividualAsync(System.Nullable<int> Id) {
+            return base.Channel.GetBusquedaIndividualAsync(Id);
+        }
+        
+        public Softv.Entities.BusquedaIndividualEntity GetDeepBusquedaIndividual(System.Nullable<int> Id) {
+            return base.Channel.GetDeepBusquedaIndividual(Id);
+        }
+        
+        public System.Threading.Tasks.Task<Softv.Entities.BusquedaIndividualEntity> GetDeepBusquedaIndividualAsync(System.Nullable<int> Id) {
+            return base.Channel.GetDeepBusquedaIndividualAsync(Id);
+        }
+        
+        public System.Collections.Generic.List<Softv.Entities.BusquedaIndividualEntity> GetBusquedaIndividualList() {
+            return base.Channel.GetBusquedaIndividualList();
+        }
+        
+        public System.Threading.Tasks.Task<System.Collections.Generic.List<Softv.Entities.BusquedaIndividualEntity>> GetBusquedaIndividualListAsync() {
+            return base.Channel.GetBusquedaIndividualListAsync();
+        }
+        
+        public Globals.SoftvList<Softv.Entities.BusquedaIndividualEntity> GetBusquedaIndividualPagedList(int page, int pageSize) {
+            return base.Channel.GetBusquedaIndividualPagedList(page, pageSize);
+        }
+        
+        public System.Threading.Tasks.Task<Globals.SoftvList<Softv.Entities.BusquedaIndividualEntity>> GetBusquedaIndividualPagedListAsync(int page, int pageSize) {
+            return base.Channel.GetBusquedaIndividualPagedListAsync(page, pageSize);
+        }
+        
+        public Globals.SoftvList<Softv.Entities.BusquedaIndividualEntity> GetBusquedaIndividualPagedListXml(int page, int pageSize, string xml) {
+            return base.Channel.GetBusquedaIndividualPagedListXml(page, pageSize, xml);
+        }
+        
+        public System.Threading.Tasks.Task<Globals.SoftvList<Softv.Entities.BusquedaIndividualEntity>> GetBusquedaIndividualPagedListXmlAsync(int page, int pageSize, string xml) {
+            return base.Channel.GetBusquedaIndividualPagedListXmlAsync(page, pageSize, xml);
+        }
+        
+        public int AddBusquedaIndividual(Softv.Entities.BusquedaIndividualEntity objBusquedaIndividual) {
+            return base.Channel.AddBusquedaIndividual(objBusquedaIndividual);
+        }
+        
+        public System.Threading.Tasks.Task<int> AddBusquedaIndividualAsync(Softv.Entities.BusquedaIndividualEntity objBusquedaIndividual) {
+            return base.Channel.AddBusquedaIndividualAsync(objBusquedaIndividual);
+        }
+        
+        public int UpdateBusquedaIndividual(Softv.Entities.BusquedaIndividualEntity objBusquedaIndividual) {
+            return base.Channel.UpdateBusquedaIndividual(objBusquedaIndividual);
+        }
+        
+        public System.Threading.Tasks.Task<int> UpdateBusquedaIndividualAsync(Softv.Entities.BusquedaIndividualEntity objBusquedaIndividual) {
+            return base.Channel.UpdateBusquedaIndividualAsync(objBusquedaIndividual);
+        }
+        
+        public int DeleteBusquedaIndividual(string BaseRemoteIp, int BaseIdUser, System.Nullable<int> Id) {
+            return base.Channel.DeleteBusquedaIndividual(BaseRemoteIp, BaseIdUser, Id);
+        }
+        
+        public System.Threading.Tasks.Task<int> DeleteBusquedaIndividualAsync(string BaseRemoteIp, int BaseIdUser, System.Nullable<int> Id) {
+            return base.Channel.DeleteBusquedaIndividualAsync(BaseRemoteIp, BaseIdUser, Id);
+        }
+    }
 }

@@ -41,6 +41,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Base\BaseEntity.cs" />
+    <Compile Include="BusquedaIndividualEntity.cs" />
     <Compile Include="CALLEEntity.cs" />
     <Compile Include="CatalogoPeriodosCorteEntity.cs" />
     <Compile Include="CIUDADEntity.cs" />
