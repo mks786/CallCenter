@@ -29,200 +29,331 @@
     <link href="~/dist/js/jquery.flexdatalist.css" rel="stylesheet" />
     <script src="~/dist/js/jquery.flexdatalist.js"></script>
     <style>
-        
-          
-        body{
-            background-color:#ECF0F5;
-        }
-        input[type=radio],
-        input[type=checkbox] {
-	        display: none;
-        }
-        label:before {
-	        content: "";
-	        display: inline-block;
-
-	        width: 16px;
-	        height: 16px;
-
-	        margin-right: 10px;
-	        position: absolute;
-	        left: 0;
-	        bottom: 1px;
-	        background-color: #aaa;
-	        box-shadow: inset 0px 2px 3px 0px rgba(0, 0, 0, .3), 0px 1px 0px 0px rgba(255, 255, 255, .8);
-        }
-
-        .radio label:before {
-	        border-radius: 8px;
-        }
-        .checkbox label {
-	        margin-bottom: 10px;
-        }
-        .checkbox label:before {
-            border-radius: 3px;
-        }
-
-        input[type=radio]:checked + label:before {
-            content: "\2022";
-            color: #f3f3f3;
-            font-size: 30px;
-            text-align: center;
-            line-height: 18px;
-        }
-
-        input[type=checkbox]:checked + label:before {
-	        content: "\2713";
-	        text-shadow: 1px 1px 1px rgba(0, 0, 0, .2);
-	        font-size: 15px;
-	        color: #f3f3f3;
-	        text-align: center;
-            line-height: 15px;
+        body {
+            background-color: #ECF0F5;
         }
 
     </style>
-
     <script>
         var contador_preguntas = 0;
     </script>
 </head>
 <body>
     <div class="container" style="background-color:#fff;  box-shadow: 2px 2px 5px #999; margin-top:10px; width:70%;">
-       
-            <div class="rowf" >
 
-                <!--<p class="text-right" style="color:#00a9b2; font-size:16px;"><strong>@ViewBag.FechaCreacion</strong></p>-->
-                <h1 class="text-center" style="color:#4b646f;"><strong>@ViewBag.NombreEncuesta</strong></h1>
+        <div class="row">
 
-                <div class="page-title" style="background-color:#3c8dbc; color:#fff; width:100%;">
-                    <div class="container">
-                        <h3 style="color:#fff; font-size:16px;">
-                            @ViewBag.Descripcion
-                        </h3>
-                    </div>
-                </div><br />
-                <div class="row" id="conetar_plaza">
-                    <div class="col-md-6 col-md-offset-4">
-                        <button class="btn btn-warning" onclick="AbrirModal()"><i class="fa fa-map-marker" aria-hidden="true"></i> SELECCIONAR PLAZA</button>
-                    </div>
-                </div><br /><br />
+            <h1 class="text-center" style="color:#4b646f;"><strong>@ViewBag.NombreEncuesta</strong></h1>
 
-
-                <form id="encuestaForm" style="display:none;">
-                    <div class="row">
-                        <div class="col-md-12">
-                            <h1 id="texto_plaxa" class="text-center" style="color:#4b646f;"></h1>
-                        </div>
-                    </div><br />
-                    <div class="row">
-                        <div class="col-md-3 col-md-offset-1">
-                            <select id="busqueda" class="form-control">
-                                <option value="0" selected disabled>Buscar cliente por:</option>
-                                <option value="1">Nombre y/o Dirección</option>
-                                <option value="2">Contrato</option>
-                            </select>
-                        </div>
-                        <div class="col-md-6" id="por_nombre" style="display:none;">
-                            <input type="text" class="flexdatalist form-control" id="cliente_id" placeholder="Nombre ó driección del cliente" />
-                        </div>
-                        <div class="col-md-5" id="por_contrato" style="display:none;">
-                            <div class="col-md-6">
-                                <input type="text" class="form-control" id="contrato_id" placeholder="Número de contrato" />
-                            </div>
-                            <div class="col-md-6">
-                                <a class="btn btn-success" onclick="validar_contrato()">Valdiar</a>
-                            </div>  
-                        </div>
-                    </div><br />
-                    <div class="row" style="display:none;" id="datos_contacto">
-                        <div class="col-md-12 col-md-offset-1" style="color:#4b646f;">
-                            <h4 id="nombre_contrato"></h4>
-                            <h5 id="calle_contrato"></h5>
-                            <h5 id="colonia_contrato"></h5>
-                        </div>
-                    </div>
-                    <div class="row" style="display:none;" id="datos_contacto_error">
-                        <div class="col-md-10 col-md-offset-1">
-                            <div class="alert alert-warning alert-dismissible fade in" role="alert"> <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">×</span></button> <strong>Opsss!</strong> El número de contrrato es inválido. </div>
-                        </div>
-                    </div>
-                    <input type="hidden" id="encuesta_id" name="id_encuesta" value="@ViewBag.IdEncuesta">
-                    <div class="container" style="margin-left:50px;">
-
-                        @foreach (var a in preguntas)
-                        {
-
-                            <script>
-                                contador_preguntas += 1;
-                            </script>
-                            <h4 style="color:#4b646f; font-size:14px;"><b>@a.Pregunta.Pregunta</b></h4>
-                            <input type="hidden" name="p@(a.Pregunta.IdTipoPregunta)s(@a.Pregunta.IdPregunta)" value="@(a.Pregunta.Pregunta)" />
-
-                            if (a.Pregunta.IdTipoPregunta.Value == 1)
-                            {
-                                <div style="padding-left:30px;">
-                                    <textarea class="form-control" style="width:50%" name="@a.Pregunta.IdPregunta"></textarea>
-                                </div>
-                            }
-
-                            else if (a.Pregunta.IdTipoPregunta.Value == 2)
-                            {
-                                <div style="padding-left:30px;" class="wrapper">
-                                    <div class="radio icheck">
-                                        <input type="radio" id="@a.Pregunta.IdPregunta s" name="@a.Pregunta.IdPregunta" value="1">
-                                        <label for="@a.Pregunta.IdPregunta s">Si</label>
-                                    </div>
-                                    <div class="radio icheck">
-                                        <input type="radio" id="@a.Pregunta.IdPregunta n" name="@a.Pregunta.IdPregunta" value="0">
-                                        <label for="@a.Pregunta.IdPregunta n">No</label>
-                                    </div>
-                                </div>
-                            }
-                            else if (a.Pregunta.IdTipoPregunta.Value == 3)
-                            {
-                                <div style="padding-left:30px;" class="wrapper">
-                                    @foreach (var b in a.Respuestas)
-                                    {
-
-                                    <div class="radio icheck">
-                                        <input id="@b.ResOpcMult" type="radio" name="@a.Pregunta.IdPregunta" value="@b.Id_ResOpcMult">
-                                        <label for="@b.ResOpcMult">@b.ResOpcMult</label>
-                                    </div>
-
-                                    }
-                                </div>
-
-
-                            }
-
-                        }
-
-                    </div><hr />
-                    <div class="row">
-                        <div class="col-md-5 col-md-offset-7">
-                            <div class="" role="group" aria-label="...">
-                                <a href="/Encuesta" class="btn btn-info"><i class="fa fa-arrow-left" aria-hidden="true"></i> Regresar</a>
-                                <button type="button" class="btn btn-primary" onclick="enviarEncuesta()"><i class="fa fa-check" aria-hidden="true"></i> Guardar Encuesta</button>
-                            </div>
-                        </div>
-                    </div>
-                </form>
+            <div class="page-title" style="background-color:#3c8dbc; color:#fff; width:100%;">
+                <div class="container">
+                    <h3 style="color:#fff; font-size:16px;">
+                        @ViewBag.Descripcion
+                    </h3>
+                </div>
+            </div><br />
+            <div class="row container" id="conetar_plaza">
+                <div class="col-md-6">
+                    <button class="btn btn-warning" onclick="AbrirModal()"><i class="fa fa-map-marker" aria-hidden="true"></i> SELECCIONAR PLAZA</button>
+                </div>
             </div>
+            <div class="row">
+                <h3 class="text-center" id="texto_plaza" style="color:#4b646f;"></h3>
+            </div>
+        </div>
+        <div class="row" id="panel_busqueda" style="display:none;">
+            <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
+                <div class="panel panel-default">
+                    <div class="panel-heading" role="tab" id="headingTwo">
+                        <h4 class="panel-title">
+                            <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo" style="color:#4b646f;">
+                                Busqueda con filtros
+                            </a>
+                        </h4>
+                    </div>
+                    <div id="collapseTwo" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingTwo">
+                        <div class="panel-body">
+                            <br />
+                            <div class="row">
+                                <fieldset>
+                                    <legend class="text-center" style="font-size:19px; color:#4b646f;">Selecciona un tipo de servicio</legend>
+                                    <div class="col-md-4 col-md-offset-4">
+                                        <p class="text-center">
+                                            <select class="form-control">
+                                                <option value="1">Servicio de tv por cable</option>
+                                            </select>
+                                        </p>
+                                        
+                                    </div>
+                                </fieldset>
+                            </div>
+                            <div class="row">
+                                <fieldset>
+                                    <legend class="text-center" style="font-size:19px; color:#4b646f;">Selecciona un tipo de busqueda</legend>
+                                    <div class="col-md-4 col-md-offset-4">
+                                        <p class="text-center wrapper">
+                                            <label class="radio-inline" for="estatus">
+                                                <input type="radio" name="busqueda" id="estatus" value="1">
+                                                Status
+                                            </label>
+                                            <label class="radio-inline" for="rango">
+                                                <input type="radio" name="busqueda" id="rango" value="2">
+                                                Rango de fechas
+                                            </label>
+                                        </p>
+                                    </div>
+                                </fieldset>
+                            </div>
+                            <div id="panel_status" style="display:none;">
+                                <div class="row">
+                                    <fieldset>
+                                        <legend class="text-center" style="font-size:19px; color:#4b646f;">Selecciona un status del cliente</legend>
+                                        <div class="col-md-6 col-md-offset-3">
+                                            <div class="row">
+                                                <p class="text-center wrapper">
+                                                    <label class="radio-inline" for="contratado">
+                                                        <input type="radio" name="status" id="contratado" value="1">
+                                                        Contratado
+                                                    </label>
+                                                    <label class="radio-inline" for="suspendidos">
+                                                        <input type="radio" name="status" id="suspendidos" value="2">
+                                                        Suspendidos
+                                                    </label>
+                                                    <label class="radio-inline" for="cancelados">
+                                                        <input type="radio" name="status" id="cancelados" value="3">
+                                                        Cancelados
+                                                    </label>
+                                                    <label class="radio-inline" for="temporales">
+                                                        <input type="radio" name="status" id="temporales" value="3">
+                                                        Temporales
+                                                    </label>
+                                                </p>
+                                            </div>
+                                            <div class="row">
+                                                <p class="text-center wrapper">
+                                                    <label class="radio-inline" for="instalados">
+                                                        <input type="radio" name="status" id="instalados" value="1">
+                                                        Instalado
+                                                    </label>
+                                                    <label class="radio-inline" for="desconectados">
+                                                        <input type="radio" name="status" id="desconectados" value="2">
+                                                        Desconectados
+                                                    </label>
+                                                    <label class="radio-inline" for="fuera_servicio">
+                                                        <input type="radio" name="status" id="fuera_servicio" value="3">
+                                                        Fuera de servicio
+                                                    </label>
+                                                </p>
+                                            </div>
+                                        </div>
+                                    </fieldset>
+                                </div>
+                            </div>
+                            <div id="panel_fechas" style="display:none;">
+                                <div class="row">
+                                    <fieldset>
+                                        <legend class="text-center" style="font-size:19px; color:#4b646f;">Selecciona un rango de fechas basado en el status seleccioando</legend>
+                                        <div class="col-md-6 col-md-offset-3">
+                                            <div class="row">
+                                                <p class="text-center wrapper">
+                                                    <label class="radio-inline" for="fecha_contratacion">
+                                                        <input type="radio" name="fechas" id="fecha_contratacion" value="1">
+                                                        Fecha de contratacion
+                                                    </label>
+                                                    <label class="radio-inline" for="fecha_instalacion">
+                                                        <input type="radio" name="fechas" id="fecha_instalacion" value="2">
+                                                        Fecha de instalación
+                                                    </label>
+                                                    <label class="radio-inline" for="fecha_cancelacion">
+                                                        <input type="radio" name="fechas" id="fecha_cancelacion" value="3">
+                                                        Fecha de cancelación
+                                                    </label>
+                                                </p>
+                                            </div>
+                                        </div>
+                                    </fieldset>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <div class="col-md-3 col-md-offset-3">
+                                            <p class="text-right">
+                                                <span>Fecha inicial</span>
+                                                <input type="date" class="form-control" />
+                                            </p>
+                                        </div>
+                                        <div class="col-md-3">
+                                            <p class="text-left">
+                                                <span>Fecha final</span>
+                                                <input type="date" class="form-control" />
+                                            </p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>                         
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <p class="text-right">
+                                        <button class="btn btn-primary"><i class="fa fa-search" aria-hidden="true"></i> Buscar</button>
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="panel panel-default">
+                    <div class="panel-heading" role="tab" id="headingOne">
+                        <h4 class="panel-title">
+                            <a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="true" aria-controls="collapseOne" style="color:#4b646f;">
+                                Busqueda individual
+                            </a>
+                        </h4>
+                    </div>
+                    <div id="collapseOne" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingOne">
+                        <div class="panel-body">
+
+                            <!-- Nav tabs -->
+                            <ul class="nav nav-tabs" role="tablist">
+                                <li role="presentation" class="active"><a href="#contrato" aria-controls="contrato" role="tab" data-toggle="tab">Contrato</a></li>
+                                <li role="presentation"><a href="#direccion" aria-controls="direccion" role="tab" data-toggle="tab">Dirección</a></li>
+                                <li role="presentation"><a href="#nombre" aria-controls="nombre" role="tab" data-toggle="tab">Nombre</a></li>
+                            </ul>
+
+                            <!-- Tab panes -->
+                            <div class="tab-content">
+                                <div role="tabpanel" class="tab-pane active" id="contrato">
+                                    <br />
+                                    <div class="row">
+                                        <div class="col-md-4">
+                                            <p style="color:#4b646f;">Ingrese el número de contrato</p>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-8">
+                                            <input type="text" class="form-control" id="input_contrato" />
+                                            <span class="help-block">El número de contrato está formado por 2 grupos de números con un guión intermedio p.e. (1234-1)</span>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-12">
+                                            <p class="text-right">
+                                                <button class="btn btn-primary" id="buscar_por_contrato"><i class="fa fa-search" aria-hidden="true"></i> Buscar</button>
+                                            </p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div role="tabpanel" class="tab-pane" id="direccion">
+                                    <br />
+                                    <div class="container">
+                                        <div class="row">
+                                            <div class="col-md-4">
+                                                <input type="text" class="form-control" id="ciudad" placeholder="Ciudad" />
+                                            </div>
+                                        </div><br />
+                                        <div class="row">
+                                            <div class="col-md-4">
+                                                <input type="text" class="form-control" id="colonia" placeholder="Colonia" />
+                                            </div>
+                                        </div><br />
+                                        <div class="row">
+                                            <div class="col-md-4">
+                                                <input type="text" class="form-control" id="calle" placeholder="Calle" />
+                                            </div>
+                                        </div><br />
+                                        <div class="row">
+                                            <div class="col-md-4">
+                                                <input type="text" class="form-control" placeholder="Número" />
+                                            </div>
+                                        </div>
+                                    </div><br />
+                                    <div class="row">
+                                        <div class="col-md-12">
+                                            <p class="text-right">
+                                                <button class="btn btn-primary" id="buscar_por_direccion"><i class="fa fa-search" aria-hidden="true"></i> Buscar</button>
+                                            </p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div role="tabpanel" class="tab-pane" id="nombre">
+                                    <br />
+                                    <div class="row">
+                                        <div class="col-md-4">
+                                            <p style="color:#4b646f;">Nombre completo</p>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-8">
+                                            <input type="text" class="form-control" id="nombre"/>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-12">
+                                            <p class="text-right">
+                                                <button class="btn btn-primary" id="buscar_por_nombre"><i class="fa fa-search" aria-hidden="true"></i> Buscar</button>
+                                            </p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div><!-- panel body -->
+                    </div>
+                </div>
+            </div>
+        </div>
+        <br />
+        
+        <div class="row" id="invalido" style="display:none;">
+            <div class="col-md-12">
+                <div class="alert alert-warning alert-dismissible fade in" role="alert"> <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">×</span></button> <strong>Opsss!</strong> El número de contrrato es inválido. </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-xs-12">
+                <div class="box">
+                    <div class="box-body">
+
+                        <table id="TablaIndividual" style="display:none;" class="table table-bordered table-hover dataTable">
+                            <thead>
+                                <tr>
+                                    <td><b>Contrato</b></td>
+                                    <td><b>Nombre</b> </td>
+                                    <td><b>Ciudad</b></td>
+                                    <td><b>Colonia</b></td>
+                                    <td><b>Calle</b></td>
+                                    <td><b>Número</b></td>
+                                    <td><b>Opciones</b></td>
+                                </tr>
+                            </thead>
+
+                            <tfoot>
+
+                            </tfoot>
+
+                        </table>
+
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+
     </div>
-    
+
 
     <div class="modal fade" id="Modal_Plaza" role="dialog">
         <div class="modal-dialog modal-md">
             <div class="modal-content">
                 <div class="modal-header">
                     <button class="close" aria-label="Close" type="button" data-dismiss="modal"><span aria-hidden="true">×</span></button>
-                    <h4 class="modal-title">Selecciona la plaza</h4>
                 </div>
                 <div class="modal-body">
-                    <div class="col-md-6 col-md-offset-3">
-                        <select class="form-control" id="conexion_plaza">
-                            <option value="default" selected disabled>Selecciona la plaza</option>
-                        </select>
+                    <div class="col-md-12">
+                        <div class="form-group">
+                            <p class="col-md-4 control-label" for="selectbasic" style="padding-top:10px; color:#4b646f;">Selecciona la plaza</p>
+                            <div class="col-md-6">
+                                <select id="conexion_plaza" class="form-control"></select>
+                            </div>
+                        </div>
                     </div>
                     <br />
                     <br />
@@ -235,8 +366,216 @@
         </div>
     </div>
 
-</body>
-<script src="~/plugins/iCheck/icheck.min.js"></script>
-<script src="~/dist/js/pages/Encuesta/preview_scripts.js"></script>
-</html>
 
+
+    <div class="modal fade bs-example-modal-md" id="modal_aplicar" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button class="close" aria-label="Close" type="button" data-dismiss="modal"><span aria-hidden="true">×</span></button>
+                    <h4 class="modal-title text-center" style="color:#4b646f;">@ViewBag.NombreEncuesta</h4>
+                </div>
+                <div class="modal-body">
+                    <div class="container" style="background-color:#fff;  box-shadow: 2px 2px 5px #999; margin-top:10px; width:96%;">
+                        <h4 id="nombre_cliente_modal" style="color:#4b646f;"></h4>
+                        <h5 id="ciudad_modal" style="color:#4b646f;"></h5>
+                        <h5 id="colonia_modal" style="color:#4b646f;"></h5>
+                        <h5 id="calle_modal" style="color:#4b646f;"></h5>
+                        <h5 id="numero_modal" style="color:#4b646f;"></h5>
+                        <h5 id="telefono_modal" style="color:#4b646f;"></h5>
+                        <br />
+                        <hr />
+                        @foreach (var a in preguntas)
+                        {
+
+                            <script>
+                                contador_preguntas += 1;
+                            </script>
+                            <h4 style="color:#4b646f; font-size:14px; padding-left:10px;"><b>@a.Pregunta.Pregunta</b></h4>
+                            <input type="hidden" name="p@(a.Pregunta.IdTipoPregunta)s(@a.Pregunta.IdPregunta)" value="@(a.Pregunta.Pregunta)" />
+
+                            if (a.Pregunta.IdTipoPregunta.Value == 1)
+                            {
+                                <div style="padding-left:30px;">
+                                    <textarea class="form-control" style="width:50%" name="@a.Pregunta.IdPregunta"></textarea>
+                                </div>
+                            }
+
+                            else if (a.Pregunta.IdTipoPregunta.Value == 2)
+                            {
+                                <div style="padding-left:60px;" class="wrapper">
+                                    <div class="radio icheck">
+                                        <input type="radio" id="@a.Pregunta.IdPregunta s" name="@a.Pregunta.IdPregunta" value="1">
+                                        <label for="@a.Pregunta.IdPregunta s">Si</label>
+                                    </div>
+                                    <div class="radio icheck">
+                                        <input type="radio" id="@a.Pregunta.IdPregunta n" name="@a.Pregunta.IdPregunta" value="0">
+                                        <label for="@a.Pregunta.IdPregunta n">No</label>
+                                    </div>
+                                </div>
+                            }
+                            else if (a.Pregunta.IdTipoPregunta.Value == 3)
+                            {
+                                <div style="padding-left:60px;" class="wrapper">
+                                    @foreach (var b in a.Respuestas)
+                                    {
+
+                                        <div class="radio icheck">
+                                            <input id="@b.ResOpcMult" type="radio" name="@a.Pregunta.IdPregunta" value="@b.Id_ResOpcMult">
+                                            <label for="@b.ResOpcMult">@b.ResOpcMult</label>
+                                        </div>
+
+                                    }
+                                </div>
+
+
+                            }
+
+                        }
+                        <br />
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button class="btn btn-primary" type="button" data-dismiss="modal">Cerrar</button>
+                    <button class="btn btn-success" onclick="enviar_editar_respuesta()" type="button">Guardar</button>
+                </div>
+            </div>
+        </div>
+    </div></body>
+</html>
+<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/t/bs/dt-1.10.11/datatables.min.css" />
+<script type="text/javascript" src="https://cdn.datatables.net/t/bs/dt-1.10.11/datatables.min.js"></script>
+<script>
+    $(function () {
+
+        $.ajax({
+            url: "/Conexion/ListaConexiones/",
+            type: "GET",
+            success: function (data, textStatus, jqXHR) {
+                for (var i = 0; i < data.length; i++) {
+                    $('#conexion_plaza').append($('<option>', {
+                        value: data[i].IdConexion,
+                        text: data[i].Plaza
+                    }));
+                }
+            },
+            error: function (jqXHR, textStatus, errorThrown) {
+
+            }
+        });
+
+        $('input[type=radio][name=busqueda]').change(function () {
+            if (this.value == '1') {
+                $('#panel_fechas').hide();
+                $('#panel_status').show();
+            }
+            else if (this.value == '2') {
+                $('#panel_status').hide();
+                $('#panel_fechas').show();
+            }
+        });
+
+    });
+    function AbrirModal() {
+        $('#Modal_Plaza').modal("show");
+    }
+
+    function plaza_conexion() {
+        $('#Modal_Plaza').modal("hide");
+        $('#conetar_plaza').hide();
+        //$('#encuestaForm').show();
+        $('#texto_plaza').text('Plaza ' + $("#conexion_plaza option:selected").text());
+        $('#panel_busqueda').show();
+    }
+
+    $('#buscar_por_nombre').on('click', function () {
+        var id_plaza = $('#conexion_plaza').val();
+        var nombre = $('#nombre').val();
+        $('#TablaIndividual').show();
+        $.ajax({
+            url: "/CLIENTE/GetClientesporPlazaJson/",
+            type: "GET",
+            data: { 'id': id_plaza, "contrato": "", "cliente1": nombre, "direccion": "" },
+            success: function (data, textStatus, jqXHR) {
+                if (data.length == 0) {
+                    $('#TablaIndividual').hide();
+                    $('#invalido').show();
+                } else {
+                    $('#invalido').hide();
+                    $('#TablaIndividual tfoot > tr').remove();
+                    for (var i = 0; i < data.length; i++) {
+                        $('#TablaIndividual tfoot').append('<tr><td>' + data[i].CONTRATO + '</td><td>' + data[i].NOMBRE + '</td><td>' + data[i].Ciudad + '</td><td>' + data[i].Colonia + '</td><td>' + data[i].Calle + '</td><td>' + data[i].NUMERO + '</td><td><button class="btn btn-success" onclick="aplicando_encuesta(this)" data-name="' + data[i].NOMBRE + '" data-ciudad="' + data[i].Ciudad + '" data-colonia="' + data[i].Colonia + '" data-calle="' + data[i].Calle + '" data-numero="' + data[i].NUMERO + '" data-telefono="' + data[i].TELEFONO + '"><i class="fa fa-pie-chart" aria-hidden="true"></i>Aplicar</button></td></tr>');
+
+                    }
+                }
+            },
+            error: function (data, jqXHR, textStatus) {
+                console.log(data);
+            }
+
+        });
+    });
+    
+    $('#buscar_por_direccion').on('click', function () {
+        var id_plaza = $('#conexion_plaza').val();
+        var calle = $('#calle').val();
+        $('#TablaIndividual').show();
+        $.ajax({
+            url: "/CLIENTE/GetClientesporPlazaJson/",
+            type: "GET",
+            data: { 'id': id_plaza, "contrato": "", "cliente1": "", "direccion": calle },
+            success: function (data, textStatus, jqXHR) {
+                if (data.length == 0) {
+                    $('#TablaIndividual').hide();
+                    $('#invalido').show();
+                } else {
+                    $('#invalido').hide();
+                    $('#TablaIndividual tfoot > tr').remove();
+                    for (var i = 0; i < data.length; i++) {
+                        $('#TablaIndividual tfoot').append('<tr><td>' + data[i].CONTRATO + '</td><td>' + data[i].NOMBRE + '</td><td>' + data[i].Ciudad + '</td><td>' + data[i].Colonia + '</td><td>' + data[i].Calle + '</td><td>' + data[i].NUMERO + '</td><td><button class="btn btn-success" onclick="aplicando_encuesta(this)" data-name="' + data[i].NOMBRE + '" data-ciudad="' + data[i].Ciudad + '" data-colonia="' + data[i].Colonia + '" data-calle="' + data[i].Calle + '" data-numero="' + data[i].NUMERO + '" data-telefono="' + data[i].TELEFONO + '"><i class="fa fa-pie-chart" aria-hidden="true"></i>Aplicar</button></td></tr>');
+
+                    }
+                }
+            },
+            error: function (data, jqXHR, textStatus) {
+                console.log(data);
+            }
+
+        });
+    });
+
+    $('#buscar_por_contrato').on('click', function () {
+        var id_plaza = $('#conexion_plaza').val();
+        var contrato = $('#input_contrato').val();
+        $('#TablaIndividual').show();
+        $.ajax({
+            url: "/CLIENTE/GetClientesporPlazaJson/",
+            type: "GET",
+            data: { 'id': id_plaza, "contrato": contrato, "cliente1": "", "direccion": "" },
+            success: function (data, textStatus, jqXHR) {
+                if (data.length == 0) {
+                    $('#TablaIndividual').hide();
+                    $('#invalido').show();
+                } else {
+                    $('#invalido').hide();
+                    $('#TablaIndividual tfoot > tr').remove();
+                    $('#TablaIndividual tfoot').append('<tr><td>' + data[0].CONTRATO + '</td><td>' + data[0].NOMBRE + '</td><td>' + data[0].Ciudad + '</td><td>' + data[0].Colonia + '</td><td>' + data[0].Calle + '</td><td>' + data[0].NUMERO + '</td><td><button class="btn btn-success" onclick="aplicando_encuesta(this)" data-name="' + data[0].NOMBRE + '" data-ciudad="' + data[0].Ciudad + '" data-colonia="' + data[0].Colonia + '" data-calle="' + data[0].Calle + '" data-numero="' + data[0].NUMERO + '" data-telefono="' + data[0].TELEFONO + '"><i class="fa fa-pie-chart" aria-hidden="true"></i>Aplicar</button></td></tr>');
+                }
+            },
+            error: function (data, jqXHR, textStatus) {
+                console.log(data);
+            }
+
+        });
+    });
+
+    function aplicando_encuesta(e) {
+        $('#nombre_cliente_modal').text(e.getAttribute("data-name"));
+        $('#ciudad_modal').text("Ciudad: " + e.getAttribute("data-ciudad"));
+        $('#colonia_modal').text("Colonia: " + e.getAttribute("data-colonia"));
+        $('#calle_modal').text("Calle: " + e.getAttribute("data-calle"));
+        $('#numero_modal').text("Número: " + e.getAttribute("data-numero"));
+        $('#telefono_modal').text("Teléfono: " + e.getAttribute("data-telefono"));
+        $('#modal_aplicar').modal('show');
+    }
+</script>
