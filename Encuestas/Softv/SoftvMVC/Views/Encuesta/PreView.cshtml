@@ -33,10 +33,7 @@
             background-color: #ECF0F5;
         }
 
-    </style>
-    <script>
-        var contador_preguntas = 0;
-    </script>
+    </style> 
 </head>
 <body>
     <div class="container" style="background-color:#fff;  box-shadow: 2px 2px 5px #999; margin-top:10px; width:70%;">
@@ -376,6 +373,10 @@
                     <h4 class="modal-title text-center" style="color:#4b646f;">@ViewBag.NombreEncuesta</h4>
                 </div>
                 <div class="modal-body">
+                    <script>
+                            var contador_preguntas = 0;
+                    </script>
+
                     <div class="container" style="background-color:#fff;  box-shadow: 2px 2px 5px #999; margin-top:10px; width:96%;">
                         <h4 id="nombre_cliente_modal" style="color:#4b646f;"></h4>
                         <h5 id="ciudad_modal" style="color:#4b646f;"></h5>
@@ -383,61 +384,66 @@
                         <h5 id="calle_modal" style="color:#4b646f;"></h5>
                         <h5 id="numero_modal" style="color:#4b646f;"></h5>
                         <h5 id="telefono_modal" style="color:#4b646f;"></h5>
+                        <input type="hidden" id="cliente_id" />
+                        <input type="hidden" id="encuesta_id" name="id_encuesta" value="@ViewBag.IdEncuesta">
                         <br />
                         <hr />
-                        @foreach (var a in preguntas)
-                        {
-
-                            <script>
-                                contador_preguntas += 1;
-                            </script>
-                            <h4 style="color:#4b646f; font-size:14px; padding-left:10px;"><b>@a.Pregunta.Pregunta</b></h4>
-                            <input type="hidden" name="p@(a.Pregunta.IdTipoPregunta)s(@a.Pregunta.IdPregunta)" value="@(a.Pregunta.Pregunta)" />
-
-                            if (a.Pregunta.IdTipoPregunta.Value == 1)
+                        <form id="encuestaForm">
+                            @foreach (var a in preguntas)
                             {
-                                <div style="padding-left:30px;">
-                                    <textarea class="form-control" style="width:50%" name="@a.Pregunta.IdPregunta"></textarea>
-                                </div>
-                            }
 
-                            else if (a.Pregunta.IdTipoPregunta.Value == 2)
-                            {
-                                <div style="padding-left:60px;" class="wrapper">
-                                    <div class="radio icheck">
-                                        <input type="radio" id="@a.Pregunta.IdPregunta s" name="@a.Pregunta.IdPregunta" value="1">
-                                        <label for="@a.Pregunta.IdPregunta s">Si</label>
+                                <script>
+                                    contador_preguntas += 1;
+                                </script>
+                                <h4 style="color:#4b646f; font-size:14px; padding-left:10px;"><b>@a.Pregunta.Pregunta</b></h4>
+                                <input type="hidden" name="p@(a.Pregunta.IdTipoPregunta)s(@a.Pregunta.IdPregunta)" value="@(a.Pregunta.Pregunta)" />
+
+                                if (a.Pregunta.IdTipoPregunta.Value == 1)
+                                {
+                                    <div style="padding-left:30px;">
+                                        <textarea class="form-control" style="width:50%" name="@a.Pregunta.IdPregunta"></textarea>
                                     </div>
-                                    <div class="radio icheck">
-                                        <input type="radio" id="@a.Pregunta.IdPregunta n" name="@a.Pregunta.IdPregunta" value="0">
-                                        <label for="@a.Pregunta.IdPregunta n">No</label>
-                                    </div>
-                                </div>
-                            }
-                            else if (a.Pregunta.IdTipoPregunta.Value == 3)
-                            {
-                                <div style="padding-left:60px;" class="wrapper">
-                                    @foreach (var b in a.Respuestas)
-                                    {
+                                }
 
+                                else if (a.Pregunta.IdTipoPregunta.Value == 2)
+                                {
+                                    <div style="padding-left:60px;" class="wrapper">
                                         <div class="radio icheck">
-                                            <input id="@b.ResOpcMult" type="radio" name="@a.Pregunta.IdPregunta" value="@b.Id_ResOpcMult">
-                                            <label for="@b.ResOpcMult">@b.ResOpcMult</label>
+                                            <input type="radio" id="@a.Pregunta.IdPregunta s" name="@a.Pregunta.IdPregunta" value="1">
+                                            <label for="@a.Pregunta.IdPregunta s">Si</label>
                                         </div>
+                                        <div class="radio icheck">
+                                            <input type="radio" id="@a.Pregunta.IdPregunta n" name="@a.Pregunta.IdPregunta" value="0">
+                                            <label for="@a.Pregunta.IdPregunta n">No</label>
+                                        </div>
+                                    </div>
+                                }
+                                else if (a.Pregunta.IdTipoPregunta.Value == 3)
+                                {
+                                    <div style="padding-left:60px;" class="wrapper">
+                                        @foreach (var b in a.Respuestas)
+                                        {
 
-                                    }
-                                </div>
+                                            <div class="radio icheck">
+                                                <input id="@b.ResOpcMult" type="radio" name="@a.Pregunta.IdPregunta" value="@b.Id_ResOpcMult">
+                                                <label for="@b.ResOpcMult">@b.ResOpcMult</label>
+                                            </div>
 
+                                        }
+                                    </div>
+
+
+                                }
 
                             }
-
-                        }
+                        </form>
+                       
                         <br />
                     </div>
                 </div>
                 <div class="modal-footer">
                     <button class="btn btn-primary" type="button" data-dismiss="modal">Cerrar</button>
-                    <button class="btn btn-success" onclick="enviar_editar_respuesta()" type="button">Guardar</button>
+                    <button class="btn btn-success" onclick="enviarEncuesta()" type="button">Guardar</button>
                 </div>
             </div>
         </div>
@@ -504,7 +510,7 @@
                     $('#invalido').hide();
                     $('#TablaIndividual tfoot > tr').remove();
                     for (var i = 0; i < data.length; i++) {
-                        $('#TablaIndividual tfoot').append('<tr><td>' + data[i].CONTRATO + '</td><td>' + data[i].NOMBRE + '</td><td>' + data[i].Ciudad + '</td><td>' + data[i].Colonia + '</td><td>' + data[i].Calle + '</td><td>' + data[i].NUMERO + '</td><td><button class="btn btn-success" onclick="aplicando_encuesta(this)" data-name="' + data[i].NOMBRE + '" data-ciudad="' + data[i].Ciudad + '" data-colonia="' + data[i].Colonia + '" data-calle="' + data[i].Calle + '" data-numero="' + data[i].NUMERO + '" data-telefono="' + data[i].TELEFONO + '"><i class="fa fa-pie-chart" aria-hidden="true"></i>Aplicar</button></td></tr>');
+                        $('#TablaIndividual tfoot').append('<tr><td>' + data[i].CONTRATO + '</td><td>' + data[i].NOMBRE + '</td><td>' + data[i].Ciudad + '</td><td>' + data[i].Colonia + '</td><td>' + data[i].Calle + '</td><td>' + data[i].NUMERO + '</td><td><button class="btn btn-success" onclick="aplicando_encuesta(this)" data-contrato="' + data[i].CONTRATO + '" data-name="' + data[i].NOMBRE + '" data-ciudad="' + data[i].Ciudad + '" data-colonia="' + data[i].Colonia + '" data-calle="' + data[i].Calle + '" data-numero="' + data[i].NUMERO + '" data-telefono="' + data[i].TELEFONO + '"><i class="fa fa-pie-chart" aria-hidden="true"></i>Aplicar</button></td></tr>');
 
                     }
                 }
@@ -532,7 +538,7 @@
                     $('#invalido').hide();
                     $('#TablaIndividual tfoot > tr').remove();
                     for (var i = 0; i < data.length; i++) {
-                        $('#TablaIndividual tfoot').append('<tr><td>' + data[i].CONTRATO + '</td><td>' + data[i].NOMBRE + '</td><td>' + data[i].Ciudad + '</td><td>' + data[i].Colonia + '</td><td>' + data[i].Calle + '</td><td>' + data[i].NUMERO + '</td><td><button class="btn btn-success" onclick="aplicando_encuesta(this)" data-name="' + data[i].NOMBRE + '" data-ciudad="' + data[i].Ciudad + '" data-colonia="' + data[i].Colonia + '" data-calle="' + data[i].Calle + '" data-numero="' + data[i].NUMERO + '" data-telefono="' + data[i].TELEFONO + '"><i class="fa fa-pie-chart" aria-hidden="true"></i>Aplicar</button></td></tr>');
+                        $('#TablaIndividual tfoot').append('<tr><td>' + data[i].CONTRATO + '</td><td>' + data[i].NOMBRE + '</td><td>' + data[i].Ciudad + '</td><td>' + data[i].Colonia + '</td><td>' + data[i].Calle + '</td><td>' + data[i].NUMERO + '</td><td><button class="btn btn-success" onclick="aplicando_encuesta(this)" data-contrato="'+ data[i].CONTRATO + '" data-name="' + data[i].NOMBRE + '" data-ciudad="' + data[i].Ciudad + '" data-colonia="' + data[i].Colonia + '" data-calle="' + data[i].Calle + '" data-numero="' + data[i].NUMERO + '" data-telefono="' + data[i].TELEFONO + '"><i class="fa fa-pie-chart" aria-hidden="true"></i>Aplicar</button></td></tr>');
 
                     }
                 }
@@ -559,7 +565,7 @@
                 } else {
                     $('#invalido').hide();
                     $('#TablaIndividual tfoot > tr').remove();
-                    $('#TablaIndividual tfoot').append('<tr><td>' + data[0].CONTRATO + '</td><td>' + data[0].NOMBRE + '</td><td>' + data[0].Ciudad + '</td><td>' + data[0].Colonia + '</td><td>' + data[0].Calle + '</td><td>' + data[0].NUMERO + '</td><td><button class="btn btn-success" onclick="aplicando_encuesta(this)" data-name="' + data[0].NOMBRE + '" data-ciudad="' + data[0].Ciudad + '" data-colonia="' + data[0].Colonia + '" data-calle="' + data[0].Calle + '" data-numero="' + data[0].NUMERO + '" data-telefono="' + data[0].TELEFONO + '"><i class="fa fa-pie-chart" aria-hidden="true"></i>Aplicar</button></td></tr>');
+                    $('#TablaIndividual tfoot').append('<tr><td>' + data[0].CONTRATO + '</td><td>' + data[0].NOMBRE + '</td><td>' + data[0].Ciudad + '</td><td>' + data[0].Colonia + '</td><td>' + data[0].Calle + '</td><td>' + data[0].NUMERO + '</td><td><button class="btn btn-success" onclick="aplicando_encuesta(this)" data-contrato="' + data[0].CONTRATO + '" data-name="' + data[0].NOMBRE + '" data-ciudad="' + data[0].Ciudad + '" data-colonia="' + data[0].Colonia + '" data-calle="' + data[0].Calle + '" data-numero="' + data[0].NUMERO + '" data-telefono="' + data[0].TELEFONO + '"><i class="fa fa-pie-chart" aria-hidden="true"></i>Aplicar</button></td></tr>');
                 }
             },
             error: function (data, jqXHR, textStatus) {
@@ -576,6 +582,102 @@
         $('#calle_modal').text("Calle: " + e.getAttribute("data-calle"));
         $('#numero_modal').text("Número: " + e.getAttribute("data-numero"));
         $('#telefono_modal').text("Teléfono: " + e.getAttribute("data-telefono"));
+        $('#cliente_id').val(e.getAttribute("data-contrato"))
         $('#modal_aplicar').modal('show');
+    }
+
+    function enviarEncuesta() {
+        var contrato_id = $('#cliente_id').val();
+        var plaza = $('#conexion_plaza').val();
+        if (contrato_id == 0) {
+            swal("Agrega un cliente válido", "", "error");
+        } else {
+            var html = $('#encuestaForm');
+            var datos = {};
+            var count = 0;
+            datos.id_encuesta = new Array();
+            datos.cliente = new Array();
+            datos.id_plaza = new Array();
+            datos.pregunta = new Array();
+            datos.respuestas = new Array();
+            var cliente = [];
+            var datos_preguntas = [];
+            var datos_respuestas = [];
+            var data = $('#encuestaForm').serializeArray().reduce(function (obj, item, indice) {
+                obj[item.name] = item.value;
+                if (parseInt(item.name)) {
+                    var id_pregunta = parseInt(item.name);
+                    var respuestas = {};
+                    if (item.value != "") {
+                        count += 1;
+                        respuestas.id_pregunta = id_pregunta;
+                        respuestas.respuesta = item.value;
+                        datos_respuestas.push(respuestas);
+                    }
+
+                } else {
+                    if (item.name != "id_encuesta") {
+                        var preguntas = {};
+                        var tipo = item.name.split('s')[0].replace('(', '').replace(')', '').replace('p', '');
+                        var idPregunta = item.name.split('s')[1].replace('(', '').replace(')', '');
+                        preguntas.id_pregunta = parseInt(idPregunta);
+                        preguntas.tipo = parseInt(tipo);
+                        preguntas.nombre = item.value;
+                        datos_preguntas.push(preguntas);
+
+                    }
+                }
+                return obj;
+            }, {});
+            datos.id_plaza = parseInt(plaza);
+            datos.cliente = parseInt(contrato_id);
+            datos.id_encuesta = parseInt($('#encuesta_id').val());
+            for (var i = 0; i < datos_preguntas.length; i++) {
+                var pregunta = {};
+                pregunta.id_pregunta = datos_preguntas[i].id_pregunta;
+                pregunta.nombre = datos_preguntas[i].nombre;
+                pregunta.tipoPregunta = datos_preguntas[i].tipo;
+                datos.pregunta.push(pregunta);
+                for (var j = 0; j < datos_respuestas.length; j++) {
+                    if (datos_preguntas[i].id_pregunta == datos_respuestas[j].id_pregunta) {
+                        var respuestas = {};
+                        if (datos_respuestas[j].id_respuesta) {
+                            respuestas.id_respuesta = datos_respuestas[j].id_respuesta;
+                        }
+                        respuestas.id_pregunta = datos_respuestas[j].id_pregunta;
+                        respuestas.respuesta = datos_respuestas[j].respuesta;
+                        datos.respuestas.push(respuestas);
+                    }
+                }
+            }
+            if (count < contador_preguntas) {
+                swal("Por favor contesta todas las preguntas", "", "error");
+            } else {
+                $.ajax({
+                    url: "/Encuesta/DatosEncuesta/",
+                    type: "POST",
+                    data: { 'encuesta': datos },
+                    success: function (data, textStatus, jqXHR) {
+                        document.getElementById("encuestaForm").reset();
+                        $('#por_nombre').hide();
+                        $('#por_contrato').hide();
+                        $('#datos_contacto').hide();
+                        $('#datos_contacto_error').hide();
+                        $('#modal_aplicar').modal('hide');
+                        swal("La Encuesta se guaró exitosamente", "", "success");
+
+                    },
+                    error: function (jqXHR, textStatus, errorThrown) {
+                        document.getElementById("encuestaForm").reset();
+                        $('#por_nombre').hide();
+                        $('#por_contrato').hide();
+                        $('#datos_contacto').hide();
+                        swal("Error al envair la encuesta", "", "error");
+                    }
+                });
+            }
+
+        }
+
     }
 </script>
