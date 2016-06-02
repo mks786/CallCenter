@@ -85,9 +85,88 @@ namespace SoftvMVC.Controllers
         }
 
 
-        
+
+        public ActionResult FiltradoMasivo(int idplaza, int idtipser, int tipobusqueda, string contratado, string suspendidos, string cancelados, string temporales, string instalados, string desconectados, string fuera_servicio, string fecha, string finicio, string ftermino, int draw, int start, int length)
+        {
+
+            DataTableData dataTableData = new DataTableData();
+            dataTableData.draw = draw;
+            dataTableData.recordsTotal = 0;
+            int recordFiltered = 0;
+            dataTableData.data = Filtrar(idplaza, idtipser, tipobusqueda, contratado, suspendidos, cancelados, temporales, instalados, desconectados, fuera_servicio, fecha, finicio, ftermino, draw, start, length, ref recordFiltered);
+            dataTableData.recordsFiltered = recordFiltered;
+
+            return Json(dataTableData,JsonRequestBehavior.AllowGet);
+        }
+
+        public List<CLIENTEEntity2> Filtrar(int idplaza, int idtipser, int tipobusqueda, string contratado, string suspendidos, string cancelados, string temporales, string instalados, string desconectados, string fuera_servicio, string fecha, string finicio, string ftermino, int draw, int start, int length, ref int recordFiltered)
+        {
+            List<CLIENTEEntity2> lista = new List<CLIENTEEntity2>();
+            ConexionController c = new ConexionController();
+            SqlCommand comandoSql;
+            List<TipServEntity> lista_servicio = new List<TipServEntity>();
+            SqlConnection conexionSQL = new SqlConnection(c.DameConexion(idplaza));
+            try
+            {
+                conexionSQL.Open();
+            }
+            catch
+            { }
+            try
+            {
+                if (idtipser == 1)
+                {
+                    if (tipobusqueda == 1)
+                    {
+                        comandoSql = new SqlCommand("Select * from [dbo].[View_MasivaTvAnalogica] where Status = '" + contratado + "' or Status = '" + suspendidos + "' or Status = '" + cancelados + "' or Status = '" + temporales + "'or Status = '" + instalados + "' or Status = '" + desconectados + "' or Status = '" + fuera_servicio + "'");
+                    }
+                    else
+                    {
+                        if (Int32.Parse(fecha) == 1)
+                        {
+                            comandoSql = new SqlCommand("Select * from [dbo].[View_MasivaTvAnalogica] where Fecha_Contratacion BETWEEN '" + finicio + "' AND '" + ftermino + "'");
+                        }
+                        else if (Int32.Parse(fecha) == 2)
+                        {
+                            comandoSql = new SqlCommand("Select * from [dbo].[View_MasivaTvAnalogica] where Fecha_Instalacion BETWEEN '" + finicio + "' AND '" + ftermino + "'");
+                        }
+                        else
+                        {
+                            comandoSql = new SqlCommand("Select * from [dbo].[View_MasivaTvAnalogica] where Fecha_Cancelacion BETWEEN '" + finicio + "' AND '" + ftermino + "'");
+                        }
+                    }
+                }
+                else
+                {
+                    comandoSql = new SqlCommand("Select * from [dbo].[View_MasivaTvAnalogica]");
+                }
+
+                comandoSql.Connection = conexionSQL;
+                SqlDataReader reader = comandoSql.ExecuteReader();
+                if (reader.HasRows)
+                {
+                    while (reader.Read())
+                    {
+                        CLIENTEEntity2 cliente = new CLIENTEEntity2();
+                        cliente.CONTRATO = Int32.Parse(reader[0].ToString());
+                        cliente.NOMBRE = reader[1].ToString();
+                        cliente.TELEFONO = reader[2].ToString();
+                        cliente.CELULAR = reader[3].ToString();
+                        cliente.Calle = reader[4].ToString();
+                        cliente.Colonia = reader[6].ToString();
+                        cliente.NUMERO = reader[5].ToString();
+                        cliente.Ciudad = reader[7].ToString();
+                        lista.Add(cliente);
+                    }
+                }
+            }
+            catch { }
+            recordFiltered = lista.Count;
+
+            return lista.Skip(start).Take(length).ToList();
 
 
+        }
 
         public ActionResult GetList(int plaza,string contrato,string cliente,string direccion, int draw, int start, int length)
         {
@@ -126,7 +205,7 @@ namespace SoftvMVC.Controllers
 
             return Json(lista, JsonRequestBehavior.AllowGet);
         }
-        public ActionResult GetClientesPRUEBA(int IdPlaza, string  contrato, string Nombrecliente, string ciudad,string colonia,string  calle ,string numero)
+        public ActionResult GetClientesPRUEBA(int IdPlaza, string contrato, string Nombrecliente, string ciudad, string colonia, string calle, string numero)
         {
 
             ConexionController c = new ConexionController();            
@@ -148,11 +227,11 @@ namespace SoftvMVC.Controllers
                 }
                 else if (Nombrecliente != "")
                 {
-                    comandoSql = new SqlCommand("Select TOP 50 * from [dbo].[View_BusquedaIndividual] where Nombre like '%" + Nombrecliente + "%' ");
+                    comandoSql = new SqlCommand("Select TOP 10 * from [dbo].[View_BusquedaIndividual] where Nombre like '%" + Nombrecliente + "%' ");
                 }
                 else
                 {
-                    comandoSql = new SqlCommand("Select TOP 50 * from [dbo].[View_BusquedaIndividual] where Ciudad like '%" + ciudad + "%' and Colonia like '%" + colonia + "%' and Calle  like'%" + calle + "%' and Numero like '%" + numero + "%'");
+                    comandoSql = new SqlCommand("Select TOP 10 * from [dbo].[View_BusquedaIndividual] where Ciudad like '%" + ciudad + "%' and Colonia like '%" + colonia + "%' and Calle  like'%" + calle + "%' and Numero like '%" + numero + "%'");
                 }
 
                 
@@ -180,6 +259,38 @@ namespace SoftvMVC.Controllers
 
         }
 
+        public ActionResult getTipoServicio(int IdPlaza)
+        {
+            ConexionController c = new ConexionController();
+            SqlCommand comandoSql;
+            List<TipServEntity> lista_servicio = new List<TipServEntity>();
+            SqlConnection conexionSQL = new SqlConnection(c.DameConexion(IdPlaza));
+            try
+            {
+                conexionSQL.Open();
+            }
+            catch
+            { }
+            try
+            {
+
+                comandoSql = new SqlCommand("Select * from [dbo].[TipServ]");
+                comandoSql.Connection = conexionSQL;
+                SqlDataReader reader = comandoSql.ExecuteReader();
+                if (reader.HasRows)
+                {
+                    while (reader.Read())
+                    {
+                        TipServEntity servicio = new TipServEntity();
+                        servicio.Clv_TipSer = Int32.Parse(reader[0].ToString());
+                        servicio.Concepto = reader[1].ToString();
+                        lista_servicio.Add(servicio);
+                    }
+                }
+            }
+            catch { }
+            return Json(lista_servicio, JsonRequestBehavior.AllowGet);
+        }
 
         public List<CLIENTEEntity2> GetClientesporPlaza(int id,string  contrato, string cliente1, string direccion)
         {
