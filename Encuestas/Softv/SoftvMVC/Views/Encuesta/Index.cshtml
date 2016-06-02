@@ -476,6 +476,9 @@
     </div>
 </div>
 
+<form action='/Encuesta/EncuestaPDF' style="display:none;" id="formImprimir">
+    <input type='hidden' id='id_imprimir' name="idencuesta">
+</form>
 
 
 
@@ -495,20 +498,20 @@
 
 
 
-<script src="~/dist/js/pages/Encuesta/Lista.js"></script>
-<script src="~/dist/js/pages/Encuesta/Utilerias.js"></script>
-<script src="~/dist/js/pages/Encuesta/ModalAgregarPregunta.js"></script>
-<script src="~/dist/js/pages/Encuesta/ModalEditarPregunta.js"></script>
-<script src="~/dist/js/pages/Encuesta/ModalDetallePregunta.js"></script>
-<script src="~/dist/js/pages/Encuesta/ModalEliminaPregunta.js"></script>
-<script src="~/dist/js/pages/Encuesta/ModalAgregarEncuesta.js"></script>
-<script src="~/dist/js/pages/Encuesta/ModalDetalleEncuesta.js"></script>
-<script src="~/dist/js/pages/Encuesta/ModalEditarEncuesta.js"></script>
-<script src="~/dist/js/pages/Encuesta/ModalCatalogoPreguntas.js"></script>
-<script src="~/dist/js/pages/Encuesta/ModalEliminarEncuesta.js"></script>
-<script>
-     var frame = document.getElementById('cubrir-frame');
+    <script src="~/dist/js/pages/Encuesta/Lista.js"></script>
+    <script src="~/dist/js/pages/Encuesta/Utilerias.js"></script>
+    <script src="~/dist/js/pages/Encuesta/ModalAgregarPregunta.js"></script>
+    <script src="~/dist/js/pages/Encuesta/ModalEditarPregunta.js"></script>
+    <script src="~/dist/js/pages/Encuesta/ModalDetallePregunta.js"></script>
+    <script src="~/dist/js/pages/Encuesta/ModalEliminaPregunta.js"></script>
+    <script src="~/dist/js/pages/Encuesta/ModalAgregarEncuesta.js"></script>
+    <script src="~/dist/js/pages/Encuesta/ModalDetalleEncuesta.js"></script>
+    <script src="~/dist/js/pages/Encuesta/ModalEditarEncuesta.js"></script>
+    <script src="~/dist/js/pages/Encuesta/ModalCatalogoPreguntas.js"></script>
+    <script src="~/dist/js/pages/Encuesta/ModalEliminarEncuesta.js"></script>
+    <script>
+        var frame = document.getElementById('cubrir-frame');
         frame.oncontextmenu = function () {
-        return false;
+            return false;
         }
-</script>
+    </script>

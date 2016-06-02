@@ -39,7 +39,7 @@
     <div class="container" style="background-color:#fff;  box-shadow: 2px 2px 5px #999; margin-top:10px; width:70%;">
 
         <div class="row">
-
+            <h3 style="padding-left:20px;"><a href="/Encuesta" style="color:#5bc0de;"><i class="fa fa-angle-left" aria-hidden="true"></i> Regresar</a></h3>
             <h1 class="text-center" style="color:#4b646f;"><strong>@ViewBag.NombreEncuesta</strong></h1>
 
             <div class="page-title" style="background-color:#3c8dbc; color:#fff; width:100%;">
@@ -248,7 +248,7 @@
                                         </div><br />
                                         <div class="row">
                                             <div class="col-md-4">
-                                                <input type="text" class="form-control" id="colonia" placeholder="Colonia" />
+                                                <input type="text" class="form-control" id="colonia_domicilio" placeholder="Colonia" />
                                             </div>
                                         </div><br />
                                         <div class="row">
@@ -258,7 +258,7 @@
                                         </div><br />
                                         <div class="row">
                                             <div class="col-md-4">
-                                                <input type="text" class="form-control" placeholder="Número" />
+                                                <input type="text" class="form-control" id="numero_domicilio" placeholder="Número" />
                                             </div>
                                         </div>
                                     </div><br />
@@ -279,7 +279,7 @@
                                     </div>
                                     <div class="row">
                                         <div class="col-md-8">
-                                            <input type="text" class="form-control" id="nombre"/>
+                                            <input type="text" class="form-control" id="nombre_individual" />
                                         </div>
                                     </div>
                                     <div class="row">
@@ -496,13 +496,15 @@
 
     $('#buscar_por_nombre').on('click', function () {
         var id_plaza = $('#conexion_plaza').val();
-        var nombre = $('#nombre').val();
+        var nombre = $('#nombre_individual').val();
+        console.log(nombre);
         $('#TablaIndividual').show();
         $.ajax({
-            url: "/CLIENTE/GetClientesporPlazaJson/",
+            url: "/CLIENTE/GetClientesPRUEBA/",
             type: "GET",
-            data: { 'id': id_plaza, "contrato": "", "cliente1": nombre, "direccion": "" },
+            data: { 'IdPlaza': id_plaza, "contrato": "", "Nombrecliente": nombre, "direccion": "" },
             success: function (data, textStatus, jqXHR) {
+                console.log(data);
                 if (data.length == 0) {
                     $('#TablaIndividual').hide();
                     $('#invalido').show();
@@ -525,12 +527,16 @@
     $('#buscar_por_direccion').on('click', function () {
         var id_plaza = $('#conexion_plaza').val();
         var calle = $('#calle').val();
+        var ciudad = $('#ciudad').val();
+        var numero = $('#numero_domicilio').val();
+        var colonia = $('#colonia_domicilio').val();
         $('#TablaIndividual').show();
         $.ajax({
-            url: "/CLIENTE/GetClientesporPlazaJson/",
+            url: "/CLIENTE/GetClientesPRUEBA/",
             type: "GET",
-            data: { 'id': id_plaza, "contrato": "", "cliente1": "", "direccion": calle },
+            data: { 'IdPlaza': id_plaza, "contrato": "", "Nombrecliente": "", "calle": calle, "colonia": colonia, "ciudad": ciudad, "numero": numero },
             success: function (data, textStatus, jqXHR) {
+                console.log(data);
                 if (data.length == 0) {
                     $('#TablaIndividual').hide();
                     $('#invalido').show();
@@ -555,10 +561,11 @@
         var contrato = $('#input_contrato').val();
         $('#TablaIndividual').show();
         $.ajax({
-            url: "/CLIENTE/GetClientesporPlazaJson/",
+            url: "/CLIENTE/GetClientesPRUEBA/",
             type: "GET",
-            data: { 'id': id_plaza, "contrato": contrato, "cliente1": "", "direccion": "" },
+            data: { 'IdPlaza': id_plaza, "contrato": contrato, "cliente1": "", "direccion": "" },
             success: function (data, textStatus, jqXHR) {
+                console.log(data);
                 if (data.length == 0) {
                     $('#TablaIndividual').hide();
                     $('#invalido').show();

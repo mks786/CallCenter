@@ -126,7 +126,59 @@ namespace SoftvMVC.Controllers
 
             return Json(lista, JsonRequestBehavior.AllowGet);
         }
+        public ActionResult GetClientesPRUEBA(int IdPlaza, string  contrato, string Nombrecliente, string ciudad,string colonia,string  calle ,string numero)
+        {
 
+            ConexionController c = new ConexionController();            
+            SqlCommand comandoSql;
+            List<CLIENTEEntity2> lista = new List<CLIENTEEntity2>();
+            SqlConnection conexionSQL = new SqlConnection(c.DameConexion(IdPlaza));
+            try
+            {
+                conexionSQL.Open();
+            }
+            catch
+            { }
+
+            try
+            {
+                if (contrato != "")
+                {
+                    comandoSql = new SqlCommand("Select * from [dbo].[View_BusquedaIndividual] where Contrato=" + contrato);
+                }
+                else if (Nombrecliente != "")
+                {
+                    comandoSql = new SqlCommand("Select TOP 50 * from [dbo].[View_BusquedaIndividual] where Nombre like '%" + Nombrecliente + "%' ");
+                }
+                else
+                {
+                    comandoSql = new SqlCommand("Select TOP 50 * from [dbo].[View_BusquedaIndividual] where Ciudad like '%" + ciudad + "%' and Colonia like '%" + colonia + "%' and Calle  like'%" + calle + "%' and Numero like '%" + numero + "%'");
+                }
+
+                
+                comandoSql.Connection = conexionSQL;
+                SqlDataReader reader = comandoSql.ExecuteReader();
+                if (reader.HasRows)
+                {
+                    while (reader.Read())
+                    {
+                        CLIENTEEntity2 cliente = new CLIENTEEntity2();
+                        cliente.CONTRATO = Int32.Parse(reader[0].ToString());
+                        cliente.NOMBRE =reader[1].ToString();
+                        cliente.TELEFONO = reader[2].ToString();
+                        cliente.CELULAR = reader[3].ToString();
+                        cliente.Calle = reader[4].ToString();
+                        cliente.Colonia = reader[6].ToString();
+                        cliente.NUMERO = reader[5].ToString();
+                        cliente.Ciudad = reader[7].ToString();
+                        lista.Add(cliente);
+                    }
+                }
+            }
+            catch { }
+            return Json(lista,JsonRequestBehavior.AllowGet);
+
+        }
 
 
         public List<CLIENTEEntity2> GetClientesporPlaza(int id,string  contrato, string cliente1, string direccion)

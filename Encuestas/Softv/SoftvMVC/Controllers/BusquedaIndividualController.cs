@@ -250,7 +250,8 @@ namespace SoftvMVC.Controllers
 
         private List<BusquedaIndividualEntity> FiltrarContenido(ref int recordFiltered, int start, int length)
         {
-
+            ConexionController C = new ConexionController();
+           
             List<BusquedaIndividualEntity> lista = proxy.GetBusquedaIndividualList();
             recordFiltered = lista.Count;
             int rango = start + length;
@@ -265,28 +266,6 @@ namespace SoftvMVC.Controllers
             public int recordsFiltered { get; set; }
             public List<BusquedaIndividualEntity> data { get; set; }
         }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
     }
