@@ -441,11 +441,12 @@ namespace SoftvMVC.Controllers
 
             EncuestaEntity objEncuesta = proxy.GetEncuesta(IdEncuesta);
             sb.Append("<br>");
-            sb.Append(@"<table ><tr><td bgcolor=""#9fa6ad"">");
+            sb.Append(@"<table ><tr><td>");
             
             sb.Append(@"<h3 align=""center"" style=""font-size:24px; align:center;"" >" + objEncuesta.TituloEncuesta + "</h3>");
-            sb.Append(@"<h4 align=""center"" >" + objEncuesta.Descripcion + "</h4>");            
-            sb.Append("<h5>Nombre cliente:___________________________ &nbsp;&nbsp;Contrato________ &nbsp;&nbsp;Fecha:__________________</h5>         ");
+            sb.Append(@"<h4 align=""center"" >" + objEncuesta.Descripcion + "</h4>");
+            sb.Append("<br/>");
+            sb.Append("<h5>Nombre cliente:___________________________ &nbsp;&nbsp;Contrato________________ &nbsp;&nbsp;Fecha:_______________</h5>");
             sb.Append("</td></tr></table>");
 
             
@@ -460,7 +461,7 @@ namespace SoftvMVC.Controllers
                 }
                 else if (a.Pregunta.IdTipoPregunta == 2)
                 {
-                    sb.Append(@"<h5>Si_______ No _______</h5>");
+                    sb.Append(@"<h5>Si( ) No( )</h5>");
                 }
                 else
                 {
@@ -470,7 +471,7 @@ namespace SoftvMVC.Controllers
                     {
 
                         ResOpcMultsEntity respuestas = Respuestas.GetResOpcMultsList().Where(o => o.Id_ResOpcMult == resp.Id_ResOpcMult).Select(o => o).First();
-                        sb.Append(@"<td><h5 style=""font-size:8px;"">[ ]" + respuestas.ResOpcMult + "</h5></td>");
+                        sb.Append(@"<td><h5 style=""font-size:8px;"">( )" + respuestas.ResOpcMult + "</h5></td>");
 
                     }
                     sb.Append("</tr></table>");

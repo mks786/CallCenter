@@ -65,7 +65,7 @@ function LlenarTabla(plaza,contrato,cliente,direccion) {
             sortable: false,
             "render": function (data, type, full, meta) {
                 
-                return "<button class='btn btn-info btn-xs detalleCliente' rel='" + full.conexion + "' id='" + full.CONTRATO + "'><i class='fa fa-info' aria-hidden='true'></i> Detalles</button> <button rel='" + full.conexion + "'class='btn btn-warning btn-xs editarCliente' id='" + full.CONTRATO + "'><i class='fa fa-pencil' aria-hidden='true'></i> Editar</button>";
+                return "<button class='btn btn-info btn-xs' rel='" + full.conexion + "' id='" + full.CONTRATO + "' onclick='detalleCliente(this.id)'><i class='fa fa-info' aria-hidden='true'></i> Detalles</button> <button rel='" + full.conexion + "'class='btn btn-warning btn-xs editarCliente' id='" + full.CONTRATO + "'><i class='fa fa-pencil' aria-hidden='true'></i> Editar</button>";
             }
         }
         ],
