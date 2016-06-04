@@ -14,6 +14,8 @@ function Opciones(id) {
 
 function MostrarModalEncuesta() {
     $('#EditarEncuesta').hide();
+    $('#cargando').hide();
+    $('#encuesta_cargando').show();
     $('#guardarEncuesta').show();
     $('#ModalAgregarEncuesta').modal('show');
     $('#msnTablavacia').show();

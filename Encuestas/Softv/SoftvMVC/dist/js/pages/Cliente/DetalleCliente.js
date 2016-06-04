@@ -1,5 +1,6 @@
 ﻿function detalleCliente(id) {
-    var id_plaza = $('#conexiones').val();
+    var id_plaza = $('#paza_conectando').val();
+    console.log(id_plaza);
     $.ajax({
         url: "/CLIENTE/GetClientesporPlazaJson/",
         type: "GET",

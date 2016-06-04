@@ -20,82 +20,129 @@
 </section>
 <br />
 <div class="row">
-    <div class="col-xs-12">
+    <div class="row container" id="conetar_plaza">
+        <div class="col-md-6">
+            <button class="btn btn-warning" onclick="AbrirModalClietes()"><i class="fa fa-map-marker" aria-hidden="true"></i> SELECCIONAR PLAZA</button>
+        </div>
+    </div>
+    <div class="col-xs-12" >
         <div class="box">
-            <div class="box-header">
-                <div class="row">
-                    <div class="col-md-4">
-                        <label>Selecciona una plaza</label>
-                        <select class="form-control" id="conexiones">
-                            @foreach (var a in conexiones)
-                            {
-                                <option value="@a.IdConexion.Value">@a.Plaza</option>
-                            }
+            <div class="panel-body" id="panel_clientes" style="display:none;">
+                <!-- Nav tabs -->
+                <ul class="nav nav-tabs" role="tablist">
+                    <li role="presentation" class="active"><a href="#contrato" aria-controls="contrato" role="tab" data-toggle="tab">Contrato</a></li>
+                    <li role="presentation"><a href="#nombre" aria-controls="nombre" role="tab" data-toggle="tab">Nombre</a></li>
+                    <li role="presentation"><a href="#direccion" aria-controls="direccion" role="tab" data-toggle="tab">Dirección</a></li>
+                </ul>
 
-                        </select>
-
-                    </div>
-                    <div class="col-md-4">
-                        <label>Buscar por:</label>
-                        <select class="form-control" id="filtros">
-                            <option selected disabled>Selecciona un filtro</option>
-                            <option value="1">Contrato</option>
-                            <option value="2">Nombre</option>
-                            <option value="3">Dirección</option>
-                        </select>
-
-                    </div>
-                    <div class="col-md-4">
-                        <label></label>
-                        <div class="input-group input-group-sm" id="Pcontrato" style="display:none;">
-                            <input class="form-control" type="text" id="fcontrato" placeholder="digite el contrato con el sig. formato ej.(227-2)">
-                            <span class="input-group-btn">
-                                <button class="btn btn-info btn-flat" type="button" id="bcontrato">Buscar</button>
-                            </span>
-                            
+                <!-- Tab panes -->
+                <div class="tab-content">
+                    <div role="tabpanel" class="tab-pane active" id="contrato">
+                        <br />
+                        <div class="row">
+                            <div class="col-md-4">
+                                <p style="color:#4b646f;">Ingrese el número de contrato</p>
+                            </div>
                         </div>
-
-                        <div class="input-group input-group-sm" id="Pnombre" style="display:none;">
-                            <input class="form-control" type="text" id="fnombre" placeholder="Nombre completo del cliente">
-                            <span class="input-group-btn">
-                                <button class="btn btn-info btn-flat" type="button" id="bnombre">Buscar</button>
-                            </span>
-
+                        <div class="row">
+                            <div class="col-md-8">
+                                <input type="text" class="form-control" id="input_contrato" />
+                                <span class="help-block">El número de contrato está formado por 2 grupos de números con un guión intermedio p.e. (1234-1)</span>
+                            </div>
                         </div>
-                        <div class="input-group input-group-sm" id="Pdireccion" style="display:none;">
-                            <input class="form-control" type="text" id="fdireccion" placeholder="Direccion del cliente">
-                            <span class="input-group-btn">
-                                <button class="btn btn-info btn-flat" type="button" id="bdireccion">Buscar</button>
-                            </span>
-
+                        <div class="row">
+                            <div class="col-md-12">
+                                <p class="text-right">
+                                    <button class="btn btn-primary" id="buscar_por_contrato"><i class="fa fa-search" aria-hidden="true"></i> Buscar</button>
+                                </p>
+                            </div>
                         </div>
-
                     </div>
-
+                    <div role="tabpanel" class="tab-pane" id="direccion">
+                        <br />
+                        <div class="container">
+                            <div class="row">
+                                <div class="col-md-4">
+                                    <input type="text" class="form-control" id="ciudad_busqueda" placeholder="Ciudad" />
+                                </div>
+                            </div><br />
+                            <div class="row">
+                                <div class="col-md-4">
+                                    <input type="text" class="form-control" id="colonia_domicilio" placeholder="Colonia" />
+                                </div>
+                            </div><br />
+                            <div class="row">
+                                <div class="col-md-4">
+                                    <input type="text" class="form-control" id="calle_busqueda" placeholder="Calle" />
+                                </div>
+                            </div><br />
+                            <div class="row">
+                                <div class="col-md-4">
+                                    <input type="text" class="form-control" id="numero_domicilio" placeholder="Número" />
+                                </div>
+                            </div>
+                        </div><br />
+                        <div class="row">
+                            <div class="col-md-12">
+                                <p class="text-right">
+                                    <button class="btn btn-primary" id="buscar_por_direccion"><i class="fa fa-search" aria-hidden="true"></i> Buscar</button>
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    <div role="tabpanel" class="tab-pane" id="nombre">
+                        <br />
+                        <div class="row">
+                            <div class="col-md-4">
+                                <p style="color:#4b646f;">Nombre completo</p>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-8">
+                                <input type="text" class="form-control" id="nombre_individual" />
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-12">
+                                <p class="text-right">
+                                    <button class="btn btn-primary" id="buscar_por_nombre"><i class="fa fa-search" aria-hidden="true"></i> Buscar</button>
+                                </p>
+                            </div>
+                        </div>
+                    </div>
                 </div>
-
-            </div><!-- /.box-header -->
-            <div class="box-body">
+            </div><!-- panel body -->
+            <div class="row" id="invalido" style="display:none;">
+                <div class="col-md-12">
+                    <div class="alert alert-warning alert-dismissible fade in" role="alert"><strong>Opsss!</strong> No se encontraron coincidencias. </div>
+                </div>
+            </div>
+            <div class="box-body" id="panel_tabla_clientes" style="display:none;">
                
                
                 <br />
-                <table id="TablaClientes" class="table table-bordered table-hover dataTable">
+                <table id="Tabla_Clientes" class="table table-bordered table-hover dataTable">
                     <thead>
                         <tr>
-                            <td style="width:5%;"><b>Contrato</b></td>
-                            <td style="width:30%;"><b>Nombre</b></td>
-                             <td><b>Teléfono</b></td>
-                            <td><b>Email</b></td>                           
+                            <td><b>Contrato</b></td>
+                            <td><b>Nombre</b> </td>
+                            <td><b>Ciudad</b></td>
+                            <td><b>Colonia</b></td>
+                            <td><b>Calle</b></td>
+                            <td><b>Número</b></td>
                             <td><b>Opciones</b></td>
                         </tr>
                     </thead>
+                    <tbody></tbody>
                     <tfoot>
                         <tr>
 
                             <td><b>Contrato</b></td>
-                            <td><b>Nombre</b></td>
-                            <td><b>Teléfono</b></td>
-                            <td><b>Email</b></td>
+                            <td><b>Nombre</b> </td>
+                            <td><b>Ciudad</b></td>
+                            <td><b>Colonia</b></td>
+                            <td><b>Calle</b></td>
+                            <td><b>Número</b></td>
                             <td><b>Opciones</b></td>
                         </tr>
                     </tfoot>
@@ -106,7 +153,7 @@
 </div>
 
 
-<div class="modal fade bs-example-modal-lg" id="ModalEditarCliente" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel">
+<div class="modal fade bs-example-modal-lg" id="ModalEditarCliente" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" data-backdrop="static" data-keyboard="false">
     <div class="modal-dialog modal-lg">
         <div class="modal-content">
             <div class="modal-header">
@@ -114,16 +161,18 @@
                 <h4 class="modal-title">Editar cliente </h4>
             </div>
             <div class="modal-body">
-               
 
-                <div class="nav-tabs-custom">
+                <div class="overlay" id="cargando">
+                    <h1 class="text-center" style="font-size:65px;"><i class="fa fa-refresh fa-spin"></i></h1>
+                </div>
+                <div class="nav-tabs-custom" id="contenido_editar" style="display:none;">
                     <ul class="nav nav-tabs">
                         <li class="active"><a href="#tab_1" data-toggle="tab" aria-expanded="true"><i class="fa fa-folder" aria-hidden="true"></i> Información principal</a></li>
                         <li class=""><a href="#tab_2a" id="tab-preguntas" data-toggle="tab" aria-expanded="false"><i class="fa fa-book" aria-hidden="true"></i> Datos Fiscales</a></li>
                     </ul>
                     <div class="tab-content">
                         <div class="tab-pane active" id="tab_1">
-                          
+
 
 
 
@@ -133,35 +182,31 @@
                                     <div class="form-group">
                                         <label for="exampleInputEmail1">contrato</label>
 
-                                        <input class="form-control" type="text" id="contrato">
+                                        <input class="form-control" type="text" id="contrato_editar">
                                     </div>
                                 </div>
                                 <div class="col-xs-8">
                                     <div class="form-group">
                                         <label for="exampleInputEmail1">Nombre del cliente</label>
-                                        <input class="form-control" type="text" id="nombre">
+                                        <input class="form-control" type="text" id="nombre_editar">
                                     </div>
                                 </div>
 
                             </div>
 
                             <div class="row">
-                                
+
                                 <div class="col-xs-4">
                                     <div class="form-group">
                                         <label for="exampleInputEmail1">Ciudad</label>
-                                        <select class="form-control" id="ciudad">
-
-                                        </select>
+                                        <select class="form-control" id="ciudad_select"></select>
                                     </div>
                                 </div>
                                 <div class="col-xs-8">
                                     <div class="form-group">
                                         <label for="exampleInputEmail1">Colonia</label>
-                                       <select class="form-control" id="colonia" name="colonia">
-
-                                       </select>
-                                   </div>
+                                        <select class="form-control" id="colonia_select" name="colonia"></select>
+                                    </div>
                                 </div>
 
                             </div>
@@ -170,19 +215,19 @@
                                 <div class="col-xs-6">
                                     <div class="form-group">
                                         <label for="exampleInputEmail1">Calle</label>
-                                        <select class="form-control" id="calle" name="calle"></select>
+                                        <select class="form-control" id="calle_editar" name="calle"></select>
                                     </div>
                                 </div>
                                 <div class="col-xs-3">
                                     <div class="form-group">
                                         <label for="exampleInputEmail1">Número</label>
-                                        <input class="form-control" type="text" id="numero">
+                                        <input class="form-control" type="text" id="numero_editar">
                                     </div>
                                 </div>
                                 <div class="col-xs-3">
                                     <div class="form-group">
                                         <label for="exampleInputEmail1">Código postal</label>
-                                        <input class="form-control" type="text" id="cp">
+                                        <input class="form-control" type="text" id="cp_editar">
                                     </div>
                                 </div>
                             </div>
@@ -191,10 +236,10 @@
                                 <div class="col-xs-6">
                                     <div class="form-group">
                                         <label for="exampleInputEmail1">Entre Calles</label>
-                                        <input class="form-control" type="text" id="calles">
+                                        <input class="form-control" type="text" id="calles_editar">
                                     </div>
                                 </div>
-                              
+
 
 
                             </div>
@@ -202,33 +247,33 @@
                                 <div class="col-xs-4">
                                     <div class="form-group">
                                         <label for="exampleInputEmail1">Telefono fijo</label>
-                                        <input class="form-control telefono" type="text" id="telefono">
+                                        <input class="form-control telefono" type="text" id="telefono_editar">
                                     </div>
                                 </div>
                                 <div class="col-xs-4">
                                     <div class="form-group">
                                         <label for="exampleInputEmail1">Celular</label>
-                                        <input class="form-control" type="text" id="celular">
+                                        <input class="form-control" type="text" id="celular_editar">
                                     </div>
                                 </div>
                                 <div class="col-xs-4">
                                     <div class="form-group">
                                         <label for="exampleInputEmail1">Correo</label>
-                                        <input class="form-control" type="text" id="correo">
+                                        <input class="form-control" type="text" id="correo_editar">
                                     </div>
                                 </div>
 
                             </div>
-                            <input type="hidden" id="iva" />
-                            <input type="hidden" id="solointernet" />
-                            <input type="hidden" id="eshotel" />
-                            <input type="hidden" id="sector" />
-                            <input type="hidden" id="periodo" />
-                            <input type="hidden" id="tap" />
-                            <input type="hidden" id="zona2" />
+                            <input type="hidden" id="iva_editar" />
+                            <input type="hidden" id="solointernet_editar" />
+                            <input type="hidden" id="eshotel_editar" />
+                            <input type="hidden" id="sector_editar" />
+                            <input type="hidden" id="periodo_editar" />
+                            <input type="hidden" id="tap_editar" />
+                            <input type="hidden" id="zona2_editar" />
                         </div>
-                        <div class="tab-pane" id="tab_2a">     
-                        
+                        <div class="tab-pane" id="tab_2a">
+
                             <div class="row">
                                 <div class="col-xs-4">
                                     <div class="form-group">
@@ -274,7 +319,7 @@
                             </div>
 
 
-                           
+
 
 
                             <div class="row">
@@ -324,20 +369,20 @@
                                     </div>
                                 </div>
                                 <div class="col-xs-4">
-                                   <input type="hidden" id="ivafiscal" />
+                                    <input type="hidden" id="ivafiscal" />
                                     <input type="hidden" id="idasociadofiscal" />
-                                    <input type="hidden"  id="identificadorfiscal"/>
+                                    <input type="hidden" id="identificadorfiscal" />
                                     <input type="hidden" id="tipofiscal" />
-                                    
+
                                 </div>
 
-                            </div>                   
-                        
-                                              
-                           
-                          
-                          
-                           
+                            </div>
+
+
+
+
+
+
                         </div><!-- /.tab-pane -->
                     </div><!-- /.tab-pane -->
 
@@ -346,13 +391,13 @@
                 </div><!-- /.tab-content -->
 
 
-            
+
 
 
             </div>
             <div class="modal-footer">
-                <button class="btn btn-default pull-left" type="button" data-dismiss="modal">Cerrar</button>
-                <button class="btn btn-primary pull-right" id="Editar" type="button" data-dismiss="modal">Editar</button>
+                <button class="btn btn-primary" type="button" data-dismiss="modal">Cerrar</button>
+                <button class="btn btn-success pull-right" id="Editar" type="button" data-dismiss="modal">Editar</button>
 
             </div>
         </div>
@@ -360,13 +405,14 @@
 </div>
 
 
-<div class="modal fade bs-example-modal-lg" id="ModalDetalleCliente" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel">
+<div class="modal fade bs-example-modal-lg" id="ModalDetalleCliente" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" data-backdrop="static" data-keyboard="false">
     <div class="modal-dialog modal-lg">
         <div class="modal-content">
             <div class="modal-header">
                 <button class="close" aria-label="Close" type="button" data-dismiss="modal"><span aria-hidden="true">×</span></button>
-                <h4 class="modal-title">Detalle de cliente
-                 </h4>
+                <h4 class="modal-title">
+                    Detalle de cliente
+                </h4>
             </div>
             <div class="modal-body">
 
@@ -380,7 +426,7 @@
                             <span class="info-box-icon bg-aqua"><i class="fa fa-user" aria-hidden="true"></i></span>
                             <div class="info-box-content">
 
-                                <span class="info-box-number" id="nombre_cliente">Eric Alejandro Chávez Gómez</span>
+                                <span class="info-box-number" id="nombre_cliente"></span>
 
                                 <span class="info-box-text"><label>Contrato: </label>  <strong id="contrato_cliente" style="color:red;"></strong></span>
 
@@ -421,25 +467,60 @@
 
                                     </div>
                                 </div>
-                                
+
 
                             </div>
                         </div>
 
-                                                    
 
-                              
-                            </div>
-                        </div>
-                        
+
 
                     </div>
-               
+                </div>
 
-                
+
+            </div>
+
+
+
             <div class="modal-footer">
-                <button class="btn btn-default" type="button" data-dismiss="modal">Cerrar</button>
-                
+                <button class="btn btn-primary" type="button" data-dismiss="modal">Cerrar</button>
+
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+<div class="modal fade" id="Modal_Plaza_clientes" role="dialog">
+    <div class="modal-dialog modal-md">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button class="close" aria-label="Close" type="button" data-dismiss="modal"><span aria-hidden="true">×</span></button>
+            </div>
+            <div class="modal-body">
+                <div class="col-md-12">
+                    <div class="form-group">
+                        <p class="col-md-4 control-label" for="selectbasic" style="padding-top:10px; color:#4b646f;">Selecciona la plaza</p>
+                        <div class="col-md-6">
+                            <select class="form-control" id="paza_conectando">
+                                @foreach (var a in conexiones)
+                                {
+                                    <option value="@a.IdConexion.Value">@a.Plaza</option>
+                                }
+
+                            </select>
+                        </div>
+                    </div>
+                </div>
+                <br />
+                <br />
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-primary " type="button" data-dismiss="modal">Cerrar</button>
+                <button class="btn btn-success" onclick="plaza_conexion()" type="button" id="aceptar_plaza">Conectar</button>
             </div>
         </div>
     </div>
@@ -462,13 +543,9 @@
 
 
 
-
-
-
-
-
 <script src="~/dist/js/pages/Cliente/Lista.js"></script>    
 <script src="~/dist/js/pages/Cliente/DetalleCliente.js"></script>
 <script src="~/dist/js/pages/Cliente/EditaCliente.js"></script>    
-
+<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/u/bs/jszip-2.5.0,pdfmake-0.1.18,dt-1.10.12,b-1.2.1,b-flash-1.2.1,b-html5-1.2.1,b-print-1.2.1,r-2.1.0/datatables.min.css" />
+<script type="text/javascript" src="https://cdn.datatables.net/u/bs/jszip-2.5.0,pdfmake-0.1.18,dt-1.10.12,b-1.2.1,b-flash-1.2.1,b-html5-1.2.1,b-print-1.2.1,r-2.1.0/datatables.min.js"></script>
    

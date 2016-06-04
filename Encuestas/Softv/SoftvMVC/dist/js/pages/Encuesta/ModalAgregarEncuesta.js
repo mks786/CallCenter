@@ -8,7 +8,6 @@ $('#guardarEncuesta').click(function () {
     var titulo_encuesta = $('#nombreEncuesta').val();
     var descripcion_encuesta = $('#Descripcion_encuesta').val();
     var contador_encuesta = 0;
-    console.log(Lista_preguntas);
     for (var i = 0; i < Lista_preguntas.length - 1; i++) {
         for (var j = i + 1; j < Lista_preguntas.length; j++) {
             if (Lista_preguntas[i].Pregunta == Lista_preguntas[j].Pregunta) {

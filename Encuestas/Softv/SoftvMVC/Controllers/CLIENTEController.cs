@@ -229,9 +229,13 @@ namespace SoftvMVC.Controllers
                 {
                     comandoSql = new SqlCommand("Select TOP 10 * from [dbo].[View_BusquedaIndividual] where Nombre like '%" + Nombrecliente + "%' ");
                 }
-                else
+                else if (ciudad !="")
                 {
                     comandoSql = new SqlCommand("Select TOP 10 * from [dbo].[View_BusquedaIndividual] where Ciudad like '%" + ciudad + "%' and Colonia like '%" + colonia + "%' and Calle  like'%" + calle + "%' and Numero like '%" + numero + "%'");
+                }
+                else
+                {
+                    comandoSql = new SqlCommand("Select * from [dbo].[View_BusquedaIndividual]");
                 }
 
                 
