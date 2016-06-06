@@ -263,6 +263,53 @@ namespace SoftvMVC.Controllers
 
         }
 
+        public ActionResult getNombreCliente(int IdPlaza, int contrato)
+        {
+            ConexionController c = new ConexionController();
+            SqlCommand comandoSql;
+            List<clientes_apellidos> lista_cliente = new List<clientes_apellidos>();
+            SqlConnection conexionSQL = new SqlConnection(c.DameConexion(IdPlaza));
+            try
+            {
+                conexionSQL.Open();
+            }
+            catch
+            { }
+            try
+            {
+
+                comandoSql = new SqlCommand("Select * from [dbo].[Clientes_Apellidos] where Contrato = '" + contrato + "'");
+                comandoSql.Connection = conexionSQL;
+                SqlDataReader reader = comandoSql.ExecuteReader();
+                if (reader.HasRows)
+                {
+                    while (reader.Read())
+                    {
+                        clientes_apellidos cliente = new clientes_apellidos();
+                        cliente.nombre = reader[1].ToString();
+                        cliente.segundonombre = reader[2].ToString();
+                        cliente.apaterno = reader[3].ToString();
+                        cliente.amaterno = reader[4].ToString();
+                        cliente.fnacimiento = reader[5].ToString();
+                        lista_cliente.Add(cliente);
+                    }
+                }
+            }
+            catch { }
+            return Json(lista_cliente, JsonRequestBehavior.AllowGet);
+        }
+
+        public class clientes_apellidos
+        {
+            public string nombre { get; set; }
+            public string segundonombre { get; set; }
+
+            public string apaterno { get; set; }
+            public string amaterno { get; set; }
+
+            public string fnacimiento { get; set; }
+        }
+
         public ActionResult getTipoServicio(int IdPlaza)
         {
             ConexionController c = new ConexionController();
@@ -460,10 +507,9 @@ namespace SoftvMVC.Controllers
         }
 
 
-        public ActionResult UpdateCliente(CLIENTEEntity2 cliente, DatoFiscalEntity fiscales)
+        public ActionResult UpdateCliente(CLIENTEEntity2 cliente, DatoFiscalEntity fiscales, clientes_apellidos clienteNombres)
         {
             ConexionController c = new ConexionController();
-            SqlCommand comandoSql;
             SqlCommand comandoSql2;         
             SqlConnection conexionSQL = new SqlConnection(c.DameConexion(cliente.conexion));
             int result = 0;
@@ -475,26 +521,24 @@ namespace SoftvMVC.Controllers
             { }
             try
             {
-                comandoSql = new SqlCommand(@"UPDATE CLIENTES SET Nombre=@nombre,Clv_Calle=@calle,Numero=@numero,EntreCalles=@calles,Clv_Colonia=@colonia,CodigoPostal=@cp,Telefono=@telefono,Celular=@celular,Clv_Ciudad=@cuidad,Email=@email where contrato="+cliente.CONTRATO);
-                comandoSql.Connection = conexionSQL;
-                comandoSql.Parameters.AddWithValue("@nombre", cliente.NOMBRE);
-                comandoSql.Parameters.AddWithValue("@calle", cliente.Clv_Calle);
-                comandoSql.Parameters.AddWithValue("@numero",cliente.NUMERO);
-                comandoSql.Parameters.AddWithValue("@calles", cliente.ENTRECALLES);
-                comandoSql.Parameters.AddWithValue("@colonia", cliente.Clv_Colonia);
-                comandoSql.Parameters.AddWithValue("@cp", cliente.CodigoPostal);
-                comandoSql.Parameters.AddWithValue("@telefono", cliente.TELEFONO);
-                comandoSql.Parameters.AddWithValue("@celular", cliente.CELULAR);
-                comandoSql.Parameters.AddWithValue("@cuidad", cliente.Clv_Ciudad);
-                comandoSql.Parameters.AddWithValue("@email", cliente.Email);
-                comandoSql.ExecuteNonQuery();
+                comandoSql2 = new SqlCommand("UPDATE CLIENTES set Nombre='" + cliente.NOMBRE + "',Clv_Calle='" + cliente.Clv_Calle + "',Numero='" + cliente.NUMERO + "',EntreCalles='" + cliente.ENTRECALLES + "',Clv_Colonia='" + cliente.Clv_Colonia + "',Telefono='" + cliente.TELEFONO + "',Celular='" + cliente.CELULAR + "',Clv_Ciudad='" + cliente.Clv_Ciudad + "',Email='" + cliente.Email + "' where contrato=" + cliente.CONTRATO);
+                comandoSql2.Connection = conexionSQL;
+                comandoSql2.ExecuteNonQuery();
                 result = 1;
             }
             catch { }
 
             try
             {
-                comandoSql2 = new SqlCommand("UPDATE DatosFiscales set Razon_Social=" + fiscales.RAZON_SOCIAL + ",RFC=" + fiscales.RFC + ",Calle_RS=" + fiscales.CALLE_RS + ",Numero_RS=" + fiscales.NUMERO_RS + ",EntreCalles=" + fiscales.ENTRECALLES + ",Colonia_RS=" + fiscales.COLONIA_RS + ",Ciudad_RS=" + fiscales.CIUDAD_RS + ",Estado_RS=" + fiscales.ESTADO_RS + ",CP_RS=" + fiscales.CP_RS + ",Telefono_RS=" + fiscales.TELEFONO_RS + ",Fax_RS=" + fiscales.FAX_RS + ",CURP="+fiscales.CURP+" where contrato="+cliente.CONTRATO);
+                comandoSql2 = new SqlCommand("UPDATE DatosFiscales set Razon_Social='" + fiscales.RAZON_SOCIAL + "',RFC='" + fiscales.RFC + "',Calle_RS='" + fiscales.CALLE_RS + "',Numero_RS='" + fiscales.NUMERO_RS + "',EntreCalles='" + fiscales.ENTRECALLES + "',Colonia_RS='" + fiscales.COLONIA_RS + "',Ciudad_RS='" + fiscales.CIUDAD_RS + "',Estado_RS='" + fiscales.ESTADO_RS + "',CP_RS='" + fiscales.CP_RS + "',Telefono_RS='" + fiscales.TELEFONO_RS + "',Fax_RS='" + fiscales.FAX_RS + "',CURP='"+fiscales.CURP+"' where contrato="+cliente.CONTRATO);
+                comandoSql2.Connection = conexionSQL;
+
+                comandoSql2.ExecuteNonQuery();
+            }
+            catch { }
+            try
+            {
+                comandoSql2 = new SqlCommand("UPDATE Clientes_Apellidos set Nombre='" + clienteNombres.nombre + "', SegundoNombre='" + clienteNombres.segundonombre + "',Apellido_Paterno='" + clienteNombres.apaterno + "',Apellido_Materno='" + clienteNombres.amaterno +"',FechaNacimiento='" + clienteNombres.fnacimiento + "' where contrato=" + cliente.CONTRATO);
                 comandoSql2.Connection = conexionSQL;
 
                 comandoSql2.ExecuteNonQuery();

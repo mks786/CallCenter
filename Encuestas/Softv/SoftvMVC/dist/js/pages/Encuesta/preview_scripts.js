@@ -360,7 +360,7 @@ function TablaStatus(idplaza, tiposervicio, tipobusqueda, contratado, suspendido
             { "data": "NUMERO", "orderable": false },
             {
                 sortable: false, "render": function (data, type, full, meta) {
-                    return "<button class='btn btn-success' onclick='aplicando_encuesta(this)' data-contrato='" + full.CONTRATO + "' data-name='" + full.NOMBRE + "' data-ciudad='" + full.Ciudad + "' data-colonia='" + full.Colonia + "' data-calle='" + full.Calle + "' data-numero='" + full.NUMERO + "' data-telefono='" + full.TELEFONO + "'><i class='fa fa-pie-chart' aria-hidden='true'></i>Aplicar</button>";
+                    return "<button class='btn btn-success' onclick='aplicando_encuesta(this)' data-contrato='" + full.CONTRATO + "' data-name='" + full.NOMBRE + "' data-ciudad='" + full.Ciudad + "' data-colonia='" + full.Colonia + "' data-calle='" + full.Calle + "' data-numero='" + full.NUMERO + "' data-telefono='" + full.TELEFONO + "'><i class='fa fa-pie-chart' aria-hidden='true'></i> Aplicar</button>";
                 }
             }
         ],

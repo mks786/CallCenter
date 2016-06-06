@@ -36,8 +36,9 @@ function cambiarCalle(id) {
         data: { 'colonia': id, 'plaza': id_plaza },
         success: function (data, textStatus, jqXHR) {
             $('#calle_editar').find('option').remove().end();
+            console.log(data);
             for (var i = 0; i < data.length; i++) {
-                $('#calle_editar').append("<option id='seleccion' value='" + data[i].clv_colonia + "' selected>" + data[i].Nombre + "</option>");
+                $('#calle_editar').append("<option id='seleccion' value='" + data[i].Clv_Calle + "' selected>" + data[i].Nombre + "</option>");
             }
         },
         error: function (jqXHR, textStatus, errorThrown) {
@@ -49,6 +50,24 @@ function cambiarCalle(id) {
 function editarCliente(id) {
     BorraFormulario();
     var id_plaza = $('#paza_conectando').val();
+    $.ajax({
+        url: "/CLIENTE/getNombreCliente/",
+        type: "GET",
+        data: { 'IdPlaza': id_plaza, "contrato": id },
+        success: function (data, textStatus, jqXHR) {
+            $('#nombre_editar').val(data[0].nombre);
+            $('#segundo_nombre_editar').val(data[0].segundonombre);
+            $('#apaterno_editar').val(data[0].apaterno);
+            $('#amaterno_editar').val(data[0].amaterno);
+            var formatted = $.datepicker.formatDate("yy-mm-dd", new Date(data[0].fnacimiento));
+            $('#fecha_editar').val(formatted);
+            
+        },
+        error: function (jqXHR, textStatus, errorThrown) {
+
+        }
+    });
+
     $('#ModalEditarCliente').modal('show');
     $('#contenido_editar').hide();
     $('#cargando').show();
@@ -62,7 +81,6 @@ function editarCliente(id) {
             getColonia(parseInt(data[0].Clv_Ciudad), id_plaza, data[0].Clv_Colonia);
             getCalle(data[0].Clv_Colonia, id_plaza, data[0].Clv_Calle);
             $('#contrato_editar').val(data[0].CONTRATO);
-            $('#nombre_editar').val(data[0].NOMBRE);
             $('#calles_editar').val(data[0].ENTRECALLES);
             $('#numero_editar').val(data[0].NUMERO);
             $('#cp_editar').val(data[0].CodigoPostal);
@@ -125,8 +143,25 @@ function mostrarDatos() {
 
 $('#Editar').click(function () {
     var cliente = {};
+    var nombreCliente = {};
+    nombreCliente.nombre = $('#nombre_editar').val();
+    nombreCliente.segundonombre = $('#segundo_nombre_editar').val();
+    nombreCliente.apaterno = $('#apaterno_editar').val();
+    nombreCliente.amaterno = $('#amaterno_editar').val();
+    nombreCliente.fnacimiento = $('#fecha_editar').val();
     cliente.CONTRATO = $('#contrato_editar').val();
-    cliente.NOMBRE = $('#nombre_editar').val();
+    var nombre_concatenado = '';
+    if ($('#nombre_editar').val() != "") {
+        nombre_concatenado += $('#nombre_editar').val();
+    }if ($('#segundo_nombre_editar') != "") {
+        nombre_concatenado += " " + $('#segundo_nombre_editar').val();
+    }if ($('#apaterno_editar').val() != "") {
+        nombre_concatenado += " "+$('#apaterno_editar').val();
+    }if ($('#amaterno_editar').val()) {
+        nombre_concatenado += " " + $('#amaterno_editar').val();
+    }
+    console.log(nombre_concatenado);
+    cliente.NOMBRE = nombre_concatenado
     cliente.Clv_Calle = $('#calle_editar').val();
     cliente.NUMERO = $('#numero_editar').val();
     cliente.ENTRECALLES = $('#calles_editar').val();
@@ -143,7 +178,7 @@ $('#Editar').click(function () {
     cliente.Clv_Periodo = $('#periodo_editar').val();
     cliente.Clv_Tap = $('#tap_editar').val();
     cliente.Zona2 = $('#zona2_editar').val();
-    cliente.conexion = $('#conexiones_editar').val();
+    cliente.conexion = $('#paza_conectando').val();
 
     var Datosfiscales = {};
     Datosfiscales.Contrato = $('#contrato').val();
@@ -168,8 +203,9 @@ $('#Editar').click(function () {
     $.ajax({
         url: "/CLIENTE/UpdateCliente/",
         type: "POST",
-        data: { 'cliente': cliente, 'fiscales': Datosfiscales },
+        data: { 'cliente': cliente, 'fiscales': Datosfiscales, 'clienteNombres': nombreCliente },
         success: function (data, textStatus, jqXHR) {
+            setUpdateCliente(cliente.CONTRATO);
             swal("Hecho!", "El cliente se edito correctamente!", "success");
 
         },
@@ -398,3 +434,29 @@ $('#buscar_por_contrato').on('click', function () {
 
     });
 });
+
+function setUpdateCliente(id) {
+    var id_plaza = $('#paza_conectando').val();
+    $('#panel_masivo').hide();
+    $('#panel_individual').show();
+    $.ajax({
+        url: "/CLIENTE/GetClientesPRUEBA/",
+        type: "GET",
+        data: { 'IdPlaza': id_plaza, "contrato": id, "cliente1": "", "direccion": "" },
+        success: function (data, textStatus, jqXHR) {
+            if (data.length == 0) {
+                $('#panel_tabla_clientes').hide();
+                $('#invalido').show();
+            } else {
+                $('#invalido').hide();
+                $('#panel_tabla_clientes').show();
+                $('#Tabla_Clientes tbody > tr').remove();
+                $('#Tabla_Clientes tbody').append('<tr><td>' + data[0].CONTRATO + '</td><td>' + data[0].NOMBRE + '</td><td>' + data[0].Ciudad + '</td><td>' + data[0].Colonia + '</td><td>' + data[0].Calle + '</td><td>' + data[0].NUMERO + '</td><td><button class="btn btn-info btn-xs detalleCliente" rel="' + data[0].CONTRATO + '" id="' + data[0].CONTRATO + '" onclick="detalleCliente(this.id)"><i class="fa fa-info" aria-hidden="true"></i> Detalles</button> <button rel="' + data[0].CONTRATO + '"class="btn btn-warning btn-xs editarCliente" id="' + data[0].CONTRATO + '" onclick="editarCliente(this.id)"><i class="fa fa-pencil" aria-hidden="true"></i> Editar</button></td></tr>');
+            }
+        },
+        error: function (data, jqXHR, textStatus) {
+            console.log(data);
+        }
+
+    });
+}

@@ -178,56 +178,74 @@
 
 
                             <div class="row">
-                                <div class="col-xs-4">
+                                <div class="col-xs-2">
                                     <div class="form-group">
                                         <label for="exampleInputEmail1">contrato</label>
 
-                                        <input class="form-control" type="text" id="contrato_editar">
+                                        <input class="form-control" type="text" id="contrato_editar" disabled>
                                     </div>
                                 </div>
-                                <div class="col-xs-8">
+                            </div>
+                            <div class="row">
+                                <div class="col-xs-3">
                                     <div class="form-group">
-                                        <label for="exampleInputEmail1">Nombre del cliente</label>
-                                        <input class="form-control" type="text" id="nombre_editar">
+                                        <label for="exampleInputEmail1">Nombre</label>
+                                        <input class="form-control" type="text" id="nombre_editar" required>
                                     </div>
                                 </div>
-
+                                <div class="col-xs-3">
+                                    <div class="form-group">
+                                        <label for="exampleInputEmail1">Segundo Nombre</label>
+                                        <input class="form-control" type="text" id="segundo_nombre_editar" required>
+                                    </div>
+                                </div>
+                                <div class="col-xs-3">
+                                    <div class="form-group">
+                                        <label for="exampleInputEmail1">Apellido Paterno</label>
+                                        <input class="form-control" type="text" id="apaterno_editar" required>
+                                    </div>
+                                </div>
+                                <div class="col-xs-3">
+                                    <div class="form-group">
+                                        <label for="exampleInputEmail1">Apellido Materno</label>
+                                        <input class="form-control" type="text" id="amaterno_editar" required>
+                                    </div>
+                                </div>
                             </div>
 
                             <div class="row">
-
+                                <div class="col-xs-3">
+                                    <div class="form-group">
+                                        <label for="exampleInputEmail1">Fecha Nacimiento</label>
+                                        <input class="form-control" type="date" id="fecha_editar" required>
+                                    </div>
+                                </div>
                                 <div class="col-xs-4">
                                     <div class="form-group">
                                         <label for="exampleInputEmail1">Ciudad</label>
-                                        <select class="form-control" id="ciudad_select"></select>
+                                        <select class="form-control" id="ciudad_select" required></select>
                                     </div>
                                 </div>
-                                <div class="col-xs-8">
+                                <div class="col-xs-5">
                                     <div class="form-group">
                                         <label for="exampleInputEmail1">Colonia</label>
-                                        <select class="form-control" id="colonia_select" name="colonia"></select>
+                                        <select class="form-control" id="colonia_select" name="colonia" required></select>
                                     </div>
                                 </div>
 
                             </div>
 
                             <div class="row">
-                                <div class="col-xs-6">
+                                <div class="col-xs-4">
                                     <div class="form-group">
                                         <label for="exampleInputEmail1">Calle</label>
-                                        <select class="form-control" id="calle_editar" name="calle"></select>
+                                        <select class="form-control" id="calle_editar" name="calle" required></select>
                                     </div>
                                 </div>
                                 <div class="col-xs-3">
                                     <div class="form-group">
                                         <label for="exampleInputEmail1">Número</label>
-                                        <input class="form-control" type="text" id="numero_editar">
-                                    </div>
-                                </div>
-                                <div class="col-xs-3">
-                                    <div class="form-group">
-                                        <label for="exampleInputEmail1">Código postal</label>
-                                        <input class="form-control" type="text" id="cp_editar">
+                                        <input class="form-control" type="text" id="numero_editar" required>
                                     </div>
                                 </div>
                             </div>
@@ -247,19 +265,19 @@
                                 <div class="col-xs-4">
                                     <div class="form-group">
                                         <label for="exampleInputEmail1">Telefono fijo</label>
-                                        <input class="form-control telefono" type="text" id="telefono_editar">
+                                        <input class="form-control telefono" type="text" id="telefono_editar" required>
                                     </div>
                                 </div>
                                 <div class="col-xs-4">
                                     <div class="form-group">
                                         <label for="exampleInputEmail1">Celular</label>
-                                        <input class="form-control" type="text" id="celular_editar">
+                                        <input class="form-control" type="text" id="celular_editar" required>
                                     </div>
                                 </div>
                                 <div class="col-xs-4">
                                     <div class="form-group">
                                         <label for="exampleInputEmail1">Correo</label>
-                                        <input class="form-control" type="text" id="correo_editar">
+                                        <input class="form-control" type="text" id="correo_editar" required>
                                     </div>
                                 </div>
 
