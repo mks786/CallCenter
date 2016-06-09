@@ -31,7 +31,7 @@
     <MetadataFile FileName="SoftvWCFService1.xsd" MetadataType="Schema" ID="0208c63f-e040-4a36-8440-89f5648eac11" SourceId="1" SourceUrl="http://localhost:64481/SoftvWCFService.svc?xsd=xsd0" />
     <MetadataFile FileName="SoftvWCFService2.xsd" MetadataType="Schema" ID="5336bc10-7eea-424e-9c65-221912542e62" SourceId="1" SourceUrl="http://localhost:64481/SoftvWCFService.svc?xsd=xsd2" />
     <MetadataFile FileName="SoftvWCFService3.xsd" MetadataType="Schema" ID="26334b77-a97f-47a3-b389-8ba5983442de" SourceId="1" SourceUrl="http://localhost:64481/SoftvWCFService.svc?xsd=xsd3" />
-    <MetadataFile FileName="SoftvWCFService.disco" MetadataType="Disco" ID="e5adb9e1-0d40-4eb4-9c92-838a2e27812f" SourceId="1" SourceUrl="http://localhost:64481/SoftvWCFService.svc?disco" />
+    <MetadataFile FileName="SoftvWCFService.disco" MetadataType="Disco" ID="aa5d1461-55ed-4253-ac61-6d055fc71e0b" SourceId="1" SourceUrl="http://localhost:64481/SoftvWCFService.svc?disco" />
     <MetadataFile FileName="SoftvWCFService.wsdl" MetadataType="Wsdl" ID="0d4fe9ab-d01a-4639-89c1-caacbb638705" SourceId="1" SourceUrl="http://localhost:64481/SoftvWCFService.svc?wsdl" />
   </Metadata>
   <Extensions>

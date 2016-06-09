@@ -68,6 +68,8 @@
     <Compile Include="ResOpcMultsData.cs" />
     <Compile Include="RoleData.cs" />
     <Compile Include="TapData.cs" />
+    <Compile Include="tblClasificacionProblemaData.cs" />
+    <Compile Include="tblPrioridadQuejaData.cs" />
     <Compile Include="TipoClienteData.cs" />
     <Compile Include="TipoPreguntasData.cs" />
     <Compile Include="TipServData.cs" />

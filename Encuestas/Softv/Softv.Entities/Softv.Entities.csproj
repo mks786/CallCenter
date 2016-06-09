@@ -70,6 +70,8 @@
     <Compile Include="ResOpcMultsEntity.cs" />
     <Compile Include="RoleEntity.cs" />
     <Compile Include="TapEntity.cs" />
+    <Compile Include="tblClasificacionProblemaEntity.cs" />
+    <Compile Include="tblPrioridadQuejaEntity.cs" />
     <Compile Include="TipoClienteEntity.cs" />
     <Compile Include="TipoPreguntasEntity.cs" />
     <Compile Include="TipServEntity.cs" />

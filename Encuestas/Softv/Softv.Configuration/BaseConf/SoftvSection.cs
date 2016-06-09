@@ -345,6 +345,24 @@ namespace SoftvConfiguration
         {
             get { return (BusquedaIndividualElement)base["BusquedaIndividual"]; }
         }
+
+        /// <summary>
+        /// Gets tblClasificacionProblema configuration data
+        /// </summary>
+        [ConfigurationProperty("tblClasificacionProblema")]
+        public tblClasificacionProblemaElement tblClasificacionProblema
+        {
+            get { return (tblClasificacionProblemaElement)base["tblClasificacionProblema"]; }
+        }
+
+        /// <summary>
+        /// Gets tblPrioridadQueja configuration data
+        /// </summary>
+        [ConfigurationProperty("tblPrioridadQueja")]
+        public tblPrioridadQuejaElement tblPrioridadQueja
+        {
+            get { return (tblPrioridadQuejaElement)base["tblPrioridadQueja"]; }
+        }
   
   
 

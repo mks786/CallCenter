@@ -92,6 +92,8 @@
     <Compile Include="Contracts\IResOpcMults.cs" />
     <Compile Include="Contracts\IRole.cs" />
     <Compile Include="Contracts\ITap.cs" />
+    <Compile Include="Contracts\ItblClasificacionProblema.cs" />
+    <Compile Include="Contracts\ItblPrioridadQueja.cs" />
     <Compile Include="Contracts\ITipoCliente.cs" />
     <Compile Include="Contracts\ITipoPreguntas.cs" />
     <Compile Include="Contracts\ITipServ.cs" />
@@ -110,6 +112,7 @@
     <Folder Include="PartialService\" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="Properties\PublishProfiles\EncuestaServicio.pubxml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

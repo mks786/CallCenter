@@ -17,7 +17,8 @@ namespace SoftvWCFService
 {
     public partial class SoftvWCFService : IUsuario, IRole, IModule, IPermiso, IEncuesta, IPregunta, ITipoPreguntas, IRelEncuestaClientes, IRelPreguntaOpcMults,
         IRelPreguntaEncuestas, IResOpcMults, IRelEnProcesos, IConexion, ICLIENTE, ITurno, ILlamada, IRel_Clientes_TiposClientes, ITipoCliente, ICatalogoPeriodosCorte,
-        ICliente_Apellido, ITap, IDatoFiscal, ITrabajo, ITipServ, IMotivoCancelacion, IRelEncuestaPreguntaRes, IQueja, ICIUDAD, ICVECOLCIU, ICOLONIA, ICVECAROL, ICALLE, IBusquedaIndividual
+        ICliente_Apellido, ITap, IDatoFiscal, ITrabajo, ITipServ, IMotivoCancelacion, IRelEncuestaPreguntaRes, IQueja, ICIUDAD, ICVECOLCIU, ICOLONIA, ICVECAROL, ICALLE, IBusquedaIndividual,
+        ItblClasificacionProblema, ItblPrioridadQueja
     {
         #region Usuario
         public UsuarioEntity GetUsuario(int? IdUsuario)
@@ -1493,6 +1494,92 @@ namespace SoftvWCFService
 
         #endregion
 
+        #region tblClasificacionProblema
+        public tblClasificacionProblemaEntity GettblClasificacionProblema(long? clvProblema)
+        {
+            return tblClasificacionProblema.GetOne(clvProblema);
+        }
+
+        public tblClasificacionProblemaEntity GetDeeptblClasificacionProblema(long? clvProblema)
+        {
+            return tblClasificacionProblema.GetOneDeep(clvProblema);
+        }
+
+        public IEnumerable<tblClasificacionProblemaEntity> GettblClasificacionProblemaList()
+        {
+            return tblClasificacionProblema.GetAll();
+        }
+
+        public SoftvList<tblClasificacionProblemaEntity> GettblClasificacionProblemaPagedList(int page, int pageSize)
+        {
+            return tblClasificacionProblema.GetPagedList(page, pageSize);
+        }
+
+        public SoftvList<tblClasificacionProblemaEntity> GettblClasificacionProblemaPagedListXml(int page, int pageSize, String xml)
+        {
+            return tblClasificacionProblema.GetPagedList(page, pageSize, xml);
+        }
+
+        public int AddtblClasificacionProblema(tblClasificacionProblemaEntity objtblClasificacionProblema)
+        {
+            return tblClasificacionProblema.Add(objtblClasificacionProblema);
+        }
+
+        public int UpdatetblClasificacionProblema(tblClasificacionProblemaEntity objtblClasificacionProblema)
+        {
+            return tblClasificacionProblema.Edit(objtblClasificacionProblema);
+        }
+
+        public int DeletetblClasificacionProblema(String BaseRemoteIp, int BaseIdUser, long? clvProblema)
+        {
+            return tblClasificacionProblema.Delete(clvProblema);
+        }
+
+        #endregion
+        
+        #region tblPrioridadQueja
+        public tblPrioridadQuejaEntity GettblPrioridadQueja(int? clvPrioridadQueja)
+        {
+            return tblPrioridadQueja.GetOne(clvPrioridadQueja);
+        }
+
+        public tblPrioridadQuejaEntity GetDeeptblPrioridadQueja(int? clvPrioridadQueja)
+        {
+            return tblPrioridadQueja.GetOneDeep(clvPrioridadQueja);
+        }
+
+        public IEnumerable<tblPrioridadQuejaEntity> GettblPrioridadQuejaList()
+        {
+            return tblPrioridadQueja.GetAll();
+        }
+
+        public SoftvList<tblPrioridadQuejaEntity> GettblPrioridadQuejaPagedList(int page, int pageSize)
+        {
+            return tblPrioridadQueja.GetPagedList(page, pageSize);
+        }
+
+        public SoftvList<tblPrioridadQuejaEntity> GettblPrioridadQuejaPagedListXml(int page, int pageSize, String xml)
+        {
+            return tblPrioridadQueja.GetPagedList(page, pageSize, xml);
+        }
+
+        public int AddtblPrioridadQueja(tblPrioridadQuejaEntity objtblPrioridadQueja)
+        {
+            return tblPrioridadQueja.Add(objtblPrioridadQueja);
+        }
+
+        public int UpdatetblPrioridadQueja(tblPrioridadQuejaEntity objtblPrioridadQueja)
+        {
+            return tblPrioridadQueja.Edit(objtblPrioridadQueja);
+        }
+
+        public int DeletetblPrioridadQueja(String BaseRemoteIp, int BaseIdUser, int? clvPrioridadQueja)
+        {
+            return tblPrioridadQueja.Delete(clvPrioridadQueja);
+        }
+
+        #endregion
+  
 
     }
 }

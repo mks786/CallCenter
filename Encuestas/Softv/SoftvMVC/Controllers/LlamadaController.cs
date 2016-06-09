@@ -472,6 +472,7 @@ namespace SoftvMVC.Controllers
             public List<LlamadaEntity> data { get; set; }
         }
 
+
     }
 
 }

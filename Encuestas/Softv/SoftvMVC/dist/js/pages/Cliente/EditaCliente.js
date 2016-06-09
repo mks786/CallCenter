@@ -355,6 +355,7 @@ $('#buscar_por_nombre').on('click', function () {
         type: "GET",
         data: { 'IdPlaza': id_plaza, "contrato": "", "Nombrecliente": nombre, "direccion": "" },
         success: function (data, textStatus, jqXHR) {
+            console.log(data);
             if (data.length == 0) {
                 $('#panel_tabla_clientes').hide();
                 $('#invalido').show();
@@ -363,7 +364,7 @@ $('#buscar_por_nombre').on('click', function () {
                 $('#panel_tabla_clientes').show();
                 $('#Tabla_Clientes tbody > tr').remove();
                 for (var i = 0; i < data.length; i++) {
-                    $('#Tabla_Clientes tbody').append('<tr><td>' + data[i].CONTRATO + '</td><td>' + data[i].NOMBRE + '</td><td>' + data[i].Ciudad + '</td><td>' + data[i].Colonia + '</td><td>' + data[i].Calle + '</td><td>' + data[i].NUMERO + '</td><td><button class="btn btn-info btn-xs detalleCliente" rel="' + data[0].CONTRATO + '" id="' + data[0].CONTRATO + '" onclick="detalleCliente(this.id)"><i class="fa fa-info" aria-hidden="true"></i> Detalles</button> <button rel="' + data[0].CONTRATO + '"class="btn btn-warning btn-xs editarCliente" id="' + data[0].CONTRATO + '" onclick="editarCliente(this.id)"><i class="fa fa-pencil" aria-hidden="true"></i> Editar</button></td></tr>');
+                    $('#Tabla_Clientes tbody').append('<tr><td>' + data[i].CONTRATO + '</td><td>' + data[i].NOMBRE + '</td><td>' + data[i].Ciudad + '</td><td>' + data[i].Colonia + '</td><td>' + data[i].Calle + '</td><td>' + data[i].NUMERO + '</td><td><button class="btn btn-info btn-xs detalleCliente" rel="' + data[i].CONTRATO + '" id="' + data[i].CONTRATO + '" onclick="detalleCliente(this.id)"><i class="fa fa-info" aria-hidden="true"></i> Detalles</button> <button rel="' + data[i].CONTRATO + '"class="btn btn-warning btn-xs editarCliente" id="' + data[i].CONTRATO + '" onclick="editarCliente(this.id)"><i class="fa fa-pencil" aria-hidden="true"></i> Editar</button></td></tr>');
 
                 }
             }
@@ -396,7 +397,7 @@ $('#buscar_por_direccion').on('click', function () {
                 $('#panel_tabla_clientes').show();
                 $('#Tabla_Clientes tbody > tr').remove();
                 for (var i = 0; i < data.length; i++) {
-                    $('#Tabla_Clientes tbody').append('<tr><td>' + data[i].CONTRATO + '</td><td>' + data[i].NOMBRE + '</td><td>' + data[i].Ciudad + '</td><td>' + data[i].Colonia + '</td><td>' + data[i].Calle + '</td><td>' + data[i].NUMERO + '</td><td><button class="btn btn-info btn-xs detalleCliente" rel="' + data[0].CONTRATO + '" id="' + data[0].CONTRATO + '" onclick="detalleCliente(this.id)"><i class="fa fa-info" aria-hidden="true"></i> Detalles</button> <button rel="' + data[0].CONTRATO + '"class="btn btn-warning btn-xs editarCliente" id="' + data[0].CONTRATO + '" onclick="editarCliente(this.id)"><i class="fa fa-pencil" aria-hidden="true"></i> Editar</button></td></tr>');
+                    $('#Tabla_Clientes tbody').append('<tr><td>' + data[i].CONTRATO + '</td><td>' + data[i].NOMBRE + '</td><td>' + data[i].Ciudad + '</td><td>' + data[i].Colonia + '</td><td>' + data[i].Calle + '</td><td>' + data[i].NUMERO + '</td><td><button class="btn btn-info btn-xs detalleCliente" rel="' + data[i].CONTRATO + '" id="' + data[i].CONTRATO + '" onclick="detalleCliente(this.id)"><i class="fa fa-info" aria-hidden="true"></i> Detalles</button> <button rel="' + data[i].CONTRATO + '"class="btn btn-warning btn-xs editarCliente" id="' + data[i].CONTRATO + '" onclick="editarCliente(this.id)"><i class="fa fa-pencil" aria-hidden="true"></i> Editar</button></td></tr>');
 
                 }
             }

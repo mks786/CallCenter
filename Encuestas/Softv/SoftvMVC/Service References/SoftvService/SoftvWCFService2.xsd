@@ -766,4 +766,39 @@
     </xs:sequence>
   </xs:complexType>
   <xs:element name="ArrayOfBusquedaIndividualEntity" nillable="true" type="tns:ArrayOfBusquedaIndividualEntity" />
+  <xs:complexType name="tblClasificacionProblemaEntity">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:BaseEntity">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="activo" nillable="true" type="xs:boolean" />
+          <xs:element minOccurs="0" name="clvProblema" nillable="true" type="xs:long" />
+          <xs:element minOccurs="0" name="descripcion" nillable="true" type="xs:string" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="tblClasificacionProblemaEntity" nillable="true" type="tns:tblClasificacionProblemaEntity" />
+  <xs:complexType name="ArrayOftblClasificacionProblemaEntity">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="tblClasificacionProblemaEntity" nillable="true" type="tns:tblClasificacionProblemaEntity" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOftblClasificacionProblemaEntity" nillable="true" type="tns:ArrayOftblClasificacionProblemaEntity" />
+  <xs:complexType name="tblPrioridadQuejaEntity">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:BaseEntity">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="Descripcion" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="clvPrioridadQueja" nillable="true" type="xs:int" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="tblPrioridadQuejaEntity" nillable="true" type="tns:tblPrioridadQuejaEntity" />
+  <xs:complexType name="ArrayOftblPrioridadQuejaEntity">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="tblPrioridadQuejaEntity" nillable="true" type="tns:tblPrioridadQuejaEntity" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOftblPrioridadQuejaEntity" nillable="true" type="tns:ArrayOftblPrioridadQuejaEntity" />
 </xs:schema>

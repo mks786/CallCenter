@@ -69,6 +69,8 @@
     <Compile Include="ResOpcMultsProvider.cs" />
     <Compile Include="RoleProvider.cs" />
     <Compile Include="TapProvider.cs" />
+    <Compile Include="tblClasificacionProblemaProvider.cs" />
+    <Compile Include="tblPrioridadQuejaProvider.cs" />
     <Compile Include="TipoClienteProvider.cs" />
     <Compile Include="TipoPreguntasProvider.cs" />
     <Compile Include="TipServProvider.cs" />

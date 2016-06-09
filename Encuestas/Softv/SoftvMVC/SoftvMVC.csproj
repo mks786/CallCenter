@@ -253,6 +253,8 @@
     <Compile Include="Controllers\ResOpcMultsController.cs" />
     <Compile Include="Controllers\RoleController.cs" />
     <Compile Include="Controllers\TapController.cs" />
+    <Compile Include="Controllers\tblClasificacionProblemaController.cs" />
+    <Compile Include="Controllers\tblPrioridadQuejaController.cs" />
     <Compile Include="Controllers\TipoClienteController.cs" />
     <Compile Include="Controllers\TipoPreguntasController.cs" />
     <Compile Include="Controllers\TipServController.cs" />
@@ -515,6 +517,7 @@
     <Content Include="Content\timepicki.css" />
     <Content Include="dist\css\AdminLTE.css" />
     <Content Include="dist\css\AdminLTE.min.css" />
+    <Content Include="dist\css\bootstrap-switch.css" />
     <Content Include="dist\css\pace.css" />
     <Content Include="dist\css\skins\skin-black-light.css" />
     <Content Include="dist\css\skins\skin-black-light.min.css" />
@@ -572,6 +575,7 @@
     <Content Include="dist\img\user8-128x128.jpg" />
     <Content Include="dist\js\app.js" />
     <Content Include="dist\js\app.min.js" />
+    <Content Include="dist\js\bootstrap-switch.js" />
     <Content Include="dist\js\demo.js" />
     <Content Include="dist\js\jquery.flexdatalist.css" />
     <Content Include="dist\js\jquery.flexdatalist.js" />
@@ -1397,6 +1401,8 @@
     <Content Include="Properties\DataSources\Softv.Entities.CVECAROLEntity.datasource" />
     <Content Include="Properties\DataSources\Softv.Entities.CVECOLCIUEntity.datasource" />
     <Content Include="Properties\DataSources\Softv.Entities.BusquedaIndividualEntity.datasource" />
+    <Content Include="Properties\DataSources\Softv.Entities.tblClasificacionProblemaEntity.datasource" />
+    <Content Include="Properties\DataSources\Softv.Entities.tblPrioridadQuejaEntity.datasource" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -1432,7 +1438,6 @@
     <Content Include="Scripts\modernizr-2.8.3.js" />
     <Content Include="Scripts\jquery-2.1.1.min.map" />
     <Content Include="Scripts\jquery-2.1.4.min.map" />
-    <None Include="Service References\SoftvService\SoftvWCFService.disco" />
     <None Include="Service References\SoftvService\configuration91.svcinfo" />
     <None Include="Service References\SoftvService\configuration.svcinfo" />
     <None Include="Service References\SoftvService\Reference.svcmap">
@@ -1476,6 +1481,7 @@
     <Content Include="Scripts\select2.js" />
     <Content Include="Scripts\timepicki.js" />
     <None Include="Scripts\_references.js" />
+    <None Include="Service References\SoftvService\SoftvWCFService.disco" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
