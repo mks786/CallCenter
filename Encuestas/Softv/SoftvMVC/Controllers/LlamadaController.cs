@@ -484,47 +484,86 @@ namespace SoftvMVC.Controllers
             }
             catch
             { }
-
+            int salida = 1;
             try
             {
-                if(llamada.queja == 2){
-                    comandoSql = new SqlCommand("insert into Llamadas(idUsuario,Tipo_Llamada,Contrato,Detalle,Solucion,Fecha,HoraInicio,HoraFin,IdTurno,Clv_Queja,IdConexion,Clv_Trabajo,Clv_TipSer) values(@IdUsuario,@Tipo_Llamada,@Contrato,'prueba','perueba',@Fecha,@HoraInicio,@HoraFin,null,null,@IdConexion,null,@Clv_TipSer)");
+                if(llamada.tipo_llamada == 1){
+                    if (llamada.queja == 2)
+                    {
+                        comandoSql = new SqlCommand("insert into Llamadas(idUsuario,Tipo_Llamada,Contrato,Detalle,Solucion,Fecha,HoraInicio,HoraFin,IdTurno,Clv_Queja,IdConexion,Clv_Trabajo,Clv_TipSer) values(@IdUsuario,@Tipo_Llamada,@Contrato,@motivo,@solucion,@Fecha,@HoraInicio,@HoraFin,null,null,@IdConexion,null,@Clv_TipSer)");
 
-                    comandoSql.Parameters.AddWithValue("@IdUsuario", llamada.usuario);
-                    comandoSql.Parameters.AddWithValue("@Tipo_Llamada", llamada.tipo_llamada);
-                    comandoSql.Parameters.AddWithValue("@Contrato", llamada.contrato);
-                    comandoSql.Parameters.AddWithValue("@Fecha", llamada.fecha);
-                    comandoSql.Parameters.AddWithValue("@HoraInicio", llamada.horainicio);
-                    comandoSql.Parameters.AddWithValue("@HoraFin", llamada.horatermino);
-                    comandoSql.Parameters.AddWithValue("@IdConexion", llamada.IdConexion);
-                    comandoSql.Parameters.AddWithValue("@Clv_TipSer", llamada.Clv_TipSer);
-                    comandoSql.Connection = conexionSQL;
-                    comandoSql.ExecuteReader();
+                        comandoSql.Parameters.AddWithValue("@IdUsuario", llamada.usuario);
+                        comandoSql.Parameters.AddWithValue("@Tipo_Llamada", llamada.tipo_llamada);
+                        comandoSql.Parameters.AddWithValue("@Contrato", llamada.contrato);
+                        comandoSql.Parameters.AddWithValue("@Fecha", llamada.fecha);
+                        comandoSql.Parameters.AddWithValue("@motivo", llamada.motivo);
+                        comandoSql.Parameters.AddWithValue("@solucion", llamada.solucion);
+                        comandoSql.Parameters.AddWithValue("@HoraInicio", llamada.horainicio);
+                        comandoSql.Parameters.AddWithValue("@HoraFin", llamada.horatermino);
+                        comandoSql.Parameters.AddWithValue("@IdConexion", llamada.IdConexion);
+                        comandoSql.Parameters.AddWithValue("@Clv_TipSer", llamada.Clv_TipSer);
+                        comandoSql.Connection = conexionSQL;
+                        comandoSql.ExecuteReader();
 
+
+                    }
+                    else
+                    {
+                        comandoSql = new SqlCommand("insert into Quejas(Clv_TipSer,Contrato,Fecha_Soliciutud,Problema,Solucion,Fecha_Captura,Clv_Trabajo,clvPrioridadQueja) values(@Clv_TipSer,@Contrato,@Fecha_Soliciutud,@Problema,@Solucion,@Fecha_Captura,@Clv_Trabajo,@clvPrioridadQueja); SELECT SCOPE_IDENTITY()");
+
+                        comandoSql.Parameters.AddWithValue("@Clv_TipSer", llamada.Clv_TipSer);
+                        comandoSql.Parameters.AddWithValue("@Contrato", llamada.contrato);
+                        comandoSql.Parameters.AddWithValue("@Fecha_Soliciutud", llamada.fecha);
+                        comandoSql.Parameters.AddWithValue("@Problema", llamada.motivo);
+                        comandoSql.Parameters.AddWithValue("@Solucion", llamada.solucion);
+                        comandoSql.Parameters.AddWithValue("@Fecha_Captura", llamada.fecha);
+                        comandoSql.Parameters.AddWithValue("@Clv_Trabajo", llamada.Clv_Trabajo);
+                        comandoSql.Parameters.AddWithValue("@clvPrioridadQueja", llamada.prioridad);
+                        comandoSql.Connection = conexionSQL;
+                        int Id = Int32.Parse(comandoSql.ExecuteScalar().ToString());
+
+                        comandoSql = new SqlCommand("insert into Llamadas(idUsuario,Tipo_Llamada,Contrato,Detalle,Solucion,Fecha,HoraInicio,HoraFin,IdTurno,Clv_Queja,IdConexion,Clv_Trabajo,Clv_TipSer) values(@IdUsuario,@Tipo_Llamada,@Contrato,@motivo,@solucion,@Fecha,@HoraInicio,@HoraFin,@IdTurno,@Clv_Queja,@IdConexion,@Clv_Trabajo,@Clv_TipSer)");
+
+                        comandoSql.Parameters.AddWithValue("@IdUsuario", llamada.usuario);
+                        comandoSql.Parameters.AddWithValue("@IdTurno", llamada.IdTurno);
+                        comandoSql.Parameters.AddWithValue("@Clv_Queja", Id);
+                        comandoSql.Parameters.AddWithValue("@Clv_Trabajo", llamada.Clv_Trabajo);
+                        comandoSql.Parameters.AddWithValue("@Tipo_Llamada", llamada.tipo_llamada);
+                        comandoSql.Parameters.AddWithValue("@Contrato", llamada.contrato);
+                        comandoSql.Parameters.AddWithValue("@Fecha", llamada.fecha);
+                        comandoSql.Parameters.AddWithValue("@motivo", llamada.motivo);
+                        comandoSql.Parameters.AddWithValue("@solucion", llamada.solucion);
+                        comandoSql.Parameters.AddWithValue("@HoraInicio", llamada.horainicio);
+                        comandoSql.Parameters.AddWithValue("@HoraFin", llamada.horatermino);
+                        comandoSql.Parameters.AddWithValue("@IdConexion", llamada.IdConexion);
+                        comandoSql.Parameters.AddWithValue("@Clv_TipSer", llamada.Clv_TipSer);
+                        comandoSql.Connection = conexionSQL;
+                        comandoSql.ExecuteReader();
+                    }
                 }
                 else
                 {
-                    comandoSql = new SqlCommand("insert into Quejas(Clv_TipSer,Contrato,Fecha_Soliciutud,Problema,Solucion,Fecha_Captura,Clv_Trabajo) values(@Clv_TipSer,@Contrato,@Fecha_Soliciutud,@Problema,@Solucion,@Fecha_Captura,@Clv_Trabajo);");
 
-                    //comandoSql.Parameters.AddWithValue("@IdUsuario", llamada.usuario);
-                    //comandoSql.Parameters.AddWithValue("@Tipo_Llamada", llamada.tipo_llamada);
-                    //comandoSql.Parameters.AddWithValue("@Contrato", llamada.contrato);
-                    //comandoSql.Parameters.AddWithValue("@Fecha", llamada.fecha);
-                    //comandoSql.Parameters.AddWithValue("@HoraInicio", llamada.horainicio);
-                    //comandoSql.Parameters.AddWithValue("@HoraFin", llamada.horatermino);
-                    //comandoSql.Parameters.AddWithValue("@IdTurno", 1);
-                    //// comandoSql.Parameters.AddWithValue("@Clv_Queja", null);
-                    //comandoSql.Parameters.AddWithValue("@Clv_Trabajo", 1);
-                    //comandoSql.Parameters.AddWithValue("@IdConexion", llamada.IdConexion);
-                    //comandoSql.Parameters.AddWithValue("@Clv_TipSer", llamada.Clv_TipSer);
-                    //comandoSql.Connection = conexionSQL;
-
+                    comandoSql = new SqlCommand("insert into Llamadas(idUsuario,Tipo_Llamada,Contrato,Detalle,Solucion,Fecha,HoraInicio,HoraFin,IdTurno,Clv_Queja,IdConexion,Clv_Trabajo,Clv_TipSer) values(@idUsuario,@Tipo_Llamada,null,@motivo,@solucion,@Fecha,@HoraInicio,@HoraFin,null,null,@IdConexion,null,null)");
+                    comandoSql.Parameters.AddWithValue("@Tipo_Llamada", llamada.tipo_llamada);
+                    comandoSql.Parameters.AddWithValue("@idUsuario", llamada.usuario);
+                    comandoSql.Parameters.AddWithValue("@Fecha", llamada.fecha);
+                    comandoSql.Parameters.AddWithValue("@motivo", llamada.motivo);
+                    comandoSql.Parameters.AddWithValue("@solucion", llamada.solucion);
+                    comandoSql.Parameters.AddWithValue("@HoraInicio", llamada.horainicio);
+                    comandoSql.Parameters.AddWithValue("@HoraFin", llamada.horatermino);
+                    comandoSql.Parameters.AddWithValue("@IdConexion", llamada.IdConexion);
+                    comandoSql.Connection = conexionSQL;
+                    comandoSql.ExecuteReader();
                 }
-
                 
             }
-            catch { }
-            return Json("1", JsonRequestBehavior.AllowGet);
+            catch { salida = 0; }
+            if (salida == 1)
+            {
+                return Json(salida, JsonRequestBehavior.AllowGet);
+            }
+            
         }
 
         public class llamdaObject
@@ -541,11 +580,10 @@ namespace SoftvMVC.Controllers
             public string horainicio { get; set; }
             public string horatermino { get; set; }
             public int IdTurno { get; set; }
-            public int Clv_Queja { get; set; }
             public int Clv_Trabajo { get; set; }
             public int IdConexion { get; set; }
             public int Clv_TipSer { get; set; }
-
+            public int prioridad { get; set; }
 
         }
         public ActionResult GetIdTrabajo(int IdPlaza, int idServicio)
