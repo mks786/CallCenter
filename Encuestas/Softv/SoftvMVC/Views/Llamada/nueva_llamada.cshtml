@@ -197,6 +197,12 @@
                         <input type="date" id="fecha_llamada" class="form-control" />
                     </div>
                 </div><br />
+                <div class="row" id="motivo_no_cliente" style="padding-left:10px; display:none;">
+                    <div class="col-md-6">
+                        <label style="color:#4b646f;">Motivo de la llamada</label>
+                        <textarea class="form-control" id="motivo"></textarea>
+                    </div>
+                </div>
                 <div class="row" style="display:none; padding-left:10px;" id="motivo_llamada_panel">
                     <div class="col-md-3" style="padding-top:10px;">
                         <label style="color:#4b646f;">Tipo de Servicio</label>
@@ -205,6 +211,12 @@
                         </select>
                     </div>
                 </div><br />
+                <div class="row" id="solucion_no_cliente" style="padding-left:10px; display:none;">
+                    <div class="col-md-6">
+                        <label style="color:#4b646f;">Solución</label>
+                        <textarea class="form-control" id="solucion"></textarea>
+                    </div>
+                </div>
                 <div class="row" style="display:none; padding-left:10px;" id="panel_clasificacion">
                     <div class="col-md-4">
                         <label style="color:#4b646f;">Clasificación del problema</label>
@@ -228,7 +240,7 @@
                 <div class="row" style="display:none; padding-left:10px;" id="panel_nueva_queja">
                     <fieldset>
                         <legend style="padding-left:25px; font-size:12px; color:#4b646f;">Realizar Queja</legend>
-                        <div class="col-md-4">
+                        <div class="col-md-3">
                             <label style="color:#4b646f;">Departamento Responsable</label>
                             <select class="form-control" id="departamento">
                                 <option value="0" selected disabled>Departamento Responsable</option>
@@ -242,6 +254,20 @@
                         </div>
                     </fieldset>
                 </div><br />
+                <div class="row" style="display:none; padding-left:10px;" id="trabajo_panel">
+                    <div class="col-md-5">
+                        <label style="color:#4b646f;">Trabajo</label>
+                        <select class="form-control" id="trabajo">
+                            <option value="0" selected disabled>Trabajo</option>
+                        </select>
+                    </div>
+                    <div class="col-md-3">
+                        <label style="color:#4b646f;">Turno</label>
+                        <select class="form-control" id="turno">
+                            <option value="0" selected disabled>Turno</option>
+                        </select>
+                    </div>
+                </div>
             </form>
             <div class="row" style="padding-right:40px; display:none;" id="btn_enviar">
                 <div class="col-md-12">
@@ -308,17 +334,16 @@
         $('input[name="levantar_queja"]').on('switchChange.bootstrapSwitch', function (event, state) {
             if (state) {
                 $('#panel_nueva_queja').show();
+                $('#trabajo_panel').show();
                 count_queja = 1;
             } else {
                 $('#panel_nueva_queja').hide();
+                $('#trabajo_panel').hide();
                 count_queja = 2;
             }
         });
     });
 
-    function reset() {
-        document.getElementById("llamadaForm").reset();
-    }
 
     function tipoServicio(id) {
         $.ajax({
@@ -390,7 +415,6 @@
             type: "GET",
             data: { 'IdPlaza': id_plaza },
             success: function (data, textStatus, jqXHR) {
-                console.log(data);
                 for (var i = 0; i < data.length; i++) {
                     $('#departamento').append($('<option>', {
                         value: data[i].Clave,
@@ -418,6 +442,22 @@
 
             }
         });
+        $.ajax({
+            url: "/tblClasificacionProblema/GetTurno/",
+            type: "GET",
+            data: { 'IdPlaza': id_plaza },
+            success: function (data, textStatus, jqXHR) {
+                for (var i = 0; i < data.length; i++) {
+                    $('#turno').append($('<option>', {
+                        value: data[i].IdTurno,
+                        text: data[i].Turno
+                    }));
+                }
+            },
+            error: function (jqXHR, textStatus, errorThrown) {
+
+            }
+        });
     }
 
     $("#tipo_cliente").change(function () {
@@ -433,14 +473,9 @@
             $('#panel_clasificacion').hide();
             $('#panel_solucion').hide();
             $('#panel_nueva_queja').hide();
+            $('#motivo_no_cliente').hide();
+            $('#solucion_no_cliente').hide();
             //valores a default
-            $('#input_contrato').val('');
-            $('#nombre_individual').val('');
-            $('#ciudad_busqueda').val('');
-            $('#colonia_domicilio').val('');
-            $('#calle_busqueda').val('');
-            $('#numero_domicilio').val('');
-            $('#numero_domicilio').val('');
         } else if (tipo == 2) {
             $('#panel_no_cliente').show();
             $('#panel_llamante').hide();
@@ -450,7 +485,9 @@
             $('#queja').hide();
             $('#tipo_servicio').hide();
             $('#panel_queja').hide();
-            $('#panel_clasificacion').show();
+            $('#motivo_no_cliente').show();
+            $('#panel_clasificacion').hide();
+            $('#trabajo_panel').hide();
             var now = new Date();
             var hour = now.getHours();
             if (hour < 10) {
@@ -463,10 +500,10 @@
             $('#hora_inicio').val(hour + ":" + minute);
             document.getElementById('fecha_llamada').valueAsDate = new Date();
             $('#panel_fecha').show();
-            $('#panel_solucion').show();
+            $('#panel_solucion').hide();
             $('#panel_nueva_queja').hide();
+            $('#solucion_no_cliente').show();
             $('#btn_enviar').show();
-
         }
 
     });
@@ -482,7 +519,6 @@
             type: "GET",
             data: { 'IdPlaza': id_plaza, "contrato": "", "Nombrecliente": nombre, "direccion": "" },
             success: function (data, textStatus, jqXHR) {
-                console.log(data);
                 if (data.length == 0) {
                     $('#panel_tabla_clientes').hide();
                     $('#invalido').show();
@@ -563,6 +599,28 @@
         });
     });
 
+    $("#tipo_servicio").change(function () {
+        var idServicio = $("#tipo_servicio").val();
+        var id_plaza = $('#conectando_plaza').val();
+        $.ajax({
+            url: "/Llamada/GetIdTrabajo/",
+            type: "GET",
+            data: { 'IdPlaza': id_plaza, "idServicio": idServicio },
+            success: function (data, textStatus, jqXHR) {
+                $('#trabajo').find('option').remove().end();
+                for (var i = 0; i < data.length; i++) {
+                    $('#trabajo').append($('<option>', {
+                        value: data[i].Clv_Trabajo,
+                        text: data[i].Descripcion
+                    }));
+                }
+            },
+            error: function (data, jqXHR, textStatus) {
+                console.log(data);
+            }
+        });
+    });
+
 
     function selecion_cliente(e) {
         $('#contrato_oculto').val(e.getAttribute('id'));
@@ -577,6 +635,8 @@
         $('#queja').show();
         $('#motivo_llamada_panel').show();
         $('#tipo_servicio').show();
+        $('#motivo_no_cliente').show();
+        $('#solucion_no_cliente').show();
         var now = new Date();
         var hour = now.getHours();
         if (hour < 10) {
@@ -601,54 +661,121 @@
         var tipo = $("#tipo_cliente").val();
         var llamada = {};
         if (tipo == 1) {
-            llamada.tipo_llamda = tipo;
+            llamada.tipo_llamada = tipo;
+            llamada.IdConexion = $('#conectando_plaza').val();
+            llamada.usuario = @Session["idusuario"];
             llamada.contrato = $('#contrato_oculto').val();
-            if ($('#tipo_servicio').val() == null) {
-                swal("Por favor selecciona el tipo de servicio", "", "error");
-            } else {
-                llamada.tipo_servicio = $('#tipo_servicio').val();
-                if ($('#select_problemas').val() == null) {
-                    swal("Por favor selecciona la clasificación del problema", "", "error");
+            llamada.fecha = $('#fecha_llamada').val()+" "+$('#hora_inicio').val();
+            llamada.horainicio = $('#fecha_llamada').val()+" "+$('#hora_inicio').val();
+            llamada.horatermino = $('#fecha_llamada').val()+" "+$('#hora_inicio').val();
+            if($('#motivo_no_cliente').val() == ""){
+                console.log();
+                swal("Por favor introduce el motivo de la llamada", "", "error");
+            }
+            else{
+                llamada.motivo = $('#motivo_no_cliente').val();
+                if ($('#tipo_servicio').val() == null) {
+                    swal("Por favor selecciona el tipo de servicio", "", "error");
                 } else {
-                    llamada.clas_problema = $('#select_problemas').val();
-                    if ($('#select_soluciones').val() == null) {
-                        swal("Por favor selecciona la clasificación de la solución", "", "error");
-                    } else {
-                        llamada.clas_solucion = $('#select_soluciones').val();
-                        if (count_queja == 2) {
-                            alert('ajax con datos sin queja');
-                        } else if (count_queja == 1) {
-                            if($('#departamento').val() == null){
-                                swal("Por favor selecciona el departamento responsable", "", "error");
+                    llamada.Clv_TipSer = $('#tipo_servicio').val();
+                    if($('#solucion_no_cliente').show() == ""){
+                        swal("Por favor introduce la solución", "", "error");
+                    }else{
+                        llamada.solucion = $('#solucion_no_cliente').val();
+                        if ($('#select_problemas').val() == null) {
+                            swal("Por favor selecciona la clasificación del problema", "", "error");
+                        } else {
+                            llamada.clas_problema = $('#select_problemas').text();
+                            if ($('#select_soluciones').val() == null) {
+                                swal("Por favor selecciona la clasificación de la solución", "", "error");
                             } else {
-                                llamada.dep_responsable = $('#departamento').val();
-                                if ($('#prioridad').val() == null) {
-                                    swal("Por favor selecciona la prioridad de la queja", "", "error");
-                                } else {
-                                    llamada.prioridad = $('#prioridad').val();
-                                    alert('ajax con queja');
+                                llamada.clas_solucion = $('#select_soluciones').text();
+                                llamada.queja = count_queja;
+                                if (count_queja == 2) {
+                                    var id_plaza = $('#conectando_plaza').val();
+                                    $.ajax({
+                                        url: "/Llamada/InsertLlamada",
+                                        type: "POST",
+                                        data: { 'IdPlaza': id_plaza, "llamada": llamada},
+                                        success: function (data, textStatus, jqXHR) {
+                                            $('#panel_llamante').hide();
+                                            $('#panel_datos_cliente').hide();
+                                            $('#panel_fecha').hide();
+                                            $('#motivo_llamada_panel').hide();
+                                            $('#panel_clasificacion').hide();
+                                            $('#panel_solucion').hide();
+                                            $('#panel_queja').hide();
+                                            $('#panel_nueva_queja').hide();
+                                            $('#btn_enviar').hide();
+                                            document.getElementById("llamadaForm").reset();
+                                            swal("La llamada se guaró exitosamente", "", "success");
+                                        },
+                                        error: function (data, jqXHR, textStatus) {
+                                            console.log(data);
+                                        }
+
+                                    });
+                            
+                                } else if (count_queja == 1) {
+                                    if($('#departamento').val() == null){
+                                        swal("Por favor selecciona el departamento responsable", "", "error");
+                                    } else {
+                                        llamada.dep_responsable = $('#departamento').val();
+                                        if ($('#prioridad').val() == null) {
+                                            swal("Por favor selecciona la prioridad de la queja", "", "error");
+                                        } else {
+                                            llamada.prioridad = $('#prioridad').val();
+                                            var id_plaza = $('#conectando_plaza').val();
+                                            $.ajax({
+                                                url: "/Llamada/InsertLlamada",
+                                                type: "POST",
+                                                data: { 'IdPlaza': id_plaza, "llamada": llamada},
+                                                success: function (data, textStatus, jqXHR) {
+                                                    $('#panel_llamante').hide();
+                                                    $('#panel_datos_cliente').hide();
+                                                    $('#panel_fecha').hide();
+                                                    $('#motivo_llamada_panel').hide();
+                                                    $('#panel_clasificacion').hide();
+                                                    $('#panel_solucion').hide();
+                                                    $('#panel_queja').hide();
+                                                    $('#panel_nueva_queja').hide();
+                                                    $('#btn_enviar').hide();
+                                                    document.getElementById("llamadaForm").reset();
+                                                    $('#btn_enviar').hide();
+                                                    swal("La llamada se guaró exitosamente", "", "success");
+                                                },
+                                                error: function (data, jqXHR, textStatus) {
+                                                    console.log(data);
+                                                }
+
+                                            });
+
+                                        }
+                                    }
                                 }
                             }
                         }
                     }
+                    
                 }
             }
+            
 
         } else if (tipo == 2) {
             if ($('#nombre_no_cliente').val() == "") {
                 swal("Por favor ingresa el nombre de la persona que habla", "", "error");
             } else {
                 llamada.nombre = $('#nombre_no_cliente').val();
-                if ($('#select_problemas').val() == null) {
-                    swal("Por favor selecciona la clasificación del problema", "", "error");
-                } else {
-                    llamada.clas_problema = $('#select_problemas').val();
-                    if ($('#select_soluciones').val() == null) {
-                        swal("Por favor selecciona la clasificación de la solución", "", "error");
-                    } else {
-                        llamada.clas_solucion = $('#select_soluciones').val();
-                        alert('ajax para no clientes');
-                    }
+                if($('#motivo').val() == "") {
+                    swal("Por favor ingresa el motivo de la llamda", "", "error");
+                }else{
+                    llamada.clas_solucion = $('#select_soluciones').val();
+                    alert('ajax para no clientes');
+                    $('#panel_no_cliente').hide();
+                    $('#panel_fecha').hide();
+                    $('#btn_enviar').hide();
+                    $('#motivo_no_cliente').hide();
+                    document.getElementById("llamadaForm").reset();
                 }
             }
         }

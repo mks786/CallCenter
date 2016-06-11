@@ -213,6 +213,45 @@ namespace SoftvMVC.Controllers
             public string Concepto { get; set; }
 
         }
+        public ActionResult GetTurno(int IdPlaza)
+        {
+            ConexionController c = new ConexionController();
+            SqlCommand comandoSql;
+            List<turnos> lista = new List<turnos>();
+            SqlConnection conexionSQL = new SqlConnection(c.DameConexion(IdPlaza));
+            try
+            {
+                conexionSQL.Open();
+            }
+            catch
+            { }
+
+            try
+            {
+                comandoSql = new SqlCommand("select * from Turnos");
+                comandoSql.Connection = conexionSQL;
+                SqlDataReader reader = comandoSql.ExecuteReader();
+                if (reader.HasRows)
+                {
+                    while (reader.Read())
+                    {
+                        turnos turno = new turnos();
+                        turno.IdTurno = Int32.Parse(reader[0].ToString());
+                        turno.Turno = reader[1].ToString();
+                        lista.Add(turno);
+                    }
+                }
+            }
+            catch { }
+            return Json(lista, JsonRequestBehavior.AllowGet);
+        }
+
+        public class turnos
+        {
+            public int IdTurno { get; set; }
+            public string Turno { get; set; }
+
+        }
         public ActionResult GetPrioridad(int IdPlaza)
         {
             ConexionController c = new ConexionController();
