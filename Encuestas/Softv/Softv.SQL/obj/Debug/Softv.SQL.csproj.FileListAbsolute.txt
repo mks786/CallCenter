@@ -232,3 +232,16 @@ C:\Users\Israel\Documents\projects\CallCenter\Encuestas\Softv\Softv.SQL\bin\Debu
 C:\Users\Israel\Documents\projects\CallCenter\Encuestas\Softv\Softv.SQL\obj\Debug\Softv.SQL.csprojResolveAssemblyReference.cache
 C:\Users\Israel\Documents\projects\CallCenter\Encuestas\Softv\Softv.SQL\obj\Debug\Softv.SQL.dll
 C:\Users\Israel\Documents\projects\CallCenter\Encuestas\Softv\Softv.SQL\obj\Debug\Softv.SQL.pdb
+C:\ProyectoEncuestas\CallCenter\Encuestas\Softv\Softv.SQL\bin\Debug\Softv.SQL.dll
+C:\ProyectoEncuestas\CallCenter\Encuestas\Softv\Softv.SQL\bin\Debug\Softv.SQL.pdb
+C:\ProyectoEncuestas\CallCenter\Encuestas\Softv\Softv.SQL\bin\Debug\Globals.dll
+C:\ProyectoEncuestas\CallCenter\Encuestas\Softv\Softv.SQL\bin\Debug\Softv.Entities.dll
+C:\ProyectoEncuestas\CallCenter\Encuestas\Softv\Softv.SQL\bin\Debug\Softv.Providers.dll
+C:\ProyectoEncuestas\CallCenter\Encuestas\Softv\Softv.SQL\bin\Debug\SoftvConfiguration.dll
+C:\ProyectoEncuestas\CallCenter\Encuestas\Softv\Softv.SQL\bin\Debug\Globals.pdb
+C:\ProyectoEncuestas\CallCenter\Encuestas\Softv\Softv.SQL\bin\Debug\SoftvConfiguration.pdb
+C:\ProyectoEncuestas\CallCenter\Encuestas\Softv\Softv.SQL\bin\Debug\Softv.Entities.pdb
+C:\ProyectoEncuestas\CallCenter\Encuestas\Softv\Softv.SQL\bin\Debug\Softv.Providers.pdb
+C:\ProyectoEncuestas\CallCenter\Encuestas\Softv\Softv.SQL\obj\Debug\Softv.SQL.csprojResolveAssemblyReference.cache
+C:\ProyectoEncuestas\CallCenter\Encuestas\Softv\Softv.SQL\obj\Debug\Softv.SQL.dll
+C:\ProyectoEncuestas\CallCenter\Encuestas\Softv\Softv.SQL\obj\Debug\Softv.SQL.pdb
