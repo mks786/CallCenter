@@ -125,14 +125,15 @@ namespace Softv.Providers
                 entity_Llamada.Contrato = (long?)(GetFromReader(reader, "Contrato"));
                 entity_Llamada.Detalle = (String)(GetFromReader(reader, "Detalle", IsString: true));
                 entity_Llamada.Solucion = (String)(GetFromReader(reader, "Solucion", IsString: true));
-                entity_Llamada.Fecha = (DateTime?)(GetFromReader(reader, "Fecha"));
-                entity_Llamada.HoraInicio = (DateTime?)(GetFromReader(reader, "HoraInicio"));
-                entity_Llamada.HoraFin = (DateTime?)(GetFromReader(reader, "HoraFin"));
+                entity_Llamada.Fecha = (String)(GetFromReader(reader, "Fecha"));
+                entity_Llamada.HoraInicio = (String)(GetFromReader(reader, "HoraInicio"));
+                entity_Llamada.HoraFin = (String)(GetFromReader(reader, "HoraFin"));
                 entity_Llamada.IdTurno = (int?)(GetFromReader(reader, "IdTurno"));
                 entity_Llamada.Clv_Queja = (long?)(GetFromReader(reader, "Clv_Queja"));
                 entity_Llamada.IdConexion = (int?)(GetFromReader(reader, "IdConexion"));
                 entity_Llamada.Clv_Trabajo = (int?)(GetFromReader(reader, "Clv_Trabajo"));
                 entity_Llamada.Clv_TipSer = (int?)(GetFromReader(reader, "Clv_TipSer"));
+                entity_Llamada.Clv_Problema = (int?)(GetFromReader(reader, "Clv_Problema"));
 
             }
             catch (Exception ex)

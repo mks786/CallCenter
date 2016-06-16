@@ -57,6 +57,7 @@
     <Compile Include="LlamadaEntity.cs" />
     <Compile Include="ModuleEntity.cs" />
     <Compile Include="MotivoCancelacionEntity.cs" />
+    <Compile Include="NoClienteEntity.cs" />
     <Compile Include="PermisoEntity.cs" />
     <Compile Include="PreguntaEntity.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

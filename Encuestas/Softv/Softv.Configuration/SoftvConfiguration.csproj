@@ -57,6 +57,7 @@
     <Compile Include="LlamadaElement.cs" />
     <Compile Include="ModuleElement.cs" />
     <Compile Include="MotivoCancelacionElement.cs" />
+    <Compile Include="NoClienteElement.cs" />
     <Compile Include="PermisoElement.cs" />
     <Compile Include="PreguntaElement.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

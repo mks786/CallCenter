@@ -56,6 +56,7 @@
     <Compile Include="LlamadaProvider.cs" />
     <Compile Include="ModuleProvider.cs" />
     <Compile Include="MotivoCancelacionProvider.cs" />
+    <Compile Include="NoClienteProvider.cs" />
     <Compile Include="PermisoProvider.cs" />
     <Compile Include="PreguntaProvider.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

@@ -1676,6 +1676,54 @@
   <wsdl:message name="ItblPrioridadQueja_DeletetblPrioridadQueja_OutputMessage">
     <wsdl:part name="parameters" element="tns:DeletetblPrioridadQuejaResponse" />
   </wsdl:message>
+  <wsdl:message name="INoCliente_GetNoCliente_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetNoCliente" />
+  </wsdl:message>
+  <wsdl:message name="INoCliente_GetNoCliente_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetNoClienteResponse" />
+  </wsdl:message>
+  <wsdl:message name="INoCliente_GetDeepNoCliente_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetDeepNoCliente" />
+  </wsdl:message>
+  <wsdl:message name="INoCliente_GetDeepNoCliente_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetDeepNoClienteResponse" />
+  </wsdl:message>
+  <wsdl:message name="INoCliente_GetNoClienteList_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetNoClienteList" />
+  </wsdl:message>
+  <wsdl:message name="INoCliente_GetNoClienteList_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetNoClienteListResponse" />
+  </wsdl:message>
+  <wsdl:message name="INoCliente_GetNoClientePagedList_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetNoClientePagedList" />
+  </wsdl:message>
+  <wsdl:message name="INoCliente_GetNoClientePagedList_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetNoClientePagedListResponse" />
+  </wsdl:message>
+  <wsdl:message name="INoCliente_GetNoClientePagedListXml_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetNoClientePagedListXml" />
+  </wsdl:message>
+  <wsdl:message name="INoCliente_GetNoClientePagedListXml_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetNoClientePagedListXmlResponse" />
+  </wsdl:message>
+  <wsdl:message name="INoCliente_AddNoCliente_InputMessage">
+    <wsdl:part name="parameters" element="tns:AddNoCliente" />
+  </wsdl:message>
+  <wsdl:message name="INoCliente_AddNoCliente_OutputMessage">
+    <wsdl:part name="parameters" element="tns:AddNoClienteResponse" />
+  </wsdl:message>
+  <wsdl:message name="INoCliente_UpdateNoCliente_InputMessage">
+    <wsdl:part name="parameters" element="tns:UpdateNoCliente" />
+  </wsdl:message>
+  <wsdl:message name="INoCliente_UpdateNoCliente_OutputMessage">
+    <wsdl:part name="parameters" element="tns:UpdateNoClienteResponse" />
+  </wsdl:message>
+  <wsdl:message name="INoCliente_DeleteNoCliente_InputMessage">
+    <wsdl:part name="parameters" element="tns:DeleteNoCliente" />
+  </wsdl:message>
+  <wsdl:message name="INoCliente_DeleteNoCliente_OutputMessage">
+    <wsdl:part name="parameters" element="tns:DeleteNoClienteResponse" />
+  </wsdl:message>
   <wsdl:portType name="IUsuario">
     <wsdl:operation name="GetUsuario">
       <wsdl:input wsaw:Action="http://tempuri.org/IUsuario/GetUsuario" message="tns:IUsuario_GetUsuario_InputMessage" />
@@ -2856,6 +2904,40 @@
     <wsdl:operation name="DeletetblPrioridadQueja">
       <wsdl:input wsaw:Action="http://tempuri.org/ItblPrioridadQueja/DeletetblPrioridadQueja" message="tns:ItblPrioridadQueja_DeletetblPrioridadQueja_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/ItblPrioridadQueja/DeletetblPrioridadQuejaResponse" message="tns:ItblPrioridadQueja_DeletetblPrioridadQueja_OutputMessage" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:portType name="INoCliente">
+    <wsdl:operation name="GetNoCliente">
+      <wsdl:input wsaw:Action="http://tempuri.org/INoCliente/GetNoCliente" message="tns:INoCliente_GetNoCliente_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/INoCliente/GetNoClienteResponse" message="tns:INoCliente_GetNoCliente_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetDeepNoCliente">
+      <wsdl:input wsaw:Action="http://tempuri.org/INoCliente/GetDeepNoCliente" message="tns:INoCliente_GetDeepNoCliente_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/INoCliente/GetDeepNoClienteResponse" message="tns:INoCliente_GetDeepNoCliente_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetNoClienteList">
+      <wsdl:input wsaw:Action="http://tempuri.org/INoCliente/GetNoClienteList" message="tns:INoCliente_GetNoClienteList_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/INoCliente/GetNoClienteListResponse" message="tns:INoCliente_GetNoClienteList_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetNoClientePagedList">
+      <wsdl:input wsaw:Action="http://tempuri.org/INoCliente/GetNoClientePagedList" message="tns:INoCliente_GetNoClientePagedList_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/INoCliente/GetNoClientePagedListResponse" message="tns:INoCliente_GetNoClientePagedList_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetNoClientePagedListXml">
+      <wsdl:input wsaw:Action="http://tempuri.org/INoCliente/GetNoClientePagedListXml" message="tns:INoCliente_GetNoClientePagedListXml_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/INoCliente/GetNoClientePagedListXmlResponse" message="tns:INoCliente_GetNoClientePagedListXml_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="AddNoCliente">
+      <wsdl:input wsaw:Action="http://tempuri.org/INoCliente/AddNoCliente" message="tns:INoCliente_AddNoCliente_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/INoCliente/AddNoClienteResponse" message="tns:INoCliente_AddNoCliente_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="UpdateNoCliente">
+      <wsdl:input wsaw:Action="http://tempuri.org/INoCliente/UpdateNoCliente" message="tns:INoCliente_UpdateNoCliente_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/INoCliente/UpdateNoClienteResponse" message="tns:INoCliente_UpdateNoCliente_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="DeleteNoCliente">
+      <wsdl:input wsaw:Action="http://tempuri.org/INoCliente/DeleteNoCliente" message="tns:INoCliente_DeleteNoCliente_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/INoCliente/DeleteNoClienteResponse" message="tns:INoCliente_DeleteNoCliente_OutputMessage" />
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:binding name="BasicHttpBinding_IUsuario" type="tns:IUsuario">
@@ -5465,6 +5547,81 @@
       </wsdl:output>
     </wsdl:operation>
   </wsdl:binding>
+  <wsdl:binding name="BasicHttpBinding_INoCliente" type="tns:INoCliente">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="GetNoCliente">
+      <soap:operation soapAction="http://tempuri.org/INoCliente/GetNoCliente" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetDeepNoCliente">
+      <soap:operation soapAction="http://tempuri.org/INoCliente/GetDeepNoCliente" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetNoClienteList">
+      <soap:operation soapAction="http://tempuri.org/INoCliente/GetNoClienteList" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetNoClientePagedList">
+      <soap:operation soapAction="http://tempuri.org/INoCliente/GetNoClientePagedList" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetNoClientePagedListXml">
+      <soap:operation soapAction="http://tempuri.org/INoCliente/GetNoClientePagedListXml" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AddNoCliente">
+      <soap:operation soapAction="http://tempuri.org/INoCliente/AddNoCliente" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdateNoCliente">
+      <soap:operation soapAction="http://tempuri.org/INoCliente/UpdateNoCliente" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DeleteNoCliente">
+      <soap:operation soapAction="http://tempuri.org/INoCliente/DeleteNoCliente" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
   <wsdl:service name="SoftvWCFService">
     <wsdl:port name="BasicHttpBinding_IUsuario" binding="tns:BasicHttpBinding_IUsuario">
       <soap:address location="http://localhost:64481/SoftvWCFService.svc" />
@@ -5569,6 +5726,9 @@
       <soap:address location="http://localhost:64481/SoftvWCFService.svc" />
     </wsdl:port>
     <wsdl:port name="BasicHttpBinding_ItblPrioridadQueja" binding="tns:BasicHttpBinding_ItblPrioridadQueja">
+      <soap:address location="http://localhost:64481/SoftvWCFService.svc" />
+    </wsdl:port>
+    <wsdl:port name="BasicHttpBinding_INoCliente" binding="tns:BasicHttpBinding_INoCliente">
       <soap:address location="http://localhost:64481/SoftvWCFService.svc" />
     </wsdl:port>
   </wsdl:service>

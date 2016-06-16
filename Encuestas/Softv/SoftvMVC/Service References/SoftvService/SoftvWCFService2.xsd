@@ -327,9 +327,9 @@
           <xs:element minOccurs="0" name="Conexion" nillable="true" type="tns:ConexionEntity" />
           <xs:element minOccurs="0" name="Contrato" nillable="true" type="xs:long" />
           <xs:element minOccurs="0" name="Detalle" nillable="true" type="xs:string" />
-          <xs:element minOccurs="0" name="Fecha" nillable="true" type="xs:dateTime" />
-          <xs:element minOccurs="0" name="HoraFin" nillable="true" type="xs:dateTime" />
-          <xs:element minOccurs="0" name="HoraInicio" nillable="true" type="xs:dateTime" />
+          <xs:element minOccurs="0" name="Fecha" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="HoraFin" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="HoraInicio" nillable="true" type="xs:string" />
           <xs:element minOccurs="0" name="IdConexion" nillable="true" type="xs:int" />
           <xs:element minOccurs="0" name="IdLlamada" nillable="true" type="xs:int" />
           <xs:element minOccurs="0" name="IdTurno" nillable="true" type="xs:int" />
@@ -801,4 +801,26 @@
     </xs:sequence>
   </xs:complexType>
   <xs:element name="ArrayOftblPrioridadQuejaEntity" nillable="true" type="tns:ArrayOftblPrioridadQuejaEntity" />
+  <xs:complexType name="NoClienteEntity">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:BaseEntity">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="Celular" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="Direccion" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="Email" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="Id" nillable="true" type="xs:int" />
+          <xs:element minOccurs="0" name="IdLlamada" nillable="true" type="xs:int" />
+          <xs:element minOccurs="0" name="Nombre" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="Telefono" nillable="true" type="xs:string" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="NoClienteEntity" nillable="true" type="tns:NoClienteEntity" />
+  <xs:complexType name="ArrayOfNoClienteEntity">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="NoClienteEntity" nillable="true" type="tns:NoClienteEntity" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfNoClienteEntity" nillable="true" type="tns:ArrayOfNoClienteEntity" />
 </xs:schema>

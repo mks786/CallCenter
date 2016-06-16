@@ -18,7 +18,7 @@ namespace SoftvWCFService
     public partial class SoftvWCFService : IUsuario, IRole, IModule, IPermiso, IEncuesta, IPregunta, ITipoPreguntas, IRelEncuestaClientes, IRelPreguntaOpcMults,
         IRelPreguntaEncuestas, IResOpcMults, IRelEnProcesos, IConexion, ICLIENTE, ITurno, ILlamada, IRel_Clientes_TiposClientes, ITipoCliente, ICatalogoPeriodosCorte,
         ICliente_Apellido, ITap, IDatoFiscal, ITrabajo, ITipServ, IMotivoCancelacion, IRelEncuestaPreguntaRes, IQueja, ICIUDAD, ICVECOLCIU, ICOLONIA, ICVECAROL, ICALLE, IBusquedaIndividual,
-        ItblClasificacionProblema, ItblPrioridadQueja
+        ItblClasificacionProblema, ItblPrioridadQueja, INoCliente
     {
         #region Usuario
         public UsuarioEntity GetUsuario(int? IdUsuario)
@@ -1579,7 +1579,50 @@ namespace SoftvWCFService
         }
 
         #endregion
-  
 
+
+        #region NoCliente
+        public NoClienteEntity GetNoCliente(int? Id)
+        {
+            return NoCliente.GetOne(Id);
+        }
+
+        public NoClienteEntity GetDeepNoCliente(int? Id)
+        {
+            return NoCliente.GetOneDeep(Id);
+        }
+
+        public IEnumerable<NoClienteEntity> GetNoClienteList()
+        {
+            return NoCliente.GetAll();
+        }
+
+        public SoftvList<NoClienteEntity> GetNoClientePagedList(int page, int pageSize)
+        {
+            return NoCliente.GetPagedList(page, pageSize);
+        }
+
+        public SoftvList<NoClienteEntity> GetNoClientePagedListXml(int page, int pageSize, String xml)
+        {
+            return NoCliente.GetPagedList(page, pageSize, xml);
+        }
+
+        public int AddNoCliente(NoClienteEntity objNoCliente)
+        {
+            return NoCliente.Add(objNoCliente);
+        }
+
+        public int UpdateNoCliente(NoClienteEntity objNoCliente)
+        {
+            return NoCliente.Edit(objNoCliente);
+        }
+
+        public int DeleteNoCliente(String BaseRemoteIp, int BaseIdUser, int? Id)
+        {
+            return NoCliente.Delete(Id);
+        }
+
+        #endregion
+  
     }
 }

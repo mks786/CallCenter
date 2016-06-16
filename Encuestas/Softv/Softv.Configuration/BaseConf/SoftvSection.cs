@@ -363,7 +363,16 @@ namespace SoftvConfiguration
         {
             get { return (tblPrioridadQuejaElement)base["tblPrioridadQueja"]; }
         }
-  
+
+
+        /// <summary>
+        /// Gets NoCliente configuration data
+        /// </summary>
+        [ConfigurationProperty("NoCliente")]
+        public NoClienteElement NoCliente
+        {
+            get { return (NoClienteElement)base["NoCliente"]; }
+        }
   
 
     }

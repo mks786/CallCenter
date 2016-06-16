@@ -239,6 +239,7 @@
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\ModuleController.cs" />
     <Compile Include="Controllers\MotivoCancelacionController.cs" />
+    <Compile Include="Controllers\NoClienteController.cs" />
     <Compile Include="Controllers\PartialClass\BaseControllerFunc.cs" />
     <Compile Include="Controllers\PartialClass\BaseControllerScripts.cs" />
     <Compile Include="Controllers\PartialClass\UsuarioController.cs" />
@@ -599,6 +600,7 @@
     <Content Include="dist\js\pages\Encuesta\ModalEliminarEncuesta.js" />
     <Content Include="dist\js\pages\Encuesta\preview_scripts.js" />
     <Content Include="dist\js\pages\Encuesta\Utilerias.js" />
+    <Content Include="dist\js\pages\Llamada\agregar_llamada.js" />
     <Content Include="dist\js\pages\Llamada\Lista.js" />
     <Content Include="dist\js\pages\Pregunta\editar_pregunta.js" />
     <Content Include="dist\js\pages\Pregunta\Lista.js" />
@@ -1405,6 +1407,7 @@
     <Content Include="Properties\DataSources\Softv.Entities.BusquedaIndividualEntity.datasource" />
     <Content Include="Properties\DataSources\Softv.Entities.tblClasificacionProblemaEntity.datasource" />
     <Content Include="Properties\DataSources\Softv.Entities.tblPrioridadQuejaEntity.datasource" />
+    <Content Include="Properties\DataSources\Softv.Entities.NoClienteEntity.datasource" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>

@@ -5109,4 +5109,149 @@ namespace SoftvMVC.SoftvService {
             return base.Channel.DeletetblPrioridadQuejaAsync(BaseRemoteIp, BaseIdUser, clvPrioridadQueja);
         }
     }
+    
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ServiceModel.ServiceContractAttribute(ConfigurationName="SoftvService.INoCliente")]
+    public interface INoCliente {
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/INoCliente/GetNoCliente", ReplyAction="http://tempuri.org/INoCliente/GetNoClienteResponse")]
+        Softv.Entities.NoClienteEntity GetNoCliente(System.Nullable<int> Id);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/INoCliente/GetNoCliente", ReplyAction="http://tempuri.org/INoCliente/GetNoClienteResponse")]
+        System.Threading.Tasks.Task<Softv.Entities.NoClienteEntity> GetNoClienteAsync(System.Nullable<int> Id);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/INoCliente/GetDeepNoCliente", ReplyAction="http://tempuri.org/INoCliente/GetDeepNoClienteResponse")]
+        Softv.Entities.NoClienteEntity GetDeepNoCliente(System.Nullable<int> Id);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/INoCliente/GetDeepNoCliente", ReplyAction="http://tempuri.org/INoCliente/GetDeepNoClienteResponse")]
+        System.Threading.Tasks.Task<Softv.Entities.NoClienteEntity> GetDeepNoClienteAsync(System.Nullable<int> Id);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/INoCliente/GetNoClienteList", ReplyAction="http://tempuri.org/INoCliente/GetNoClienteListResponse")]
+        System.Collections.Generic.List<Softv.Entities.NoClienteEntity> GetNoClienteList();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/INoCliente/GetNoClienteList", ReplyAction="http://tempuri.org/INoCliente/GetNoClienteListResponse")]
+        System.Threading.Tasks.Task<System.Collections.Generic.List<Softv.Entities.NoClienteEntity>> GetNoClienteListAsync();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/INoCliente/GetNoClientePagedList", ReplyAction="http://tempuri.org/INoCliente/GetNoClientePagedListResponse")]
+        Globals.SoftvList<Softv.Entities.NoClienteEntity> GetNoClientePagedList(int page, int pageSize);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/INoCliente/GetNoClientePagedList", ReplyAction="http://tempuri.org/INoCliente/GetNoClientePagedListResponse")]
+        System.Threading.Tasks.Task<Globals.SoftvList<Softv.Entities.NoClienteEntity>> GetNoClientePagedListAsync(int page, int pageSize);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/INoCliente/GetNoClientePagedListXml", ReplyAction="http://tempuri.org/INoCliente/GetNoClientePagedListXmlResponse")]
+        Globals.SoftvList<Softv.Entities.NoClienteEntity> GetNoClientePagedListXml(int page, int pageSize, string xml);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/INoCliente/GetNoClientePagedListXml", ReplyAction="http://tempuri.org/INoCliente/GetNoClientePagedListXmlResponse")]
+        System.Threading.Tasks.Task<Globals.SoftvList<Softv.Entities.NoClienteEntity>> GetNoClientePagedListXmlAsync(int page, int pageSize, string xml);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/INoCliente/AddNoCliente", ReplyAction="http://tempuri.org/INoCliente/AddNoClienteResponse")]
+        int AddNoCliente(Softv.Entities.NoClienteEntity objNoCliente);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/INoCliente/AddNoCliente", ReplyAction="http://tempuri.org/INoCliente/AddNoClienteResponse")]
+        System.Threading.Tasks.Task<int> AddNoClienteAsync(Softv.Entities.NoClienteEntity objNoCliente);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/INoCliente/UpdateNoCliente", ReplyAction="http://tempuri.org/INoCliente/UpdateNoClienteResponse")]
+        int UpdateNoCliente(Softv.Entities.NoClienteEntity objNoCliente);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/INoCliente/UpdateNoCliente", ReplyAction="http://tempuri.org/INoCliente/UpdateNoClienteResponse")]
+        System.Threading.Tasks.Task<int> UpdateNoClienteAsync(Softv.Entities.NoClienteEntity objNoCliente);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/INoCliente/DeleteNoCliente", ReplyAction="http://tempuri.org/INoCliente/DeleteNoClienteResponse")]
+        int DeleteNoCliente(string BaseRemoteIp, int BaseIdUser, System.Nullable<int> Id);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/INoCliente/DeleteNoCliente", ReplyAction="http://tempuri.org/INoCliente/DeleteNoClienteResponse")]
+        System.Threading.Tasks.Task<int> DeleteNoClienteAsync(string BaseRemoteIp, int BaseIdUser, System.Nullable<int> Id);
+    }
+    
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    public interface INoClienteChannel : SoftvMVC.SoftvService.INoCliente, System.ServiceModel.IClientChannel {
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    public partial class NoClienteClient : System.ServiceModel.ClientBase<SoftvMVC.SoftvService.INoCliente>, SoftvMVC.SoftvService.INoCliente {
+        
+        public NoClienteClient() {
+        }
+        
+        public NoClienteClient(string endpointConfigurationName) : 
+                base(endpointConfigurationName) {
+        }
+        
+        public NoClienteClient(string endpointConfigurationName, string remoteAddress) : 
+                base(endpointConfigurationName, remoteAddress) {
+        }
+        
+        public NoClienteClient(string endpointConfigurationName, System.ServiceModel.EndpointAddress remoteAddress) : 
+                base(endpointConfigurationName, remoteAddress) {
+        }
+        
+        public NoClienteClient(System.ServiceModel.Channels.Binding binding, System.ServiceModel.EndpointAddress remoteAddress) : 
+                base(binding, remoteAddress) {
+        }
+        
+        public Softv.Entities.NoClienteEntity GetNoCliente(System.Nullable<int> Id) {
+            return base.Channel.GetNoCliente(Id);
+        }
+        
+        public System.Threading.Tasks.Task<Softv.Entities.NoClienteEntity> GetNoClienteAsync(System.Nullable<int> Id) {
+            return base.Channel.GetNoClienteAsync(Id);
+        }
+        
+        public Softv.Entities.NoClienteEntity GetDeepNoCliente(System.Nullable<int> Id) {
+            return base.Channel.GetDeepNoCliente(Id);
+        }
+        
+        public System.Threading.Tasks.Task<Softv.Entities.NoClienteEntity> GetDeepNoClienteAsync(System.Nullable<int> Id) {
+            return base.Channel.GetDeepNoClienteAsync(Id);
+        }
+        
+        public System.Collections.Generic.List<Softv.Entities.NoClienteEntity> GetNoClienteList() {
+            return base.Channel.GetNoClienteList();
+        }
+        
+        public System.Threading.Tasks.Task<System.Collections.Generic.List<Softv.Entities.NoClienteEntity>> GetNoClienteListAsync() {
+            return base.Channel.GetNoClienteListAsync();
+        }
+        
+        public Globals.SoftvList<Softv.Entities.NoClienteEntity> GetNoClientePagedList(int page, int pageSize) {
+            return base.Channel.GetNoClientePagedList(page, pageSize);
+        }
+        
+        public System.Threading.Tasks.Task<Globals.SoftvList<Softv.Entities.NoClienteEntity>> GetNoClientePagedListAsync(int page, int pageSize) {
+            return base.Channel.GetNoClientePagedListAsync(page, pageSize);
+        }
+        
+        public Globals.SoftvList<Softv.Entities.NoClienteEntity> GetNoClientePagedListXml(int page, int pageSize, string xml) {
+            return base.Channel.GetNoClientePagedListXml(page, pageSize, xml);
+        }
+        
+        public System.Threading.Tasks.Task<Globals.SoftvList<Softv.Entities.NoClienteEntity>> GetNoClientePagedListXmlAsync(int page, int pageSize, string xml) {
+            return base.Channel.GetNoClientePagedListXmlAsync(page, pageSize, xml);
+        }
+        
+        public int AddNoCliente(Softv.Entities.NoClienteEntity objNoCliente) {
+            return base.Channel.AddNoCliente(objNoCliente);
+        }
+        
+        public System.Threading.Tasks.Task<int> AddNoClienteAsync(Softv.Entities.NoClienteEntity objNoCliente) {
+            return base.Channel.AddNoClienteAsync(objNoCliente);
+        }
+        
+        public int UpdateNoCliente(Softv.Entities.NoClienteEntity objNoCliente) {
+            return base.Channel.UpdateNoCliente(objNoCliente);
+        }
+        
+        public System.Threading.Tasks.Task<int> UpdateNoClienteAsync(Softv.Entities.NoClienteEntity objNoCliente) {
+            return base.Channel.UpdateNoClienteAsync(objNoCliente);
+        }
+        
+        public int DeleteNoCliente(string BaseRemoteIp, int BaseIdUser, System.Nullable<int> Id) {
+            return base.Channel.DeleteNoCliente(BaseRemoteIp, BaseIdUser, Id);
+        }
+        
+        public System.Threading.Tasks.Task<int> DeleteNoClienteAsync(string BaseRemoteIp, int BaseIdUser, System.Nullable<int> Id) {
+            return base.Channel.DeleteNoClienteAsync(BaseRemoteIp, BaseIdUser, Id);
+        }
+    }
 }

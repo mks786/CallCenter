@@ -80,6 +80,7 @@
     <Compile Include="Contracts\ILlamada.cs" />
     <Compile Include="Contracts\IModule.cs" />
     <Compile Include="Contracts\IMotivoCancelacion.cs" />
+    <Compile Include="Contracts\INoCliente.cs" />
     <Compile Include="Contracts\IPermiso.cs" />
     <Compile Include="Contracts\IPregunta.cs" />
     <Compile Include="Contracts\IQueja.cs" />

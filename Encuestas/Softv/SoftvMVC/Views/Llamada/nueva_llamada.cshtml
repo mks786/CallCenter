@@ -27,6 +27,20 @@
         body {
             background-color: #ECF0F5;
         }
+        .scroll_div{
+             overflow: scroll;
+        }
+         input:required:invalid, input:focus:invalid {
+            background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAA8AAAAQCAYAAADJViUEAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAiBJREFUeNqEUs9PE1EQ/l53t9BfglC00EAJoBKDMVw4GEhMjIlguJPo0cSbCTeCfwRX/wBj/ANMjQcPetBEDwaicSOBoEswKoXYbgN2tzvO7L52Cx6cZDLzZt73vnkzAyJCS+szYuLz/3IJaKnfVpS6/xC164pwSqpzitL3VuHeOpkLwQccTC8sQ228QvbOKvbn4kuVa4pyd1eAT6+RWVxG5WacU7tXQP3zi7B+bQEUAN05BJdnsf9kjc/AwNIDKPsN8MdlKhONvhEcvCijuEFKSe3fmClTGEc2qZ/sSiM5NQtq+vA+v4uALG6DdXcLpbekQmYBi3yZUXRmcBg5U1fVnYnscT00NV+huufg4vsIeAIssj6taLh4PvSNRALNIGjnHOcHrq7HQBGz81D/DQSDBvzDPbTnwHizrxjmTkub+WWJWacmYe3YCI4Za2hsk/004I1Mwvlo48bXmD18//mQooGxEn/cRsONAEYiUvEbVWbZtJEfHw3vtpnLBdDYRArkHMHjblrM6HHXN3WZF3o4xnGPH7G6GDBkYXvbw/x3ParyOUWjOZkFs7H9UAGWDqPynp5VNN0PNGVaPICdGrDwU5fe2tNneSa/BHqc+XeHJSY5udMZb/3bYk09SspOoZc1zyozK2ib1zmpLyVTErDQy15xP5GNCgttVl+SRz3Wo+hTocrWSEdcpZkNPXOzwxcreWHkdsHXKr7HzP5fAQYAbIgVVNSd7FUAAAAASUVORK5CYII=);
+            background-position: right top;
+            background-repeat: no-repeat;
+            -moz-box-shadow: none;
+          }
+          input:required:valid {
+            background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAepJREFUeNrEk79PFEEUx9/uDDd7v/AAQQnEQokmJCRGwc7/QeM/YGVxsZJQYI/EhCChICYmUJigNBSGzobQaI5SaYRw6imne0d2D/bYmZ3dGd+YQKEHYiyc5GUyb3Y+77vfeWNpreFfhvXfAWAAJtbKi7dff1rWK9vPHx3mThP2Iaipk5EzTg8Qmru38H7izmkFHAF4WH1R52654PR0Oamzj2dKxYt/Bbg1OPZuY3d9aU82VGem/5LtnJscLxWzfzRxaWNqWJP0XUadIbSzu5DuvUJpzq7sfYBKsP1GJeLB+PWpt8cCXm4+2+zLXx4guKiLXWA2Nc5ChOuacMEPv20FkT+dIawyenVi5VcAbcigWzXLeNiDRCdwId0LFm5IUMBIBgrp8wOEsFlfeCGm23/zoBZWn9a4C314A1nCoM1OAVccuGyCkPs/P+pIdVIOkG9pIh6YlyqCrwhRKD3GygK9PUBImIQQxRi4b2O+JcCLg8+e8NZiLVEygwCrWpYF0jQJziYU/ho2TUuCPTn8hHcQNuZy1/94sAMOzQHDeqaij7Cd8Dt8CatGhX3iWxgtFW/m29pnUjR7TSQcRCIAVW1FSr6KAVYdi+5Pj8yunviYHq7f72po3Y9dbi7CxzDO1+duzCXH9cEPAQYAhJELY/AqBtwAAAAASUVORK5CYII=);
+            background-position: right top;
+            background-repeat: no-repeat;
+          }
     </style>
 
     <link href="~/dist/js/jquery.flexdatalist.css" rel="stylesheet" />
@@ -36,7 +50,7 @@
     <div class="container" style="background-color:#fff;  box-shadow: 2px 2px 5px #999; margin-top:10px; width:70%;">
 
         <div class="row">
-            <h3 style="padding-left:20px;"><a href="/Llamada" style="color:#5bc0de;"><i class="fa fa-angle-left" aria-hidden="true"></i> Regresar</a></h3>
+            <h3 style="padding-left:20px;"><a href="/Llamada" style="color:#5bc0de;"><i class="fa fa-angle-left" aria-hidden="true"></i> Menú Principal</a></h3>
             <h1 class="text-center" style="color:#4b646f; font-size:22px;"><strong>NUEVA LLAMADA</strong></h1>
             <div class="page-title" style="background-color:#3c8dbc; color:#fff; width:100%;">
                 <div class="container">
@@ -60,109 +74,140 @@
             <form id="llamadaForm">
                 <div class="row" style="padding-left:10px; display:none;" id="tipo_llamante">
                     <div class="col-md-3">
+                        <label style="color:#4b646f;">¿Es cliente?</label>
                         <select class="form-control" id="tipo_cliente">
-                            <option value="0" selected disabled>¿Quíen llama?</option>
-                            <option value="1">Es Cliente</option>
-                            <option value="2">No Es Cliente</option>
+                            <option value="0" selected disabled>---------</option>
+                            <option value="1">Si</option>
+                            <option value="2">No</option>
                         </select>
                     </div>
-                    <div class="col-md-5" id="panel_no_cliente" style="display:none;">
+                </div><br />
+                <div class="row" style="padding-left:10px; display:none;" id="regresar">
+                    <div class="col-md-3">
+                        <h4><a href="#" style="color:#5bc0de;" onclick="regresar()"><i class="fa fa-angle-left" aria-hidden="true"></i> Regresar</a></h4>
+                    </div>
+                </div>
+                <div class="row" id="panel_no_cliente" style="padding-left:10px; display:none;">
+                    <div class="col-md-5">
+                        <label style="color:#4b646f;">Nombre</label>
                         <input type="text" class="form-control" id="nombre_no_cliente" placeholder="Nombre de la persona que esta llamando" />
                     </div>
-                </div><br />
+                </div>
                 <div class="row" id="panel_llamante" style="display:none;">
                     <div class="col-md-12">
-                        <div class="panel-body">
-                            <!-- Nav tabs -->
-                            <ul class="nav nav-tabs" role="tablist">
-                                <li role="presentation" class="active"><a href="#contrato" aria-controls="contrato" role="tab" data-toggle="tab">Contrato</a></li>
-                                <li role="presentation"><a href="#nombre" aria-controls="nombre" role="tab" data-toggle="tab">Nombre</a></li>
-                                <li role="presentation"><a href="#direccion" aria-controls="direccion" role="tab" data-toggle="tab">Dirección</a></li>
-                            </ul>
+                        <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
+                            <div class="panel panel-default">
+                                <div class="panel-heading" role="tab" id="headingOne">
+                                    <h4 class="panel-title">
+                                        <a role="button" id="busqueda_collapse" data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="true" aria-controls="collapseOne" style="color:#4b646f;">
+                                            Busqueda individual
+                                        </a>
+                                    </h4>
+                                </div>
+                                <div id="collapseOne" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingOne">
+                                    <div class="panel-body">
+                                        <!-- Nav tabs -->
+                                        <ul class="nav nav-tabs" role="tablist">
+                                            <li role="presentation" class="active"><a href="#contrato" aria-controls="contrato" role="tab" data-toggle="tab">Contrato</a></li>
+                                            <li role="presentation"><a href="#nombre" aria-controls="nombre" role="tab" data-toggle="tab">Nombre</a></li>
+                                            <li role="presentation"><a href="#direccion" aria-controls="direccion" role="tab" data-toggle="tab">Dirección</a></li>
+                                        </ul>
 
-                            <!-- Tab panes -->
-                            <div class="tab-content">
-                                <div role="tabpanel" class="tab-pane active" id="contrato">
-                                    <br />
-                                    <div class="row">
-                                        <div class="col-md-4">
-                                            <p style="color:#4b646f;">Ingrese el número de contrato</p>
-                                        </div>
-                                    </div>
-                                    <div class="row">
-                                        <div class="col-md-8">
-                                            <input type="text" class="form-control" id="input_contrato" />
-                                            <span class="help-block">El número de contrato está formado por 2 grupos de números con un guión intermedio p.e. (1234-1)</span>
-                                        </div>
-                                    </div>
-                                    <div class="row">
-                                        <div class="col-md-12">
-                                            <p class="text-right">
-                                                <a class="btn btn-primary" id="buscar_por_contrato"><i class="fa fa-search" aria-hidden="true"></i> Buscar</a>
-                                            </p>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div role="tabpanel" class="tab-pane" id="direccion">
-                                    <br />
-                                    <div class="container">
-                                        <div class="row">
-                                            <div class="col-md-4">
-                                                <input type="text" class="form-control" id="ciudad_busqueda" placeholder="Ciudad" />
+                                        <!-- Tab panes -->
+                                        <div class="tab-content">
+                                            <div role="tabpanel" class="tab-pane active" id="contrato">
+                                                <br />
+                                                <div class="row">
+                                                    <div class="col-md-4">
+                                                        <p style="color:#4b646f;">Ingrese el número de contrato</p>
+                                                    </div>
+                                                </div>
+                                                <div class="row">
+                                                    <div class="col-md-3">
+                                                        <input type="text" class="form-control" id="input_contrato" />
+                                                    </div>
+                                                </div>
+                                                <div class="row">
+                                                    <div class="col-md-8">
+                                                        <span class="help-block">El número de contrato está formado por 2 grupos de números con un guión intermedio p.e. (1234-1)</span>
+                                                    </div>
+                                                </div>
+                                                <div class="row">
+                                                    <div class="col-md-12">
+                                                        <p class="text-right">
+                                                            <a class="btn btn-primary" id="buscar_por_contrato"><i class="fa fa-search" aria-hidden="true"></i> Buscar</a>
+                                                        </p>
+                                                    </div>
+                                                </div>
                                             </div>
-                                        </div><br />
-                                        <div class="row">
-                                            <div class="col-md-4">
-                                                <input type="text" class="form-control" id="colonia_domicilio" placeholder="Colonia" />
+                                            <div role="tabpanel" class="tab-pane" id="direccion">
+                                                <br />
+                                                <div class="container">
+                                                    <div class="row">
+                                                        <div class="col-md-4">
+                                                            <input type="text" class="form-control" id="ciudad_busqueda" placeholder="Ciudad" />
+                                                        </div>
+                                                    </div><br />
+                                                    <div class="row">
+                                                        <div class="col-md-4">
+                                                            <input type="text" class="form-control" id="colonia_domicilio" placeholder="Colonia" />
+                                                        </div>
+                                                    </div><br />
+                                                    <div class="row">
+                                                        <div class="col-md-4">
+                                                            <input type="text" class="form-control" id="calle_busqueda" placeholder="Calle" />
+                                                        </div>
+                                                    </div><br />
+                                                    <div class="row">
+                                                        <div class="col-md-4">
+                                                            <input type="text" class="form-control" id="numero_domicilio" placeholder="Número" />
+                                                        </div>
+                                                    </div>
+                                                </div><br />
+                                                <div class="row">
+                                                    <div class="col-md-12">
+                                                        <p class="text-right">
+                                                            <a class="btn btn-primary" id="buscar_por_direccion"><i class="fa fa-search" aria-hidden="true"></i> Buscar</a>
+                                                        </p>
+                                                    </div>
+                                                </div>
                                             </div>
-                                        </div><br />
-                                        <div class="row">
-                                            <div class="col-md-4">
-                                                <input type="text" class="form-control" id="calle_busqueda" placeholder="Calle" />
+                                            <div role="tabpanel" class="tab-pane" id="nombre">
+                                                <br />
+                                                <div class="row">
+                                                    <div class="col-md-4">
+                                                        <p style="color:#4b646f;">Nombre completo</p>
+                                                    </div>
+                                                </div>
+                                                <div class="row">
+                                                    <div class="col-md-8">
+                                                        <input type="text" class="form-control" id="nombre_individual" />
+                                                    </div>
+                                                </div>
+                                                <div class="row">
+                                                    <div class="col-md-12">
+                                                        <p class="text-right">
+                                                            <a class="btn btn-primary" id="buscar_por_nombre"><i class="fa fa-search" aria-hidden="true"></i> Buscar</a>
+                                                        </p>
+                                                    </div>
+                                                </div>
                                             </div>
-                                        </div><br />
-                                        <div class="row">
-                                            <div class="col-md-4">
-                                                <input type="text" class="form-control" id="numero_domicilio" placeholder="Número" />
-                                            </div>
                                         </div>
-                                    </div><br />
-                                    <div class="row">
-                                        <div class="col-md-12">
-                                            <p class="text-right">
-                                                <a class="btn btn-primary" id="buscar_por_direccion"><i class="fa fa-search" aria-hidden="true"></i> Buscar</a>
-                                            </p>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div role="tabpanel" class="tab-pane" id="nombre">
-                                    <br />
-                                    <div class="row">
-                                        <div class="col-md-4">
-                                            <p style="color:#4b646f;">Nombre completo</p>
-                                        </div>
-                                    </div>
-                                    <div class="row">
-                                        <div class="col-md-8">
-                                            <input type="text" class="form-control" id="nombre_individual" />
-                                        </div>
-                                    </div>
-                                    <div class="row">
-                                        <div class="col-md-12">
-                                            <p class="text-right">
-                                                <a class="btn btn-primary" id="buscar_por_nombre"><i class="fa fa-search" aria-hidden="true"></i> Buscar</a>
-                                            </p>
-                                        </div>
-                                    </div>
+                                    </div><!-- panel body -->
                                 </div>
                             </div>
-                        </div><!-- panel body -->
+                        </div>
+                    </div>
+                </div>
+                <div class="row" id="invalido" style="display:none;">
+                    <div class="col-md-12">
+                        <div class="alert alert-warning alert-dismissible fade in" role="alert"><strong>Opsss!</strong> No se encontraron coincidencias. </div>
                     </div>
                 </div>
                 <div class="row" style="display:none;" id="panel_tabla_clientes">
                     <div class="col-md-12 container">
                         <table id="Tabla_Clientes" class="table table-bordered table-hover dataTable">
-                            <thead>
+                            <thead style="font-size:13px;">
                                 <tr>
                                     <td><b>Contrato</b></td>
                                     <td><b>Nombre</b> </td>
@@ -173,12 +218,12 @@
                                     <td><b>Opciones</b></td>
                                 </tr>
                             </thead>
-                            <tbody></tbody>
+                            <tbody style="font-size:12px;"></tbody>
                         </table>
                     </div>
                 </div>
                 <div class="row" style="display:none; padding-left:10px;" id="panel_datos_cliente">
-                    <div class="col-md-12">
+                    <div class="col-md-6">
                         <h4 id="texto_contrato" style="color:#4b646f;"></h4>
                         <input type="hidden" id="contrato_oculto" />
                         <h4 id="texto_nombre" style="color:#4b646f;"></h4>
@@ -186,17 +231,40 @@
                         <h5 id="texto_calle" style="color:#4b646f;"></h5>
                         <h5 id="texto_numero" style="color:#4b646f;"></h5>
                     </div>
+                    <div class="col-md-5 scroll_div" style="height:200px;">
+                        <div id="servicios_contratados">
+
+                        </div>
+                    </div>
                 </div>
-                <div class="row" style="display:none; padding-left:10px;" id="panel_fecha">
+                <div class="row" style="display:none; padding-left:10px;" id="telefono_no_cliente">
+                    <div class="col-md-3">
+                        <label style="color:#4b646f;">Teléfono</label>
+                        <input type="text" id="telefono" class="form-control">
+                    </div>
+                    <div class="col-md-3">
+                        <label style="color:#4b646f;">Celular</label>
+                        <input type="text" id="celular" class="form-control">
+                    </div>
+                </div>
+                <div class="row" style="display:none; padding-left:10px;" id="email_no_cliente">
+                    <div class="col-md-4">
+                        <label style="color:#4b646f;">Email</label>
+                        <input type="email" id="email" class="form-control" required>
+                    </div>
+                </div>
+                <div class="row" style="display:none; padding-left:10px;">
                     <div class="col-md-2">
                         <label style="color:#4b646f;">Hora Inicial</label>
                         <input type="time" id="hora_inicio" class="form-control">
                     </div>
-                    <div class="col-md-3">
-                        <label style="color:#4b646f;">Fecha</label>
-                        <input type="date" id="fecha_llamada" class="form-control" />
+                </div>
+                <div class="row" style="display:none; padding-left:10px;" id="domicilio_no_cliente">
+                    <div class="col-md-6">
+                        <label style="color:#4b646f;">Domicilio</label>
+                        <textarea type="text" id="domicilio" class="form-control"></textarea>
                     </div>
-                </div><br />
+                </div>
                 <div class="row" style="display:none; padding-left:10px;" id="motivo_llamada_panel">
                     <div class="col-md-3" style="padding-top:10px;">
                         <label style="color:#4b646f;">Tipo de Servicio</label>
@@ -204,17 +272,11 @@
                             <option value="0" selected disabled>Tipo de servicio</option>
                         </select>
                     </div>
-                </div><br />
+                </div>
                 <div class="row" id="motivo_no_cliente" style="padding-left:10px; display:none;">
                     <div class="col-md-6">
                         <label style="color:#4b646f;">Motivo de la llamada</label>
                         <textarea class="form-control" id="motivo"></textarea>
-                    </div>
-                </div>
-                <div class="row" id="solucion_no_cliente" style="padding-left:10px; display:none;">
-                    <div class="col-md-6">
-                        <label style="color:#4b646f;">Solución</label>
-                        <textarea class="form-control" id="solucion"></textarea>
                     </div>
                 </div>
                 <div class="row" style="display:none; padding-left:10px;" id="panel_clasificacion">
@@ -224,7 +286,13 @@
                             <option value="0" selected disabled>Clasificación del problema</option>
                         </select>
                     </div>
-                </div><br />
+                </div>
+                <div class="row" id="solucion_no_cliente" style="padding-left:10px; display:none;">
+                    <div class="col-md-6">
+                        <label style="color:#4b646f;">Solución</label>
+                        <textarea class="form-control" id="solucion"></textarea>
+                    </div>
+                </div>
                 <div class="row" style="display:none; padding-left:10px;" id="panel_solucion">
                     <div class="col-md-4">
                         <label style="color:#4b646f;">Clasificación de la solución</label>
@@ -240,7 +308,7 @@
                 <div class="row" style="display:none; padding-left:10px;" id="panel_nueva_queja">
                     <fieldset>
                         <legend style="padding-left:25px; font-size:12px; color:#4b646f;">Realizar Queja</legend>
-                        <div class="col-md-3">
+                        <div class="col-md-4">
                             <label style="color:#4b646f;">Departamento Responsable</label>
                             <select class="form-control" id="departamento">
                                 <option value="0" selected disabled>Departamento Responsable</option>
@@ -255,12 +323,6 @@
                     </fieldset>
                 </div><br />
                 <div class="row" style="display:none; padding-left:10px;" id="trabajo_panel">
-                    <div class="col-md-5">
-                        <label style="color:#4b646f;">Trabajo</label>
-                        <select class="form-control" id="trabajo">
-                            <option value="0" selected disabled>Trabajo</option>
-                        </select>
-                    </div>
                     <div class="col-md-3">
                         <label style="color:#4b646f;">Turno</label>
                         <select class="form-control" id="turno">
@@ -306,6 +368,7 @@
         </div>
     </div>
 </body>
+<script src="~/plugins/input-mask/jquery.inputmask.js"></script>
 <script type="text/javascript" src="~/dist/js/bootstrap-switch.js"></script>
 <script type="text/javascript">
     var count_queja = 2;
@@ -316,6 +379,8 @@
             offColor: 'danger',
             onColor: 'success'
         });
+        $('#telefono').inputmask("(999)9999999");
+        $('#celular').inputmask("999-999-99-99");
         $.ajax({
             url: "/Conexion/ListaConexiones/",
             type: "GET",
@@ -331,6 +396,7 @@
 
             }
         });
+
 
         $('input[name="levantar_queja"]').on('switchChange.bootstrapSwitch', function (event, state) {
             if (state) {
@@ -367,6 +433,30 @@
 
     function AbrirModal() {
         $('#Modal_Plaza').modal("show");
+    }
+
+    function regresar(){
+        $('#tipo_cliente').val("0").change();
+        $('#tipo_llamante').show();
+        $('#regresar').hide();
+        $('#btn_enviar').hide();
+        $('#panel_no_cliente').hide();
+        $('#panel_llamante').hide();
+        $('#motivo_llamada_panel').hide();
+        $('#queja').hide();
+        $('#tipo_servicio').hide();
+        $('#panel_fecha').hide();
+        $('#panel_clasificacion').hide();
+        $('#panel_solucion').hide();
+        $('#panel_nueva_queja').hide();
+        $('#motivo_no_cliente').hide();
+        $('#solucion_no_cliente').hide();
+        $('#telefono_no_cliente').hide();
+        $('#domicilio_no_cliente').hide();
+        $('#panel_tabla_clientes').hide();
+        $('#panel_datos_cliente').hide();
+        $('#email_no_cliente').hide();
+        document.getElementById("llamadaForm").reset();
     }
 
 
@@ -463,9 +553,12 @@
 
     $("#tipo_cliente").change(function () {
         var tipo = $("#tipo_cliente").val();
+        $('#tipo_llamante').hide();
+        $('#regresar').show();
         if (tipo == 1) {
             $('#btn_enviar').hide();
             $('#panel_no_cliente').hide();
+            $('.collapse').collapse('show');
             $('#panel_llamante').show();
             $('#motivo_llamada_panel').hide();
             $('#queja').hide();
@@ -476,6 +569,9 @@
             $('#panel_nueva_queja').hide();
             $('#motivo_no_cliente').hide();
             $('#solucion_no_cliente').hide();
+            $('#telefono_no_cliente').hide();
+            $('#domicilio_no_cliente').hide();
+            $('#email_no_cliente').hide();
             //valores a default
         } else if (tipo == 2) {
             $('#panel_no_cliente').show();
@@ -489,6 +585,8 @@
             $('#motivo_no_cliente').show();
             $('#panel_clasificacion').hide();
             $('#trabajo_panel').hide();
+            $('#telefono_no_cliente').show();
+            $('#domicilio_no_cliente').show();
             var now = new Date();
             var hour = now.getHours();
             if (hour < 10) {
@@ -499,11 +597,11 @@
                 minute = "0" + minute;
             }
             $('#hora_inicio').val(hour + ":" + minute);
-            document.getElementById('fecha_llamada').valueAsDate = new Date();
             $('#panel_fecha').show();
             $('#panel_solucion').hide();
             $('#panel_nueva_queja').hide();
             $('#solucion_no_cliente').show();
+            $('#email_no_cliente').show();
             $('#btn_enviar').show();
         }
 
@@ -511,6 +609,7 @@
 
 
     $('#buscar_por_nombre').on('click', function () {
+        $('.collapse').collapse('hide');
         var id_plaza = $('#conectando_plaza').val();
         var nombre = $('#nombre_individual').val();
         $('#panel_masivo').hide();
@@ -541,6 +640,7 @@
     });
 
     $('#buscar_por_direccion').on('click', function () {
+        $('.collapse').collapse('hide');
         var id_plaza = $('#conectando_plaza').val();
         var calle = $('#calle_busqueda').val();
         var ciudad = $('#ciudad_busqueda').val();
@@ -574,6 +674,7 @@
     });
 
     $('#buscar_por_contrato').on('click', function () {
+        $('.collapse').collapse('hide');
         var id_plaza = $('#conectando_plaza').val();
         var contrato = $('#input_contrato').val();
         $('#panel_masivo').hide();
@@ -600,31 +701,27 @@
         });
     });
 
-    $("#tipo_servicio").change(function () {
-        var idServicio = $("#tipo_servicio").val();
+
+
+    function selecion_cliente(e) {
+        var contrato = e.getAttribute('id');
+        $('#contrato_oculto').val(contrato);
         var id_plaza = $('#conectando_plaza').val();
+        document.getElementById("servicios_contratados").innerHTML="";
         $.ajax({
-            url: "/Llamada/GetIdTrabajo/",
+            url: "/Llamada/getTreeView/",
             type: "GET",
-            data: { 'IdPlaza': id_plaza, "idServicio": idServicio },
+            data: { 'plaza': id_plaza, "contrato": contrato },
             success: function (data, textStatus, jqXHR) {
-                $('#trabajo').find('option').remove().end();
                 for (var i = 0; i < data.length; i++) {
-                    $('#trabajo').append($('<option>', {
-                        value: data[i].Clv_Trabajo,
-                        text: data[i].Descripcion
-                    }));
+                    $('#servicios_contratados').append('<p>'+data[i].cadena+'</p>');
                 }
             },
             error: function (data, jqXHR, textStatus) {
                 console.log(data);
             }
+
         });
-    });
-
-
-    function selecion_cliente(e) {
-        $('#contrato_oculto').val(e.getAttribute('id'));
         $('#texto_contrato').text("No. contrato: " + e.getAttribute('id'));
         $('#texto_nombre').text("Nombre: " + e.getAttribute('data-name'));
         $('#texto_colonia').text("Colonia: " + e.getAttribute('data-colonia'));
@@ -648,7 +745,6 @@
             minute = "0" + minute;
         }
         $('#hora_inicio').val(hour + ":" + minute);
-        document.getElementById('fecha_llamada').valueAsDate = new Date();
         $('#panel_fecha').show();
         $('#panel_clasificacion').show();
         $('#panel_solucion').show();
@@ -666,9 +762,29 @@
             llamada.IdConexion = $('#conectando_plaza').val();
             llamada.usuario = @Session["idusuario"];
             llamada.contrato = $('#contrato_oculto').val();
-            llamada.fecha = $('#fecha_llamada').val()+" "+$('#hora_inicio').val();
-            llamada.horainicio = $('#fecha_llamada').val()+" "+$('#hora_inicio').val();
-            llamada.horatermino = $('#fecha_llamada').val()+" "+$('#hora_inicio').val();
+            var today = new Date();
+            var dd = today.getDate();
+            var mm = today.getMonth()+1; //January is 0!
+            var yyyy = today.getFullYear();
+
+            if(dd<10) {
+                dd='0'+dd
+            } 
+
+            if(mm<10) {
+                mm='0'+mm
+            } 
+
+            fecha = dd+'-'+mm+'-'+yyyy;
+            var hora;
+            if(today.getMinutes() < 10){
+                hora = today.getHours() + ":" + "0"+ today.getMinutes();
+            }else{
+                hora = today.getHours() + ":" + today.getMinutes();
+            }
+            llamada.fecha = fecha;
+            llamada.horainicio = fecha + " "+$('#hora_inicio').val();
+            llamada.horatermino = fecha + " "+hora;
             if($('#motivo').val() == ""){
                 
                 swal("Por favor introduce el motivo de la llamada", "", "error");
@@ -686,11 +802,11 @@
                         if ($('#select_problemas').val() == null) {
                             swal("Por favor selecciona la clasificación del problema", "", "error");
                         } else {
-                            llamada.clas_problema = $('#select_problemas').text();
+                            llamada.clas_problema = $('#select_problemas').val();
                             if ($('#select_soluciones').val() == null) {
                                 swal("Por favor selecciona la clasificación de la solución", "", "error");
                             } else {
-                                llamada.clas_solucion = $('#select_soluciones').text();
+                                llamada.clas_solucion = $('#select_soluciones').val();
                                 llamada.queja = count_queja;
                                 if (count_queja == 2) {
                                     var id_plaza = $('#conectando_plaza').val();
@@ -709,7 +825,10 @@
                                             $('#panel_nueva_queja').hide();
                                             $('#motivo_no_cliente').hide();
                                             $('#solucion_no_cliente').hide();
+                                            $('#email_no_cliente').hide();
                                             $('#btn_enviar').hide();
+                                            $('#tipo_llamante').show();
+                                            $('#regresar').hide();
                                             document.getElementById("llamadaForm").reset();
                                             swal("La llamada se guaró exitosamente", "", "success");
                                         },
@@ -728,10 +847,6 @@
                                             swal("Por favor selecciona la prioridad de la queja", "", "error");
                                         } else {
                                             llamada.prioridad = $('#prioridad').val();
-                                            if($('#trabajo').val() == null){
-                                                swal("Por favor selecciona el trabajo", "", "error");
-                                            }else{
-                                                llamada.Clv_Trabajo = $('#prioridad').val();
                                                 if($('#turno').val() == null){
                                                     swal("Por favor selecciona el turno", "", "error");
                                                 }else{
@@ -755,6 +870,9 @@
                                                             $('#btn_enviar').hide();
                                                             $('#motivo_no_cliente').hide();
                                                             $('#solucion_no_cliente').hide();
+                                                            $('#email_no_cliente').hide();
+                                                            $('#tipo_llamante').show();
+                                                            $('#regresar').hide();
                                                             swal("La llamada se guaró exitosamente", "", "success");
                                                         },
                                                         error: function (data, jqXHR, textStatus) {
@@ -763,7 +881,7 @@
 
                                                     });
                                                 }
-                                            }
+                                         
                                             
                                         }
                                     }
@@ -780,9 +898,24 @@
             llamada.tipo_llamada = tipo;
             llamada.IdConexion = $('#conectando_plaza').val();
             llamada.usuario = @Session["idusuario"];
-            llamada.fecha = $('#fecha_llamada').val()+" "+$('#hora_inicio').val();
-            llamada.horainicio = $('#fecha_llamada').val()+" "+$('#hora_inicio').val();
-            llamada.horatermino = $('#fecha_llamada').val()+" "+$('#hora_inicio').val();
+            var today = new Date();
+            var dd = today.getDate();
+            var mm = today.getMonth()+1; //January is 0!
+            var yyyy = today.getFullYear();
+
+            if(dd<10) {
+                dd='0'+dd
+            } 
+
+            if(mm<10) {
+                mm='0'+mm
+            } 
+
+            fecha = dd+'-'+mm+'-'+yyyy;
+            var hora = today.getHours() + ":" + today.getMinutes();
+            llamada.fecha = fecha;
+            llamada.horainicio = fecha + " "+$('#hora_inicio').val();
+            llamada.horatermino = fecha + " "+hora;
             if ($('#nombre_no_cliente').val() == "") {
                 swal("Por favor ingresa el nombre de la persona que habla", "", "error");
             } else {
@@ -795,7 +928,12 @@
                         swal("Por favor ingresa la solución de la llamda", "", "error");
                     }else{
                         llamada.solucion = $('#solucion').val();
+                        llamada.telefono = $('#telefono').inputmask('unmaskedvalue');
+                        llamada.celular = $('#celular').inputmask('unmaskedvalue');
+                        llamada.domicilio = $('#domicilio').val();
+                        llamada.email = $('#email').val();
                         var id_plaza = $('#conectando_plaza').val();
+                        console.log(llamada);
                         $.ajax({
                             url: "/Llamada/InsertLlamada",
                             type: "POST",
@@ -806,6 +944,11 @@
                                 $('#motivo_no_cliente').hide();
                                 $('#solucion_no_cliente').hide();
                                 $('#panel_fecha').hide();
+                                $('#telefono_no_cliente').hide();
+                                $('#domicilio_no_cliente').hide();
+                                $('#email_no_cliente').hide();
+                                $('#tipo_llamante').show();
+                                $('#regresar').hide();
                                 document.getElementById("llamadaForm").reset();
                                 swal("La llamada se guaró exitosamente", "", "success");
                             },
@@ -816,6 +959,25 @@
                         });
                     }  
                 }
+            }
+        }
+    }
+
+
+
+    function supports_input_placeholder()
+    {
+        var i = document.createElement('input');
+        return 'placeholder' in i;
+    }
+
+    if(!supports_input_placeholder()) {
+        var fields = document.getElementsByTagName('INPUT');
+        for(var i=0; i < fields.length; i++) {
+            if(fields[i].hasAttribute('placeholder')) {
+                fields[i].defaultValue = fields[i].getAttribute('placeholder');
+                fields[i].onfocus = function() { if(this.value == this.defaultValue) this.value = ''; }
+                fields[i].onblur = function() { if(this.value == '') this.value = this.defaultValue; }
             }
         }
     }

@@ -55,6 +55,7 @@
     <Compile Include="LlamadaData.cs" />
     <Compile Include="ModuleData.cs" />
     <Compile Include="MotivoCancelacionData.cs" />
+    <Compile Include="NoClienteData.cs" />
     <Compile Include="PermisoData.cs" />
     <Compile Include="PreguntaData.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
