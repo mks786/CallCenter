@@ -100,7 +100,7 @@ function LlenarTabla(idplaza) {
 }
 
 function Opciones() {
-    var botones = "<button class='btn btn-info btn-xs detalleLlamada' id='detalleLlamada'>Detalles</button> <button class='btn btn-warning btn-xs editarLlamada' id='editarLlamada'>Editar</button> <button class='btn btn-danger btn-xs eliminarLlamada' id='eliminarLlamada'> Eliminar</button> ";
+    var botones = "<button class='btn btn-info btn-xs detalleLlamada' id='detalleLlamada'>Detalles</button> <button class='btn btn-warning btn-xs editarLlamada' id='editarLlamada'>Editar</button>";
     return botones;
 }
 
@@ -108,7 +108,7 @@ function Opciones() {
 
 //funcion:retorna las opciones que tendra cada row en la tabla principal
 function Opciones(id) {
-    var opc = "<button class='btn btn-info btn-xs Detalle' type='button' id='"+id+"' onclick='MostrarDetalles(this)'>Detalles</button> <button class='btn btn-warning btn-xs Editar' type='button'><i class='fa fa-pencil' aria-hidden='true'></i> Editar</button> <button class='btn btn-danger btn-xs eliminar'  type='button'> <i class='fa fa-trash-o' aria-hidden='true'></i> Eliminar</button>"
+    var opc = "<button class='btn btn-info btn-xs Detalle' type='button' id='" + id + "' onclick='MostrarDetalles(this)'>Detalles</button> <button class='btn btn-warning btn-xs Editar' type='button' id='" + id + "' onclick='editarLlamada(this)'><i class='fa fa-pencil' aria-hidden='true'></i> Editar</button>"
     return opc;
 }
 
@@ -186,11 +186,234 @@ function getNombreCliente(id) {
         type: "GET",
         data: { 'plaza': id_plaza , 'llamada': id},
         success: function (data, textStatus, jqXHR) {
-            $('#nombre').text(data[0].Nombre);
-            $('#domicilio').text(data[0].Domicilio);
-            $('#telefono').text(data[0].Telefono);
-            $('#celular').text(data[0].Celular);
-            $('#email').text(data[0].Email);
+            console.log(data);
+        },
+        error: function (jqXHR, textStatus, errorThrown) {
+
+        }
+    });
+}
+
+function editarLlamada(e) {
+    $('#cargando').show();
+    $('#panel_tabs_llamadas').hide();
+    var llamada = e.getAttribute('id');
+    var id_plaza = $("#plaza_llamadas").val();
+    $.ajax({
+        url: "/Llamada/getOneCall/",
+        type: "GET",
+        data: { 'plaza': id_plaza, 'id_llamada': llamada },
+        success: function (data, textStatus, jqXHR) {
+            var contrato = data[0].Contrato;
+            $('#detalle_editar').val(data[0].Detalle);
+            $('#solucion_editar').val(data[0].Solucion);
+            $('#contrato_editar').val(data[0].Contrato);
+            $('#id_llamada').val(data[0].IdLlamada);
+            var queja = data[0].Clv_Queja;
+            
+            $('#contrato_oculto').val(contrato);
+            $('#queja_oculto').val(queja);
+            if(queja > 0){
+                $('#tab_queja').show();
+                $('#id_queja').val(queja);
+                getDatosQueja(queja);
+                getTurno(data[0].IdTurno)
+            } else {
+                $('#tab_queja').hide();
+            }
+            if (contrato > 0) {
+                $('#clasificacion_editar').show(); 
+                $('#contrato_panel_editar').show(); 
+                $('#celular_panel_editar').hide();
+                $('#nombre_panel_editar').hide();
+                $('#telefono_panel_editar').hide();
+                $('#domicilio_panel_editar').hide();
+                $('#email_panel_editar').hide(); 
+                $('#clasificacion_solucion_editar').show();
+                getSolucionProblemas(data[0].Clv_Problema);
+                getClasificacion(data[0].Clv_Trabajo);
+            } else {
+                getNoCliente(data[0].IdLlamada);
+                $('#clasificacion_editar').hide();
+                $('#contrato_panel_editar').hide();
+                $('#celular_panel_editar').show();
+                $('#nombre_panel_editar').show();
+                $('#telefono_panel_editar').show();
+                $('#domicilio_panel_editar').show();
+                $('#email_panel_editar').show();
+                $('#clasificacion_solucion_editar').hide();
+            }
+        },
+        error: function (jqXHR, textStatus, errorThrown) {
+
+        }
+    });
+    setTimeout("mostrarDatos()", 1000);
+}
+
+function mostrarDatos() {
+    $('#cargando').hide();
+    $('#panel_tabs_llamadas').show();
+}
+
+function getNoCliente(id) {
+    var id_plaza = $("#plaza_llamadas").val();
+    $.ajax({
+        url: "/Llamada/getDatosNoCliente/",
+        type: "GET",
+        data: { 'plaza': id_plaza, 'llamada': id },
+        success: function (data, textStatus, jqXHR) {
+            $('#nombre_editar').val(data[0].Nombre);
+            $('#domicilio_editar').val(data[0].Domicilio);
+            $('#telefono_editar').val(data[0].Telefono);
+            $('#celular_editar').val(data[0].Celular);
+            $('#email_editar').val(data[0].Email);
+        },
+        error: function (jqXHR, textStatus, errorThrown) {
+
+        }
+    });
+}
+
+function getSolucionProblemas(id) {
+    var id_plaza = $("#plaza_llamadas").val();
+    $.ajax({
+        url: "/tblClasificacionProblema/GetClasficacionProblema/",
+        type: "GET",
+        data: { 'IdPlaza': id_plaza },
+        success: function (data, textStatus, jqXHR) {
+            $("#select_problemas option").remove();
+            for (var i = 0; i < data.length; i++) {
+                if (data[i].clvProblema == id) {
+                    $('#select_problemas').append('<option value="'+data[i].clvProblema+'" selected>'+data[i].descripcion+'</option>');
+                } else {
+                    $('#select_problemas').append('<option value="' + data[i].clvProblema + '">' + data[i].descripcion + '</option>');
+                }
+                
+            }
+        },
+        error: function (jqXHR, textStatus, errorThrown) {
+
+        }
+    });
+}
+
+function getClasificacion(id) {
+    var id_plaza = $("#plaza_llamadas").val();
+    $.ajax({
+        url: "/tblClasificacionProblema/GetClasficacionSolucion/",
+        type: "GET",
+        data: { 'IdPlaza': id_plaza },
+        success: function (data, textStatus, jqXHR) {
+            for (var i = 0; i < data.length; i++) {
+                $("#select_soluciones option").remove();
+                if (data[i].CLV_TRABAJO == id) {
+                    $('#select_solucion').append('<option value="' + data[i].CLV_TRABAJO + '" selected>' + data[i].DESCRIPCION + '</option>');
+                } else {
+                    $('#select_solucion').append('<option value="' + data[i].CLV_TRABAJO + '">' + data[i].DESCRIPCION + '</option>');
+                }
+            }
+        },
+        error: function (jqXHR, textStatus, errorThrown) {
+
+        }
+    });
+}
+
+function getDatosQueja(id) {
+    var id_plaza = $("#plaza_llamadas").val();
+    $.ajax({
+        url: "/Llamada/getDatosQueja/",
+        type: "GET",
+        data: { 'plaza': id_plaza, 'queja': id },
+        success: function (data, textStatus, jqXHR) {
+            getPrioridad(data[0].clvPrioridadQueja);
+        },
+        error: function (jqXHR, textStatus, errorThrown) {
+
+        }
+    });
+}
+
+
+function getPrioridad(id) {
+    var id_plaza = $("#plaza_llamadas").val();
+    $.ajax({
+        url: "/tblClasificacionProblema/GetPrioridad/",
+        type: "GET",
+        data: { 'IdPlaza': id_plaza },
+        success: function (data, textStatus, jqXHR) {
+            $("#prioridad_editar option").remove();
+            for (var i = 0; i < data.length; i++) {
+                if (data[i].clvPrioridadQueja == id) {
+                    $('#prioridad_editar').append('<option value="' + data[i].clvPrioridadQueja + '" selected>' + data[i].Descripcion + '</option>');
+                } else {
+                    $('#prioridad_editar').append('<option value="' + data[i].clvPrioridadQueja + '">' + data[i].Descripcion + '</option>');
+                }
+            }
+        },
+        error: function (jqXHR, textStatus, errorThrown) {
+
+        }
+    });
+}
+
+function getTurno(id) {
+    var id_plaza = $("#plaza_llamadas").val();
+    $.ajax({
+        url: "/tblClasificacionProblema/GetTurno/",
+        type: "GET",
+        data: { 'IdPlaza': id_plaza },
+        success: function (data, textStatus, jqXHR) {
+            $("#turno_editar option").remove();
+            for (var i = 0; i < data.length; i++) {
+                if (data[i].IdTurno == id) {
+                    $('#turno_editar').append('<option value="' + data[i].IdTurno + '" selected>' + data[i].Turno + '</option>');
+                } else {
+                    $('#turno_editar').append('<option value="' + data[i].IdTurno + '">' + data[i].Turno + '</option>');
+                }
+            }
+        },
+        error: function (jqXHR, textStatus, errorThrown) {
+
+        }
+    });
+}
+
+
+function guardarLlamada() {
+    var id_plaza = $("#plaza_llamadas").val();
+    var llamada = {};
+    var contrato = $('#contrato_oculto').val();
+    var queja = $('#queja_oculto').val();
+    llamada.solucion = $('#solucion_editar').val();
+    llamada.detalle = $('#detalle_editar').val();
+    llamada.id_llamada = $('#id_llamada').val();
+    llamada.contrato = $('#contrato_editar').val();
+    if(contrato > 0){
+        llamada.clas_problema = $('#select_problemas').val();
+        llamada.clas_solucion = $('#select_solucion').val();
+        if (queja > 0) {
+            llamada.prioridad = $('#prioridad_editar').val();
+            llamada.turno = $('#turno_editar').val();
+            llamada.queja = queja;
+        }
+    } else {
+        llamada.nombre = $('#nombre_editar').val();
+        llamada.domicilio = $('#domicilio_editar').val();
+        llamada.telefono = $('#telefono_editar').val();
+        llamada.celular = $('#celular_editar').val();
+        llamada.email = $('#email_editar').val();
+    }
+    console.log(llamada);
+    $.ajax({
+        url: "/Llamada/editarLLamada/",
+        type: "POST",
+        data: { 'plaza': id_plaza, 'llamada': llamada },
+        success: function (data, textStatus, jqXHR) {
+            $('#ModalEditarLlamada').modal("hide");
+            LlenarTabla(id_plaza);
+            swal("La llamada se guaró exitosamente", "", "success");
         },
         error: function (jqXHR, textStatus, errorThrown) {
 

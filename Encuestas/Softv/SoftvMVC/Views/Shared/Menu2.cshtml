@@ -16,7 +16,7 @@
 
     if (mp.IdModule == @idStateInitial)
     {
-        <li class="active treeview">
+        <li class="treeview">
             @if (mp.ModulePath.StartsWith("/"))
             {
                 var MyUri = HttpContext.Current.Request.Url;
@@ -42,7 +42,7 @@
 
     else
     {
-        <li class="active treeview">
+        <li class="active treeview" id="poner_activo">
             @if (mp.ModuleView != "index")
             {
                 <a href="#"><i class="@mp.Icono"></i> <span>@mp.Description</span> <i class="fa fa-angle-left pull-right"></i></a>

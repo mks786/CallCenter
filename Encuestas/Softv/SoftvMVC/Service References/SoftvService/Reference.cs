@@ -1778,10 +1778,10 @@ namespace SoftvMVC.SoftvService {
         System.Threading.Tasks.Task<int> UpdateConexionAsync(Softv.Entities.ConexionEntity objConexion);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IConexion/DeleteConexion", ReplyAction="http://tempuri.org/IConexion/DeleteConexionResponse")]
-        int DeleteConexion(string BaseRemoteIp, int BaseIdUser, System.Nullable<int> IdConexion);
+        int DeleteConexion(System.Nullable<int> IdConexion);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IConexion/DeleteConexion", ReplyAction="http://tempuri.org/IConexion/DeleteConexionResponse")]
-        System.Threading.Tasks.Task<int> DeleteConexionAsync(string BaseRemoteIp, int BaseIdUser, System.Nullable<int> IdConexion);
+        System.Threading.Tasks.Task<int> DeleteConexionAsync(System.Nullable<int> IdConexion);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -1867,12 +1867,12 @@ namespace SoftvMVC.SoftvService {
             return base.Channel.UpdateConexionAsync(objConexion);
         }
         
-        public int DeleteConexion(string BaseRemoteIp, int BaseIdUser, System.Nullable<int> IdConexion) {
-            return base.Channel.DeleteConexion(BaseRemoteIp, BaseIdUser, IdConexion);
+        public int DeleteConexion(System.Nullable<int> IdConexion) {
+            return base.Channel.DeleteConexion(IdConexion);
         }
         
-        public System.Threading.Tasks.Task<int> DeleteConexionAsync(string BaseRemoteIp, int BaseIdUser, System.Nullable<int> IdConexion) {
-            return base.Channel.DeleteConexionAsync(BaseRemoteIp, BaseIdUser, IdConexion);
+        public System.Threading.Tasks.Task<int> DeleteConexionAsync(System.Nullable<int> IdConexion) {
+            return base.Channel.DeleteConexionAsync(IdConexion);
         }
     }
     

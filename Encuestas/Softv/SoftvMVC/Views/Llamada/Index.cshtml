@@ -160,7 +160,7 @@
 
 
 @*MODAL Editar Llamada*@
-<div class="modal fade bs-example-modal-lg" id="ModalEditarLlamada" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel">
+<div class="modal fade bs-example-modal-lg" id="ModalEditarLlamada" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" data-backdrop="static" data-keyboard="false">
     <div class="modal-dialog modal-lg">
         <div class="modal-content">
             <div class="modal-header">
@@ -168,55 +168,98 @@
                 <h4 class="modal-title">Editar Llamada</h4>
             </div>
             <div class="modal-body">
-                <div class="nav-tabs-custom">
+                <div class="overlay" id="cargando">
+                    <h1 class="text-center" style="font-size:65px;"><i class="fa fa-refresh fa-spin"></i></h1>
+                </div>
+                <div class="nav-tabs-custom" style="display:none;" id="panel_tabs_llamadas">
                     <div class="tab-content">
                         <div class="nav-tabs-custom">
                             <ul class="nav nav-tabs">
                                 <li class="active"><a href="#tab_1" data-toggle="tab" aria-expanded="true">Información Llamada</a></li>
-                                <li class=""><a href="#tab_2" id="tab-preguntas" data-toggle="tab" aria-expanded="false">Queja</a></li>
+                                <li class="" style="display:none;" id="tab_queja"><a href="#tab_2" id="tab-preguntas" data-toggle="tab" aria-expanded="false">Queja</a></li>
                             </ul>
                             <div class="tab-content">
                                 <div class="tab-pane active" id="tab_1">
-                                    <div class="row">
-                                        <div class="col-xs-12">
-                                            <input type="text" class="form-control" id="nombreEncuesta" placeholder="Nombre de la encuesta">
+                                    <input type="hidden" id="id_llamada" />
+                                    <input type="hidden" id="contrato_oculto" />
+                                    <input type="hidden" id="queja_oculto" />
+                                    <div class="row" style="display:none;" id="contrato_panel_editar">
+                                        <div class="col-xs-2">
+                                            <label>Contrato</label>
+                                            <input type="text" class="form-control" id="contrato_editar" disabled>
                                         </div>
                                     </div>
-                                    <br />
+                                    <div class="row" style="display:none;" id="nombre_panel_editar">
+                                        <div class="col-xs-6">
+                                            <label>Nombre</label>
+                                            <input type="text" class="form-control" id="nombre_editar">
+                                        </div>
+                                    </div>
+                                    <div class="row" style="display:none;" id="domicilio_panel_editar">
+                                        <div class="col-xs-6">
+                                            <label>Domicilio</label>
+                                            <textarea class="form-control" id="domicilio_editar"> </textarea>
+                                        </div>
+                                    </div>
+                                    <div class="row" style="display:none;" id="celular_panel_editar">
+                                        <div class="col-xs-4">
+                                            <label>Telefono</label>
+                                            <input type="text" class="form-control" id="telefono_editar">
+                                        </div>
+                                        <div class="col-xs-4">
+                                            <label>Celular</label>
+                                            <input type="text" class="form-control" id="celular_editar">
+                                        </div>
+                                    </div>
+                                    <div class="row" style="display:none;" id="email_panel_editar">
+                                        <div class="col-xs-4">
+                                            <label>Email</label>
+                                            <input type="text" class="form-control" id="email_editar">
+                                        </div>
+                                    </div>
                                     <div class="row">
-                                        <div class="col-xs-12">
-                                            <textarea class="form-control" id="Descripcion_encuesta" placeholder="Descripción de la encuesta"></textarea>
+                                        <div class="col-xs-6">
+                                            <label>Detalle</label>
+                                            <textarea class="form-control" id="detalle_editar"></textarea>
+                                        </div>
+                                    </div>
+                                    <div class="row" style="display:none;" id="clasificacion_editar">
+                                        <div class="col-xs-4">
+                                            <label>Clasificación del problema</label>
+                                            <select class="form-control" id="select_problemas"></select>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-xs-6">
+                                            <label>Solución</label>
+                                            <textarea class="form-control" id="solucion_editar"></textarea>
+                                        </div>
+                                    </div>
+                                    <div class="row" style="display:none;" id="clasificacion_solucion_editar">
+                                        <div class="col-xs-4">
+                                            <label>Clasificación de la solución</label>
+                                            <select class="form-control" id="select_solucion"></select>
                                         </div>
                                     </div>
                                 </div><!-- /.tab-pane -->
                                 <div class="tab-pane" id="tab_2">
                                     <div class="row">
-                                        <div class="col-xs-2 col-xs-offset-7"><button class="btn btn-success btn-xs pull-left" id="AddPregunta" onclick="DetallePreguntas();"><i class="fa fa-plus" aria-hidden="true"></i> Agregar pregunta</button></div>
-                                        <div class="col-xs-3"><button class="btn btn-info btn-xs pull-left" id="ShowCatalogo" onclick="ShowCatalogoPreguntas();"><i class="fa fa-list" aria-hidden="true"></i> Catálogo de preguntas</button></div>
-                                    </div>
-
-
-
-
-                                    <hr style="color:#0094ff; background-color:#0094ff;" />
-                                    <div class="row">
-                                        <table class="table" id="tablaPreguntas" style="display:none;">
-                                            <thead>
-                                                <tr>
-                                                    <td><b>PREGUNTA</b></td>
-                                                    <td><b>TIPO RESPUESTA</b></td>
-                                                    <td><b>OPCIONES</b></td>
-                                                </tr>
-                                            </thead>
-                                            <tbody id="TbodyPreguntas"></tbody>
-
-
-                                        </table>
-                                        <div class="callout callout-warning" id="msnTablavacia">
-                                            <h4 class="text-center">Atención!</h4>
-                                            <p class="text-center">Aún no tienes preguntas agregadas dentro de la encuesta.</p>
+                                        <div class="col-md-2">
+                                            <label>ID Queja</label>
+                                            <input type="text" class="form-control" id="id_queja" disabled />
                                         </div>
-
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-4">
+                                            <label>Prioridad</label>
+                                            <select class="form-control" id="prioridad_editar"></select>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-4">
+                                            <label>Turno</label>
+                                            <select class="form-control" id="turno_editar"></select>
+                                        </div>
                                     </div>
                                 </div><!-- /.tab-pane -->
                                 <div class="tab-pane" id="tab_3">
@@ -229,7 +272,7 @@
             </div>
             <div class="modal-footer">
                 <button class="btn btn-primary" type="button" data-dismiss="modal">Cerrar</button>
-                <button class="btn btn-success" type="button">Guardar</button>
+                <button class="btn btn-success" type="button" onclick="guardarLlamada()">Guardar</button>
             </div>
         </div>
     </div>

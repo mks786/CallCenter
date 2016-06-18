@@ -150,7 +150,16 @@ namespace SoftvMVC.Controllers
             }
             return View(objUsuario);
         }
+        public ActionResult CreateUser(UsuarioEntity objUsuario)
+        {
 
+            objUsuario.BaseRemoteIp = RemoteIp;
+            objUsuario.BaseIdUser = LoggedUserName;
+            int result;
+            result = proxy.AddUsuario(objUsuario);
+            return Json(result, JsonRequestBehavior.AllowGet);
+    
+        }
         public ActionResult Edit(int id = 0)
         {
             PermisosAccesoDeniedEdit("Usuario");
@@ -214,12 +223,21 @@ namespace SoftvMVC.Controllers
 
         public JsonResult Delete(int id)
         {
-            proxy.DeleteUsuario(id);
-
-            String mensaje = "{mensaje:'Se ha eliminado el Usuario'}";
-            return Json(mensaje, JsonRequestBehavior.AllowGet);
+            int result = proxy.DeleteUsuario(id);
+            return Json(result, JsonRequestBehavior.AllowGet);
         }
 
+        public JsonResult Update(UsuarioEntity usuario)
+        {
+            int result = proxy.UpdateUsuario(usuario);
+            return Json(result, JsonRequestBehavior.AllowGet);
+        }
+        public ActionResult getUsuarionData(int id_usuario)
+        {
+            UsuarioEntity usuario = proxy.GetUsuarioList().Where(o => o.IdUsuario == id_usuario).First();
+
+            return Json(usuario, JsonRequestBehavior.AllowGet);
+        }
 
         public ActionResult QuickIndex(int? page, int? pageSize, String Nombre, String Email, String Usuario, String Password, int? IdRol, int? IdGerencia, int? IdDepartamento, int? id, int? estado, bool? cambioestado)
         {

@@ -75,6 +75,7 @@ function plaza_conexion() {
 
 
 $('#busqueda_masiva').on('click', function () {
+    $('.collapse').collapse('hide');
     var id_plaza = $('#conexion_plaza').val();
     var tipo_de_servicio = $('#tipo_servicio').val();
     var fecha_inicio = '';
@@ -134,6 +135,7 @@ $('#busqueda_masiva').on('click', function () {
 });
 
 $('#buscar_por_nombre').on('click', function () {
+    $('.collapse').collapse('hide');
     var id_plaza = $('#conexion_plaza').val();
     var nombre = $('#nombre_individual').val();
     console.log(nombre);
@@ -152,7 +154,7 @@ $('#buscar_por_nombre').on('click', function () {
                 $('#invalido').hide();
                 $('#TablaIndividual tbody > tr').remove();
                 for (var i = 0; i < data.length; i++) {
-                    $('#TablaIndividual tbody').append('<tr><td>' + data[i].CONTRATO + '</td><td>' + data[i].NOMBRE + '</td><td>' + data[i].Ciudad + '</td><td>' + data[i].Colonia + '</td><td>' + data[i].Calle + '</td><td>' + data[i].NUMERO + '</td><td><button class="btn btn-success" onclick="aplicando_encuesta(this)" data-contrato="' + data[i].CONTRATO + '" data-name="' + data[i].NOMBRE + '" data-ciudad="' + data[i].Ciudad + '" data-colonia="' + data[i].Colonia + '" data-calle="' + data[i].Calle + '" data-numero="' + data[i].NUMERO + '" data-telefono="' + data[i].TELEFONO + '"><i class="fa fa-pie-chart" aria-hidden="true"></i>Aplicar</button></td></tr>');
+                    $('#TablaIndividual tbody').append('<tr><td>' + data[i].CONTRATO + '</td><td>' + data[i].NOMBRE + '</td><td>' + data[i].Ciudad + '</td><td>' + data[i].Colonia + '</td><td>' + data[i].Calle + '</td><td>' + data[i].NUMERO + '</td><td><button class="btn btn-success" onclick="aplicando_encuesta(this)" data-contrato="' + data[i].CONTRATO + '" data-name="' + data[i].NOMBRE + '" data-ciudad="' + data[i].Ciudad + '" data-colonia="' + data[i].Colonia + '" data-calle="' + data[i].Calle + '" data-numero="' + data[i].NUMERO + '" data-telefono="' + data[i].TELEFONO + '"><i class="fa fa-pie-chart" aria-hidden="true"></i> Aplicar</button></td></tr>');
 
                 }
             }
@@ -165,6 +167,7 @@ $('#buscar_por_nombre').on('click', function () {
 });
 
 $('#buscar_por_direccion').on('click', function () {
+    $('.collapse').collapse('hide');
     var id_plaza = $('#conexion_plaza').val();
     var calle = $('#calle').val();
     var ciudad = $('#ciudad').val();
@@ -185,7 +188,7 @@ $('#buscar_por_direccion').on('click', function () {
                 $('#invalido').hide();
                 $('#TablaIndividual tbody > tr').remove();
                 for (var i = 0; i < data.length; i++) {
-                    $('#TablaIndividual tbody').append('<tr><td>' + data[i].CONTRATO + '</td><td>' + data[i].NOMBRE + '</td><td>' + data[i].Ciudad + '</td><td>' + data[i].Colonia + '</td><td>' + data[i].Calle + '</td><td>' + data[i].NUMERO + '</td><td><button class="btn btn-success" onclick="aplicando_encuesta(this)" data-contrato="' + data[i].CONTRATO + '" data-name="' + data[i].NOMBRE + '" data-ciudad="' + data[i].Ciudad + '" data-colonia="' + data[i].Colonia + '" data-calle="' + data[i].Calle + '" data-numero="' + data[i].NUMERO + '" data-telefono="' + data[i].TELEFONO + '"><i class="fa fa-pie-chart" aria-hidden="true"></i>Aplicar</button></td></tr>');
+                    $('#TablaIndividual tbody').append('<tr><td>' + data[i].CONTRATO + '</td><td>' + data[i].NOMBRE + '</td><td>' + data[i].Ciudad + '</td><td>' + data[i].Colonia + '</td><td>' + data[i].Calle + '</td><td>' + data[i].NUMERO + '</td><td><button class="btn btn-success" onclick="aplicando_encuesta(this)" data-contrato="' + data[i].CONTRATO + '" data-name="' + data[i].NOMBRE + '" data-ciudad="' + data[i].Ciudad + '" data-colonia="' + data[i].Colonia + '" data-calle="' + data[i].Calle + '" data-numero="' + data[i].NUMERO + '" data-telefono="' + data[i].TELEFONO + '"><i class="fa fa-pie-chart" aria-hidden="true"></i> Aplicar</button></td></tr>');
 
                 }
             }
@@ -198,6 +201,7 @@ $('#buscar_por_direccion').on('click', function () {
 });
 
 $('#buscar_por_contrato').on('click', function () {
+    $('.collapse').collapse('hide');
     var id_plaza = $('#conexion_plaza').val();
     var contrato = $('#input_contrato').val();
     $('#panel_masivo').hide();
@@ -214,7 +218,7 @@ $('#buscar_por_contrato').on('click', function () {
             } else {
                 $('#invalido').hide();
                 $('#TablaIndividual tbody > tr').remove();
-                $('#TablaIndividual tbody').append('<tr><td>' + data[0].CONTRATO + '</td><td>' + data[0].NOMBRE + '</td><td>' + data[0].Ciudad + '</td><td>' + data[0].Colonia + '</td><td>' + data[0].Calle + '</td><td>' + data[0].NUMERO + '</td><td><button class="btn btn-success" onclick="aplicando_encuesta(this)" data-contrato="' + data[0].CONTRATO + '" data-name="' + data[0].NOMBRE + '" data-ciudad="' + data[0].Ciudad + '" data-colonia="' + data[0].Colonia + '" data-calle="' + data[0].Calle + '" data-numero="' + data[0].NUMERO + '" data-telefono="' + data[0].TELEFONO + '"><i class="fa fa-pie-chart" aria-hidden="true"></i>Aplicar</button></td></tr>');
+                $('#TablaIndividual tbody').append('<tr><td>' + data[0].CONTRATO + '</td><td>' + data[0].NOMBRE + '</td><td>' + data[0].Ciudad + '</td><td>' + data[0].Colonia + '</td><td>' + data[0].Calle + '</td><td>' + data[0].NUMERO + '</td><td><button class="btn btn-success" onclick="aplicando_encuesta(this)" data-contrato="' + data[0].CONTRATO + '" data-name="' + data[0].NOMBRE + '" data-ciudad="' + data[0].Ciudad + '" data-colonia="' + data[0].Colonia + '" data-calle="' + data[0].Calle + '" data-numero="' + data[0].NUMERO + '" data-telefono="' + data[0].TELEFONO + '"><i class="fa fa-pie-chart" aria-hidden="true"></i> Aplicar</button></td></tr>');
             }
         },
         error: function (data, jqXHR, textStatus) {

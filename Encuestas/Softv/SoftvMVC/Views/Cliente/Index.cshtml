@@ -28,86 +28,105 @@
     <div class="col-xs-12" >
         <div class="box">
             <div class="panel-body" id="panel_clientes" style="display:none;">
-                <!-- Nav tabs -->
-                <ul class="nav nav-tabs" role="tablist">
-                    <li role="presentation" class="active"><a href="#contrato" aria-controls="contrato" role="tab" data-toggle="tab">Contrato</a></li>
-                    <li role="presentation"><a href="#nombre" aria-controls="nombre" role="tab" data-toggle="tab">Nombre</a></li>
-                    <li role="presentation"><a href="#direccion" aria-controls="direccion" role="tab" data-toggle="tab">Dirección</a></li>
-                </ul>
+                <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
+                    <div class="panel panel-default">
+                        <div class="panel-heading" role="tab" id="headingOne">
+                            <h4 class="panel-title">
+                                <a role="button" id="busqueda_collapse" data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="true" aria-controls="collapseOne" style="color:#4b646f;">
+                                    Busqueda individual
+                                </a>
+                            </h4>
+                        </div>
+                        <div id="collapseOne" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingOne">
+                            <div class="panel-body">
+                                <!-- Nav tabs -->
+                                <ul class="nav nav-tabs" role="tablist">
+                                    <li role="presentation" class="active"><a href="#contrato" aria-controls="contrato" role="tab" data-toggle="tab">Contrato</a></li>
+                                    <li role="presentation"><a href="#nombre" aria-controls="nombre" role="tab" data-toggle="tab">Nombre</a></li>
+                                    <li role="presentation"><a href="#direccion" aria-controls="direccion" role="tab" data-toggle="tab">Dirección</a></li>
+                                </ul>
 
-                <!-- Tab panes -->
-                <div class="tab-content">
-                    <div role="tabpanel" class="tab-pane active" id="contrato">
-                        <br />
-                        <div class="row">
-                            <div class="col-md-4">
-                                <p style="color:#4b646f;">Ingrese el número de contrato</p>
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="col-md-8">
-                                <input type="text" class="form-control" id="input_contrato" />
-                                <span class="help-block">El número de contrato está formado por 2 grupos de números con un guión intermedio p.e. (1234-1)</span>
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="col-md-12">
-                                <p class="text-right">
-                                    <button class="btn btn-primary" id="buscar_por_contrato"><i class="fa fa-search" aria-hidden="true"></i> Buscar</button>
-                                </p>
-                            </div>
-                        </div>
-                    </div>
-                    <div role="tabpanel" class="tab-pane" id="direccion">
-                        <br />
-                        <div class="container">
-                            <div class="row">
-                                <div class="col-md-4">
-                                    <input type="text" class="form-control" id="ciudad_busqueda" placeholder="Ciudad" />
+                                <!-- Tab panes -->
+                                <div class="tab-content">
+                                    <div role="tabpanel" class="tab-pane active" id="contrato">
+                                        <br />
+                                        <div class="row">
+                                            <div class="col-md-4">
+                                                <p style="color:#4b646f;">Ingrese el número de contrato</p>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-3">
+                                                <input type="text" class="form-control" id="input_contrato" />
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-8">
+                                                <span class="help-block">El número de contrato está formado por 2 grupos de números con un guión intermedio p.e. (1234-1)</span>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-12">
+                                                <p class="text-right">
+                                                    <a class="btn btn-primary" id="buscar_por_contrato"><i class="fa fa-search" aria-hidden="true"></i> Buscar</a>
+                                                </p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div role="tabpanel" class="tab-pane" id="direccion">
+                                        <br />
+                                        <div class="container">
+                                            <div class="row">
+                                                <div class="col-md-4">
+                                                    <input type="text" class="form-control" id="ciudad_busqueda" placeholder="Ciudad" />
+                                                </div>
+                                            </div><br />
+                                            <div class="row">
+                                                <div class="col-md-4">
+                                                    <input type="text" class="form-control" id="colonia_domicilio" placeholder="Colonia" />
+                                                </div>
+                                            </div><br />
+                                            <div class="row">
+                                                <div class="col-md-4">
+                                                    <input type="text" class="form-control" id="calle_busqueda" placeholder="Calle" />
+                                                </div>
+                                            </div><br />
+                                            <div class="row">
+                                                <div class="col-md-4">
+                                                    <input type="text" class="form-control" id="numero_domicilio" placeholder="Número" />
+                                                </div>
+                                            </div>
+                                        </div><br />
+                                        <div class="row">
+                                            <div class="col-md-12">
+                                                <p class="text-right">
+                                                    <a class="btn btn-primary" id="buscar_por_direccion"><i class="fa fa-search" aria-hidden="true"></i> Buscar</a>
+                                                </p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div role="tabpanel" class="tab-pane" id="nombre">
+                                        <br />
+                                        <div class="row">
+                                            <div class="col-md-4">
+                                                <p style="color:#4b646f;">Nombre completo</p>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-8">
+                                                <input type="text" class="form-control" id="nombre_individual" />
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-12">
+                                                <p class="text-right">
+                                                    <a class="btn btn-primary" id="buscar_por_nombre"><i class="fa fa-search" aria-hidden="true"></i> Buscar</a>
+                                                </p>
+                                            </div>
+                                        </div>
+                                    </div>
                                 </div>
-                            </div><br />
-                            <div class="row">
-                                <div class="col-md-4">
-                                    <input type="text" class="form-control" id="colonia_domicilio" placeholder="Colonia" />
-                                </div>
-                            </div><br />
-                            <div class="row">
-                                <div class="col-md-4">
-                                    <input type="text" class="form-control" id="calle_busqueda" placeholder="Calle" />
-                                </div>
-                            </div><br />
-                            <div class="row">
-                                <div class="col-md-4">
-                                    <input type="text" class="form-control" id="numero_domicilio" placeholder="Número" />
-                                </div>
-                            </div>
-                        </div><br />
-                        <div class="row">
-                            <div class="col-md-12">
-                                <p class="text-right">
-                                    <button class="btn btn-primary" id="buscar_por_direccion"><i class="fa fa-search" aria-hidden="true"></i> Buscar</button>
-                                </p>
-                            </div>
-                        </div>
-                    </div>
-                    <div role="tabpanel" class="tab-pane" id="nombre">
-                        <br />
-                        <div class="row">
-                            <div class="col-md-4">
-                                <p style="color:#4b646f;">Nombre completo</p>
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="col-md-8">
-                                <input type="text" class="form-control" id="nombre_individual" />
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="col-md-12">
-                                <p class="text-right">
-                                    <button class="btn btn-primary" id="buscar_por_nombre"><i class="fa fa-search" aria-hidden="true"></i> Buscar</button>
-                                </p>
-                            </div>
+                            </div><!-- panel body -->
                         </div>
                     </div>
                 </div>
@@ -134,18 +153,6 @@
                         </tr>
                     </thead>
                     <tbody></tbody>
-                    <tfoot>
-                        <tr>
-
-                            <td><b>Contrato</b></td>
-                            <td><b>Nombre</b> </td>
-                            <td><b>Ciudad</b></td>
-                            <td><b>Colonia</b></td>
-                            <td><b>Calle</b></td>
-                            <td><b>Número</b></td>
-                            <td><b>Opciones</b></td>
-                        </tr>
-                    </tfoot>
                 </table>
             </div>
         </div>

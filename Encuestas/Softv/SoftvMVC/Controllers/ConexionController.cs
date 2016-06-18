@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using System.Data.SqlClient;
 using PagedList;
 using Softv.Entities;
 using Globals;
@@ -22,7 +23,7 @@ namespace SoftvMVC.Controllers
     public partial class ConexionController : BaseController, IDisposable
     {
         private SoftvService.ConexionClient proxy = null;
-
+       
 
         public ConexionController()
         {
@@ -52,6 +53,18 @@ namespace SoftvMVC.Controllers
             return View();
         }
 
+
+        public ActionResult Edit(ConexionEntity conexion)
+        {
+            int result=proxy.UpdateConexion(conexion);
+            return Json(result, JsonRequestBehavior.AllowGet);
+        }
+
+        public ActionResult Delete(int id)
+        {
+            int result = proxy.DeleteConexion(id);
+            return Json(result, JsonRequestBehavior.AllowGet);
+        }
         public ActionResult AddConexion(ConexionEntity conexion)
         {
             int result= proxy.AddConexion(conexion);
@@ -111,6 +124,15 @@ namespace SoftvMVC.Controllers
             public int recordsFiltered { get; set; }
             public List<ConexionEntity> data { get; set; }
         }
+
+
+        public ActionResult getConexionData(int id_conexion)
+        {
+           ConexionEntity conection= proxy.GetConexionList().Where(o => o.IdConexion == id_conexion).First();
+
+           return Json(conection,JsonRequestBehavior.AllowGet);
+        }
+
 
     }
 

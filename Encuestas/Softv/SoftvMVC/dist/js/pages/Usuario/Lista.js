@@ -1,11 +1,6 @@
 ﻿$(document).ready(function () {
     LlenarTabla();
 
-    $(".Agregar").click(function () {
-        $('#ModalAgregarUsuario').modal('show');
-
-    });
-
 });
 
 
@@ -51,7 +46,7 @@ function LlenarTabla() {
             {
             sortable: false,
             "render": function (data, type, full, meta) {
-                return Opciones();  //Es el campo de opciones de la tabla.
+                return Opciones(full);  //Es el campo de opciones de la tabla.
             }
         }
         ],
@@ -83,15 +78,173 @@ function LlenarTabla() {
         "order": [[0, "asc"]]
     })
 
-    $("div.toolbar").html('<button class="btn btn-success btn-sm Agregar" style="float:right;" ><i class="fa fa-plus" aria-hidden="true"></i> Nuevo Usuario </button> <div class="input-group input-group-sm"><input class="form-control" type="text"><span class="input-group-btn"><button class="btn btn-info btn-flat" type="button">Buscar</button></span></div>');
+    $("div.toolbar").html('<button class="btn btn-success btn-sm" style="float:right;" onclick="agregarUsuario()"><i class="fa fa-plus" aria-hidden="true"></i> Nuevo Usuario </button> <div class="input-group input-group-sm"><input class="form-control" type="text"><span class="input-group-btn"><button class="btn btn-info btn-flat" type="button">Buscar</button></span></div>');
 
 }
 
-function Opciones() {
-    var botones = "<button class='btn btn-info btn-xs detalleUsuario' id='detalleUsuario'>Detalles</button> <button class='btn btn-warning btn-xs editarUsuario' id='editarUsuario'>Editar</button> <button class='btn btn-danger btn-xs eliminarUsuario' id='eliminarUsuario'> Eliminar</button> ";
+function agregarUsuario() {
+    $('#Nombre').val('');
+    $('#Username').val('');
+    $('#email').val('');
+    $('#pass').val('');
+    $('#cpass').val('');
+    $('#rol').val('0').change();
+    var checked = $("#Status").parent('[class*="icheckbox"]').hasClass("checked");
+    if (checked) {
+        $("#Status").removeClass('checked');
+    }
+    $('#ModalAgregarUsuario').modal('show');
+}
+
+function Opciones(full) {
+    var botones = "<button class='btn btn-warning btn-xs' id='" + full.IdUsuario + "' onclick='datosUsuario(this)'>Editar</button> <button class='btn btn-danger btn-xs' id='" + full.IdUsuario + "' data-name='" + full.Nombre + "' onclick='eliminarUsuario(this)'> Eliminar</button> ";
     return botones;
 }
 
+function datosUsuario(e) {
+    var id = e.getAttribute('id');
+    $.ajax({
+        url: "/Usuario/getUsuarionData/",
+        type: "POST",
+        data: { 'id_usuario': id },
+        success: function (data, textStatus, jqXHR) {
+            $('#id_editar').val(data.IdUsuario);
+            $('#Nombre_editar').val(data.Nombre);
+            $('#Username_editar').val(data.Usuario);
+            $('#Email_editar').val(data.Email);
+            $('#pass_editar').val(data.Password);
+            $('#cpass_editar').val(data.Password);
+            $('#rol_editar').val(data.IdRol).change();
+            var status = data.Estado;
+            if(status){
+                $('input').iCheck('check');
+            } else {
+                $('input').iCheck('uncheck');
+            }
+        },
+        error: function (jqXHR, textStatus, errorThrown) {
+
+        }
+    });
+    $('#ModalEditarUsuario').modal('show');
+}
+function editarUsuario() {
+    var usuario = {};
+    usuario.IdUsuario = $('#id_editar').val();
+    usuario.Nombre = $('#Nombre_editar').val();
+    usuario.Usuario = $('#Username_editar').val();
+    usuario.Email = $('#Email_editar').val();
+    if ($('#pass_editar').val() != $('#cpass_editar').val()) {
+        swal("Las contraseñas no coinciden", "", "error");
+    }else{
+        usuario.Password = $('#pass_editar').val();
+        usuario.IdRol = $('#rol_editar').val();
+        var checked = $("#Status_editar").parent('[class*="icheckbox"]').hasClass("checked");
+        if (checked) {
+            usuario.Estado = true;
+        }
+        else {
+            usuario.Estado = false;
+        }
+        $.ajax({
+            url: "/Usuario/Update/",
+            type: "POST",
+            data: { 'usuario': usuario },
+            success: function (data, textStatus, jqXHR) {
+                LlenarTabla();
+                $('#ModalEditarUsuario').modal('hide');
+                swal("Hecho!", "Usuario editado exitosamente!", "success");
+            },
+            error: function (jqXHR, textStatus, errorThrown) {
+
+            }
+        });
+
+    }
+    
+}
+
+function eliminarUsuario(e) {
+    var id = e.getAttribute('id');
+    var nombre = e.getAttribute('data-name');
+    $('#eliminarUsuario_id').val(id);
+    $('#nombre_usuario').text(nombre);
+    $('#ModalEliminarUsuario').modal('show');
+}
+
+function deleteUsuario() {
+    var id = $('#eliminarUsuario_id').val();
+    $.ajax({
+        url: "/Usuario/Delete/",
+        type: "POST",
+        data: { 'id': id },
+        success: function (data, textStatus, jqXHR) {
+            LlenarTabla();
+            $('#ModalEliminarUsuario').modal('hide');
+            swal("Hecho!", "Usuario eliminada exitosamente!", "success");
+        },
+        error: function (jqXHR, textStatus, errorThrown) {
+
+        }
+    });
+
+}
+
+function GuardaUsuario() {
+
+
+    if ($('#Nombre').val() == "") {
+        swal("Define un nombre para el usuario", "", "error");
+    }
+    else if ($('#email').val() == "") {
+        swal("Define un correo para el usuario", "", "error");
+    }
+    else if ($('#pass').val() == "") {
+        swal("Define un contraseña para el usuario", "", "error");
+    }
+    else if ($('#cpass').val() == "") {
+        swal("Confirma contraseña", "", "error");
+    }
+    else if ($('#pass').val() != $('#cpass').val()) {
+        swal("Las contraseñas no coinciden", "", "error");
+    }
+
+    else if ($('#rol').val() == null) {
+
+        swal("Define un rol para el usuario", "", "error");
+    }
+    else {
+        var objUsuario = {};
+        objUsuario.IdRol = $('#rol').val(); 
+        objUsuario.Nombre = $('#Nombre').val();
+        objUsuario.Usuario = $('#Username').val();
+        objUsuario.Email = $('#email').val();
+        objUsuario.Password = $('#pass').val();
+        var checked = $("#Status").parent('[class*="icheckbox"]').hasClass("checked");
+        if (checked) {
+            objUsuario.Estado = true;
+        }
+        else {
+            objUsuario.Estado = false;
+        }
+
+        console.log(objUsuario);
+        $.ajax({
+            url: "/Usuario/CreateUser/",
+            type: "POST",
+            data: { 'objUsuario': objUsuario },
+            success: function (data, textStatus, jqXHR) {
+                LlenarTabla();
+                $('#ModalAgregarUsuario').modal('hide');
+                swal("Hecho!", "Usuario guardado exitosamente!", "success");
+            },
+            error: function (jqXHR, textStatus, errorThrown) {
+
+            }
+        });
+
+    }
+}
 
 
 

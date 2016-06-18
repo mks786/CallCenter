@@ -28,25 +28,15 @@
                 <table id="TablaConexiones" class="table table-bordered table-hover dataTable">
                     <thead>
                         <tr>
-                            <td><b>Id Conexion</b></td>
+                            <td><b>Id Plaza</b></td>
                             <td><b>Plaza</b></td>
                             <td><b>Servidor</b></td>
                             <td><b>Base de Datos</b></td>
                             <td><b>Usuario</b></td>
                             <td><b>Password</b></td>
+                            <td><b>Opciones</b></td>
                         </tr>
                     </thead>
-
-                    <tfoot>
-                        <tr>
-                            <td><b>Id Conexion</b></td>
-                            <td><b>Plaza</b></td>
-                            <td><b>Servidor</b></td>
-                            <td><b>Base de Datos</b></td>
-                            <td><b>Usuario</b></td>
-                            <td><b>Password</b></td>
-                        </tr>
-                    </tfoot>
 
                 </table>
 
@@ -61,71 +51,50 @@
         <div class="modal-content">
             <div class="modal-header">
                 <button class="close" aria-label="Close" type="button" data-dismiss="modal"><span aria-hidden="true">×</span></button>
-                <h4 class="modal-title" id="tituloModalAgregarEncuesta">Nueva conexión</h4>
+                <h4 class="modal-title" id="tituloModalAgregarEncuesta">Nueva Plaza</h4>
             </div>
             <div class="modal-body">
                 <div class="row">
-                    <div class="col-xs-8">
+                    <div class="col-xs-6">
                         <div class="form-group">
                             <label for="exampleInputEmail1">Nombre de la plaza</label>
                             <input class="form-control" id="Nombreplaza" type="text">
                         </div>
                     </div>
+                 </div>
+                <div class="row">
                     <div class="col-xs-4">
                         <div class="form-group">
-                            <label for="exampleInputEmail1">IP del servidor</label>
+                            <label for="exampleInputEmail1">Instancia ó IP del servidor</label>
                             <input class="form-control" id="Servidor" type="text">
                         </div>
                     </div>
-
-
-                 </div>
-                <div class="row">
-
                     <div class="col-xs-4">
                         <div class="form-group">
                             <label for="exampleInputEmail1">Nombre de la base de datos</label>
                             <input class="form-control" id="base" type="text">
                         </div>
-
-
                     </div>
-
+                </div>
+                <div class="row">
                     <div class="col-xs-4">
-
                         <div class="form-group">
                             <label for="exampleInputEmail1">Usuario</label>
                             <input class="form-control" id="user" type="text">
                         </div>
-
                     </div>
                     <div class="col-xs-4">
                         <div class="form-group">
                             <label for="exampleInputEmail1">Contraseña</label>
                             <input class="form-control" id="pass" type="text">
                         </div>
-
-
-
                     </div>
-
-                    </div>
-
-                
-
-               
-
-                
-
-                
-
-                
-             
+                </div> 
             </div>
             <div class="modal-footer">
                 <input type="hidden" id="idEncuesta" />
-                <button class="btn btn-default pull-left" type="button" data-dismiss="modal">cerrar</button>
-                <button class="btn btn-primary" id="guardarConexion" type="button">Guardar conexion</button>
+                <button class="btn btn-primary" type="button" data-dismiss="modal">cerrar</button>
+                <button class="btn btn-success" id="guardarConexion" type="button">Guardar</button>
                
 
             </div>
@@ -135,6 +104,86 @@
 
 
 
+<div class="modal fade bs-example-modal-lg" id="ModalEditarConexion" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button class="close" aria-label="Close" type="button" data-dismiss="modal"><span aria-hidden="true">×</span></button>
+                <h4 class="modal-title" id="tituloModalAgregarEncuesta">Editar Plaza</h4>
+            </div>
+            <div class="modal-body">
+                <input class="form-control" id="idplaza_editar" type="hidden">
+                <div class="row">
+                    <div class="col-xs-6">
+                        <div class="form-group">
+                            <label for="exampleInputEmail1">Nombre de la plaza</label>
+                            <input class="form-control" id="nombre_plaza_editar" type="text">
+                        </div>
+                    </div>
+
+                </div>
+                <div class="row">
+                    <div class="col-xs-4">
+                        <div class="form-group">
+                            <label for="exampleInputEmail1">Instancia ó IP del servidor</label>
+                            <input class="form-control" id="intancia_editar" type="text">
+                        </div>
+                    </div>
+                    <div class="col-xs-4">
+                        <div class="form-group">
+                            <label for="exampleInputEmail1">Nombre de la base de datos</label>
+                            <input class="form-control" id="base_editar" type="text">
+                        </div>
+
+
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-xs-4">
+                        <div class="form-group">
+                            <label for="exampleInputEmail1">Usuario</label>
+                            <input class="form-control" id="usuario_editar" type="text">
+                        </div>
+                    </div>
+                    <div class="col-xs-4">
+                        <div class="form-group">
+                            <label for="exampleInputEmail1">Contraseña</label>
+                            <input class="form-control" id="password_editar" type="text">
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <input type="hidden" id="idEncuesta" />
+                <button class="btn btn-primary" type="button" data-dismiss="modal">cerrar</button>
+                <button class="btn btn-success" onclick="editarConexion()" type="button">Guardar</button>
+
+
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade bs-example-modal-lg" id="ModaleliminarConexion" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel">
+    <div class="modal-dialog modal-md">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button class="close" aria-label="Close" type="button" data-dismiss="modal"><span aria-hidden="true">×</span></button>
+                <h4 class="modal-title" id="tituloModalAgregarEncuesta">Elimianr Plaza</h4>
+            </div>
+            <div class="modal-body">
+                <input class="form-control" id="idplaza_eliminar" type="hidden">
+                <h5>¿Deseas eliminar la plaza <strong id="nombre_plaza"></strong>?</h5>
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-primary" type="button" data-dismiss="modal">cerrar</button>
+                <button class="btn btn-danger" onclick="deleteConexion()" type="button">Eliminar</button>
+
+
+            </div>
+        </div>
+    </div>
+</div>
 
 <script src="~/dist/js/pages/Conexion/Lista.js">
     //Ruta de lista.js

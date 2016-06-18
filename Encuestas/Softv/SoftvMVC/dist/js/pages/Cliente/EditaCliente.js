@@ -228,6 +228,7 @@ function plaza_conexion() {
     $('#invalido').hide();
     $('#panel_tabla_clientes').hide();
     $('#panel_clientes').show();
+    $('.collapse').collapse('show');
 }
 
 function getColonia(id, id_plaza,colonia) {
@@ -346,6 +347,7 @@ function BorraFormulario() {
 
 
 $('#buscar_por_nombre').on('click', function () {
+    $('.collapse').collapse('hide');
     var id_plaza = $('#paza_conectando').val();
     var nombre = $('#nombre_individual').val();
     $('#panel_masivo').hide();
@@ -377,6 +379,7 @@ $('#buscar_por_nombre').on('click', function () {
 });
 
 $('#buscar_por_direccion').on('click', function () {
+    $('.collapse').collapse('hide');
     var id_plaza = $('#paza_conectando').val();
     var calle = $('#calle_busqueda').val();
     var ciudad = $('#ciudad_busqueda').val();
@@ -410,6 +413,7 @@ $('#buscar_por_direccion').on('click', function () {
 });
 
 $('#buscar_por_contrato').on('click', function () {
+    $('.collapse').collapse('hide');
     var id_plaza = $('#paza_conectando').val();
     var contrato = $('#input_contrato').val();
     $('#panel_masivo').hide();

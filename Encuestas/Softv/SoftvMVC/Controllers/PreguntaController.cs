@@ -8,6 +8,7 @@ using System.Web.Mvc;
 using PagedList;
 using Softv.Entities;
 using Globals;
+using System.Xml.Linq;
 
 namespace SoftvMVC.Controllers
 {
@@ -106,7 +107,7 @@ namespace SoftvMVC.Controllers
                    p.respuestas = respuestas;
 
 
-            return Json(null, JsonRequestBehavior.AllowGet);
+                   return Json(p, JsonRequestBehavior.AllowGet);
         }
 
         public JsonResult Delete(int id)
@@ -216,7 +217,29 @@ namespace SoftvMVC.Controllers
             public List<Detalle_pregunta> data { get; set; }
         }
 
+        public class detallePregunta{
+            public string Pregunta{get; set;}
+            public int IdTipoPregunta{get; set;}
 
+            public int IdPregunta{get; set;}
+        }
+
+        public class respuesta{
+        
+        public string ResOpcMult{get; set;}
+        public int Id_ResOpcMult{get; set;}
+        }
+
+
+        public ActionResult EditarPregunta(detallePregunta detallePregunta, List<respuesta> respuestas)
+        {
+
+            XElement xe = XElement.Parse(Globals.SerializeTool.Serialize<detallePregunta>(detallePregunta));
+            XElement fg = XElement.Parse(Globals.SerializeTool.SerializeList<respuesta>(respuestas));
+            xe.Add(fg);
+
+            return Json(xe.ToString(),JsonRequestBehavior.AllowGet);
+        }
     }
 
 }

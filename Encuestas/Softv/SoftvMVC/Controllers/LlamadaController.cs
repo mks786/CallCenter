@@ -871,6 +871,104 @@ namespace SoftvMVC.Controllers
             public string Celular { get; set; }
             public string Email { get; set; }
         }
+        public ActionResult getDatosQueja(int plaza, int queja)
+        {
+            ConexionController c = new ConexionController();
+            SqlCommand comandoSql;
+            List<QuejaData> lista = new List<QuejaData>();
+            SqlConnection conexionSQL = new SqlConnection(c.DameConexion(plaza));
+            try
+            {
+                conexionSQL.Open();
+            }
+            catch
+            { }
+
+            try
+            {
+
+                comandoSql = new SqlCommand("SELECT * FROM Quejas WHERE Clv_Queja =" + queja);
+                comandoSql.Connection = conexionSQL;
+                SqlDataReader reader = comandoSql.ExecuteReader();
+                if (reader.HasRows)
+                {
+                    while (reader.Read())
+                    {
+                        QuejaData datos = new QuejaData();
+                        datos.Clv_Trabajo = reader[16].ToString();
+                        datos.clvPrioridadQueja = reader[21].ToString();
+                        lista.Add(datos);
+                    }
+                }
+            }
+
+            catch { }
+            return Json(lista, JsonRequestBehavior.AllowGet);
+        }
+        public class QuejaData
+        {
+            public string Clv_Trabajo { get; set; }
+            public string clvPrioridadQueja { get; set; }
+        }
+
+        public ActionResult editarLLamada(int plaza, editLlamada llamada)
+        {
+            ConexionController c = new ConexionController();
+            SqlCommand comandoSql;
+            List<editLlamada> lista = new List<editLlamada>();
+            SqlConnection conexionSQL = new SqlConnection(c.DameConexion(plaza));
+            try
+            {
+                conexionSQL.Open();
+            }
+            catch
+            { }
+
+            try
+            {
+                if(Int32.Parse(llamada.contrato) == 0){
+                    comandoSql = new SqlCommand("UPDATE LLamadas SET Detalle ='" + llamada.detalle + "', Solucion='" + llamada.solucion + "' WHERE IdLlamada=" + llamada.id_llamada);
+                    comandoSql.Connection = conexionSQL;
+                    comandoSql.ExecuteNonQuery();
+                    comandoSql = new SqlCommand("UPDATE NoClientes SET Nombre ='" + llamada.nombre + "', Direccion='" + llamada.domicilio + "', Telefono='" + llamada.telefono + "', Celular='" + llamada.celular + "', Email='" + llamada.email + "' WHERE IdLlamada=" + llamada.id_llamada);
+                    comandoSql.Connection = conexionSQL;
+                    comandoSql.ExecuteNonQuery();
+                }else{
+                    comandoSql = new SqlCommand("UPDATE LLamadas SET Detalle ='" + llamada.detalle + "', Solucion='" + llamada.solucion + "', Clv_Trabajo=" + llamada.clas_solucion + ", Clv_Problema="+llamada.clas_problema+" WHERE IdLlamada=" + llamada.id_llamada);
+                    comandoSql.Connection = conexionSQL;
+                    comandoSql.ExecuteNonQuery();
+                    if(Int32.Parse(llamada.queja) > 0){
+                        comandoSql = new SqlCommand("UPDATE Quejas SET Problema ='" + llamada.detalle + "', Solucion='" + llamada.solucion + "', Clv_Trabajo=" + llamada.clas_solucion + ", clvPrioridadQueja=" + llamada.prioridad + " WHERE Clv_Queja=" + llamada.queja);
+                        comandoSql.Connection = conexionSQL;
+                        comandoSql.ExecuteNonQuery();
+                        comandoSql = new SqlCommand("UPDATE LLamadas SET IdTurno ='" + llamada.turno + "' WHERE IdLlamada=" + llamada.id_llamada);
+                        comandoSql.Connection = conexionSQL;
+                        comandoSql.ExecuteNonQuery();
+                    }
+                }
+            }
+
+            catch { }
+            return Json(1, JsonRequestBehavior.AllowGet);
+        }
+        public class editLlamada
+        {
+            public string solucion { get; set; }
+            public string detalle { get; set; }
+            public string contrato { get; set; }
+            public string clas_problema { get; set; }
+            public string clas_solucion { get; set; }
+            public string prioridad { get; set; }
+            public string turno { get; set; }
+            public string nombre { get; set; }
+            public string domicilio { get; set; }
+            public string telefono { get; set; }
+            public string celular { get; set; }
+            public string email { get; set; }
+            public string queja { get; set; }
+            public int id_llamada { get; set; }
+
+        }
     }
 
 
