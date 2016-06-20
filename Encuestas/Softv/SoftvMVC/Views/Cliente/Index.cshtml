@@ -175,7 +175,7 @@
                 <div class="nav-tabs-custom" id="contenido_editar" style="display:none;">
                     <ul class="nav nav-tabs">
                         <li class="active"><a href="#tab_1" data-toggle="tab" aria-expanded="true"><i class="fa fa-folder" aria-hidden="true"></i> Información principal</a></li>
-                        <li class=""><a href="#tab_2a" id="tab-preguntas" data-toggle="tab" aria-expanded="false"><i class="fa fa-book" aria-hidden="true"></i> Datos Fiscales</a></li>
+                        @*<li class=""><a href="#tab_2a" id="tab-preguntas" data-toggle="tab" aria-expanded="false"><i class="fa fa-book" aria-hidden="true"></i> Datos Fiscales</a></li>*@
                     </ul>
                     <div class="tab-content">
                         <div class="tab-pane active" id="tab_1">
@@ -573,4 +573,11 @@
 <script src="~/dist/js/pages/Cliente/EditaCliente.js"></script>    
 <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/u/bs/jszip-2.5.0,pdfmake-0.1.18,dt-1.10.12,b-1.2.1,b-flash-1.2.1,b-html5-1.2.1,b-print-1.2.1,r-2.1.0/datatables.min.css" />
 <script type="text/javascript" src="https://cdn.datatables.net/u/bs/jszip-2.5.0,pdfmake-0.1.18,dt-1.10.12,b-1.2.1,b-flash-1.2.1,b-html5-1.2.1,b-print-1.2.1,r-2.1.0/datatables.min.js"></script>
-   
+ <script>
+     $(document).ready(function () {
+         $('#poner_activo li').siblings('li').removeClass('active');
+         $('.4').addClass('active');
+         console.log('activo');
+     });
+</script>
+

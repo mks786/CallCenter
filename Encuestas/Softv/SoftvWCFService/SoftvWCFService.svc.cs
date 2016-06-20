@@ -314,15 +314,17 @@ namespace SoftvWCFService
             return Pregunta.Add(objPregunta);
         }
 
-        public int UpdatePregunta(PreguntaEntity objPregunta)
+        public int UpdatePregunta(string xml)
         {
-            return Pregunta.Edit(objPregunta);
+            return Pregunta.Edit(xml);
         }
 
         public int DeletePregunta(int? IdPregunta)
         {
             return Pregunta.Delete(IdPregunta);
         }
+
+        
 
         #endregion
 

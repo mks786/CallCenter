@@ -344,7 +344,14 @@ namespace SoftvMVC.Controllers
             dataTableData.draw = draw;
             dataTableData.recordsTotal = 0;
             int recordsFiltered = 0;
-            dataTableData.data = FiltrarContenido(ref recordsFiltered, start, length);
+            if(data != ""){
+                dataTableData.data = FiltrarContenido(ref recordsFiltered, start, length).Where(o => o.IdUsuario.ToString().Contains(data) || o.Nombre.Contains(data) || o.Usuario.Contains(data)).ToList();
+            }
+            else
+            {
+                dataTableData.data = FiltrarContenido(ref recordsFiltered, start, length);
+            }
+            
             dataTableData.recordsFiltered = recordsFiltered;
 
             return Json(dataTableData, JsonRequestBehavior.AllowGet);

@@ -126,7 +126,11 @@ namespace SoftvMVC.Controllers
             dataTableData.draw = draw;
             dataTableData.recordsTotal = 0;
             int recordsFiltered = 0;
-            dataTableData.data = FiltrarContenido(ref recordsFiltered, start, length);
+            if(data != ""){
+               dataTableData.data = FiltrarContenido(ref recordsFiltered, start, length).Where(o => o.Pregunta.Contains(data) || o.IdPregunta.ToString().Contains(data)).ToList();
+            }else{
+                dataTableData.data = FiltrarContenido(ref recordsFiltered, start, length);
+            }
             dataTableData.recordsFiltered = recordsFiltered;
 
             return Json(dataTableData, JsonRequestBehavior.AllowGet);
@@ -235,10 +239,9 @@ namespace SoftvMVC.Controllers
         {
 
             XElement xe = XElement.Parse(Globals.SerializeTool.Serialize<detallePregunta>(detallePregunta));
-            XElement fg = XElement.Parse(Globals.SerializeTool.SerializeList<respuesta>(respuestas));
-            xe.Add(fg);
-
-            return Json(xe.ToString(),JsonRequestBehavior.AllowGet);
+            int result = proxy.UpdatePregunta(xe.ToString());
+           
+            return Json(result,JsonRequestBehavior.AllowGet);
         }
     }
 

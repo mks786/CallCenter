@@ -26,7 +26,18 @@ $(document).ready(function () {
     });
 });
 
-function LlenarTabla(idplaza) {
+function Buscando() {
+    var cadena = $('#busqueda').val();
+    var id_plaza = $("#plaza_llamadas").val();
+    if (cadena == "") {
+        LlenarTabla(id_plaza);
+    } else {
+        LlenarTabla(id_plaza, cadena);
+    }
+    
+}
+
+function LlenarTabla(idplaza,cadena) {
     $('#TablaLlamadas tbody > tr').remove();
     $('#TablaLlamadas').dataTable({
         "processing": true,
@@ -40,7 +51,7 @@ function LlenarTabla(idplaza) {
         "ajax": {
             "url": "/Llamada/GetList/",
             "type": "POST",
-            "data": { 'idplaza': idplaza },
+            "data": { 'idplaza': idplaza,'cadena':cadena },
         },
         "fnInitComplete": function (oSettings, json) {
 
@@ -152,7 +163,6 @@ function MostrarDetalles(e){
                 $('#pan_telefono').show();
                 $('#pan_celular').show();
                 $('#pan_email').show();
-                //ajax a la de no clientes
             } else {
                 $('#pan_contrato').show();
                 $('#pan_detalle').show();
@@ -186,7 +196,11 @@ function getNombreCliente(id) {
         type: "GET",
         data: { 'plaza': id_plaza , 'llamada': id},
         success: function (data, textStatus, jqXHR) {
-            console.log(data);
+            $('#nombre').text(data[0].Nombre);
+            $('#domicilio').text(data[0].Domicilio);
+            $('#telefono').text(data[0].Telefono);
+            $('#celular').text(data[0].Celular);
+            $('#email').text(data[0].Email);
         },
         error: function (jqXHR, textStatus, errorThrown) {
 

@@ -445,14 +445,14 @@ namespace SoftvMVC.Controllers
         }
 
 
-        public ActionResult GetList(int idplaza, int draw, int start, int length)
+        public ActionResult GetList(int idplaza, string cadena, int draw, int start, int length)
         {
 
             DataTableData dataTableData = new DataTableData();
             dataTableData.draw = draw;
             dataTableData.recordsTotal = 0;
             int recordFiltered = 0;
-            dataTableData.data = FiltrarContenido(idplaza, draw, start, length, ref recordFiltered);
+            dataTableData.data = FiltrarContenido(idplaza, cadena, draw, start, length, ref recordFiltered);
             dataTableData.recordsFiltered = recordFiltered;
 
             return Json(dataTableData, JsonRequestBehavior.AllowGet);
@@ -466,7 +466,7 @@ namespace SoftvMVC.Controllers
         //    int rango = start + length;
         //    return lista.Skip(start).Take(length).ToList();
         //}
-        public List<LlamadaEntity> FiltrarContenido(int idplaza, int draw, int start, int length, ref int recordFiltered)
+        public List<LlamadaEntity> FiltrarContenido(int idplaza, string cadena, int draw, int start, int length, ref int recordFiltered)
         {
             List<LlamadaEntity> lista = new List<LlamadaEntity>();
             ConexionController c = new ConexionController();
@@ -481,10 +481,14 @@ namespace SoftvMVC.Controllers
             { }
             try
             {
-
-                comandoSql = new SqlCommand("Select * from Llamadas order by IdLlamada DESC");
-                   
-
+                if(cadena != null){
+                    comandoSql = new SqlCommand("Select * from Llamadas where Contrato=" + cadena + " OR IdLlamada="+cadena+"  order by IdLlamada DESC ");
+                }
+                else
+                {
+                    comandoSql = new SqlCommand("Select * from Llamadas order by IdLlamada DESC");
+                }
+               
                 comandoSql.Connection = conexionSQL;
                 SqlDataReader reader = comandoSql.ExecuteReader();
                 if (reader.HasRows)

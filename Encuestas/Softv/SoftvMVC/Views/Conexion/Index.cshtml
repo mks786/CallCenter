@@ -185,7 +185,11 @@
     </div>
 </div>
 
-<script src="~/dist/js/pages/Conexion/Lista.js">
-    //Ruta de lista.js
-
+<script src="~/dist/js/pages/Conexion/Lista.js"></script>
+<script>
+    $(function () {
+        $('#poner_activo li').siblings('li').removeClass('active');
+        $('.19').addClass('active');
+    });
 </script>
+

@@ -749,10 +749,10 @@ namespace SoftvMVC.SoftvService {
         System.Threading.Tasks.Task<int> AddPreguntaAsync(Softv.Entities.PreguntaEntity objPregunta);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IPregunta/UpdatePregunta", ReplyAction="http://tempuri.org/IPregunta/UpdatePreguntaResponse")]
-        int UpdatePregunta(Softv.Entities.PreguntaEntity objPregunta);
+        int UpdatePregunta(string xml);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IPregunta/UpdatePregunta", ReplyAction="http://tempuri.org/IPregunta/UpdatePreguntaResponse")]
-        System.Threading.Tasks.Task<int> UpdatePreguntaAsync(Softv.Entities.PreguntaEntity objPregunta);
+        System.Threading.Tasks.Task<int> UpdatePreguntaAsync(string xml);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IPregunta/DeletePregunta", ReplyAction="http://tempuri.org/IPregunta/DeletePreguntaResponse")]
         int DeletePregunta(System.Nullable<int> IdPregunta);
@@ -836,12 +836,12 @@ namespace SoftvMVC.SoftvService {
             return base.Channel.AddPreguntaAsync(objPregunta);
         }
         
-        public int UpdatePregunta(Softv.Entities.PreguntaEntity objPregunta) {
-            return base.Channel.UpdatePregunta(objPregunta);
+        public int UpdatePregunta(string xml) {
+            return base.Channel.UpdatePregunta(xml);
         }
         
-        public System.Threading.Tasks.Task<int> UpdatePreguntaAsync(Softv.Entities.PreguntaEntity objPregunta) {
-            return base.Channel.UpdatePreguntaAsync(objPregunta);
+        public System.Threading.Tasks.Task<int> UpdatePreguntaAsync(string xml) {
+            return base.Channel.UpdatePreguntaAsync(xml);
         }
         
         public int DeletePregunta(System.Nullable<int> IdPregunta) {

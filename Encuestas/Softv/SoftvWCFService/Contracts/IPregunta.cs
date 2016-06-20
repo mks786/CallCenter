@@ -25,7 +25,7 @@ namespace SoftvWCFService.Contracts
         [OperationContract]
         int AddPregunta(PreguntaEntity objPregunta);
         [OperationContract]
-        int UpdatePregunta(PreguntaEntity objPregunta);
+        int UpdatePregunta(string xml);
         [OperationContract]
         int DeletePregunta(int? IdPregunta);
 

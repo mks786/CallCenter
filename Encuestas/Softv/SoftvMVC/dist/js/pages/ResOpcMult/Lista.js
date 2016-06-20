@@ -3,9 +3,19 @@
 
 });
 
+function Busqueda() {
+    var cadena = $('#buscar').val();
+    if(cadena == ""){
+        LlenarTabla();
+    } else {
+        LlenarTabla(cadena);
+    }
+}
 
-
-function LlenarTabla() {
+function LlenarTabla(cadena) {
+    if(cadena == undefined){
+        cadena = "";
+    }
     $('#TablaResOpcMults').dataTable({
         "processing": true,
         "serverSide": true,
@@ -18,7 +28,7 @@ function LlenarTabla() {
         "ajax": {
             "url": "/ResOpcMults/GetList/",
             "type": "POST",
-            "data": { 'data': 1 },
+            "data": { 'data': cadena },
         },
         "fnInitComplete": function (oSettings, json) {
 
@@ -74,7 +84,7 @@ function LlenarTabla() {
         "order": [[0, "asc"]]
     })
 
-    $("div.toolbar").html('<div class="input-group input-group-sm"><input class="form-control" type="text"><span class="input-group-btn"><button class="btn btn-info btn-flat" type="button">Buscar</button></span></div>');
+    $("div.toolbar").html('<div class="input-group input-group-sm"><input class="form-control" type="text" id="buscar"><span class="input-group-btn"><button class="btn btn-info btn-flat" type="button" onclick="Busqueda()">Buscar</button></span></div>');
     //Respaldo botn agregar
     //$("div.toolbar").html('<button class="btn btn-success btn-sm Agregar" style="float:right;" onclick="agregar()"><i class="fa fa-plus" aria-hidden="true"></i> Nueva ResOpcMult </button> <div class="input-group input-group-sm"><input class="form-control" type="text"><span class="input-group-btn"><button class="btn btn-info btn-flat" type="button">Buscar</button></span></div>');
 

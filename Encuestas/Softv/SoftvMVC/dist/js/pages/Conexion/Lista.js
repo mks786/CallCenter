@@ -4,8 +4,19 @@
 
 });
 
+function Busqueda() {
+    var cadena = $('#buscar').val();
+    if(cadena == ""){
+        LlenarTabla()
+    }else{
+        LlenarTabla(cadena)
+    }
+}
 
-function LlenarTabla() {
+function LlenarTabla(cadena) {
+    if(cadena == undefined){
+        cadena = "";
+    }
     $('#TablaConexiones').dataTable({
         "processing": true,
         "serverSide": true,
@@ -18,7 +29,7 @@ function LlenarTabla() {
         "ajax": {
             "url": "/Conexion/GetList/",
             "type": "POST",
-            "data": { 'data': 1 },
+            "data": { 'data': cadena },
         },
         "fnInitComplete": function (oSettings, json) {
 
@@ -71,7 +82,7 @@ function LlenarTabla() {
 
         "order": [[0, "asc"]]
     })
-    $("div.toolbar").html('<button class="btn bg-olive" style="float:right;" onclick="agregrarConexion()"><i class="fa fa-plug" aria-hidden="true"></i> Nueva conexión</button> <div class="input-group input-group-sm"><input class="form-control" id="abuscar" type="text"><span class="input-group-btn"><button onclick="BuscarEncuesta();" class="btn btn-info btn-flat" type="button">Buscar</button></span></div>');
+    $("div.toolbar").html('<button class="btn bg-olive" style="float:right;" onclick="agregrarConexion()"><i class="fa fa-plug" aria-hidden="true"></i> Nueva Plaza</button> <div class="input-group input-group-sm"><input class="form-control" id="buscar" type="text"><span class="input-group-btn"><button onclick="Busqueda()" class="btn btn-info btn-flat" type="button">Buscar</button></span></div>');
 }
 
 function Opciones(id) {

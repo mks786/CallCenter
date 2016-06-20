@@ -11,7 +11,13 @@
 });
 var preguntas_lista = [];
 
-function LlenarTabla() {
+
+
+function LlenarTabla(cadena) {
+    if (cadena == undefined) {
+
+        cadena = "";
+    }
     $('#TablaPreguntas').dataTable({
         "processing": true,
         "serverSide": true,
@@ -24,7 +30,7 @@ function LlenarTabla() {
         "ajax": {
             "url": "/Pregunta/GetList/",
             "type": "POST",
-            "data": { 'data': 1 },
+            "data": { 'data': cadena },
         },
         "fnInitComplete": function (oSettings, json) {
 
@@ -84,7 +90,7 @@ function LlenarTabla() {
         "order": [[0, "asc"]]
     })
 
-    $("div.toolbar").html('<div class="input-group input-group-sm"><input class="form-control" type="text"><span class="input-group-btn"><button class="btn btn-info btn-flat" type="button">Buscar</button></span></div>');
+    $("div.toolbar").html('<div class="input-group input-group-sm"><input class="form-control" type="text" id="buscar"><span class="input-group-btn"><button class="btn btn-info btn-flat" type="button" onclick="Busqueda()">Buscar</button></span></div>');
     //respaldo de boton agregar
     //$("div.toolbar").html('<button class="btn btn-success btn-sm Agregar" style="float:right;" ><i class="fa fa-plus" aria-hidden="true"></i> Nueva Pregunta </button> <div class="input-group input-group-sm"><input class="form-control" type="text"><span class="input-group-btn"><button class="btn btn-info btn-flat" type="button">Buscar</button></span></div>');
 
@@ -96,7 +102,14 @@ function Opciones() {
 }
 
 
-
+function Busqueda() {
+    var cadena = $('#buscar').val();
+    if(cadena == ""){
+        LlenarTabla();
+    } else {
+        LlenarTabla(cadena);
+    }
+}
 //funcion:retorna las opciones que tendra cada row en la tabla principal
 function Opciones(data) {
     var opc = "<button class='btn btn-warning btn-xs Editar' type='button' id='" + data.IdPregunta + "' onclick='editar(this.id)'><i class='fa fa-pencil' aria-hidden='true'></i> Editar</button>"
@@ -146,7 +159,8 @@ function editar_dom(datos) {
         $('#panel_opcion_multiple').show();
         $("#tabla_respuestas > tbody").html("");
         for (var i = 0; i < datos.respuestas.length; i++) {
-            $('#body_opcion_multiple').append("<tr><td><input type='text' class='form-control' id='" + datos.respuestas[i].Id_ResOpcMult + "' value='" + datos.respuestas[i].ResOpcMult + "' disabled> </td><td><button class='btn btn-danger btn-xs eliminar_respuestas'>Quitar</button></td></tr>");
+            $('#body_opcion_multiple').append("<tr><td><input type='text' class='form-control' id='" + datos.respuestas[i].Id_ResOpcMult + "' value='" + datos.respuestas[i].ResOpcMult + "' disabled> </td></tr>");
+           //con boton eliminar $('#body_opcion_multiple').append("<tr><td><input type='text' class='form-control' id='" + datos.respuestas[i].Id_ResOpcMult + "' value='" + datos.respuestas[i].ResOpcMult + "' disabled> </td><td><button class='btn btn-danger btn-xs eliminar_respuestas'>Quitar</button></td></tr>");
         }
 
     }
@@ -187,7 +201,8 @@ $('#TablaPreguntas').on('click', '.Eliminar', function () {
 });
 
 function AgregarRespuesta() {
-    $('#body_opcion_multiple').append("<tr><td><input type='text' id='focus' onkeypress='removeFocus()' class='form-control focus'> </td><td><button class='btn btn-danger btn-xs eliminar_respuestas'>Quitar</button></td></tr>");
+    $('#body_opcion_multiple').append("<tr><td><input type='text' id='focus' onkeypress='removeFocus()' class='form-control focus'></td></tr>");
+    //boton de eliminar $('#body_opcion_multiple').append("<tr><td><input type='text' id='focus' onkeypress='removeFocus()' class='form-control focus'> </td><td><button class='btn btn-danger btn-xs eliminar_respuestas'>Quitar</button></td></tr>");
     $('#focus').focus();
 }
 
@@ -250,7 +265,9 @@ function guardar_pregunta() {
             type: "POST",
             data: { 'detallePregunta': detallePregunta, 'respuestas': respuestas },
             success: function (data, textStatus, jqXHR) {
-                console.log(data);
+                $('#ModalEditarPregunta').modal("hide");
+                LlenarTabla();
+                swal("La pregunta se editó exitosamente", "", "success");
             },
             error: function (jqXHR, textStatus, errorThrown) {
 

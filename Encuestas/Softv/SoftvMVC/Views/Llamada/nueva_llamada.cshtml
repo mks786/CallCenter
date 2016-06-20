@@ -714,7 +714,7 @@
             data: { 'plaza': id_plaza, "contrato": contrato },
             success: function (data, textStatus, jqXHR) {
                 for (var i = 0; i < data.length; i++) {
-                    $('#servicios_contratados').append('<p>'+data[i].cadena+'</p>');
+                    $('#servicios_contratados').append('<p style="color:#4b646f;">'+data[i].cadena+'</p>');
                 }
             },
             error: function (data, jqXHR, textStatus) {

@@ -67,7 +67,7 @@ namespace Softv.Providers
         /// <summary>
         /// Abstract method to update Pregunta
         /// </summary>
-        public abstract int EditPregunta(PreguntaEntity entity_Pregunta);
+        public abstract int EditPregunta(string xml);
 
         /// <summary>
         /// Abstract method to get all Pregunta

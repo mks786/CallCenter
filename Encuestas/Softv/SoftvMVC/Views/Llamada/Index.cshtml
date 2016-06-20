@@ -30,7 +30,7 @@
                     
                         <div class="col-md-3">
                             <div class="input-group input-group-sm">
-                                <input class="form-control" type="text"><span class="input-group-btn"><button class="btn btn-info btn-flat" type="button">Buscar</button></span>
+                                <input class="form-control" type="text" id="busqueda"><span class="input-group-btn"><button class="btn btn-info btn-flat" type="button" onclick="Buscando()">Buscar</button></span>
                             </div>
                         </div>
                         <div class="col-md-3">
@@ -466,3 +466,11 @@
 
 <script src="~/dist/js/pages/Llamada/Lista.js"></script>
 <script src="~/dist/js/pages/Llamada/agregar_llamada.js"></script>
+<script>
+    $(document).ready(function () {
+        $('#poner_activo li').siblings('li').removeClass('active');
+        $('.1').addClass('active');
+        console.log('activo');
+    });
+</script>
+

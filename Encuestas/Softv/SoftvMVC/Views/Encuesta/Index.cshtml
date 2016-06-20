@@ -458,15 +458,6 @@
                         </tr>
                     </thead>
                     <tbody></tbody>
-                    <tfoot>
-
-                        <tr>
-                            <td>Nombre</td>
-                            <td>Tipo pregunta</td>
-                            <td>Opciones</td>
-                        </tr>
-
-                    </tfoot>
                 </table>
 
 
@@ -518,3 +509,10 @@
             return false;
         }
     </script>
+<script>
+    $(document).ready(function () {
+        $('#poner_activo li').siblings('li').removeClass('active');
+        $('.2').addClass('active');
+    });
+</script>
+

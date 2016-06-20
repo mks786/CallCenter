@@ -321,6 +321,7 @@
       <xs:extension base="tns:BaseEntity">
         <xs:sequence>
           <xs:element minOccurs="0" name="CLIENTE" nillable="true" type="tns:CLIENTEEntity" />
+          <xs:element minOccurs="0" name="Clv_Problema" nillable="true" type="xs:int" />
           <xs:element minOccurs="0" name="Clv_Queja" nillable="true" type="xs:long" />
           <xs:element minOccurs="0" name="Clv_TipSer" nillable="true" type="xs:int" />
           <xs:element minOccurs="0" name="Clv_Trabajo" nillable="true" type="xs:int" />
