@@ -117,10 +117,9 @@
                     </div>
                 </div>
                 <div class="modal-footer">
+                    <button class="btn btn-success" onclick="GuardaUsuario();" type="button">Guardar</button>
                     <button class="btn btn-primary" type="button" data-dismiss="modal">Salir</button>
-                    <button class="btn btn-success" onclick="GuardaUsuario();" type="button"> <i class="fa fa-check" aria-hidden="true"></i> Guardar</button>
                 </div>
-               
             </div>
         </div>
     </div>
@@ -142,10 +141,8 @@
             </div>
             <div class="modal-footer">
                 <input type="hidden" id="eliminarUsuario_id" />
-                <button class="btn btn-primary" type="button" data-dismiss="modal">cerrar</button>
                 <button class="btn btn-danger" onclick="deleteUsuario()" type="button">Eliminar</button>
-
-
+                <button class="btn btn-primary" type="button" data-dismiss="modal">cerrar</button>
             </div>
         </div>
     </div>
@@ -222,8 +219,8 @@
                     </div>
                 </div>
                 <div class="modal-footer">
-                    <button class="btn btn-primary" type="button" data-dismiss="modal">Salir</button>
                     <button class="btn btn-success" onclick="editarUsuario();" type="button"> Guardar</button>
+                    <button class="btn btn-primary" type="button" data-dismiss="modal">Salir</button>
                 </div>
 
             </div>
@@ -245,6 +242,8 @@
             });
             $('#poner_activo li').siblings('li').removeClass('active');
             $('.3').addClass('active');
+            $('#sub_activo li').siblings('li').removeClass('active');
+            $('.16').addClass('active');
         });
     </script>
     

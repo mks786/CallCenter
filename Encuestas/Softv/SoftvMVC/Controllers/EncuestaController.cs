@@ -121,11 +121,11 @@ namespace SoftvMVC.Controllers
 
             if (data != "")
             {
-                dataTableData.data = FiltrarContenido(ref recordsFiltered, start, length).Where(o => o.TituloEncuesta.Contains(data) || o.Descripcion.Contains(data) || o.IdEncuesta.Value.ToString().Contains(data) || o.FechaCreacion.Contains(data)).ToList();
+                dataTableData.data = FiltrarContenido(ref recordsFiltered, start, length).Where(o => o.TituloEncuesta.ToLower().Contains(data.ToLower()) || o.Descripcion.Contains(data.ToLower()) || o.IdEncuesta.Value.ToString().Contains(data)).OrderByDescending(c => c.IdEncuesta).ToList();
             }
             else
             {
-                dataTableData.data = FiltrarContenido(ref recordsFiltered, start, length);
+                dataTableData.data = FiltrarContenido(ref recordsFiltered, start, length).OrderByDescending(c => c.IdEncuesta).ToList();
             }
 
 
@@ -458,23 +458,30 @@ namespace SoftvMVC.Controllers
                  
                 if (a.Pregunta.IdTipoPregunta==1){
                     sb.Append(@"<table border=1 width=""400"" ><tr><td>&nbsp;</td></tr></table>");
+                    sb.Append(@"<br/>");
+                    sb.Append(@"<table border=1 width=""400"" ><tr><td>&nbsp;</td></tr></table>");
+                    sb.Append(@"<br/>");
+                    sb.Append(@"<table border=1 width=""400"" ><tr><td>&nbsp;</td></tr></table>");
+                    sb.Append(@"<br/>");
                 }
                 else if (a.Pregunta.IdTipoPregunta == 2)
                 {
-                    sb.Append(@"<h5>Si( ) No( )</h5>");
+                    sb.Append(@"<h5>Si( )");
+                    sb.Append(@"<h5>No( )</h5>");
+                    sb.Append(@"<br/>");
                 }
                 else
                 {
                     List<RelPreguntaOpcMultsEntity> relaciones = relpregunta_resp.GetRelPreguntaOpcMultsList().Where(x => x.IdPregunta == a.IdPregunta).ToList();
-                    sb.Append(@"<table border=""0""><tr>");
+                    sb.Append(@"<table border=""0"">");
                     foreach (var resp in relaciones)
                     {
 
                         ResOpcMultsEntity respuestas = Respuestas.GetResOpcMultsList().Where(o => o.Id_ResOpcMult == resp.Id_ResOpcMult).Select(o => o).First();
-                        sb.Append(@"<td><h5 style=""font-size:8px;"">( )" + respuestas.ResOpcMult + "</h5></td>");
+                        sb.Append(@"<tr><td><h5 style=""font-size:8px;"">( )" + respuestas.ResOpcMult + "</h5></td><tr/>");
 
                     }
-                    sb.Append("</tr></table>");
+                    sb.Append("</table>");
 
                 }
                

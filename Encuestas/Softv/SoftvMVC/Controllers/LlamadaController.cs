@@ -482,11 +482,11 @@ namespace SoftvMVC.Controllers
             try
             {
                 if(cadena != null){
-                    comandoSql = new SqlCommand("Select * from Llamadas where Contrato=" + cadena + " OR IdLlamada="+cadena+"  order by IdLlamada DESC ");
+                    comandoSql = new SqlCommand("SELECT * FROM LlamadaUsuario where Contrato=" + cadena + " OR IdLlamada=" + cadena + "  order by IdLlamada DESC ");
                 }
                 else
                 {
-                    comandoSql = new SqlCommand("Select * from Llamadas order by IdLlamada DESC");
+                    comandoSql = new SqlCommand("SELECT * FROM LlamadaUsuario order by IdLlamada DESC");
                 }
                
                 comandoSql.Connection = conexionSQL;
@@ -506,7 +506,6 @@ namespace SoftvMVC.Controllers
                         {
                             llamada.Contrato = 0;
                         }
-                        llamada.IdConexion = Int32.Parse(reader["IdConexion"].ToString());
                         llamada.Fecha = reader[6].ToString();
                         lista.Add(llamada);
                     }
@@ -547,7 +546,7 @@ namespace SoftvMVC.Controllers
                         comandoSql = new SqlCommand("insert into Llamadas(idUsuario,Tipo_Llamada,Contrato,Detalle,Solucion,Fecha,HoraInicio,HoraFin,IdTurno,Clv_Queja,IdConexion,Clv_Trabajo,Clv_TipSer,Clv_Problema) values(@IdUsuario,@Tipo_Llamada,@Contrato,@motivo,@solucion,@Fecha,@HoraInicio,@HoraFin,null,null,@IdConexion,@Clv_Trabajo,@Clv_TipSer,@Clv_Problema)");
 
                         comandoSql.Parameters.AddWithValue("@IdUsuario", llamada.usuario);
-                        comandoSql.Parameters.AddWithValue("@Tipo_Llamada", llamada.tipo_llamada);
+                        comandoSql.Parameters.AddWithValue("@Tipo_Llamada", true);
                         comandoSql.Parameters.AddWithValue("@Contrato", llamada.contrato);
                         comandoSql.Parameters.AddWithValue("@Fecha", llamada.fecha);
                         comandoSql.Parameters.AddWithValue("@motivo", llamada.motivo);
@@ -602,7 +601,7 @@ namespace SoftvMVC.Controllers
                 {
 
                     comandoSql = new SqlCommand("insert into Llamadas(idUsuario,Tipo_Llamada,Contrato,Detalle,Solucion,Fecha,HoraInicio,HoraFin,IdTurno,Clv_Queja,IdConexion,Clv_Trabajo,Clv_TipSer) values(@idUsuario,@Tipo_Llamada,null,@motivo,@solucion,@Fecha,@HoraInicio,@HoraFin,null,null,@IdConexion,null,null) SELECT SCOPE_IDENTITY()");
-                    comandoSql.Parameters.AddWithValue("@Tipo_Llamada", llamada.tipo_llamada);
+                    comandoSql.Parameters.AddWithValue("@Tipo_Llamada", false);
                     comandoSql.Parameters.AddWithValue("@idUsuario", llamada.usuario);
                     comandoSql.Parameters.AddWithValue("@Fecha", llamada.fecha);
                     comandoSql.Parameters.AddWithValue("@motivo", llamada.motivo);
@@ -953,7 +952,7 @@ namespace SoftvMVC.Controllers
             }
 
             catch { }
-            return Json(1, JsonRequestBehavior.AllowGet);
+            return Json(llamada.id_llamada, JsonRequestBehavior.AllowGet);
         }
         public class editLlamada
         {

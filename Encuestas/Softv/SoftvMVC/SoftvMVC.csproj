@@ -233,6 +233,7 @@
     <Compile Include="Controllers\CVECAROLController.cs" />
     <Compile Include="Controllers\CVECOLCIUController.cs" />
     <Compile Include="Controllers\DatoFiscalController.cs" />
+    <Compile Include="Controllers\DatosLlamadaController.cs" />
     <Compile Include="Controllers\EncuestaController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\LlamadaController.cs" />
@@ -1408,6 +1409,7 @@
     <Content Include="Properties\DataSources\Softv.Entities.tblClasificacionProblemaEntity.datasource" />
     <Content Include="Properties\DataSources\Softv.Entities.tblPrioridadQuejaEntity.datasource" />
     <Content Include="Properties\DataSources\Softv.Entities.NoClienteEntity.datasource" />
+    <Content Include="Properties\DataSources\Softv.Entities.DatosLlamadaEntity.datasource" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>

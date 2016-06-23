@@ -421,8 +421,8 @@
 
             </div>
             <div class="modal-footer">
-                <button class="btn btn-primary" type="button" data-dismiss="modal">Cerrar</button>
-                <button class="btn btn-success pull-right" id="Editar" type="button" data-dismiss="modal">Editar</button>
+                <button class="btn btn-success" id="Editar" type="button" data-dismiss="modal">Editar</button>
+                <button class="btn btn-primary pull-right" type="button" data-dismiss="modal">Cerrar</button>
 
             </div>
         </div>
@@ -577,7 +577,8 @@
      $(document).ready(function () {
          $('#poner_activo li').siblings('li').removeClass('active');
          $('.4').addClass('active');
-         console.log('activo');
+         $('#sub_activo li').siblings('li').removeClass('active');
+         $('.15').addClass('active');
      });
 </script>
 

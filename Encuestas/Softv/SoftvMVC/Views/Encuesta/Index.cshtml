@@ -132,10 +132,9 @@
             </div>
             <div class="modal-footer">
                 <input type="hidden" id="idEncuesta" />
-                <button class="btn btn-primary " type="button" data-dismiss="modal">cerrar</button>
-                <button class="btn btn-success" id="guardarEncuesta" type="button"><i class="fa fa-check" aria-hidden="true"></i> Guardar encuesta</button>
-                <button class="btn btn-success" id="EditarEncuesta" type="button"><i class="fa fa-check" aria-hidden="true"></i> Editar encuesta</button>
-
+                <button class="btn btn-success" id="guardarEncuesta" type="button">Guardar</button>
+                <button class="btn btn-success" id="EditarEncuesta" type="button">Editar</button>
+                <button class="btn btn-primary " type="button" data-dismiss="modal">Cerrar</button>
             </div>
         </div>
     </div>
@@ -211,8 +210,8 @@
 
             </div>
             <div class="modal-footer">
+                <button class="btn btn-success" id="GuardarPregunta" type="button">Agregar</button>
                 <button class="btn btn-primary" type="button" data-dismiss="modal">Cerrar</button>
-                <button class="btn btn-success" id="GuardarPregunta" type="button">Agregar pregunta</button>
             </div>
         </div>
     </div>
@@ -274,7 +273,7 @@
             </div>
             <br />
             <div class="modal-footer">
-                <button class="btn btn-primary pull-left" type="button" data-dismiss="modal">Cerrar</button>
+                <button class="btn btn-primary pull-right" type="button" data-dismiss="modal">Cerrar</button>
 
             </div>
         </div>
@@ -294,8 +293,8 @@
 
             </div>
             <div class="modal-footer">
-                <button class="btn btn-primary " type="button" data-dismiss="modal">Cerrar</button>
                 <button class="btn btn-danger" type="button" id="confirmaEliminaPregunta">Eliminar</button>
+                <button class="btn btn-primary " type="button" data-dismiss="modal">Cerrar</button>
             </div>
         </div>
     </div>
@@ -314,8 +313,8 @@
 
             </div>
             <div class="modal-footer">
-                <button class="btn btn-primary " type="button" data-dismiss="modal">Cerrar</button>
                 <button class="btn btn-danger" type="button" id="EliminaEncuesta">Eliminar</button>
+                <button class="btn btn-primary " type="button" data-dismiss="modal">Cerrar</button>
             </div>
         </div>
     </div>
@@ -396,8 +395,8 @@
 
             </div>
             <div class="modal-footer">
-                <button class="btn btn-primary " type="button" data-dismiss="modal">Cerrar</button>
                 <button class="btn btn-success" id="EditarPregunta" type="button">Editar pregunta</button>
+                <button class="btn btn-primary " type="button" data-dismiss="modal">Cerrar</button>
             </div>
         </div>
     </div>
@@ -513,6 +512,8 @@
     $(document).ready(function () {
         $('#poner_activo li').siblings('li').removeClass('active');
         $('.2').addClass('active');
+        $('#sub_activo li').siblings('li').removeClass('active');
+        $('.8').addClass('active');
     });
 </script>
 

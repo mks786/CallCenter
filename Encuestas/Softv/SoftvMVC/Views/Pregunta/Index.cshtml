@@ -112,8 +112,8 @@
                 </div>
             </div>
             <div class="modal-footer">
-                <button class="btn btn-default pull-left" type="button" data-dismiss="modal">cerrar</button>
                 <button class="btn btn-primary" id="GuardarPregunta" type="button">Agregar pregunta</button>
+                <button class="btn btn-default pull-left" type="button" data-dismiss="modal">cerrar</button>
             </div>
         </div>
     </div>
@@ -200,8 +200,8 @@
                 </div>
             </div>
             <div class="modal-footer">
-                <button class="btn btn-primary" type="button" data-dismiss="modal">cerrar</button>
                 <button class="btn btn-success" onclick="guardar_pregunta()" type="button">Guardar</button>
+                <button class="btn btn-primary" type="button" data-dismiss="modal">cerrar</button>
             </div>
         </div>
     </div>
@@ -215,5 +215,7 @@
     $(document).ready(function () {
         $('#poner_activo li').siblings('li').removeClass('active');
         $('.2').addClass('active');
+        $('#sub_activo li').siblings('li').removeClass('active');
+        $('.9').addClass('active');
     });
 </script>

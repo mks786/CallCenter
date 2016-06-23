@@ -18,7 +18,7 @@ namespace SoftvWCFService
     public partial class SoftvWCFService : IUsuario, IRole, IModule, IPermiso, IEncuesta, IPregunta, ITipoPreguntas, IRelEncuestaClientes, IRelPreguntaOpcMults,
         IRelPreguntaEncuestas, IResOpcMults, IRelEnProcesos, IConexion, ICLIENTE, ITurno, ILlamada, IRel_Clientes_TiposClientes, ITipoCliente, ICatalogoPeriodosCorte,
         ICliente_Apellido, ITap, IDatoFiscal, ITrabajo, ITipServ, IMotivoCancelacion, IRelEncuestaPreguntaRes, IQueja, ICIUDAD, ICVECOLCIU, ICOLONIA, ICVECAROL, ICALLE, IBusquedaIndividual,
-        ItblClasificacionProblema, ItblPrioridadQueja, INoCliente
+        ItblClasificacionProblema, ItblPrioridadQueja, INoCliente, IDatosLlamada
     {
         #region Usuario
         public UsuarioEntity GetUsuario(int? IdUsuario)
@@ -1622,6 +1622,49 @@ namespace SoftvWCFService
         public int DeleteNoCliente(String BaseRemoteIp, int BaseIdUser, int? Id)
         {
             return NoCliente.Delete(Id);
+        }
+
+        #endregion
+
+        #region DatosLlamada
+        public DatosLlamadaEntity GetDatosLlamada(int? Id)
+        {
+            return DatosLlamada.GetOne(Id);
+        }
+
+        public DatosLlamadaEntity GetDeepDatosLlamada(int? Id)
+        {
+            return DatosLlamada.GetOneDeep(Id);
+        }
+
+        public IEnumerable<DatosLlamadaEntity> GetDatosLlamadaList()
+        {
+            return DatosLlamada.GetAll();
+        }
+
+        public SoftvList<DatosLlamadaEntity> GetDatosLlamadaPagedList(int page, int pageSize)
+        {
+            return DatosLlamada.GetPagedList(page, pageSize);
+        }
+
+        public SoftvList<DatosLlamadaEntity> GetDatosLlamadaPagedListXml(int page, int pageSize, String xml)
+        {
+            return DatosLlamada.GetPagedList(page, pageSize, xml);
+        }
+
+        public int AddDatosLlamada(DatosLlamadaEntity objDatosLlamada)
+        {
+            return DatosLlamada.Add(objDatosLlamada);
+        }
+
+        public int UpdateDatosLlamada(DatosLlamadaEntity objDatosLlamada)
+        {
+            return DatosLlamada.Edit(objDatosLlamada);
+        }
+
+        public int DeleteDatosLlamada(String BaseRemoteIp, int BaseIdUser, int? Id)
+        {
+            return DatosLlamada.Delete(Id);
         }
 
         #endregion

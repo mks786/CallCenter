@@ -1,10 +1,11 @@
 ﻿
 $(document).ready(function () {
-    //LlenarTabla();
+    
     $(".Agregar").click(function () {
         $('#ModalAgregarLlamada').modal('show');
 
     });
+    
     $.ajax({
         url: "/Conexion/ListaConexiones/",
         type: "GET",
@@ -21,23 +22,64 @@ $(document).ready(function () {
         }
     });
     $("#plaza_llamadas").change(function () {
+        $("#panel_busqueda").show();
+        $("#tipo_llamada").removeAttr('disabled');
+        var url = '/Llamada/nueva?id_plaza='+$(this).val();
+        $('#nueva_llamada_link').attr('href',url);
+        $('#nueva_llamada_link').removeClass('disabled');
+        
+    });
+    $("#tipo_llamada").change(function () {
+        $('.collapse').collapse('hide');
+        var tipo = $(this).val();
         var id_plaza = $("#plaza_llamadas").val();
-        LlenarTabla(id_plaza);
+        var cliente;
+        if(tipo == 1){
+            cliente = true;
+        }else if(tipo == 2){
+            cliente = false;
+        }else{
+            cliente = '';
+        }
+        LlenarTabla(id_plaza, '', '', '', cliente);
     });
 });
 
-function Buscando() {
-    var cadena = $('#busqueda').val();
+function buscar_por_id() {
+    $('.collapse').collapse('hide');
+    var id_llamada = $('#input_llamada').val();
     var id_plaza = $("#plaza_llamadas").val();
-    if (cadena == "") {
-        LlenarTabla(id_plaza);
+    if (id_llamada == "") {
+        swal("El No. de contrato no puede ir en blanco ", "", "danger");
     } else {
-        LlenarTabla(id_plaza, cadena);
+        LlenarTabla(id_plaza, '', '', id_llamada, '');
     }
-    
 }
 
-function LlenarTabla(idplaza,cadena) {
+function buscar_por_nombre() {
+    $('.collapse').collapse('hide');
+    var nombre = $('#nombre_individual').val();
+    var id_plaza = $("#plaza_llamadas").val();
+    if (nombre == "") {
+        swal("El nombre no puede ir en blanco ", "", "danger");
+    } else {
+        LlenarTabla(id_plaza, '', nombre, '', '');
+    }
+}
+
+function buscar_por_contrato() {
+    $('.collapse').collapse('hide');
+    var contrato = $('#input_contrato').val();
+    var id_plaza = $("#plaza_llamadas").val();
+    if (contrato == "") {
+        swal("El No. de contrato no puede ir en blanco ", "", "danger");
+    } else {
+        LlenarTabla(id_plaza, contrato, '', '', '');
+    }
+}
+
+function LlenarTabla(idplaza,contrato,cadena,id_llamada,tipo_llamada) {
+
     $('#TablaLlamadas tbody > tr').remove();
     $('#TablaLlamadas').dataTable({
         "processing": true,
@@ -49,9 +91,9 @@ function LlenarTabla(idplaza,cadena) {
         "stateSave": true,
         "lengthMenu": [[10, 20, 50, 100], [10, 20, 50, 100]],
         "ajax": {
-            "url": "/Llamada/GetList/",
+            "url": "/DatosLlamada/GetList/",
             "type": "POST",
-            "data": { 'idplaza': idplaza,'cadena':cadena },
+            "data": { 'idplaza': idplaza, 'cadena': cadena, 'id_llamada': id_llamada, 'tipo_llamada': tipo_llamada, 'contrato': contrato },
         },
         "fnInitComplete": function (oSettings, json) {
 
@@ -64,17 +106,35 @@ function LlenarTabla(idplaza,cadena) {
 
         "columns": [
             { "data": "IdLlamada", "orderable": false },
-            { "data": "IdUsuario", "orderable": false },
-            { "data": "Tipo_Llamada", "orderable": false },
+            { "data": "Usuario", "orderable": false },
+            {
+                sortable: false,
+                "render": function (data, type, full, meta) {
+                    var cliente;
+                    if (full.TipoLlamada == true) {
+                        cliente = 'Es Cliente';
+                    } else {
+                        cliente = 'No Es Cliente';
+                    }
+                    return ("<td>"+cliente+"<td>");  //Es el campo de opciones de la tabla.
+                }
+            },
+            //{ "data": "Tipo_Llamada", "orderable": false },
             { "data": "Contrato", "orderable": false },
-            { "data": "Fecha", "orderable": false },
-            { "data": "IdConexion", "orderable": false },
-        
-
-        {
-            sortable: false,
-            "render": function (data, type, full, meta) {
-                return Opciones(full.IdLlamada);  //Es el campo de opciones de la tabla.
+            { "data": "Nombre", "orderable": false },
+            {
+                sortable: false,
+                "render": function (data, type, full, meta) {
+                    var fecha = full.Fecha;
+                    fecha = fecha.split(" ", 1); 
+                    
+                    return ("<td>"+fecha+"<td>");  //Es el campo de opciones de la tabla.
+                }
+            },
+            {
+                sortable: false,
+                "render": function (data, type, full, meta) {
+                    return Opciones(full.IdLlamada);  //Es el campo de opciones de la tabla.
             }
         }
         ],
@@ -111,7 +171,7 @@ function LlenarTabla(idplaza,cadena) {
 }
 
 function Opciones() {
-    var botones = "<button class='btn btn-info btn-xs detalleLlamada' id='detalleLlamada'>Detalles</button> <button class='btn btn-warning btn-xs editarLlamada' id='editarLlamada'>Editar</button>";
+    var botones = "<button class='btn btn-info btn-xs detalleLlamada' id='detalleLlamada'><i class='fa fa-info' aria-hidden='true'></i> Detalles</button> <button class='btn btn-warning btn-xs editarLlamada' id='editarLlamada'>Editar</button>";
     return botones;
 }
 
@@ -119,7 +179,7 @@ function Opciones() {
 
 //funcion:retorna las opciones que tendra cada row en la tabla principal
 function Opciones(id) {
-    var opc = "<button class='btn btn-info btn-xs Detalle' type='button' id='" + id + "' onclick='MostrarDetalles(this)'>Detalles</button> <button class='btn btn-warning btn-xs Editar' type='button' id='" + id + "' onclick='editarLlamada(this)'><i class='fa fa-pencil' aria-hidden='true'></i> Editar</button>"
+    var opc = "<button class='btn btn-info btn-xs Detalle' type='button' id='" + id + "' onclick='MostrarDetalles(this)'><i class='fa fa-info' aria-hidden='true'></i> Detalles</button> <button class='btn btn-warning btn-xs Editar' type='button' id='" + id + "' onclick='editarLlamada(this)'><i class='fa fa-pencil' aria-hidden='true'></i> Editar</button>"
     return opc;
 }
 
@@ -173,7 +233,7 @@ function MostrarDetalles(e){
                 $('#pan_celular').hide();
                 $('#pan_email').hide()
             }
-            $('#contrato').text(contrato);
+            $('#contrato_detalle').text(contrato);
             var fecha = data[0].Fecha.split(" ", 1); 
             var inicio = data[0].HoraInicio.substring(19, 11);
             var fin = data[0].HoraFin.substring(19, 11);
@@ -196,7 +256,8 @@ function getNombreCliente(id) {
         type: "GET",
         data: { 'plaza': id_plaza , 'llamada': id},
         success: function (data, textStatus, jqXHR) {
-            $('#nombre').text(data[0].Nombre);
+            console.log(data);
+            $('#nombre_completo').text(data[0].Nombre);
             $('#domicilio').text(data[0].Domicilio);
             $('#telefono').text(data[0].Telefono);
             $('#celular').text(data[0].Celular);
@@ -245,7 +306,7 @@ function editarLlamada(e) {
                 $('#email_panel_editar').hide(); 
                 $('#clasificacion_solucion_editar').show();
                 getSolucionProblemas(data[0].Clv_Problema);
-                getClasificacion(data[0].Clv_Trabajo);
+                getClasificacion(data[0].Clv_Trabajo, data[0].Clv_TipSer);
             } else {
                 getNoCliente(data[0].IdLlamada);
                 $('#clasificacion_editar').hide();
@@ -277,6 +338,8 @@ function getNoCliente(id) {
         type: "GET",
         data: { 'plaza': id_plaza, 'llamada': id },
         success: function (data, textStatus, jqXHR) {
+            $('#telefono_editar').inputmask("(999)9999999");
+            $('#celular_editar').inputmask("999-999-99-99");
             $('#nombre_editar').val(data[0].Nombre);
             $('#domicilio_editar').val(data[0].Domicilio);
             $('#telefono_editar').val(data[0].Telefono);
@@ -294,7 +357,7 @@ function getSolucionProblemas(id) {
     $.ajax({
         url: "/tblClasificacionProblema/GetClasficacionProblema/",
         type: "GET",
-        data: { 'IdPlaza': id_plaza },
+        data: { 'IdPlaza': id_plaza},
         success: function (data, textStatus, jqXHR) {
             $("#select_problemas option").remove();
             for (var i = 0; i < data.length; i++) {
@@ -312,12 +375,12 @@ function getSolucionProblemas(id) {
     });
 }
 
-function getClasificacion(id) {
+function getClasificacion(id, idServicio) {
     var id_plaza = $("#plaza_llamadas").val();
     $.ajax({
         url: "/tblClasificacionProblema/GetClasficacionSolucion/",
         type: "GET",
-        data: { 'IdPlaza': id_plaza },
+        data: { 'IdPlaza': id_plaza,'idServicio':idServicio  },
         success: function (data, textStatus, jqXHR) {
             for (var i = 0; i < data.length; i++) {
                 $("#select_soluciones option").remove();
@@ -415,18 +478,17 @@ function guardarLlamada() {
     } else {
         llamada.nombre = $('#nombre_editar').val();
         llamada.domicilio = $('#domicilio_editar').val();
-        llamada.telefono = $('#telefono_editar').val();
-        llamada.celular = $('#celular_editar').val();
+        llamada.telefono = $('#telefono_editar').inputmask('unmaskedvalue');
+        llamada.celular = $('#celular_editar').inputmask('unmaskedvalue');
         llamada.email = $('#email_editar').val();
     }
-    console.log(llamada);
     $.ajax({
         url: "/Llamada/editarLLamada/",
         type: "POST",
         data: { 'plaza': id_plaza, 'llamada': llamada },
         success: function (data, textStatus, jqXHR) {
             $('#ModalEditarLlamada').modal("hide");
-            LlenarTabla(id_plaza);
+            LlenarTabla(id_plaza,'','',data,'');
             swal("La llamada se guaró exitosamente", "", "success");
         },
         error: function (jqXHR, textStatus, errorThrown) {

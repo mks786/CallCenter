@@ -59,13 +59,6 @@
                     </h3>
                 </div>
             </div><br />
-            <div class="row" id="contenedor_llamda">
-                <div class="col-md-12">
-                    <p class="text-left" style="padding-left:10px;">
-                        <button class="btn btn-warning" onclick="AbrirModal()"><i class="fa fa-map-marker" aria-hidden="true"></i> SELECCIONAR PLAZA</button>
-                    </p>
-                </div>
-            </div>
             <div class="row">
                 <div class="col-md-12">
                     <h3 class="text-center" style="color:#4b646f;" id="texto_llamda"></h3>
@@ -89,7 +82,7 @@
                 </div>
                 <div class="row" id="panel_no_cliente" style="padding-left:10px; display:none;">
                     <div class="col-md-5">
-                        <label style="color:#4b646f;">Nombre</label>
+                        <label style="color:#4b646f; font-size:12px;">Nombre</label>
                         <input type="text" class="form-control" id="nombre_no_cliente" placeholder="Nombre de la persona que esta llamando" />
                     </div>
                 </div>
@@ -207,7 +200,7 @@
                 <div class="row" style="display:none;" id="panel_tabla_clientes">
                     <div class="col-md-12 container">
                         <table id="Tabla_Clientes" class="table table-bordered table-hover dataTable">
-                            <thead style="font-size:13px;">
+                            <thead style="font-size:12px;">
                                 <tr>
                                     <td><b>Contrato</b></td>
                                     <td><b>Nombre</b> </td>
@@ -224,14 +217,14 @@
                 </div>
                 <div class="row" style="display:none; padding-left:10px;" id="panel_datos_cliente">
                     <div class="col-md-6">
-                        <h4 id="texto_contrato" style="color:#4b646f;"></h4>
+                        <h5 id="texto_contrato" style="color:#4b646f;"></h5>
                         <input type="hidden" id="contrato_oculto" />
-                        <h4 id="texto_nombre" style="color:#4b646f;"></h4>
+                        <h5 id="texto_nombre" style="color:#4b646f;"></h5>
                         <h5 id="texto_colonia" style="color:#4b646f;"></h5>
                         <h5 id="texto_calle" style="color:#4b646f;"></h5>
                         <h5 id="texto_numero" style="color:#4b646f;"></h5>
                     </div>
-                    <div class="col-md-5 scroll_div" style="height:200px;">
+                    <div class="col-md-5 scroll_div" style="height:150px;">
                         <div id="servicios_contratados">
 
                         </div>
@@ -239,35 +232,35 @@
                 </div>
                 <div class="row" style="display:none; padding-left:10px;" id="telefono_no_cliente">
                     <div class="col-md-3">
-                        <label style="color:#4b646f;">Teléfono</label>
+                        <label style="color:#4b646f; font-size:12px;">Teléfono</label>
                         <input type="text" id="telefono" class="form-control">
                     </div>
                     <div class="col-md-3">
-                        <label style="color:#4b646f;">Celular</label>
+                        <label style="color:#4b646f; font-size:12px;">Celular</label>
                         <input type="text" id="celular" class="form-control">
                     </div>
                 </div>
                 <div class="row" style="display:none; padding-left:10px;" id="email_no_cliente">
                     <div class="col-md-4">
-                        <label style="color:#4b646f;">Email</label>
+                        <label style="color:#4b646f; font-size:12px;">Email</label>
                         <input type="email" id="email" class="form-control" required>
                     </div>
                 </div>
                 <div class="row" style="display:none; padding-left:10px;">
                     <div class="col-md-2">
-                        <label style="color:#4b646f;">Hora Inicial</label>
+                        <label style="color:#4b646f; font-size:12px;">Hora Inicial</label>
                         <input type="time" id="hora_inicio" class="form-control">
                     </div>
                 </div>
                 <div class="row" style="display:none; padding-left:10px;" id="domicilio_no_cliente">
                     <div class="col-md-6">
-                        <label style="color:#4b646f;">Domicilio</label>
+                        <label style="color:#4b646f; font-size:12px;">Domicilio</label>
                         <textarea type="text" id="domicilio" class="form-control"></textarea>
                     </div>
                 </div>
                 <div class="row" style="display:none; padding-left:10px;" id="motivo_llamada_panel">
                     <div class="col-md-3" style="padding-top:10px;">
-                        <label style="color:#4b646f;">Tipo de Servicio</label>
+                        <label style="color:#4b646f; font-size:12px;">Tipo de Servicio</label>
                         <select class="form-control" id="tipo_servicio">
                             <option value="0" selected disabled>Tipo de servicio</option>
                         </select>
@@ -275,13 +268,13 @@
                 </div>
                 <div class="row" id="motivo_no_cliente" style="padding-left:10px; display:none;">
                     <div class="col-md-6">
-                        <label style="color:#4b646f;">Motivo de la llamada</label>
+                        <label style="color:#4b646f; font-size:12px;">Motivo de la llamada</label>
                         <textarea class="form-control" id="motivo"></textarea>
                     </div>
                 </div>
                 <div class="row" style="display:none; padding-left:10px;" id="panel_clasificacion">
                     <div class="col-md-4">
-                        <label style="color:#4b646f;">Clasificación del problema</label>
+                        <label style="color:#4b646f; font-size:12px;">Clasificación del problema</label>
                         <select class="form-control" id="select_problemas">
                             <option value="0" selected disabled>Clasificación del problema</option>
                         </select>
@@ -289,19 +282,19 @@
                 </div>
                 <div class="row" id="solucion_no_cliente" style="padding-left:10px; display:none;">
                     <div class="col-md-6">
-                        <label style="color:#4b646f;">Solución</label>
+                        <label style="color:#4b646f; font-size:12px;">Solución</label>
                         <textarea class="form-control" id="solucion"></textarea>
                     </div>
                 </div>
                 <div class="row" style="display:none; padding-left:10px;" id="panel_solucion">
                     <div class="col-md-4">
-                        <label style="color:#4b646f;">Clasificación de la solución</label>
+                        <label style="color:#4b646f; font-size:12px;">Clasificación de la solución</label>
                         <select class="form-control" id="select_soluciones">
                             <option value="0" selected disabled>Clasificación de la solución</option>
                         </select>
                     </div>
                     <div class="col-md-2" style="height:25px; display:none;" id="panel_queja">
-                        <label style="color:#4b646f;">Realizar Queja</label>
+                        <label style="color:#4b646f; font-size:12px;">Realizar Queja</label>
                         <input type="checkbox" name="levantar_queja" id="queja">
                     </div>
                 </div><br />
@@ -309,13 +302,13 @@
                     <fieldset>
                         <legend style="padding-left:25px; font-size:12px; color:#4b646f;">Realizar Queja</legend>
                         <div class="col-md-4">
-                            <label style="color:#4b646f;">Departamento Responsable</label>
+                            <label style="color:#4b646f; font-size:12px;">Departamento Responsable</label>
                             <select class="form-control" id="departamento">
                                 <option value="0" selected disabled>Departamento Responsable</option>
                             </select>
                         </div>
                         <div class="col-md-3">
-                            <label style="color:#4b646f;">Tipo Prioridad</label>
+                            <label style="color:#4b646f; font-size:12px;">Tipo Prioridad</label>
                             <select class="form-control" id="prioridad">
                                 <option value="0" selected disabled>Tipo Prioridad</option>
                             </select>
@@ -324,7 +317,7 @@
                 </div><br />
                 <div class="row" style="display:none; padding-left:10px;" id="trabajo_panel">
                     <div class="col-md-3">
-                        <label style="color:#4b646f;">Turno</label>
+                        <label style="color:#4b646f; font-size:12px;">Turno</label>
                         <select class="form-control" id="turno">
                             <option value="0" selected disabled>Turno</option>
                         </select>
@@ -372,7 +365,15 @@
 <script type="text/javascript" src="~/dist/js/bootstrap-switch.js"></script>
 <script type="text/javascript">
     var count_queja = 2;
+    var id_plaza;
     $(function () {
+        id_plaza = location.search.split('id_plaza=')[1];
+        if(id_plaza == ""){
+            location.href='/Llamada';
+        }else{
+            tipoServicio(id_plaza);
+            plaza_conexion(id_plaza);
+        }
         $("[name='levantar_queja']").bootstrapSwitch({
             onText: 'SI',
             offText: 'NO',
@@ -381,21 +382,6 @@
         });
         $('#telefono').inputmask("(999)9999999");
         $('#celular').inputmask("999-999-99-99");
-        $.ajax({
-            url: "/Conexion/ListaConexiones/",
-            type: "GET",
-            success: function (data, textStatus, jqXHR) {
-                for (var i = 0; i < data.length; i++) {
-                    $('#conectando_plaza').append($('<option>', {
-                        value: data[i].IdConexion,
-                        text: data[i].Plaza
-                    }));
-                }
-            },
-            error: function (jqXHR, textStatus, errorThrown) {
-
-            }
-        });
 
 
         $('input[name="levantar_queja"]').on('switchChange.bootstrapSwitch', function (event, state) {
@@ -408,6 +394,10 @@
                 $('#trabajo_panel').hide();
                 count_queja = 2;
             }
+        });
+        $('#tipo_servicio').on('change', function(){
+            var id = $(this).val();
+            getSolucuionLlenar(id);
         });
     });
 
@@ -460,19 +450,18 @@
     }
 
 
-    function plaza_conexion() {
+    function plaza_conexion(id) {
         $('#contenedor_llamda').hide();
         $('#llamdaForm').show();
-        $('#texto_llamda').text('Plaza ' + $("#conectando_plaza option:selected").text());
         $('#Modal_Plaza').modal("hide");
-        var id_plaza = $('#conectando_plaza').val();
-        tipoServicio(id_plaza);
+        
         $('#tipo_llamante').show();
         $('#panel_cliente').show();
+        
         $.ajax({
             url: "/tblClasificacionProblema/GetClasficacionProblema/",
             type: "GET",
-            data: { 'IdPlaza': id_plaza },
+            data: { 'IdPlaza': id },
             success: function (data, textStatus, jqXHR) {
                 for (var i = 0; i < data.length; i++) {
                     $('#select_problemas').append($('<option>', {
@@ -486,25 +475,9 @@
             }
         });
         $.ajax({
-            url: "/tblClasificacionProblema/GetClasficacionSolucion/",
-            type: "GET",
-            data: { 'IdPlaza': id_plaza },
-            success: function (data, textStatus, jqXHR) {
-                for (var i = 0; i < data.length; i++) {
-                    $('#select_soluciones').append($('<option>', {
-                        value: data[i].CLV_TRABAJO,
-                        text: data[i].DESCRIPCION
-                    }));
-                }
-            },
-            error: function (jqXHR, textStatus, errorThrown) {
-
-            }
-        });
-        $.ajax({
             url: "/tblClasificacionProblema/GetDepartamentoResponsable/",
             type: "GET",
-            data: { 'IdPlaza': id_plaza },
+            data: { 'IdPlaza': id },
             success: function (data, textStatus, jqXHR) {
                 for (var i = 0; i < data.length; i++) {
                     $('#departamento').append($('<option>', {
@@ -520,7 +493,7 @@
         $.ajax({
             url: "/tblClasificacionProblema/GetPrioridad/",
             type: "GET",
-            data: { 'IdPlaza': id_plaza },
+            data: { 'IdPlaza': id },
             success: function (data, textStatus, jqXHR) {
                 for (var i = 0; i < data.length; i++) {
                     $('#prioridad').append($('<option>', {
@@ -536,7 +509,7 @@
         $.ajax({
             url: "/tblClasificacionProblema/GetTurno/",
             type: "GET",
-            data: { 'IdPlaza': id_plaza },
+            data: { 'IdPlaza': id },
             success: function (data, textStatus, jqXHR) {
                 for (var i = 0; i < data.length; i++) {
                     $('#turno').append($('<option>', {
@@ -608,9 +581,28 @@
     });
 
 
+    function getSolucuionLlenar(id){
+        $.ajax({
+            url: "/tblClasificacionProblema/GetClasficacionSolucion/",
+            type: "GET",
+            data: { 'IdPlaza': id_plaza, 'idServicio':id },
+            success: function (data, textStatus, jqXHR) {
+                $("#select_soluciones option").remove();
+                for (var i = 0; i < data.length; i++) {
+                    $('#select_soluciones').append($('<option>', {
+                        value: data[i].CLV_TRABAJO,
+                        text: data[i].DESCRIPCION
+                    }));
+                }
+            },
+            error: function (jqXHR, textStatus, errorThrown) {
+
+            }
+        });
+    }
+
     $('#buscar_por_nombre').on('click', function () {
         $('.collapse').collapse('hide');
-        var id_plaza = $('#conectando_plaza').val();
         var nombre = $('#nombre_individual').val();
         $('#panel_masivo').hide();
         $('#panel_individual').show();
@@ -641,7 +633,6 @@
 
     $('#buscar_por_direccion').on('click', function () {
         $('.collapse').collapse('hide');
-        var id_plaza = $('#conectando_plaza').val();
         var calle = $('#calle_busqueda').val();
         var ciudad = $('#ciudad_busqueda').val();
         var numero = $('#numero_domicilio').val();
@@ -675,7 +666,6 @@
 
     $('#buscar_por_contrato').on('click', function () {
         $('.collapse').collapse('hide');
-        var id_plaza = $('#conectando_plaza').val();
         var contrato = $('#input_contrato').val();
         $('#panel_masivo').hide();
         $('#panel_individual').show();
@@ -706,7 +696,6 @@
     function selecion_cliente(e) {
         var contrato = e.getAttribute('id');
         $('#contrato_oculto').val(contrato);
-        var id_plaza = $('#conectando_plaza').val();
         document.getElementById("servicios_contratados").innerHTML="";
         $.ajax({
             url: "/Llamada/getTreeView/",
@@ -714,7 +703,7 @@
             data: { 'plaza': id_plaza, "contrato": contrato },
             success: function (data, textStatus, jqXHR) {
                 for (var i = 0; i < data.length; i++) {
-                    $('#servicios_contratados').append('<p style="color:#4b646f;">'+data[i].cadena+'</p>');
+                    $('#servicios_contratados').append('<p style="color:#4b646f; font-size:11px;">'+data[i].cadena+'</p>');
                 }
             },
             error: function (data, jqXHR, textStatus) {
@@ -759,7 +748,7 @@
         var llamada = {};
         if (tipo == 1) {
             llamada.tipo_llamada = tipo;
-            llamada.IdConexion = $('#conectando_plaza').val();
+            llamada.IdConexion = id_plaza;
             llamada.usuario = @Session["idusuario"];
             llamada.contrato = $('#contrato_oculto').val();
             var today = new Date();
@@ -809,7 +798,6 @@
                                 llamada.clas_solucion = $('#select_soluciones').val();
                                 llamada.queja = count_queja;
                                 if (count_queja == 2) {
-                                    var id_plaza = $('#conectando_plaza').val();
                                     $.ajax({
                                         url: "/Llamada/InsertLlamada",
                                         type: "POST",
@@ -851,7 +839,6 @@
                                                     swal("Por favor selecciona el turno", "", "error");
                                                 }else{
                                                     llamada.IdTurno = $('#turno').val();
-                                                    var id_plaza = $('#conectando_plaza').val();
                                                     $.ajax({
                                                         url: "/Llamada/InsertLlamada",
                                                         type: "POST",
@@ -896,7 +883,7 @@
 
         } else if (tipo == 2) {
             llamada.tipo_llamada = tipo;
-            llamada.IdConexion = $('#conectando_plaza').val();
+            llamada.IdConexion = id_plaza;
             llamada.usuario = @Session["idusuario"];
             var today = new Date();
             var dd = today.getDate();
@@ -932,7 +919,6 @@
                         llamada.celular = $('#celular').inputmask('unmaskedvalue');
                         llamada.domicilio = $('#domicilio').val();
                         llamada.email = $('#email').val();
-                        var id_plaza = $('#conectando_plaza').val();
                         console.log(llamada);
                         $.ajax({
                             url: "/Llamada/InsertLlamada",

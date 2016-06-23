@@ -53,6 +53,7 @@
     <Compile Include="CVECAROLElement.cs" />
     <Compile Include="CVECOLCIUElement.cs" />
     <Compile Include="DatoFiscalElement.cs" />
+    <Compile Include="DatosLlamadaElement.cs" />
     <Compile Include="EncuestaElement.cs" />
     <Compile Include="LlamadaElement.cs" />
     <Compile Include="ModuleElement.cs" />

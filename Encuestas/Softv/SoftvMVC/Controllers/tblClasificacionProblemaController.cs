@@ -135,7 +135,7 @@ namespace SoftvMVC.Controllers
             return Json(lista, JsonRequestBehavior.AllowGet);
         }
 
-        public ActionResult GetClasficacionSolucion(int IdPlaza)
+        public ActionResult GetClasficacionSolucion(int IdPlaza, int ? idServicio)
         {
             ConexionController c = new ConexionController();
             SqlCommand comandoSql;
@@ -150,7 +150,7 @@ namespace SoftvMVC.Controllers
 
             try
             {
-                comandoSql = new SqlCommand("exec MUESTRATRABAJOSQUEJAS 2");
+                comandoSql = new SqlCommand("exec MUESTRATRABAJOSQUEJAS "+idServicio);
                 comandoSql.Connection = conexionSQL;
                 SqlDataReader reader = comandoSql.ExecuteReader();
                 if (reader.HasRows)

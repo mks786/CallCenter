@@ -52,6 +52,7 @@
     <Compile Include="CVECAROLEntity.cs" />
     <Compile Include="CVECOLCIUEntity.cs" />
     <Compile Include="DatoFiscalEntity.cs" />
+    <Compile Include="DatosLlamadaEntity.cs" />
     <Compile Include="EncuestaEntity.cs" />
     <Compile Include="EnumEntity.cs" />
     <Compile Include="LlamadaEntity.cs" />

@@ -51,6 +51,7 @@
     <Compile Include="CVECAROLData.cs" />
     <Compile Include="CVECOLCIUData.cs" />
     <Compile Include="DatoFiscalData.cs" />
+    <Compile Include="DatosLlamadaData.cs" />
     <Compile Include="EncuestaData.cs" />
     <Compile Include="LlamadaData.cs" />
     <Compile Include="ModuleData.cs" />

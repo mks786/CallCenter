@@ -44,23 +44,26 @@ function LlenarTabla(cadena) {
         "columns": [
             { "data": "IdPregunta", "orderable": false },
             { "data": "Pregunta", "orderable": false },
-            { "data": "IdTipoPregunta", "orderable": false },
-            //{ "data": "Cerrada", "orderable": false },
-            //{ "data": "OpcMultiple", "orderable": false },
-            //{ "data": "Abierta", "orderable": false },
-            ////{
-            ////    sortable: false,
-            ////    "render": function (data, type, full, meta) {
-            ////        console.log(full);                   
-            ////    }
-            ////},
-
-        {
-            sortable: false,
-            "render": function (data, type, full, meta) {
-                return Opciones(full);  //Es el campo de opciones de la tabla.
+            {
+                sortable: false,
+                "render": function (data, type, full, meta) {
+                    var tipo;
+                    if (full.IdTipoPregunta == 1) {
+                        tipo = 'Abierta';
+                    } else if (full.IdTipoPregunta == 2) {
+                        tipo = 'Cerrada';
+                    } else if (full.IdTipoPregunta == 3) {
+                        tipo = 'Opción Múltiple';
+                    }
+                    return ('<td>'+tipo+'</td>');
+                }
+            },
+            {
+                sortable: false,
+                "render": function (data, type, full, meta) {
+                    return Opciones(full);  //Es el campo de opciones de la tabla.
+                }
             }
-        }
         ],
 
         language: {
@@ -90,7 +93,7 @@ function LlenarTabla(cadena) {
         "order": [[0, "asc"]]
     })
 
-    $("div.toolbar").html('<div class="input-group input-group-sm"><input class="form-control" type="text" id="buscar"><span class="input-group-btn"><button class="btn btn-info btn-flat" type="button" onclick="Busqueda()">Buscar</button></span></div>');
+    $("div.toolbar").html('<div class="input-group input-group-sm"><input class="form-control" type="text" id="buscar"><span class="input-group-btn"><button class="btn btn-info btn-flat" type="button" onclick="Busqueda()"><i class="fa fa-search" aria-hidden="true"></i> Buscar</button></span></div>');
     //respaldo de boton agregar
     //$("div.toolbar").html('<button class="btn btn-success btn-sm Agregar" style="float:right;" ><i class="fa fa-plus" aria-hidden="true"></i> Nueva Pregunta </button> <div class="input-group input-group-sm"><input class="form-control" type="text"><span class="input-group-btn"><button class="btn btn-info btn-flat" type="button">Buscar</button></span></div>');
 

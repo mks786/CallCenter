@@ -34,7 +34,8 @@
         <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
         <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
     <![endif]-->
-
+    <link href="~/plugins/sweetAlert/sweetalert.css" rel="stylesheet" />
+    <script src="~/plugins/sweetAlert/sweetalert.min.js"></script>
 
     <script>
 
@@ -47,7 +48,7 @@
             var u = $('#usuario').val();
             var p = $('#password').val();
             if (u == '' || p == '') {
-                ShowNotification('Error ', 'Introduce un Usuario y Contraseña', 'error')
+                swal("Introduce un usuario y contraseña", "", "error");
                 $('#usuario').val("");
                 $('#password').val("");
             }
@@ -63,7 +64,7 @@
                 var u = $('#usuario').val();
                 var p = $('#password').val();
                 if (u == '' || p == '') {
-                    ShowNotification('Error ', 'Introduce un Usuario y Contraseña', 'error')
+                    swal("Introduce un usuario y contraseña", "", "error");
                     $('#usuario').val("");
                     $('#password').val("");
                 }
@@ -80,7 +81,7 @@
                 var u = $('#usuario').val();
                 var p = $('#password').val();
                 if (u == '' || p == '') {
-                    ShowNotification('Error ', 'Introduce un Usuario y Contraseña', 'error')
+                    swal("Introduce un usuario y contraseña", "", "error");
                     $('#usuario').val("");
                     $('#password').val("");
                 }
@@ -98,15 +99,19 @@
             $('#password').val("");
         });
 
+
         //actualiza index
         function login(userx, passx) {
-            $("#cargando1").show();
-            $('#cargando1').css("display", "inline");
-            $.ajax({
-                type: "POST",
-                url: "@Url.Action("logon", "Usuario")", // Method , Controler
-                //url: "/ParametroConfiguracion/QuickIndex/",
-                data: { user: userx, pass: passx },
+            $('#btnlog').button('loading');
+            setTimeout(function () {
+                $('#btnlog').button('reset');
+            }, 2500);
+            setTimeout(function () {
+                $.ajax({
+                    type: "POST",
+                    url: "@Url.Action("logon", "Usuario")", // Method , Controler
+            //url: "/ParametroConfiguracion/QuickIndex/",
+                    data: { user: userx, pass: passx },
                 success: function (data) {
                     // $('#DatosTabla').html(data);
                     //ReloadScript();
@@ -115,33 +120,33 @@
                         $('#cargando1').css("display", "none");
                         $('#Buscador').css("display", "inline");
                         //ShowNotification('Error Acceso', data.Message, 'error')
-                        ShowNotification('Error ', 'prueba', 'error')
+                        swal("Usuario y/o contraseña incorrecta", "", "error");
                         //$('#usuario').val("");
                         //$('#password').val("");
                     }
                     else {
                         @if(Session["lasturl"]!=null)
-                {
-                    @:window.location = '@Session["lasturl"].ToString()'
-                                                                                                                                                                                                                                                                }
-                else
-                {
+                        {
+                            @:window.location = '@Session["lasturl"].ToString()'
+                        }
+                        else
+                        {
                     @*@:window.location = '../Home/Index.cshtml'*@
-                    @:document.location.href = '../Home';
+                                @:document.location.href = '../Home';
                                             @*@:location.href = '../Home/Index';
-                    @:parent.location = '../Home/Index';
-                    @:window.location.href = '../Home/Index';*@
+                            @:parent.location = '../Home/Index';
+                            @:window.location.href = '../Home/Index';*@
 
 
-                             @*@:window.open('../Home/Index');
-                             @:RedirectToAction("Index", "Home");*@
-                }
+                                     @*@:window.open('../Home/Index');
+                            @:RedirectToAction("Index", "Home");*@
+                            }
 
                     }
                 },
                 error: function (xhr, ajaxOptions, thrownError) {
                     //ShowNotification('Error', thrownError + '' + xhr.status, 'error')
-                    ShowNotification('Error ', 'prueba', 'error')
+                    swal("Usuario y/o contraseña incorrecta", "", "error");
                     $('#cargando1').css("display", "none");
                     $('#Buscador').css("display", "inline");
                     $('#usuario').val("");
@@ -150,10 +155,13 @@
                 }
 
             });
+            }, 2000);
+
+            
         }
+        
 
     });
-
 
 
 
@@ -209,7 +217,7 @@
                         </div>
                     </div><!-- /.col -->
                     <div class="col-xs-4">
-                        <button type="submit" id="btnlog" class="btn btn-primary btn-block btn-flat">Accesar</button>
+                        <button type="submit" id="btnlog" class="btn btn-primary btn-flat" data-loading-text="<i class='fa fa-circle-o-notch fa-spin'></i> Accesando">Accesar</button>
                     </div><!-- /.col -->
                 </div>
 

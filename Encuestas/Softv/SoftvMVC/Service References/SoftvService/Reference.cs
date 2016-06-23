@@ -1778,10 +1778,10 @@ namespace SoftvMVC.SoftvService {
         System.Threading.Tasks.Task<int> UpdateConexionAsync(Softv.Entities.ConexionEntity objConexion);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IConexion/DeleteConexion", ReplyAction="http://tempuri.org/IConexion/DeleteConexionResponse")]
-        int DeleteConexion(System.Nullable<int> IdConexion);
+        int DeleteConexion(string BaseRemoteIp, int BaseIdUser, System.Nullable<int> IdConexion);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IConexion/DeleteConexion", ReplyAction="http://tempuri.org/IConexion/DeleteConexionResponse")]
-        System.Threading.Tasks.Task<int> DeleteConexionAsync(System.Nullable<int> IdConexion);
+        System.Threading.Tasks.Task<int> DeleteConexionAsync(string BaseRemoteIp, int BaseIdUser, System.Nullable<int> IdConexion);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -1867,12 +1867,12 @@ namespace SoftvMVC.SoftvService {
             return base.Channel.UpdateConexionAsync(objConexion);
         }
         
-        public int DeleteConexion(System.Nullable<int> IdConexion) {
-            return base.Channel.DeleteConexion(IdConexion);
+        public int DeleteConexion(string BaseRemoteIp, int BaseIdUser, System.Nullable<int> IdConexion) {
+            return base.Channel.DeleteConexion(BaseRemoteIp, BaseIdUser, IdConexion);
         }
         
-        public System.Threading.Tasks.Task<int> DeleteConexionAsync(System.Nullable<int> IdConexion) {
-            return base.Channel.DeleteConexionAsync(IdConexion);
+        public System.Threading.Tasks.Task<int> DeleteConexionAsync(string BaseRemoteIp, int BaseIdUser, System.Nullable<int> IdConexion) {
+            return base.Channel.DeleteConexionAsync(BaseRemoteIp, BaseIdUser, IdConexion);
         }
     }
     
@@ -5252,6 +5252,151 @@ namespace SoftvMVC.SoftvService {
         
         public System.Threading.Tasks.Task<int> DeleteNoClienteAsync(string BaseRemoteIp, int BaseIdUser, System.Nullable<int> Id) {
             return base.Channel.DeleteNoClienteAsync(BaseRemoteIp, BaseIdUser, Id);
+        }
+    }
+    
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ServiceModel.ServiceContractAttribute(ConfigurationName="SoftvService.IDatosLlamada")]
+    public interface IDatosLlamada {
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IDatosLlamada/GetDatosLlamada", ReplyAction="http://tempuri.org/IDatosLlamada/GetDatosLlamadaResponse")]
+        Softv.Entities.DatosLlamadaEntity GetDatosLlamada(System.Nullable<int> Id);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IDatosLlamada/GetDatosLlamada", ReplyAction="http://tempuri.org/IDatosLlamada/GetDatosLlamadaResponse")]
+        System.Threading.Tasks.Task<Softv.Entities.DatosLlamadaEntity> GetDatosLlamadaAsync(System.Nullable<int> Id);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IDatosLlamada/GetDeepDatosLlamada", ReplyAction="http://tempuri.org/IDatosLlamada/GetDeepDatosLlamadaResponse")]
+        Softv.Entities.DatosLlamadaEntity GetDeepDatosLlamada(System.Nullable<int> Id);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IDatosLlamada/GetDeepDatosLlamada", ReplyAction="http://tempuri.org/IDatosLlamada/GetDeepDatosLlamadaResponse")]
+        System.Threading.Tasks.Task<Softv.Entities.DatosLlamadaEntity> GetDeepDatosLlamadaAsync(System.Nullable<int> Id);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IDatosLlamada/GetDatosLlamadaList", ReplyAction="http://tempuri.org/IDatosLlamada/GetDatosLlamadaListResponse")]
+        System.Collections.Generic.List<Softv.Entities.DatosLlamadaEntity> GetDatosLlamadaList();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IDatosLlamada/GetDatosLlamadaList", ReplyAction="http://tempuri.org/IDatosLlamada/GetDatosLlamadaListResponse")]
+        System.Threading.Tasks.Task<System.Collections.Generic.List<Softv.Entities.DatosLlamadaEntity>> GetDatosLlamadaListAsync();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IDatosLlamada/GetDatosLlamadaPagedList", ReplyAction="http://tempuri.org/IDatosLlamada/GetDatosLlamadaPagedListResponse")]
+        Globals.SoftvList<Softv.Entities.DatosLlamadaEntity> GetDatosLlamadaPagedList(int page, int pageSize);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IDatosLlamada/GetDatosLlamadaPagedList", ReplyAction="http://tempuri.org/IDatosLlamada/GetDatosLlamadaPagedListResponse")]
+        System.Threading.Tasks.Task<Globals.SoftvList<Softv.Entities.DatosLlamadaEntity>> GetDatosLlamadaPagedListAsync(int page, int pageSize);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IDatosLlamada/GetDatosLlamadaPagedListXml", ReplyAction="http://tempuri.org/IDatosLlamada/GetDatosLlamadaPagedListXmlResponse")]
+        Globals.SoftvList<Softv.Entities.DatosLlamadaEntity> GetDatosLlamadaPagedListXml(int page, int pageSize, string xml);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IDatosLlamada/GetDatosLlamadaPagedListXml", ReplyAction="http://tempuri.org/IDatosLlamada/GetDatosLlamadaPagedListXmlResponse")]
+        System.Threading.Tasks.Task<Globals.SoftvList<Softv.Entities.DatosLlamadaEntity>> GetDatosLlamadaPagedListXmlAsync(int page, int pageSize, string xml);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IDatosLlamada/AddDatosLlamada", ReplyAction="http://tempuri.org/IDatosLlamada/AddDatosLlamadaResponse")]
+        int AddDatosLlamada(Softv.Entities.DatosLlamadaEntity objDatosLlamada);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IDatosLlamada/AddDatosLlamada", ReplyAction="http://tempuri.org/IDatosLlamada/AddDatosLlamadaResponse")]
+        System.Threading.Tasks.Task<int> AddDatosLlamadaAsync(Softv.Entities.DatosLlamadaEntity objDatosLlamada);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IDatosLlamada/UpdateDatosLlamada", ReplyAction="http://tempuri.org/IDatosLlamada/UpdateDatosLlamadaResponse")]
+        int UpdateDatosLlamada(Softv.Entities.DatosLlamadaEntity objDatosLlamada);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IDatosLlamada/UpdateDatosLlamada", ReplyAction="http://tempuri.org/IDatosLlamada/UpdateDatosLlamadaResponse")]
+        System.Threading.Tasks.Task<int> UpdateDatosLlamadaAsync(Softv.Entities.DatosLlamadaEntity objDatosLlamada);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IDatosLlamada/DeleteDatosLlamada", ReplyAction="http://tempuri.org/IDatosLlamada/DeleteDatosLlamadaResponse")]
+        int DeleteDatosLlamada(string BaseRemoteIp, int BaseIdUser, System.Nullable<int> Id);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IDatosLlamada/DeleteDatosLlamada", ReplyAction="http://tempuri.org/IDatosLlamada/DeleteDatosLlamadaResponse")]
+        System.Threading.Tasks.Task<int> DeleteDatosLlamadaAsync(string BaseRemoteIp, int BaseIdUser, System.Nullable<int> Id);
+    }
+    
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    public interface IDatosLlamadaChannel : SoftvMVC.SoftvService.IDatosLlamada, System.ServiceModel.IClientChannel {
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    public partial class DatosLlamadaClient : System.ServiceModel.ClientBase<SoftvMVC.SoftvService.IDatosLlamada>, SoftvMVC.SoftvService.IDatosLlamada {
+        
+        public DatosLlamadaClient() {
+        }
+        
+        public DatosLlamadaClient(string endpointConfigurationName) : 
+                base(endpointConfigurationName) {
+        }
+        
+        public DatosLlamadaClient(string endpointConfigurationName, string remoteAddress) : 
+                base(endpointConfigurationName, remoteAddress) {
+        }
+        
+        public DatosLlamadaClient(string endpointConfigurationName, System.ServiceModel.EndpointAddress remoteAddress) : 
+                base(endpointConfigurationName, remoteAddress) {
+        }
+        
+        public DatosLlamadaClient(System.ServiceModel.Channels.Binding binding, System.ServiceModel.EndpointAddress remoteAddress) : 
+                base(binding, remoteAddress) {
+        }
+        
+        public Softv.Entities.DatosLlamadaEntity GetDatosLlamada(System.Nullable<int> Id) {
+            return base.Channel.GetDatosLlamada(Id);
+        }
+        
+        public System.Threading.Tasks.Task<Softv.Entities.DatosLlamadaEntity> GetDatosLlamadaAsync(System.Nullable<int> Id) {
+            return base.Channel.GetDatosLlamadaAsync(Id);
+        }
+        
+        public Softv.Entities.DatosLlamadaEntity GetDeepDatosLlamada(System.Nullable<int> Id) {
+            return base.Channel.GetDeepDatosLlamada(Id);
+        }
+        
+        public System.Threading.Tasks.Task<Softv.Entities.DatosLlamadaEntity> GetDeepDatosLlamadaAsync(System.Nullable<int> Id) {
+            return base.Channel.GetDeepDatosLlamadaAsync(Id);
+        }
+        
+        public System.Collections.Generic.List<Softv.Entities.DatosLlamadaEntity> GetDatosLlamadaList() {
+            return base.Channel.GetDatosLlamadaList();
+        }
+        
+        public System.Threading.Tasks.Task<System.Collections.Generic.List<Softv.Entities.DatosLlamadaEntity>> GetDatosLlamadaListAsync() {
+            return base.Channel.GetDatosLlamadaListAsync();
+        }
+        
+        public Globals.SoftvList<Softv.Entities.DatosLlamadaEntity> GetDatosLlamadaPagedList(int page, int pageSize) {
+            return base.Channel.GetDatosLlamadaPagedList(page, pageSize);
+        }
+        
+        public System.Threading.Tasks.Task<Globals.SoftvList<Softv.Entities.DatosLlamadaEntity>> GetDatosLlamadaPagedListAsync(int page, int pageSize) {
+            return base.Channel.GetDatosLlamadaPagedListAsync(page, pageSize);
+        }
+        
+        public Globals.SoftvList<Softv.Entities.DatosLlamadaEntity> GetDatosLlamadaPagedListXml(int page, int pageSize, string xml) {
+            return base.Channel.GetDatosLlamadaPagedListXml(page, pageSize, xml);
+        }
+        
+        public System.Threading.Tasks.Task<Globals.SoftvList<Softv.Entities.DatosLlamadaEntity>> GetDatosLlamadaPagedListXmlAsync(int page, int pageSize, string xml) {
+            return base.Channel.GetDatosLlamadaPagedListXmlAsync(page, pageSize, xml);
+        }
+        
+        public int AddDatosLlamada(Softv.Entities.DatosLlamadaEntity objDatosLlamada) {
+            return base.Channel.AddDatosLlamada(objDatosLlamada);
+        }
+        
+        public System.Threading.Tasks.Task<int> AddDatosLlamadaAsync(Softv.Entities.DatosLlamadaEntity objDatosLlamada) {
+            return base.Channel.AddDatosLlamadaAsync(objDatosLlamada);
+        }
+        
+        public int UpdateDatosLlamada(Softv.Entities.DatosLlamadaEntity objDatosLlamada) {
+            return base.Channel.UpdateDatosLlamada(objDatosLlamada);
+        }
+        
+        public System.Threading.Tasks.Task<int> UpdateDatosLlamadaAsync(Softv.Entities.DatosLlamadaEntity objDatosLlamada) {
+            return base.Channel.UpdateDatosLlamadaAsync(objDatosLlamada);
+        }
+        
+        public int DeleteDatosLlamada(string BaseRemoteIp, int BaseIdUser, System.Nullable<int> Id) {
+            return base.Channel.DeleteDatosLlamada(BaseRemoteIp, BaseIdUser, Id);
+        }
+        
+        public System.Threading.Tasks.Task<int> DeleteDatosLlamadaAsync(string BaseRemoteIp, int BaseIdUser, System.Nullable<int> Id) {
+            return base.Channel.DeleteDatosLlamadaAsync(BaseRemoteIp, BaseIdUser, Id);
         }
     }
 }

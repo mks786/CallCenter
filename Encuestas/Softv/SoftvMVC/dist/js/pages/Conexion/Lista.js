@@ -82,7 +82,7 @@ function LlenarTabla(cadena) {
 
         "order": [[0, "asc"]]
     })
-    $("div.toolbar").html('<button class="btn bg-olive" style="float:right;" onclick="agregrarConexion()"><i class="fa fa-plug" aria-hidden="true"></i> Nueva Plaza</button> <div class="input-group input-group-sm"><input class="form-control" id="buscar" type="text"><span class="input-group-btn"><button onclick="Busqueda()" class="btn btn-info btn-flat" type="button">Buscar</button></span></div>');
+    $("div.toolbar").html('<button class="btn bg-olive btn-sm" style="float:right;" onclick="agregrarConexion()"><i class="fa fa-plug" aria-hidden="true"></i> Nueva Plaza</button> <div class="input-group input-group-sm"><input class="form-control" id="buscar" type="text"><span class="input-group-btn"><button onclick="Busqueda()" class="btn btn-info btn-flat" type="button"><i class="fa fa-search" aria-hidden="true"></i> Buscar</button></span></div>');
 }
 
 function Opciones(id) {
@@ -155,19 +155,19 @@ $('#guardarConexion').click(function () {
 
 
     if ($('#Nombreplaza').val() == "") {
-        sweetAlert("Oops...", "El nombre de plaza es requerido!", "error");
+        sweetAlert("El nombre de plaza es requerido!", "", "error");
     }
     else if ($('#Servidor').val() == "") {
-        sweetAlert("Oops...", "El nombre del servidor es requerido!", "error");
+        sweetAlert("El nombre del servidor es requerido!", "", "error");
     }
     else if ($('#base').val() == "") {
-        sweetAlert("Oops...", "El nombre de la base de datos es requerido!", "error");
+        sweetAlert("El nombre de la base de datos es requerido!", "", "error");
     }
     else if ($('#user').val() == "") {
-        sweetAlert("Oops...", "El nombre del usuario es requerido!", "error");
+        sweetAlert("El nombre del usuario es requerido!", "", "error");
     }
     else if ($('#pass').val() == "") {
-        sweetAlert("Oops...", "la contraseña es requerida!", "error");
+        sweetAlert("la contraseña es requerida!", "", "error");
     } else {
 
 

@@ -200,6 +200,13 @@ namespace Softv.Providers
         {
             get { return NoClienteProvider.Instance; }
         }
+
+
+        public static DatosLlamadaProvider DatosLlamada
+        {
+            get { return DatosLlamadaProvider.Instance; }
+        }
+  
   
     }
 }

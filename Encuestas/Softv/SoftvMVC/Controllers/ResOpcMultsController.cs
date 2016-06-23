@@ -181,21 +181,6 @@ namespace SoftvMVC.Controllers
             }
         }
 
-        //public ActionResult Delete(int id = 0)
-        //{
-        //    int result = proxy.DeleteResOpcMults(RemoteIp, LoggedUserName, id);
-        //    if (result > 0)
-        //    {
-        //        var resultOk = new { tipomsj = "success", titulomsj = "Aviso", Success = "True", Message = "Registro de ResOpcMults Eliminado." };
-        //        return Json(resultOk, JsonRequestBehavior.AllowGet);
-        //    }
-        //    else
-        //    {
-        //        var resultNg = new { tipomsj = "warning", titulomsj = "Aviso", Success = "False", Message = "El Registro de ResOpcMults No puede ser Eliminado validar dependencias." };
-        //        return Json(resultNg, JsonRequestBehavior.AllowGet);
-        //    }
-        //}
-
 
         public JsonResult Delete(int id)
         {
@@ -213,11 +198,11 @@ namespace SoftvMVC.Controllers
             dataTableData.recordsTotal = 0;
             int recordsFiltered = 0;
             if(data != ""){
-                dataTableData.data = FiltrarContenido(ref recordsFiltered, start, length).Where(o => o.Id_ResOpcMult.ToString().Contains(data) || o.ResOpcMult.Contains(data)).ToList();
+                dataTableData.data = FiltrarContenido(ref recordsFiltered, start, length).Where(o => o.Id_ResOpcMult.ToString().Contains(data) || o.ResOpcMult.ToLower().Contains(data.ToLower())).OrderByDescending(c => c.Id_ResOpcMult).ToList();
             }
             else
             {
-                dataTableData.data = FiltrarContenido(ref recordsFiltered, start, length);
+                dataTableData.data = FiltrarContenido(ref recordsFiltered, start, length).OrderByDescending(c => c.Id_ResOpcMult).ToList();
             }
             
             dataTableData.recordsFiltered = recordsFiltered;

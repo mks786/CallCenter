@@ -76,6 +76,7 @@
     <Compile Include="Contracts\ICVECAROL.cs" />
     <Compile Include="Contracts\ICVECOLCIU.cs" />
     <Compile Include="Contracts\IDatoFiscal.cs" />
+    <Compile Include="Contracts\IDatosLlamada.cs" />
     <Compile Include="Contracts\IEncuesta.cs" />
     <Compile Include="Contracts\ILlamada.cs" />
     <Compile Include="Contracts\IModule.cs" />

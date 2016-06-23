@@ -127,9 +127,9 @@ namespace SoftvMVC.Controllers
             dataTableData.recordsTotal = 0;
             int recordsFiltered = 0;
             if(data != ""){
-               dataTableData.data = FiltrarContenido(ref recordsFiltered, start, length).Where(o => o.Pregunta.Contains(data) || o.IdPregunta.ToString().Contains(data)).ToList();
+                dataTableData.data = FiltrarContenido(ref recordsFiltered, start, length).Where(o => o.Pregunta.Contains(data) || o.IdPregunta.ToString().Contains(data)).OrderByDescending(c => c.IdPregunta).ToList();
             }else{
-                dataTableData.data = FiltrarContenido(ref recordsFiltered, start, length);
+                dataTableData.data = FiltrarContenido(ref recordsFiltered, start, length).OrderByDescending(c => c.IdPregunta).ToList();
             }
             dataTableData.recordsFiltered = recordsFiltered;
 
@@ -169,7 +169,7 @@ namespace SoftvMVC.Controllers
             if (data != "")
             {
 
-                datos = FiltrarPreguntas(ref recordsFiltered, start, 100).Where(x => x.Pregunta.Pregunta.Contains(data)).ToList();
+                datos = FiltrarPreguntas(ref recordsFiltered, start, 100).Where(x => x.Pregunta.Pregunta.ToLower().Contains(data.ToLower())).ToList();
 
             }
             else if (tipo > 0)

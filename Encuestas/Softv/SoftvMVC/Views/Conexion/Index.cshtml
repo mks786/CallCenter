@@ -93,10 +93,8 @@
             </div>
             <div class="modal-footer">
                 <input type="hidden" id="idEncuesta" />
-                <button class="btn btn-primary" type="button" data-dismiss="modal">cerrar</button>
                 <button class="btn btn-success" id="guardarConexion" type="button">Guardar</button>
-               
-
+                <button class="btn btn-primary" type="button" data-dismiss="modal">cerrar</button>
             </div>
         </div>
     </div>
@@ -155,10 +153,8 @@
             </div>
             <div class="modal-footer">
                 <input type="hidden" id="idEncuesta" />
-                <button class="btn btn-primary" type="button" data-dismiss="modal">cerrar</button>
                 <button class="btn btn-success" onclick="editarConexion()" type="button">Guardar</button>
-
-
+                <button class="btn btn-primary" type="button" data-dismiss="modal">cerrar</button>
             </div>
         </div>
     </div>
@@ -176,10 +172,8 @@
                 <h5>¿Deseas eliminar la plaza <strong id="nombre_plaza"></strong>?</h5>
             </div>
             <div class="modal-footer">
-                <button class="btn btn-primary" type="button" data-dismiss="modal">cerrar</button>
                 <button class="btn btn-danger" onclick="deleteConexion()" type="button">Eliminar</button>
-
-
+                <button class="btn btn-primary" type="button" data-dismiss="modal">cerrar</button>
             </div>
         </div>
     </div>
@@ -190,6 +184,8 @@
     $(function () {
         $('#poner_activo li').siblings('li').removeClass('active');
         $('.19').addClass('active');
+        $('#sub_activo li').siblings('li').removeClass('active');
+        $('.6').addClass('active');
     });
 </script>
 

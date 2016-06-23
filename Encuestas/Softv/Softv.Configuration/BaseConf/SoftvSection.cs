@@ -373,7 +373,16 @@ namespace SoftvConfiguration
         {
             get { return (NoClienteElement)base["NoCliente"]; }
         }
-  
 
+
+        /// <summary>
+        /// Gets DatosLlamada configuration data
+        /// </summary>
+        [ConfigurationProperty("DatosLlamada")]
+        public DatosLlamadaElement DatosLlamada
+        {
+            get { return (DatosLlamadaElement)base["DatosLlamada"]; }
+        }
+  
     }
 }

@@ -23,23 +23,120 @@
                 <h3 class="box-title">Lista de Llamadas</h3>
                 <div class="row">
                     <div class="col-md-12">
-                        <a href="/Llamada/nueva" class="btn btn-success btn-sm" style="float:right;"><i class="fa fa-plus" aria-hidden="true"></i> Nueva Llamada </a>
+                        <a href="/Llamada/nueva" class="btn btn-success btn-sm disabled" id="nueva_llamada_link" style="float:right;"><i class="fa fa-phone" aria-hidden="true"></i> Nueva Llamada </a>
                     </div>
                 </div>
                 <div class="row">
-                    
-                        <div class="col-md-3">
-                            <div class="input-group input-group-sm">
-                                <input class="form-control" type="text" id="busqueda"><span class="input-group-btn"><button class="btn btn-info btn-flat" type="button" onclick="Buscando()">Buscar</button></span>
+                    <div class="col-md-3">
+                        <label>Selecciona la plaza</label>
+                        <select class="form-control" id="plaza_llamadas"><option selected disabled>---------</option></select>
+                    </div>
+                    <div class="col-md-3">
+                        <label>Selecciona el tipo de llamada</label>
+                        <select class="form-control" id="tipo_llamada" disabled>
+                            <option value="0" selected disabled>---------</option>
+                            <option value="1">Cliente</option>
+                            <option value="2">No Cliente</option>
+                            <option value="3">Todos</option>
+                        </select>
+                    </div>
+                </div><br />
+                <div class="row" id="panel_busqueda" style="display:none;">
+                    <div class="col-md-12">
+                        <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
+                            <div class="panel panel-default">
+                                <div class="panel-heading" role="tab" id="headingOne">
+                                    <h4 class="panel-title">
+                                        <a role="button" id="busqueda_collapse" data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="true" aria-controls="collapseOne" style="color:#4b646f;">
+                                            Busqueda
+                                        </a>
+                                    </h4>
+                                </div>
+                                <div id="collapseOne" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingOne">
+                                    <div class="panel-body">
+                                        <!-- Nav tabs -->
+                                        <ul class="nav nav-tabs" role="tablist">
+                                            <li role="presentation" class="active"><a href="#llamada" aria-controls="llamada" role="tab" data-toggle="tab">ID Llamada</a></li>
+                                            <li role="presentation"><a href="#contrato" aria-controls="contrato" role="tab" data-toggle="tab">Contrato</a></li>
+                                            <li role="presentation"><a href="#nombre" aria-controls="nombre" role="tab" data-toggle="tab">Nombre</a></li>
+                                        </ul>
+
+                                        <!-- Tab panes -->
+                                        <div class="tab-content">
+                                            <div role="tabpanel" class="tab-pane active" id="llamada">
+                                                <br />
+                                                <div class="row">
+                                                    <div class="col-md-4">
+                                                        <p style="color:#4b646f;">Ingrese el ID de la llamada</p>
+                                                    </div>
+                                                </div>
+                                                <div class="row">
+                                                    <div class="col-md-3">
+                                                        <input type="text" class="form-control" id="input_llamada" />
+                                                    </div>
+                                                </div>
+                                                <div class="row">
+                                                    <div class="col-md-12">
+                                                        <p class="text-right">
+                                                            <a class="btn btn-primary" onclick="buscar_por_id()"><i class="fa fa-search" aria-hidden="true"></i> Buscar</a>
+                                                        </p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div role="tabpanel" class="tab-pane" id="contrato">
+                                                <br />
+                                                <div class="row">
+                                                    <div class="col-md-4">
+                                                        <p style="color:#4b646f;">Ingrese el número de contrato</p>
+                                                    </div>
+                                                </div>
+                                                <div class="row">
+                                                    <div class="col-md-3">
+                                                        <input type="text" class="form-control" id="input_contrato" />
+                                                    </div>
+                                                </div>
+                                                <div class="row">
+                                                    <div class="col-md-8">
+                                                        <span class="help-block">El número de contrato está formado por 2 grupos de números con un guión intermedio p.e. (1234-1)</span>
+                                                    </div>
+                                                </div>
+                                                <div class="row">
+                                                    <div class="col-md-12">
+                                                        <p class="text-right">
+                                                            <a class="btn btn-primary" onclick="buscar_por_contrato()"><i class="fa fa-search" aria-hidden="true"></i> Buscar</a>
+                                                        </p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div role="tabpanel" class="tab-pane" id="nombre">
+                                                <br />
+                                                <div class="row">
+                                                    <div class="col-md-4">
+                                                        <p style="color:#4b646f;">Nombre completo</p>
+                                                    </div>
+                                                </div>
+                                                <div class="row">
+                                                    <div class="col-md-8">
+                                                        <input type="text" class="form-control" id="nombre_individual" />
+                                                    </div>
+                                                </div>
+                                                <div class="row">
+                                                    <div class="col-md-12">
+                                                        <p class="text-right">
+                                                            <a class="btn btn-primary" onclick="buscar_por_nombre()"><i class="fa fa-search" aria-hidden="true"></i> Buscar</a>
+                                                        </p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div><!-- panel body -->
+                                </div>
                             </div>
                         </div>
-                        <div class="col-md-3">
-                            <select class="form-control" id="plaza_llamadas"><option selected disabled>Seleccióna la plaza</option></select>
-                        </div>
-
+                    </div>
                 </div>
             </div><!-- /.box-header -->
-            <div class="box-body">
+            <div class="box-body" id="panel_tabla">
 
                 <table id="TablaLlamadas" class="table table-bordered table-hover dataTable">
                     <thead>
@@ -48,8 +145,8 @@
                             <td><b>Id Usuario</b></td>
                             <td><b>Tipo Llamada</b></td>
                             <td><b>Contrato</b></td>
+                            <td><b>Nombre</b></td>
                             <td><b>Fecha</b></td>
-                            <td><b>Id Conexión</b></td>
                             <td><b>Opciones</b></td>
                         </tr>
                     </thead>
@@ -271,8 +368,8 @@
                 </div>
             </div>
             <div class="modal-footer">
-                <button class="btn btn-primary" type="button" data-dismiss="modal">Cerrar</button>
                 <button class="btn btn-success" type="button" onclick="guardarLlamada()">Guardar</button>
+                <button class="btn btn-primary" type="button" data-dismiss="modal">Cerrar</button>
             </div>
         </div>
     </div>
@@ -308,8 +405,8 @@
                         <div class="info-box">
                             <span class="info-box-icon bg-aqua" style="height:150px; width:100px; padding-top:30px;"><i class="fa fa-user" aria-hidden="true"></i></span>
                             <div class="info-box-content" style="padding-left:20px;">
-                                <span class="info-box-text" style="display:none;" id="pan_contrato"><label>Contrato: </label>  <small id="contrato"></small></span>
-                                <span class="info-box-text" style="display:none;" id="pan_nombre"><label>Nombre: </label>  <small id="nombre"></small></span>
+                                <span class="info-box-text" style="display:none;" id="pan_contrato"><label>Contrato: </label>  <small id="contrato_detalle"></small></span>
+                                <span class="info-box-text" style="display:none;" id="pan_nombre"><label>Nombre: </label>  <small id="nombre_completo"></small></span>
                                 <span class="info-box-text" style="display:none;" id="pan_domicilio"><label>Domicilio: </label>  <small id="domicilio"></small></span>
                                 <span class="info-box-text" style="display:none;" id="pan_telefono"><label>Telefono: </label>  <small id="telefono"></small></span>
                                 <span class="info-box-text" style="display:none;" id="pan_celualr"><label>celular: </label>  <small id="celular"></small></span>
@@ -463,14 +560,17 @@
 </div>
 
 
-
+<script src="~/plugins/input-mask/jquery.inputmask.js"></script>
 <script src="~/dist/js/pages/Llamada/Lista.js"></script>
 <script src="~/dist/js/pages/Llamada/agregar_llamada.js"></script>
+<link href="~/plugins/sweetAlert/sweetalert.css" rel="stylesheet" />
+<script src="~/plugins/sweetAlert/sweetalert.min.js"></script>
 <script>
     $(document).ready(function () {
         $('#poner_activo li').siblings('li').removeClass('active');
+        $('#sub_activo li').siblings('li').removeClass('active');
         $('.1').addClass('active');
-        console.log('activo');
+        $('.14').addClass('active');
     });
 </script>
 

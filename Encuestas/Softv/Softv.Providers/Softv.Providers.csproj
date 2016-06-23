@@ -52,6 +52,7 @@
     <Compile Include="CVECAROLProvider.cs" />
     <Compile Include="CVECOLCIUProvider.cs" />
     <Compile Include="DatoFiscalProvider.cs" />
+    <Compile Include="DatosLlamadaProvider.cs" />
     <Compile Include="EncuestaProvider.cs" />
     <Compile Include="LlamadaProvider.cs" />
     <Compile Include="ModuleProvider.cs" />

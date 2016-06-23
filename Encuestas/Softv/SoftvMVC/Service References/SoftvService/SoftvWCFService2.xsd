@@ -824,4 +824,25 @@
     </xs:sequence>
   </xs:complexType>
   <xs:element name="ArrayOfNoClienteEntity" nillable="true" type="tns:ArrayOfNoClienteEntity" />
+  <xs:complexType name="DatosLlamadaEntity">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:BaseEntity">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="Contrato" nillable="true" type="xs:long" />
+          <xs:element minOccurs="0" name="Fecha" nillable="true" type="xs:dateTime" />
+          <xs:element minOccurs="0" name="Id" nillable="true" type="xs:int" />
+          <xs:element minOccurs="0" name="IdLlamada" nillable="true" type="xs:int" />
+          <xs:element minOccurs="0" name="Nombre" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="Usuario" nillable="true" type="xs:string" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="DatosLlamadaEntity" nillable="true" type="tns:DatosLlamadaEntity" />
+  <xs:complexType name="ArrayOfDatosLlamadaEntity">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="DatosLlamadaEntity" nillable="true" type="tns:DatosLlamadaEntity" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfDatosLlamadaEntity" nillable="true" type="tns:ArrayOfDatosLlamadaEntity" />
 </xs:schema>

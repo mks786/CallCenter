@@ -1724,6 +1724,54 @@
   <wsdl:message name="INoCliente_DeleteNoCliente_OutputMessage">
     <wsdl:part name="parameters" element="tns:DeleteNoClienteResponse" />
   </wsdl:message>
+  <wsdl:message name="IDatosLlamada_GetDatosLlamada_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetDatosLlamada" />
+  </wsdl:message>
+  <wsdl:message name="IDatosLlamada_GetDatosLlamada_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetDatosLlamadaResponse" />
+  </wsdl:message>
+  <wsdl:message name="IDatosLlamada_GetDeepDatosLlamada_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetDeepDatosLlamada" />
+  </wsdl:message>
+  <wsdl:message name="IDatosLlamada_GetDeepDatosLlamada_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetDeepDatosLlamadaResponse" />
+  </wsdl:message>
+  <wsdl:message name="IDatosLlamada_GetDatosLlamadaList_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetDatosLlamadaList" />
+  </wsdl:message>
+  <wsdl:message name="IDatosLlamada_GetDatosLlamadaList_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetDatosLlamadaListResponse" />
+  </wsdl:message>
+  <wsdl:message name="IDatosLlamada_GetDatosLlamadaPagedList_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetDatosLlamadaPagedList" />
+  </wsdl:message>
+  <wsdl:message name="IDatosLlamada_GetDatosLlamadaPagedList_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetDatosLlamadaPagedListResponse" />
+  </wsdl:message>
+  <wsdl:message name="IDatosLlamada_GetDatosLlamadaPagedListXml_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetDatosLlamadaPagedListXml" />
+  </wsdl:message>
+  <wsdl:message name="IDatosLlamada_GetDatosLlamadaPagedListXml_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetDatosLlamadaPagedListXmlResponse" />
+  </wsdl:message>
+  <wsdl:message name="IDatosLlamada_AddDatosLlamada_InputMessage">
+    <wsdl:part name="parameters" element="tns:AddDatosLlamada" />
+  </wsdl:message>
+  <wsdl:message name="IDatosLlamada_AddDatosLlamada_OutputMessage">
+    <wsdl:part name="parameters" element="tns:AddDatosLlamadaResponse" />
+  </wsdl:message>
+  <wsdl:message name="IDatosLlamada_UpdateDatosLlamada_InputMessage">
+    <wsdl:part name="parameters" element="tns:UpdateDatosLlamada" />
+  </wsdl:message>
+  <wsdl:message name="IDatosLlamada_UpdateDatosLlamada_OutputMessage">
+    <wsdl:part name="parameters" element="tns:UpdateDatosLlamadaResponse" />
+  </wsdl:message>
+  <wsdl:message name="IDatosLlamada_DeleteDatosLlamada_InputMessage">
+    <wsdl:part name="parameters" element="tns:DeleteDatosLlamada" />
+  </wsdl:message>
+  <wsdl:message name="IDatosLlamada_DeleteDatosLlamada_OutputMessage">
+    <wsdl:part name="parameters" element="tns:DeleteDatosLlamadaResponse" />
+  </wsdl:message>
   <wsdl:portType name="IUsuario">
     <wsdl:operation name="GetUsuario">
       <wsdl:input wsaw:Action="http://tempuri.org/IUsuario/GetUsuario" message="tns:IUsuario_GetUsuario_InputMessage" />
@@ -2938,6 +2986,40 @@
     <wsdl:operation name="DeleteNoCliente">
       <wsdl:input wsaw:Action="http://tempuri.org/INoCliente/DeleteNoCliente" message="tns:INoCliente_DeleteNoCliente_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/INoCliente/DeleteNoClienteResponse" message="tns:INoCliente_DeleteNoCliente_OutputMessage" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:portType name="IDatosLlamada">
+    <wsdl:operation name="GetDatosLlamada">
+      <wsdl:input wsaw:Action="http://tempuri.org/IDatosLlamada/GetDatosLlamada" message="tns:IDatosLlamada_GetDatosLlamada_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IDatosLlamada/GetDatosLlamadaResponse" message="tns:IDatosLlamada_GetDatosLlamada_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetDeepDatosLlamada">
+      <wsdl:input wsaw:Action="http://tempuri.org/IDatosLlamada/GetDeepDatosLlamada" message="tns:IDatosLlamada_GetDeepDatosLlamada_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IDatosLlamada/GetDeepDatosLlamadaResponse" message="tns:IDatosLlamada_GetDeepDatosLlamada_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetDatosLlamadaList">
+      <wsdl:input wsaw:Action="http://tempuri.org/IDatosLlamada/GetDatosLlamadaList" message="tns:IDatosLlamada_GetDatosLlamadaList_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IDatosLlamada/GetDatosLlamadaListResponse" message="tns:IDatosLlamada_GetDatosLlamadaList_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetDatosLlamadaPagedList">
+      <wsdl:input wsaw:Action="http://tempuri.org/IDatosLlamada/GetDatosLlamadaPagedList" message="tns:IDatosLlamada_GetDatosLlamadaPagedList_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IDatosLlamada/GetDatosLlamadaPagedListResponse" message="tns:IDatosLlamada_GetDatosLlamadaPagedList_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetDatosLlamadaPagedListXml">
+      <wsdl:input wsaw:Action="http://tempuri.org/IDatosLlamada/GetDatosLlamadaPagedListXml" message="tns:IDatosLlamada_GetDatosLlamadaPagedListXml_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IDatosLlamada/GetDatosLlamadaPagedListXmlResponse" message="tns:IDatosLlamada_GetDatosLlamadaPagedListXml_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="AddDatosLlamada">
+      <wsdl:input wsaw:Action="http://tempuri.org/IDatosLlamada/AddDatosLlamada" message="tns:IDatosLlamada_AddDatosLlamada_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IDatosLlamada/AddDatosLlamadaResponse" message="tns:IDatosLlamada_AddDatosLlamada_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="UpdateDatosLlamada">
+      <wsdl:input wsaw:Action="http://tempuri.org/IDatosLlamada/UpdateDatosLlamada" message="tns:IDatosLlamada_UpdateDatosLlamada_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IDatosLlamada/UpdateDatosLlamadaResponse" message="tns:IDatosLlamada_UpdateDatosLlamada_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="DeleteDatosLlamada">
+      <wsdl:input wsaw:Action="http://tempuri.org/IDatosLlamada/DeleteDatosLlamada" message="tns:IDatosLlamada_DeleteDatosLlamada_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IDatosLlamada/DeleteDatosLlamadaResponse" message="tns:IDatosLlamada_DeleteDatosLlamada_OutputMessage" />
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:binding name="BasicHttpBinding_IUsuario" type="tns:IUsuario">
@@ -5622,6 +5704,81 @@
       </wsdl:output>
     </wsdl:operation>
   </wsdl:binding>
+  <wsdl:binding name="BasicHttpBinding_IDatosLlamada" type="tns:IDatosLlamada">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="GetDatosLlamada">
+      <soap:operation soapAction="http://tempuri.org/IDatosLlamada/GetDatosLlamada" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetDeepDatosLlamada">
+      <soap:operation soapAction="http://tempuri.org/IDatosLlamada/GetDeepDatosLlamada" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetDatosLlamadaList">
+      <soap:operation soapAction="http://tempuri.org/IDatosLlamada/GetDatosLlamadaList" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetDatosLlamadaPagedList">
+      <soap:operation soapAction="http://tempuri.org/IDatosLlamada/GetDatosLlamadaPagedList" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetDatosLlamadaPagedListXml">
+      <soap:operation soapAction="http://tempuri.org/IDatosLlamada/GetDatosLlamadaPagedListXml" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AddDatosLlamada">
+      <soap:operation soapAction="http://tempuri.org/IDatosLlamada/AddDatosLlamada" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdateDatosLlamada">
+      <soap:operation soapAction="http://tempuri.org/IDatosLlamada/UpdateDatosLlamada" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DeleteDatosLlamada">
+      <soap:operation soapAction="http://tempuri.org/IDatosLlamada/DeleteDatosLlamada" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
   <wsdl:service name="SoftvWCFService">
     <wsdl:port name="BasicHttpBinding_IUsuario" binding="tns:BasicHttpBinding_IUsuario">
       <soap:address location="http://localhost:64481/SoftvWCFService.svc" />
@@ -5729,6 +5886,9 @@
       <soap:address location="http://localhost:64481/SoftvWCFService.svc" />
     </wsdl:port>
     <wsdl:port name="BasicHttpBinding_INoCliente" binding="tns:BasicHttpBinding_INoCliente">
+      <soap:address location="http://localhost:64481/SoftvWCFService.svc" />
+    </wsdl:port>
+    <wsdl:port name="BasicHttpBinding_IDatosLlamada" binding="tns:BasicHttpBinding_IDatosLlamada">
       <soap:address location="http://localhost:64481/SoftvWCFService.svc" />
     </wsdl:port>
   </wsdl:service>

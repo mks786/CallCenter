@@ -60,11 +60,7 @@ namespace SoftvMVC.Controllers
             return Json(result, JsonRequestBehavior.AllowGet);
         }
 
-        public ActionResult Delete(int id)
-        {
-            int result = proxy.DeleteConexion(id);
-            return Json(result, JsonRequestBehavior.AllowGet);
-        }
+
         public ActionResult AddConexion(ConexionEntity conexion)
         {
             int result= proxy.AddConexion(conexion);
