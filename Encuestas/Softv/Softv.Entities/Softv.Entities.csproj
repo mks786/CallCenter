@@ -41,6 +41,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Base\BaseEntity.cs" />
+    <Compile Include="BusquedaIndividualEntity.cs" />
     <Compile Include="CALLEEntity.cs" />
     <Compile Include="CatalogoPeriodosCorteEntity.cs" />
     <Compile Include="CIUDADEntity.cs" />
@@ -51,11 +52,13 @@
     <Compile Include="CVECAROLEntity.cs" />
     <Compile Include="CVECOLCIUEntity.cs" />
     <Compile Include="DatoFiscalEntity.cs" />
+    <Compile Include="DatosLlamadaEntity.cs" />
     <Compile Include="EncuestaEntity.cs" />
     <Compile Include="EnumEntity.cs" />
     <Compile Include="LlamadaEntity.cs" />
     <Compile Include="ModuleEntity.cs" />
     <Compile Include="MotivoCancelacionEntity.cs" />
+    <Compile Include="NoClienteEntity.cs" />
     <Compile Include="PermisoEntity.cs" />
     <Compile Include="PreguntaEntity.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -69,6 +72,8 @@
     <Compile Include="ResOpcMultsEntity.cs" />
     <Compile Include="RoleEntity.cs" />
     <Compile Include="TapEntity.cs" />
+    <Compile Include="tblClasificacionProblemaEntity.cs" />
+    <Compile Include="tblPrioridadQuejaEntity.cs" />
     <Compile Include="TipoClienteEntity.cs" />
     <Compile Include="TipoPreguntasEntity.cs" />
     <Compile Include="TipServEntity.cs" />

@@ -17,7 +17,8 @@ namespace SoftvWCFService
 {
     public partial class SoftvWCFService : IUsuario, IRole, IModule, IPermiso, IEncuesta, IPregunta, ITipoPreguntas, IRelEncuestaClientes, IRelPreguntaOpcMults,
         IRelPreguntaEncuestas, IResOpcMults, IRelEnProcesos, IConexion, ICLIENTE, ITurno, ILlamada, IRel_Clientes_TiposClientes, ITipoCliente, ICatalogoPeriodosCorte,
-        ICliente_Apellido, ITap, IDatoFiscal, ITrabajo, ITipServ, IMotivoCancelacion, IRelEncuestaPreguntaRes, IQueja, ICIUDAD, ICVECOLCIU, ICOLONIA, ICVECAROL, ICALLE
+        ICliente_Apellido, ITap, IDatoFiscal, ITrabajo, ITipServ, IMotivoCancelacion, IRelEncuestaPreguntaRes, IQueja, ICIUDAD, ICVECOLCIU, ICOLONIA, ICVECAROL, ICALLE, IBusquedaIndividual,
+        ItblClasificacionProblema, ItblPrioridadQueja, INoCliente, IDatosLlamada
     {
         #region Usuario
         public UsuarioEntity GetUsuario(int? IdUsuario)
@@ -313,15 +314,17 @@ namespace SoftvWCFService
             return Pregunta.Add(objPregunta);
         }
 
-        public int UpdatePregunta(PreguntaEntity objPregunta)
+        public int UpdatePregunta(string xml)
         {
-            return Pregunta.Edit(objPregunta);
+            return Pregunta.Edit(xml);
         }
 
         public int DeletePregunta(int? IdPregunta)
         {
             return Pregunta.Delete(IdPregunta);
         }
+
+        
 
         #endregion
 
@@ -1450,7 +1453,221 @@ namespace SoftvWCFService
         #endregion
 
 
+        #region BusquedaIndividual
+        public BusquedaIndividualEntity GetBusquedaIndividual(int? Id)
+        {
+            return BusquedaIndividual.GetOne(Id);
+        }
+
+        public BusquedaIndividualEntity GetDeepBusquedaIndividual(int? Id)
+        {
+            return BusquedaIndividual.GetOneDeep(Id);
+        }
+
+        public IEnumerable<BusquedaIndividualEntity> GetBusquedaIndividualList()
+        {
+            return BusquedaIndividual.GetAll();
+        }
+
+        public SoftvList<BusquedaIndividualEntity> GetBusquedaIndividualPagedList(int page, int pageSize)
+        {
+            return BusquedaIndividual.GetPagedList(page, pageSize);
+        }
+
+        public SoftvList<BusquedaIndividualEntity> GetBusquedaIndividualPagedListXml(int page, int pageSize, String xml)
+        {
+            return BusquedaIndividual.GetPagedList(page, pageSize, xml);
+        }
+
+        public int AddBusquedaIndividual(BusquedaIndividualEntity objBusquedaIndividual)
+        {
+            return BusquedaIndividual.Add(objBusquedaIndividual);
+        }
+
+        public int UpdateBusquedaIndividual(BusquedaIndividualEntity objBusquedaIndividual)
+        {
+            return BusquedaIndividual.Edit(objBusquedaIndividual);
+        }
+
+        public int DeleteBusquedaIndividual(String BaseRemoteIp, int BaseIdUser, int? Id)
+        {
+            return BusquedaIndividual.Delete(Id);
+        }
+
+        #endregion
+
+        #region tblClasificacionProblema
+        public tblClasificacionProblemaEntity GettblClasificacionProblema(long? clvProblema)
+        {
+            return tblClasificacionProblema.GetOne(clvProblema);
+        }
+
+        public tblClasificacionProblemaEntity GetDeeptblClasificacionProblema(long? clvProblema)
+        {
+            return tblClasificacionProblema.GetOneDeep(clvProblema);
+        }
+
+        public IEnumerable<tblClasificacionProblemaEntity> GettblClasificacionProblemaList()
+        {
+            return tblClasificacionProblema.GetAll();
+        }
+
+        public SoftvList<tblClasificacionProblemaEntity> GettblClasificacionProblemaPagedList(int page, int pageSize)
+        {
+            return tblClasificacionProblema.GetPagedList(page, pageSize);
+        }
+
+        public SoftvList<tblClasificacionProblemaEntity> GettblClasificacionProblemaPagedListXml(int page, int pageSize, String xml)
+        {
+            return tblClasificacionProblema.GetPagedList(page, pageSize, xml);
+        }
+
+        public int AddtblClasificacionProblema(tblClasificacionProblemaEntity objtblClasificacionProblema)
+        {
+            return tblClasificacionProblema.Add(objtblClasificacionProblema);
+        }
+
+        public int UpdatetblClasificacionProblema(tblClasificacionProblemaEntity objtblClasificacionProblema)
+        {
+            return tblClasificacionProblema.Edit(objtblClasificacionProblema);
+        }
+
+        public int DeletetblClasificacionProblema(String BaseRemoteIp, int BaseIdUser, long? clvProblema)
+        {
+            return tblClasificacionProblema.Delete(clvProblema);
+        }
+
+        #endregion
+        
+        #region tblPrioridadQueja
+        public tblPrioridadQuejaEntity GettblPrioridadQueja(int? clvPrioridadQueja)
+        {
+            return tblPrioridadQueja.GetOne(clvPrioridadQueja);
+        }
+
+        public tblPrioridadQuejaEntity GetDeeptblPrioridadQueja(int? clvPrioridadQueja)
+        {
+            return tblPrioridadQueja.GetOneDeep(clvPrioridadQueja);
+        }
+
+        public IEnumerable<tblPrioridadQuejaEntity> GettblPrioridadQuejaList()
+        {
+            return tblPrioridadQueja.GetAll();
+        }
+
+        public SoftvList<tblPrioridadQuejaEntity> GettblPrioridadQuejaPagedList(int page, int pageSize)
+        {
+            return tblPrioridadQueja.GetPagedList(page, pageSize);
+        }
+
+        public SoftvList<tblPrioridadQuejaEntity> GettblPrioridadQuejaPagedListXml(int page, int pageSize, String xml)
+        {
+            return tblPrioridadQueja.GetPagedList(page, pageSize, xml);
+        }
+
+        public int AddtblPrioridadQueja(tblPrioridadQuejaEntity objtblPrioridadQueja)
+        {
+            return tblPrioridadQueja.Add(objtblPrioridadQueja);
+        }
+
+        public int UpdatetblPrioridadQueja(tblPrioridadQuejaEntity objtblPrioridadQueja)
+        {
+            return tblPrioridadQueja.Edit(objtblPrioridadQueja);
+        }
+
+        public int DeletetblPrioridadQueja(String BaseRemoteIp, int BaseIdUser, int? clvPrioridadQueja)
+        {
+            return tblPrioridadQueja.Delete(clvPrioridadQueja);
+        }
+
+        #endregion
 
 
+        #region NoCliente
+        public NoClienteEntity GetNoCliente(int? Id)
+        {
+            return NoCliente.GetOne(Id);
+        }
+
+        public NoClienteEntity GetDeepNoCliente(int? Id)
+        {
+            return NoCliente.GetOneDeep(Id);
+        }
+
+        public IEnumerable<NoClienteEntity> GetNoClienteList()
+        {
+            return NoCliente.GetAll();
+        }
+
+        public SoftvList<NoClienteEntity> GetNoClientePagedList(int page, int pageSize)
+        {
+            return NoCliente.GetPagedList(page, pageSize);
+        }
+
+        public SoftvList<NoClienteEntity> GetNoClientePagedListXml(int page, int pageSize, String xml)
+        {
+            return NoCliente.GetPagedList(page, pageSize, xml);
+        }
+
+        public int AddNoCliente(NoClienteEntity objNoCliente)
+        {
+            return NoCliente.Add(objNoCliente);
+        }
+
+        public int UpdateNoCliente(NoClienteEntity objNoCliente)
+        {
+            return NoCliente.Edit(objNoCliente);
+        }
+
+        public int DeleteNoCliente(String BaseRemoteIp, int BaseIdUser, int? Id)
+        {
+            return NoCliente.Delete(Id);
+        }
+
+        #endregion
+
+        #region DatosLlamada
+        public DatosLlamadaEntity GetDatosLlamada(int? Id)
+        {
+            return DatosLlamada.GetOne(Id);
+        }
+
+        public DatosLlamadaEntity GetDeepDatosLlamada(int? Id)
+        {
+            return DatosLlamada.GetOneDeep(Id);
+        }
+
+        public IEnumerable<DatosLlamadaEntity> GetDatosLlamadaList()
+        {
+            return DatosLlamada.GetAll();
+        }
+
+        public SoftvList<DatosLlamadaEntity> GetDatosLlamadaPagedList(int page, int pageSize)
+        {
+            return DatosLlamada.GetPagedList(page, pageSize);
+        }
+
+        public SoftvList<DatosLlamadaEntity> GetDatosLlamadaPagedListXml(int page, int pageSize, String xml)
+        {
+            return DatosLlamada.GetPagedList(page, pageSize, xml);
+        }
+
+        public int AddDatosLlamada(DatosLlamadaEntity objDatosLlamada)
+        {
+            return DatosLlamada.Add(objDatosLlamada);
+        }
+
+        public int UpdateDatosLlamada(DatosLlamadaEntity objDatosLlamada)
+        {
+            return DatosLlamada.Edit(objDatosLlamada);
+        }
+
+        public int DeleteDatosLlamada(String BaseRemoteIp, int BaseIdUser, int? Id)
+        {
+            return DatosLlamada.Delete(Id);
+        }
+
+        #endregion
+  
     }
 }

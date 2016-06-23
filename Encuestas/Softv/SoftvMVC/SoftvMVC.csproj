@@ -222,6 +222,7 @@
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\BaseController.cs" />
+    <Compile Include="Controllers\BusquedaIndividualController.cs" />
     <Compile Include="Controllers\CALLEController.cs" />
     <Compile Include="Controllers\CatalogoPeriodosCorteController.cs" />
     <Compile Include="Controllers\CIUDADController.cs" />
@@ -232,12 +233,14 @@
     <Compile Include="Controllers\CVECAROLController.cs" />
     <Compile Include="Controllers\CVECOLCIUController.cs" />
     <Compile Include="Controllers\DatoFiscalController.cs" />
+    <Compile Include="Controllers\DatosLlamadaController.cs" />
     <Compile Include="Controllers\EncuestaController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\LlamadaController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\ModuleController.cs" />
     <Compile Include="Controllers\MotivoCancelacionController.cs" />
+    <Compile Include="Controllers\NoClienteController.cs" />
     <Compile Include="Controllers\PartialClass\BaseControllerFunc.cs" />
     <Compile Include="Controllers\PartialClass\BaseControllerScripts.cs" />
     <Compile Include="Controllers\PartialClass\UsuarioController.cs" />
@@ -249,9 +252,12 @@
     <Compile Include="Controllers\RelPreguntaEncuestasController.cs" />
     <Compile Include="Controllers\RelPreguntaOpcMultsController.cs" />
     <Compile Include="Controllers\Rel_Clientes_TiposClientesController.cs" />
+    <Compile Include="Controllers\ReportesVariosController.cs" />
     <Compile Include="Controllers\ResOpcMultsController.cs" />
     <Compile Include="Controllers\RoleController.cs" />
     <Compile Include="Controllers\TapController.cs" />
+    <Compile Include="Controllers\tblClasificacionProblemaController.cs" />
+    <Compile Include="Controllers\tblPrioridadQuejaController.cs" />
     <Compile Include="Controllers\TipoClienteController.cs" />
     <Compile Include="Controllers\TipoPreguntasController.cs" />
     <Compile Include="Controllers\TipServController.cs" />
@@ -514,6 +520,7 @@
     <Content Include="Content\timepicki.css" />
     <Content Include="dist\css\AdminLTE.css" />
     <Content Include="dist\css\AdminLTE.min.css" />
+    <Content Include="dist\css\bootstrap-switch.css" />
     <Content Include="dist\css\pace.css" />
     <Content Include="dist\css\skins\skin-black-light.css" />
     <Content Include="dist\css\skins\skin-black-light.min.css" />
@@ -571,6 +578,7 @@
     <Content Include="dist\img\user8-128x128.jpg" />
     <Content Include="dist\js\app.js" />
     <Content Include="dist\js\app.min.js" />
+    <Content Include="dist\js\bootstrap-switch.js" />
     <Content Include="dist\js\demo.js" />
     <Content Include="dist\js\jquery.flexdatalist.css" />
     <Content Include="dist\js\jquery.flexdatalist.js" />
@@ -593,10 +601,12 @@
     <Content Include="dist\js\pages\Encuesta\ModalEliminarEncuesta.js" />
     <Content Include="dist\js\pages\Encuesta\preview_scripts.js" />
     <Content Include="dist\js\pages\Encuesta\Utilerias.js" />
+    <Content Include="dist\js\pages\Llamada\agregar_llamada.js" />
     <Content Include="dist\js\pages\Llamada\Lista.js" />
     <Content Include="dist\js\pages\Pregunta\editar_pregunta.js" />
     <Content Include="dist\js\pages\Pregunta\Lista.js" />
     <Content Include="dist\js\pages\RelEncuestaCliente\Lista.js" />
+    <Content Include="dist\js\pages\ReportesVarios\Lista.js" />
     <Content Include="dist\js\pages\ResOpcMult\Lista.js" />
     <Content Include="dist\js\pages\ResOpcMult\modales_respuestas.js" />
     <Content Include="dist\js\pages\ResOpcMult\modal_detalle_pregunta.js" />
@@ -1395,6 +1405,11 @@
     <Content Include="Properties\DataSources\Softv.Entities.COLONIAEntity.datasource" />
     <Content Include="Properties\DataSources\Softv.Entities.CVECAROLEntity.datasource" />
     <Content Include="Properties\DataSources\Softv.Entities.CVECOLCIUEntity.datasource" />
+    <Content Include="Properties\DataSources\Softv.Entities.BusquedaIndividualEntity.datasource" />
+    <Content Include="Properties\DataSources\Softv.Entities.tblClasificacionProblemaEntity.datasource" />
+    <Content Include="Properties\DataSources\Softv.Entities.tblPrioridadQuejaEntity.datasource" />
+    <Content Include="Properties\DataSources\Softv.Entities.NoClienteEntity.datasource" />
+    <Content Include="Properties\DataSources\Softv.Entities.DatosLlamadaEntity.datasource" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -1430,7 +1445,6 @@
     <Content Include="Scripts\modernizr-2.8.3.js" />
     <Content Include="Scripts\jquery-2.1.1.min.map" />
     <Content Include="Scripts\jquery-2.1.4.min.map" />
-    <None Include="Service References\SoftvService\SoftvWCFService.disco" />
     <None Include="Service References\SoftvService\configuration91.svcinfo" />
     <None Include="Service References\SoftvService\configuration.svcinfo" />
     <None Include="Service References\SoftvService\Reference.svcmap">
@@ -1474,6 +1488,7 @@
     <Content Include="Scripts\select2.js" />
     <Content Include="Scripts\timepicki.js" />
     <None Include="Scripts\_references.js" />
+    <None Include="Service References\SoftvService\SoftvWCFService.disco" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
@@ -1562,6 +1577,7 @@
     <Content Include="Views\Cliente\Index.cshtml" />
     <Content Include="Views\Encuesta\PreView.cshtml" />
     <Content Include="Views\Llamada\nueva_llamada.cshtml" />
+    <Content Include="Views\ReportesVarios\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

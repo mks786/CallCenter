@@ -8,6 +8,7 @@ using System.Web.Mvc;
 using PagedList;
 using Softv.Entities;
 using Globals;
+using System.Xml.Linq;
 
 namespace SoftvMVC.Controllers
 {
@@ -106,7 +107,7 @@ namespace SoftvMVC.Controllers
                    p.respuestas = respuestas;
 
 
-            return Json(null, JsonRequestBehavior.AllowGet);
+                   return Json(p, JsonRequestBehavior.AllowGet);
         }
 
         public JsonResult Delete(int id)
@@ -125,7 +126,11 @@ namespace SoftvMVC.Controllers
             dataTableData.draw = draw;
             dataTableData.recordsTotal = 0;
             int recordsFiltered = 0;
-            dataTableData.data = FiltrarContenido(ref recordsFiltered, start, length);
+            if(data != ""){
+                dataTableData.data = FiltrarContenido(ref recordsFiltered, start, length).Where(o => o.Pregunta.Contains(data) || o.IdPregunta.ToString().Contains(data)).OrderByDescending(c => c.IdPregunta).ToList();
+            }else{
+                dataTableData.data = FiltrarContenido(ref recordsFiltered, start, length).OrderByDescending(c => c.IdPregunta).ToList();
+            }
             dataTableData.recordsFiltered = recordsFiltered;
 
             return Json(dataTableData, JsonRequestBehavior.AllowGet);
@@ -164,7 +169,7 @@ namespace SoftvMVC.Controllers
             if (data != "")
             {
 
-                datos = FiltrarPreguntas(ref recordsFiltered, start, 100).Where(x => x.Pregunta.Pregunta.Contains(data)).ToList();
+                datos = FiltrarPreguntas(ref recordsFiltered, start, 100).Where(x => x.Pregunta.Pregunta.ToLower().Contains(data.ToLower())).ToList();
 
             }
             else if (tipo > 0)
@@ -216,7 +221,28 @@ namespace SoftvMVC.Controllers
             public List<Detalle_pregunta> data { get; set; }
         }
 
+        public class detallePregunta{
+            public string Pregunta{get; set;}
+            public int IdTipoPregunta{get; set;}
 
+            public int IdPregunta{get; set;}
+        }
+
+        public class respuesta{
+        
+        public string ResOpcMult{get; set;}
+        public int Id_ResOpcMult{get; set;}
+        }
+
+
+        public ActionResult EditarPregunta(detallePregunta detallePregunta, List<respuesta> respuestas)
+        {
+
+            XElement xe = XElement.Parse(Globals.SerializeTool.Serialize<detallePregunta>(detallePregunta));
+            int result = proxy.UpdatePregunta(xe.ToString());
+           
+            return Json(result,JsonRequestBehavior.AllowGet);
+        }
     }
 
 }

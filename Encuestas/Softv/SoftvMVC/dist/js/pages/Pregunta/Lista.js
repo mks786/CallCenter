@@ -11,7 +11,13 @@
 });
 var preguntas_lista = [];
 
-function LlenarTabla() {
+
+
+function LlenarTabla(cadena) {
+    if (cadena == undefined) {
+
+        cadena = "";
+    }
     $('#TablaPreguntas').dataTable({
         "processing": true,
         "serverSide": true,
@@ -24,7 +30,7 @@ function LlenarTabla() {
         "ajax": {
             "url": "/Pregunta/GetList/",
             "type": "POST",
-            "data": { 'data': 1 },
+            "data": { 'data': cadena },
         },
         "fnInitComplete": function (oSettings, json) {
 
@@ -38,23 +44,26 @@ function LlenarTabla() {
         "columns": [
             { "data": "IdPregunta", "orderable": false },
             { "data": "Pregunta", "orderable": false },
-            { "data": "IdTipoPregunta", "orderable": false },
-            //{ "data": "Cerrada", "orderable": false },
-            //{ "data": "OpcMultiple", "orderable": false },
-            //{ "data": "Abierta", "orderable": false },
-            ////{
-            ////    sortable: false,
-            ////    "render": function (data, type, full, meta) {
-            ////        console.log(full);                   
-            ////    }
-            ////},
-
-        {
-            sortable: false,
-            "render": function (data, type, full, meta) {
-                return Opciones(full);  //Es el campo de opciones de la tabla.
+            {
+                sortable: false,
+                "render": function (data, type, full, meta) {
+                    var tipo;
+                    if (full.IdTipoPregunta == 1) {
+                        tipo = 'Abierta';
+                    } else if (full.IdTipoPregunta == 2) {
+                        tipo = 'Cerrada';
+                    } else if (full.IdTipoPregunta == 3) {
+                        tipo = 'Opción Múltiple';
+                    }
+                    return ('<td>'+tipo+'</td>');
+                }
+            },
+            {
+                sortable: false,
+                "render": function (data, type, full, meta) {
+                    return Opciones(full);  //Es el campo de opciones de la tabla.
+                }
             }
-        }
         ],
 
         language: {
@@ -84,20 +93,29 @@ function LlenarTabla() {
         "order": [[0, "asc"]]
     })
 
-    $("div.toolbar").html('<button class="btn btn-success btn-sm Agregar" style="float:right;" ><i class="fa fa-plus" aria-hidden="true"></i> Nueva Pregunta </button> <div class="input-group input-group-sm"><input class="form-control" type="text"><span class="input-group-btn"><button class="btn btn-info btn-flat" type="button">Buscar</button></span></div>');
+    $("div.toolbar").html('<div class="input-group input-group-sm"><input class="form-control" type="text" id="buscar"><span class="input-group-btn"><button class="btn btn-info btn-flat" type="button" onclick="Busqueda()"><i class="fa fa-search" aria-hidden="true"></i> Buscar</button></span></div>');
+    //respaldo de boton agregar
+    //$("div.toolbar").html('<button class="btn btn-success btn-sm Agregar" style="float:right;" ><i class="fa fa-plus" aria-hidden="true"></i> Nueva Pregunta </button> <div class="input-group input-group-sm"><input class="form-control" type="text"><span class="input-group-btn"><button class="btn btn-info btn-flat" type="button">Buscar</button></span></div>');
 
 }
 
 function Opciones() {
-    var botones = "<button class='btn btn-info btn-xs detallePregunta' id='detallePregunta'>Detalles</button> <button class='btn btn-warning btn-xs editarPregunta' id='editarPregunta'>Editar</button> <button class='btn btn-danger btn-xs eliminarPregunta' id='eliminarPregunta'> Eliminar</button> ";
+    var botones = "<button class='btn btn-warning btn-xs editarPregunta' id='editarPregunta'>Editar</button>";
     return botones;
 }
 
 
-
+function Busqueda() {
+    var cadena = $('#buscar').val();
+    if(cadena == ""){
+        LlenarTabla();
+    } else {
+        LlenarTabla(cadena);
+    }
+}
 //funcion:retorna las opciones que tendra cada row en la tabla principal
 function Opciones(data) {
-    var opc = "<button class='btn btn-info btn-xs Detalle'  id=" + data.IdPregunta + " type='button' onclick='detalle(this.id)'>Detalles</button> <button class='btn btn-warning btn-xs Editar' type='button' id='" + data.IdPregunta + "' onclick='editar(this.id)'><i class='fa fa-pencil' aria-hidden='true'></i> Editar</button> <button class='btn btn-danger btn-xs eliminar'  type='button'> <i class='fa fa-trash-o' aria-hidden='true'></i> Eliminar</button>"
+    var opc = "<button class='btn btn-warning btn-xs Editar' type='button' id='" + data.IdPregunta + "' onclick='editar(this.id)'><i class='fa fa-pencil' aria-hidden='true'></i> Editar</button>"
     return opc;
 }
 
@@ -131,8 +149,8 @@ function editar(id) {
 
 function editar_dom(datos) {
     var datos = datos;
-    console.log(datos);
     $('#pregunta_nombre').val(datos.pregunta.Pregunta);
+    $('#id_pregunta').val(datos.pregunta.IdPregunta);
     var tipo = datos.pregunta.IdTipoPregunta;
     $('#id_tipo_pregunta').val(tipo).change();
     if (tipo == 1) {
@@ -142,8 +160,10 @@ function editar_dom(datos) {
         $('#panel_opcion_multiple').hide();
     } else {
         $('#panel_opcion_multiple').show();
+        $("#tabla_respuestas > tbody").html("");
         for (var i = 0; i < datos.respuestas.length; i++) {
-            $('#body_opcion_multiple').append("<tr><td><input type='text' class='form-control' id='" + datos.respuestas[i].Id_ResOpcMult + "' value='" + datos.respuestas[i].ResOpcMult + "'> </td><td><button class='btn btn-danger eliminar_respuestas'>Eliminar</button></td></tr>");
+            $('#body_opcion_multiple').append("<tr><td><input type='text' class='form-control' id='" + datos.respuestas[i].Id_ResOpcMult + "' value='" + datos.respuestas[i].ResOpcMult + "' disabled> </td></tr>");
+           //con boton eliminar $('#body_opcion_multiple').append("<tr><td><input type='text' class='form-control' id='" + datos.respuestas[i].Id_ResOpcMult + "' value='" + datos.respuestas[i].ResOpcMult + "' disabled> </td><td><button class='btn btn-danger btn-xs eliminar_respuestas'>Quitar</button></td></tr>");
         }
 
     }
@@ -183,19 +203,81 @@ $('#TablaPreguntas').on('click', '.Eliminar', function () {
     alert("click");
 });
 
+function AgregarRespuesta() {
+    $('#body_opcion_multiple').append("<tr><td><input type='text' id='focus' onkeypress='removeFocus()' class='form-control focus'></td></tr>");
+    //boton de eliminar $('#body_opcion_multiple').append("<tr><td><input type='text' id='focus' onkeypress='removeFocus()' class='form-control focus'> </td><td><button class='btn btn-danger btn-xs eliminar_respuestas'>Quitar</button></td></tr>");
+    $('#focus').focus();
+}
 
-//function ActualizaListaPreguntas() {
-//    $('#TbodyPreguntas').empty();
-//    for (var b = 0; b < Lista_preguntas.length; b++) {
-//        $('#tablaPreguntas').append("<tr><td>" + Lista_preguntas[b].Nombre + "</td><td>" + Lista_preguntas[b].TipoControl + "</td><td><button class='btn btn-info btn-xs detallepregunta' rel='" + Lista_preguntas[b].id + "'>Detalles</button> <button class='btn btn-warning btn-xs EditarPregunta ' rel='" + Lista_preguntas[b].id + "'>Editar</button> <button class='btn btn-danger btn-xs EliminaPregunta' rel='" + Lista_preguntas[b].id + "'>Eliminar</button></td></tr>");
+function removeFocus() {
+    $('#focus').removeAttr('autofocus').removeAttr('id');
+}
 
-//    }
+$('#id_tipo_pregunta').on('change', function () {
+    var tipo = this.value;
 
-//}
+    if(tipo == 1){
+        $('#panel_opcion_multiple').hide();
+    }else if(tipo == 2){
+        $('#panel_opcion_multiple').hide();
+    } else {
+        $("#tabla_respuestas > tbody").html("");
+        $('#panel_opcion_multiple').show();
+    }
+});
 
-//$('#TablaClientes').on('click', '.EliminaCliente', function () {
-//    var id = $(this).attr('rel');
-//    $('#ModalEliminaCliente').modal('show');
-//    //$('#contrato').val(id);
+function guardar_pregunta() {
+    var detallePregunta = {};
+    var respuestas = [];
+    var nombre = $('#pregunta_nombre').val();
+    var tipo_pregunta = $('#id_tipo_pregunta').val();
+    var nulo = 0;
+    if(nombre == ""){
+        swal("Por favor introduce el nombre de la pregunta", "", "error");
+    } else {
+        detallePregunta.Pregunta = nombre;
+        detallePregunta.IdTipoPregunta = tipo_pregunta;
+        detallePregunta.IdPregunta = $('#id_pregunta').val();
+        if (tipo_pregunta == 3){
+            $('#body_opcion_multiple tr').each(function () {
+                var respuesta = {};
+                var id = $(this).find("td").find('input').eq(0).attr('id');
+                var valor = $(this).find("td").find('input').eq(0).val();
+                if (valor == "") {
+                    nulo = nulo + 1;
+                } else {
+                    respuesta.ResOpcMult = valor;
+                }
+                if (id == undefined || id == "focus") {
+                    
+                    
+                } else {
+                    respuesta.Id_ResOpcMult = id;
+                }
 
-//});
+                respuestas.push(respuesta);
+            });
+
+        }
+
+    }
+    if (nulo == 0) {
+        console.log(respuestas);
+        $.ajax({
+            url: "/Pregunta/editarPregunta/",
+            type: "POST",
+            data: { 'detallePregunta': detallePregunta, 'respuestas': respuestas },
+            success: function (data, textStatus, jqXHR) {
+                $('#ModalEditarPregunta').modal("hide");
+                LlenarTabla();
+                swal("La pregunta se editó exitosamente", "", "success");
+            },
+            error: function (jqXHR, textStatus, errorThrown) {
+
+            }
+        });
+    } else {
+        console.log('completar respuestas');
+    }
+    
+}

@@ -65,6 +65,7 @@
     </Content>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Contracts\IBusquedaIndividual.cs" />
     <Compile Include="Contracts\ICALLE.cs" />
     <Compile Include="Contracts\ICatalogoPeriodosCorte.cs" />
     <Compile Include="Contracts\ICIUDAD.cs" />
@@ -75,10 +76,12 @@
     <Compile Include="Contracts\ICVECAROL.cs" />
     <Compile Include="Contracts\ICVECOLCIU.cs" />
     <Compile Include="Contracts\IDatoFiscal.cs" />
+    <Compile Include="Contracts\IDatosLlamada.cs" />
     <Compile Include="Contracts\IEncuesta.cs" />
     <Compile Include="Contracts\ILlamada.cs" />
     <Compile Include="Contracts\IModule.cs" />
     <Compile Include="Contracts\IMotivoCancelacion.cs" />
+    <Compile Include="Contracts\INoCliente.cs" />
     <Compile Include="Contracts\IPermiso.cs" />
     <Compile Include="Contracts\IPregunta.cs" />
     <Compile Include="Contracts\IQueja.cs" />
@@ -91,6 +94,8 @@
     <Compile Include="Contracts\IResOpcMults.cs" />
     <Compile Include="Contracts\IRole.cs" />
     <Compile Include="Contracts\ITap.cs" />
+    <Compile Include="Contracts\ItblClasificacionProblema.cs" />
+    <Compile Include="Contracts\ItblPrioridadQueja.cs" />
     <Compile Include="Contracts\ITipoCliente.cs" />
     <Compile Include="Contracts\ITipoPreguntas.cs" />
     <Compile Include="Contracts\ITipServ.cs" />
@@ -109,6 +114,7 @@
     <Folder Include="PartialService\" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="Properties\PublishProfiles\EncuestaServicio.pubxml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

@@ -14,6 +14,8 @@ function Opciones(id) {
 
 function MostrarModalEncuesta() {
     $('#EditarEncuesta').hide();
+    $('#cargando').hide();
+    $('#encuesta_cargando').show();
     $('#guardarEncuesta').show();
     $('#ModalAgregarEncuesta').modal('show');
     $('#msnTablavacia').show();
@@ -56,7 +58,7 @@ function MostrarModalEncuesta() {
                 { "data": "Descripcion", "orderable": false },
                 //{ "data": "FechaCreacion", "orderable": false },
                 {sortable: false, "render": function (data, type, full, meta) {
-                    return "<button class='btn btn-info btn-xs Detalle'  rel='" + full.IdEncuesta + "' type='button'>Detalles</button> <button class='btn btn-warning btn-xs Editar' rel='" + full.IdEncuesta + "' type='button'><i class='fa fa-pencil' aria-hidden='true'></i> Editar</button> <button class='btn btn-danger btn-xs eliminar' data-name='" + full.TituloEncuesta + "' onclick='eliminarEncuesta(this)' id ='" + full.IdEncuesta + "' rel='" + full.IdEncuesta + "' type='button'> <i class='fa fa-trash-o' aria-hidden='true'></i> Eliminar</button>  <a href='/Encuesta/Details/" + full.IdEncuesta + "' class='btn btn-success btn-xs'><i class='fa fa-pie-chart' aria-hidden='true'></i> Aplicar</a><form action='/Encuesta/EncuestaPDF'><input type='hidden' name='idencuesta' value='" + full.IdEncuesta + "'><button type='submit' class='btn btn-primary btn-xs'>Formato impreso</button></form>";
+                    return "<button class='btn btn-warning btn-xs Editar' rel='" + full.IdEncuesta + "' type='button'><i class='fa fa-pencil' aria-hidden='true'></i> Editar</button> <button class='btn btn-danger btn-xs eliminar' data-name='" + full.TituloEncuesta + "' onclick='eliminarEncuesta(this)' id ='" + full.IdEncuesta + "' rel='" + full.IdEncuesta + "' type='button'> <i class='fa fa-trash-o' aria-hidden='true'></i> Eliminar</button>  <a href='/Encuesta/Details/" + full.IdEncuesta + "' class='btn btn-success btn-xs'><i class='fa fa-line-chart' aria-hidden='true'></i> Aplicar Encuesta</a> <button  class='btn btn-xs' id='" + full.IdEncuesta + "' onclick='imprimirEncuesta(this.id)'><i class='fa fa-print' aria-hidden='true'></i> Imprimir</a>";
                   }
                  }
             ],
@@ -88,7 +90,7 @@ function MostrarModalEncuesta() {
             "order": [[0, "asc"]]
         })
 
-        $("div.toolbar").html('<button class="btn bg-olive Agregar" style="float:right;" onclick="MostrarModalEncuesta();" ><i class="fa fa-bar-chart" aria-hidden="true"></i> Nueva Encuesta </button> <div class="input-group input-group-sm"><input class="form-control" id="abuscar" type="text"><span class="input-group-btn"><button onclick="BuscarEncuesta();" class="btn btn-info btn-flat" type="button">Buscar</button></span></div>');
+        $("div.toolbar").html('<button class="btn bg-olive Agregar btn-sm" style="float:right;" onclick="MostrarModalEncuesta();" ><i class="fa fa-bar-chart" aria-hidden="true"></i> Nueva Encuesta </button> <div class="input-group input-group-sm"><input class="form-control" id="abuscar" type="text"><span class="input-group-btn"><button onclick="BuscarEncuesta();" class="btn btn-info btn-flat" type="button"><i class="fa fa-search" aria-hidden="true"></i> Buscar</button></span></div>');
 
     }
 
@@ -99,6 +101,10 @@ function Opciones(id) {
     return opc;
 }
 
+function imprimirEncuesta(id) {
+    $('#id_imprimir').val(id);
+    $('#formImprimir').submit();
+}
 
 function BuscarEncuesta(){
 

@@ -39,7 +39,7 @@ namespace Softv.Entities
         /// Property Contrato
         /// </summary>
         [DataMember]
-        public long? Contrato { get; set; }
+        public long ? Contrato { get; set; }
         /// <summary>
         /// Property Detalle
         /// </summary>
@@ -54,17 +54,17 @@ namespace Softv.Entities
         /// Property Fecha
         /// </summary>
         [DataMember]
-        public DateTime? Fecha { get; set; }
+        public String Fecha { get; set; }
         /// <summary>
         /// Property HoraInicio
         /// </summary>
         [DataMember]
-        public DateTime? HoraInicio { get; set; }
+        public String HoraInicio { get; set; }
         /// <summary>
         /// Property HoraFin
         /// </summary>
         [DataMember]
-        public DateTime? HoraFin { get; set; }
+        public String HoraFin { get; set; }
         /// <summary>
         /// Property IdTurno
         /// </summary>
@@ -85,6 +85,13 @@ namespace Softv.Entities
         /// </summary>
         [DataMember]
         public int? Clv_Trabajo { get; set; }
+
+
+        [DataMember]
+        public int? Clv_Problema { get; set; }
+
+
+
         /// <summary>
         /// Property Clv_TipSer
         /// </summary>

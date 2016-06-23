@@ -1397,6 +1397,17 @@ C:\Users\Lizeth\Documents\CallCenter\Encuestas\Softv\SoftvMVC\obj\Debug\SoftvMVC
 C:\Users\Lizeth\Documents\CallCenter\Encuestas\Softv\SoftvMVC\obj\Debug\SoftvMVC.csprojResolveAssemblyReference.cache
 C:\Users\Lizeth\Documents\CallCenter\Encuestas\Softv\SoftvMVC\obj\Debug\SoftvMVC.dll
 C:\Users\Lizeth\Documents\CallCenter\Encuestas\Softv\SoftvMVC\obj\Debug\SoftvMVC.pdb
+C:\ProyectoEncuestas\CallCenter\Encuestas\Softv\SoftvMVC\bin\SoftvMVC.dll.config
+C:\ProyectoEncuestas\CallCenter\Encuestas\Softv\SoftvMVC\bin\SoftvMVC.dll
+C:\ProyectoEncuestas\CallCenter\Encuestas\Softv\SoftvMVC\bin\SoftvMVC.pdb
+C:\ProyectoEncuestas\CallCenter\Encuestas\Softv\SoftvMVC\bin\Globals.dll
+C:\ProyectoEncuestas\CallCenter\Encuestas\Softv\SoftvMVC\bin\Softv.Entities.dll
+C:\ProyectoEncuestas\CallCenter\Encuestas\Softv\SoftvMVC\bin\Globals.pdb
+C:\ProyectoEncuestas\CallCenter\Encuestas\Softv\SoftvMVC\bin\Softv.Entities.pdb
+C:\ProyectoEncuestas\CallCenter\Encuestas\Softv\SoftvMVC\obj\Debug\SoftvMVC.csproj.App.config
+C:\ProyectoEncuestas\CallCenter\Encuestas\Softv\SoftvMVC\obj\Debug\SoftvMVC.csprojResolveAssemblyReference.cache
+C:\ProyectoEncuestas\CallCenter\Encuestas\Softv\SoftvMVC\obj\Debug\SoftvMVC.dll
+C:\ProyectoEncuestas\CallCenter\Encuestas\Softv\SoftvMVC\obj\Debug\SoftvMVC.pdb
 C:\Users\Israel\Documents\projects\CallCenter\Encuestas\Softv\SoftvMVC\bin\SoftvMVC.dll.config
 C:\Users\Israel\Documents\projects\CallCenter\Encuestas\Softv\SoftvMVC\bin\SoftvMVC.dll
 C:\Users\Israel\Documents\projects\CallCenter\Encuestas\Softv\SoftvMVC\bin\SoftvMVC.pdb

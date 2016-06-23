@@ -177,8 +177,36 @@ namespace Softv.Providers
         {
             get { return CALLEProvider.Instance; }
         }
+
+
+
+        public static BusquedaIndividualProvider BusquedaIndividual
+        {
+            get { return BusquedaIndividualProvider.Instance; }
+        }
+
+        public static tblClasificacionProblemaProvider tblClasificacionProblema
+        {
+            get { return tblClasificacionProblemaProvider.Instance; }
+        }
+
+        public static tblPrioridadQuejaProvider tblPrioridadQueja
+        {
+            get { return tblPrioridadQuejaProvider.Instance; }
+        }
+
+
+        public static NoClienteProvider NoCliente
+        {
+            get { return NoClienteProvider.Instance; }
+        }
+
+
+        public static DatosLlamadaProvider DatosLlamada
+        {
+            get { return DatosLlamadaProvider.Instance; }
+        }
   
-
-
+  
     }
 }

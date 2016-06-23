@@ -3,7 +3,8 @@
 
 
 $('#TablaEncuesta').on('click', '.Editar', function () {
-
+    $('#cargando').show();
+    $('#encuesta_cargando').hide();
     $('#EditarEncuesta').show();
     $('#guardarEncuesta').hide();
    
@@ -75,13 +76,19 @@ $('#TablaEncuesta').on('click', '.Editar', function () {
         error: function (jqXHR, textStatus, errorThrown) {
 
         }
+
     });
 
     
-    
+    setTimeout("mostrarDatos()", 1000);
 
 });
 
+
+function mostrarDatos() {
+    $('#cargando').hide();
+    $('#encuesta_cargando').show();
+}
 
 
 $('#EditarEncuesta').click(function () {

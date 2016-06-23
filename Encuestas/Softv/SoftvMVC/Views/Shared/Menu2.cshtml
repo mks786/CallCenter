@@ -16,7 +16,7 @@
 
     if (mp.IdModule == @idStateInitial)
     {
-        <li class="active treeview">
+        <li class="treeview">
             @if (mp.ModulePath.StartsWith("/"))
             {
                 var MyUri = HttpContext.Current.Request.Url;
@@ -42,7 +42,7 @@
 
     else
     {
-        <li class="active treeview">
+        <li class="treeview @mp.IdModule" id="poner_activo">
             @if (mp.ModuleView != "index")
             {
                 <a href="#"><i class="@mp.Icono"></i> <span>@mp.Description</span> <i class="fa fa-angle-left pull-right"></i></a>
@@ -80,7 +80,7 @@
         @foreach (var cp in menuList.Where(p => p.ParentId == mi.IdModule))
         {
 
-            <li>
+            <li id="sub_activo" class="@cp.IdModule">
 
                 @if (@cp.ModuleView == null)
                 {
@@ -105,8 +105,10 @@
                     }
                     else
                     {
-                        @:<a href="@Url.Action(@cp.ModuleView, @cp.ModulePath)" id="@cp.ParentId" onclick="active()"><i class="fa fa-circle-o"></i> @cp.Description</a>
-                        
+                        @:<a href="@Url.Action(@cp.ModuleView, @cp.ModulePath)" id="@cp.ParentId"><i class="fa fa-circle-o"></i> @cp.Description</a>
+
+
+
 
                     }
 

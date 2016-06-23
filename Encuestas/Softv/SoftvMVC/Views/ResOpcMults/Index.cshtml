@@ -34,14 +34,6 @@
                         </tr>
                     </thead>
 
-                    <tfoot>
-                        <tr>
-                            <td><b>Id_ResOpcMult</b></td>
-                            <td><b>ResOpcMult</b></td>
-                            <td><b>Opciones</b></td>
-                        </tr>
-                    </tfoot>
-
                 </table>
 
             </div>
@@ -57,7 +49,7 @@
 
 
 @*MODAL AGREGAR RESOPCMULTs*@
-<div class="modal fade bs-example-modal-lg" id="ModalAgregarResOpcMults" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel">
+<div class="modal fade bs-example-modal-lg" id="ModalAgregarResOpcMults" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" data-backdrop="static" data-keyboard="false">
     <div class="modal-dialog modal-lg">
         <div class="modal-content">
             <div class="modal-header">
@@ -84,8 +76,8 @@
                 </div>
             </div>
             <div class="modal-footer">
-                <button class="btn btn-primary" type="button" data-dismiss="modal">cerrar</button>
                 <button class="btn btn-success" onclick="enviar_respuesta()" type="button">Guardar Respuesta</button>
+                <button class="btn btn-primary" type="button" data-dismiss="modal">cerrar</button>
             </div>
         </div>
     </div>
@@ -93,7 +85,7 @@
 
 
 @*MODAL DETALLE Tipo de Pregunta*@
-<div class="modal fade bs-example-modal-md" id="ModalDetalleResOpcMults" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel">
+<div class="modal fade bs-example-modal-md" id="ModalDetalleResOpcMults" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" data-backdrop="static" data-keyboard="false">
     <div class="modal-dialog modal-md">
         <div class="modal-content">
             <div class="modal-header">
@@ -107,7 +99,7 @@
                         <input type="text" class="form-control detalle_respuesta" disabled />
                     </div>
                 </div>
-                
+
             </div>
             <div class="modal-footer">
                 <button class="btn btn-primary" type="button" data-dismiss="modal">Cerrar</button>
@@ -118,7 +110,7 @@
 
 
 @*MODAL EDITAR Tipo de Respuesta*@
-<div class="modal fade bs-example-modal-md" id="ModalEditarResOpcMults" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel">
+<div class="modal fade bs-example-modal-md" id="ModalEditarResOpcMults" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" data-backdrop="static" data-keyboard="false">
     <div class="modal-dialog modal-md">
         <div class="modal-content">
             <div class="modal-header">
@@ -129,14 +121,14 @@
                 <div class="row">
                     <div class="col-md-6">
                         <label>Respuesta:</label>
-                        <input type="text" class="form-control editar_respuesta"/>
+                        <input type="text" class="form-control editar_respuesta" />
                     </div>
                 </div>
 
             </div>
             <div class="modal-footer">
-                <button class="btn btn-primary" type="button" data-dismiss="modal">Cerrar</button>
                 <button class="btn btn-success" onclick="enviar_editar_respuesta()" type="button">Guardar</button>
+                <button class="btn btn-primary" type="button" data-dismiss="modal">Cerrar</button>
             </div>
         </div>
     </div>
@@ -157,8 +149,8 @@
 
             </div>
             <div class="modal-footer">
-                <button class="btn btn-primary" type="button" data-dismiss="modal">cerrar</button>
                 <button class="btn btn-danger" type="button" onclick="confiramr_eliminar_respuesta()">Eliminar</button>
+                <button class="btn btn-primary" type="button" data-dismiss="modal">cerrar</button>
             </div>
         </div>
     </div>
@@ -166,4 +158,12 @@
 
 <script src="~/dist/js/pages/ResOpcMult/Lista.js"></script>
 <script src="~/dist/js/pages/ResOpcMult/modales_respuestas.js"></script>
+<script>
+    $(document).ready(function () {
+        $('#poner_activo li').siblings('li').removeClass('active');
+        $('.2').addClass('active');
+        $('#sub_activo li').siblings('li').removeClass('active');
+        $('.18').addClass('active');
+    });
+</script>
 

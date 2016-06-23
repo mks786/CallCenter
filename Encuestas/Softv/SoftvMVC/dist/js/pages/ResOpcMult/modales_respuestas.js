@@ -58,18 +58,9 @@ function enviar_editar_respuesta(){
             type: "POST",
             data: { 'objResOpcMults': objResOpcMults },
             success: function (data, textStatus, jqXHR) {
-                swal({
-                    title: "!Hecho!", text: "Respuesta editada con éxito!",
-                    type: "success",
-                    showCancelButton: false,
-                    confirmButtonColor: "#5cb85c",
-                    confirmButtonText: "Aceptar",
-                    cancelButtonText: "Aceptar",
-                    closeOnConfirm: false,
-                    closeOnCancel: false
-                }, function (isConfirm) {
-                    location.reload();
-                });
+                LlenarTabla();
+                $('#ModalEditarResOpcMults').modal('hide');
+                swal("Hecho!", "Respuesta editado exitosamente!", "success");
             },
             error: function (jqXHR, textStatus, errorThrown) {
 

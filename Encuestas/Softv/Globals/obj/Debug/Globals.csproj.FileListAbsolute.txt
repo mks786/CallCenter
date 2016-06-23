@@ -68,8 +68,11 @@ C:\Users\Lizeth\Documents\CallCenter\Encuestas\Softv\Globals\bin\Debug\Globals.d
 C:\Users\Lizeth\Documents\CallCenter\Encuestas\Softv\Globals\bin\Debug\Globals.pdb
 C:\Users\Lizeth\Documents\CallCenter\Encuestas\Softv\Globals\obj\Debug\Globals.dll
 C:\Users\Lizeth\Documents\CallCenter\Encuestas\Softv\Globals\obj\Debug\Globals.pdb
+C:\ProyectoEncuestas\CallCenter\Encuestas\Softv\Globals\bin\Debug\Globals.dll
+C:\ProyectoEncuestas\CallCenter\Encuestas\Softv\Globals\bin\Debug\Globals.pdb
+C:\ProyectoEncuestas\CallCenter\Encuestas\Softv\Globals\obj\Debug\Globals.dll
+C:\ProyectoEncuestas\CallCenter\Encuestas\Softv\Globals\obj\Debug\Globals.pdb
 C:\Users\Israel\Documents\projects\CallCenter\Encuestas\Softv\Globals\bin\Debug\Globals.dll
 C:\Users\Israel\Documents\projects\CallCenter\Encuestas\Softv\Globals\bin\Debug\Globals.pdb
 C:\Users\Israel\Documents\projects\CallCenter\Encuestas\Softv\Globals\obj\Debug\Globals.dll
 C:\Users\Israel\Documents\projects\CallCenter\Encuestas\Softv\Globals\obj\Debug\Globals.pdb
-C:\Users\Israel\Documents\projects\CallCenter\Encuestas\Softv\Globals\obj\Debug\Globals.csprojResolveAssemblyReference.cache

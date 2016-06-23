@@ -2,21 +2,21 @@
     LlenarTabla();
 
 
-    $(".Agregar").click(function () {
-        $('#ModalAgregarConexion').modal('show');
-        $('#Nombreplaza').val('');
-        $('#Servidor').val('');
-        $('#base').val('');
-        $('#user').val('');
-        $('#pass').val('');
-
-
-    });
-
 });
 
+function Busqueda() {
+    var cadena = $('#buscar').val();
+    if(cadena == ""){
+        LlenarTabla()
+    }else{
+        LlenarTabla(cadena)
+    }
+}
 
-function LlenarTabla() {
+function LlenarTabla(cadena) {
+    if(cadena == undefined){
+        cadena = "";
+    }
     $('#TablaConexiones').dataTable({
         "processing": true,
         "serverSide": true,
@@ -29,9 +29,15 @@ function LlenarTabla() {
         "ajax": {
             "url": "/Conexion/GetList/",
             "type": "POST",
-            "data": { 'data': 1 },
+            "data": { 'data': cadena },
         },
+        "fnInitComplete": function (oSettings, json) {
 
+
+        },
+        "fnDrawCallback": function (oSettings) {
+
+        },
 
         "columns": [
             { "data": "IdConexion", "orderable": false },
@@ -40,6 +46,13 @@ function LlenarTabla() {
             { "data": "BaseDeDatos", "orderable": false },
             { "data": "Usuario", "orderable": false },
             { "data": "Password", "orderable": false },
+
+            {
+                sortable: false,
+                "render": function (data, type, full, meta) {
+                    return Opciones(full);  //Es el campo de opciones de la tabla.
+                }
+            }
     
         ],
 
@@ -60,35 +73,101 @@ function LlenarTabla() {
                 next: "Siguiente",
                 last: "Ultima"
             },
+            aria: {
+                sortAscending: ": activer pour trier la colonne par ordre croissant",
+                sortDescending: ": activer pour trier la colonne par ordre décroissant"
+            }
         },
 
 
         "order": [[0, "asc"]]
     })
-    $("div.toolbar").html('<button class="btn bg-olive Agregar" style="float:right;" onclick="MostrarModalConexion();" ><i class="fa fa-plug" aria-hidden="true"></i> Nueva conexión</button> <div class="input-group input-group-sm"><input class="form-control" id="abuscar" type="text"><span class="input-group-btn"><button onclick="BuscarEncuesta();" class="btn btn-info btn-flat" type="button">Buscar</button></span></div>');
+    $("div.toolbar").html('<button class="btn bg-olive btn-sm" style="float:right;" onclick="agregrarConexion()"><i class="fa fa-plug" aria-hidden="true"></i> Nueva Plaza</button> <div class="input-group input-group-sm"><input class="form-control" id="buscar" type="text"><span class="input-group-btn"><button onclick="Busqueda()" class="btn btn-info btn-flat" type="button"><i class="fa fa-search" aria-hidden="true"></i> Buscar</button></span></div>');
+}
+
+function Opciones(id) {
+    var opc = "<button class='btn btn-warning btn-xs Editar' type='button' id='" + id.IdConexion + "' onclick='datosConexion(this)'><i class='fa fa-pencil' aria-hidden='true'></i> Editar</button> <button class='btn btn-danger btn-xs' type='button' data-name='"+id.Plaza+"' id='" + id.IdConexion + "' onclick='eliminarConexion(this)'><i class='fa fa-trash' aria-hidden='true'></i> Eliminar</button>"
+    return opc;
+}
+
+function agregrarConexion() {
+    $('#ModalAgregarConexion').modal('show');
+    $('#Nombreplaza').val('');
+    $('#Servidor').val('');
+    $('#base').val('');
+    $('#user').val('');
+    $('#pass').val('');
+}
+
+function datosConexion(e) {
+    var id = e.getAttribute('id');
+    $.ajax({
+        url: "/Conexion/getConexionData/",
+        type: "POST",
+        data: {'id_conexion':id},
+        success: function (data, textStatus, jqXHR) {
+            console.log(data);  
+            $('#idplaza_editar').val(data.IdConexion);
+            $('#nombre_plaza_editar').val(data.Plaza);
+            $('#intancia_editar').val(data.Servidor);
+            $('#base_editar').val(data.BaseDeDatos);
+            $('#usuario_editar').val(data.Usuario);
+            $('#password_editar').val(data.Password);
+            $('#ModalEditarConexion').modal('show');
+        },
+        error: function (jqXHR, textStatus, errorThrown) {
+
+        }
+    });
 }
 
 
+function eliminarConexion(e) {
+    var id = e.getAttribute('id');
+    var nombre = e.getAttribute('data-name');
+    $('#idplaza_eliminar').val(id);
+    $('#nombre_plaza').text(nombre);
+    $('#ModaleliminarConexion').modal('show');
+}
 
+
+function deleteConexion() {
+    var id = $('#idplaza_eliminar').val();
+    $.ajax({
+            url: "/Conexion/Delete/",
+            type: "POST",
+            data: { 'id': id },
+            success: function (data, textStatus, jqXHR) {
+                LlenarTabla();
+                $('#ModaleliminarConexion').modal('hide');
+                swal("Hecho!", "Plaza eliminada exitosamente!", "success");
+
+            },
+            error: function (jqXHR, textStatus, errorThrown) {
+
+            }
+        });
+
+}
 $('#guardarConexion').click(function () {
 
 
 
 
     if ($('#Nombreplaza').val() == "") {
-        sweetAlert("Oops...", "El nombre de plaza es requerido!", "error");
+        sweetAlert("El nombre de plaza es requerido!", "", "error");
     }
     else if ($('#Servidor').val() == "") {
-        sweetAlert("Oops...", "El nombre del servidor es requerido!", "error");
+        sweetAlert("El nombre del servidor es requerido!", "", "error");
     }
     else if ($('#base').val() == "") {
-        sweetAlert("Oops...", "El nombre de la base de datos es requerido!", "error");
+        sweetAlert("El nombre de la base de datos es requerido!", "", "error");
     }
     else if ($('#user').val() == "") {
-        sweetAlert("Oops...", "El nombre del usuario es requerido!", "error");
+        sweetAlert("El nombre del usuario es requerido!", "", "error");
     }
     else if ($('#pass').val() == "") {
-        sweetAlert("Oops...", "la contraseña es requerida!", "error");
+        sweetAlert("la contraseña es requerida!", "", "error");
     } else {
 
 
@@ -108,8 +187,7 @@ $('#guardarConexion').click(function () {
             type: "POST",
             data: { 'conexion': conexion },
             success: function (data, textStatus, jqXHR) {
-                console.log(data);
-                // LlenaTabla();
+                LlenarTabla();
                 $('#ModalAgregarConexion').modal('hide');
                 swal("Hecho!", "Plaza agregada exitosamente!", "success");
 
@@ -124,3 +202,28 @@ $('#guardarConexion').click(function () {
 
 
 });
+
+
+function editarConexion() {
+    var conexion = {};
+    conexion.IdConexion = $('#idplaza_editar').val();
+    conexion.Plaza = $('#nombre_plaza_editar').val();
+    conexion.Servidor = $('#intancia_editar').val();
+    conexion.BaseDeDatos = $('#base_editar').val();
+    conexion.Usuario = $('#usuario_editar').val();
+    conexion.Password = $('#password_editar').val();
+    $.ajax({
+        url: "/Conexion/Edit/",
+        type: "POST",
+        data: { 'conexion': conexion },
+        success: function (data, textStatus, jqXHR) {
+            $('#ModalEditarConexion').modal('hide');
+            LlenarTabla();
+            swal("Hecho!", "Plaza editada exitosamente!", "success");
+
+        },
+        error: function (jqXHR, textStatus, errorThrown) {
+
+        }
+    });
+}

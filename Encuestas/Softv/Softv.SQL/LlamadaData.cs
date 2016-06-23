@@ -61,6 +61,8 @@ namespace Softv.DAO
 
                 AssingParameter(comandoSql, "@Clv_TipSer", entity_Llamada.Clv_TipSer);
 
+                AssingParameter(comandoSql, "@Clv_Problema", entity_Llamada.Clv_Problema);
+
                 try
                 {
                     if (connection.State == ConnectionState.Closed)

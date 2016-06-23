@@ -151,7 +151,7 @@ $('#EditarPregunta').click(function () {
                 swal("Por favor agrega respuestas a la pregunta", "", "error");
             } else {
                 var vacios = 0;
-                $('#edTablaRespuestasOM > tbody  > tr').each(function () {
+                $('#edPanelPreguntaOptMultiple-tbody > tr').each(function () {
                     var x = $(this).closest(".nrespuesta").find("input:text").map(function () { return $(this); });
                     var test1 = $(this).closest(".nrespuesta").find("input:text").map(function () { return $(this).val(); });
                     for (var i = 0; i < x.length; i++) {
@@ -170,9 +170,10 @@ $('#EditarPregunta').click(function () {
                         } else {
                             Opciones.ResOpcMult = x[i].val();
                             duplicado.push(x[i].val());
+                            
                             lista_opciones_aux.push(Opciones);
                         }
-                           
+                        console.log(Opciones);
                             
                     }
                 });
@@ -191,7 +192,7 @@ $('#EditarPregunta').click(function () {
                     swal("No puede haber respuestas duplicadas", "", "error");
                 } else {
                     EliminarDeArreglo(Lista_opciones, "IdPregunta", IdPregunta2);
-
+                    console.log(lista_opciones_aux);
                     for (var i = 0; i < lista_opciones_aux.length; i++) {
                         Lista_opciones.push(lista_opciones_aux[i]);
                     }

@@ -1532,6 +1532,246 @@
   <wsdl:message name="ICALLE_DeleteCALLE_OutputMessage">
     <wsdl:part name="parameters" element="tns:DeleteCALLEResponse" />
   </wsdl:message>
+  <wsdl:message name="IBusquedaIndividual_GetBusquedaIndividual_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetBusquedaIndividual" />
+  </wsdl:message>
+  <wsdl:message name="IBusquedaIndividual_GetBusquedaIndividual_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetBusquedaIndividualResponse" />
+  </wsdl:message>
+  <wsdl:message name="IBusquedaIndividual_GetDeepBusquedaIndividual_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetDeepBusquedaIndividual" />
+  </wsdl:message>
+  <wsdl:message name="IBusquedaIndividual_GetDeepBusquedaIndividual_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetDeepBusquedaIndividualResponse" />
+  </wsdl:message>
+  <wsdl:message name="IBusquedaIndividual_GetBusquedaIndividualList_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetBusquedaIndividualList" />
+  </wsdl:message>
+  <wsdl:message name="IBusquedaIndividual_GetBusquedaIndividualList_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetBusquedaIndividualListResponse" />
+  </wsdl:message>
+  <wsdl:message name="IBusquedaIndividual_GetBusquedaIndividualPagedList_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetBusquedaIndividualPagedList" />
+  </wsdl:message>
+  <wsdl:message name="IBusquedaIndividual_GetBusquedaIndividualPagedList_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetBusquedaIndividualPagedListResponse" />
+  </wsdl:message>
+  <wsdl:message name="IBusquedaIndividual_GetBusquedaIndividualPagedListXml_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetBusquedaIndividualPagedListXml" />
+  </wsdl:message>
+  <wsdl:message name="IBusquedaIndividual_GetBusquedaIndividualPagedListXml_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetBusquedaIndividualPagedListXmlResponse" />
+  </wsdl:message>
+  <wsdl:message name="IBusquedaIndividual_AddBusquedaIndividual_InputMessage">
+    <wsdl:part name="parameters" element="tns:AddBusquedaIndividual" />
+  </wsdl:message>
+  <wsdl:message name="IBusquedaIndividual_AddBusquedaIndividual_OutputMessage">
+    <wsdl:part name="parameters" element="tns:AddBusquedaIndividualResponse" />
+  </wsdl:message>
+  <wsdl:message name="IBusquedaIndividual_UpdateBusquedaIndividual_InputMessage">
+    <wsdl:part name="parameters" element="tns:UpdateBusquedaIndividual" />
+  </wsdl:message>
+  <wsdl:message name="IBusquedaIndividual_UpdateBusquedaIndividual_OutputMessage">
+    <wsdl:part name="parameters" element="tns:UpdateBusquedaIndividualResponse" />
+  </wsdl:message>
+  <wsdl:message name="IBusquedaIndividual_DeleteBusquedaIndividual_InputMessage">
+    <wsdl:part name="parameters" element="tns:DeleteBusquedaIndividual" />
+  </wsdl:message>
+  <wsdl:message name="IBusquedaIndividual_DeleteBusquedaIndividual_OutputMessage">
+    <wsdl:part name="parameters" element="tns:DeleteBusquedaIndividualResponse" />
+  </wsdl:message>
+  <wsdl:message name="ItblClasificacionProblema_GettblClasificacionProblema_InputMessage">
+    <wsdl:part name="parameters" element="tns:GettblClasificacionProblema" />
+  </wsdl:message>
+  <wsdl:message name="ItblClasificacionProblema_GettblClasificacionProblema_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GettblClasificacionProblemaResponse" />
+  </wsdl:message>
+  <wsdl:message name="ItblClasificacionProblema_GetDeeptblClasificacionProblema_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetDeeptblClasificacionProblema" />
+  </wsdl:message>
+  <wsdl:message name="ItblClasificacionProblema_GetDeeptblClasificacionProblema_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetDeeptblClasificacionProblemaResponse" />
+  </wsdl:message>
+  <wsdl:message name="ItblClasificacionProblema_GettblClasificacionProblemaList_InputMessage">
+    <wsdl:part name="parameters" element="tns:GettblClasificacionProblemaList" />
+  </wsdl:message>
+  <wsdl:message name="ItblClasificacionProblema_GettblClasificacionProblemaList_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GettblClasificacionProblemaListResponse" />
+  </wsdl:message>
+  <wsdl:message name="ItblClasificacionProblema_GettblClasificacionProblemaPagedList_InputMessage">
+    <wsdl:part name="parameters" element="tns:GettblClasificacionProblemaPagedList" />
+  </wsdl:message>
+  <wsdl:message name="ItblClasificacionProblema_GettblClasificacionProblemaPagedList_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GettblClasificacionProblemaPagedListResponse" />
+  </wsdl:message>
+  <wsdl:message name="ItblClasificacionProblema_GettblClasificacionProblemaPagedListXml_InputMessage">
+    <wsdl:part name="parameters" element="tns:GettblClasificacionProblemaPagedListXml" />
+  </wsdl:message>
+  <wsdl:message name="ItblClasificacionProblema_GettblClasificacionProblemaPagedListXml_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GettblClasificacionProblemaPagedListXmlResponse" />
+  </wsdl:message>
+  <wsdl:message name="ItblClasificacionProblema_AddtblClasificacionProblema_InputMessage">
+    <wsdl:part name="parameters" element="tns:AddtblClasificacionProblema" />
+  </wsdl:message>
+  <wsdl:message name="ItblClasificacionProblema_AddtblClasificacionProblema_OutputMessage">
+    <wsdl:part name="parameters" element="tns:AddtblClasificacionProblemaResponse" />
+  </wsdl:message>
+  <wsdl:message name="ItblClasificacionProblema_UpdatetblClasificacionProblema_InputMessage">
+    <wsdl:part name="parameters" element="tns:UpdatetblClasificacionProblema" />
+  </wsdl:message>
+  <wsdl:message name="ItblClasificacionProblema_UpdatetblClasificacionProblema_OutputMessage">
+    <wsdl:part name="parameters" element="tns:UpdatetblClasificacionProblemaResponse" />
+  </wsdl:message>
+  <wsdl:message name="ItblClasificacionProblema_DeletetblClasificacionProblema_InputMessage">
+    <wsdl:part name="parameters" element="tns:DeletetblClasificacionProblema" />
+  </wsdl:message>
+  <wsdl:message name="ItblClasificacionProblema_DeletetblClasificacionProblema_OutputMessage">
+    <wsdl:part name="parameters" element="tns:DeletetblClasificacionProblemaResponse" />
+  </wsdl:message>
+  <wsdl:message name="ItblPrioridadQueja_GettblPrioridadQueja_InputMessage">
+    <wsdl:part name="parameters" element="tns:GettblPrioridadQueja" />
+  </wsdl:message>
+  <wsdl:message name="ItblPrioridadQueja_GettblPrioridadQueja_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GettblPrioridadQuejaResponse" />
+  </wsdl:message>
+  <wsdl:message name="ItblPrioridadQueja_GetDeeptblPrioridadQueja_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetDeeptblPrioridadQueja" />
+  </wsdl:message>
+  <wsdl:message name="ItblPrioridadQueja_GetDeeptblPrioridadQueja_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetDeeptblPrioridadQuejaResponse" />
+  </wsdl:message>
+  <wsdl:message name="ItblPrioridadQueja_GettblPrioridadQuejaList_InputMessage">
+    <wsdl:part name="parameters" element="tns:GettblPrioridadQuejaList" />
+  </wsdl:message>
+  <wsdl:message name="ItblPrioridadQueja_GettblPrioridadQuejaList_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GettblPrioridadQuejaListResponse" />
+  </wsdl:message>
+  <wsdl:message name="ItblPrioridadQueja_GettblPrioridadQuejaPagedList_InputMessage">
+    <wsdl:part name="parameters" element="tns:GettblPrioridadQuejaPagedList" />
+  </wsdl:message>
+  <wsdl:message name="ItblPrioridadQueja_GettblPrioridadQuejaPagedList_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GettblPrioridadQuejaPagedListResponse" />
+  </wsdl:message>
+  <wsdl:message name="ItblPrioridadQueja_GettblPrioridadQuejaPagedListXml_InputMessage">
+    <wsdl:part name="parameters" element="tns:GettblPrioridadQuejaPagedListXml" />
+  </wsdl:message>
+  <wsdl:message name="ItblPrioridadQueja_GettblPrioridadQuejaPagedListXml_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GettblPrioridadQuejaPagedListXmlResponse" />
+  </wsdl:message>
+  <wsdl:message name="ItblPrioridadQueja_AddtblPrioridadQueja_InputMessage">
+    <wsdl:part name="parameters" element="tns:AddtblPrioridadQueja" />
+  </wsdl:message>
+  <wsdl:message name="ItblPrioridadQueja_AddtblPrioridadQueja_OutputMessage">
+    <wsdl:part name="parameters" element="tns:AddtblPrioridadQuejaResponse" />
+  </wsdl:message>
+  <wsdl:message name="ItblPrioridadQueja_UpdatetblPrioridadQueja_InputMessage">
+    <wsdl:part name="parameters" element="tns:UpdatetblPrioridadQueja" />
+  </wsdl:message>
+  <wsdl:message name="ItblPrioridadQueja_UpdatetblPrioridadQueja_OutputMessage">
+    <wsdl:part name="parameters" element="tns:UpdatetblPrioridadQuejaResponse" />
+  </wsdl:message>
+  <wsdl:message name="ItblPrioridadQueja_DeletetblPrioridadQueja_InputMessage">
+    <wsdl:part name="parameters" element="tns:DeletetblPrioridadQueja" />
+  </wsdl:message>
+  <wsdl:message name="ItblPrioridadQueja_DeletetblPrioridadQueja_OutputMessage">
+    <wsdl:part name="parameters" element="tns:DeletetblPrioridadQuejaResponse" />
+  </wsdl:message>
+  <wsdl:message name="INoCliente_GetNoCliente_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetNoCliente" />
+  </wsdl:message>
+  <wsdl:message name="INoCliente_GetNoCliente_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetNoClienteResponse" />
+  </wsdl:message>
+  <wsdl:message name="INoCliente_GetDeepNoCliente_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetDeepNoCliente" />
+  </wsdl:message>
+  <wsdl:message name="INoCliente_GetDeepNoCliente_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetDeepNoClienteResponse" />
+  </wsdl:message>
+  <wsdl:message name="INoCliente_GetNoClienteList_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetNoClienteList" />
+  </wsdl:message>
+  <wsdl:message name="INoCliente_GetNoClienteList_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetNoClienteListResponse" />
+  </wsdl:message>
+  <wsdl:message name="INoCliente_GetNoClientePagedList_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetNoClientePagedList" />
+  </wsdl:message>
+  <wsdl:message name="INoCliente_GetNoClientePagedList_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetNoClientePagedListResponse" />
+  </wsdl:message>
+  <wsdl:message name="INoCliente_GetNoClientePagedListXml_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetNoClientePagedListXml" />
+  </wsdl:message>
+  <wsdl:message name="INoCliente_GetNoClientePagedListXml_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetNoClientePagedListXmlResponse" />
+  </wsdl:message>
+  <wsdl:message name="INoCliente_AddNoCliente_InputMessage">
+    <wsdl:part name="parameters" element="tns:AddNoCliente" />
+  </wsdl:message>
+  <wsdl:message name="INoCliente_AddNoCliente_OutputMessage">
+    <wsdl:part name="parameters" element="tns:AddNoClienteResponse" />
+  </wsdl:message>
+  <wsdl:message name="INoCliente_UpdateNoCliente_InputMessage">
+    <wsdl:part name="parameters" element="tns:UpdateNoCliente" />
+  </wsdl:message>
+  <wsdl:message name="INoCliente_UpdateNoCliente_OutputMessage">
+    <wsdl:part name="parameters" element="tns:UpdateNoClienteResponse" />
+  </wsdl:message>
+  <wsdl:message name="INoCliente_DeleteNoCliente_InputMessage">
+    <wsdl:part name="parameters" element="tns:DeleteNoCliente" />
+  </wsdl:message>
+  <wsdl:message name="INoCliente_DeleteNoCliente_OutputMessage">
+    <wsdl:part name="parameters" element="tns:DeleteNoClienteResponse" />
+  </wsdl:message>
+  <wsdl:message name="IDatosLlamada_GetDatosLlamada_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetDatosLlamada" />
+  </wsdl:message>
+  <wsdl:message name="IDatosLlamada_GetDatosLlamada_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetDatosLlamadaResponse" />
+  </wsdl:message>
+  <wsdl:message name="IDatosLlamada_GetDeepDatosLlamada_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetDeepDatosLlamada" />
+  </wsdl:message>
+  <wsdl:message name="IDatosLlamada_GetDeepDatosLlamada_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetDeepDatosLlamadaResponse" />
+  </wsdl:message>
+  <wsdl:message name="IDatosLlamada_GetDatosLlamadaList_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetDatosLlamadaList" />
+  </wsdl:message>
+  <wsdl:message name="IDatosLlamada_GetDatosLlamadaList_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetDatosLlamadaListResponse" />
+  </wsdl:message>
+  <wsdl:message name="IDatosLlamada_GetDatosLlamadaPagedList_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetDatosLlamadaPagedList" />
+  </wsdl:message>
+  <wsdl:message name="IDatosLlamada_GetDatosLlamadaPagedList_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetDatosLlamadaPagedListResponse" />
+  </wsdl:message>
+  <wsdl:message name="IDatosLlamada_GetDatosLlamadaPagedListXml_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetDatosLlamadaPagedListXml" />
+  </wsdl:message>
+  <wsdl:message name="IDatosLlamada_GetDatosLlamadaPagedListXml_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetDatosLlamadaPagedListXmlResponse" />
+  </wsdl:message>
+  <wsdl:message name="IDatosLlamada_AddDatosLlamada_InputMessage">
+    <wsdl:part name="parameters" element="tns:AddDatosLlamada" />
+  </wsdl:message>
+  <wsdl:message name="IDatosLlamada_AddDatosLlamada_OutputMessage">
+    <wsdl:part name="parameters" element="tns:AddDatosLlamadaResponse" />
+  </wsdl:message>
+  <wsdl:message name="IDatosLlamada_UpdateDatosLlamada_InputMessage">
+    <wsdl:part name="parameters" element="tns:UpdateDatosLlamada" />
+  </wsdl:message>
+  <wsdl:message name="IDatosLlamada_UpdateDatosLlamada_OutputMessage">
+    <wsdl:part name="parameters" element="tns:UpdateDatosLlamadaResponse" />
+  </wsdl:message>
+  <wsdl:message name="IDatosLlamada_DeleteDatosLlamada_InputMessage">
+    <wsdl:part name="parameters" element="tns:DeleteDatosLlamada" />
+  </wsdl:message>
+  <wsdl:message name="IDatosLlamada_DeleteDatosLlamada_OutputMessage">
+    <wsdl:part name="parameters" element="tns:DeleteDatosLlamadaResponse" />
+  </wsdl:message>
   <wsdl:portType name="IUsuario">
     <wsdl:operation name="GetUsuario">
       <wsdl:input wsaw:Action="http://tempuri.org/IUsuario/GetUsuario" message="tns:IUsuario_GetUsuario_InputMessage" />
@@ -2610,6 +2850,176 @@
     <wsdl:operation name="DeleteCALLE">
       <wsdl:input wsaw:Action="http://tempuri.org/ICALLE/DeleteCALLE" message="tns:ICALLE_DeleteCALLE_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/ICALLE/DeleteCALLEResponse" message="tns:ICALLE_DeleteCALLE_OutputMessage" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:portType name="IBusquedaIndividual">
+    <wsdl:operation name="GetBusquedaIndividual">
+      <wsdl:input wsaw:Action="http://tempuri.org/IBusquedaIndividual/GetBusquedaIndividual" message="tns:IBusquedaIndividual_GetBusquedaIndividual_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IBusquedaIndividual/GetBusquedaIndividualResponse" message="tns:IBusquedaIndividual_GetBusquedaIndividual_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetDeepBusquedaIndividual">
+      <wsdl:input wsaw:Action="http://tempuri.org/IBusquedaIndividual/GetDeepBusquedaIndividual" message="tns:IBusquedaIndividual_GetDeepBusquedaIndividual_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IBusquedaIndividual/GetDeepBusquedaIndividualResponse" message="tns:IBusquedaIndividual_GetDeepBusquedaIndividual_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetBusquedaIndividualList">
+      <wsdl:input wsaw:Action="http://tempuri.org/IBusquedaIndividual/GetBusquedaIndividualList" message="tns:IBusquedaIndividual_GetBusquedaIndividualList_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IBusquedaIndividual/GetBusquedaIndividualListResponse" message="tns:IBusquedaIndividual_GetBusquedaIndividualList_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetBusquedaIndividualPagedList">
+      <wsdl:input wsaw:Action="http://tempuri.org/IBusquedaIndividual/GetBusquedaIndividualPagedList" message="tns:IBusquedaIndividual_GetBusquedaIndividualPagedList_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IBusquedaIndividual/GetBusquedaIndividualPagedListResponse" message="tns:IBusquedaIndividual_GetBusquedaIndividualPagedList_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetBusquedaIndividualPagedListXml">
+      <wsdl:input wsaw:Action="http://tempuri.org/IBusquedaIndividual/GetBusquedaIndividualPagedListXml" message="tns:IBusquedaIndividual_GetBusquedaIndividualPagedListXml_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IBusquedaIndividual/GetBusquedaIndividualPagedListXmlResponse" message="tns:IBusquedaIndividual_GetBusquedaIndividualPagedListXml_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="AddBusquedaIndividual">
+      <wsdl:input wsaw:Action="http://tempuri.org/IBusquedaIndividual/AddBusquedaIndividual" message="tns:IBusquedaIndividual_AddBusquedaIndividual_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IBusquedaIndividual/AddBusquedaIndividualResponse" message="tns:IBusquedaIndividual_AddBusquedaIndividual_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="UpdateBusquedaIndividual">
+      <wsdl:input wsaw:Action="http://tempuri.org/IBusquedaIndividual/UpdateBusquedaIndividual" message="tns:IBusquedaIndividual_UpdateBusquedaIndividual_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IBusquedaIndividual/UpdateBusquedaIndividualResponse" message="tns:IBusquedaIndividual_UpdateBusquedaIndividual_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="DeleteBusquedaIndividual">
+      <wsdl:input wsaw:Action="http://tempuri.org/IBusquedaIndividual/DeleteBusquedaIndividual" message="tns:IBusquedaIndividual_DeleteBusquedaIndividual_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IBusquedaIndividual/DeleteBusquedaIndividualResponse" message="tns:IBusquedaIndividual_DeleteBusquedaIndividual_OutputMessage" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:portType name="ItblClasificacionProblema">
+    <wsdl:operation name="GettblClasificacionProblema">
+      <wsdl:input wsaw:Action="http://tempuri.org/ItblClasificacionProblema/GettblClasificacionProblema" message="tns:ItblClasificacionProblema_GettblClasificacionProblema_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ItblClasificacionProblema/GettblClasificacionProblemaResponse" message="tns:ItblClasificacionProblema_GettblClasificacionProblema_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetDeeptblClasificacionProblema">
+      <wsdl:input wsaw:Action="http://tempuri.org/ItblClasificacionProblema/GetDeeptblClasificacionProblema" message="tns:ItblClasificacionProblema_GetDeeptblClasificacionProblema_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ItblClasificacionProblema/GetDeeptblClasificacionProblemaResponse" message="tns:ItblClasificacionProblema_GetDeeptblClasificacionProblema_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GettblClasificacionProblemaList">
+      <wsdl:input wsaw:Action="http://tempuri.org/ItblClasificacionProblema/GettblClasificacionProblemaList" message="tns:ItblClasificacionProblema_GettblClasificacionProblemaList_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ItblClasificacionProblema/GettblClasificacionProblemaListResponse" message="tns:ItblClasificacionProblema_GettblClasificacionProblemaList_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GettblClasificacionProblemaPagedList">
+      <wsdl:input wsaw:Action="http://tempuri.org/ItblClasificacionProblema/GettblClasificacionProblemaPagedList" message="tns:ItblClasificacionProblema_GettblClasificacionProblemaPagedList_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ItblClasificacionProblema/GettblClasificacionProblemaPagedListResponse" message="tns:ItblClasificacionProblema_GettblClasificacionProblemaPagedList_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GettblClasificacionProblemaPagedListXml">
+      <wsdl:input wsaw:Action="http://tempuri.org/ItblClasificacionProblema/GettblClasificacionProblemaPagedListXml" message="tns:ItblClasificacionProblema_GettblClasificacionProblemaPagedListXml_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ItblClasificacionProblema/GettblClasificacionProblemaPagedListXmlResponse" message="tns:ItblClasificacionProblema_GettblClasificacionProblemaPagedListXml_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="AddtblClasificacionProblema">
+      <wsdl:input wsaw:Action="http://tempuri.org/ItblClasificacionProblema/AddtblClasificacionProblema" message="tns:ItblClasificacionProblema_AddtblClasificacionProblema_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ItblClasificacionProblema/AddtblClasificacionProblemaResponse" message="tns:ItblClasificacionProblema_AddtblClasificacionProblema_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="UpdatetblClasificacionProblema">
+      <wsdl:input wsaw:Action="http://tempuri.org/ItblClasificacionProblema/UpdatetblClasificacionProblema" message="tns:ItblClasificacionProblema_UpdatetblClasificacionProblema_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ItblClasificacionProblema/UpdatetblClasificacionProblemaResponse" message="tns:ItblClasificacionProblema_UpdatetblClasificacionProblema_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="DeletetblClasificacionProblema">
+      <wsdl:input wsaw:Action="http://tempuri.org/ItblClasificacionProblema/DeletetblClasificacionProblema" message="tns:ItblClasificacionProblema_DeletetblClasificacionProblema_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ItblClasificacionProblema/DeletetblClasificacionProblemaResponse" message="tns:ItblClasificacionProblema_DeletetblClasificacionProblema_OutputMessage" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:portType name="ItblPrioridadQueja">
+    <wsdl:operation name="GettblPrioridadQueja">
+      <wsdl:input wsaw:Action="http://tempuri.org/ItblPrioridadQueja/GettblPrioridadQueja" message="tns:ItblPrioridadQueja_GettblPrioridadQueja_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ItblPrioridadQueja/GettblPrioridadQuejaResponse" message="tns:ItblPrioridadQueja_GettblPrioridadQueja_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetDeeptblPrioridadQueja">
+      <wsdl:input wsaw:Action="http://tempuri.org/ItblPrioridadQueja/GetDeeptblPrioridadQueja" message="tns:ItblPrioridadQueja_GetDeeptblPrioridadQueja_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ItblPrioridadQueja/GetDeeptblPrioridadQuejaResponse" message="tns:ItblPrioridadQueja_GetDeeptblPrioridadQueja_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GettblPrioridadQuejaList">
+      <wsdl:input wsaw:Action="http://tempuri.org/ItblPrioridadQueja/GettblPrioridadQuejaList" message="tns:ItblPrioridadQueja_GettblPrioridadQuejaList_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ItblPrioridadQueja/GettblPrioridadQuejaListResponse" message="tns:ItblPrioridadQueja_GettblPrioridadQuejaList_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GettblPrioridadQuejaPagedList">
+      <wsdl:input wsaw:Action="http://tempuri.org/ItblPrioridadQueja/GettblPrioridadQuejaPagedList" message="tns:ItblPrioridadQueja_GettblPrioridadQuejaPagedList_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ItblPrioridadQueja/GettblPrioridadQuejaPagedListResponse" message="tns:ItblPrioridadQueja_GettblPrioridadQuejaPagedList_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GettblPrioridadQuejaPagedListXml">
+      <wsdl:input wsaw:Action="http://tempuri.org/ItblPrioridadQueja/GettblPrioridadQuejaPagedListXml" message="tns:ItblPrioridadQueja_GettblPrioridadQuejaPagedListXml_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ItblPrioridadQueja/GettblPrioridadQuejaPagedListXmlResponse" message="tns:ItblPrioridadQueja_GettblPrioridadQuejaPagedListXml_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="AddtblPrioridadQueja">
+      <wsdl:input wsaw:Action="http://tempuri.org/ItblPrioridadQueja/AddtblPrioridadQueja" message="tns:ItblPrioridadQueja_AddtblPrioridadQueja_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ItblPrioridadQueja/AddtblPrioridadQuejaResponse" message="tns:ItblPrioridadQueja_AddtblPrioridadQueja_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="UpdatetblPrioridadQueja">
+      <wsdl:input wsaw:Action="http://tempuri.org/ItblPrioridadQueja/UpdatetblPrioridadQueja" message="tns:ItblPrioridadQueja_UpdatetblPrioridadQueja_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ItblPrioridadQueja/UpdatetblPrioridadQuejaResponse" message="tns:ItblPrioridadQueja_UpdatetblPrioridadQueja_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="DeletetblPrioridadQueja">
+      <wsdl:input wsaw:Action="http://tempuri.org/ItblPrioridadQueja/DeletetblPrioridadQueja" message="tns:ItblPrioridadQueja_DeletetblPrioridadQueja_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ItblPrioridadQueja/DeletetblPrioridadQuejaResponse" message="tns:ItblPrioridadQueja_DeletetblPrioridadQueja_OutputMessage" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:portType name="INoCliente">
+    <wsdl:operation name="GetNoCliente">
+      <wsdl:input wsaw:Action="http://tempuri.org/INoCliente/GetNoCliente" message="tns:INoCliente_GetNoCliente_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/INoCliente/GetNoClienteResponse" message="tns:INoCliente_GetNoCliente_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetDeepNoCliente">
+      <wsdl:input wsaw:Action="http://tempuri.org/INoCliente/GetDeepNoCliente" message="tns:INoCliente_GetDeepNoCliente_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/INoCliente/GetDeepNoClienteResponse" message="tns:INoCliente_GetDeepNoCliente_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetNoClienteList">
+      <wsdl:input wsaw:Action="http://tempuri.org/INoCliente/GetNoClienteList" message="tns:INoCliente_GetNoClienteList_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/INoCliente/GetNoClienteListResponse" message="tns:INoCliente_GetNoClienteList_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetNoClientePagedList">
+      <wsdl:input wsaw:Action="http://tempuri.org/INoCliente/GetNoClientePagedList" message="tns:INoCliente_GetNoClientePagedList_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/INoCliente/GetNoClientePagedListResponse" message="tns:INoCliente_GetNoClientePagedList_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetNoClientePagedListXml">
+      <wsdl:input wsaw:Action="http://tempuri.org/INoCliente/GetNoClientePagedListXml" message="tns:INoCliente_GetNoClientePagedListXml_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/INoCliente/GetNoClientePagedListXmlResponse" message="tns:INoCliente_GetNoClientePagedListXml_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="AddNoCliente">
+      <wsdl:input wsaw:Action="http://tempuri.org/INoCliente/AddNoCliente" message="tns:INoCliente_AddNoCliente_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/INoCliente/AddNoClienteResponse" message="tns:INoCliente_AddNoCliente_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="UpdateNoCliente">
+      <wsdl:input wsaw:Action="http://tempuri.org/INoCliente/UpdateNoCliente" message="tns:INoCliente_UpdateNoCliente_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/INoCliente/UpdateNoClienteResponse" message="tns:INoCliente_UpdateNoCliente_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="DeleteNoCliente">
+      <wsdl:input wsaw:Action="http://tempuri.org/INoCliente/DeleteNoCliente" message="tns:INoCliente_DeleteNoCliente_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/INoCliente/DeleteNoClienteResponse" message="tns:INoCliente_DeleteNoCliente_OutputMessage" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:portType name="IDatosLlamada">
+    <wsdl:operation name="GetDatosLlamada">
+      <wsdl:input wsaw:Action="http://tempuri.org/IDatosLlamada/GetDatosLlamada" message="tns:IDatosLlamada_GetDatosLlamada_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IDatosLlamada/GetDatosLlamadaResponse" message="tns:IDatosLlamada_GetDatosLlamada_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetDeepDatosLlamada">
+      <wsdl:input wsaw:Action="http://tempuri.org/IDatosLlamada/GetDeepDatosLlamada" message="tns:IDatosLlamada_GetDeepDatosLlamada_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IDatosLlamada/GetDeepDatosLlamadaResponse" message="tns:IDatosLlamada_GetDeepDatosLlamada_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetDatosLlamadaList">
+      <wsdl:input wsaw:Action="http://tempuri.org/IDatosLlamada/GetDatosLlamadaList" message="tns:IDatosLlamada_GetDatosLlamadaList_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IDatosLlamada/GetDatosLlamadaListResponse" message="tns:IDatosLlamada_GetDatosLlamadaList_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetDatosLlamadaPagedList">
+      <wsdl:input wsaw:Action="http://tempuri.org/IDatosLlamada/GetDatosLlamadaPagedList" message="tns:IDatosLlamada_GetDatosLlamadaPagedList_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IDatosLlamada/GetDatosLlamadaPagedListResponse" message="tns:IDatosLlamada_GetDatosLlamadaPagedList_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetDatosLlamadaPagedListXml">
+      <wsdl:input wsaw:Action="http://tempuri.org/IDatosLlamada/GetDatosLlamadaPagedListXml" message="tns:IDatosLlamada_GetDatosLlamadaPagedListXml_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IDatosLlamada/GetDatosLlamadaPagedListXmlResponse" message="tns:IDatosLlamada_GetDatosLlamadaPagedListXml_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="AddDatosLlamada">
+      <wsdl:input wsaw:Action="http://tempuri.org/IDatosLlamada/AddDatosLlamada" message="tns:IDatosLlamada_AddDatosLlamada_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IDatosLlamada/AddDatosLlamadaResponse" message="tns:IDatosLlamada_AddDatosLlamada_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="UpdateDatosLlamada">
+      <wsdl:input wsaw:Action="http://tempuri.org/IDatosLlamada/UpdateDatosLlamada" message="tns:IDatosLlamada_UpdateDatosLlamada_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IDatosLlamada/UpdateDatosLlamadaResponse" message="tns:IDatosLlamada_UpdateDatosLlamada_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="DeleteDatosLlamada">
+      <wsdl:input wsaw:Action="http://tempuri.org/IDatosLlamada/DeleteDatosLlamada" message="tns:IDatosLlamada_DeleteDatosLlamada_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IDatosLlamada/DeleteDatosLlamadaResponse" message="tns:IDatosLlamada_DeleteDatosLlamada_OutputMessage" />
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:binding name="BasicHttpBinding_IUsuario" type="tns:IUsuario">
@@ -4994,6 +5404,381 @@
       </wsdl:output>
     </wsdl:operation>
   </wsdl:binding>
+  <wsdl:binding name="BasicHttpBinding_IBusquedaIndividual" type="tns:IBusquedaIndividual">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="GetBusquedaIndividual">
+      <soap:operation soapAction="http://tempuri.org/IBusquedaIndividual/GetBusquedaIndividual" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetDeepBusquedaIndividual">
+      <soap:operation soapAction="http://tempuri.org/IBusquedaIndividual/GetDeepBusquedaIndividual" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetBusquedaIndividualList">
+      <soap:operation soapAction="http://tempuri.org/IBusquedaIndividual/GetBusquedaIndividualList" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetBusquedaIndividualPagedList">
+      <soap:operation soapAction="http://tempuri.org/IBusquedaIndividual/GetBusquedaIndividualPagedList" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetBusquedaIndividualPagedListXml">
+      <soap:operation soapAction="http://tempuri.org/IBusquedaIndividual/GetBusquedaIndividualPagedListXml" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AddBusquedaIndividual">
+      <soap:operation soapAction="http://tempuri.org/IBusquedaIndividual/AddBusquedaIndividual" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdateBusquedaIndividual">
+      <soap:operation soapAction="http://tempuri.org/IBusquedaIndividual/UpdateBusquedaIndividual" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DeleteBusquedaIndividual">
+      <soap:operation soapAction="http://tempuri.org/IBusquedaIndividual/DeleteBusquedaIndividual" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="BasicHttpBinding_ItblClasificacionProblema" type="tns:ItblClasificacionProblema">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="GettblClasificacionProblema">
+      <soap:operation soapAction="http://tempuri.org/ItblClasificacionProblema/GettblClasificacionProblema" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetDeeptblClasificacionProblema">
+      <soap:operation soapAction="http://tempuri.org/ItblClasificacionProblema/GetDeeptblClasificacionProblema" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GettblClasificacionProblemaList">
+      <soap:operation soapAction="http://tempuri.org/ItblClasificacionProblema/GettblClasificacionProblemaList" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GettblClasificacionProblemaPagedList">
+      <soap:operation soapAction="http://tempuri.org/ItblClasificacionProblema/GettblClasificacionProblemaPagedList" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GettblClasificacionProblemaPagedListXml">
+      <soap:operation soapAction="http://tempuri.org/ItblClasificacionProblema/GettblClasificacionProblemaPagedListXml" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AddtblClasificacionProblema">
+      <soap:operation soapAction="http://tempuri.org/ItblClasificacionProblema/AddtblClasificacionProblema" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdatetblClasificacionProblema">
+      <soap:operation soapAction="http://tempuri.org/ItblClasificacionProblema/UpdatetblClasificacionProblema" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DeletetblClasificacionProblema">
+      <soap:operation soapAction="http://tempuri.org/ItblClasificacionProblema/DeletetblClasificacionProblema" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="BasicHttpBinding_ItblPrioridadQueja" type="tns:ItblPrioridadQueja">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="GettblPrioridadQueja">
+      <soap:operation soapAction="http://tempuri.org/ItblPrioridadQueja/GettblPrioridadQueja" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetDeeptblPrioridadQueja">
+      <soap:operation soapAction="http://tempuri.org/ItblPrioridadQueja/GetDeeptblPrioridadQueja" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GettblPrioridadQuejaList">
+      <soap:operation soapAction="http://tempuri.org/ItblPrioridadQueja/GettblPrioridadQuejaList" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GettblPrioridadQuejaPagedList">
+      <soap:operation soapAction="http://tempuri.org/ItblPrioridadQueja/GettblPrioridadQuejaPagedList" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GettblPrioridadQuejaPagedListXml">
+      <soap:operation soapAction="http://tempuri.org/ItblPrioridadQueja/GettblPrioridadQuejaPagedListXml" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AddtblPrioridadQueja">
+      <soap:operation soapAction="http://tempuri.org/ItblPrioridadQueja/AddtblPrioridadQueja" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdatetblPrioridadQueja">
+      <soap:operation soapAction="http://tempuri.org/ItblPrioridadQueja/UpdatetblPrioridadQueja" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DeletetblPrioridadQueja">
+      <soap:operation soapAction="http://tempuri.org/ItblPrioridadQueja/DeletetblPrioridadQueja" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="BasicHttpBinding_INoCliente" type="tns:INoCliente">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="GetNoCliente">
+      <soap:operation soapAction="http://tempuri.org/INoCliente/GetNoCliente" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetDeepNoCliente">
+      <soap:operation soapAction="http://tempuri.org/INoCliente/GetDeepNoCliente" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetNoClienteList">
+      <soap:operation soapAction="http://tempuri.org/INoCliente/GetNoClienteList" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetNoClientePagedList">
+      <soap:operation soapAction="http://tempuri.org/INoCliente/GetNoClientePagedList" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetNoClientePagedListXml">
+      <soap:operation soapAction="http://tempuri.org/INoCliente/GetNoClientePagedListXml" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AddNoCliente">
+      <soap:operation soapAction="http://tempuri.org/INoCliente/AddNoCliente" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdateNoCliente">
+      <soap:operation soapAction="http://tempuri.org/INoCliente/UpdateNoCliente" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DeleteNoCliente">
+      <soap:operation soapAction="http://tempuri.org/INoCliente/DeleteNoCliente" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="BasicHttpBinding_IDatosLlamada" type="tns:IDatosLlamada">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="GetDatosLlamada">
+      <soap:operation soapAction="http://tempuri.org/IDatosLlamada/GetDatosLlamada" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetDeepDatosLlamada">
+      <soap:operation soapAction="http://tempuri.org/IDatosLlamada/GetDeepDatosLlamada" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetDatosLlamadaList">
+      <soap:operation soapAction="http://tempuri.org/IDatosLlamada/GetDatosLlamadaList" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetDatosLlamadaPagedList">
+      <soap:operation soapAction="http://tempuri.org/IDatosLlamada/GetDatosLlamadaPagedList" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetDatosLlamadaPagedListXml">
+      <soap:operation soapAction="http://tempuri.org/IDatosLlamada/GetDatosLlamadaPagedListXml" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AddDatosLlamada">
+      <soap:operation soapAction="http://tempuri.org/IDatosLlamada/AddDatosLlamada" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdateDatosLlamada">
+      <soap:operation soapAction="http://tempuri.org/IDatosLlamada/UpdateDatosLlamada" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DeleteDatosLlamada">
+      <soap:operation soapAction="http://tempuri.org/IDatosLlamada/DeleteDatosLlamada" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
   <wsdl:service name="SoftvWCFService">
     <wsdl:port name="BasicHttpBinding_IUsuario" binding="tns:BasicHttpBinding_IUsuario">
       <soap:address location="http://localhost:64481/SoftvWCFService.svc" />
@@ -5089,6 +5874,21 @@
       <soap:address location="http://localhost:64481/SoftvWCFService.svc" />
     </wsdl:port>
     <wsdl:port name="BasicHttpBinding_ICALLE" binding="tns:BasicHttpBinding_ICALLE">
+      <soap:address location="http://localhost:64481/SoftvWCFService.svc" />
+    </wsdl:port>
+    <wsdl:port name="BasicHttpBinding_IBusquedaIndividual" binding="tns:BasicHttpBinding_IBusquedaIndividual">
+      <soap:address location="http://localhost:64481/SoftvWCFService.svc" />
+    </wsdl:port>
+    <wsdl:port name="BasicHttpBinding_ItblClasificacionProblema" binding="tns:BasicHttpBinding_ItblClasificacionProblema">
+      <soap:address location="http://localhost:64481/SoftvWCFService.svc" />
+    </wsdl:port>
+    <wsdl:port name="BasicHttpBinding_ItblPrioridadQueja" binding="tns:BasicHttpBinding_ItblPrioridadQueja">
+      <soap:address location="http://localhost:64481/SoftvWCFService.svc" />
+    </wsdl:port>
+    <wsdl:port name="BasicHttpBinding_INoCliente" binding="tns:BasicHttpBinding_INoCliente">
+      <soap:address location="http://localhost:64481/SoftvWCFService.svc" />
+    </wsdl:port>
+    <wsdl:port name="BasicHttpBinding_IDatosLlamada" binding="tns:BasicHttpBinding_IDatosLlamada">
       <soap:address location="http://localhost:64481/SoftvWCFService.svc" />
     </wsdl:port>
   </wsdl:service>

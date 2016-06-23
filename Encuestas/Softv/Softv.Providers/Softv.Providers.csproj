@@ -41,6 +41,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="BaseConf\ProviderSoftvMSS.cs" />
+    <Compile Include="BusquedaIndividualProvider.cs" />
     <Compile Include="CALLEProvider.cs" />
     <Compile Include="CatalogoPeriodosCorteProvider.cs" />
     <Compile Include="CIUDADProvider.cs" />
@@ -51,10 +52,12 @@
     <Compile Include="CVECAROLProvider.cs" />
     <Compile Include="CVECOLCIUProvider.cs" />
     <Compile Include="DatoFiscalProvider.cs" />
+    <Compile Include="DatosLlamadaProvider.cs" />
     <Compile Include="EncuestaProvider.cs" />
     <Compile Include="LlamadaProvider.cs" />
     <Compile Include="ModuleProvider.cs" />
     <Compile Include="MotivoCancelacionProvider.cs" />
+    <Compile Include="NoClienteProvider.cs" />
     <Compile Include="PermisoProvider.cs" />
     <Compile Include="PreguntaProvider.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -68,6 +71,8 @@
     <Compile Include="ResOpcMultsProvider.cs" />
     <Compile Include="RoleProvider.cs" />
     <Compile Include="TapProvider.cs" />
+    <Compile Include="tblClasificacionProblemaProvider.cs" />
+    <Compile Include="tblPrioridadQuejaProvider.cs" />
     <Compile Include="TipoClienteProvider.cs" />
     <Compile Include="TipoPreguntasProvider.cs" />
     <Compile Include="TipServProvider.cs" />

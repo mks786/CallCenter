@@ -3,9 +3,19 @@
 
 });
 
+function Busqueda() {
+    var cadena = $('#buscar').val();
+    if(cadena == ""){
+        LlenarTabla();
+    } else {
+        LlenarTabla(cadena);
+    }
+}
 
-
-function LlenarTabla() {
+function LlenarTabla(cadena) {
+    if(cadena == undefined){
+        cadena = "";
+    }
     $('#TablaResOpcMults').dataTable({
         "processing": true,
         "serverSide": true,
@@ -18,7 +28,7 @@ function LlenarTabla() {
         "ajax": {
             "url": "/ResOpcMults/GetList/",
             "type": "POST",
-            "data": { 'data': 1 },
+            "data": { 'data': cadena },
         },
         "fnInitComplete": function (oSettings, json) {
 
@@ -74,12 +84,14 @@ function LlenarTabla() {
         "order": [[0, "asc"]]
     })
 
-    $("div.toolbar").html('<button class="btn btn-success btn-sm Agregar" style="float:right;" onclick="agregar()"><i class="fa fa-plus" aria-hidden="true"></i> Nueva ResOpcMult </button> <div class="input-group input-group-sm"><input class="form-control" type="text"><span class="input-group-btn"><button class="btn btn-info btn-flat" type="button">Buscar</button></span></div>');
+    $("div.toolbar").html('<div class="input-group input-group-sm"><input class="form-control" type="text" id="buscar"><span class="input-group-btn"><button class="btn btn-info btn-flat" type="button" onclick="Busqueda()"><i class="fa fa-search" aria-hidden="true"></i> Buscar</button></span></div>');
+    //Respaldo botn agregar
+    //$("div.toolbar").html('<button class="btn btn-success btn-sm Agregar" style="float:right;" onclick="agregar()"><i class="fa fa-plus" aria-hidden="true"></i> Nueva ResOpcMult </button> <div class="input-group input-group-sm"><input class="form-control" type="text"><span class="input-group-btn"><button class="btn btn-info btn-flat" type="button">Buscar</button></span></div>');
 
 }
 
 function Opciones() {
-    var botones = "<button class='btn btn-info btn-xs detalleResOpcMult' id='detalleResOpcMult'>Detalles</button> <button class='btn btn-warning btn-xs editarResOpcMult' id='editarResOpcMult'>Editar</button> <button class='btn btn-danger btn-xs eliminarResOpcMult' id='eliminarResOpcMult'> Eliminar</button> ";
+    var botones = "<button class='btn btn-info btn-xs detalleResOpcMult' id='detalleResOpcMult'>Detalles</button> <button class='btn btn-warning btn-xs editarResOpcMult' id='editarResOpcMult'>Editar</button>";
     return botones;
 }
 
@@ -88,7 +100,7 @@ function Opciones() {
 
 //funcion:retorna las opciones que tendra cada row en la tabla principal
 function Opciones(e) {
-    var opc = "<button class='btn btn-info btn-xs Detalle' data-name='" + e.ResOpcMult + "' id='" + e.Id_ResOpcMult + "' onclick='detalle_respuesta(this)' type='button'>Detalles</button> <button class='btn btn-warning btn-xs Editar' data-name='" + e.ResOpcMult + "' id='" + e.Id_ResOpcMult + "' type='button' onclick='editar_respuesta(this)'><i class='fa fa-pencil' aria-hidden='true'></i> Editar</button> <button class='btn btn-danger btn-xs eliminar'  type='button' data-name='" + e.ResOpcMult + "' id='" + e.Id_ResOpcMult + "' onclick='eliminar_respuesta(this)'> <i class='fa fa-trash-o' aria-hidden='true'></i> Eliminar</button>"
+    var opc = "<button class='btn btn-warning btn-xs Editar' data-name='" + e.ResOpcMult + "' id='" + e.Id_ResOpcMult + "' type='button' onclick='editar_respuesta(this)'><i class='fa fa-pencil' aria-hidden='true'></i> Editar</button>"
     return opc;
 }
 

@@ -87,46 +87,10 @@ namespace Softv.BAL
         ///Update Pregunta
         ///</summary>
         [DataObjectMethod(DataObjectMethodType.Update, true)]
-        public static int Edit(PreguntaEntity objPregunta)
+        public static int Edit(string xml)
         {
-            //int result = ProviderSoftv.Pregunta.EditPregunta(objPregunta);
-            //return result;
-
-
             int result = 0;
-
-            if (objPregunta.IdTipoPregunta == 1)
-            {
-                objPregunta.Cerrada = true;
-                objPregunta.OpcMultiple = false;
-                objPregunta.Abierta = false;
-
-                result = ProviderSoftv.Pregunta.EditPregunta(objPregunta);
-
-            }
-
-            if (objPregunta.IdTipoPregunta == 2)
-            {
-                objPregunta.Cerrada = false;
-                objPregunta.OpcMultiple = true;
-                objPregunta.Abierta = false;
-
-                result = ProviderSoftv.Pregunta.EditPregunta(objPregunta);
-
-            }
-
-            if (objPregunta.IdTipoPregunta == 3)
-            {
-                objPregunta.Cerrada = false;
-                objPregunta.OpcMultiple = false;
-                objPregunta.Abierta = true;
-
-                result = ProviderSoftv.Pregunta.EditPregunta(objPregunta);
-
-            }
-
-
-
+            result = ProviderSoftv.Pregunta.EditPregunta(xml);
             return result;
 
 

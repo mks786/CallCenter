@@ -47,24 +47,24 @@ namespace SoftvMVC.Controllers
 
         public ActionResult Index(int? page, int? pageSize)
         {
-            PermisosAcceso("CLIENTE");           
+            PermisosAcceso("CLIENTE");
             List<ConexionEntity> conexiones = proxycon.GetConexionList();
 
             ViewData["Conexiones"] = conexiones;
             return View();
 
-           
+
         }
 
 
 
 
-  
 
-       
- 
 
-  
+
+
+
+
 
         //Nuevas funciones 
 
@@ -85,19 +85,98 @@ namespace SoftvMVC.Controllers
         }
 
 
-        
+
+        public ActionResult FiltradoMasivo(int idplaza, int idtipser, int tipobusqueda, string contratado, string suspendidos, string cancelados, string temporales, string instalados, string desconectados, string fuera_servicio, string fecha, string finicio, string ftermino, int draw, int start, int length)
+        {
+
+            DataTableData dataTableData = new DataTableData();
+            dataTableData.draw = draw;
+            dataTableData.recordsTotal = 0;
+            int recordFiltered = 0;
+            dataTableData.data = Filtrar(idplaza, idtipser, tipobusqueda, contratado, suspendidos, cancelados, temporales, instalados, desconectados, fuera_servicio, fecha, finicio, ftermino, draw, start, length, ref recordFiltered);
+            dataTableData.recordsFiltered = recordFiltered;
+
+            return Json(dataTableData, JsonRequestBehavior.AllowGet);
+        }
+
+        public List<CLIENTEEntity2> Filtrar(int idplaza, int idtipser, int tipobusqueda, string contratado, string suspendidos, string cancelados, string temporales, string instalados, string desconectados, string fuera_servicio, string fecha, string finicio, string ftermino, int draw, int start, int length, ref int recordFiltered)
+        {
+            List<CLIENTEEntity2> lista = new List<CLIENTEEntity2>();
+            ConexionController c = new ConexionController();
+            SqlCommand comandoSql;
+            List<TipServEntity> lista_servicio = new List<TipServEntity>();
+            SqlConnection conexionSQL = new SqlConnection(c.DameConexion(idplaza));
+            try
+            {
+                conexionSQL.Open();
+            }
+            catch
+            { }
+            try
+            {
+                if (idtipser == 1)
+                {
+                    if (tipobusqueda == 1)
+                    {
+                        comandoSql = new SqlCommand("Select * from [dbo].[View_MasivaTvAnalogica] where Status = '" + contratado + "' or Status = '" + suspendidos + "' or Status = '" + cancelados + "' or Status = '" + temporales + "'or Status = '" + instalados + "' or Status = '" + desconectados + "' or Status = '" + fuera_servicio + "'");
+                    }
+                    else
+                    {
+                        if (Int32.Parse(fecha) == 1)
+                        {
+                            comandoSql = new SqlCommand("Select * from [dbo].[View_MasivaTvAnalogica] where Fecha_Contratacion BETWEEN '" + finicio + "' AND '" + ftermino + "'");
+                        }
+                        else if (Int32.Parse(fecha) == 2)
+                        {
+                            comandoSql = new SqlCommand("Select * from [dbo].[View_MasivaTvAnalogica] where Fecha_Instalacion BETWEEN '" + finicio + "' AND '" + ftermino + "'");
+                        }
+                        else
+                        {
+                            comandoSql = new SqlCommand("Select * from [dbo].[View_MasivaTvAnalogica] where Fecha_Cancelacion BETWEEN '" + finicio + "' AND '" + ftermino + "'");
+                        }
+                    }
+                }
+                else
+                {
+                    comandoSql = new SqlCommand("Select * from [dbo].[View_MasivaTvAnalogica]");
+                }
+
+                comandoSql.Connection = conexionSQL;
+                SqlDataReader reader = comandoSql.ExecuteReader();
+                if (reader.HasRows)
+                {
+                    while (reader.Read())
+                    {
+                        CLIENTEEntity2 cliente = new CLIENTEEntity2();
+                        cliente.CONTRATO = Int32.Parse(reader[0].ToString());
+                        cliente.NOMBRE = reader[1].ToString();
+                        cliente.TELEFONO = reader[2].ToString();
+                        cliente.CELULAR = reader[3].ToString();
+                        cliente.Calle = reader[4].ToString();
+                        cliente.Colonia = reader[6].ToString();
+                        cliente.NUMERO = reader[5].ToString();
+                        cliente.Ciudad = reader[7].ToString();
+                        lista.Add(cliente);
+                    }
+                }
+            }
+            catch { }
+            recordFiltered = lista.Count;
+
+            return lista.Skip(start).Take(length).ToList();
 
 
+        }
 
-        public ActionResult GetList(int plaza,string contrato,string cliente,string direccion, int draw, int start, int length)
+        public ActionResult GetList(int plaza, string contrato, string cliente, string direccion, int draw, int start, int length)
         {
             DataTableData dataTableData = new DataTableData();
             dataTableData.draw = draw;
             dataTableData.recordsTotal = 0;
             int recordsFiltered = 0;
-            dataTableData.data = FiltrarContenido(plaza, contrato, cliente, direccion ,ref recordsFiltered, start, length);
+            dataTableData.data = FiltrarContenido(plaza, contrato, cliente, direccion, ref recordsFiltered, start, length);
             dataTableData.recordsFiltered = recordsFiltered;
-            
+
             return Json(dataTableData, JsonRequestBehavior.AllowGet);
         }
 
@@ -115,21 +194,156 @@ namespace SoftvMVC.Controllers
 
         public ActionResult DetalleCliente(int id, string contrato)
         {
-            List<CLIENTEEntity2> LISTA = GetClientesporPlaza(id, contrato,"","");
-            return Json(LISTA,JsonRequestBehavior.AllowGet);
+            List<CLIENTEEntity2> LISTA = GetClientesporPlaza(id, contrato, "", "");
+            return Json(LISTA, JsonRequestBehavior.AllowGet);
         }
 
 
         public ActionResult GetClientesporPlazaJson(int id, string contrato, string cliente1, string direccion)
         {
-            List<CLIENTEEntity2> lista= GetClientesporPlaza(id,  contrato,  cliente1,  direccion);
+            List<CLIENTEEntity2> lista = GetClientesporPlaza(id, contrato, cliente1, direccion);
 
             return Json(lista, JsonRequestBehavior.AllowGet);
         }
+        public ActionResult GetClientesPRUEBA(int IdPlaza, string contrato, string Nombrecliente, string ciudad, string colonia, string calle, string numero)
+        {
+
+            ConexionController c = new ConexionController();
+            SqlCommand comandoSql;
+            List<CLIENTEEntity2> lista = new List<CLIENTEEntity2>();
+            SqlConnection conexionSQL = new SqlConnection(c.DameConexion(IdPlaza));
+            try
+            {
+                conexionSQL.Open();
+            }
+            catch
+            { }
+
+            try
+            {
+                if (contrato != "")
+                {
+                    comandoSql = new SqlCommand("Select * from [dbo].[View_BusquedaIndividual] where Contrato=" + contrato);
+                }
+                else if (Nombrecliente != "")
+                {
+                    comandoSql = new SqlCommand("Select TOP 10 * from [dbo].[View_BusquedaIndividual] where Nombre like '%" + Nombrecliente + "%' ");
+                }
+                else if (ciudad != "")
+                {
+                    comandoSql = new SqlCommand("Select TOP 10 * from [dbo].[View_BusquedaIndividual] where Ciudad like '%" + ciudad + "%' and Colonia like '%" + colonia + "%' and Calle  like'%" + calle + "%' and Numero like '%" + numero + "%'");
+                }
+                else
+                {
+                    comandoSql = new SqlCommand("Select TOP 10 * from [dbo].[View_BusquedaIndividual]");
+                }
 
 
+                comandoSql.Connection = conexionSQL;
+                SqlDataReader reader = comandoSql.ExecuteReader();
+                if (reader.HasRows)
+                {
+                    while (reader.Read())
+                    {
+                        CLIENTEEntity2 cliente = new CLIENTEEntity2();
+                        cliente.CONTRATO = Int32.Parse(reader[0].ToString());
+                        cliente.NOMBRE = reader[1].ToString();
+                        cliente.TELEFONO = reader[2].ToString();
+                        cliente.CELULAR = reader[3].ToString();
+                        cliente.Calle = reader[4].ToString();
+                        cliente.Colonia = reader[6].ToString();
+                        cliente.NUMERO = reader[5].ToString();
+                        cliente.Ciudad = reader[7].ToString();
+                        lista.Add(cliente);
+                    }
+                }
+            }
+            catch { }
+            return Json(lista, JsonRequestBehavior.AllowGet);
 
-        public List<CLIENTEEntity2> GetClientesporPlaza(int id,string  contrato, string cliente1, string direccion)
+        }
+
+        public ActionResult getNombreCliente(int IdPlaza, int contrato)
+        {
+            ConexionController c = new ConexionController();
+            SqlCommand comandoSql;
+            List<clientes_apellidos> lista_cliente = new List<clientes_apellidos>();
+            SqlConnection conexionSQL = new SqlConnection(c.DameConexion(IdPlaza));
+            try
+            {
+                conexionSQL.Open();
+            }
+            catch
+            { }
+            try
+            {
+
+                comandoSql = new SqlCommand("Select * from [dbo].[Clientes_Apellidos] where Contrato = '" + contrato + "'");
+                comandoSql.Connection = conexionSQL;
+                SqlDataReader reader = comandoSql.ExecuteReader();
+                if (reader.HasRows)
+                {
+                    while (reader.Read())
+                    {
+                        clientes_apellidos cliente = new clientes_apellidos();
+                        cliente.nombre = reader[1].ToString();
+                        cliente.segundonombre = reader[2].ToString();
+                        cliente.apaterno = reader[3].ToString();
+                        cliente.amaterno = reader[4].ToString();
+                        cliente.fnacimiento = reader[5].ToString();
+                        lista_cliente.Add(cliente);
+                    }
+                }
+            }
+            catch { }
+            return Json(lista_cliente, JsonRequestBehavior.AllowGet);
+        }
+
+        public class clientes_apellidos
+        {
+            public string nombre { get; set; }
+            public string segundonombre { get; set; }
+
+            public string apaterno { get; set; }
+            public string amaterno { get; set; }
+
+            public string fnacimiento { get; set; }
+        }
+
+        public ActionResult getTipoServicio(int IdPlaza)
+        {
+            ConexionController c = new ConexionController();
+            SqlCommand comandoSql;
+            List<TipServEntity> lista_servicio = new List<TipServEntity>();
+            SqlConnection conexionSQL = new SqlConnection(c.DameConexion(IdPlaza));
+            try
+            {
+                conexionSQL.Open();
+            }
+            catch
+            { }
+            try
+            {
+
+                comandoSql = new SqlCommand("Select * from [dbo].[TipServ]");
+                comandoSql.Connection = conexionSQL;
+                SqlDataReader reader = comandoSql.ExecuteReader();
+                if (reader.HasRows)
+                {
+                    while (reader.Read())
+                    {
+                        TipServEntity servicio = new TipServEntity();
+                        servicio.Clv_TipSer = Int32.Parse(reader[0].ToString());
+                        servicio.Concepto = reader[1].ToString();
+                        lista_servicio.Add(servicio);
+                    }
+                }
+            }
+            catch { }
+            return Json(lista_servicio, JsonRequestBehavior.AllowGet);
+        }
+
+        public List<CLIENTEEntity2> GetClientesporPlaza(int id, string contrato, string cliente1, string direccion)
         {
 
             ConexionController c = new ConexionController();
@@ -142,23 +356,23 @@ namespace SoftvMVC.Controllers
             }
             catch
             { }
-            if (contrato !="")
+            if (contrato != "")
             {
-                 comandoSql = new SqlCommand("select * from CLIENTES x1 join CALLES x2 on x1.Clv_Calle=x2.Clv_Calle JOIN COLONIAS X3 ON X3.Clv_Colonia=x1.Clv_Colonia JOIN CIUDADES X4 ON X4.Clv_Ciudad=x1.Clv_Ciudad where x1.contrato="+contrato);
+                comandoSql = new SqlCommand("select * from CLIENTES x1 join CALLES x2 on x1.Clv_Calle=x2.Clv_Calle JOIN COLONIAS X3 ON X3.Clv_Colonia=x1.Clv_Colonia JOIN CIUDADES X4 ON X4.Clv_Ciudad=x1.Clv_Ciudad where x1.contrato=" + contrato);
             }
-            else if (cliente1 !="")
+            else if (cliente1 != "")
             {
-                comandoSql = new SqlCommand(" select * from CLIENTES x1 join CALLES x2 on x1.Clv_Calle=x2.Clv_Calle JOIN COLONIAS X3 ON X3.Clv_Colonia=x1.Clv_Colonia JOIN CIUDADES X4 ON X4.Clv_Ciudad=x1.Clv_Ciudad where x1.Nombre like '%"+cliente1+"%' ");
+                comandoSql = new SqlCommand(" select * from CLIENTES x1 join CALLES x2 on x1.Clv_Calle=x2.Clv_Calle JOIN COLONIAS X3 ON X3.Clv_Colonia=x1.Clv_Colonia JOIN CIUDADES X4 ON X4.Clv_Ciudad=x1.Clv_Ciudad where x1.Nombre like '%" + cliente1 + "%' ");
             }
-            else if (direccion !="")
+            else if (direccion != "")
             {
-                comandoSql = new SqlCommand("select * from CLIENTES x1 join CALLES x2 on x1.Clv_Calle=x2.Clv_Calle JOIN COLONIAS X3 ON X3.Clv_Colonia=x1.Clv_Colonia JOIN CIUDADES X4 ON X4.Clv_Ciudad=x1.Clv_Ciudad where x2.Nombre like '%"+direccion+"%'");
+                comandoSql = new SqlCommand("select * from CLIENTES x1 join CALLES x2 on x1.Clv_Calle=x2.Clv_Calle JOIN COLONIAS X3 ON X3.Clv_Colonia=x1.Clv_Colonia JOIN CIUDADES X4 ON X4.Clv_Ciudad=x1.Clv_Ciudad where x2.Nombre like '%" + direccion + "%'");
             }
             else
             {
-                 comandoSql = new SqlCommand("select * from CLIENTES x1 join CALLES x2 on x1.Clv_Calle=x2.Clv_Calle JOIN COLONIAS X3 ON X3.Clv_Colonia=x1.Clv_Colonia JOIN CIUDADES X4 ON X4.Clv_Ciudad=x1.Clv_Ciudad");
+                comandoSql = new SqlCommand("select * from CLIENTES x1 join CALLES x2 on x1.Clv_Calle=x2.Clv_Calle JOIN COLONIAS X3 ON X3.Clv_Colonia=x1.Clv_Colonia JOIN CIUDADES X4 ON X4.Clv_Ciudad=x1.Clv_Ciudad");
             }
-            
+
             comandoSql.Connection = conexionSQL;
             SqlDataReader reader = comandoSql.ExecuteReader();
             if (reader.HasRows)
@@ -183,7 +397,7 @@ namespace SoftvMVC.Controllers
                     cliente.Email = reader[13].ToString();
                     cliente.clv_sector = Int32.Parse(reader[14].ToString());
                     cliente.Clv_Periodo = Int32.Parse(reader[15].ToString());
-                    cliente.Clv_Tap = Int32.Parse(reader[16].ToString());
+                    //cliente.Clv_Tap = Int32.Parse(reader[16].ToString());
                     cliente.Zona2 = bool.Parse(reader[17].ToString());
                     cliente.conexion = id;
                     cliente.Calle = reader[19].ToString();
@@ -198,7 +412,7 @@ namespace SoftvMVC.Controllers
         }
 
 
-        public ActionResult GetDetalleFiscal(int contrato,int plaza)
+        public ActionResult GetDetalleFiscal(int contrato, int plaza)
         {
 
             ConexionController c = new ConexionController();
@@ -211,37 +425,37 @@ namespace SoftvMVC.Controllers
                 conexionSQL.Open();
             }
             catch
-            { }           
+            { }
             comandoSql = new SqlCommand("SELECT * FROM DatosFiscales where Contrato=" + contrato);
-            
-            
+
+
             comandoSql.Connection = conexionSQL;
             SqlDataReader reader = comandoSql.ExecuteReader();
             if (reader.HasRows)
             {
                 while (reader.Read())
                 {
-                    
-                    datos.Contrato=Int32.Parse(reader[0].ToString());
-                    datos.RAZON_SOCIAL=reader[2].ToString();
-                    datos.RFC=reader[3].ToString();
-                    datos.CALLE_RS=reader[4].ToString();
-                    datos.NUMERO_RS=reader[5].ToString();
-                    datos.ENTRECALLES=reader[6].ToString();
-                    datos.COLONIA_RS=reader[7].ToString();
-                    datos.CIUDAD_RS=reader[8].ToString();
-                    datos.ESTADO_RS=reader[9].ToString();
-                    datos.CP_RS=reader[10].ToString();
-                    datos.TELEFONO_RS=reader[11].ToString();
-                    datos.FAX_RS=reader[12].ToString();                    
-                    datos.IDENTIFICADOR=Int32.Parse(reader[14].ToString());
-                    datos.CURP=reader[15].ToString();
-                    datos.id_asociado=Int32.Parse(reader[16].ToString());
+
+                    datos.Contrato = Int32.Parse(reader[0].ToString());
+                    datos.RAZON_SOCIAL = reader[2].ToString();
+                    datos.RFC = reader[3].ToString();
+                    datos.CALLE_RS = reader[4].ToString();
+                    datos.NUMERO_RS = reader[5].ToString();
+                    datos.ENTRECALLES = reader[6].ToString();
+                    datos.COLONIA_RS = reader[7].ToString();
+                    datos.CIUDAD_RS = reader[8].ToString();
+                    datos.ESTADO_RS = reader[9].ToString();
+                    datos.CP_RS = reader[10].ToString();
+                    datos.TELEFONO_RS = reader[11].ToString();
+                    datos.FAX_RS = reader[12].ToString();
+                    datos.IDENTIFICADOR = Int32.Parse(reader[14].ToString());
+                    datos.CURP = reader[15].ToString();
+                    datos.id_asociado = Int32.Parse(reader[16].ToString());
 
                 }
             }
 
-            return Json(datos,JsonRequestBehavior.AllowGet);
+            return Json(datos, JsonRequestBehavior.AllowGet);
         }
 
         public ActionResult GetClientesPorCoincidencia(int conexion)
@@ -289,15 +503,14 @@ namespace SoftvMVC.Controllers
 
                 }
             }
-           return Json(lista,JsonRequestBehavior.AllowGet);
+            return Json(lista, JsonRequestBehavior.AllowGet);
         }
 
 
-        public ActionResult UpdateCliente(CLIENTEEntity2 cliente, DatoFiscalEntity fiscales)
+        public ActionResult UpdateCliente(CLIENTEEntity2 cliente, DatoFiscalEntity fiscales, clientes_apellidos clienteNombres)
         {
             ConexionController c = new ConexionController();
-            SqlCommand comandoSql;
-            SqlCommand comandoSql2;         
+            SqlCommand comandoSql2;
             SqlConnection conexionSQL = new SqlConnection(c.DameConexion(cliente.conexion));
             int result = 0;
             try
@@ -308,33 +521,31 @@ namespace SoftvMVC.Controllers
             { }
             try
             {
-                comandoSql = new SqlCommand(@"UPDATE CLIENTES SET Nombre=@nombre,Clv_Calle=@calle,Numero=@numero,EntreCalles=@calles,Clv_Colonia=@colonia,CodigoPostal=@cp,Telefono=@telefono,Celular=@celular,Clv_Ciudad=@cuidad,Email=@email where contrato="+cliente.CONTRATO);
-                comandoSql.Connection = conexionSQL;
-                comandoSql.Parameters.AddWithValue("@nombre", cliente.NOMBRE);
-                comandoSql.Parameters.AddWithValue("@calle", cliente.Clv_Calle);
-                comandoSql.Parameters.AddWithValue("@numero",cliente.NUMERO);
-                comandoSql.Parameters.AddWithValue("@calles", cliente.ENTRECALLES);
-                comandoSql.Parameters.AddWithValue("@colonia", cliente.Clv_Colonia);
-                comandoSql.Parameters.AddWithValue("@cp", cliente.CodigoPostal);
-                comandoSql.Parameters.AddWithValue("@telefono", cliente.TELEFONO);
-                comandoSql.Parameters.AddWithValue("@celular", cliente.CELULAR);
-                comandoSql.Parameters.AddWithValue("@cuidad", cliente.Clv_Ciudad);
-                comandoSql.Parameters.AddWithValue("@email", cliente.Email);
-                comandoSql.ExecuteNonQuery();
+                comandoSql2 = new SqlCommand("UPDATE CLIENTES set Nombre='" + cliente.NOMBRE + "',Clv_Calle='" + cliente.Clv_Calle + "',Numero='" + cliente.NUMERO + "',EntreCalles='" + cliente.ENTRECALLES + "',Clv_Colonia='" + cliente.Clv_Colonia + "',Telefono='" + cliente.TELEFONO + "',Celular='" + cliente.CELULAR + "',Clv_Ciudad='" + cliente.Clv_Ciudad + "',Email='" + cliente.Email + "' where contrato=" + cliente.CONTRATO);
+                comandoSql2.Connection = conexionSQL;
+                comandoSql2.ExecuteNonQuery();
                 result = 1;
             }
             catch { }
 
             try
             {
-                comandoSql2 = new SqlCommand("UPDATE DatosFiscales set Razon_Social=" + fiscales.RAZON_SOCIAL + ",RFC=" + fiscales.RFC + ",Calle_RS=" + fiscales.CALLE_RS + ",Numero_RS=" + fiscales.NUMERO_RS + ",EntreCalles=" + fiscales.ENTRECALLES + ",Colonia_RS=" + fiscales.COLONIA_RS + ",Ciudad_RS=" + fiscales.CIUDAD_RS + ",Estado_RS=" + fiscales.ESTADO_RS + ",CP_RS=" + fiscales.CP_RS + ",Telefono_RS=" + fiscales.TELEFONO_RS + ",Fax_RS=" + fiscales.FAX_RS + ",CURP="+fiscales.CURP+" where contrato="+cliente.CONTRATO);
+                comandoSql2 = new SqlCommand("UPDATE DatosFiscales set Razon_Social='" + fiscales.RAZON_SOCIAL + "',RFC='" + fiscales.RFC + "',Calle_RS='" + fiscales.CALLE_RS + "',Numero_RS='" + fiscales.NUMERO_RS + "',EntreCalles='" + fiscales.ENTRECALLES + "',Colonia_RS='" + fiscales.COLONIA_RS + "',Ciudad_RS='" + fiscales.CIUDAD_RS + "',Estado_RS='" + fiscales.ESTADO_RS + "',CP_RS='" + fiscales.CP_RS + "',Telefono_RS='" + fiscales.TELEFONO_RS + "',Fax_RS='" + fiscales.FAX_RS + "',CURP='" + fiscales.CURP + "' where contrato=" + cliente.CONTRATO);
+                comandoSql2.Connection = conexionSQL;
+
+                comandoSql2.ExecuteNonQuery();
+            }
+            catch { }
+            try
+            {
+                comandoSql2 = new SqlCommand("UPDATE Clientes_Apellidos set Nombre='" + clienteNombres.nombre + "', SegundoNombre='" + clienteNombres.segundonombre + "',Apellido_Paterno='" + clienteNombres.apaterno + "',Apellido_Materno='" + clienteNombres.amaterno + "',FechaNacimiento='" + clienteNombres.fnacimiento + "' where contrato=" + cliente.CONTRATO);
                 comandoSql2.Connection = conexionSQL;
 
                 comandoSql2.ExecuteNonQuery();
             }
             catch { }
 
-            return Json(result,JsonRequestBehavior.AllowGet);
+            return Json(result, JsonRequestBehavior.AllowGet);
         }
 
 
@@ -349,42 +560,42 @@ namespace SoftvMVC.Controllers
 
         public class CLIENTEEntity2
         {
-            
-            public long? CONTRATO { get; set; }      
-            
+
+            public long? CONTRATO { get; set; }
+
             public String NOMBRE { get; set; }
-           
+
             public int? Clv_Calle { get; set; }
-          
+
             public String NUMERO { get; set; }
-         
+
             public String ENTRECALLES { get; set; }
-            
+
             public int? Clv_Colonia { get; set; }
-          
+
             public String CodigoPostal { get; set; }
-           
-           
+
+
             public String TELEFONO { get; set; }
-          
+
             public String CELULAR { get; set; }
-           
+
             public bool? DESGLOSA_Iva { get; set; }
-          
+
             public bool? SoloInternet { get; set; }
-           
+
             public bool? eshotel { get; set; }
-            
+
             public int? Clv_Ciudad { get; set; }
-            
+
             public String Email { get; set; }
-         
+
             public int? clv_sector { get; set; }
-          
+
             public int? Clv_Periodo { get; set; }
-            
+
             public int? Clv_Tap { get; set; }
-            
+
             public bool? Zona2 { get; set; }
 
             public int conexion { get; set; }
@@ -394,7 +605,7 @@ namespace SoftvMVC.Controllers
             public string Colonia { get; set; }
 
             public string Ciudad { get; set; }
-          
+
         }
 
 

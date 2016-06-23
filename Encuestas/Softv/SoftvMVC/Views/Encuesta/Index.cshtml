@@ -72,7 +72,10 @@
                 <h4 class="modal-title" id="tituloModalAgregarEncuesta" style="font-weight:bold;">Agregar Encuesta</h4>
             </div>
             <div class="modal-body">
-                <div class="nav-tabs-custom">
+                <div class="overlay" id="cargando">
+                    <h1 class="text-center" style="font-size:65px;"><i class="fa fa-refresh fa-spin"></i></h1>
+                </div>
+                <div class="nav-tabs-custom" id="encuesta_cargando" style="display:none;">
                     <ul class="nav nav-tabs">
                         <li class="active"><a href="#tab_1" data-toggle="tab" aria-expanded="true">Información principal</a></li>
                         <li class=""><a href="#tab_2" id="tab-preguntas" data-toggle="tab" aria-expanded="false">Preguntas</a></li>
@@ -129,10 +132,9 @@
             </div>
             <div class="modal-footer">
                 <input type="hidden" id="idEncuesta" />
-                <button class="btn btn-primary " type="button" data-dismiss="modal">cerrar</button>
-                <button class="btn btn-success" id="guardarEncuesta" type="button"><i class="fa fa-check" aria-hidden="true"></i> Guardar encuesta</button>
-                <button class="btn btn-success" id="EditarEncuesta" type="button"><i class="fa fa-check" aria-hidden="true"></i> Editar encuesta</button>
-
+                <button class="btn btn-success" id="guardarEncuesta" type="button">Guardar</button>
+                <button class="btn btn-success" id="EditarEncuesta" type="button">Editar</button>
+                <button class="btn btn-primary " type="button" data-dismiss="modal">Cerrar</button>
             </div>
         </div>
     </div>
@@ -208,8 +210,8 @@
 
             </div>
             <div class="modal-footer">
+                <button class="btn btn-success" id="GuardarPregunta" type="button">Agregar</button>
                 <button class="btn btn-primary" type="button" data-dismiss="modal">Cerrar</button>
-                <button class="btn btn-success" id="GuardarPregunta" type="button">Agregar pregunta</button>
             </div>
         </div>
     </div>
@@ -271,7 +273,7 @@
             </div>
             <br />
             <div class="modal-footer">
-                <button class="btn btn-primary pull-left" type="button" data-dismiss="modal">Cerrar</button>
+                <button class="btn btn-primary pull-right" type="button" data-dismiss="modal">Cerrar</button>
 
             </div>
         </div>
@@ -291,8 +293,8 @@
 
             </div>
             <div class="modal-footer">
-                <button class="btn btn-primary " type="button" data-dismiss="modal">Cerrar</button>
                 <button class="btn btn-danger" type="button" id="confirmaEliminaPregunta">Eliminar</button>
+                <button class="btn btn-primary " type="button" data-dismiss="modal">Cerrar</button>
             </div>
         </div>
     </div>
@@ -311,8 +313,8 @@
 
             </div>
             <div class="modal-footer">
-                <button class="btn btn-primary " type="button" data-dismiss="modal">Cerrar</button>
                 <button class="btn btn-danger" type="button" id="EliminaEncuesta">Eliminar</button>
+                <button class="btn btn-primary " type="button" data-dismiss="modal">Cerrar</button>
             </div>
         </div>
     </div>
@@ -393,8 +395,8 @@
 
             </div>
             <div class="modal-footer">
-                <button class="btn btn-primary " type="button" data-dismiss="modal">Cerrar</button>
                 <button class="btn btn-success" id="EditarPregunta" type="button">Editar pregunta</button>
+                <button class="btn btn-primary " type="button" data-dismiss="modal">Cerrar</button>
             </div>
         </div>
     </div>
@@ -455,15 +457,6 @@
                         </tr>
                     </thead>
                     <tbody></tbody>
-                    <tfoot>
-
-                        <tr>
-                            <td>Nombre</td>
-                            <td>Tipo pregunta</td>
-                            <td>Opciones</td>
-                        </tr>
-
-                    </tfoot>
                 </table>
 
 
@@ -476,6 +469,9 @@
     </div>
 </div>
 
+<form action='/Encuesta/EncuestaPDF' style="display:none;" id="formImprimir">
+    <input type='hidden' id='id_imprimir' name="idencuesta">
+</form>
 
 
 
@@ -495,20 +491,29 @@
 
 
 
-<script src="~/dist/js/pages/Encuesta/Lista.js"></script>
-<script src="~/dist/js/pages/Encuesta/Utilerias.js"></script>
-<script src="~/dist/js/pages/Encuesta/ModalAgregarPregunta.js"></script>
-<script src="~/dist/js/pages/Encuesta/ModalEditarPregunta.js"></script>
-<script src="~/dist/js/pages/Encuesta/ModalDetallePregunta.js"></script>
-<script src="~/dist/js/pages/Encuesta/ModalEliminaPregunta.js"></script>
-<script src="~/dist/js/pages/Encuesta/ModalAgregarEncuesta.js"></script>
-<script src="~/dist/js/pages/Encuesta/ModalDetalleEncuesta.js"></script>
-<script src="~/dist/js/pages/Encuesta/ModalEditarEncuesta.js"></script>
-<script src="~/dist/js/pages/Encuesta/ModalCatalogoPreguntas.js"></script>
-<script src="~/dist/js/pages/Encuesta/ModalEliminarEncuesta.js"></script>
-<script>
-     var frame = document.getElementById('cubrir-frame');
+    <script src="~/dist/js/pages/Encuesta/Lista.js"></script>
+    <script src="~/dist/js/pages/Encuesta/Utilerias.js"></script>
+    <script src="~/dist/js/pages/Encuesta/ModalAgregarPregunta.js"></script>
+    <script src="~/dist/js/pages/Encuesta/ModalEditarPregunta.js"></script>
+    <script src="~/dist/js/pages/Encuesta/ModalDetallePregunta.js"></script>
+    <script src="~/dist/js/pages/Encuesta/ModalEliminaPregunta.js"></script>
+    <script src="~/dist/js/pages/Encuesta/ModalAgregarEncuesta.js"></script>
+    <script src="~/dist/js/pages/Encuesta/ModalDetalleEncuesta.js"></script>
+    <script src="~/dist/js/pages/Encuesta/ModalEditarEncuesta.js"></script>
+    <script src="~/dist/js/pages/Encuesta/ModalCatalogoPreguntas.js"></script>
+    <script src="~/dist/js/pages/Encuesta/ModalEliminarEncuesta.js"></script>
+    <script>
+        var frame = document.getElementById('cubrir-frame');
         frame.oncontextmenu = function () {
-        return false;
+            return false;
         }
+    </script>
+<script>
+    $(document).ready(function () {
+        $('#poner_activo li').siblings('li').removeClass('active');
+        $('.2').addClass('active');
+        $('#sub_activo li').siblings('li').removeClass('active');
+        $('.8').addClass('active');
+    });
 </script>
+

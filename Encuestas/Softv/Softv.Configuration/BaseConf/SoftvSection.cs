@@ -335,7 +335,54 @@ namespace SoftvConfiguration
         {
             get { return (CALLEElement)base["CALLE"]; }
         }
-  
 
+
+        /// <summary>
+        /// Gets BusquedaIndividual configuration data
+        /// </summary>
+        [ConfigurationProperty("BusquedaIndividual")]
+        public BusquedaIndividualElement BusquedaIndividual
+        {
+            get { return (BusquedaIndividualElement)base["BusquedaIndividual"]; }
+        }
+
+        /// <summary>
+        /// Gets tblClasificacionProblema configuration data
+        /// </summary>
+        [ConfigurationProperty("tblClasificacionProblema")]
+        public tblClasificacionProblemaElement tblClasificacionProblema
+        {
+            get { return (tblClasificacionProblemaElement)base["tblClasificacionProblema"]; }
+        }
+
+        /// <summary>
+        /// Gets tblPrioridadQueja configuration data
+        /// </summary>
+        [ConfigurationProperty("tblPrioridadQueja")]
+        public tblPrioridadQuejaElement tblPrioridadQueja
+        {
+            get { return (tblPrioridadQuejaElement)base["tblPrioridadQueja"]; }
+        }
+
+
+        /// <summary>
+        /// Gets NoCliente configuration data
+        /// </summary>
+        [ConfigurationProperty("NoCliente")]
+        public NoClienteElement NoCliente
+        {
+            get { return (NoClienteElement)base["NoCliente"]; }
+        }
+
+
+        /// <summary>
+        /// Gets DatosLlamada configuration data
+        /// </summary>
+        [ConfigurationProperty("DatosLlamada")]
+        public DatosLlamadaElement DatosLlamada
+        {
+            get { return (DatosLlamadaElement)base["DatosLlamada"]; }
+        }
+  
     }
 }

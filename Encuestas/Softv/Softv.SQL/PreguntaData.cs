@@ -101,7 +101,7 @@ namespace Softv.DAO
         /// Edits a Pregunta
         ///</summary>
         /// <param name="Pregunta"> Objeto Pregunta a editar </param>
-        public override int EditPregunta(PreguntaEntity entity_Pregunta)
+        public override int EditPregunta(string xml)
         {
             int result = 0;
             using (SqlConnection connection = new SqlConnection(SoftvSettings.Settings.Pregunta.ConnectionString))
@@ -109,18 +109,7 @@ namespace Softv.DAO
 
                 SqlCommand comandoSql = CreateCommand("Softv_PreguntaEdit", connection);
 
-                AssingParameter(comandoSql, "@IdPregunta", entity_Pregunta.IdPregunta);
-
-                AssingParameter(comandoSql, "@Pregunta", entity_Pregunta.Pregunta);
-
-                AssingParameter(comandoSql, "@IdTipoPregunta", entity_Pregunta.IdTipoPregunta);
-
-                AssingParameter(comandoSql, "@Cerrada", entity_Pregunta.Cerrada);
-
-                AssingParameter(comandoSql, "@OpcMultiple", entity_Pregunta.OpcMultiple);
-
-                AssingParameter(comandoSql, "@Abierta", entity_Pregunta.Abierta);
-
+                AssingParameter(comandoSql, "@xml",xml);            
                 try
                 {
                     if (connection.State == ConnectionState.Closed)

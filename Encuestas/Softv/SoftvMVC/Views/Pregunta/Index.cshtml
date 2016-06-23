@@ -35,15 +35,6 @@
                         </tr>
                     </thead>
 
-                    <tfoot>
-                        <tr>
-                            <td><b>IdPregunta</b></td>
-                            <td><b>Pregunta</b></td>
-                            <td><b>Tipo Pregunta</b></td>
-                            <td><b>Opciones</b></td>
-                        </tr>
-                    </tfoot>
-
                 </table>
 
             </div>
@@ -121,8 +112,8 @@
                 </div>
             </div>
             <div class="modal-footer">
-                <button class="btn btn-default pull-left" type="button" data-dismiss="modal">cerrar</button>
                 <button class="btn btn-primary" id="GuardarPregunta" type="button">Agregar pregunta</button>
+                <button class="btn btn-default pull-left" type="button" data-dismiss="modal">cerrar</button>
             </div>
         </div>
     </div>
@@ -164,7 +155,7 @@
 
 
 @*MODAL Editar Pregunta*@
-<div class="modal fade bs-example-modal-lg" id="ModalEditarPregunta" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel">
+<div class="modal fade bs-example-modal-lg" id="ModalEditarPregunta" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" data-backdrop="static" data-keyboard="false">
     <div class="modal-dialog modal-lg">
         <div class="modal-content">
             <div class="modal-header">
@@ -173,6 +164,7 @@
             </div>
             <div class="modal-body">
                 <div class="row">
+                    <input type="hidden" id="id_pregunta"/>
                     <table class="table" id="tablaPreguntas">
                         <thead>
                             <tr>
@@ -184,7 +176,7 @@
                             <tr>
                                 <td><input type='text' id="pregunta_nombre" class='form-control' placeholder='Modifica la pregunta'></td>
                                 <td>
-                                    <select id='id_tipo_pregunta' class='form-control'>
+                                    <select id='id_tipo_pregunta' class='form-control' disabled>
                                         <option value=1>Pregunta abierta</option>
                                         <option value=2>Pregunta cerrada</option>
                                         <option value=3>Pregunta con opciones multiples</option>
@@ -194,12 +186,11 @@
                         </tbody>
                     </table>
                     <div class="container">
-                        <div class="row" id="panel_opcion_multiple" style="display:none;">
-
-                            <button id="agregar_respuestas" class="btn bg-navy margin"><i class="fa fa-plus" aria-hidden="true"></i> Agregar opción</button>
+                        <div class="row" id="panel_opcion_multiple" style="display:none; padding-left:60px;">
+                            @*<button id="AgregarRespuestasOM" onclick="AgregarRespuesta()" class="btn btn-info btn-xs"><i class="fa fa-plus" aria-hidden="true"></i> Agregar opción</button>*@
                             <table class="table" id="tabla_respuestas" style="width:50%; margin-left:30px;">
                                 <thead>
-                                    <tr><td>Descripción</td><td>Opciones</td></tr>
+                                    <tr><td>Respuestas</td></tr>
                                 </thead>
                                 <tbody id="body_opcion_multiple"></tbody>
 
@@ -209,8 +200,8 @@
                 </div>
             </div>
             <div class="modal-footer">
-                <button class="btn btn-default pull-left" type="button" data-dismiss="modal">cerrar</button>
-                <button class="btn btn-primary" id="guardar_pregunta" type="button">Guardar pregunta</button>
+                <button class="btn btn-success" onclick="guardar_pregunta()" type="button">Guardar</button>
+                <button class="btn btn-primary" type="button" data-dismiss="modal">cerrar</button>
             </div>
         </div>
     </div>
@@ -220,4 +211,11 @@
 
 <script src="~/dist/js/pages/Pregunta/Lista.js"></script>
 <script src="~/dist/js/pages/Pregunta/editar_pregunta.js"></script>
-
+<script>
+    $(document).ready(function () {
+        $('#poner_activo li').siblings('li').removeClass('active');
+        $('.2').addClass('active');
+        $('#sub_activo li').siblings('li').removeClass('active');
+        $('.9').addClass('active');
+    });
+</script>

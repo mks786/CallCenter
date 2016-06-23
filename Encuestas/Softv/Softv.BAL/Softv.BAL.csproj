@@ -39,6 +39,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="BusquedaIndividual.cs" />
     <Compile Include="CALLE.cs" />
     <Compile Include="CatalogoPeriodosCorte.cs" />
     <Compile Include="CIUDAD.cs" />
@@ -49,10 +50,12 @@
     <Compile Include="CVECAROL.cs" />
     <Compile Include="CVECOLCIU.cs" />
     <Compile Include="DatoFiscal.cs" />
+    <Compile Include="DatosLlamada.cs" />
     <Compile Include="Encuesta.cs" />
     <Compile Include="Llamada.cs" />
     <Compile Include="Module.cs" />
     <Compile Include="MotivoCancelacion.cs" />
+    <Compile Include="NoCliente.cs" />
     <Compile Include="Permiso.cs" />
     <Compile Include="Pregunta.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -66,6 +69,8 @@
     <Compile Include="ResOpcMults.cs" />
     <Compile Include="Role.cs" />
     <Compile Include="Tap.cs" />
+    <Compile Include="tblClasificacionProblema.cs" />
+    <Compile Include="tblPrioridadQueja.cs" />
     <Compile Include="TipoCliente.cs" />
     <Compile Include="TipoPreguntas.cs" />
     <Compile Include="TipServ.cs" />

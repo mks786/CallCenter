@@ -42,6 +42,7 @@
   <ItemGroup>
     <Compile Include="BaseConf\SoftvSection.cs" />
     <Compile Include="BaseConf\SoftvSettings.cs" />
+    <Compile Include="BusquedaIndividualElement.cs" />
     <Compile Include="CALLEElement.cs" />
     <Compile Include="CatalogoPeriodosCorteElement.cs" />
     <Compile Include="CIUDADElement.cs" />
@@ -52,10 +53,12 @@
     <Compile Include="CVECAROLElement.cs" />
     <Compile Include="CVECOLCIUElement.cs" />
     <Compile Include="DatoFiscalElement.cs" />
+    <Compile Include="DatosLlamadaElement.cs" />
     <Compile Include="EncuestaElement.cs" />
     <Compile Include="LlamadaElement.cs" />
     <Compile Include="ModuleElement.cs" />
     <Compile Include="MotivoCancelacionElement.cs" />
+    <Compile Include="NoClienteElement.cs" />
     <Compile Include="PermisoElement.cs" />
     <Compile Include="PreguntaElement.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -69,6 +72,8 @@
     <Compile Include="ResOpcMultsElement.cs" />
     <Compile Include="RoleElement.cs" />
     <Compile Include="TapElement.cs" />
+    <Compile Include="tblClasificacionProblemaElement.cs" />
+    <Compile Include="tblPrioridadQuejaElement.cs" />
     <Compile Include="TipoClienteElement.cs" />
     <Compile Include="TipoPreguntasElement.cs" />
     <Compile Include="TipServElement.cs" />

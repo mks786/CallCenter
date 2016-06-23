@@ -150,7 +150,16 @@ namespace SoftvMVC.Controllers
             }
             return View(objUsuario);
         }
+        public ActionResult CreateUser(UsuarioEntity objUsuario)
+        {
 
+            objUsuario.BaseRemoteIp = RemoteIp;
+            objUsuario.BaseIdUser = LoggedUserName;
+            int result;
+            result = proxy.AddUsuario(objUsuario);
+            return Json(result, JsonRequestBehavior.AllowGet);
+    
+        }
         public ActionResult Edit(int id = 0)
         {
             PermisosAccesoDeniedEdit("Usuario");
@@ -214,12 +223,21 @@ namespace SoftvMVC.Controllers
 
         public JsonResult Delete(int id)
         {
-            proxy.DeleteUsuario(id);
-
-            String mensaje = "{mensaje:'Se ha eliminado el Usuario'}";
-            return Json(mensaje, JsonRequestBehavior.AllowGet);
+            int result = proxy.DeleteUsuario(id);
+            return Json(result, JsonRequestBehavior.AllowGet);
         }
 
+        public JsonResult Update(UsuarioEntity usuario)
+        {
+            int result = proxy.UpdateUsuario(usuario);
+            return Json(result, JsonRequestBehavior.AllowGet);
+        }
+        public ActionResult getUsuarionData(int id_usuario)
+        {
+            UsuarioEntity usuario = proxy.GetUsuarioList().Where(o => o.IdUsuario == id_usuario).First();
+
+            return Json(usuario, JsonRequestBehavior.AllowGet);
+        }
 
         public ActionResult QuickIndex(int? page, int? pageSize, String Nombre, String Email, String Usuario, String Password, int? IdRol, int? IdGerencia, int? IdDepartamento, int? id, int? estado, bool? cambioestado)
         {
@@ -326,7 +344,14 @@ namespace SoftvMVC.Controllers
             dataTableData.draw = draw;
             dataTableData.recordsTotal = 0;
             int recordsFiltered = 0;
-            dataTableData.data = FiltrarContenido(ref recordsFiltered, start, length);
+            if(data != ""){
+                dataTableData.data = FiltrarContenido(ref recordsFiltered, start, length).Where(o => o.IdUsuario.ToString().Contains(data) || o.Nombre.Contains(data) || o.Usuario.Contains(data)).ToList();
+            }
+            else
+            {
+                dataTableData.data = FiltrarContenido(ref recordsFiltered, start, length);
+            }
+            
             dataTableData.recordsFiltered = recordsFiltered;
 
             return Json(dataTableData, JsonRequestBehavior.AllowGet);
