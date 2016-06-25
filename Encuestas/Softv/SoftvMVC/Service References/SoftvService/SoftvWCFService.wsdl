@@ -1772,6 +1772,12 @@
   <wsdl:message name="IDatosLlamada_DeleteDatosLlamada_OutputMessage">
     <wsdl:part name="parameters" element="tns:DeleteDatosLlamadaResponse" />
   </wsdl:message>
+  <wsdl:message name="IEstadistica_GetEstadisticaList_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetEstadisticaList" />
+  </wsdl:message>
+  <wsdl:message name="IEstadistica_GetEstadisticaList_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetEstadisticaListResponse" />
+  </wsdl:message>
   <wsdl:portType name="IUsuario">
     <wsdl:operation name="GetUsuario">
       <wsdl:input wsaw:Action="http://tempuri.org/IUsuario/GetUsuario" message="tns:IUsuario_GetUsuario_InputMessage" />
@@ -3020,6 +3026,12 @@
     <wsdl:operation name="DeleteDatosLlamada">
       <wsdl:input wsaw:Action="http://tempuri.org/IDatosLlamada/DeleteDatosLlamada" message="tns:IDatosLlamada_DeleteDatosLlamada_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IDatosLlamada/DeleteDatosLlamadaResponse" message="tns:IDatosLlamada_DeleteDatosLlamada_OutputMessage" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:portType name="IEstadistica">
+    <wsdl:operation name="GetEstadisticaList">
+      <wsdl:input wsaw:Action="http://tempuri.org/IEstadistica/GetEstadisticaList" message="tns:IEstadistica_GetEstadisticaList_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IEstadistica/GetEstadisticaListResponse" message="tns:IEstadistica_GetEstadisticaList_OutputMessage" />
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:binding name="BasicHttpBinding_IUsuario" type="tns:IUsuario">
@@ -5779,6 +5791,18 @@
       </wsdl:output>
     </wsdl:operation>
   </wsdl:binding>
+  <wsdl:binding name="BasicHttpBinding_IEstadistica" type="tns:IEstadistica">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="GetEstadisticaList">
+      <soap:operation soapAction="http://tempuri.org/IEstadistica/GetEstadisticaList" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
   <wsdl:service name="SoftvWCFService">
     <wsdl:port name="BasicHttpBinding_IUsuario" binding="tns:BasicHttpBinding_IUsuario">
       <soap:address location="http://localhost:64481/SoftvWCFService.svc" />
@@ -5889,6 +5913,9 @@
       <soap:address location="http://localhost:64481/SoftvWCFService.svc" />
     </wsdl:port>
     <wsdl:port name="BasicHttpBinding_IDatosLlamada" binding="tns:BasicHttpBinding_IDatosLlamada">
+      <soap:address location="http://localhost:64481/SoftvWCFService.svc" />
+    </wsdl:port>
+    <wsdl:port name="BasicHttpBinding_IEstadistica" binding="tns:BasicHttpBinding_IEstadistica">
       <soap:address location="http://localhost:64481/SoftvWCFService.svc" />
     </wsdl:port>
   </wsdl:service>

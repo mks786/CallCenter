@@ -78,6 +78,7 @@
     <Compile Include="Contracts\IDatoFiscal.cs" />
     <Compile Include="Contracts\IDatosLlamada.cs" />
     <Compile Include="Contracts\IEncuesta.cs" />
+    <Compile Include="Contracts\IEstadistica.cs" />
     <Compile Include="Contracts\ILlamada.cs" />
     <Compile Include="Contracts\IModule.cs" />
     <Compile Include="Contracts\IMotivoCancelacion.cs" />

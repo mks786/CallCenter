@@ -103,6 +103,11 @@ namespace Softv.Providers
         ///</summary>
         public abstract SoftvList<EncuestaEntity> GetPagedList(int pageIndex, int pageSize, String xml);
 
+
+
+        public abstract List<EstadisticaEncuesta> getestadisticas(int plaza, int idencuesta, DateTime finicio, DateTime ffin);
+
+
         /// <summary>
         /// Converts data from reader to entity
         /// </summary>

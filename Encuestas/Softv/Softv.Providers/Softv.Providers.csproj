@@ -54,6 +54,7 @@
     <Compile Include="DatoFiscalProvider.cs" />
     <Compile Include="DatosLlamadaProvider.cs" />
     <Compile Include="EncuestaProvider.cs" />
+    <Compile Include="EstadisticaProvider.cs" />
     <Compile Include="LlamadaProvider.cs" />
     <Compile Include="ModuleProvider.cs" />
     <Compile Include="MotivoCancelacionProvider.cs" />

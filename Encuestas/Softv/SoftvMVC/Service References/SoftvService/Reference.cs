@@ -5399,4 +5399,51 @@ namespace SoftvMVC.SoftvService {
             return base.Channel.DeleteDatosLlamadaAsync(BaseRemoteIp, BaseIdUser, Id);
         }
     }
+    
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ServiceModel.ServiceContractAttribute(ConfigurationName="SoftvService.IEstadistica")]
+    public interface IEstadistica {
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IEstadistica/GetEstadisticaList", ReplyAction="http://tempuri.org/IEstadistica/GetEstadisticaListResponse")]
+        System.Collections.Generic.List<Softv.Entities.EstadisticaEntity> GetEstadisticaList(int plaza, int idencuesta, System.DateTime finicio, System.DateTime ffin);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IEstadistica/GetEstadisticaList", ReplyAction="http://tempuri.org/IEstadistica/GetEstadisticaListResponse")]
+        System.Threading.Tasks.Task<System.Collections.Generic.List<Softv.Entities.EstadisticaEntity>> GetEstadisticaListAsync(int plaza, int idencuesta, System.DateTime finicio, System.DateTime ffin);
+    }
+    
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    public interface IEstadisticaChannel : SoftvMVC.SoftvService.IEstadistica, System.ServiceModel.IClientChannel {
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    public partial class EstadisticaClient : System.ServiceModel.ClientBase<SoftvMVC.SoftvService.IEstadistica>, SoftvMVC.SoftvService.IEstadistica {
+        
+        public EstadisticaClient() {
+        }
+        
+        public EstadisticaClient(string endpointConfigurationName) : 
+                base(endpointConfigurationName) {
+        }
+        
+        public EstadisticaClient(string endpointConfigurationName, string remoteAddress) : 
+                base(endpointConfigurationName, remoteAddress) {
+        }
+        
+        public EstadisticaClient(string endpointConfigurationName, System.ServiceModel.EndpointAddress remoteAddress) : 
+                base(endpointConfigurationName, remoteAddress) {
+        }
+        
+        public EstadisticaClient(System.ServiceModel.Channels.Binding binding, System.ServiceModel.EndpointAddress remoteAddress) : 
+                base(binding, remoteAddress) {
+        }
+        
+        public System.Collections.Generic.List<Softv.Entities.EstadisticaEntity> GetEstadisticaList(int plaza, int idencuesta, System.DateTime finicio, System.DateTime ffin) {
+            return base.Channel.GetEstadisticaList(plaza, idencuesta, finicio, ffin);
+        }
+        
+        public System.Threading.Tasks.Task<System.Collections.Generic.List<Softv.Entities.EstadisticaEntity>> GetEstadisticaListAsync(int plaza, int idencuesta, System.DateTime finicio, System.DateTime ffin) {
+            return base.Channel.GetEstadisticaListAsync(plaza, idencuesta, finicio, ffin);
+        }
+    }
 }

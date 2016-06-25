@@ -55,6 +55,7 @@
     <Compile Include="DatoFiscalElement.cs" />
     <Compile Include="DatosLlamadaElement.cs" />
     <Compile Include="EncuestaElement.cs" />
+    <Compile Include="EstadisticaElement.cs" />
     <Compile Include="LlamadaElement.cs" />
     <Compile Include="ModuleElement.cs" />
     <Compile Include="MotivoCancelacionElement.cs" />

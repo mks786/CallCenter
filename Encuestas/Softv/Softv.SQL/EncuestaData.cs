@@ -124,6 +124,51 @@ namespace Softv.DAO
             return result;
         }
 
+
+        public override List<EstadisticaEncuesta> getestadisticas(int plaza, int idencuesta, DateTime finicio, DateTime ffin)
+        {
+            List<EstadisticaEncuesta> EncuestaList = new List<EstadisticaEncuesta>();
+            using (SqlConnection connection = new SqlConnection(SoftvSettings.Settings.Encuesta.ConnectionString))
+            {
+
+                SqlCommand comandoSql = CreateCommand("GraficasPreguntas", connection);
+                AssingParameter(comandoSql, "@IdConexion", plaza);
+                AssingParameter(comandoSql, "@IdEncuesta", idencuesta);
+                AssingParameter(comandoSql, "@FechaInicio", finicio);
+                AssingParameter(comandoSql, "@FechaFin", ffin);
+                IDataReader rd = null;
+                try
+                {
+                    if (connection.State == ConnectionState.Closed)
+                        connection.Open();
+                    rd = ExecuteReader(comandoSql);
+
+                    while (rd.Read())
+                    {
+                        EstadisticaEncuesta a = new EstadisticaEncuesta();
+                        a.NombreEncuesta=rd[0].ToString();
+                        a.pregunta = rd[1].ToString();
+                        a.respuesta = rd[2].ToString();
+                        a.cantidad = Int32.Parse(rd[3].ToString());
+                    }
+                }
+                catch (Exception ex)
+                {
+                    throw new Exception("Error getting data Encuesta " + ex.Message, ex);
+                }
+                finally
+                {
+                    if (connection != null)
+                        connection.Close();
+                    if (rd != null)
+                        rd.Close();
+                }
+            }
+            return EncuestaList;
+        }
+
+
+
         /// <summary>
         /// Gets all Encuesta
         ///</summary>

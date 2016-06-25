@@ -1,9 +1,13 @@
-﻿using System;
+﻿using SoftvMVC.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
-
+using PagedList;
+using Softv.Entities;
+using Globals;
+using System.Xml.Linq;
 namespace SoftvMVC.Controllers
 {
     public class HomeController : BaseController
