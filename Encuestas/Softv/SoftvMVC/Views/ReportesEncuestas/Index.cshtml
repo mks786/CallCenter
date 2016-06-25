@@ -44,6 +44,18 @@
                             <label>Fecha Fin</label>
                             <input type="date" id="fin" class="form-control" disabled />
                         </div>
+                    </div><br />
+                    <div class="row">
+                        <div class="col-md-3">
+                            <label>Tipo de Gráfica</label>
+                            <select class="form-control" id="grafica_list" disabled>
+                                <option value="0" selected disabled>---------</option>
+                                <option value="PieChart">PieChart</option>
+                                <option value="BarChart">BarChart</option>
+                                <option value="ScatterChart">ScatterChart</option>
+                                <option value="ColumnChart">ColumnChart</option>
+                            </select>
+                        </div>
                     </div>
                     <div class="row" style="padding-right:20px;">
                         <p class="text-right">
@@ -60,7 +72,6 @@
                         </div>
                     </div>
                 </div> 
-                    <div id="chart1_div" style="width:100%; height:400px;"></div>  
             </div>
         </div>
     </div>
@@ -70,6 +81,7 @@
 <link href="~/plugins/sweetAlert/sweetalert.css" rel="stylesheet" />
 <script src="~/plugins/sweetAlert/sweetalert.min.js"></script>
 <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+<script src="http://neue.cc/linq.min.js"></script>
 <script>
     $(document).ready(function () {
         $.ajax({
@@ -110,7 +122,8 @@
     $("#plazas").change(function () {
         $("#encuestas_list").removeAttr('disabled');
         $("#inicio").removeAttr('disabled');
-        $("#fin").removeAttr('disabled');
+        $("#fin").removeAttr('disabled'); 
+        $("#grafica_list").removeAttr('disabled');
     });
 
     //poner activo el menu izquierdo
@@ -130,6 +143,7 @@
         var inicio = $('#inicio').val();
         var fin = $('#fin').val();
         var plaza = $('#plazas').val();
+        var grafica_tipo = $('#grafica_list').val();
         if (encuesta == null) {
             swal("Por favor selecciona una encuesta", "", "error");
         } else {
@@ -139,73 +153,46 @@
                 if(fin == ""){
                     swal("Por favor selecciona la fecha final", "", "error");
                 } else {
-                    $.ajax({
-                        url: "/Encuesta/getGrafica/",
-                        type: "GET",
-                        data: { 'plaza': plaza, 'idencuesta': encuesta, 'finicio': inicio, 'ffin': fin },
-                        success: function (data, textStatus, jqXHR) {
-                            console.log(data);
-                            var cerradas = [];
-                            var multiples = [];
-                            for (var i = 0; i < data.length; i++) {
-                                if (data[i].IdTipoPregunta == 2) {
-                                    var respuesta = {};
-                                    respuesta.pregunta = data[i].Pregunta;
-                                    respuesta.respuesta = data[i].Respuesta;
-                                    respuesta.cantidad = data[i].Cantidad;
-                                    cerradas.push(respuesta);
-                                } else {
-                                    var respuesta = {};
-                                    respuesta.pregunta = data[i].Pregunta;
-                                    respuesta.respuesta = data[i].Respuesta;
-                                    respuesta.cantidad = data[i].Cantidad;
-                                    multiples.push(respuesta);
-                                }
-                            }
-                            //grafiacar cerrada
-                            var grafica_cerrada = {};
-                            grafica_cerrada.cols = new Array();
-                            grafica_cerrada.rows = new Array();
-                            grafica_cerrada.cols.push({ "id": "", "label": "Preguntas Cerradas", "pattern": "", "type": "string" },
-                                                { "id": "", "label": "Total", "pattern": "", "type": "number" });
-                            var div = randomString(5, '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ');
-                            for (var i = 0; i < cerradas.length; i++) {
-                                if(i == 0){
-                                    $('#accordion').append('<div class="panel panel-default"><div class="panel-heading" role="ab" id="headingOne"><h4 class="panel-title"><a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapse' + div + '" aria-expanded="true" aria-controls="collapseOne">' + cerradas[i].pregunta + '</a></h4></div><div id="collapse' + div + '" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingOne"><div class="panel-body"><div id=' + div + '></div></div></div></div>');
-                                }
-                                
-                                var c = {};
-                                c.c = new Array();
-                                c.c.push({ "v": cerradas[i].respuesta }, { 'v': cerradas[i].cantidad });
-                                grafica_cerrada.rows.push(c);  
-                            }
-                            var datosGrafica = JSON.stringify(grafica_cerrada);
-                            graficar(datosGrafica, cerradas[0].pregunta, div);
+                    if (grafica_tipo == null) {
+                        swal("Por favor selecciona el tipo de grafica", "", "error");
+                    } else {
+                        $('#accordion').empty();
+                        $.ajax({
+                            url: "/Encuesta/getGrafica/",
+                            type: "GET",
+                            data: { 'plaza': plaza, 'idencuesta': encuesta, 'finicio': inicio, 'ffin': fin },
+                            success: function (data, textStatus, jqXHR) {
 
-                            //graficar multiple
-                            var grafica_multiple = {};
-                            grafica_multiple.cols = new Array();
-                            grafica_multiple.rows = new Array();
-                            grafica_multiple.cols.push({ "id": "", "label": "Preguntas Multiple", "pattern": "", "type": "string" },
-                                                { "id": "", "label": "Total", "pattern": "", "type": "number" });
-                            var div2 = randomString(5, '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ');
-                            for (var i = 0; i < multiples.length; i++) {
-                                if (i == 0) {
-                                    $('#accordion').append('<div class="panel panel-default"><div class="panel-heading" role="ab" id="headingOne"><h4 class="panel-title"><a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapse' + div2 + '" aria-expanded="true" aria-controls="collapseOne">' + multiples[i].pregunta + '</a></h4></div><div id="collapse' + div2 + '" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingOne"><div class="panel-body"><div id=' + div2 + '></div></div></div></div>');
+                                var linq = Enumerable.From(data);
+                                var result = linq.GroupBy(function (x) { return x.IdPregunta; }).ToArray();
+
+
+                                for (var i = 0; i < result.length; i++) {
+                                    var grafica = {};
+                                    grafica.cols = new Array();
+                                    grafica.rows = new Array();
+                                    grafica.cols.push({ "id": "", "label": "Preguntas", "pattern": "", "type": "string" },
+                                                        { "id": "", "label": "Respuestas", "pattern": "", "type": "number" });
+                                    var div = randomString(5, '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ');
+                                    for (var j = 0; j < result[i].source.length; j++) {
+                                        console.log(result[i].source[j]);
+                                        if (j == 0) {
+                                            $('#accordion').append('<div class="panel panel-default"><div class="panel-heading" role="ab" id="headingOne"><h4 class="panel-title"><a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapse' + div + '" aria-expanded="true" aria-controls="collapseOne">' + result[i].source[j].Pregunta + '</a></h4></div><div id="collapse' + div + '" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingOne"><div class="panel-body"><div class="row"><div class="col-md-6 col-md-offset-3"><div id=' + div + '></div></div></div></div></div></div>');
+                                        }
+                                        var c = {};
+                                        c.c = new Array();
+                                        c.c.push({ "v": result[i].source[j].Respuesta }, { 'v': result[i].source[j].Cantidad });
+                                        grafica.rows.push(c);
+                                    }
+                                    var datosGrafica = JSON.stringify(grafica);
+                                    graficar(datosGrafica, result[i].source[0].Pregunta, div, grafica_tipo);
                                 }
+                            },
+                            error: function (jqXHR, textStatus, errorThrown) {
 
-                                var c = {};
-                                c.c = new Array();
-                                c.c.push({ "v": multiples[i].respuesta }, { 'v': multiples[i].cantidad });
-                                grafica_multiple.rows.push(c);
                             }
-                            var datosGrafica2 = JSON.stringify(grafica_multiple);
-                            graficar(datosGrafica2, multiples[0].pregunta, div2);
-                        },
-                        error: function (jqXHR, textStatus, errorThrown) {
-
-                        }
-                    });
+                        });
+                    }
                 }
             }
         }
@@ -217,27 +204,41 @@
         return result;
     }
 
-    function graficar(datos, titulo, div) {
-        console.log('graficando');
-        console.log(datos);
-        console.log(titulo);
-        console.log(div);
+    function graficar(datos, titulo, div, grafica) {
         google.charts.setOnLoadCallback(load_page_data);
         function load_page_data() {
-            drawChart(datos, titulo, "Respuestas", div);
+            drawChart(datos, titulo, "Cantidad", div, grafica);
 
         }
 
     }
 
-    function drawChart(chart_data, chart1_main_title, chart1_vaxis_title, div) {
+    function drawChart(chart_data, chart1_main_title, chart1_vaxis_title, div, grafica) {
         var chart1_data = new google.visualization.DataTable(chart_data);
         var chart1_options = {
             title: chart1_main_title,
-            vAxis: { title: chart1_vaxis_title, titleTextStyle: { color: 'Black' } }
+            vAxis: {
+                title: chart1_vaxis_title, titleTextStyle: { color: 'Black' }, width: 600,
+                height: 300
+            }
         };
-        var chart1_chart = new google.visualization.PieChart(document.getElementById(div));
-        chart1_chart.draw(chart1_data, chart1_options);
+
+
+        if (grafica == "PieChart") {
+            var chart1_chart = new google.visualization.PieChart(document.getElementById(div));
+            chart1_chart.draw(chart1_data, chart1_options);
+        } else if (grafica == "BarChart") {
+            var chart1_chart = new google.visualization.BarChart(document.getElementById(div));
+            chart1_chart.draw(chart1_data, chart1_options);
+        } else if (grafica == "ScatterChart") {
+            var chart1_chart = new google.visualization.ScatterChart(document.getElementById(div));
+            chart1_chart.draw(chart1_data, chart1_options);
+        } else if (grafica == "ColumnChart") {
+            var chart1_chart = new google.visualization.ColumnChart(document.getElementById(div));
+            chart1_chart.draw(chart1_data, chart1_options);
+        }
+
+        
     }
     
 </script>
