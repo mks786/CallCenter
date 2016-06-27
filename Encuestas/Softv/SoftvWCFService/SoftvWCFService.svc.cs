@@ -18,7 +18,7 @@ namespace SoftvWCFService
     public partial class SoftvWCFService : IUsuario, IRole, IModule, IPermiso, IEncuesta, IPregunta, ITipoPreguntas, IRelEncuestaClientes, IRelPreguntaOpcMults,
         IRelPreguntaEncuestas, IResOpcMults, IRelEnProcesos, IConexion, ICLIENTE, ITurno, ILlamada, IRel_Clientes_TiposClientes, ITipoCliente, ICatalogoPeriodosCorte,
         ICliente_Apellido, ITap, IDatoFiscal, ITrabajo, ITipServ, IMotivoCancelacion, IRelEncuestaPreguntaRes, IQueja, ICIUDAD, ICVECOLCIU, ICOLONIA, ICVECAROL, ICALLE, IBusquedaIndividual,
-        ItblClasificacionProblema, ItblPrioridadQueja, INoCliente, IDatosLlamada
+        ItblClasificacionProblema, ItblPrioridadQueja, INoCliente, IDatosLlamada, IEstadistica
     {
         #region Usuario
         public UsuarioEntity GetUsuario(int? IdUsuario)
@@ -223,9 +223,11 @@ namespace SoftvWCFService
             return Encuesta.Delete(IdEncuesta);
         }
 
+        //public List<EstadisticaEncuesta> estadisticas(int plaza, int idencuesta, DateTime finicio, DateTime ffin)
+        //{
+        //    return Encuesta.getEstadisticas(plaza, idencuesta, finicio, ffin);
 
-
-
+        //}
 
 
 
@@ -1668,6 +1670,16 @@ namespace SoftvWCFService
         }
 
         #endregion
+
+        #region Estadistica
+ 
+        public IEnumerable<EstadisticaEntity> GetEstadisticaList(int plaza, int idencuesta, DateTime finicio, DateTime ffin)
+        {
+            return Estadistica.GetAll(plaza, idencuesta, finicio, ffin);
+        }
+         
+        #endregion
+  
   
     }
 }

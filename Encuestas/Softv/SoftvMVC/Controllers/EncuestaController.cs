@@ -17,6 +17,7 @@ using System.IO;
 using iTextSharp.text;
 using System.Text;
 
+
 namespace SoftvMVC.Controllers
 {
     /// <summary>
@@ -39,6 +40,7 @@ namespace SoftvMVC.Controllers
         private SoftvService.RelEncuestaClientesClient relenc_clientes = null;
         private SoftvService.RelEnProcesosClient rel_en_proces = null;
         private SoftvService.RelPreguntaEncuestasClient rel_preg_encuesta = null;
+        private SoftvService.EstadisticaClient proxyEstadistica = null;
 
         public EncuestaController()
         {
@@ -57,6 +59,8 @@ namespace SoftvMVC.Controllers
             rel_en_proces = new SoftvService.RelEnProcesosClient();
 
             rel_preg_encuesta = new SoftvService.RelPreguntaEncuestasClient();
+
+            proxyEstadistica = new SoftvService.EstadisticaClient();
         }
 
         new public void Dispose()
@@ -379,7 +383,7 @@ namespace SoftvMVC.Controllers
         {
             public int cliente { get; set; }
             public int id_encuesta { get; set; }
-            public int id_plaza{ get; set; }
+            public int id_plaza { get; set; }
             public List<preguntas> pregunta { get; set; }
 
             public List<respuestas> respuestas { get; set; }
@@ -414,7 +418,7 @@ namespace SoftvMVC.Controllers
 
         public ActionResult EncuestaPDF(int idencuesta)
         {
-         
+
             Guid g = Guid.NewGuid();
 
             string rutaarchivo = Server.MapPath("/Reportes") + g.ToString() + "Encuesta.pdf";
@@ -422,11 +426,11 @@ namespace SoftvMVC.Controllers
             PdfWriter writer = PdfWriter.GetInstance(document, new FileStream(rutaarchivo, FileMode.Create));
             document.Open();
             iTextSharp.text.html.simpleparser.HTMLWorker hw = new iTextSharp.text.html.simpleparser.HTMLWorker(document, null, null);
-            string Contenido = contenidopdf(idencuesta);           
+            string Contenido = contenidopdf(idencuesta);
             hw.Parse(new StringReader(Contenido));
             document.Close();
             return File(rutaarchivo, "application/pdf", "Encuesta.pdf");
-        
+
 
 
         }
@@ -437,26 +441,27 @@ namespace SoftvMVC.Controllers
 
 
             StringBuilder sb = new StringBuilder();
-            
+
 
             EncuestaEntity objEncuesta = proxy.GetEncuesta(IdEncuesta);
             sb.Append("<br>");
             sb.Append(@"<table ><tr><td>");
-            
+
             sb.Append(@"<h3 align=""center"" style=""font-size:24px; align:center;"" >" + objEncuesta.TituloEncuesta + "</h3>");
             sb.Append(@"<h4 align=""center"" >" + objEncuesta.Descripcion + "</h4>");
             sb.Append("<br/>");
             sb.Append("<h5>Nombre cliente:___________________________ &nbsp;&nbsp;Contrato________________ &nbsp;&nbsp;Fecha:_______________</h5>");
             sb.Append("</td></tr></table>");
 
-            
+
             List<RelPreguntaEncuestasEntity> lista_de_relaciones = rel_preg_encuesta.GetRelPreguntaEncuestasList().Where(x => x.IdEncuesta == objEncuesta.IdEncuesta).ToList();
 
             foreach (var a in lista_de_relaciones)
             {
-                sb.Append("<h5><b>"+a.Pregunta.Pregunta+"</b></h5><br>");       
-                 
-                if (a.Pregunta.IdTipoPregunta==1){
+                sb.Append("<h5><b>" + a.Pregunta.Pregunta + "</b></h5><br>");
+
+                if (a.Pregunta.IdTipoPregunta == 1)
+                {
                     sb.Append(@"<table border=1 width=""400"" ><tr><td>&nbsp;</td></tr></table>");
                     sb.Append(@"<br/>");
                     sb.Append(@"<table border=1 width=""400"" ><tr><td>&nbsp;</td></tr></table>");
@@ -484,7 +489,7 @@ namespace SoftvMVC.Controllers
                     sb.Append("</table>");
 
                 }
-               
+
 
 
 
@@ -523,7 +528,16 @@ namespace SoftvMVC.Controllers
                     }
                     else if (a.tipoPregunta == 2)
                     {
-                        re.RespCerrada = true;
+                        bool boleano;
+                        if (b.respuesta == "0")
+                        {
+                            boleano = false;
+                        }
+                        else
+                        {
+                            boleano = true;
+                        }
+                        re.RespCerrada = boleano;
                         int result2 = rel_en_proces.AddRelEnProcesos(re);
                     }
                     else
@@ -538,8 +552,26 @@ namespace SoftvMVC.Controllers
             }
 
             return Json(encuesta, JsonRequestBehavior.AllowGet);
+
         }
 
+
+
+
+
+
+        public ActionResult getGrafica(int plaza, int idencuesta, DateTime finicio, DateTime ffin)
+        {
+            List<EstadisticaEntity> lista = new List<EstadisticaEntity>();
+            lista = proxyEstadistica.GetEstadisticaList(plaza, idencuesta, finicio, ffin);
+            return Json(lista, JsonRequestBehavior.AllowGet);
+        }
+        public ActionResult getAllEncuestas()
+        {
+            List<EncuestaEntity> lista = new List<EncuestaEntity>();
+            lista = proxy.GetEncuestaList();
+            return Json(lista, JsonRequestBehavior.AllowGet);
+        }
 
     }
 

@@ -206,6 +206,11 @@ namespace Softv.Providers
         {
             get { return DatosLlamadaProvider.Instance; }
         }
+
+        public static EstadisticaProvider Estadistica
+        {
+            get { return EstadisticaProvider.Instance; }
+        }
   
   
     }

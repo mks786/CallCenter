@@ -4214,4 +4214,21 @@
       </xs:sequence>
     </xs:complexType>
   </xs:element>
+  <xs:element name="GetEstadisticaList">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="plaza" type="xs:int" />
+        <xs:element minOccurs="0" name="idencuesta" type="xs:int" />
+        <xs:element minOccurs="0" name="finicio" type="xs:dateTime" />
+        <xs:element minOccurs="0" name="ffin" type="xs:dateTime" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetEstadisticaListResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q256="http://schemas.datacontract.org/2004/07/Softv.Entities" minOccurs="0" name="GetEstadisticaListResult" nillable="true" type="q256:ArrayOfEstadisticaEntity" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
 </xs:schema>

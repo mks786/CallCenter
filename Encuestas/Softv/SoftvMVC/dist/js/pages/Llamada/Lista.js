@@ -1,11 +1,5 @@
 ﻿
-$(document).ready(function () {
-    
-    $(".Agregar").click(function () {
-        $('#ModalAgregarLlamada').modal('show');
-
-    });
-    
+$(document).ready(function () {    
     $.ajax({
         url: "/Conexion/ListaConexiones/",
         type: "GET",

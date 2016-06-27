@@ -383,6 +383,15 @@ namespace SoftvConfiguration
         {
             get { return (DatosLlamadaElement)base["DatosLlamada"]; }
         }
+
+        /// <summary>
+        /// Gets Estadistica configuration data
+        /// </summary>
+        [ConfigurationProperty("Estadistica")]
+        public EstadisticaElement Estadistica
+        {
+            get { return (EstadisticaElement)base["Estadistica"]; }
+        }
   
     }
 }

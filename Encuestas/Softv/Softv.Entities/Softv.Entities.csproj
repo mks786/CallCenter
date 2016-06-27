@@ -55,6 +55,8 @@
     <Compile Include="DatosLlamadaEntity.cs" />
     <Compile Include="EncuestaEntity.cs" />
     <Compile Include="EnumEntity.cs" />
+    <Compile Include="EstadisticaEncuesta.cs" />
+    <Compile Include="EstadisticaEntity.cs" />
     <Compile Include="LlamadaEntity.cs" />
     <Compile Include="ModuleEntity.cs" />
     <Compile Include="MotivoCancelacionEntity.cs" />

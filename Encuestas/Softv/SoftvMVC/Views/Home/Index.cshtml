@@ -2,7 +2,76 @@
     ViewBag.Title = "Inicio";
 }
 
+<section class="content-header">
+    <h1>
+        Dashboard
+        <small>Control panel</small>
+    </h1>
+    <ol class="breadcrumb">
+        <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
+        <li class="active">Dashboard</li>
+    </ol>
+</section>
 
-<center>
-  
-</center>
+<!-- Main content -->
+<section class="content">
+
+    <!-- Main row -->
+    <div class="row">
+        <!-- Left col -->
+        <section class="col-md-6 connectedSortable">
+            <!-- Calendar -->
+            <div class="box box-solid bg-green-gradient">
+                <div class="box-header">
+                    <i class="fa fa-calendar"></i>
+                    <h3 class="box-title">Calendario</h3>
+                    <!-- tools box -->
+                    <div class="pull-right box-tools">
+                        <button class="btn btn-success btn-sm" data-widget="collapse"><i class="fa fa-minus"></i></button>
+                        <button class="btn btn-success btn-sm" data-widget="remove"><i class="fa fa-times"></i></button>
+                    </div><!-- /. tools -->
+                </div><!-- /.box-header -->
+                <div class="box-body no-padding">
+                    <!--The calendar -->
+                    <div id="calendar" style="width: 100%; height: 250px;"></div>
+                </div><!-- /.box-body -->
+            </div><!-- /.box -->
+        </section>
+        <section class="col-md-6 connectedSortable">
+            <canvas id="myChart" style="height: 300px;"></canvas>
+       </section><!-- /.Left col -->
+        <!-- right col (We are only adding the ID to make the widgets sortable)-->
+    </div><!-- /.row (main row) -->
+
+</section><!-- /.content -->
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.1.6/Chart.js"></script>
+<script>
+    var ctx = document.getElementById("myChart");
+    var myChart = new Chart(ctx, {
+        type: 'line',
+        data: {
+            labels: [
+                "Clientes",
+                "No CLientes",
+            ],
+            datasets: [
+                {
+                    data: [300, 50],
+                    backgroundColor: [
+                        "#FF6384",
+                        "#36A2EB",
+                        "#FFCE56"
+                    ],
+                    hoverBackgroundColor: [
+                        "#FF6384",
+                        "#36A2EB",
+                        "#FFCE56"
+                    ]
+                }]
+        },
+        animation: {
+            animateScale: true
+        }
+    });
+</script>

@@ -828,11 +828,12 @@
     <xs:complexContent mixed="false">
       <xs:extension base="tns:BaseEntity">
         <xs:sequence>
-          <xs:element minOccurs="0" name="Contrato" nillable="true" type="xs:long" />
-          <xs:element minOccurs="0" name="Fecha" nillable="true" type="xs:dateTime" />
+          <xs:element minOccurs="0" name="Contrato" nillable="true" type="xs:int" />
+          <xs:element minOccurs="0" name="Fecha" nillable="true" type="xs:string" />
           <xs:element minOccurs="0" name="Id" nillable="true" type="xs:int" />
           <xs:element minOccurs="0" name="IdLlamada" nillable="true" type="xs:int" />
           <xs:element minOccurs="0" name="Nombre" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="TipoLlamada" type="xs:boolean" />
           <xs:element minOccurs="0" name="Usuario" nillable="true" type="xs:string" />
         </xs:sequence>
       </xs:extension>
@@ -845,4 +846,24 @@
     </xs:sequence>
   </xs:complexType>
   <xs:element name="ArrayOfDatosLlamadaEntity" nillable="true" type="tns:ArrayOfDatosLlamadaEntity" />
+  <xs:complexType name="ArrayOfEstadisticaEntity">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="EstadisticaEntity" nillable="true" type="tns:EstadisticaEntity" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfEstadisticaEntity" nillable="true" type="tns:ArrayOfEstadisticaEntity" />
+  <xs:complexType name="EstadisticaEntity">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:BaseEntity">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="Cantidad" nillable="true" type="xs:int" />
+          <xs:element minOccurs="0" name="IdEstadistica" nillable="true" type="xs:int" />
+          <xs:element minOccurs="0" name="NombreEncuesta" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="Pregunta" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="Respuesta" nillable="true" type="xs:string" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="EstadisticaEntity" nillable="true" type="tns:EstadisticaEntity" />
 </xs:schema>
