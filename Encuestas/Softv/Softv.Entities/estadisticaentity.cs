@@ -54,6 +54,11 @@
       /// Property Cantidad
       /// </summary>
       [DataMember]
+      public String RespuestaAbierta { get; set; }
+      /// <summary>
+      /// Property Cantidad
+      /// </summary>
+      [DataMember]
       public int? Cantidad { get; set; }
     #endregion
     }

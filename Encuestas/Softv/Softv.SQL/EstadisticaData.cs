@@ -89,8 +89,9 @@ namespace Softv.DAO
                         a.IdTipoPregunta = Int32.Parse(rd[1].ToString());
                         a.IdPregunta = Int32.Parse(rd[2].ToString());
                         a.Pregunta = rd[3].ToString();
-                        a.Respuesta = rd[4].ToString();
-                        a.Cantidad = Int32.Parse(rd[5].ToString());
+                        a.Respuesta = rd[5].ToString();
+                        a.RespuestaAbierta = rd[4].ToString();
+                        a.Cantidad = Int32.Parse(rd[6].ToString());
                         EncuestaList.Add(a);
                     }
                 }

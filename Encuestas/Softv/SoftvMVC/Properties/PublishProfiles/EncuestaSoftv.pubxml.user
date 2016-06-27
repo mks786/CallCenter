@@ -16,10 +16,10 @@ editando este archivo MSBuild. Para conocer más acerca de esto, visite http://g
       <publishTime>01/01/0001 00:00:00</publishTime>
     </File>
     <File Include="bin/App_global.asax.compiled">
-      <publishTime>06/22/2016 11:09:34</publishTime>
+      <publishTime>06/27/2016 10:53:41</publishTime>
     </File>
     <File Include="bin/App_global.asax.dll">
-      <publishTime>06/22/2016 11:09:34</publishTime>
+      <publishTime>06/27/2016 10:53:41</publishTime>
     </File>
     <File Include="bin/EntityFramework.dll">
       <publishTime>05/30/2016 11:29:24</publishTime>
@@ -103,23 +103,23 @@ editando este archivo MSBuild. Para conocer más acerca de esto, visite http://g
       <publishTime>05/30/2016 11:29:24</publishTime>
     </File>
     <File Include="bin/Softv.Entities.dll">
-      <publishTime>06/22/2016 11:09:20</publishTime>
+      <publishTime>06/27/2016 10:53:24</publishTime>
     </File>
     <File Include="bin/Softv.Entities.pdb">
       <publishTime>01/01/0001 00:00:00</publishTime>
     </File>
     <File Include="bin/SoftvMVC.dll">
-      <publishTime>06/22/2016 11:09:22</publishTime>
+      <publishTime>06/27/2016 10:53:27</publishTime>
     </File>
     <File Include="bin/SoftvMVC.dll.config">
-      <publishTime>06/22/2016 11:09:19</publishTime>
+      <publishTime>06/27/2016 10:53:23</publishTime>
     </File>
     <File Include="bin/SoftvMVC.pdb">
       <publishTime>05/24/2016 18:07:17</publishTime>
       <publishTime>01/01/0001 00:00:00</publishTime>
     </File>
     <File Include="bin/SoftvMVC.dll.config">
-      <publishTime>06/22/2016 11:09:19</publishTime>
+      <publishTime>06/27/2016 10:53:23</publishTime>
     </File>
     <File Include="bin/SoftvMVC.pdb">
       <publishTime>01/01/0001 00:00:00</publishTime>
@@ -954,10 +954,10 @@ editando este archivo MSBuild. Para conocer más acerca de esto, visite http://g
     </File>
     <File Include="dist/js/pages/Conexion/Lista.js">
       <publishTime>05/24/2016 12:04:07</publishTime>
-      <publishTime>06/20/2016 11:46:49</publishTime>
+      <publishTime>06/22/2016 19:01:25</publishTime>
     </File>
     <File Include="dist/js/pages/Conexion/Lista.js">
-      <publishTime>06/20/2016 11:46:49</publishTime>
+      <publishTime>06/22/2016 19:01:25</publishTime>
     </File>
     <File Include="dist/js/pages/dashboard.js">
       <publishTime>05/30/2016 11:29:25</publishTime>
@@ -969,7 +969,7 @@ editando este archivo MSBuild. Para conocer más acerca de esto, visite http://g
       <publishTime>05/03/2016 12:24:11</publishTime>
     </File>
     <File Include="dist/js/pages/Encuesta/Lista.js">
-      <publishTime>06/18/2016 12:14:22</publishTime>
+      <publishTime>06/22/2016 19:02:50</publishTime>
     </File>
     <File Include="dist/js/pages/Encuesta/ModalAgregarEncuesta.js">
       <publishTime>06/04/2016 13:36:21</publishTime>
@@ -1007,7 +1007,7 @@ editando este archivo MSBuild. Para conocer más acerca de esto, visite http://g
       <publishTime>05/30/2016 11:29:25</publishTime>
     </File>
     <File Include="dist/js/pages/Encuesta/preview_scripts.js">
-      <publishTime>06/21/2016 18:24:12</publishTime>
+      <publishTime>06/24/2016 11:40:11</publishTime>
     </File>
     <File Include="dist/js/pages/Encuesta/Utilerias.js">
       <publishTime>05/30/2016 11:29:25</publishTime>
@@ -1016,14 +1016,14 @@ editando este archivo MSBuild. Para conocer más acerca de esto, visite http://g
       <publishTime>06/15/2016 10:10:09</publishTime>
     </File>
     <File Include="dist/js/pages/Llamada/Lista.js">
-      <publishTime>06/21/2016 18:23:54</publishTime>
+      <publishTime>06/23/2016 14:04:57</publishTime>
     </File>
     <File Include="dist/js/pages/Pregunta/editar_pregunta.js">
       <publishTime>06/17/2016 17:23:28</publishTime>
     </File>
     <File Include="dist/js/pages/Pregunta/Lista.js">
       <publishTime>05/24/2016 12:16:51</publishTime>
-      <publishTime>06/20/2016 11:24:05</publishTime>
+      <publishTime>06/22/2016 19:03:03</publishTime>
     </File>
     <File Include="dist/js/pages/RelEncuestaCliente/Lista.js">
       <publishTime>05/30/2016 11:29:25</publishTime>
@@ -1032,7 +1032,7 @@ editando este archivo MSBuild. Para conocer más acerca de esto, visite http://g
       <publishTime>06/11/2016 10:22:10</publishTime>
     </File>
     <File Include="dist/js/pages/ResOpcMult/Lista.js">
-      <publishTime>06/20/2016 11:31:04</publishTime>
+      <publishTime>06/22/2016 19:03:23</publishTime>
     </File>
     <File Include="dist/js/pages/ResOpcMult/modales_respuestas.js">
       <publishTime>06/17/2016 13:40:59</publishTime>
@@ -1047,7 +1047,7 @@ editando este archivo MSBuild. Para conocer más acerca de esto, visite http://g
       <publishTime>06/17/2016 11:50:26</publishTime>
     </File>
     <File Include="dist/js/pages/Usuario/Lista.js">
-      <publishTime>06/20/2016 11:39:52</publishTime>
+      <publishTime>06/22/2016 19:08:41</publishTime>
     </File>
     <File Include="favicon.ico">
       <publishTime>05/30/2016 11:29:25</publishTime>
@@ -3294,7 +3294,7 @@ editando este archivo MSBuild. Para conocer más acerca de esto, visite http://g
       <publishTime>05/30/2016 11:29:29</publishTime>
     </File>
     <File Include="PrecompiledApp.config">
-      <publishTime>06/22/2016 11:09:25</publishTime>
+      <publishTime>06/27/2016 10:53:30</publishTime>
     </File>
     <File Include="Properties/DataSources/Softv.Entities.BancoEntity.datasource">
       <publishTime>05/30/2016 11:29:22</publishTime>
@@ -3337,6 +3337,9 @@ editando este archivo MSBuild. Para conocer más acerca de esto, visite http://g
     </File>
     <File Include="Properties/DataSources/Softv.Entities.EncuestaEntity.datasource">
       <publishTime>05/30/2016 11:29:22</publishTime>
+    </File>
+    <File Include="Properties/DataSources/Softv.Entities.EstadisticaEntity.datasource">
+      <publishTime>06/24/2016 13:59:37</publishTime>
     </File>
     <File Include="Properties/DataSources/Softv.Entities.EstadoEntity.datasource">
       <publishTime>05/30/2016 11:29:22</publishTime>
@@ -3614,6 +3617,36 @@ editando este archivo MSBuild. Para conocer más acerca de esto, visite http://g
     <File Include="Scripts/timepicki.js">
       <publishTime>05/30/2016 11:29:23</publishTime>
     </File>
+    <File Include="Service References/SoftvService/configuration.svcinfo">
+      <publishTime>06/24/2016 17:38:12</publishTime>
+    </File>
+    <File Include="Service References/SoftvService/configuration91.svcinfo">
+      <publishTime>06/24/2016 17:38:12</publishTime>
+    </File>
+    <File Include="Service References/SoftvService/Reference.cs">
+      <publishTime>06/24/2016 17:38:14</publishTime>
+    </File>
+    <File Include="Service References/SoftvService/Reference.svcmap">
+      <publishTime>06/24/2016 17:38:12</publishTime>
+    </File>
+    <File Include="Service References/SoftvService/SoftvWCFService.disco">
+      <publishTime>06/24/2016 17:38:12</publishTime>
+    </File>
+    <File Include="Service References/SoftvService/SoftvWCFService.wsdl">
+      <publishTime>06/24/2016 17:38:12</publishTime>
+    </File>
+    <File Include="Service References/SoftvService/SoftvWCFService.xsd">
+      <publishTime>06/24/2016 17:38:12</publishTime>
+    </File>
+    <File Include="Service References/SoftvService/SoftvWCFService1.xsd">
+      <publishTime>06/24/2016 17:38:12</publishTime>
+    </File>
+    <File Include="Service References/SoftvService/SoftvWCFService2.xsd">
+      <publishTime>06/24/2016 17:38:12</publishTime>
+    </File>
+    <File Include="Service References/SoftvService/SoftvWCFService3.xsd">
+      <publishTime>06/24/2016 17:38:12</publishTime>
+    </File>
     <File Include="Views/Account/ConfirmEmail.cshtml">
       <publishTime>05/30/2016 11:29:23</publishTime>
     </File>
@@ -3630,7 +3663,7 @@ editando este archivo MSBuild. Para conocer más acerca de esto, visite http://g
       <publishTime>05/30/2016 11:29:23</publishTime>
     </File>
     <File Include="Views/Account/Login.cshtml">
-      <publishTime>05/30/2016 11:29:23</publishTime>
+      <publishTime>06/27/2016 10:07:38</publishTime>
     </File>
     <File Include="Views/Account/Manage.cshtml">
       <publishTime>05/30/2016 11:29:23</publishTime>
@@ -3663,14 +3696,14 @@ editando este archivo MSBuild. Para conocer más acerca de esto, visite http://g
       <publishTime>05/30/2016 11:29:23</publishTime>
     </File>
     <File Include="Views/Cliente/Index.cshtml">
-      <publishTime>06/20/2016 17:54:29</publishTime>
+      <publishTime>06/22/2016 18:52:29</publishTime>
     </File>
     <File Include="Views/Conexion/Index.cshtml">
       <publishTime>05/24/2016 11:18:18</publishTime>
-      <publishTime>06/20/2016 17:56:17</publishTime>
+      <publishTime>06/22/2016 18:53:43</publishTime>
     </File>
     <File Include="Views/Conexion/Index.cshtml">
-      <publishTime>06/20/2016 17:56:17</publishTime>
+      <publishTime>06/22/2016 18:53:43</publishTime>
     </File>
     <File Include="Views/Encuesta/Create.cshtml">
       <publishTime>05/30/2016 11:29:23</publishTime>
@@ -3682,13 +3715,13 @@ editando este archivo MSBuild. Para conocer más acerca de esto, visite http://g
       <publishTime>05/30/2016 11:29:23</publishTime>
     </File>
     <File Include="Views/Encuesta/Index.cshtml">
-      <publishTime>06/20/2016 18:03:41</publishTime>
+      <publishTime>06/22/2016 18:50:07</publishTime>
     </File>
     <File Include="Views/Encuesta/Lista.cshtml">
       <publishTime>05/30/2016 11:29:23</publishTime>
     </File>
     <File Include="Views/Encuesta/PreView.cshtml">
-      <publishTime>06/20/2016 18:07:17</publishTime>
+      <publishTime>06/24/2016 11:40:25</publishTime>
     </File>
     <File Include="Views/Encuesta/QuickIndex.cshtml">
       <publishTime>05/30/2016 11:29:23</publishTime>
@@ -3703,10 +3736,10 @@ editando este archivo MSBuild. Para conocer más acerca de esto, visite http://g
       <publishTime>05/30/2016 11:29:23</publishTime>
     </File>
     <File Include="Views/Home/Index.cshtml">
-      <publishTime>05/30/2016 11:29:23</publishTime>
+      <publishTime>06/23/2016 13:13:37</publishTime>
     </File>
     <File Include="Views/Llamada/Index.cshtml">
-      <publishTime>06/21/2016 18:22:26</publishTime>
+      <publishTime>06/23/2016 11:25:44</publishTime>
     </File>
     <File Include="Views/Llamada/nueva_llamada.cshtml">
       <publishTime>06/22/2016 09:49:54</publishTime>
@@ -3725,7 +3758,7 @@ editando este archivo MSBuild. Para conocer más acerca de esto, visite http://g
     </File>
     <File Include="Views/Pregunta/Index.cshtml">
       <publishTime>05/24/2016 12:16:51</publishTime>
-      <publishTime>06/20/2016 18:16:28</publishTime>
+      <publishTime>06/22/2016 18:50:48</publishTime>
     </File>
     <File Include="Views/Pregunta/QuickIndex.cshtml">
       <publishTime>05/30/2016 11:29:23</publishTime>
@@ -3748,8 +3781,11 @@ editando este archivo MSBuild. Para conocer más acerca de esto, visite http://g
     <File Include="Views/RelEncuestaClientes/QuickIndex.cshtml">
       <publishTime>05/30/2016 11:29:23</publishTime>
     </File>
+    <File Include="Views/ReportesEncuestas/Index.cshtml">
+      <publishTime>06/27/2016 10:47:56</publishTime>
+    </File>
     <File Include="Views/ReportesVarios/Index.cshtml">
-      <publishTime>06/18/2016 13:33:57</publishTime>
+      <publishTime>06/22/2016 18:52:57</publishTime>
     </File>
     <File Include="Views/ResOpcMults/--Index.cshtml">
       <publishTime>05/30/2016 11:29:23</publishTime>
@@ -3764,7 +3800,7 @@ editando este archivo MSBuild. Para conocer más acerca de esto, visite http://g
       <publishTime>05/30/2016 11:29:23</publishTime>
     </File>
     <File Include="Views/ResOpcMults/Index.cshtml">
-      <publishTime>06/20/2016 18:20:05</publishTime>
+      <publishTime>06/22/2016 18:51:14</publishTime>
     </File>
     <File Include="Views/ResOpcMults/QuickIndex.cshtml">
       <publishTime>05/30/2016 11:29:23</publishTime>
@@ -3776,11 +3812,11 @@ editando este archivo MSBuild. Para conocer más acerca de esto, visite http://g
       <publishTime>05/30/2016 11:29:23</publishTime>
     </File>
     <File Include="Views/Shared/Menu2.cshtml">
-      <publishTime>06/18/2016 13:23:51</publishTime>
+      <publishTime>06/22/2016 18:48:21</publishTime>
     </File>
     <File Include="Views/Shared/_Layout.cshtml">
       <publishTime>05/24/2016 17:18:00</publishTime>
-      <publishTime>06/20/2016 12:47:06</publishTime>
+      <publishTime>06/23/2016 13:05:02</publishTime>
     </File>
     <File Include="Views/Shared/_LoginPartial.cshtml">
       <publishTime>05/30/2016 11:29:23</publishTime>
@@ -3816,7 +3852,7 @@ editando este archivo MSBuild. Para conocer más acerca de esto, visite http://g
       <publishTime>05/30/2016 11:29:23</publishTime>
     </File>
     <File Include="Views/Usuario/Index.cshtml">
-      <publishTime>06/20/2016 18:22:00</publishTime>
+      <publishTime>06/22/2016 18:51:52</publishTime>
     </File>
     <File Include="Views/Usuario/QuickIndex.cshtml">
       <publishTime>05/30/2016 11:29:23</publishTime>
@@ -3828,7 +3864,7 @@ editando este archivo MSBuild. Para conocer más acerca de esto, visite http://g
       <publishTime>05/30/2016 11:29:23</publishTime>
     </File>
     <File Include="Web.config">
-      <publishTime>06/22/2016 11:09:24</publishTime>
+      <publishTime>06/27/2016 10:53:28</publishTime>
     </File>
   </ItemGroup>
 </Project>

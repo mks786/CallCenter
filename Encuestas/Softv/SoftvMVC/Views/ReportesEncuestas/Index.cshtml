@@ -2,7 +2,11 @@
     ViewBag.Title = "Index";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
-
+<style>
+    .scroll_div{
+             overflow: scroll;
+        }
+</style>
 <section class="content-header">
     <h1>
         Reportes de encuestas aplicadas
@@ -23,50 +27,65 @@
             </div><!-- /.box-header -->
             <div class="box-body">
                 <div class="col-md-12">
-                    <div class="row">
-                        <div class="col-md-3">
-                            <label>Selecciona la plaza</label>
-                            <select class="form-control" id="plazas"><option selected disabled>---------</option></select>
-                        </div>
-                        <div class="col-md-6">
-                            <label>Selecciona la encuesta</label>
-                            <select class="form-control" id="encuestas_list" disabled>
-                                <option value="0" selected disabled>---------</option>
-                            </select>
-                        </div>
-                    </div><br />
-                    <div class="row">
-                        <div class="col-md-3">
-                            <label>Fecha Inicio</label>
-                            <input type="date" id="inicio" class="form-control" disabled />
-                        </div>
-                        <div class="col-md-3">
-                            <label>Fecha Fin</label>
-                            <input type="date" id="fin" class="form-control" disabled />
-                        </div>
-                    </div><br />
-                    <div class="row">
-                        <div class="col-md-3">
-                            <label>Tipo de Gráfica</label>
-                            <select class="form-control" id="grafica_list" disabled>
-                                <option value="0" selected disabled>---------</option>
-                                <option value="PieChart">PieChart</option>
-                                <option value="BarChart">BarChart</option>
-                                <option value="ScatterChart">ScatterChart</option>
-                                <option value="ColumnChart">ColumnChart</option>
-                            </select>
+                    <div class="panel-group" id="Mygrafica" role="tablist" aria-multiselectable="true">
+                        <div class="panel panel-default">
+                            <div class="panel-heading" id="grafica">
+                                <h3 class="panel-title">
+                                    <a role="button" data-toggle="collapse" data-parent="#Mygrafica" href="#datosGrafica" aria-expanded="true" aria-controls="datosGrafica">Datos para graficar</a>
+                                </h3>
+                            </div>
+                            <div id="datosGrafica" class="panel-collapse collapse" role="tabpanel" aria-labelledby="datosGrafica">
+                                <div class="panel-body">
+                                    <div class="row">
+                                        <div class="col-md-3">
+                                            <label>Selecciona la plaza</label>
+                                            <select class="form-control" id="plazas"><option selected disabled>---------</option></select>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <label>Selecciona la encuesta</label>
+                                            <select class="form-control" id="encuestas_list" disabled>
+                                                <option value="0" selected disabled>---------</option>
+                                            </select>
+                                        </div>
+                                    </div><br />
+                                    <div class="row">
+                                        <div class="col-md-3">
+                                            <label>Fecha Inicio</label>
+                                            <input type="date" id="inicio" class="form-control" disabled />
+                                        </div>
+                                        <div class="col-md-3">
+                                            <label>Fecha Fin</label>
+                                            <input type="date" id="fin" class="form-control" disabled />
+                                        </div>
+                                    </div><br />
+                                    <div class="row">
+                                        <div class="col-md-3">
+                                            <label>Tipo de Gráfica</label>
+                                            <select class="form-control" id="grafica_list" disabled>
+                                                <option value="0" selected disabled>---------</option>
+                                                <option value="PieChart">PieChart</option>
+                                                <option value="BarChart">BarChart</option>
+                                                <option value="ScatterChart">ScatterChart</option>
+                                                <option value="ColumnChart">ColumnChart</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="row" style="padding-right:20px;">
+                                        <p class="text-right">
+                                            <button class="btn btn-primary" onclick="reportear()"><i class="fa fa-list-alt" aria-hidden="true"></i> Generar</button>
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                     </div>
-                    <div class="row" style="padding-right:20px;">
-                        <p class="text-right">
-                            <button class="btn btn-primary" onclick="reportear()"><i class="fa fa-list-alt" aria-hidden="true"></i> Generar</button>
-                        </p>
-                    </div>
+                   
       
                 <hr />
                 <div class="row">
                     <div class="col-md-12">
-                        <h3 id="nombre_encuesta" class="text-center" style="color:#5bc0de;"></h3><br />
+                        <h3 id="nombre_encuesta" class="text-center"></h3><br />
+                        <hr />
                         <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
                             
                         </div>
@@ -76,6 +95,7 @@
         </div>
     </div>
 </div>
+    </div>
 
 
 <link href="~/plugins/sweetAlert/sweetalert.css" rel="stylesheet" />
@@ -99,6 +119,7 @@
 
             }
         });
+        $('.collapse').collapse('show');
         google.charts.load('current', { 'packages': ['corechart'] });
 
         $.ajax({
@@ -108,7 +129,7 @@
                 for (var i = 0; i < data.length; i++) {
                     $('#encuestas_list').append($('<option>', {
                         value: data[i].IdEncuesta,
-                        text: data[i].Descripcion
+                        text: data[i].TituloEncuesta
                     }));
                 }
             },
@@ -162,11 +183,9 @@
                             type: "GET",
                             data: { 'plaza': plaza, 'idencuesta': encuesta, 'finicio': inicio, 'ffin': fin },
                             success: function (data, textStatus, jqXHR) {
-
                                 var linq = Enumerable.From(data);
                                 var result = linq.GroupBy(function (x) { return x.IdPregunta; }).ToArray();
-
-
+                                $('#nombre_encuesta').text(result[0].source[0].NombreEncuesta);
                                 for (var i = 0; i < result.length; i++) {
                                     var grafica = {};
                                     grafica.cols = new Array();
@@ -175,17 +194,26 @@
                                                         { "id": "", "label": "Respuestas", "pattern": "", "type": "number" });
                                     var div = randomString(5, '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ');
                                     for (var j = 0; j < result[i].source.length; j++) {
-                                        console.log(result[i].source[j]);
                                         if (j == 0) {
-                                            $('#accordion').append('<div class="panel panel-default"><div class="panel-heading" role="ab" id="headingOne"><h4 class="panel-title"><a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapse' + div + '" aria-expanded="true" aria-controls="collapseOne">' + result[i].source[j].Pregunta + '</a></h4></div><div id="collapse' + div + '" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingOne"><div class="panel-body"><div class="row"><div class="col-md-6 col-md-offset-3"><div id=' + div + '></div></div></div></div></div></div>');
+                                            $('#accordion').append('<div class="panel panel-default"><div class="panel-heading" role="ab" id="headingOne"><h4 class="panel-title"><a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapse' + div + '" aria-expanded="true" aria-controls="collapseOne">' + result[i].source[j].Pregunta + '</a></h4></div><div id="collapse' + div + '" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingOne"><div class="panel-body"><div class="row"><div class="col-md-11 col-md-offset-1"><div id="abietas' + div + '" class="col-md-5 scroll_div" style="height:350px; display:none;"></div><div id=' + div + '></div></div></div></div></div></div>');
                                         }
-                                        var c = {};
-                                        c.c = new Array();
-                                        c.c.push({ "v": result[i].source[j].Respuesta }, { 'v': result[i].source[j].Cantidad });
-                                        grafica.rows.push(c);
+                                        if (result[i].source[j].IdTipoPregunta == 1) {
+                                            $('#abietas' + div).show();
+                                            $('#abietas' + div).append('<li>' + result[i].source[j].RespuestaAbierta + '</ul>');
+                                        } else {
+                                            $('#abietas' + div).hide();
+                                            var c = {};
+                                            c.c = new Array();
+                                            c.c.push({ "v": result[i].source[j].Respuesta }, { 'v': result[i].source[j].Cantidad });
+                                            grafica.rows.push(c);
+                                        }
                                     }
-                                    var datosGrafica = JSON.stringify(grafica);
-                                    graficar(datosGrafica, result[i].source[0].Pregunta, div, grafica_tipo);
+
+                                    if (result[i].source[0].IdTipoPregunta != 1) {
+                                        var datosGrafica = JSON.stringify(grafica);
+                                        graficar(datosGrafica, result[i].source[0].Pregunta, div, grafica_tipo);
+                                    }
+                                   
                                 }
                             },
                             error: function (jqXHR, textStatus, errorThrown) {
@@ -207,7 +235,7 @@
     function graficar(datos, titulo, div, grafica) {
         google.charts.setOnLoadCallback(load_page_data);
         function load_page_data() {
-            drawChart(datos, titulo, "Cantidad", div, grafica);
+            drawChart(datos, titulo, "Respuestas", div, grafica);
 
         }
 
@@ -217,11 +245,18 @@
         var chart1_data = new google.visualization.DataTable(chart_data);
         var chart1_options = {
             title: chart1_main_title,
+            width: 800, height: 400,
             vAxis: {
-                title: chart1_vaxis_title, titleTextStyle: { color: 'Black' }, width: 600,
-                height: 300
+                title: chart1_vaxis_title, titleTextStyle: { color: 'Black' }
+            },
+            chartArea: {
+                left: 70,
+                top: 10,
+                width: 400,
+                height: 350
             }
         };
+
 
 
         if (grafica == "PieChart") {
