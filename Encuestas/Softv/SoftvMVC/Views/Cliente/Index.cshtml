@@ -5,7 +5,12 @@
 
     <h2>Index</h2>*@
 @{
+    List<Softv.Entities.PermisoEntity> Permiso = ViewBag.Permisos;
+    var per = Permiso.Where(p => p.IdModule == 4 || p.IdModule == 15).FirstOrDefault();
+}
+@{
     List<Softv.Entities.ConexionEntity> conexiones = (List<Softv.Entities.ConexionEntity>)ViewData["Conexiones"];
+    
 
 }
 <section class="content-header">
@@ -456,7 +461,7 @@
                                 <span class="info-box-text"><label>Contrato: </label>  <strong id="contrato_cliente" style="color:red;"></strong></span>
 
                                 <div class="row">
-                                    <div class="col-xs-3">
+                                    <div class="col-xs-2">
                                         <label><i class="fa fa-phone"></i> Télefono</label><p id="telefono_cliente"></p>
                                     </div>
                                     <div class="col-xs-3">
@@ -481,15 +486,11 @@
                                         <label>Colonia:</label><p id="colonia_cliente"></p>
 
                                     </div>
-                                    <div class="col-xs-3">
+                                    <div class="col-xs-2">
                                         <label> Calle:</label><p id="calle_cliente"></p>
                                     </div>
-                                    <div class="col-xs-3">
+                                    <div class="col-xs-2">
                                         <label>Número:</label><p id="numero_cliente"></p>
-                                    </div>
-                                    <div class="col-xs-3">
-                                        <label>CP:</label><p id="cp_cliente"></p>
-
                                     </div>
                                 </div>
 
@@ -544,8 +545,8 @@
                 <br />
             </div>
             <div class="modal-footer">
-                <button class="btn btn-primary " type="button" data-dismiss="modal">Cerrar</button>
                 <button class="btn btn-success" onclick="plaza_conexion()" type="button" id="aceptar_plaza">Conectar</button>
+                <button class="btn btn-primary " type="button" data-dismiss="modal">Cerrar</button>
             </div>
         </div>
     </div>
@@ -565,7 +566,11 @@
 
 
 
-
+<script>
+    var permiso_editar = "@per.OptUpdate";
+    var permiso_agregar = "@per.OptAdd";
+    var permiso_eliminar = "@per.OptDelete";
+</script>
 
 
 <script src="~/dist/js/pages/Cliente/Lista.js"></script>    

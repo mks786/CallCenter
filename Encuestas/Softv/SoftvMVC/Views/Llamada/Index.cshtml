@@ -4,6 +4,14 @@
     }
 
     <h2>Index</h2>*@
+@{
+    List<Softv.Entities.PermisoEntity> Permiso = ViewBag.Permisos;
+    var a = Permiso.Where(p => p.IdModule == 1).FirstOrDefault();
+    
+}
+
+
+
 
 <section class="content-header">
     <h1>
@@ -22,9 +30,13 @@
             <div class="box-header">
                 <h3 class="box-title">Lista de Llamadas</h3>
                 <div class="row">
-                    <div class="col-md-12">
-                        <a href="/Llamada/nueva" class="btn btn-success btn-sm disabled" id="nueva_llamada_link" style="float:right;"><i class="fa fa-phone" aria-hidden="true"></i> Nueva Llamada </a>
-                    </div>
+                    @if (a.OptAdd == true)
+                    {
+                        <div class="col-md-12">
+                            <a href="/Llamada/nueva" class="btn btn-success btn-sm disabled" id="nueva_llamada_link" style="float:right;"><i class="fa fa-phone" aria-hidden="true"></i> Nueva Llamada </a>
+                        </div>
+                    }
+                   
                 </div>
                 <div class="row">
                     <div class="col-md-3">
@@ -314,6 +326,12 @@
                                             <input type="text" class="form-control" id="email_editar">
                                         </div>
                                     </div>
+                                    <div class="row" style="display:none;" id="panel_tipo_informacion">
+                                        <div class="col-md-6">
+                                            <label>Selecciona el tipo de información</label>
+                                            <select class="form-control" id="tipo_informacion_editar"></select>
+                                        </div>
+                                    </div>
                                     <div class="row">
                                         <div class="col-xs-6">
                                             <label>Detalle</label>
@@ -321,19 +339,19 @@
                                         </div>
                                     </div>
                                     <div class="row" style="display:none;" id="clasificacion_editar">
-                                        <div class="col-xs-4">
+                                        <div class="col-xs-6">
                                             <label>Clasificación del problema</label>
                                             <select class="form-control" id="select_problemas"></select>
                                         </div>
                                     </div>
-                                    <div class="row">
+                                    <div class="row" style="display:none;" id="panel_solucion">
                                         <div class="col-xs-6">
                                             <label>Solución</label>
                                             <textarea class="form-control" id="solucion_editar"></textarea>
                                         </div>
                                     </div>
                                     <div class="row" style="display:none;" id="clasificacion_solucion_editar">
-                                        <div class="col-xs-4">
+                                        <div class="col-xs-6">
                                             <label>Clasificación de la solución</label>
                                             <select class="form-control" id="select_solucion"></select>
                                         </div>
@@ -368,7 +386,7 @@
                 </div>
             </div>
             <div class="modal-footer">
-                <button class="btn btn-success" type="button" onclick="guardarLlamada()">Guardar</button>
+                <button class="btn btn-success" id="guardar_llamada" type="button" onclick="guardarLlamada(this)">Guardar</button>
                 <button class="btn btn-primary" type="button" data-dismiss="modal">Cerrar</button>
             </div>
         </div>
@@ -561,6 +579,9 @@
 
 
 <script src="~/plugins/input-mask/jquery.inputmask.js"></script>
+<script>
+    var permiso_editar = "@a.OptUpdate";
+</script>
 <script src="~/dist/js/pages/Llamada/Lista.js"></script>
 <script src="~/dist/js/pages/Llamada/agregar_llamada.js"></script>
 <link href="~/plugins/sweetAlert/sweetalert.css" rel="stylesheet" />

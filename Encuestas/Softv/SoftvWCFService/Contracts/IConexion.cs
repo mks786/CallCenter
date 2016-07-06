@@ -27,7 +27,7 @@ namespace SoftvWCFService.Contracts
         [OperationContract]
         int UpdateConexion(ConexionEntity objConexion);
         [OperationContract]
-        int DeleteConexion(String BaseRemoteIp, int BaseIdUser, int? IdConexion);
+        int DeleteConexion(int? IdConexion);
 
     }
 }

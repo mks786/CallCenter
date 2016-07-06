@@ -110,30 +110,30 @@
                 $.ajax({
                     type: "POST",
                     url: "@Url.Action("logon", "Usuario")", // Method , Controler
-            //url: "/ParametroConfiguracion/QuickIndex/",
-                    data: { user: userx, pass: passx },
-                success: function (data) {
-                    // $('#DatosTabla').html(data);
-                    //ReloadScript();
-                    //
-                    if (data.Success == 'False') {
-                        $('#cargando1').css("display", "none");
-                        $('#Buscador').css("display", "inline");
-                        //ShowNotification('Error Acceso', data.Message, 'error')
-                        swal("Usuario y/o contraseña incorrecta", "", "error");
-                        //$('#usuario').val("");
-                        //$('#password').val("");
-                    }
-                    else {
-                        @if(Session["lasturl"]!=null)
+                    //url: "/ParametroConfiguracion/QuickIndex/",
+                    data: { 'user': userx, 'pass': passx },
+                    success: function (data) {
+                        // $('#DatosTabla').html(data);
+                        //ReloadScript();
+                        //
+                        if (data.Success == 'False') {
+                            $('#cargando1').css("display", "none");
+                            $('#Buscador').css("display", "inline");
+                            //ShowNotification('Error Acceso', data.Message, 'error')
+                            swal(data.Message, "", "error");
+                            //$('#usuario').val("");
+                            //$('#password').val("");
+                        }
+                        else {
+                            @if(Session["lasturl"]!=null)
                         {
                             @:window.location = '@Session["lasturl"].ToString()'
-                        }
+                                                    }
                         else
                         {
                     @*@:window.location = '../Home/Index.cshtml'*@
                                 @:document.location.href = '../Home';
-                                            @*@:location.href = '../Home/Index';
+                                                                        @*@:location.href = '../Home/Index';
                             @:parent.location = '../Home/Index';
                             @:window.location.href = '../Home/Index';*@
 
@@ -142,24 +142,24 @@
                             @:RedirectToAction("Index", "Home");*@
                             }
 
+                        }
+                    },
+                    error: function (xhr, ajaxOptions, thrownError) {
+                        //ShowNotification('Error', thrownError + '' + xhr.status, 'error')
+                        swal("Usuario y/o contraseña incorrecta", "", "error");
+                        $('#cargando1').css("display", "none");
+                        $('#Buscador').css("display", "inline");
+                        $('#usuario').val("");
+                        $('#password').val("");
+
                     }
-                },
-                error: function (xhr, ajaxOptions, thrownError) {
-                    //ShowNotification('Error', thrownError + '' + xhr.status, 'error')
-                    swal("Usuario y/o contraseña incorrecta", "", "error");
-                    $('#cargando1').css("display", "none");
-                    $('#Buscador').css("display", "inline");
-                    $('#usuario').val("");
-                    $('#password').val("");
 
-                }
-
-            });
+                });
             }, 2000);
 
-            
+
         }
-        
+
 
     });
 

@@ -228,7 +228,7 @@ namespace SoftvMVC.Controllers
 
             try
             {
-                comandoSql = new SqlCommand("select * from Turnos");
+                comandoSql = new SqlCommand("select * from tbl_Turnos");
                 comandoSql.Connection = conexionSQL;
                 SqlDataReader reader = comandoSql.ExecuteReader();
                 if (reader.HasRows)

@@ -1,0 +1,207 @@
+﻿@*@{
+        ViewBag.Title = "Index";
+        Layout = "~/Views/Shared/_Layout.cshtml";
+    }
+
+    <h2>Index</h2>*@
+@{
+    List<Softv.Entities.RoleEntity> Roles = (List<Softv.Entities.RoleEntity>)ViewData["Roles"];
+    List<Softv.Entities.PermisoEntity> Permiso = ViewBag.Permisos;
+    var per = Permiso.Where(p => p.IdModule == 22).FirstOrDefault();
+}
+<section class="content-header">
+    <h1>
+        Roles
+        <small>Lista de Roles</small>
+    </h1>
+    <ol class="breadcrumb">
+        <li><a href="#"><i class="fa fa-dashboard"></i> Inicio</a></li>
+        <li class="active">Lista de Roles</li>
+    </ol>
+</section>
+
+<div class="row">
+    <div class="col-xs-12">
+        <div class="box">
+            <div class="box-header">
+                <h3 class="box-title">Lista de Roles</h3>
+
+            </div><!-- /.box-header -->
+            <div class="box-body">
+
+                <table id="TablaRoles" class="table table-bordered table-hover dataTable">
+                    <thead>
+                        <tr>
+                            <td><b>IdRol</b></td>
+                            <td><b>Nombre</b></td>
+                            <td><b>Descripción</b></td>
+                            <td><b>Opciones</b></td>
+                        </tr>
+                    </thead>
+
+                </table>
+
+            </div>
+        </div>
+
+    </div>
+
+</div>
+
+
+
+
+
+
+@*MODAL AGREGAR*@
+<div class="modal fade bs-example-modal-xs" id="ModalAgregarRoles" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel">
+    <div class="modal-dialog modal-xs">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button class="close" aria-label="Close" type="button" data-dismiss="modal"><span aria-hidden="true">×</span></button>
+                <h4 class="modal-title">Agregar Roles</h4>
+            </div>
+
+            <div class="modal-body">
+
+                <div class="row">
+                    <div class="col-md-6">
+                        <input type="text" class="form-control" id="Nombre" name="Nombre" placeholder="Nombre">
+                    </div>
+
+                    <div class="col-md-6">
+                        <input type="text" class="form-control" id="Descripcion" name="Descripcion" placeholder="Descripción">
+                    </div>
+
+                    <div style="display:none">
+                        <input type="text" class="form-control" id="Estado" name="Estado" value="1">
+                    </div>
+                </div>
+
+            </div>
+
+
+            <div class="modal-footer">
+                <button class="btn btn-primary" type="button" data-dismiss="modal">Cancelar</button>
+                <button class="btn btn-success" onclick="enviar_role()" type="button">Guardar</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+@*MODAL DETALLE*@
+<div class="modal fade bs-example-modal-md" id="ModalDetalleRoles" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel">
+    <div class="modal-dialog modal-md">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button class="close" aria-label="Close" type="button" data-dismiss="modal"><span aria-hidden="true">×</span></button>
+                <h4 class="modal-title">Detalles de Role</h4>
+            </div>
+
+            <div class="modal-body">
+                <div class="row">
+
+                    <div class="col-md-6">
+                        <label>Nombre:</label>
+                        <input type="text" class="form-control detalle_role" disabled />
+                    </div>
+
+                    <div class="col-md-6">
+                        <label>Descripción:</label>
+                        <input type="text" class="form-control detalle_role2" disabled />
+                    </div>
+
+                </div>
+            </div>
+
+            <div class="modal-footer">
+                <button class="btn btn-primary" type="button" data-dismiss="modal">Cerrar</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+@*MODAL EDITAR*@
+<div class="modal fade bs-example-modal-md" id="ModalEditarRoles" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel">
+    <div class="modal-dialog modal-md">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button class="close" aria-label="Close" type="button" data-dismiss="modal"><span aria-hidden="true">×</span></button>
+                <h4 class="modal-title">Detalles de Role</h4>
+            </div>
+
+            <div class="modal-body">
+
+                <div class="row">
+                    <div class="col-md-6">
+                        <label>Nombre:</label>
+                        <input type="text" class="form-control editar_role" />
+                    </div>
+
+                    <div class="col-md-6">
+                        <label>Descripción:</label>
+                        <input type="text" class="form-control editar_role2" />
+                    </div>
+
+                    <div style="display:none">
+                        <div class="col-md-6">
+                            <label>Estado:</label>
+                            <input type="text" value="true" class="form-control editar_role3" />
+                        </div>
+                    </div>
+
+
+                </div>
+
+            </div>
+
+            <div class="modal-footer">
+                <button class="btn btn-primary" type="button" data-dismiss="modal">Cerrar</button>
+                <button class="btn btn-success" onclick="enviar_editar_role()" type="button">Guardar</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+@*MODAL ELIMINAR*@
+<div class="modal fade" id="ModalEliminaRol" role="dialog">
+    <div class="modal-dialog modal-md">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button class="close" aria-label="Close" type="button" data-dismiss="modal"><span aria-hidden="true">×</span></button>
+                <h4 class="modal-title">Eliminar Role</h4>
+            </div>
+
+            <div class="modal-body">
+
+                <input type="hidden" id="IdRol" />
+                <p class="red">¿Realmente deseas eliminar el Rol "<strong id="Eliminar_Nombre"></strong>"?</p>
+
+            </div>
+
+            <div class="modal-footer">
+                <button class="btn btn-primary" type="button" data-dismiss="modal">Cerrar</button>
+                <button class="btn btn-danger" type="button" onclick="confirmar_eliminar_rol()">Eliminar</button>
+            </div>
+        </div>
+    </div>
+</div>
+<script>
+    var permiso_editar = "@per.OptUpdate";
+    var permiso_agregar = "@per.OptAdd";
+    var permiso_eliminar = "@per.OptDelete";
+</script>
+<script>
+    $(document).ready(function () {
+        $('#poner_activo li').siblings('li').removeClass('active');
+        $('.19').addClass('active');
+        $('#sub_activo li').siblings('li').removeClass('active');
+        $('.22').addClass('active');
+    });
+</script>
+
+<script src="~/dist/js/pages/Role/Lista.js"></script>
+<script src="~/dist/js/pages/Role/modales_role.js"></script>

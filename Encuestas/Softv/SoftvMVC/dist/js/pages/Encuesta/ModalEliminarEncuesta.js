@@ -20,8 +20,8 @@ $('#EliminaEncuesta').click(function () {
 
             $('#ModalEliminarEncuesta').modal('hide');
             swal({
-                title: "!Hecho!", text: "Encuesta se aplico exitosamente!",
-                type: "success",
+                title: "!Hecho!", text: "Encuesta se eliminó exitosamente!",
+                type: "error",
                 showCancelButton: false,
                 confirmButtonColor: "#5cb85c",
                 confirmButtonText: "Aceptar",

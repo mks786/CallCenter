@@ -83,6 +83,7 @@ namespace SoftvMVC.Controllers
             if (this.Session == null || this.Session["Access"] != null)
             {
                 UsuarioEntity um = new UsuarioEntity();
+                List<PermisoEntity> permiso = new List<PermisoEntity>();
                 List<ModuleEntity> lstModuleFilter = new List<ModuleEntity>();
                 um = (UsuarioEntity)Session["Usuario"];
                 if (um != null)
@@ -92,7 +93,7 @@ namespace SoftvMVC.Controllers
                         List<PermisoEntity> lstPermiso =
                                             proxyPermiso.GetXmlPermiso(Globals.SerializeTool.Serialize<PermisoEntity>(new PermisoEntity() { IdRol = um.IdRol })).ToList();
 
-
+                        permiso = proxyPermiso.GetPermisoList().Where(o => o.IdRol == um.IdRol).ToList();
                         lstModuleFilter = (from c in BuildMenu()
                                            where (from o in lstPermiso
                                                   select o.IdModule).Contains(c.IdModule)
@@ -119,7 +120,7 @@ namespace SoftvMVC.Controllers
 
                 proxy = new SoftvService.ModuleClient();
                 List<ModuleEntity> lm = lstModule;
-                //ViewBag.Permisos = lstModuleFilter;
+                ViewBag.Permisos = permiso;
                 ViewBag.Menu2 = lm;
                 TipoCambioPass();
 
@@ -195,7 +196,7 @@ namespace SoftvMVC.Controllers
                     //    ViewBag.POptAdd = false;
                     //}
 
-                    if (lm.FirstOrDefault().Permiso.OptUpdate)
+                    if (lm.FirstOrDefault().Permiso.OptUpdate == true)
                     {
                         ViewData["cambioadmin"] = true;
 
@@ -229,20 +230,20 @@ namespace SoftvMVC.Controllers
 
                 if (lm.Count > 0)
                 {
-                    if (!lm.FirstOrDefault().Permiso.OptAdd)
+                    if (!lm.FirstOrDefault().Permiso.OptAdd == false)
                     {
                         ViewData["POptAdd"] = false;
                         ViewBag.POptAdd = false;
 
                     }
 
-                    if (!lm.FirstOrDefault().Permiso.OptUpdate)
+                    if (!lm.FirstOrDefault().Permiso.OptUpdate == false)
                     {
                         ViewData["POptUpdate"] = false;
                         ViewBag.POptUpdate = false;
                     }
 
-                    if (!lm.FirstOrDefault().Permiso.OptDelete)
+                    if (!lm.FirstOrDefault().Permiso.OptDelete == false)
                     {
                         ViewData["POptDelete"] = false;
                         ViewBag.POptDelete = false;
@@ -265,20 +266,20 @@ namespace SoftvMVC.Controllers
 
                 if (lm.Count > 0)
                 {
-                    if (!lm.FirstOrDefault().Permiso.OptAdd)
+                    if (!lm.FirstOrDefault().Permiso.OptAdd == false)
                     {
                         ViewData["POptAdd"] = false;
                         ViewBag.POptAdd = false;
 
                     }
 
-                    if (!lm.FirstOrDefault().Permiso.OptUpdate)
+                    if (!lm.FirstOrDefault().Permiso.OptUpdate == false)
                     {
                         ViewData["POptUpdate"] = false;
                         ViewBag.POptUpdate = false;
                     }
 
-                    if (!lm.FirstOrDefault().Permiso.OptDelete)
+                    if (!lm.FirstOrDefault().Permiso.OptDelete == false)
                     {
                         ViewData["POptDelete"] = false;
                         ViewBag.POptDelete = false;
@@ -302,7 +303,7 @@ namespace SoftvMVC.Controllers
 
                 if (lm.Count > 0)
                 {
-                    if (!lm.FirstOrDefault().Permiso.OptAdd)
+                    if (!lm.FirstOrDefault().Permiso.OptAdd == true)
                     {
                         ViewData["NoAut"] = true;
 
@@ -333,7 +334,7 @@ namespace SoftvMVC.Controllers
                 if (lm.Count > 0)
                 {
 
-                    if (!lm.FirstOrDefault().Permiso.OptUpdate)
+                    if (!lm.FirstOrDefault().Permiso.OptUpdate == true)
                     {
                         ViewData["NoAut"] = true;
 
@@ -381,12 +382,14 @@ namespace SoftvMVC.Controllers
             Response.Cookies.Add(Password);
         }
 
+        [AllowAnonymous]
         public ActionResult logon(string user, string pass)
         {
             List<UsuarioEntity> list = null;
             List<UsuarioEntity> listUsuario = new List<UsuarioEntity>();
             proxyUsuario.GetUsuarioList().ToList().ForEach(x =>
             listUsuario.Add(x));
+            //listUsuario = proxyUsuario.GetUsuarioList();
             list = listUsuario.Where(x => x.Usuario.ToUpper().Equals(user.ToUpper()) && x.Password.ToUpper().Equals(pass.ToUpper()) && x.Estado == true).ToList();
             if (list.Count > 0)
             {

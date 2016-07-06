@@ -2,7 +2,7 @@
     var id_plaza = $('#paza_conectando').val();
     console.log(id_plaza);
     $.ajax({
-        url: "/CLIENTE/GetClientesporPlazaJson/",
+        url: "/CLIENTE/GetClientesporPlaza/",
         type: "GET",
         data: { 'id': id_plaza, "contrato": id, "cliente1": "", "direccion": "" },
         success: function (data, textStatus, jqXHR) {

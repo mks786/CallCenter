@@ -83,8 +83,8 @@ namespace Softv.BAL
             List<TipServEntity> lTipServ = ProviderSoftv.TipServ.GetTipServ(entities.Where(x => x.Clv_TipSer.HasValue).Select(x => x.Clv_TipSer.Value).ToList());
             lTipServ.ForEach(XTipServ => entities.Where(x => x.Clv_TipSer.HasValue).Where(x => x.Clv_TipSer == XTipServ.Clv_TipSer).ToList().ForEach(y => y.TipServ = XTipServ));
 
-            List<CLIENTEEntity> lCLIENTE = ProviderSoftv.CLIENTE.GetCLIENTE(entities.Where(x => x.Contrato.HasValue).Select(x => x.Contrato.Value).ToList());
-            lCLIENTE.ForEach(XCLIENTE => entities.Where(x => x.Contrato.HasValue).Where(x => x.Contrato == XCLIENTE.CONTRATO).ToList().ForEach(y => y.CLIENTE = XCLIENTE));
+            //List<CLIENTEEntity> lCLIENTE = ProviderSoftv.CLIENTE.GetCLIENTE(entities.Where(x => x.Contrato.HasValue).Select(x => x.Contrato.Value).ToList());
+            //lCLIENTE.ForEach(XCLIENTE => entities.Where(x => x.Contrato.HasValue).Where(x => x.Contrato == XCLIENTE.CONTRATO).ToList().ForEach(y => y.CLIENTE = XCLIENTE));
 
             List<QuejaEntity> lQueja = ProviderSoftv.Queja.GetQueja(entities.Where(x => x.Clv_Queja.HasValue).Select(x => x.Clv_Queja.Value).ToList());
             lQueja.ForEach(XQueja => entities.Where(x => x.Clv_Queja.HasValue).Where(x => x.Clv_Queja == XQueja.Clv_Queja).ToList().ForEach(y => y.Queja = XQueja));
@@ -126,8 +126,8 @@ namespace Softv.BAL
             if (result.Clv_TipSer != null)
                 result.TipServ = ProviderSoftv.TipServ.GetTipServById(result.Clv_TipSer);
 
-            if (result.Contrato != null)
-                result.CLIENTE = ProviderSoftv.CLIENTE.GetCLIENTEById(result.Contrato);
+            //if (result.Contrato != null)
+            //    result.CLIENTE = ProviderSoftv.CLIENTE.GetCLIENTEById(result.Contrato);
 
             if (result.Clv_Queja != null)
                 result.Queja = ProviderSoftv.Queja.GetQuejaById(result.Clv_Queja);

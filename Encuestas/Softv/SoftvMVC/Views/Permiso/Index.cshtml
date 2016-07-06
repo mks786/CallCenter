@@ -1,0 +1,334 @@
+﻿@{
+
+    List<Softv.Entities.PermisoEntity> Permiso = (List<Softv.Entities.PermisoEntity>)ViewData["Permiso"];
+    List<Softv.Entities.RoleEntity> Role = (List<Softv.Entities.RoleEntity>)ViewData["Roles"];
+    List<Softv.Entities.ModuleEntity> Module = (List<Softv.Entities.ModuleEntity>)ViewData["Module"];
+    
+    List<Softv.Entities.PermisoEntity> Permisos = ViewBag.Permisos;
+    var per = Permisos.Where(p => p.IdModule == 23).FirstOrDefault();
+
+}
+
+@*  *@
+<section class="content-header">
+    <h1>
+        Permisos
+        <small>Lista de Permisos</small>
+    </h1>
+    <ol class="breadcrumb">
+        <li><a href="#"><i class="fa fa-dashboard"></i> Inicio</a></li>
+        <li class="active">Lista de Permisos</li>
+    </ol>
+</section>
+
+
+<div class="row">
+    <div class="col-xs-12">
+        <div class="box">
+            <div class="box-header"> </div>
+            <div class="box-body">
+
+                <table id="TablaPermisos" class="table table-bordered table-hover dataTable">
+                    <thead>
+                        <tr>
+                            <td><b>Id Rol</b></td>
+                            <td><b>Id Module</b></td>
+                            <td><b>Agregar</b></td>
+                            <td><b>Actualizar</b></td>
+                            <td><b>Eliminar</b></td>
+                            <td><b>Seleccionar</b></td>
+                            <td><b>Opciones</b></td>
+                        </tr>
+                    </thead>
+
+                </table>
+
+            </div>
+        </div>
+    </div>
+</div>
+
+
+@*MODAL AGREGAR *@
+<div class="modal fade bs-example-modal-lg" id="ModalAgregarPermiso" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button class="close" aria-label="Close" type="button" data-dismiss="modal"><span aria-hidden="true">×</span></button>
+                <h4 class="modal-title" id="tituloModalAgregarEncuesta">Agregar Permiso</h4>
+            </div>
+
+            <div class="modal-body">
+
+                <div class="row">
+                    <div class="col-xs-6">
+                        <label>Roles</label>
+                        <select class="form-control" id="IdRol">
+                            <option disabled selected> Selecciona un Rol</option>
+                            @foreach (var a in Role)
+                            {
+                                <option value="@a.IdRol">@a.Nombre</option>
+                            }
+
+                        </select>
+                    </div>
+                    <div class="col-xs-6">
+                        <label>Modules</label>
+                        <select class="form-control" id="IdModule">
+                            <option disabled selected> Selecciona un Modulo</option>
+                            @foreach (var a in Module)
+                            {
+                                <option value="@a.IdModule">@a.Description</option>
+                            }
+
+                        </select>
+                    </div>
+                </div>
+
+                </br></br></br>
+
+                <label>
+                    Seleccione las casillas necesarias al perfil de los Roles
+                </label>
+
+                <div class="row">
+                    </br>
+
+                    <div class="col-xs-3">
+                        <div style="padding-left:65px;">
+                            <div class="checkbox icheck">
+                                <input id="OptAdd" type="checkbox" name="OptAdd" />
+                                <label for="OptAdd">Agregar</label>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-xs-3">
+                        <div style="padding-left:65px;">
+                            <div class="checkbox icheck">
+                                <input id="OptUpdate" type="checkbox" name="OptUpdate" />
+                                <label for="OptUpdate">Actualizar</label>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-xs-3">
+                        <div style="padding-left:65px;">
+                            <div class="checkbox icheck">
+                                <input id="OptDelete" type="checkbox" name="OptDelete" />
+                                <label for="OptDelete">Eliminar</label>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-xs-3">
+                        <div style="padding-left:65px;">
+                            <div class="checkbox icheck">
+                                <input id="OptSelect" type="checkbox" name="OptSelect" />
+                                <label for="OptSelect">Seleccionar</label>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+                <br /><br />
+
+            </div>
+
+            <div class="modal-footer">
+                <button class="btn btn-success" onclick="enviar_permiso()" type="button">Guardar</button>
+                <button class="btn btn-primary" type="button" data-dismiss="modal">Cancelar</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+
+
+@*MODAL DETALLE*@
+<div class="modal fade bs-example-modal-md" id="ModalDetalleRoles" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel">
+    <div class="modal-dialog modal-md">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button class="close" aria-label="Close" type="button" data-dismiss="modal"><span aria-hidden="true">×</span></button>
+                <h4 class="modal-title">Detalles de Permiso</h4>
+            </div>
+
+            <div class="modal-body">
+
+                <div class="row" style="display:none">
+                    <div class="col-md-6">
+                        <label>IdPermiso:</label>
+                        <input type="text" class="form-control detalle_permiso6" disabled />
+                    </div>
+                </div>
+
+
+                <div class="row">
+                    <div class="col-md-6">
+                        <label>Rol:</label>
+                        <input type="text" id="role_detalle" class="form-control detalle_permiso" disabled />
+
+                    </div>
+
+
+                    <div class="col-md-6">
+                        <label>Modulo:</label>
+                        <input type="text" id="module_detalle" class="form-control detalle_permiso1" disabled />
+                    </div>
+
+                </div>
+                <br/>
+
+                <div class="row">
+
+                    <div style="padding-left:65px;">
+                        <div class="col-sm-6">
+                            <label for="OptAdd">Agregar:</label>
+                            <input type="checkbox" id="OptAdd_detalle" disabled />
+                        </div>
+                    </div>
+
+                    <div style="padding-left:65px;">
+                        <div class="col-sm-6">
+                            <label>Actualizar:</label>
+                            <input type="checkbox" name="OptUpdate" id="OptUpdate_detalle" disabled />
+                        </div>
+                    </div>
+
+                </div>
+
+                <div class="row">
+
+                    <div style="padding-left:65px;">
+                        <div class="col-sm-6">
+                            <label>Eliminar:</label>
+                            <input type="checkbox" name="OptDelete" id="OptDelete_detalle" disabled />
+                        </div>
+                    </div>
+
+                    <div style="padding-left:65px;">
+                        <div class="col-sm-6">
+                            <label>Seleccionar:</label>
+                            <input type="checkbox" name="OptSelect" id="OptSelect_detalle" disabled />
+                        </div>
+                    </div>
+
+                </div>
+
+            </div>
+
+            <div class="modal-footer">
+                <button class="btn btn-primary" type="button" data-dismiss="modal">Cerrar</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+
+@*MODAL EDITAR*@
+<div class="modal fade bs-example-modal-md" id="ModalEditarPermiso" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel">
+    <div class="modal-dialog modal-md">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button class="close" aria-label="Close" type="button" data-dismiss="modal"><span aria-hidden="true">×</span></button>
+                <h4 class="modal-title">Detalles de Permisos</h4>
+                <input type="hidden" class="form-control detalle_permiso6" id="idPermiso_edit"/>
+            </div>
+
+            <div class="modal-body">
+                <div class="row">
+                    <div class="col-md-6">
+                        <label>Rol:</label>
+                        <select class="form-control" id="role_select" disabled></select>
+                    </div>
+                    <div class="col-md-6">
+                        <label>Modulo:</label>
+                        <select class="form-control" id="module_select" disabled></select>
+                    </div>
+
+                </div>
+                </br>
+
+                <div class="row">
+
+                    <div style="padding-left:65px;">
+                        <div class="col-sm-6">
+                            <label for="OptAdd_editar">Agregar:</label>
+                            <input type="checkbox" id="OptAdd_editar" checked="checked"  />
+                        </div>
+                    </div>
+
+                    <div style="padding-left:65px;">
+                        <div class="col-sm-6">
+                            <label for="OptUpdate_editar">Actualizar:</label>
+                            <input type="checkbox" id="OptUpdate_editar" />
+                        </div>
+                    </div>
+
+                </div>
+
+                <div class="row">
+
+                    <div style="padding-left:65px;">
+                        <div class="col-sm-6">
+                            <label for="OptDelete_editar">Eliminar:</label>
+                            <input type="checkbox" id="OptDelete_editar" />
+                        </div>
+                    </div>
+
+                    <div style="padding-left:65px;">
+                        <div class="col-sm-6">
+                            <label for="OptSelect_editar">Seleccinar:</label>
+                            <input type="checkbox" id="OptSelect_editar" />
+                        </div>
+                    </div>
+
+                </div>
+
+            </div>
+
+            <div class="modal-footer">
+                <button class="btn btn-success" onclick="enviar_editar_permiso()" type="button">Guardar</button>
+                <button class="btn btn-primary" type="button" data-dismiss="modal">Cerrar</button>
+            </div>
+        </div>
+    </div>
+</div>
+<script>
+    var permiso_editar = "@per.OptUpdate";
+    var permiso_agregar = "@per.OptAdd";
+    var permiso_eliminar = "@per.OptDelete";
+</script>
+<script>
+    $(document).ready(function () {
+        $('#poner_activo li').siblings('li').removeClass('active');
+        $('.19').addClass('active');
+        $('#sub_activo li').siblings('li').removeClass('active');
+        $('.23').addClass('active');
+    });
+</script>
+
+<script src="~/dist/js/pages/Permiso/Lista.js"></script>
+<script src="~/dist/js/pages/Permiso/ModalesPermisos.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+

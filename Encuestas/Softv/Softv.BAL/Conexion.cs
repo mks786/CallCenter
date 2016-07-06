@@ -68,8 +68,8 @@ namespace Softv.BAL
             List<ConexionEntity> entities = new List<ConexionEntity>();
             entities = ProviderSoftv.Conexion.GetConexion();
 
-            List<LlamadaEntity> lLlamada = ProviderSoftv.Llamada.GetLlamada(entities.Where(x => x.IdConexion.HasValue).Select(x => x.IdConexion.Value).ToList());
-            lLlamada.ForEach(XLlamada => entities.Where(x => x.IdConexion.HasValue).Where(x => x.IdConexion == XLlamada.IdConexion).ToList().ForEach(y => y.Llamada = XLlamada));
+            //List<LlamadaEntity> lLlamada = ProviderSoftv.Llamada.GetLlamada(entities.Where(x => x.IdConexion.HasValue).Select(x => x.IdConexion.Value).ToList());
+            //lLlamada.ForEach(XLlamada => entities.Where(x => x.IdConexion.HasValue).Where(x => x.IdConexion == XLlamada.IdConexion).ToList().ForEach(y => y.Llamada = XLlamada));
 
             return entities ?? new List<ConexionEntity>();
         }

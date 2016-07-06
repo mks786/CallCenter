@@ -29,6 +29,7 @@ namespace SoftvMVC.Controllers
 
         private SoftvService.ModuleClient proxyModule = null;
 
+
         public UsuarioController()
         {
             proxy = new SoftvService.UsuarioClient();
@@ -372,6 +373,48 @@ namespace SoftvMVC.Controllers
             public int recordsTotal { get; set; }
             public int recordsFiltered { get; set; }
             public List<UsuarioEntity> data { get; set; }
+        }
+
+
+        public ActionResult login(string usuario, string password)
+        {
+            List<UsuarioEntity> list = null;
+            List<UsuarioEntity> listUsuario = new List<UsuarioEntity>();
+            //proxyUsuario.GetUsuarioList().ToList().ForEach(x =>
+            //listUsuario.Add(x));
+            listUsuario = proxy.GetUsuarioList();
+            list = listUsuario.Where(x => x.Usuario.ToUpper().Equals(usuario.ToUpper()) && x.Password.ToUpper().Equals(password.ToUpper()) && x.Estado == true).ToList();
+            if (list.Count > 0)
+            {
+                if (proxyRole.GetRole(list.FirstOrDefault().IdRol).Estado == true)
+                {
+                    Session["Access"] = "OK";
+                    Session["username"] = list[0].Usuario;
+                    Session["idusuario"] = list[0].IdUsuario;
+                    Session["Usuario"] = list[0];
+                    ViewBag.access = true;
+                    RememberMyCookies(list.FirstOrDefault());
+
+
+                }
+                else
+                {
+                    Response.Cookies["usuario"].Value = null;
+                    Response.Cookies["password"].Value = null;
+                    var result = new { Success = "False", Message = "Consulta con tu Administrador el Rol que se Asignó a tu Usuario" };
+                    return Json(result, JsonRequestBehavior.AllowGet);
+                }
+
+
+            }
+            else
+            {
+                Response.Cookies["usuario"].Value = null;
+                Response.Cookies["password"].Value = null;
+                var result = new { Success = "False", Message = "Revisa tu Usuario y contraseña " };
+                return Json(result, JsonRequestBehavior.AllowGet);
+            }
+            return RedirectToAction("Index", "Home");
         }
 
     }

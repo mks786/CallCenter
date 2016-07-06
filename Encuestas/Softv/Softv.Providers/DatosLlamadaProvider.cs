@@ -105,13 +105,22 @@ namespace Softv.Providers
             try
             {
                 entity_DatosLlamada = new DatosLlamadaEntity();
-                entity_DatosLlamada.Id = (int?)(GetFromReader(reader, "Id"));
+                //entity_DatosLlamada.Id = (int?)(GetFromReader(reader, "Id"));
                 entity_DatosLlamada.IdLlamada = (int?)(GetFromReader(reader, "IdLlamada"));
-                entity_DatosLlamada.Contrato = (int?)(GetFromReader(reader, "Contrato"));
-                entity_DatosLlamada.Fecha = (string)(GetFromReader(reader, "Fecha"));
-                entity_DatosLlamada.Nombre = (String)(GetFromReader(reader, "Nombre", IsString: true));
+                try
+                {
+                    entity_DatosLlamada.Contrato = (long ?)(GetFromReader(reader, "Contrato"));
+                }
+                catch
+                {
+                    entity_DatosLlamada.Contrato = 0;
+                }
+                
+                entity_DatosLlamada.Fecha = (String)(GetFromReader(reader, "Fecha"));
+                //entity_DatosLlamada.Nombre = (String)(GetFromReader(reader, "Nombre", IsString: true));
                 entity_DatosLlamada.Usuario = (String)(GetFromReader(reader, "Usuario", IsString: true));
                 entity_DatosLlamada.TipoLlamada = (bool)(GetFromReader(reader, "TipoLlamada"));
+                entity_DatosLlamada.IdConexion = (int?)(GetFromReader(reader, "IdConexion"));
 
             }
             catch (Exception ex)

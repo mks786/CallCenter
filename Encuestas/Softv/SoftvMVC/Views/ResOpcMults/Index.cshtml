@@ -4,6 +4,11 @@
     }
 
     <h2>Index</h2>*@
+@{
+    List<Softv.Entities.PermisoEntity> Permiso = ViewBag.Permisos;
+    var a = Permiso.Where(p => p.IdModule == 18).FirstOrDefault();
+
+}
 
 <section class="content-header">
     <h1>
@@ -155,7 +160,11 @@
         </div>
     </div>
 </div>
-
+<script>
+    var permiso_editar = "@a.OptUpdate";
+    var permiso_agregar = "@a.OptAdd";
+    var permiso_eliminar = "@a.OptDelete";
+</script>
 <script src="~/dist/js/pages/ResOpcMult/Lista.js"></script>
 <script src="~/dist/js/pages/ResOpcMult/modales_respuestas.js"></script>
 <script>

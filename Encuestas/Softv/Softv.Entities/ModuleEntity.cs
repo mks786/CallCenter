@@ -73,6 +73,7 @@ namespace Softv.Entities
 
         [DataMember]
         public string Icono { get; set; }
+
         [DataMember]
         public PermisoEntity Permiso { get; set; }
 

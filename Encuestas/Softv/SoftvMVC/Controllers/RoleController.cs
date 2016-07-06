@@ -71,27 +71,37 @@ namespace SoftvMVC.Controllers
 
         public ActionResult Index(int? page, int? pageSize)
         {
-            PermisosAcceso("Role");
-            ViewData["Title"] = "Role";
-            ViewData["Message"] = "Role";
-            int pSize = pageSize ?? SoftvMVC.Properties.Settings.Default.pagnum;
-            int pageNumber = (page ?? 1);
-            SoftvList<RoleEntity> listResult = null;
-            List<RoleEntity> listRole = new List<RoleEntity>();
-            listResult = proxy.GetRolePagedListXml(pageNumber, pSize, SerializeTool.Serialize<RoleEntity>(new RoleEntity() { Estado = true }));
-            listResult.ToList().ForEach(x => listRole.Add(x));
-            CheckNotify();
-            ViewBag.CustomScriptsDefault = BuildScriptsDefault("Role");
-            return View(new StaticPagedList<RoleEntity>(listRole, pageNumber, pSize, listResult.totalCount));
+            //PermisosAcceso("Role");
+            //ViewData["Title"] = "Role";
+            //ViewData["Message"] = "Role";
+            //int pSize = pageSize ?? SoftvMVC.Properties.Settings.Default.pagnum;
+            //int pageNumber = (page ?? 1);
+            //SoftvList<RoleEntity> listResult = null;
+            //List<RoleEntity> listRole = new List<RoleEntity>();
+            //listResult = proxy.GetRolePagedListXml(pageNumber, pSize, SerializeTool.Serialize<RoleEntity>(new RoleEntity() { Estado = true }));
+            //listResult.ToList().ForEach(x => listRole.Add(x));
+            //CheckNotify();
+            //ViewBag.CustomScriptsDefault = BuildScriptsDefault("Role");
+            //return View(new StaticPagedList<RoleEntity>(listRole, pageNumber, pSize, listResult.totalCount));
+
+            List<RoleEntity> permisos = proxy.GetRoleList();
+            return View();
         }
 
         public ActionResult Details(int id = 0)
         {
-            ViewBag.New = true;
-            ObjRolModelSession = null;
-            RoleEntity nobjrol = new RoleEntity();
-            nobjrol = proxy.GetRole(id);
-            return View(nobjrol);
+            //ViewBag.New = true;
+            //ObjRolModelSession = null;
+            //RoleEntity nobjrol = new RoleEntity();
+            //nobjrol = proxy.GetRole(id);
+            //return View(nobjrol);
+
+            RoleEntity objRol = proxy.GetRole(id);
+            if (objRol == null)
+            {
+                return HttpNotFound();
+            }
+            return PartialView(objRol);
         }
 
         public ActionResult Permisos(int id = 0)
@@ -150,7 +160,7 @@ namespace SoftvMVC.Controllers
                 // List<ModuleEntity> lrm = new List<ModuleEntity>();
                 foreach (ModuleEntity m in objRole.Modulos)
                 {
-                    if (m.Permiso.OptAdd == true || m.Permiso.OptDelete || m.Permiso.OptSelect || m.Permiso.OptUpdate)
+                    if (m.Permiso.OptAdd == true || m.Permiso.OptDelete == true || m.Permiso.OptSelect == true || m.Permiso.OptUpdate == true)
                     {
                         findChange = true;
                         break;
@@ -227,11 +237,16 @@ namespace SoftvMVC.Controllers
 
         public ActionResult Create()
         {
-            PermisosAccesoDeniedCreate("Role");
-            ViewBag.New = true;
-            ObjRolModelSession = null;
+            //PermisosAccesoDeniedCreate("Role");
+            //ViewBag.New = true;
+            //ObjRolModelSession = null;
 
+            //return View();
+
+            PermisosAccesoDeniedCreate("Role");
+            ViewBag.CustomScriptsPageValid = BuildScriptPageValid();
             return View();
+
         }
 
         public ActionResult CreateRolModule()
@@ -329,98 +344,131 @@ namespace SoftvMVC.Controllers
         [HttpPost]
         public ActionResult Create(RoleEntity objRole)
         {
-            ObjRolModelSession = objRole;
+
             if (ModelState.IsValid)
             {
 
-                bool findChange = false;
-                // List<ModuleEntity> lrm = new List<ModuleEntity>();
-                foreach (ModuleEntity m in objRole.Modulos)
+                objRole.BaseRemoteIp = RemoteIp;
+                objRole.BaseIdUser = LoggedUserName;
+                int result = proxy.AddRole(objRole);
+
+                if (result == -1)
                 {
-                    if (m.Permiso.OptAdd == true || m.Permiso.OptDelete || m.Permiso.OptSelect || m.Permiso.OptUpdate)
-                    {
-                        findChange = true;
-                        break;
-                    }
-                    else
-                    {
-                        findChange = false;
-                    }
-
-                }
-                if (findChange)
-                {
-                    objRole.Estado = true;
-                    objRole.BaseRemoteIp = RemoteIp;
-                    objRole.BaseIdUser = LoggedUserName;
-                    //int result = proxy.AddRole(objRole);
-                    int result;
-
-                    try
-                    {
-                        result = proxy.AddRole(objRole);
-                    }
-                    catch (Exception ex)
-                    {
-                        AssingMessageScript(ex.Message, "error", "Error", true);
-                        CheckNotify();
-                        return View(objRole);
-                    }
-
-                    if (result == -1)
-                    {
-
-                        AssingMessageScript("El Rol " + objRole.Nombre + " ya existe en el sistema.", "error", "Error", true);
-                        CheckNotify();
-                        return View(objRole);
-                    }
-                    if (result > 0)
-                    {
-                        if (objRole.Modulos.Count > 0)
-                        {
-                            List<PermisoEntity> lp = new List<PermisoEntity>();
-                            objRole.Modulos.ForEach(x => lp.Add(new PermisoEntity() { IdModule = x.IdModule, IdRol = result, OptAdd = x.Permiso.OptAdd, OptSelect = x.Permiso.OptSelect, OptUpdate = x.Permiso.OptUpdate, OptDelete = x.Permiso.OptDelete }));
-                            if (lp.Count > 0)
-                            {
-                                try
-                                {
-                                    proxyPermiso.MargePermiso(LoggedUserName, RemoteIp, Globals.SerializeTool.SerializeList<PermisoEntity>(lp));
-                                }
-                                catch (Exception ex)
-                                {
-                                    AssingMessageScript(ex.Message, "error", "Error", true);
-                                    CheckNotify();
-                                }
-                            }
-                        }
-
-
-                        AssingMessageScript("Se dio de alta el Rol " + objRole.Nombre + " en el sistema.", "success", "Éxito", true);
-                        return RedirectToAction("Index");
-                    }
-
-
-                }
-                else
-                {
-                    AssingMessageScript("Es necesario Seleccionar minimo un permiso", "error", "Error", true);
+                    AssingMessageScript("El Role ya existe en el sistema", "error", "Error", true);
                     CheckNotify();
                     return View(objRole);
                 }
-
+                if (result > 0)
+                {
+                    AssingMessageScript("Se dio de alta el Role en el sistema", "success", "Éxito", true);
+                    return RedirectToAction("Index");
+                }
+                
             }
             return View(objRole);
         }
+            //ObjRolModelSession = objRole;
+            //if (ModelState.IsValid)
+            //{
+
+            //    bool findChange = false;
+            //    // List<ModuleEntity> lrm = new List<ModuleEntity>();
+            //    foreach (ModuleEntity m in objRole.Modulos)
+            //    {
+            //        if (m.Permiso.OptAdd == true || m.Permiso.OptDelete == true || m.Permiso.OptSelect == true || m.Permiso.OptUpdate == true)
+            //        {
+            //            findChange = true;
+            //            break;
+            //        }
+            //        else
+            //        {
+            //            findChange = false;
+            //        }
+
+            //    }
+            //    if (findChange)
+            //    {
+            //        objRole.Estado = true;
+            //        objRole.BaseRemoteIp = RemoteIp;
+            //        objRole.BaseIdUser = LoggedUserName;
+            //        //int result = proxy.AddRole(objRole);
+            //        int result;
+
+            //        try
+            //        {
+            //            result = proxy.AddRole(objRole);
+            //        }
+            //        catch (Exception ex)
+            //        {
+            //            AssingMessageScript(ex.Message, "error", "Error", true);
+            //            CheckNotify();
+            //            return View(objRole);
+            //        }
+
+            //        if (result == -1)
+            //        {
+
+            //            AssingMessageScript("El Rol " + objRole.Nombre + " ya existe en el sistema.", "error", "Error", true);
+            //            CheckNotify();
+            //            return View(objRole);
+            //        }
+            //        if (result > 0)
+            //        {
+            //            if (objRole.Modulos.Count > 0)
+            //            {
+            //                List<PermisoEntity> lp = new List<PermisoEntity>();
+            //                objRole.Modulos.ForEach(x => lp.Add(new PermisoEntity() { IdModule = x.IdModule, IdRol = result, OptAdd = x.Permiso.OptAdd, OptSelect = x.Permiso.OptSelect, OptUpdate = x.Permiso.OptUpdate, OptDelete = x.Permiso.OptDelete }));
+            //                if (lp.Count > 0)
+            //                {
+            //                    try
+            //                    {
+            //                        proxyPermiso.MargePermiso(LoggedUserName, RemoteIp, Globals.SerializeTool.SerializeList<PermisoEntity>(lp));
+            //                    }
+            //                    catch (Exception ex)
+            //                    {
+            //                        AssingMessageScript(ex.Message, "error", "Error", true);
+            //                        CheckNotify();
+            //                    }
+            //                }
+            //            }
+
+
+            //            AssingMessageScript("Se dio de alta el Rol " + objRole.Nombre + " en el sistema.", "success", "Éxito", true);
+            //            return RedirectToAction("Index");
+            //        }
+
+
+            //    }
+            //    else
+            //    {
+            //        AssingMessageScript("Es necesario Seleccionar minimo un permiso", "error", "Error", true);
+            //        CheckNotify();
+            //        return View(objRole);
+            //    }
+
+            //}
+            //return View(objRole);
+        
 
         public ActionResult Edit(int id = 0)
         {
             PermisosAccesoDeniedEdit("Role");
-            ViewBag.New = true;
-            ObjRolModelSession = null;
-            RoleEntity nobjrol = new RoleEntity();
-            nobjrol = proxy.GetRole(id);
+            ViewBag.CustomScriptsPageValid = BuildScriptPageValid();
+            RoleEntity objRole = proxy.GetRole(id);
 
-            return View(nobjrol);
+            if (objRole == null)
+            {
+                return HttpNotFound();
+            }
+            return View(objRole);
+
+            //PermisosAccesoDeniedEdit("Role");
+            //ViewBag.New = true;
+            //ObjRolModelSession = null;
+            //RoleEntity nobjrol = new RoleEntity();
+            //nobjrol = proxy.GetRole(id);
+
+            //return View(nobjrol);
         }
 
         //
@@ -428,94 +476,117 @@ namespace SoftvMVC.Controllers
         [HttpPost]
         public ActionResult Edit(RoleEntity objRole)
         {
-            ObjRolModelSession = objRole;
+
             if (ModelState.IsValid)
             {
-
-                bool findChange = false;
-                // List<ModuleEntity> lrm = new List<ModuleEntity>();
-                foreach (ModuleEntity m in objRole.Modulos)
+                objRole.BaseRemoteIp = RemoteIp;
+                objRole.BaseIdUser = LoggedUserName;
+                int result = proxy.UpdateRole(objRole);
+                if (result == -1)
                 {
-                    if (m.Permiso.OptAdd == true || m.Permiso.OptDelete || m.Permiso.OptSelect || m.Permiso.OptUpdate)
-                    {
-                        findChange = true;
-                        break;
-                    }
-                    else
-                    {
-                        findChange = false;
-                    }
+                    RoleEntity objResOpcMultsOld = proxy.GetRole(objRole.IdRol);
 
-                }
-                if (findChange)
-                {
-                    if ((objRole.IdRol == 1) && (objRole.Modulos.Where(x => x.IdModule == 17).FirstOrDefault().Permiso.OptSelect == false || objRole.Modulos.Where(x => x.IdModule == 17).FirstOrDefault().Permiso.OptUpdate == false))
-                    {
-                        AssingMessageScript("Es necesario que el Rol " + objRole.Nombre + "cuente con los permisos de Consulta y Editar ", "error", "Error", true);
-                        CheckNotify();
-                        return View(objRole);
-                    }
-
-                    objRole.Estado = true;
-                    objRole.BaseRemoteIp = RemoteIp;
-                    objRole.BaseIdUser = LoggedUserName;
-                    //int result = proxy.UpdateRole(objRole);
-                    int result;
-
-                    try
-                    {
-                        result = proxy.UpdateRole(objRole);
-                    }
-                    catch (Exception ex)
-                    {
-                        AssingMessageScript(ex.Message, "error", "Error", true);
-                        CheckNotify();
-                        return View(objRole);
-                    }
-
-                    if (result == -1)
-                    {
-
-                        AssingMessageScript("El Rol " + objRole.Nombre + " ya existe en el sistema.", "error", "Error", true);
-                        CheckNotify();
-                        return View(objRole);
-                    }
-                    if (result > 0)
-                    {
-                        if (objRole.Modulos.Count > 0)
-                        {
-                            List<PermisoEntity> lp = new List<PermisoEntity>();
-                            objRole.Modulos.ForEach(x => lp.Add(new PermisoEntity() { IdModule = x.IdModule, IdRol = objRole.IdRol, OptAdd = x.Permiso.OptAdd, OptSelect = x.Permiso.OptSelect, OptUpdate = x.Permiso.OptUpdate, OptDelete = x.Permiso.OptDelete }));
-                            if (lp.Count > 0)
-                            {
-                                try
-                                {
-                                    proxyPermiso.MargePermiso(LoggedUserName, RemoteIp, Globals.SerializeTool.SerializeList<PermisoEntity>(lp));
-                                }
-                                catch (Exception ex)
-                                {
-                                    AssingMessageScript(ex.Message, "error", "Error", true);
-                                    CheckNotify();
-                                }
-                            }
-                        }
-
-
-                        AssingMessageScript("Se Modifico el Rol " + objRole.Nombre + " en el sistema.", "success", "Éxito", true);
-                        return RedirectToAction("Index");
-                    }
-
-
-                }
-                else
-                {
-                    AssingMessageScript("Es necesario Seleccionar minimo un permiso", "error", "Error", true);
+                    AssingMessageScript("El Rol ya existe en el sistema, .", "error", "Error", true);
                     CheckNotify();
                     return View(objRole);
                 }
-
+                if (result > 0)
+                {
+                    AssingMessageScript("el Rol se modifico en el sistema.", "success", "Éxito", true);
+                    CheckNotify();
+                    return RedirectToAction("Index");
+                }
+                return RedirectToAction("Index");
             }
             return View(objRole);
+            //ObjRolModelSession = objRole;
+            //if (ModelState.IsValid)
+            //{
+
+            //    bool findChange = false;
+            //    // List<ModuleEntity> lrm = new List<ModuleEntity>();
+            //    foreach (ModuleEntity m in objRole.Modulos)
+            //    {
+            //        if (m.Permiso.OptAdd == true || m.Permiso.OptDelete == true || m.Permiso.OptSelect == true || m.Permiso.OptUpdate == true)
+            //        {
+            //            findChange = true;
+            //            break;
+            //        }
+            //        else
+            //        {
+            //            findChange = false;
+            //        }
+
+            //    }
+            //    if (findChange)
+            //    {
+            //        if ((objRole.IdRol == 1) && (objRole.Modulos.Where(x => x.IdModule == 17).FirstOrDefault().Permiso.OptSelect == false || objRole.Modulos.Where(x => x.IdModule == 17).FirstOrDefault().Permiso.OptUpdate == false))
+            //        {
+            //            AssingMessageScript("Es necesario que el Rol " + objRole.Nombre + "cuente con los permisos de Consulta y Editar ", "error", "Error", true);
+            //            CheckNotify();
+            //            return View(objRole);
+            //        }
+
+            //        objRole.Estado = true;
+            //        objRole.BaseRemoteIp = RemoteIp;
+            //        objRole.BaseIdUser = LoggedUserName;
+            //        //int result = proxy.UpdateRole(objRole);
+            //        int result;
+
+            //        try
+            //        {
+            //            result = proxy.UpdateRole(objRole);
+            //        }
+            //        catch (Exception ex)
+            //        {
+            //            AssingMessageScript(ex.Message, "error", "Error", true);
+            //            CheckNotify();
+            //            return View(objRole);
+            //        }
+
+            //        if (result == -1)
+            //        {
+
+            //            AssingMessageScript("El Rol " + objRole.Nombre + " ya existe en el sistema.", "error", "Error", true);
+            //            CheckNotify();
+            //            return View(objRole);
+            //        }
+            //        if (result > 0)
+            //        {
+            //            if (objRole.Modulos.Count > 0)
+            //            {
+            //                List<PermisoEntity> lp = new List<PermisoEntity>();
+            //                objRole.Modulos.ForEach(x => lp.Add(new PermisoEntity() { IdModule = x.IdModule, IdRol = objRole.IdRol, OptAdd = x.Permiso.OptAdd, OptSelect = x.Permiso.OptSelect, OptUpdate = x.Permiso.OptUpdate, OptDelete = x.Permiso.OptDelete }));
+            //                if (lp.Count > 0)
+            //                {
+            //                    try
+            //                    {
+            //                        proxyPermiso.MargePermiso(LoggedUserName, RemoteIp, Globals.SerializeTool.SerializeList<PermisoEntity>(lp));
+            //                    }
+            //                    catch (Exception ex)
+            //                    {
+            //                        AssingMessageScript(ex.Message, "error", "Error", true);
+            //                        CheckNotify();
+            //                    }
+            //                }
+            //            }
+
+
+            //            AssingMessageScript("Se Modifico el Rol " + objRole.Nombre + " en el sistema.", "success", "Éxito", true);
+            //            return RedirectToAction("Index");
+            //        }
+
+
+            //    }
+            //    else
+            //    {
+            //        AssingMessageScript("Es necesario Seleccionar minimo un permiso", "error", "Error", true);
+            //        CheckNotify();
+            //        return View(objRole);
+            //    }
+
+            //}
+            //return View(objRole);
         }
 
         public ActionResult QuickIndex(int? page, int? pageSize, String Nombre, String Descripcion, int? id, int? estado, bool? cambioestado)
@@ -619,12 +690,71 @@ namespace SoftvMVC.Controllers
             listResult.ToList().ForEach(x => listModule.Add(x));
             return PartialView(listModule);
         }
+
         [HttpPost]
         public ActionResult GetModules(List<ModuleEntity> listModule)
         {
 
             return PartialView(listModule);
         }
+
+
+
+
+
+        public JsonResult Delete(int id)
+        {
+            proxy.DeleteRole(id);
+
+            String mensaje = "{mensaje:'Se ha eliminado el Role'}";
+            return Json(mensaje, JsonRequestBehavior.AllowGet);
+        }
+
+
+
+
+
+        public ActionResult GetList(string data, int draw, int start, int length)
+        {
+            DataTableData dataTableData = new DataTableData();
+            dataTableData.draw = draw;
+            dataTableData.recordsTotal = 0;
+            int recordsFiltered = 0;
+            dataTableData.data = FiltrarContenido(ref recordsFiltered, start, length);
+            dataTableData.recordsFiltered = recordsFiltered;
+
+            return Json(dataTableData, JsonRequestBehavior.AllowGet);
+        }
+
+        private List<RoleEntity> FiltrarContenido(ref int recordFiltered, int start, int length)
+        {
+
+            List<RoleEntity> lista = proxy.GetRoleList();
+            recordFiltered = lista.Count;
+            int rango = start + length;
+            return lista.Skip(start).Take(length).ToList();
+        }
+
+        public class DataTableData
+        {
+            public int draw { get; set; }
+            public int recordsTotal { get; set; }
+            public int recordsFiltered { get; set; }
+            public List<RoleEntity> data { get; set; }
+        }
+
+
+
+
+
+
+
+
+
+
+
+
+
 
     }
 

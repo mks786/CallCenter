@@ -1,4 +1,10 @@
-﻿<style type="text/css" media="screen">
+﻿@{
+    List<Softv.Entities.PermisoEntity> Permiso = ViewBag.Permisos;
+    var a = Permiso.Where(p => p.IdModule == 2 || p.IdModule == 8).FirstOrDefault();
+
+}
+
+<style type="text/css" media="screen">
     #contenedor {
         position: relative;      
     }
@@ -489,7 +495,11 @@
 
 
 
-
+    <script>
+        var permiso_editar = "@a.OptUpdate";
+        var permiso_agregar = "@a.OptAdd";
+        var permiso_eliminar = "@a.OptDelete";
+    </script>
 
     <script src="~/dist/js/pages/Encuesta/Lista.js"></script>
     <script src="~/dist/js/pages/Encuesta/Utilerias.js"></script>

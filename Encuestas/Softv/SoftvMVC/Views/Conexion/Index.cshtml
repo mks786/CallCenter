@@ -4,7 +4,10 @@
     }
 
     <h2>Index</h2>*@
-
+@{
+    List<Softv.Entities.PermisoEntity> Permiso = ViewBag.Permisos;
+    var per = Permiso.Where(p => p.IdModule == 6).FirstOrDefault();
+}
 <section class="content-header">
     <h1>
         Plazas
@@ -178,7 +181,11 @@
         </div>
     </div>
 </div>
-
+<script>
+    var permiso_editar = "@per.OptUpdate";
+    var permiso_agregar = "@per.OptAdd";
+    var permiso_eliminar = "@per.OptDelete";
+</script>
 <script src="~/dist/js/pages/Conexion/Lista.js"></script>
 <script>
     $(function () {

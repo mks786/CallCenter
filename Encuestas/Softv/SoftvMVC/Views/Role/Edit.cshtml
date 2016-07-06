@@ -1,0 +1,96 @@
+﻿@model Softv.Entities.RoleEntity
+
+@{
+    ViewBag.Title = "Edit";
+}
+<link href="~/Content/check/skins/square/blue.css" rel="stylesheet" />
+<script src="@Url.Content("~/Scripts/icheck.js")" type="text/javascript"></script>
+<script>
+    @Html.Raw(ViewBag.CustomScriptsDefault)
+    @Html.Raw(ViewBag.CustomScriptsPageValid)
+    $(document).ready(function () {
+
+        //pone los check
+        $('input').iCheck({
+            checkboxClass: 'icheckbox_square-red',
+            radioClass: 'iradio_square-red',
+        });
+    });
+</script>
+
+<style>
+    #btn-guardar {
+        background-color: #e4ac12;
+        color: #ffffff;
+        border-color: #e4ac12;
+    }
+
+    .panel-default > .panel-heading {
+        color: #F5F5F5;
+        background-color: #D8D8D8;
+        border-color: #ddd;
+    }
+
+    #contenido {
+        padding: 20px;
+        margin-left: 20px;
+    }
+</style>
+
+@using (Html.BeginForm())
+{
+    <div class="row" style="margin-top:50px;">
+
+        <div class="col-md-2"></div>
+        <div class="col-md-8">
+            <div class="panel panel-default">
+                <div class="panel-heading"><p style="font-size: 20px; padding-bottom: 0px; color:#ffffff; background-color: -webkit-linear-gradient(top,#F5F5F5,#D8D6D6);">Editar Role</p></div>
+                <div class="panel-body" id="contenido">
+
+                    @Html.ValidationSummary(true)
+                    <p class="help-block">Actualiza los campos necesarios:</p><br><br>
+
+                    <div class="form-group" style="display:none">
+                        @Html.LabelFor(model => model.IdRol, new { @class = "control-label col-md-2" })
+                        <div class="col-md-10">
+                            @Html.TextBoxFor(model => model.IdRol, new { @class = "inputObli" })
+                            @Html.ValidationMessageFor(model => model.IdRol)
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Respuesta</label>
+                        @Html.TextBoxFor(model => model.Nombre, new { @class = "form-control", style = " width:45%", required = "required" })
+                        @Html.ValidationMessageFor(model => model.Nombre)
+                    </div>
+
+                    <div class="form-group">
+                        <label>Respuesta</label>
+                        @Html.TextBoxFor(model => model.Descripcion, new { @class = "form-control", style = " width:45%", required = "required" })
+                        @Html.ValidationMessageFor(model => model.Descripcion)
+                    </div>
+
+                    <div class="form-group" style="display:none">
+                        <label>Respuesta</label>
+                        @Html.TextBoxFor(model => model.Estado, new { @class = "form-control", style = " width:45%", required = "required" })
+                        @Html.ValidationMessageFor(model => model.Estado)
+                    </div>
+
+                </div>
+
+                @*<div class="containerDivGrey">
+                        <input type="submit" value="Guardar" class="btnCreate" /> |
+                        @Html.ActionLink("Cancelar", "Index", null, new { @class = "btnBack" })
+                    </div>*@
+
+                <div class="panel-footer" style="text-align:right;">
+                    <input type="submit" value="Guardar" class="btn btn-default" /> |
+                    @Html.ActionLink("Cancelar", "Index", null, new { @class = "btnBack" })
+                </div>
+            </div>
+        </div>
+        <div class="col-md-1"></div>
+    </div>
+}
+
+
