@@ -88,8 +88,11 @@ function LlenarTabla(cadena) {
 
         "order": [[0, "asc"]]
     })
-
-    $("div.toolbar").html('<button class="btn btn-success btn-sm" style="float:right;" onclick="agregarUsuario()"><i class="fa fa-user-plus" aria-hidden="true"></i> Nuevo Usuario </button> <div class="input-group input-group-sm"><input class="form-control" type="text" id="buscar"><span class="input-group-btn"><button class="btn btn-info btn-flat" type="button" onclick="Busqueda()"><i class="fa fa-search" aria-hidden="true"></i> Buscar</button></span></div>');
+    if (permiso_agregar == "False") {
+        $("div.toolbar").html('<div class="input-group input-group-sm"><input class="form-control" type="text" id="buscar"><span class="input-group-btn"><button class="btn btn-info btn-flat" type="button" onclick="Busqueda()"><i class="fa fa-search" aria-hidden="true"></i> Buscar</button></span></div>');
+    } else {
+        $("div.toolbar").html('<button class="btn btn-success btn-sm" style="float:right;" onclick="agregarUsuario()"><i class="fa fa-user-plus" aria-hidden="true"></i> Nuevo Usuario </button> <div class="input-group input-group-sm"><input class="form-control" type="text" id="buscar"><span class="input-group-btn"><button class="btn btn-info btn-flat" type="button" onclick="Busqueda()"><i class="fa fa-search" aria-hidden="true"></i> Buscar</button></span></div>');
+    }
 
 }
 
@@ -108,7 +111,21 @@ function agregarUsuario() {
 }
 
 function Opciones(full) {
-    var botones = "<button class='btn btn-warning btn-xs' id='" + full.IdUsuario + "' onclick='datosUsuario(this)'><i class='fa fa-pencil' aria-hidden='true'></i> Editar</button> <button class='btn btn-danger btn-xs' id='" + full.IdUsuario + "' data-name='" + full.Nombre + "' onclick='eliminarUsuario(this)'><i class='fa fa-trash' aria-hidden='true'></i> Eliminar</button> ";
+    var botones;
+    if (permiso_editar == "False") {
+        if (permiso_eliminar == "False") {
+            botones = "";
+        }else{
+            botones = "<button class='btn btn-danger btn-xs' id='" + full.IdUsuario + "' data-name='" + full.Nombre + "' onclick='eliminarUsuario(this)'><i class='fa fa-trash' aria-hidden='true'></i> Eliminar</button> ";
+         }
+    } else {
+        if (permiso_eliminar == "False") {
+            botones = "<button class='btn btn-warning btn-xs' id='" + full.IdUsuario + "' onclick='datosUsuario(this)'><i class='fa fa-pencil' aria-hidden='true'></i> Editar</button>";
+        } else {
+            botones = "<button class='btn btn-warning btn-xs' id='" + full.IdUsuario + "' onclick='datosUsuario(this)'><i class='fa fa-pencil' aria-hidden='true'></i> Editar</button> <button class='btn btn-danger btn-xs' id='" + full.IdUsuario + "' data-name='" + full.Nombre + "' onclick='eliminarUsuario(this)'><i class='fa fa-trash' aria-hidden='true'></i> Eliminar</button> ";
+        }
+
+    }
     return botones;
 }
 

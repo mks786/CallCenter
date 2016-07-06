@@ -99,10 +99,6 @@ function LlenarTabla(cadena) {
 
 }
 
-function Opciones() {
-    var botones = "<button class='btn btn-warning btn-xs editarPregunta' id='editarPregunta'>Editar</button>";
-    return botones;
-}
 
 
 function Busqueda() {
@@ -115,7 +111,12 @@ function Busqueda() {
 }
 //funcion:retorna las opciones que tendra cada row en la tabla principal
 function Opciones(data) {
-    var opc = "<button class='btn btn-warning btn-xs Editar' type='button' id='" + data.IdPregunta + "' onclick='editar(this.id)'><i class='fa fa-pencil' aria-hidden='true'></i> Editar</button>"
+    var opc;
+    if (permiso_editar == "False") {
+        opc = ""
+    }else{
+        opc = "<button class='btn btn-warning btn-xs Editar' type='button' id='" + data.IdPregunta + "' onclick='editar(this.id)'><i class='fa fa-pencil' aria-hidden='true'></i> Editar</button>"
+    }
     return opc;
 }
 

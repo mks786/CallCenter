@@ -82,11 +82,30 @@ function LlenarTabla(cadena) {
 
         "order": [[0, "asc"]]
     })
-    $("div.toolbar").html('<button class="btn bg-olive btn-sm" style="float:right;" onclick="agregrarConexion()"><i class="fa fa-plug" aria-hidden="true"></i> Nueva Plaza</button> <div class="input-group input-group-sm"><input class="form-control" id="buscar" type="text"><span class="input-group-btn"><button onclick="Busqueda()" class="btn btn-info btn-flat" type="button"><i class="fa fa-search" aria-hidden="true"></i> Buscar</button></span></div>');
+    if (permiso_agregar == "False") {
+        $("div.toolbar").html('<div class="input-group input-group-sm"><input class="form-control" id="buscar" type="text"><span class="input-group-btn"><button onclick="Busqueda()" class="btn btn-info btn-flat" type="button"><i class="fa fa-search" aria-hidden="true"></i> Buscar</button></span></div>');
+
+    } else {
+        $("div.toolbar").html('<button class="btn bg-olive btn-sm" style="float:right;" onclick="agregrarConexion()"><i class="fa fa-plug" aria-hidden="true"></i> Nueva Plaza</button> <div class="input-group input-group-sm"><input class="form-control" id="buscar" type="text"><span class="input-group-btn"><button onclick="Busqueda()" class="btn btn-info btn-flat" type="button"><i class="fa fa-search" aria-hidden="true"></i> Buscar</button></span></div>');
+
+    }
 }
 
 function Opciones(id) {
-    var opc = "<button class='btn btn-warning btn-xs Editar' type='button' id='" + id.IdConexion + "' onclick='datosConexion(this)'><i class='fa fa-pencil' aria-hidden='true'></i> Editar</button> <button class='btn btn-danger btn-xs' type='button' data-name='"+id.Plaza+"' id='" + id.IdConexion + "' onclick='eliminarConexion(this)'><i class='fa fa-trash' aria-hidden='true'></i> Eliminar</button>"
+    var opc;
+    if (permiso_editar == "False") {
+        if (permiso_eliminar == "False") {
+            opc = "";
+        } else {
+            opc = "<button class='btn btn-danger btn-xs' type='button' data-name='" + id.Plaza + "' id='" + id.IdConexion + "' onclick='eliminarConexion(this)'><i class='fa fa-trash' aria-hidden='true'></i> Eliminar</button>";
+        }
+    } else {
+        if (permiso_eliminar == "False") {
+            opc = "<button class='btn btn-warning btn-xs Editar' type='button' id='" + id.IdConexion + "' onclick='datosConexion(this)'><i class='fa fa-pencil' aria-hidden='true'></i> Editar</button>";
+        } else {
+            opc = "<button class='btn btn-warning btn-xs Editar' type='button' id='" + id.IdConexion + "' onclick='datosConexion(this)'><i class='fa fa-pencil' aria-hidden='true'></i> Editar</button> <button class='btn btn-danger btn-xs' type='button' data-name='" + id.Plaza + "' id='" + id.IdConexion + "' onclick='eliminarConexion(this)'><i class='fa fa-trash' aria-hidden='true'></i> Eliminar</button>"
+        }
+    }
     return opc;
 }
 

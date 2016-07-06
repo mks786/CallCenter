@@ -34,6 +34,11 @@
       /// Property Nombre
       /// </summary>
       [DataMember]
+      public int? IdConexion { get; set; }
+      /// <summary>
+      /// Property Nombre
+      /// </summary>
+      [DataMember]
       public String Nombre { get; set; }
       /// <summary>
       /// Property Direccion

@@ -38,6 +38,7 @@ namespace SoftvMVC.Controllers
         private SoftvService.CLIENTEClient proxyCLIENTE = null;
 
         private SoftvService.QuejaClient proxyQueja = null;
+        private SoftvService.NoClienteClient prxyNoCliente = null;
 
         public LlamadaController()
         {
@@ -57,6 +58,7 @@ namespace SoftvMVC.Controllers
             proxyCLIENTE = new SoftvService.CLIENTEClient();
 
             proxyQueja = new SoftvService.QuejaClient();
+            prxyNoCliente = new SoftvService.NoClienteClient();
 
         }
 
@@ -138,51 +140,51 @@ namespace SoftvMVC.Controllers
         public ActionResult Index(int? page, int? pageSize)
         {
             PermisosAcceso("Llamada");
-            ViewData["Title"] = "Llamada";
-            ViewData["Message"] = "Llamada";
-            int pSize = pageSize ?? SoftvMVC.Properties.Settings.Default.pagnum;
-            int pageNumber = (page ?? 1);
-            SoftvList<LlamadaEntity> listResult = proxy.GetLlamadaPagedListXml(pageNumber, pSize, SerializeTool.Serialize<LlamadaEntity>(new LlamadaEntity()));
+            //ViewData["Title"] = "Llamada";
+            //ViewData["Message"] = "Llamada";
+            //int pSize = pageSize ?? SoftvMVC.Properties.Settings.Default.pagnum;
+            //int pageNumber = (page ?? 1);
+            //SoftvList<LlamadaEntity> listResult = proxy.GetLlamadaPagedListXml(pageNumber, pSize, SerializeTool.Serialize<LlamadaEntity>(new LlamadaEntity()));
 
 
-            List<UsuarioEntity> lstUsuario = new List<UsuarioEntity>();
-            lstUsuario.Add(new UsuarioEntity() { IdUsuario = null, Nombre = "Todos" });
-            lstUsuario.AddRange(proxyUsuario.GetUsuarioList().OrderBy(x => x.Nombre.Trim()));
-            ViewBag.IdUsuariotxt = new SelectList(lstUsuario, "IdUsuario", "Nombre");
+            //List<UsuarioEntity> lstUsuario = new List<UsuarioEntity>();
+            //lstUsuario.Add(new UsuarioEntity() { IdUsuario = null, Nombre = "Todos" });
+            //lstUsuario.AddRange(proxyUsuario.GetUsuarioList().OrderBy(x => x.Nombre.Trim()));
+            //ViewBag.IdUsuariotxt = new SelectList(lstUsuario, "IdUsuario", "Nombre");
 
-            List<TurnoEntity> lstTurnos = new List<TurnoEntity>();
-            lstTurnos.Add(new TurnoEntity() { IdTurno = null, Turno = "Todos" });
-            lstTurnos.AddRange(proxyTurnos.GetTurnoList().OrderBy(x => x.Turno.Trim()));
-            ViewBag.IdTurnotxt = new SelectList(lstTurnos, "IdTurno", "Turno");
+            //List<TurnoEntity> lstTurnos = new List<TurnoEntity>();
+            //lstTurnos.Add(new TurnoEntity() { IdTurno = null, Turno = "Todos" });
+            //lstTurnos.AddRange(proxyTurnos.GetTurnoList().OrderBy(x => x.Turno.Trim()));
+            //ViewBag.IdTurnotxt = new SelectList(lstTurnos, "IdTurno", "Turno");
 
-            List<ConexionEntity> lstConexion = new List<ConexionEntity>();
-            lstConexion.Add(new ConexionEntity() { IdConexion = null, Plaza = "Todos" });
-            lstConexion.AddRange(proxyConexion.GetConexionList().OrderBy(x => x.Plaza.Trim()));
-            ViewBag.IdConexiontxt = new SelectList(lstConexion, "IdConexion", "Plaza");
+            //List<ConexionEntity> lstConexion = new List<ConexionEntity>();
+            //lstConexion.Add(new ConexionEntity() { IdConexion = null, Plaza = "Todos" });
+            //lstConexion.AddRange(proxyConexion.GetConexionList().OrderBy(x => x.Plaza.Trim()));
+            //ViewBag.IdConexiontxt = new SelectList(lstConexion, "IdConexion", "Plaza");
 
-            List<TrabajoEntity> lstTrabajo = new List<TrabajoEntity>();
-            lstTrabajo.Add(new TrabajoEntity() { Clv_Trabajo = null, TRABAJO = "Todos" });
-            lstTrabajo.AddRange(proxyTrabajo.GetTrabajoList().OrderBy(x => x.TRABAJO.Trim()));
-            ViewBag.Clv_Trabajotxt = new SelectList(lstTrabajo, "Clv_Trabajo", "TRABAJO");
+            //List<TrabajoEntity> lstTrabajo = new List<TrabajoEntity>();
+            //lstTrabajo.Add(new TrabajoEntity() { Clv_Trabajo = null, TRABAJO = "Todos" });
+            //lstTrabajo.AddRange(proxyTrabajo.GetTrabajoList().OrderBy(x => x.TRABAJO.Trim()));
+            //ViewBag.Clv_Trabajotxt = new SelectList(lstTrabajo, "Clv_Trabajo", "TRABAJO");
 
-            List<TipServEntity> lstTipServ = new List<TipServEntity>();
-            lstTipServ.Add(new TipServEntity() { Clv_TipSer = null, Concepto = "Todos" });
-            lstTipServ.AddRange(proxyTipServ.GetTipServList().OrderBy(x => x.Concepto.Trim()));
-            ViewBag.Clv_TipSertxt = new SelectList(lstTipServ, "Clv_TipSer", "Concepto");
+            //List<TipServEntity> lstTipServ = new List<TipServEntity>();
+            //lstTipServ.Add(new TipServEntity() { Clv_TipSer = null, Concepto = "Todos" });
+            //lstTipServ.AddRange(proxyTipServ.GetTipServList().OrderBy(x => x.Concepto.Trim()));
+            //ViewBag.Clv_TipSertxt = new SelectList(lstTipServ, "Clv_TipSer", "Concepto");
 
-            List<CLIENTEEntity> lstCLIENTE = new List<CLIENTEEntity>();
-            lstCLIENTE.Add(new CLIENTEEntity() { CONTRATO = null, NOMBRE = "Todos" });
-            lstCLIENTE.AddRange(proxyCLIENTE.GetCLIENTEList().OrderBy(x => x.NOMBRE.Trim()));
-            ViewBag.Contratotxt = new SelectList(lstCLIENTE, "Contrato", "NOMBRE");
+            //List<CLIENTEEntity> lstCLIENTE = new List<CLIENTEEntity>();
+            //lstCLIENTE.Add(new CLIENTEEntity() { CONTRATO = null, NOMBRE = "Todos" });
+            //lstCLIENTE.AddRange(proxyCLIENTE.GetCLIENTEList().OrderBy(x => x.NOMBRE.Trim()));
+            //ViewBag.Contratotxt = new SelectList(lstCLIENTE, "Contrato", "NOMBRE");
 
-            List<QuejaEntity> lstQueja = new List<QuejaEntity>();
-            lstQueja.Add(new QuejaEntity() { Clv_Queja = null, Problema = "Todos" });
-            lstQueja.AddRange(proxyQueja.GetQuejaList().OrderBy(x => x.Problema.Trim()));
-            ViewBag.Clv_Quejatxt = new SelectList(lstQueja, "Clv_Queja", "Problema");
+            //List<QuejaEntity> lstQueja = new List<QuejaEntity>();
+            //lstQueja.Add(new QuejaEntity() { Clv_Queja = null, Problema = "Todos" });
+            //lstQueja.AddRange(proxyQueja.GetQuejaList().OrderBy(x => x.Problema.Trim()));
+            //ViewBag.Clv_Quejatxt = new SelectList(lstQueja, "Clv_Queja", "Problema");
 
-            CheckNotify();
-            ViewBag.CustomScriptsDefault = BuildScriptsDefault("Llamada");
-            return View(new StaticPagedList<LlamadaEntity>(listResult.ToList(), pageNumber, pSize, listResult.totalCount));
+            //CheckNotify();
+            //ViewBag.CustomScriptsDefault = BuildScriptsDefault("Llamada");
+            return View();
         }
 
         public ActionResult Details(int id = 0)
@@ -332,7 +334,7 @@ namespace SoftvMVC.Controllers
             return View(objLlamada);
         }
 
-        public ActionResult QuickIndex(int? page, int? pageSize, bool? Tipo_Llamada, String Detalle, String Solucion, DateTime? Fecha, DateTime? HoraInicio, DateTime? HoraFin, int? IdUsuario, int? IdTurno, int? IdConexion, int? Clv_Trabajo, int? Clv_TipSer, int? Contrato, int? Clv_Queja)
+        public ActionResult QuickIndex(int? page, int? pageSize, bool? Tipo_Llamada, String Detalle, String Solucion, String Fecha, String HoraInicio, String HoraFin, int? IdUsuario, int? IdTurno, int? IdConexion, int? Clv_Trabajo, int? Clv_TipSer, int? Contrato, int? Clv_Queja)
         {
             int pageNumber = (page ?? 1);
             int pSize = pageSize ?? SoftvMVC.Properties.Settings.Default.pagnum;
@@ -362,14 +364,14 @@ namespace SoftvMVC.Controllers
                 objLlamada.Fecha = Fecha.ToString();
             }
 
-            if ((HoraInicio != null && HoraInicio.ToString() != ""))
+            if ((HoraInicio != null ))
             {
-                objLlamada.HoraInicio = HoraInicio.ToString();
+                objLlamada.HoraInicio = HoraInicio;
             }
 
-            if ((HoraFin != null && HoraFin.ToString() != ""))
+            if ((HoraFin != null))
             {
-                objLlamada.HoraFin = HoraFin.ToString();
+                objLlamada.HoraFin = HoraFin;
             }
 
             if ((IdUsuario != null))
@@ -531,7 +533,8 @@ namespace SoftvMVC.Controllers
         {
             ConexionController c = new ConexionController();
             SqlCommand comandoSql;
-            SqlConnection conexionSQL = new SqlConnection(c.DameConexion(IdPlaza));
+            SqlConnection conexionSQL = new SqlConnection("Data Source=192.168.1.230;Initial Catalog=Encuestas;User ID =sa;Password=0601x-2L;");
+            //SqlConnection conexionSQL = new SqlConnection("Data Source=FABIAN-PC\\INSTANCIASQL2014;Initial Catalog=Encuestas;User ID =sa;Password=0601x-2Ñ;");
             try
             {
                 conexionSQL.Open();
@@ -543,23 +546,43 @@ namespace SoftvMVC.Controllers
                 if(llamada.tipo_llamada == 1){
                     if (llamada.queja == 2)
                     {
-                        comandoSql = new SqlCommand("insert into Llamadas(idUsuario,Tipo_Llamada,Contrato,Detalle,Solucion,Fecha,HoraInicio,HoraFin,IdTurno,Clv_Queja,IdConexion,Clv_Trabajo,Clv_TipSer,Clv_Problema) values(@IdUsuario,@Tipo_Llamada,@Contrato,@motivo,@solucion,@Fecha,@HoraInicio,@HoraFin,null,null,@IdConexion,@Clv_Trabajo,@Clv_TipSer,@Clv_Problema)");
+                        if(llamada.tipo_llamada_cliente == false){
+                            comandoSql = new SqlCommand("insert into Llamadas(idUsuario,Tipo_Llamada,Contrato,Detalle,Fecha,HoraInicio,HoraFin,IdTurno,Clv_Queja,IdConexion,Clv_Problema,ProblemaSolucion,Clv_Motivo) values(@IdUsuario,@Tipo_Llamada,@Contrato,@motivo,@Fecha,@HoraInicio,@HoraFin,null,null,@IdConexion,@Clv_TipSer,@ProblemaSolucion,@Clv_Motivo)");
 
-                        comandoSql.Parameters.AddWithValue("@IdUsuario", llamada.usuario);
-                        comandoSql.Parameters.AddWithValue("@Tipo_Llamada", true);
-                        comandoSql.Parameters.AddWithValue("@Contrato", llamada.contrato);
-                        comandoSql.Parameters.AddWithValue("@Fecha", llamada.fecha);
-                        comandoSql.Parameters.AddWithValue("@motivo", llamada.motivo);
-                        comandoSql.Parameters.AddWithValue("@solucion", llamada.solucion);
-                        comandoSql.Parameters.AddWithValue("@HoraInicio", llamada.horainicio);
-                        comandoSql.Parameters.AddWithValue("@HoraFin", llamada.horatermino);
-                        comandoSql.Parameters.AddWithValue("@IdConexion", llamada.IdConexion);
-                        comandoSql.Parameters.AddWithValue("@Clv_TipSer", llamada.Clv_TipSer);
-                        comandoSql.Parameters.AddWithValue("@Clv_Trabajo", llamada.clas_solucion);
-                        comandoSql.Parameters.AddWithValue("@Clv_Problema", llamada.clas_problema);
-                        comandoSql.Connection = conexionSQL;
-                        comandoSql.ExecuteReader();
+                            comandoSql.Parameters.AddWithValue("@IdUsuario", llamada.usuario);
+                            comandoSql.Parameters.AddWithValue("@Tipo_Llamada", true);
+                            comandoSql.Parameters.AddWithValue("@Contrato", llamada.contrato);
+                            comandoSql.Parameters.AddWithValue("@Fecha", llamada.fecha);
+                            comandoSql.Parameters.AddWithValue("@motivo", llamada.motivo);
+                            comandoSql.Parameters.AddWithValue("@HoraInicio", llamada.horainicio);
+                            comandoSql.Parameters.AddWithValue("@HoraFin", llamada.horatermino);
+                            comandoSql.Parameters.AddWithValue("@IdConexion", llamada.IdConexion);
+                            comandoSql.Parameters.AddWithValue("@Clv_TipSer", llamada.Clv_TipSer);
+                            comandoSql.Parameters.AddWithValue("@ProblemaSolucion", llamada.tipo_llamada_cliente);
+                            comandoSql.Parameters.AddWithValue("@Clv_Motivo", llamada.tipo_informacion);
+                            comandoSql.Connection = conexionSQL;
+                            comandoSql.ExecuteReader();
+                        }else if(llamada.tipo_llamada_cliente == true){
+                            comandoSql = new SqlCommand("insert into Llamadas(idUsuario,Tipo_Llamada,Contrato,Detalle,solucion,Fecha,HoraInicio,HoraFin,IdTurno,Clv_Queja,IdConexion,Clv_Trabajo,Clv_TipSer,Clv_Problema,ProblemaSolucion) values(@IdUsuario,@Tipo_Llamada,@Contrato,@motivo,@solucion,@Fecha,@HoraInicio,@HoraFin,null,null,@IdConexion,@Clv_Trabajo,@Clv_TipSer,@Clv_Problema,@ProblemaSolucion)");
 
+                            comandoSql.Parameters.AddWithValue("@IdUsuario", llamada.usuario);
+                            comandoSql.Parameters.AddWithValue("@Tipo_Llamada", true);
+                            comandoSql.Parameters.AddWithValue("@Contrato", llamada.contrato);
+                            comandoSql.Parameters.AddWithValue("@Fecha", llamada.fecha);
+                            comandoSql.Parameters.AddWithValue("@motivo", llamada.motivo);
+                            comandoSql.Parameters.AddWithValue("@solucion", llamada.solucion);
+                            comandoSql.Parameters.AddWithValue("@HoraInicio", llamada.horainicio);
+                            comandoSql.Parameters.AddWithValue("@HoraFin", llamada.horatermino);
+                            comandoSql.Parameters.AddWithValue("@IdConexion", llamada.IdConexion);
+                            comandoSql.Parameters.AddWithValue("@Clv_TipSer", llamada.Clv_TipSer);
+                            comandoSql.Parameters.AddWithValue("@Clv_Trabajo", llamada.clas_solucion);
+                            comandoSql.Parameters.AddWithValue("@Clv_Problema", llamada.clas_problema);
+                            comandoSql.Parameters.AddWithValue("@ProblemaSolucion", llamada.tipo_llamada_cliente);
+
+                            comandoSql.Connection = conexionSQL;
+                            comandoSql.ExecuteReader();
+                        }
+                       
 
                     }
                     else
@@ -577,7 +600,7 @@ namespace SoftvMVC.Controllers
                         comandoSql.Connection = conexionSQL;
                         var Id = Int32.Parse(comandoSql.ExecuteScalar().ToString());
 
-                        comandoSql = new SqlCommand("insert into Llamadas(idUsuario,Tipo_Llamada,Contrato,Detalle,Solucion,Fecha,HoraInicio,HoraFin,IdTurno,Clv_Queja,IdConexion,Clv_Trabajo,Clv_TipSer,Clv_Problema) values(@IdUsuario,@Tipo_Llamada,@Contrato,@motivo,@solucion,@Fecha,@HoraInicio,@HoraFin,@IdTurno,@Clv_Queja,@IdConexion,@Clv_Trabajo,@Clv_TipSer,@Clv_Problema)");
+                        comandoSql = new SqlCommand("insert into Llamadas(idUsuario,Tipo_Llamada,Contrato,Detalle,Solucion,Fecha,HoraInicio,HoraFin,IdTurno,Clv_Queja,IdConexion,Clv_Trabajo,Clv_TipSer,Clv_Problema,ProblemaSolucion) values(@IdUsuario,@Tipo_Llamada,@Contrato,@motivo,@solucion,@Fecha,@HoraInicio,@HoraFin,@IdTurno,@Clv_Queja,@IdConexion,@Clv_Trabajo,@Clv_TipSer,@Clv_Problema,@ProblemaSolucion)");
 
                         comandoSql.Parameters.AddWithValue("@IdUsuario", llamada.usuario);
                         comandoSql.Parameters.AddWithValue("@IdTurno", llamada.IdTurno);
@@ -593,6 +616,7 @@ namespace SoftvMVC.Controllers
                         comandoSql.Parameters.AddWithValue("@Clv_TipSer", llamada.Clv_TipSer);
                         comandoSql.Parameters.AddWithValue("@Clv_Trabajo", llamada.clas_solucion);
                         comandoSql.Parameters.AddWithValue("@Clv_Problema", llamada.clas_problema);
+                        comandoSql.Parameters.AddWithValue("@ProblemaSolucion", llamada.tipo_llamada_cliente);
                         comandoSql.Connection = conexionSQL;
                         comandoSql.ExecuteReader();
                     }
@@ -600,12 +624,11 @@ namespace SoftvMVC.Controllers
                 else
                 {
 
-                    comandoSql = new SqlCommand("insert into Llamadas(idUsuario,Tipo_Llamada,Contrato,Detalle,Solucion,Fecha,HoraInicio,HoraFin,IdTurno,Clv_Queja,IdConexion,Clv_Trabajo,Clv_TipSer) values(@idUsuario,@Tipo_Llamada,null,@motivo,@solucion,@Fecha,@HoraInicio,@HoraFin,null,null,@IdConexion,null,null) SELECT SCOPE_IDENTITY()");
+                    comandoSql = new SqlCommand("insert into Llamadas(idUsuario,Tipo_Llamada,Contrato,Detalle,Fecha,HoraInicio,HoraFin,IdTurno,Clv_Queja,IdConexion,Clv_Trabajo,Clv_TipSer) values(@idUsuario,@Tipo_Llamada,null,@motivo,@Fecha,@HoraInicio,@HoraFin,null,null,@IdConexion,null,null) SELECT SCOPE_IDENTITY()");
                     comandoSql.Parameters.AddWithValue("@Tipo_Llamada", false);
                     comandoSql.Parameters.AddWithValue("@idUsuario", llamada.usuario);
                     comandoSql.Parameters.AddWithValue("@Fecha", llamada.fecha);
                     comandoSql.Parameters.AddWithValue("@motivo", llamada.motivo);
-                    comandoSql.Parameters.AddWithValue("@solucion", llamada.solucion);
                     comandoSql.Parameters.AddWithValue("@HoraInicio", llamada.horainicio);
                     comandoSql.Parameters.AddWithValue("@HoraFin", llamada.horatermino);
                     comandoSql.Parameters.AddWithValue("@IdConexion", llamada.IdConexion);
@@ -654,6 +677,8 @@ namespace SoftvMVC.Controllers
             public string domicilio { get; set; }
             public string email { get; set; }
             public string nombre { get; set; }
+            public bool tipo_llamada_cliente { get; set; }
+            public int tipo_informacion { get; set; }
 
         }
         public ActionResult GetIdTrabajo(int IdPlaza, int idServicio)
@@ -698,11 +723,14 @@ namespace SoftvMVC.Controllers
 
         }
 
+
         public ActionResult getOneCall(int plaza, int id_llamada)
         {
+
+            LlamadaEntity llamada = proxy.GetLlamada(id_llamada);
             ConexionController c = new ConexionController();
             SqlCommand comandoSql;
-            List<LlamadaEntity> lista = new List<LlamadaEntity>();
+            List<detalleLlamada> lista = new List<detalleLlamada>();
             SqlConnection conexionSQL = new SqlConnection(c.DameConexion(plaza));
             try
             {
@@ -713,84 +741,100 @@ namespace SoftvMVC.Controllers
 
             try
             {
-
-                comandoSql = new SqlCommand("SELECT * FROM Llamadas WHERE IdLlamada =" + id_llamada + "");
-                comandoSql.Connection = conexionSQL;
-                SqlDataReader reader = comandoSql.ExecuteReader();
-                if (reader.HasRows)
+                if (llamada.Contrato != null)
                 {
-                    while (reader.Read())
+                    comandoSql = new SqlCommand("SELECT * FROM CLIENTES WHERE CONTRATO =" + llamada.Contrato);
+                    comandoSql.Connection = conexionSQL;
+                    SqlDataReader reader = comandoSql.ExecuteReader();
+                    if (reader.HasRows)
                     {
-                        LlamadaEntity llamada = new LlamadaEntity();
-                        llamada.IdLlamada = Int32.Parse(reader[0].ToString());
-                        llamada.IdUsuario = Int32.Parse(reader[1].ToString());
-                        llamada.Tipo_Llamada = bool.Parse(reader[2].ToString());
-                        try
+                        while (reader.Read())
                         {
-                            llamada.Contrato = Int32.Parse(reader[3].ToString());
-                        }catch{
-                            llamada.Contrato = 0;
-                        }
-                        try
-                        {
-                            llamada.IdTurno = Int32.Parse(reader[9].ToString());
-                        }
-                        catch
-                        {
-                            llamada.IdTurno = 0;
-                        }
-                        try
-                        {
-                            llamada.Clv_Queja = Int32.Parse(reader[10].ToString());
-                        }
-                        catch
-                        {
-                            llamada.Clv_Queja = 0;
-                        }
-                        try
-                        {
-                            llamada.Clv_Trabajo = Int32.Parse(reader[12].ToString());
-                        }
-                        catch
-                        {
-                            llamada.Clv_Trabajo = 0;
-                        }
-                        try
-                        {
-                            llamada.Clv_TipSer = Int32.Parse(reader[13].ToString());
-                        }
-                        catch
-                        {
-                            llamada.Clv_TipSer = 0;
-                        }
+                            detalleLlamada llamada_detalles = new detalleLlamada();
+                            llamada_detalles.IdLlamada = llamada.IdLlamada.ToString();
+                            llamada_detalles.Tipo_Llamada = llamada.Tipo_Llamada.ToString();
+                            llamada_detalles.Contrato = llamada.Contrato.ToString();
+                            llamada_detalles.nombre = reader[1].ToString();
+                            llamada_detalles.IdTurno = llamada.IdTurno.ToString();
+                            llamada_detalles.Clv_Queja = llamada.Clv_Queja.ToString();
+                            llamada_detalles.Clv_Trabajo = llamada.Clv_Trabajo.ToString();
+                            llamada_detalles.Clv_TipSer = llamada.Clv_TipSer.ToString();
+                            llamada_detalles.Clv_Problema = llamada.Clv_Problema.ToString();
+                            llamada_detalles.Fecha = llamada.Fecha;
+                            llamada_detalles.Detalle = llamada.Detalle;
+                            llamada_detalles.Solucion = llamada.Solucion;
+                            llamada_detalles.HoraInicio = llamada.HoraInicio;
+                            llamada_detalles.HoraFin = llamada.HoraFin;
+                            llamada_detalles.ProblemaSolucion = llamada.ProblemaSolucion;
+                            llamada_detalles.Clv_Motivo = llamada.Clv_Motivo;
 
-                        try
-                        {
-                            llamada.Clv_Problema = Int32.Parse(reader[14].ToString());
+                            lista.Add(llamada_detalles);
                         }
-                        catch
+                        reader.Close();
+                    }
+                } else{
+                    List<NoClienteEntity> nocliente = prxyNoCliente.GetNoClienteList();
+                    foreach (var item in nocliente)
+                    {
+                        if (item.IdLlamada == llamada.IdLlamada)
                         {
-                            llamada.Clv_Problema = 0;
+                            detalleLlamada llamada_detalles = new detalleLlamada();
+                            llamada_detalles.IdLlamada = llamada.IdLlamada.ToString();
+                            llamada_detalles.Tipo_Llamada = llamada.Tipo_Llamada.ToString();
+                            llamada_detalles.Contrato = llamada.Contrato.ToString();
+                            llamada_detalles.nombre = item.Nombre;
+                            llamada_detalles.domicilio = item.Direccion;
+                            llamada_detalles.telefono = item.Telefono;
+                            llamada_detalles.celular = item.Celular;
+                            llamada_detalles.email = item.Email;
+                            llamada_detalles.IdTurno = llamada.IdTurno.ToString();
+                            llamada_detalles.Clv_Queja = llamada.Clv_Queja.ToString();
+                            llamada_detalles.Clv_Trabajo = llamada.Clv_Trabajo.ToString();
+                            llamada_detalles.Clv_TipSer = llamada.Clv_TipSer.ToString();
+                            llamada_detalles.Clv_Problema = llamada.Clv_Problema.ToString();
+                            llamada_detalles.Fecha = llamada.Fecha;
+                            llamada_detalles.Detalle = llamada.Detalle;
+                            llamada_detalles.Solucion = llamada.Solucion;
+                            llamada_detalles.HoraInicio = llamada.HoraInicio;
+                            llamada_detalles.HoraFin = llamada.HoraFin;
+                            llamada_detalles.ProblemaSolucion = llamada.ProblemaSolucion;
+                            llamada_detalles.Clv_Motivo = llamada.Clv_Motivo;
+                            lista.Add(llamada_detalles);
                         }
-                                           
-                        
-                        llamada.IdConexion = Int32.Parse(reader["IdConexion"].ToString());
-                        llamada.Fecha = reader[6].ToString();
-                        llamada.Detalle = reader[4].ToString();
-                        llamada.Solucion = reader[5].ToString();
-                        llamada.HoraInicio = reader[7].ToString();
-                        llamada.HoraFin = reader[8].ToString();
-                        llamada.IdConexion = Int32.Parse(reader[11].ToString());
-                        
-                        lista.Add(llamada);
                     }
                 }
+
+               
             }
 
             catch { }
             return Json(lista, JsonRequestBehavior.AllowGet);
         }
+        public class detalleLlamada
+        {
+            public string Solucion { get; set; }
+            public string Detalle { get; set; }
+            public string Contrato { get; set; }
+            public string Clv_Problema { get; set; }
+            public string clas_solucion { get; set; }
+            public string IdTurno { get; set; }
+            public string nombre { get; set; }
+            public string domicilio { get; set; }
+            public string telefono { get; set; }
+            public string celular { get; set; }
+            public string email { get; set; }
+            public string Fecha { get; set; }
+            public string HoraInicio { get; set; }
+            public string HoraFin { get; set; }
+            public string Clv_Queja { get; set; }
+            public string IdLlamada { get; set; }
+            public string Tipo_Llamada { get; set; }
+            public string Clv_TipSer { get; set; }
+            public string Clv_Trabajo { get; set; }
+            public int? Clv_Motivo { get; set; }
+            public bool? ProblemaSolucion { get; set; }
 
+        }
         public ActionResult getTreeView(int plaza, int contrato)
         {
             ConexionController c = new ConexionController();
@@ -919,7 +963,8 @@ namespace SoftvMVC.Controllers
             ConexionController c = new ConexionController();
             SqlCommand comandoSql;
             List<editLlamada> lista = new List<editLlamada>();
-            SqlConnection conexionSQL = new SqlConnection(c.DameConexion(plaza));
+            SqlConnection conexionSQL = new SqlConnection("Data Source=192.168.1.230;Initial Catalog=Encuestas;User ID =sa;Password=0601x-2L;");
+            //SqlConnection conexionSQL = new SqlConnection("Data Source=FABIAN-PC\\INSTANCIASQL2014;Initial Catalog=Encuestas;User ID =sa;Password=0601x-2Ñ;");
             try
             {
                 conexionSQL.Open();
@@ -929,7 +974,7 @@ namespace SoftvMVC.Controllers
 
             try
             {
-                if(Int32.Parse(llamada.contrato) == 0){
+                if(llamada.contrato == null){
                     comandoSql = new SqlCommand("UPDATE LLamadas SET Detalle ='" + llamada.detalle + "', Solucion='" + llamada.solucion + "' WHERE IdLlamada=" + llamada.id_llamada);
                     comandoSql.Connection = conexionSQL;
                     comandoSql.ExecuteNonQuery();
@@ -937,17 +982,28 @@ namespace SoftvMVC.Controllers
                     comandoSql.Connection = conexionSQL;
                     comandoSql.ExecuteNonQuery();
                 }else{
-                    comandoSql = new SqlCommand("UPDATE LLamadas SET Detalle ='" + llamada.detalle + "', Solucion='" + llamada.solucion + "', Clv_Trabajo=" + llamada.clas_solucion + ", Clv_Problema="+llamada.clas_problema+" WHERE IdLlamada=" + llamada.id_llamada);
-                    comandoSql.Connection = conexionSQL;
-                    comandoSql.ExecuteNonQuery();
-                    if(Int32.Parse(llamada.queja) > 0){
-                        comandoSql = new SqlCommand("UPDATE Quejas SET Problema ='" + llamada.detalle + "', Solucion='" + llamada.solucion + "', Clv_Trabajo=" + llamada.clas_solucion + ", clvPrioridadQueja=" + llamada.prioridad + " WHERE Clv_Queja=" + llamada.queja);
-                        comandoSql.Connection = conexionSQL;
-                        comandoSql.ExecuteNonQuery();
-                        comandoSql = new SqlCommand("UPDATE LLamadas SET IdTurno ='" + llamada.turno + "' WHERE IdLlamada=" + llamada.id_llamada);
+                    if (llamada.clv_motivo > 0)
+                    {
+                        comandoSql = new SqlCommand("UPDATE LLamadas SET Detalle ='" + llamada.detalle + "', Clv_Motivo=" + llamada.clv_motivo + " WHERE IdLlamada=" + llamada.id_llamada);
                         comandoSql.Connection = conexionSQL;
                         comandoSql.ExecuteNonQuery();
                     }
+                    else
+                    {
+                        comandoSql = new SqlCommand("UPDATE LLamadas SET Detalle ='" + llamada.detalle + "', Solucion='" + llamada.solucion + "', Clv_Trabajo=" + llamada.clas_solucion + ", Clv_Problema=" + llamada.clas_problema + " WHERE IdLlamada=" + llamada.id_llamada);
+                        comandoSql.Connection = conexionSQL;
+                        comandoSql.ExecuteNonQuery();
+                        if (llamada.queja != null)
+                        {
+                            comandoSql = new SqlCommand("UPDATE Quejas SET Problema ='" + llamada.detalle + "', Solucion='" + llamada.solucion + "', Clv_Trabajo=" + llamada.clas_solucion + ", clvPrioridadQueja=" + llamada.prioridad + " WHERE Clv_Queja=" + llamada.queja);
+                            comandoSql.Connection = conexionSQL;
+                            comandoSql.ExecuteNonQuery();
+                            comandoSql = new SqlCommand("UPDATE LLamadas SET IdTurno ='" + llamada.turno + "' WHERE IdLlamada=" + llamada.id_llamada);
+                            comandoSql.Connection = conexionSQL;
+                            comandoSql.ExecuteNonQuery();
+                        }
+                    }
+                    
                 }
             }
 
@@ -970,8 +1026,50 @@ namespace SoftvMVC.Controllers
             public string email { get; set; }
             public string queja { get; set; }
             public int id_llamada { get; set; }
-
+            public int clv_motivo { get; set; }
         }
+        
+        public ActionResult TipoLlamada(){
+             ConexionController c = new ConexionController();
+            SqlCommand comandoSql;
+            List<objTipoLlamada> lista = new List<objTipoLlamada>();
+            SqlConnection conexionSQL = new SqlConnection("Data Source=192.168.1.230;Initial Catalog=Encuestas;User ID =sa;Password=0601x-2L;");
+            //SqlConnection conexionSQL = new SqlConnection("Data Source=FABIAN-PC\\INSTANCIASQL2014;Initial Catalog=Encuestas;User ID =sa;Password=0601x-2Ñ;");
+            try
+            {
+                conexionSQL.Open();
+            }
+            catch
+            { }
+
+            try
+            {
+                comandoSql = new SqlCommand("select * from MotAtenTel");
+                comandoSql.Connection = conexionSQL;
+                SqlDataReader reader = comandoSql.ExecuteReader();
+                if (reader.HasRows)
+                {
+                    while (reader.Read())
+                    {
+                        objTipoLlamada datos = new objTipoLlamada();
+                        datos.clv_motivo = Int32.Parse(reader[0].ToString());
+                        datos.descricpion = reader[1].ToString();
+                        lista.Add(datos);
+                    }
+                }
+              
+            }
+
+            catch { }
+            return Json(lista, JsonRequestBehavior.AllowGet);
+        }
+        public class objTipoLlamada
+        {
+            public int clv_motivo { get; set; }
+            public string descricpion { get; set; }
+        }
+
+
     }
 
 

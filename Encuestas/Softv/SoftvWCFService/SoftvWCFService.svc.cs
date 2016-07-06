@@ -121,6 +121,7 @@ namespace SoftvWCFService
 
         #endregion
 
+
         #region Module
         public ModuleEntity GetModule(int? IdModule)
         {
@@ -161,22 +162,6 @@ namespace SoftvWCFService
         {
             return Module.Delete(IdModule);
         }
-
-        #endregion
-
-        #region Permiso
-
-
-        public SoftvList<PermisoEntity> GetXmlPermiso(String xml)
-        {
-            return Permiso.GetXml(xml);
-        }
-
-        public int MargePermiso(int BaseIdUser, String BaseRemoteIp, String xml)
-        {
-            return Permiso.MargePermiso(xml);
-        }
-
 
         #endregion
 
@@ -624,7 +609,7 @@ namespace SoftvWCFService
             return Conexion.Edit(objConexion);
         }
 
-        public int DeleteConexion(String BaseRemoteIp, int BaseIdUser, int? IdConexion)
+        public int DeleteConexion(int? IdConexion)
         {
             return Conexion.Delete(IdConexion);
         }
@@ -1679,7 +1664,65 @@ namespace SoftvWCFService
         }
          
         #endregion
-  
-  
+
+        #region Permiso
+
+
+        public SoftvList<PermisoEntity> GetXmlPermiso(String xml)
+        {
+            return Permiso.GetXml(xml);
+        }
+
+        public int MargePermiso(int BaseIdUser, String BaseRemoteIp, String xml)
+        {
+            return Permiso.MargePermiso(xml);
+        }
+
+
+
+
+
+        public PermisoEntity GetPermiso(int? IdPermiso)
+        {
+            return Permiso.GetOne(IdPermiso);
+        }
+
+        public PermisoEntity GetDeepPermiso(int? IdPermiso)
+        {
+            return Permiso.GetOneDeep(IdPermiso);
+        }
+
+        public IEnumerable<PermisoEntity> GetPermisoList()
+        {
+            return Permiso.GetAll();
+        }
+
+        public SoftvList<PermisoEntity> GetPermisoPagedList(int page, int pageSize)
+        {
+            return Permiso.GetPagedList(page, pageSize);
+        }
+
+        public SoftvList<PermisoEntity> GetPermisoPagedListXml(int page, int pageSize, String xml)
+        {
+            return Permiso.GetPagedList(page, pageSize, xml);
+        }
+
+        public int AddPermiso(PermisoEntity objPermiso)
+        {
+            return Permiso.Add(objPermiso);
+        }
+
+        public int UpdatePermiso(PermisoEntity objPermiso)
+        {
+            return Permiso.Edit(objPermiso);
+        }
+
+        public int DeletePermiso(String BaseRemoteIp, int BaseIdUser, int? IdPermiso)
+        {
+            return Permiso.Delete(IdPermiso);
+        }
+
+        #endregion
+
     }
 }

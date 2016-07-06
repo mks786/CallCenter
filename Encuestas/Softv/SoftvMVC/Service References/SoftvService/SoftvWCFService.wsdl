@@ -170,6 +170,54 @@
   <wsdl:message name="IModule_DeleteModule_OutputMessage">
     <wsdl:part name="parameters" element="tns:DeleteModuleResponse" />
   </wsdl:message>
+  <wsdl:message name="IPermiso_GetPermiso_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetPermiso" />
+  </wsdl:message>
+  <wsdl:message name="IPermiso_GetPermiso_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetPermisoResponse" />
+  </wsdl:message>
+  <wsdl:message name="IPermiso_GetDeepPermiso_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetDeepPermiso" />
+  </wsdl:message>
+  <wsdl:message name="IPermiso_GetDeepPermiso_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetDeepPermisoResponse" />
+  </wsdl:message>
+  <wsdl:message name="IPermiso_GetPermisoList_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetPermisoList" />
+  </wsdl:message>
+  <wsdl:message name="IPermiso_GetPermisoList_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetPermisoListResponse" />
+  </wsdl:message>
+  <wsdl:message name="IPermiso_GetPermisoPagedList_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetPermisoPagedList" />
+  </wsdl:message>
+  <wsdl:message name="IPermiso_GetPermisoPagedList_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetPermisoPagedListResponse" />
+  </wsdl:message>
+  <wsdl:message name="IPermiso_GetPermisoPagedListXml_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetPermisoPagedListXml" />
+  </wsdl:message>
+  <wsdl:message name="IPermiso_GetPermisoPagedListXml_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetPermisoPagedListXmlResponse" />
+  </wsdl:message>
+  <wsdl:message name="IPermiso_AddPermiso_InputMessage">
+    <wsdl:part name="parameters" element="tns:AddPermiso" />
+  </wsdl:message>
+  <wsdl:message name="IPermiso_AddPermiso_OutputMessage">
+    <wsdl:part name="parameters" element="tns:AddPermisoResponse" />
+  </wsdl:message>
+  <wsdl:message name="IPermiso_UpdatePermiso_InputMessage">
+    <wsdl:part name="parameters" element="tns:UpdatePermiso" />
+  </wsdl:message>
+  <wsdl:message name="IPermiso_UpdatePermiso_OutputMessage">
+    <wsdl:part name="parameters" element="tns:UpdatePermisoResponse" />
+  </wsdl:message>
+  <wsdl:message name="IPermiso_DeletePermiso_InputMessage">
+    <wsdl:part name="parameters" element="tns:DeletePermiso" />
+  </wsdl:message>
+  <wsdl:message name="IPermiso_DeletePermiso_OutputMessage">
+    <wsdl:part name="parameters" element="tns:DeletePermisoResponse" />
+  </wsdl:message>
   <wsdl:message name="IPermiso_GetXmlPermiso_InputMessage">
     <wsdl:part name="parameters" element="tns:GetXmlPermiso" />
   </wsdl:message>
@@ -1893,6 +1941,38 @@
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:portType name="IPermiso">
+    <wsdl:operation name="GetPermiso">
+      <wsdl:input wsaw:Action="http://tempuri.org/IPermiso/GetPermiso" message="tns:IPermiso_GetPermiso_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IPermiso/GetPermisoResponse" message="tns:IPermiso_GetPermiso_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetDeepPermiso">
+      <wsdl:input wsaw:Action="http://tempuri.org/IPermiso/GetDeepPermiso" message="tns:IPermiso_GetDeepPermiso_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IPermiso/GetDeepPermisoResponse" message="tns:IPermiso_GetDeepPermiso_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetPermisoList">
+      <wsdl:input wsaw:Action="http://tempuri.org/IPermiso/GetPermisoList" message="tns:IPermiso_GetPermisoList_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IPermiso/GetPermisoListResponse" message="tns:IPermiso_GetPermisoList_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetPermisoPagedList">
+      <wsdl:input wsaw:Action="http://tempuri.org/IPermiso/GetPermisoPagedList" message="tns:IPermiso_GetPermisoPagedList_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IPermiso/GetPermisoPagedListResponse" message="tns:IPermiso_GetPermisoPagedList_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetPermisoPagedListXml">
+      <wsdl:input wsaw:Action="http://tempuri.org/IPermiso/GetPermisoPagedListXml" message="tns:IPermiso_GetPermisoPagedListXml_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IPermiso/GetPermisoPagedListXmlResponse" message="tns:IPermiso_GetPermisoPagedListXml_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="AddPermiso">
+      <wsdl:input wsaw:Action="http://tempuri.org/IPermiso/AddPermiso" message="tns:IPermiso_AddPermiso_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IPermiso/AddPermisoResponse" message="tns:IPermiso_AddPermiso_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="UpdatePermiso">
+      <wsdl:input wsaw:Action="http://tempuri.org/IPermiso/UpdatePermiso" message="tns:IPermiso_UpdatePermiso_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IPermiso/UpdatePermisoResponse" message="tns:IPermiso_UpdatePermiso_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="DeletePermiso">
+      <wsdl:input wsaw:Action="http://tempuri.org/IPermiso/DeletePermiso" message="tns:IPermiso_DeletePermiso_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IPermiso/DeletePermisoResponse" message="tns:IPermiso_DeletePermiso_OutputMessage" />
+    </wsdl:operation>
     <wsdl:operation name="GetXmlPermiso">
       <wsdl:input wsaw:Action="http://tempuri.org/IPermiso/GetXmlPermiso" message="tns:IPermiso_GetXmlPermiso_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IPermiso/GetXmlPermisoResponse" message="tns:IPermiso_GetXmlPermiso_OutputMessage" />
@@ -3288,6 +3368,78 @@
   </wsdl:binding>
   <wsdl:binding name="BasicHttpBinding_IPermiso" type="tns:IPermiso">
     <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="GetPermiso">
+      <soap:operation soapAction="http://tempuri.org/IPermiso/GetPermiso" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetDeepPermiso">
+      <soap:operation soapAction="http://tempuri.org/IPermiso/GetDeepPermiso" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetPermisoList">
+      <soap:operation soapAction="http://tempuri.org/IPermiso/GetPermisoList" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetPermisoPagedList">
+      <soap:operation soapAction="http://tempuri.org/IPermiso/GetPermisoPagedList" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetPermisoPagedListXml">
+      <soap:operation soapAction="http://tempuri.org/IPermiso/GetPermisoPagedListXml" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AddPermiso">
+      <soap:operation soapAction="http://tempuri.org/IPermiso/AddPermiso" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdatePermiso">
+      <soap:operation soapAction="http://tempuri.org/IPermiso/UpdatePermiso" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DeletePermiso">
+      <soap:operation soapAction="http://tempuri.org/IPermiso/DeletePermiso" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
     <wsdl:operation name="GetXmlPermiso">
       <soap:operation soapAction="http://tempuri.org/IPermiso/GetXmlPermiso" style="document" />
       <wsdl:input>

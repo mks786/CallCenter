@@ -29,17 +29,22 @@ namespace Softv.Entities
         /// Property IdLlamada
         /// </summary>
         [DataMember]
-        public int? IdLlamada { get; set; }
+        public int? IdConexion { get; set; }
+        /// <summary>
+        /// Property IdLlamada
+        /// </summary>
+        [DataMember]
+        public long? IdLlamada { get; set; }
         /// <summary>
         /// Property Contrato
         /// </summary>
         [DataMember]
-        public int? Contrato { get; set; }
+        public long? Contrato { get; set; }
         /// <summary>
         /// Property Fecha
         /// </summary>
         [DataMember]
-        public string Fecha { get; set; }
+        public String Fecha { get; set; }
         /// <summary>
         /// Property Nombre
         /// </summary>

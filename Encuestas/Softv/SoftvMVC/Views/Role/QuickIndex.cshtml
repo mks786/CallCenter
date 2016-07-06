@@ -1,0 +1,101 @@
+﻿@model PagedList.IPagedList<Softv.Entities.RoleEntity>
+@using PagedList.Mvc;
+<script>
+    function pagechange() {
+        $('#Paginator').on('click', 'a', function () {
+            LoadData();
+            return false;
+        });
+    }
+
+    $(document).ready(function () {
+        pagechange();
+        Permisos();
+        //pone los check
+        $('input').iCheck({
+            checkboxClass: 'icheckbox_square-red',
+            radioClass: 'iradio_square-red',
+        });
+    });
+</script>
+
+<div id="dialog-confirm" style="display:none"></div>
+
+
+
+<table class="table" id="datost">
+    <tr>
+
+        <th>
+        </th>
+
+        <th>
+        </th>
+
+        <th>
+        </th>
+
+        <th>
+            Nombre
+
+        </th>
+
+        <th>
+            Descripción
+
+        </th>
+
+    </tr>
+    @foreach (var item in Model)
+    {
+
+        <tr>
+            <td style="display:none">
+                @Html.DisplayFor(modelItem => item.IdRol)
+            </td>
+
+            <td style="width: 30px;">
+                <a href="@Url.Action("Edit", "Encuesta", new { id = item.IdRol })" class="" style="color:#756F6F">
+                    <i class="fa fa-pencil"></i>
+                </a>
+            </td>
+
+            <td style="width: 30px;">
+                <a href="@Url.Action("Details", "Encuesta", new { id = item.IdRol })" class=" btndetails" style="color:#756F6F">
+                    <i class="fa fa-archive"></i>
+                </a>
+            </td>
+
+            <td id="Eliminar" style=" width: 20px;">
+                <a style=" color:#756F6F;" onclick="Eliminar()" data-toggle="tooltip" data-placement="left" title="Tooltip on left">
+
+                    <i class=" fa fa-trash">
+                    </i>
+                </a>
+            </td>
+
+
+
+            <td>
+                @Html.DisplayFor(modelItem => item.Nombre)
+            </td>
+
+            <td>
+                @Html.DisplayFor(modelItem => item.Descripcion)
+            </td>
+
+
+        </tr>
+
+    }
+</table>
+<div id="Paginator" class="pagefooter">
+    @Html.PagedListPager(Model, page => Url.Action("QuickIndex", new { page }), new PagedListRenderOptions
+                                                    {
+                                                        LinkToFirstPageFormat = "1",
+                                                        LinkToPreviousPageFormat = "Anterior",
+                                                        LinkToNextPageFormat = "Siguiente",
+                                                        LinkToLastPageFormat = "Ultima"
+                                                    })
+</div>
+

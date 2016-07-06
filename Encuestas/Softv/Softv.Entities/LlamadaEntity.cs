@@ -39,7 +39,7 @@ namespace Softv.Entities
         /// Property Contrato
         /// </summary>
         [DataMember]
-        public long ? Contrato { get; set; }
+        public long? Contrato { get; set; }
         /// <summary>
         /// Property Detalle
         /// </summary>
@@ -89,6 +89,13 @@ namespace Softv.Entities
 
         [DataMember]
         public int? Clv_Problema { get; set; }
+
+
+        [DataMember]
+        public bool? ProblemaSolucion { get; set; }
+
+        [DataMember]
+        public int? Clv_Motivo { get; set; }
 
 
 

@@ -124,6 +124,32 @@ $('#busqueda_masiva').on('click', function () {
         } else {
             fecha_inicio = $('#fecha_inicio').val();
             fecha_final = $('#fecha_final').val();
+            var inicio = new Date(fecha_inicio);
+            var fin = new Date(fecha_final);
+            var dd = inicio.getDate();
+            var mm = inicio.getMonth() + 1; //January is 0!
+            var yyyy = inicio.getFullYear();
+            var dd2 = fin.getDate();
+            var mm2 = fin.getMonth() + 1; //January is 0!
+            var yyyy2 = fin.getFullYear();
+
+            if (dd < 10) {
+                dd = '0' + dd
+            }
+
+            if (mm < 10) {
+                mm = '0' + mm
+            }
+            if (dd2 < 10) {
+                dd2 = '0' + dd
+            }
+
+            if (mm2 < 10) {
+                mm2 = '0' + mm2
+            }
+
+            fecha_inicio = dd + '-' + mm + '-' + yyyy;
+            fecha_final = dd2 + '-' + mm2 + '-' + yyyy2;
             if (fecha_inicio == '' || fecha_final == '') {
                 swal("Por favor selecciona el rango de fechas", "", "error");
             } else {

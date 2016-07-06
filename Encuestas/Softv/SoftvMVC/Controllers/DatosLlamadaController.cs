@@ -23,12 +23,15 @@ namespace SoftvMVC.Controllers
     public partial class DatosLlamadaController : BaseController, IDisposable
     {
         private SoftvService.DatosLlamadaClient proxy = null;
+        private SoftvService.NoClienteClient proxyNoCliente = null;
 
         public DatosLlamadaController()
         {
 
 
             proxy = new SoftvService.DatosLlamadaClient();
+
+            proxyNoCliente = new SoftvService.NoClienteClient();
 
         }
 
@@ -39,6 +42,15 @@ namespace SoftvMVC.Controllers
                 if (proxy.State != System.ServiceModel.CommunicationState.Closed)
                 {
                     proxy.Close();
+                }
+            }
+
+
+            if (proxyNoCliente != null)
+            {
+                if (proxyNoCliente.State != System.ServiceModel.CommunicationState.Closed)
+                {
+                    proxyNoCliente.Close();
                 }
             }
 
@@ -246,7 +258,7 @@ namespace SoftvMVC.Controllers
             }
             else if(tipo_llamada == false)
             {
-                dataTableData.data = FiltrarContenido(idplaza, contrato, cadena, id_llamada, tipo_llamada, draw, start, length, ref recordFiltered).Where(o => o.Contrato == 0).OrderByDescending(c => c.IdLlamada).ToList();
+                dataTableData.data = FiltrarContenido(idplaza, contrato, cadena, id_llamada, tipo_llamada, draw, start, length, ref recordFiltered).Where(o => o.TipoLlamada == false && o.IdConexion == idplaza).OrderByDescending(c => c.IdLlamada).ToList();
             }
             else if (id_llamada > 0)
             {
@@ -260,9 +272,21 @@ namespace SoftvMVC.Controllers
 
             return Json(dataTableData, JsonRequestBehavior.AllowGet);
         }
+
+        public class conexionPlazaCliente{
+            public int idllamada { get; set; }
+            public int contrato { get; set; }
+            public string nombre { get; set; }
+            public string fecha { get; set; }
+            public string tipollamada { get; set; }
+        }
         public List<DatosLlamadaEntity> FiltrarContenido(int idplaza, int ? contrato, string cadena, int ? id_llamada, bool ? tipo_llamada, int draw, int start, int length, ref int recordFiltered)
         {
+
+            List<conexionPlazaCliente> llamadaCliente = new List<conexionPlazaCliente>();
+            List<DatosLlamadaEntity> llamada = proxy.GetDatosLlamadaList();
             List<DatosLlamadaEntity> lista = new List<DatosLlamadaEntity>();
+
             ConexionController c = new ConexionController();
             SqlCommand comandoSql;
             SqlConnection conexionSQL = new SqlConnection(c.DameConexion(idplaza));
@@ -274,36 +298,65 @@ namespace SoftvMVC.Controllers
             { }
             try
             {
-                comandoSql = new SqlCommand("exec Softv_GetAllLlamadas ");
-                comandoSql.Connection = conexionSQL;
-                SqlDataReader reader = comandoSql.ExecuteReader();
-                if (reader.HasRows)
+                foreach (var item in llamada)
                 {
-                    while (reader.Read())
-                    {
-                        DatosLlamadaEntity llamada = new DatosLlamadaEntity();
-                        llamada.IdLlamada = Int32.Parse(reader[0].ToString());
-                        llamada.Nombre = reader[3].ToString();
-                        try
-                        {
-                            llamada.Contrato = Int32.Parse(reader[1].ToString());
+                    DatosLlamadaEntity llamadas = new DatosLlamadaEntity();
+                    if(item.Contrato > 0){
+                        if(item.IdConexion == idplaza){
+                            comandoSql = new SqlCommand("SELECT * FROM Newsoftv.dbo.CLIENTES WHERE CONTRATO =" + item.Contrato);
+                            comandoSql.Connection = conexionSQL;
+                            SqlDataReader reader = comandoSql.ExecuteReader();
+                            if (reader.HasRows)
+                            {
+                                while (reader.Read())
+                                {
+                                    llamadas.IdLlamada = item.IdLlamada;
+                                    llamadas.Nombre = reader[1].ToString();
+                                    llamadas.Contrato = item.Contrato;
+                                    llamadas.IdConexion = item.IdConexion;
+                                    llamadas.Fecha = item.Fecha;
+                                    llamadas.TipoLlamada = item.TipoLlamada;
+                                    llamadas.Usuario = item.Usuario;
+                                    lista.Add(llamadas);
+                                }
+                            }
+                            reader.Close();
                         }
-                        catch
-                        {
-                            llamada.Contrato = 0;
-                        }
-                        llamada.Fecha = reader[2].ToString();
-                        llamada.TipoLlamada = Boolean.Parse(reader[5].ToString());
-                        llamada.Usuario = reader[4].ToString();
-                        lista.Add(llamada);
+                        
                     }
+                    else
+                    {
+                        List<NoClienteEntity> nocliente = proxyNoCliente.GetNoClienteList();
+                        if (item.IdConexion == idplaza)
+                        {
+                            foreach (var item2 in nocliente)
+                            {
+                                if (item.IdLlamada == item2.IdLlamada)
+                                {
+
+                                    llamadas.IdLlamada = item.IdLlamada;
+                                    llamadas.Nombre = item2.Nombre;
+                                    llamadas.Contrato = item.Contrato;
+                                    llamadas.Fecha = item.Fecha;
+                                    llamadas.IdConexion = item.IdConexion;
+                                    llamadas.TipoLlamada = item.TipoLlamada;
+                                    llamadas.Usuario = item.Usuario;
+                                    lista.Add(llamadas);
+                                }
+
+                            }
+                        }
+                        
+                       
+                    }
+                    
                 }
+                
             }
             catch { }
             recordFiltered = lista.Count;
 
             return lista.Skip(start).Take(length).ToList();
-
 
         }
 

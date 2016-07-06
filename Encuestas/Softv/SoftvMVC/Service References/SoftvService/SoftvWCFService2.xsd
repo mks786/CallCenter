@@ -73,11 +73,14 @@
       <xs:extension base="tns:BaseEntity">
         <xs:sequence>
           <xs:element minOccurs="0" name="IdModule" nillable="true" type="xs:int" />
+          <xs:element minOccurs="0" name="IdPermiso" nillable="true" type="xs:int" />
           <xs:element minOccurs="0" name="IdRol" nillable="true" type="xs:int" />
-          <xs:element minOccurs="0" name="OptAdd" type="xs:boolean" />
-          <xs:element minOccurs="0" name="OptDelete" type="xs:boolean" />
-          <xs:element minOccurs="0" name="OptSelect" type="xs:boolean" />
-          <xs:element minOccurs="0" name="OptUpdate" type="xs:boolean" />
+          <xs:element minOccurs="0" name="Module" nillable="true" type="tns:ModuleEntity" />
+          <xs:element minOccurs="0" name="OptAdd" nillable="true" type="xs:boolean" />
+          <xs:element minOccurs="0" name="OptDelete" nillable="true" type="xs:boolean" />
+          <xs:element minOccurs="0" name="OptSelect" nillable="true" type="xs:boolean" />
+          <xs:element minOccurs="0" name="OptUpdate" nillable="true" type="xs:boolean" />
+          <xs:element minOccurs="0" name="Role" nillable="true" type="tns:RoleEntity" />
         </xs:sequence>
       </xs:extension>
     </xs:complexContent>
@@ -810,6 +813,7 @@
           <xs:element minOccurs="0" name="Direccion" nillable="true" type="xs:string" />
           <xs:element minOccurs="0" name="Email" nillable="true" type="xs:string" />
           <xs:element minOccurs="0" name="Id" nillable="true" type="xs:int" />
+          <xs:element minOccurs="0" name="IdConexion" nillable="true" type="xs:int" />
           <xs:element minOccurs="0" name="IdLlamada" nillable="true" type="xs:int" />
           <xs:element minOccurs="0" name="Nombre" nillable="true" type="xs:string" />
           <xs:element minOccurs="0" name="Telefono" nillable="true" type="xs:string" />
@@ -828,10 +832,11 @@
     <xs:complexContent mixed="false">
       <xs:extension base="tns:BaseEntity">
         <xs:sequence>
-          <xs:element minOccurs="0" name="Contrato" nillable="true" type="xs:int" />
+          <xs:element minOccurs="0" name="Contrato" nillable="true" type="xs:long" />
           <xs:element minOccurs="0" name="Fecha" nillable="true" type="xs:string" />
           <xs:element minOccurs="0" name="Id" nillable="true" type="xs:int" />
-          <xs:element minOccurs="0" name="IdLlamada" nillable="true" type="xs:int" />
+          <xs:element minOccurs="0" name="IdConexion" nillable="true" type="xs:int" />
+          <xs:element minOccurs="0" name="IdLlamada" nillable="true" type="xs:long" />
           <xs:element minOccurs="0" name="Nombre" nillable="true" type="xs:string" />
           <xs:element minOccurs="0" name="TipoLlamada" type="xs:boolean" />
           <xs:element minOccurs="0" name="Usuario" nillable="true" type="xs:string" />
@@ -858,9 +863,12 @@
         <xs:sequence>
           <xs:element minOccurs="0" name="Cantidad" nillable="true" type="xs:int" />
           <xs:element minOccurs="0" name="IdEstadistica" nillable="true" type="xs:int" />
+          <xs:element minOccurs="0" name="IdPregunta" nillable="true" type="xs:int" />
+          <xs:element minOccurs="0" name="IdTipoPregunta" nillable="true" type="xs:int" />
           <xs:element minOccurs="0" name="NombreEncuesta" nillable="true" type="xs:string" />
           <xs:element minOccurs="0" name="Pregunta" nillable="true" type="xs:string" />
           <xs:element minOccurs="0" name="Respuesta" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="RespuestaAbierta" nillable="true" type="xs:string" />
         </xs:sequence>
       </xs:extension>
     </xs:complexContent>

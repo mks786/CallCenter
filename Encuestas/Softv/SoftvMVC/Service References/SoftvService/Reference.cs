@@ -492,6 +492,54 @@ namespace SoftvMVC.SoftvService {
     [System.ServiceModel.ServiceContractAttribute(ConfigurationName="SoftvService.IPermiso")]
     public interface IPermiso {
         
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IPermiso/GetPermiso", ReplyAction="http://tempuri.org/IPermiso/GetPermisoResponse")]
+        Softv.Entities.PermisoEntity GetPermiso(System.Nullable<int> IdPermiso);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IPermiso/GetPermiso", ReplyAction="http://tempuri.org/IPermiso/GetPermisoResponse")]
+        System.Threading.Tasks.Task<Softv.Entities.PermisoEntity> GetPermisoAsync(System.Nullable<int> IdPermiso);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IPermiso/GetDeepPermiso", ReplyAction="http://tempuri.org/IPermiso/GetDeepPermisoResponse")]
+        Softv.Entities.PermisoEntity GetDeepPermiso(System.Nullable<int> IdPermiso);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IPermiso/GetDeepPermiso", ReplyAction="http://tempuri.org/IPermiso/GetDeepPermisoResponse")]
+        System.Threading.Tasks.Task<Softv.Entities.PermisoEntity> GetDeepPermisoAsync(System.Nullable<int> IdPermiso);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IPermiso/GetPermisoList", ReplyAction="http://tempuri.org/IPermiso/GetPermisoListResponse")]
+        System.Collections.Generic.List<Softv.Entities.PermisoEntity> GetPermisoList();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IPermiso/GetPermisoList", ReplyAction="http://tempuri.org/IPermiso/GetPermisoListResponse")]
+        System.Threading.Tasks.Task<System.Collections.Generic.List<Softv.Entities.PermisoEntity>> GetPermisoListAsync();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IPermiso/GetPermisoPagedList", ReplyAction="http://tempuri.org/IPermiso/GetPermisoPagedListResponse")]
+        Globals.SoftvList<Softv.Entities.PermisoEntity> GetPermisoPagedList(int page, int pageSize);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IPermiso/GetPermisoPagedList", ReplyAction="http://tempuri.org/IPermiso/GetPermisoPagedListResponse")]
+        System.Threading.Tasks.Task<Globals.SoftvList<Softv.Entities.PermisoEntity>> GetPermisoPagedListAsync(int page, int pageSize);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IPermiso/GetPermisoPagedListXml", ReplyAction="http://tempuri.org/IPermiso/GetPermisoPagedListXmlResponse")]
+        Globals.SoftvList<Softv.Entities.PermisoEntity> GetPermisoPagedListXml(int page, int pageSize, string xml);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IPermiso/GetPermisoPagedListXml", ReplyAction="http://tempuri.org/IPermiso/GetPermisoPagedListXmlResponse")]
+        System.Threading.Tasks.Task<Globals.SoftvList<Softv.Entities.PermisoEntity>> GetPermisoPagedListXmlAsync(int page, int pageSize, string xml);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IPermiso/AddPermiso", ReplyAction="http://tempuri.org/IPermiso/AddPermisoResponse")]
+        int AddPermiso(Softv.Entities.PermisoEntity objPermiso);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IPermiso/AddPermiso", ReplyAction="http://tempuri.org/IPermiso/AddPermisoResponse")]
+        System.Threading.Tasks.Task<int> AddPermisoAsync(Softv.Entities.PermisoEntity objPermiso);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IPermiso/UpdatePermiso", ReplyAction="http://tempuri.org/IPermiso/UpdatePermisoResponse")]
+        int UpdatePermiso(Softv.Entities.PermisoEntity objPermiso);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IPermiso/UpdatePermiso", ReplyAction="http://tempuri.org/IPermiso/UpdatePermisoResponse")]
+        System.Threading.Tasks.Task<int> UpdatePermisoAsync(Softv.Entities.PermisoEntity objPermiso);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IPermiso/DeletePermiso", ReplyAction="http://tempuri.org/IPermiso/DeletePermisoResponse")]
+        int DeletePermiso(string BaseRemoteIp, int BaseIdUser, System.Nullable<int> IdPermiso);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IPermiso/DeletePermiso", ReplyAction="http://tempuri.org/IPermiso/DeletePermisoResponse")]
+        System.Threading.Tasks.Task<int> DeletePermisoAsync(string BaseRemoteIp, int BaseIdUser, System.Nullable<int> IdPermiso);
+        
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IPermiso/GetXmlPermiso", ReplyAction="http://tempuri.org/IPermiso/GetXmlPermisoResponse")]
         Globals.SoftvList<Softv.Entities.PermisoEntity> GetXmlPermiso(string xml);
         
@@ -530,6 +578,70 @@ namespace SoftvMVC.SoftvService {
         
         public PermisoClient(System.ServiceModel.Channels.Binding binding, System.ServiceModel.EndpointAddress remoteAddress) : 
                 base(binding, remoteAddress) {
+        }
+        
+        public Softv.Entities.PermisoEntity GetPermiso(System.Nullable<int> IdPermiso) {
+            return base.Channel.GetPermiso(IdPermiso);
+        }
+        
+        public System.Threading.Tasks.Task<Softv.Entities.PermisoEntity> GetPermisoAsync(System.Nullable<int> IdPermiso) {
+            return base.Channel.GetPermisoAsync(IdPermiso);
+        }
+        
+        public Softv.Entities.PermisoEntity GetDeepPermiso(System.Nullable<int> IdPermiso) {
+            return base.Channel.GetDeepPermiso(IdPermiso);
+        }
+        
+        public System.Threading.Tasks.Task<Softv.Entities.PermisoEntity> GetDeepPermisoAsync(System.Nullable<int> IdPermiso) {
+            return base.Channel.GetDeepPermisoAsync(IdPermiso);
+        }
+        
+        public System.Collections.Generic.List<Softv.Entities.PermisoEntity> GetPermisoList() {
+            return base.Channel.GetPermisoList();
+        }
+        
+        public System.Threading.Tasks.Task<System.Collections.Generic.List<Softv.Entities.PermisoEntity>> GetPermisoListAsync() {
+            return base.Channel.GetPermisoListAsync();
+        }
+        
+        public Globals.SoftvList<Softv.Entities.PermisoEntity> GetPermisoPagedList(int page, int pageSize) {
+            return base.Channel.GetPermisoPagedList(page, pageSize);
+        }
+        
+        public System.Threading.Tasks.Task<Globals.SoftvList<Softv.Entities.PermisoEntity>> GetPermisoPagedListAsync(int page, int pageSize) {
+            return base.Channel.GetPermisoPagedListAsync(page, pageSize);
+        }
+        
+        public Globals.SoftvList<Softv.Entities.PermisoEntity> GetPermisoPagedListXml(int page, int pageSize, string xml) {
+            return base.Channel.GetPermisoPagedListXml(page, pageSize, xml);
+        }
+        
+        public System.Threading.Tasks.Task<Globals.SoftvList<Softv.Entities.PermisoEntity>> GetPermisoPagedListXmlAsync(int page, int pageSize, string xml) {
+            return base.Channel.GetPermisoPagedListXmlAsync(page, pageSize, xml);
+        }
+        
+        public int AddPermiso(Softv.Entities.PermisoEntity objPermiso) {
+            return base.Channel.AddPermiso(objPermiso);
+        }
+        
+        public System.Threading.Tasks.Task<int> AddPermisoAsync(Softv.Entities.PermisoEntity objPermiso) {
+            return base.Channel.AddPermisoAsync(objPermiso);
+        }
+        
+        public int UpdatePermiso(Softv.Entities.PermisoEntity objPermiso) {
+            return base.Channel.UpdatePermiso(objPermiso);
+        }
+        
+        public System.Threading.Tasks.Task<int> UpdatePermisoAsync(Softv.Entities.PermisoEntity objPermiso) {
+            return base.Channel.UpdatePermisoAsync(objPermiso);
+        }
+        
+        public int DeletePermiso(string BaseRemoteIp, int BaseIdUser, System.Nullable<int> IdPermiso) {
+            return base.Channel.DeletePermiso(BaseRemoteIp, BaseIdUser, IdPermiso);
+        }
+        
+        public System.Threading.Tasks.Task<int> DeletePermisoAsync(string BaseRemoteIp, int BaseIdUser, System.Nullable<int> IdPermiso) {
+            return base.Channel.DeletePermisoAsync(BaseRemoteIp, BaseIdUser, IdPermiso);
         }
         
         public Globals.SoftvList<Softv.Entities.PermisoEntity> GetXmlPermiso(string xml) {
@@ -1778,10 +1890,10 @@ namespace SoftvMVC.SoftvService {
         System.Threading.Tasks.Task<int> UpdateConexionAsync(Softv.Entities.ConexionEntity objConexion);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IConexion/DeleteConexion", ReplyAction="http://tempuri.org/IConexion/DeleteConexionResponse")]
-        int DeleteConexion(string BaseRemoteIp, int BaseIdUser, System.Nullable<int> IdConexion);
+        int DeleteConexion(System.Nullable<int> IdConexion);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IConexion/DeleteConexion", ReplyAction="http://tempuri.org/IConexion/DeleteConexionResponse")]
-        System.Threading.Tasks.Task<int> DeleteConexionAsync(string BaseRemoteIp, int BaseIdUser, System.Nullable<int> IdConexion);
+        System.Threading.Tasks.Task<int> DeleteConexionAsync(System.Nullable<int> IdConexion);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -1867,12 +1979,12 @@ namespace SoftvMVC.SoftvService {
             return base.Channel.UpdateConexionAsync(objConexion);
         }
         
-        public int DeleteConexion(string BaseRemoteIp, int BaseIdUser, System.Nullable<int> IdConexion) {
-            return base.Channel.DeleteConexion(BaseRemoteIp, BaseIdUser, IdConexion);
+        public int DeleteConexion(System.Nullable<int> IdConexion) {
+            return base.Channel.DeleteConexion(IdConexion);
         }
         
-        public System.Threading.Tasks.Task<int> DeleteConexionAsync(string BaseRemoteIp, int BaseIdUser, System.Nullable<int> IdConexion) {
-            return base.Channel.DeleteConexionAsync(BaseRemoteIp, BaseIdUser, IdConexion);
+        public System.Threading.Tasks.Task<int> DeleteConexionAsync(System.Nullable<int> IdConexion) {
+            return base.Channel.DeleteConexionAsync(IdConexion);
         }
     }
     

@@ -118,35 +118,6 @@
             });
         }
 
-        //funcion para mostrar un mensaje tipo notificacion
-        function ShowNotification(titulo, contenido, tipo) {
-            new PNotify({
-                title: titulo,
-                text: contenido,
-                type: tipo,
-                delay: 2000,
-                width: 700,
-                remove: true,
-                history: true
-                //after_init: function (PNotify) {
-                //    alert('I\'m called after the notice initializes. I\'m passed the PNotify object for the current notice: ' + PNotify + '\n\nThere are more callbacks you can assign, but this is the last notice you\'ll see. Check the code to see them all.');
-                //},
-                //hide:true,
-                //after_close: function(){
-                //    //PNotify.removeAll();
-                //    alert('ok')
-                //}
-                //PNotify.removeAll();
-
-                //after_close: function (PNotify) {
-                //    alert('ok')
-                //    nonblock_opacity: .2
-                //    PNotify.removeAll();
-
-                //}
-
-            });
-        }
 
 
 
@@ -400,7 +371,6 @@
             function msgmotify() {
                 @if(ViewBag.notify == true)
                     {
-                        @:ShowNotification('@Session["titlemsj"]', "@Session["message"]", '@Session["typemsj"]');
                                                                                                                                                                                 Session.Remove("notify");
                         Session.Remove("typemsj");
                         Session.Remove("message");

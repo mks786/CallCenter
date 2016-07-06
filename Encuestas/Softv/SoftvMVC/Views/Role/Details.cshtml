@@ -1,0 +1,46 @@
+﻿@model Softv.Entities.RoleEntity
+
+@{
+
+}
+<link href="~/Content/check/skins/square/blue.css" rel="stylesheet" />
+<script src="@Url.Content("~/Scripts/icheck.js")" type="text/javascript"></script>
+<script>
+    @Html.Raw(ViewBag.CustomScriptsDefault)
+  @Html.Raw(ViewBag.CustomScriptsPageValid)
+    $(document).ready(function () {
+        //pone los check
+        $('input').iCheck({
+            checkboxClass: 'icheckbox_square-red',
+            radioClass: 'iradio_square-red',
+        });
+    });
+</script>
+<div>
+    <div class="containerDivGrey">
+        <table style="width:auto">
+
+            <tr>
+                <td style="text-align:right">
+                    <strong>@Html.Label("Nombre")</strong>:
+
+                </td>
+                <td>
+                    @Html.DisplayFor(model => model.Nombre)
+                </td>
+            </tr>
+
+
+            <tr>
+                <td style="text-align:right">
+                    <strong>@Html.Label("Descripción")</strong>:
+
+                </td>
+                <td>
+                    @Html.DisplayFor(model => model.Descripcion)
+                </td>
+            </tr>
+
+        </table>
+    </div>
+</div>

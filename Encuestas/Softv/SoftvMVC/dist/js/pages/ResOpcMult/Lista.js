@@ -90,17 +90,17 @@ function LlenarTabla(cadena) {
 
 }
 
-function Opciones() {
-    var botones = "<button class='btn btn-info btn-xs detalleResOpcMult' id='detalleResOpcMult'>Detalles</button> <button class='btn btn-warning btn-xs editarResOpcMult' id='editarResOpcMult'>Editar</button>";
-    return botones;
-}
-
 
 
 
 //funcion:retorna las opciones que tendra cada row en la tabla principal
 function Opciones(e) {
-    var opc = "<button class='btn btn-warning btn-xs Editar' data-name='" + e.ResOpcMult + "' id='" + e.Id_ResOpcMult + "' type='button' onclick='editar_respuesta(this)'><i class='fa fa-pencil' aria-hidden='true'></i> Editar</button>"
+    var opc;
+    if (permiso_editar == "False") {
+        opc = " "
+    } else {
+        opc = "<button class='btn btn-warning btn-xs Editar' data-name='" + e.ResOpcMult + "' id='" + e.Id_ResOpcMult + "' type='button' onclick='editar_respuesta(this)'><i class='fa fa-pencil' aria-hidden='true'></i> Editar</button>"
+    }
     return opc;
 }
 

@@ -118,27 +118,71 @@ namespace SoftvMVC.Controllers
                 {
                     if (tipobusqueda == 1)
                     {
-                        comandoSql = new SqlCommand("Select * from [dbo].[View_MasivaTvAnalogica] where Status = '" + contratado + "' or Status = '" + suspendidos + "' or Status = '" + cancelados + "' or Status = '" + temporales + "'or Status = '" + instalados + "' or Status = '" + desconectados + "' or Status = '" + fuera_servicio + "'");
+                        comandoSql = new SqlCommand("Select * from View_MasivaTvAnalogica where Status = '" + contratado + "' or Status = '" + suspendidos + "' or Status = '" + cancelados + "' or Status = '" + temporales + "'or Status = '" + instalados + "' or Status = '" + desconectados + "' or Status = '" + fuera_servicio + "'");
                     }
                     else
                     {
                         if (Int32.Parse(fecha) == 1)
                         {
-                            comandoSql = new SqlCommand("Select * from [dbo].[View_MasivaTvAnalogica] where Fecha_Contratacion BETWEEN '" + finicio + "' AND '" + ftermino + "'");
+                            comandoSql = new SqlCommand("Select * from View_MasivaTvAnalogica where Fecha_Contratacion BETWEEN '" + finicio + "' AND '" + ftermino + "'");
                         }
                         else if (Int32.Parse(fecha) == 2)
                         {
-                            comandoSql = new SqlCommand("Select * from [dbo].[View_MasivaTvAnalogica] where Fecha_Instalacion BETWEEN '" + finicio + "' AND '" + ftermino + "'");
+                            comandoSql = new SqlCommand("Select * from View_MasivaTvAnalogica where Fecha_Instalacion BETWEEN '" + finicio + "' AND '" + ftermino + "'");
                         }
                         else
                         {
-                            comandoSql = new SqlCommand("Select * from [dbo].[View_MasivaTvAnalogica] where Fecha_Cancelacion BETWEEN '" + finicio + "' AND '" + ftermino + "'");
+                            comandoSql = new SqlCommand("Select * from View_MasivaTvAnalogica where Fecha_Cancelacion BETWEEN '" + finicio + "' AND '" + ftermino + "'");
+                        }
+                    }
+                }
+                else if (idtipser == 2)
+                {
+                    if (tipobusqueda == 1)
+                    {
+                        comandoSql = new SqlCommand("Select * from View_MasivaNet where Status = '" + contratado + "' or Status = '" + suspendidos + "' or Status = '" + cancelados + "' or Status = '" + temporales + "'or Status = '" + instalados + "' or Status = '" + desconectados + "' or Status = '" + fuera_servicio + "'");
+                    }
+                    else
+                    {
+                        if (Int32.Parse(fecha) == 1)
+                        {
+                            comandoSql = new SqlCommand("Select * from View_MasivaNet where Fecha_Contratacion BETWEEN '" + finicio + "' AND '" + ftermino + "'");
+                        }
+                        else if (Int32.Parse(fecha) == 2)
+                        {
+                            comandoSql = new SqlCommand("Select * from View_MasivaNet where Fecha_Instalacion BETWEEN '" + finicio + "' AND '" + ftermino + "'");
+                        }
+                        else
+                        {
+                            comandoSql = new SqlCommand("Select * from View_MasivaNet where Fecha_Cancelacion BETWEEN '" + finicio + "' AND '" + ftermino + "'");
+                        }
+                    }
+                }
+                else if (idtipser == 3)
+                {
+                    if (tipobusqueda == 1)
+                    {
+                        comandoSql = new SqlCommand("Select * from View_MasivaDigital where Status = '" + contratado + "' or Status = '" + suspendidos + "' or Status = '" + cancelados + "' or Status = '" + temporales + "'or Status = '" + instalados + "' or Status = '" + desconectados + "' or Status = '" + fuera_servicio + "'");
+                    }
+                    else
+                    {
+                        if (Int32.Parse(fecha) == 1)
+                        {
+                            comandoSql = new SqlCommand("Select * from View_MasivaDigital where Fecha_Contratacion BETWEEN '" + finicio + "' AND '" + ftermino + "'");
+                        }
+                        else if (Int32.Parse(fecha) == 2)
+                        {
+                            comandoSql = new SqlCommand("Select * from View_MasivaDigital where Fecha_Instalacion BETWEEN '" + finicio + "' AND '" + ftermino + "'");
+                        }
+                        else
+                        {
+                            comandoSql = new SqlCommand("Select * from View_MasivaDigital where Fecha_Cancelacion BETWEEN '" + finicio + "' AND '" + ftermino + "'");
                         }
                     }
                 }
                 else
                 {
-                    comandoSql = new SqlCommand("Select * from [dbo].[View_MasivaTvAnalogica]");
+                    comandoSql = new SqlCommand("Select * from View_MasivaTvAnalogica");
                 }
 
                 comandoSql.Connection = conexionSQL;
