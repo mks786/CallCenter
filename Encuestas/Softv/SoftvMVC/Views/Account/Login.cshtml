@@ -100,17 +100,15 @@
         });
 
 
-        //actualiza index
         function login(userx, passx) {
             $('#btnlog').button('loading');
             setTimeout(function () {
                 $('#btnlog').button('reset');
-            }, 3000);
+            }, 3000);// el boton hace un pequeño efecto de cargado mientras hace la peticion al servidor
             setTimeout(function () {
                 $.ajax({
                     type: "POST",
                     url: "@Url.Action("logon", "Usuario")", // Method , Controler
-                    //url: "/ParametroConfiguracion/QuickIndex/",
                     data: { 'user': userx, 'pass': passx },
                     success: function (data) {
                         // $('#DatosTabla').html(data);
@@ -119,21 +117,18 @@
                         if (data.Success == 'False') {
                             $('#cargando1').css("display", "none");
                             $('#Buscador').css("display", "inline");
-                            //ShowNotification('Error Acceso', data.Message, 'error')
                             swal(data.Message, "", "error");
-                            //$('#usuario').val("");
-                            //$('#password').val("");
-                        }
-                        else {
+
+                        } else {
                             @if(Session["lasturl"]!=null)
                         {
                             @:window.location = '@Session["lasturl"].ToString()'
-                                                    }
+                                                                                                            }
                         else
                         {
                     @*@:window.location = '../Home/Index.cshtml'*@
                                 @:document.location.href = '../Home';
-                                                                        @*@:location.href = '../Home/Index';
+                                                                                                                                @*@:location.href = '../Home/Index';
                             @:parent.location = '../Home/Index';
                             @:window.location.href = '../Home/Index';*@
 

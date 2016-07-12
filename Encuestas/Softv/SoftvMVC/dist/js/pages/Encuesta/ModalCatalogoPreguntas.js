@@ -1,16 +1,13 @@
 ﻿
 
 function ShowCatalogoPreguntas(valor, tipo) {
-   
-    
+
     if (tipo == ""|| tipo==undefined) {
         tipo = 0;
     }
-
     if (valor == "" || valor == undefined) {
         valor = "";
     }
-
     $('#ModalCatalogoPreguntas').modal('show');
     
     $('#TablaCatalogoPreguntas').dataTable({

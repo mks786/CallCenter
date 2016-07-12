@@ -533,11 +533,13 @@ namespace SoftvMVC.Controllers
         {
             ConexionController c = new ConexionController();
             SqlCommand comandoSql;
-            SqlConnection conexionSQL = new SqlConnection("Data Source=192.168.1.230;Initial Catalog=Encuestas;User ID =sa;Password=0601x-2L;");
-            //SqlConnection conexionSQL = new SqlConnection("Data Source=FABIAN-PC\\INSTANCIASQL2014;Initial Catalog=Encuestas;User ID =sa;Password=0601x-2Ñ;");
+            //SqlConnection conexionSQL = new SqlConnection("Data Source=192.168.1.230;Initial Catalog=Encuestas;User ID =sa;Password=0601x-2L;");
+            SqlConnection conexionSQL = new SqlConnection("Data Source=FABIAN-PC\\INSTANCIASQL2014;Initial Catalog=Encuestas;User ID =sa;Password=0601x-2Ñ;");
+            SqlConnection conexionSQL2 = new SqlConnection(c.DameConexion(IdPlaza));
             try
             {
                 conexionSQL.Open();
+                conexionSQL2.Open();
             }
             catch
             { }
@@ -597,7 +599,7 @@ namespace SoftvMVC.Controllers
                         comandoSql.Parameters.AddWithValue("@Fecha_Captura", llamada.fecha);
                         comandoSql.Parameters.AddWithValue("@Clv_Trabajo", llamada.clas_solucion);
                         comandoSql.Parameters.AddWithValue("@clvPrioridadQueja", llamada.prioridad);
-                        comandoSql.Connection = conexionSQL;
+                        comandoSql.Connection = conexionSQL2;
                         var Id = Int32.Parse(comandoSql.ExecuteScalar().ToString());
 
                         comandoSql = new SqlCommand("insert into Llamadas(idUsuario,Tipo_Llamada,Contrato,Detalle,Solucion,Fecha,HoraInicio,HoraFin,IdTurno,Clv_Queja,IdConexion,Clv_Trabajo,Clv_TipSer,Clv_Problema,ProblemaSolucion) values(@IdUsuario,@Tipo_Llamada,@Contrato,@motivo,@solucion,@Fecha,@HoraInicio,@HoraFin,@IdTurno,@Clv_Queja,@IdConexion,@Clv_Trabajo,@Clv_TipSer,@Clv_Problema,@ProblemaSolucion)");
@@ -727,7 +729,7 @@ namespace SoftvMVC.Controllers
         public ActionResult getOneCall(int plaza, int id_llamada)
         {
 
-            LlamadaEntity llamada = proxy.GetLlamada(id_llamada);
+            LlamadaEntity llamada = proxy.GetLlamada(id_llamada);//trae la llamada por medio del id
             ConexionController c = new ConexionController();
             SqlCommand comandoSql;
             List<detalleLlamada> lista = new List<detalleLlamada>();
@@ -754,7 +756,7 @@ namespace SoftvMVC.Controllers
                             llamada_detalles.IdLlamada = llamada.IdLlamada.ToString();
                             llamada_detalles.Tipo_Llamada = llamada.Tipo_Llamada.ToString();
                             llamada_detalles.Contrato = llamada.Contrato.ToString();
-                            llamada_detalles.nombre = reader[1].ToString();
+                            llamada_detalles.nombre = reader[1].ToString();//solo nos traemos el nombre del cliente
                             llamada_detalles.IdTurno = llamada.IdTurno.ToString();
                             llamada_detalles.Clv_Queja = llamada.Clv_Queja.ToString();
                             llamada_detalles.Clv_Trabajo = llamada.Clv_Trabajo.ToString();
@@ -963,11 +965,13 @@ namespace SoftvMVC.Controllers
             ConexionController c = new ConexionController();
             SqlCommand comandoSql;
             List<editLlamada> lista = new List<editLlamada>();
-            SqlConnection conexionSQL = new SqlConnection("Data Source=192.168.1.230;Initial Catalog=Encuestas;User ID =sa;Password=0601x-2L;");
-            //SqlConnection conexionSQL = new SqlConnection("Data Source=FABIAN-PC\\INSTANCIASQL2014;Initial Catalog=Encuestas;User ID =sa;Password=0601x-2Ñ;");
+            //SqlConnection conexionSQL = new SqlConnection("Data Source=192.168.1.230;Initial Catalog=Encuestas;User ID =sa;Password=0601x-2L;");
+            SqlConnection conexionSQL = new SqlConnection("Data Source=FABIAN-PC\\INSTANCIASQL2014;Initial Catalog=Encuestas;User ID =sa;Password=0601x-2Ñ;");
+            SqlConnection conexionSQL2 = new SqlConnection(c.DameConexion(plaza));
             try
             {
                 conexionSQL.Open();
+                conexionSQL2.Open();
             }
             catch
             { }
@@ -996,7 +1000,7 @@ namespace SoftvMVC.Controllers
                         if (llamada.queja != null)
                         {
                             comandoSql = new SqlCommand("UPDATE Quejas SET Problema ='" + llamada.detalle + "', Solucion='" + llamada.solucion + "', Clv_Trabajo=" + llamada.clas_solucion + ", clvPrioridadQueja=" + llamada.prioridad + " WHERE Clv_Queja=" + llamada.queja);
-                            comandoSql.Connection = conexionSQL;
+                            comandoSql.Connection = conexionSQL2;
                             comandoSql.ExecuteNonQuery();
                             comandoSql = new SqlCommand("UPDATE LLamadas SET IdTurno ='" + llamada.turno + "' WHERE IdLlamada=" + llamada.id_llamada);
                             comandoSql.Connection = conexionSQL;
@@ -1033,8 +1037,8 @@ namespace SoftvMVC.Controllers
              ConexionController c = new ConexionController();
             SqlCommand comandoSql;
             List<objTipoLlamada> lista = new List<objTipoLlamada>();
-            SqlConnection conexionSQL = new SqlConnection("Data Source=192.168.1.230;Initial Catalog=Encuestas;User ID =sa;Password=0601x-2L;");
-            //SqlConnection conexionSQL = new SqlConnection("Data Source=FABIAN-PC\\INSTANCIASQL2014;Initial Catalog=Encuestas;User ID =sa;Password=0601x-2Ñ;");
+            //SqlConnection conexionSQL = new SqlConnection("Data Source=192.168.1.230;Initial Catalog=Encuestas;User ID =sa;Password=0601x-2L;");
+            SqlConnection conexionSQL = new SqlConnection("Data Source=FABIAN-PC\\INSTANCIASQL2014;Initial Catalog=Encuestas;User ID =sa;Password=0601x-2Ñ;");
             try
             {
                 conexionSQL.Open();

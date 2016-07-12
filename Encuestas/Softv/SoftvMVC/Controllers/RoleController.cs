@@ -714,13 +714,26 @@ namespace SoftvMVC.Controllers
 
 
 
-        public ActionResult GetList(string data, int draw, int start, int length)
+        public ActionResult GetList(string cadena, int draw, int start, int length)
         {
             DataTableData dataTableData = new DataTableData();
             dataTableData.draw = draw;
             dataTableData.recordsTotal = 0;
             int recordsFiltered = 0;
-            dataTableData.data = FiltrarContenido(ref recordsFiltered, start, length);
+            if(cadena == null){
+                dataTableData.data = FiltrarContenido(ref recordsFiltered, start, length);
+            }else if(cadena != null){
+                try
+                {
+                    dataTableData.data = FiltrarContenido(ref recordsFiltered, start, length).Where(o => o.IdRol == int.Parse(cadena)).ToList();
+
+                }
+                catch
+                {
+                    dataTableData.data = FiltrarContenido(ref recordsFiltered, start, length).Where(o => o.Nombre.ToUpper().Contains(cadena.ToUpper())).ToList();
+                }
+            }
+            
             dataTableData.recordsFiltered = recordsFiltered;
 
             return Json(dataTableData, JsonRequestBehavior.AllowGet);

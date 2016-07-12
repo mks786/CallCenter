@@ -418,13 +418,14 @@ namespace SoftvMVC.Controllers
 
         public ActionResult EncuestaPDF(int idencuesta)
         {
+            //creamos un documento con un guid y lo guardamos en la carpeta temporal de windows
             string fileName = System.IO.Path.GetTempPath() + Guid.NewGuid().ToString() + ".pdf";
             FileStream fs = new FileStream(fileName, FileMode.Create, FileAccess.Write, FileShare.None);
             Document document = new Document(PageSize.A4, 50, 50, 25, 50);
             PdfWriter writer = PdfWriter.GetInstance(document, fs);
             document.Open();
             
-
+            //creamos el parrafo de titulo de la enciesra
             EncuestaEntity encuesta = proxy.GetEncuesta(idencuesta);
             Paragraph titulo = new Paragraph();
             titulo.Alignment = Element.ALIGN_CENTER;
@@ -433,32 +434,35 @@ namespace SoftvMVC.Controllers
             titulo.Add(encuesta.TituloEncuesta);
             document.Add(titulo);
 
-
+            //creamos el parrafo de la descripcion
             Paragraph detalle = new Paragraph();
             detalle.Alignment = Element.ALIGN_CENTER;
             detalle.Font = FontFactory.GetFont("Arial", 17);
             detalle.Font.SetStyle(Font.BOLD);
             detalle.Add(encuesta.Descripcion);
             document.Add(detalle);
-            document.Add(new Paragraph("\n"));
+            document.Add(new Paragraph("\n"));//salto de linea
 
+            //nombre
             Paragraph nombre = new Paragraph();
             nombre.Alignment = Element.ALIGN_LEFT;
             nombre.Font = FontFactory.GetFont("Arial", 12);
             nombre.Font.SetStyle(Font.BOLD);
             nombre.Add("Nombre:______________________________________");
             document.Add(nombre);
+            //contrato
             Paragraph contrato = new Paragraph();
             contrato.Alignment = Element.ALIGN_LEFT;
             contrato.Font = FontFactory.GetFont("Arial", 12);
             contrato.Font.SetStyle(Font.BOLD);
             contrato.Add("Contrato:______________________        Fecha:_______________________");
             document.Add(contrato);
-            //Create Chunk for underline
+            //Separador
             Paragraph p = new Paragraph(new Chunk(new iTextSharp.text.pdf.draw.LineSeparator(0.0F, 100.0F, BaseColor.LIGHT_GRAY, Element.ALIGN_LEFT, 1)));
             document.Add(p);
             document.Add(new Paragraph("\n"));
 
+            //listamos las preguntas y las respuestas y las agregamos a un parrafo
             List<RelPreguntaEncuestasEntity> lista_de_relaciones = rel_preg_encuesta.GetRelPreguntaEncuestasList().Where(x => x.IdEncuesta == encuesta.IdEncuesta).ToList();
             foreach (var a in lista_de_relaciones)
             {
@@ -500,7 +504,7 @@ namespace SoftvMVC.Controllers
                 document.Add(new Paragraph("\n"));
             }
             document.Close();
-
+            //cerramos el documento y lo volvemos a abrir para agregar el numero de pagina a cada hoja
             PdfReader rd = new PdfReader(fileName);
             string fileName2 = System.IO.Path.GetTempPath() + Guid.NewGuid().ToString() + ".pdf";
             PdfStamper ps = new PdfStamper(rd, new FileStream(fileName2, FileMode.Create));
@@ -522,7 +526,7 @@ namespace SoftvMVC.Controllers
 
             }
             ps.Close();
-
+            //retornamos el archivo pero ahora con el nombre del titulo de la encuesta
             return File(fileName2, "application/pdf", encuesta.TituloEncuesta + ".pdf");
 
 

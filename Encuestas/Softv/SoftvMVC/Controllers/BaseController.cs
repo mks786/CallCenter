@@ -69,7 +69,7 @@ namespace SoftvMVC.Controllers
         }
         protected override void ExecuteCore()
         {
-
+            // Primero se valida que el usuario este autenticado por medio de las variables de session
             ValidateCookiesUser();
             Session["POptAdd"] = true;
             Session["POptUpdate"] = true;
@@ -80,6 +80,7 @@ namespace SoftvMVC.Controllers
 
 
             }
+            // si el usuario tiene esta autenticado
             if (this.Session == null || this.Session["Access"] != null)
             {
                 UsuarioEntity um = new UsuarioEntity();
@@ -90,6 +91,7 @@ namespace SoftvMVC.Controllers
                 {
                     if (proxyUsuario.GetUsuario(um.IdUsuario).Estado == true && proxyRol.GetRole(um.IdRol).Estado == true)
                     {
+                        // una vez validado que el usuario este autenticado y su estado sea activo lista los modulos a los que tiene permiso
                         List<PermisoEntity> lstPermiso =
                                             proxyPermiso.GetXmlPermiso(Globals.SerializeTool.Serialize<PermisoEntity>(new PermisoEntity() { IdRol = um.IdRol })).ToList();
 
@@ -389,12 +391,13 @@ namespace SoftvMVC.Controllers
             List<UsuarioEntity> listUsuario = new List<UsuarioEntity>();
             proxyUsuario.GetUsuarioList().ToList().ForEach(x =>
             listUsuario.Add(x));
-            //listUsuario = proxyUsuario.GetUsuarioList();
+            //Se comparan los datos de la tabla usuario con los que introduce el usuario 
             list = listUsuario.Where(x => x.Usuario.ToUpper().Equals(user.ToUpper()) && x.Password.ToUpper().Equals(pass.ToUpper()) && x.Estado == true).ToList();
             if (list.Count > 0)
             {
                 if (proxyRol.GetRole(list.FirstOrDefault().IdRol).Estado == true)
                 {
+                    //si los datos son correctos se crean las variables de session para que el usuario tenga accesos a los modulos
                     Session["Access"] = "OK";
                     Session["username"] = list[0].Usuario;
                     Session["idusuario"] = list[0].IdUsuario;
@@ -406,6 +409,7 @@ namespace SoftvMVC.Controllers
                 }
                 else
                 {
+                    //si el usuario no esta activo muestra el siguiente error y pone las variables de session nulas
                     Response.Cookies["usuario"].Value = null;
                     Response.Cookies["password"].Value = null;
                     var result = new { Success = "False", Message = "Consulta con tu Administrador el Rol que se Asignó a tu Usuario" };
@@ -416,6 +420,7 @@ namespace SoftvMVC.Controllers
             }
             else
             {
+                //si el los datos no son correctos retorna variables de session nulas
                 Response.Cookies["usuario"].Value = null;
                 Response.Cookies["password"].Value = null;
                 var result = new { Success = "False", Message = "Revisa tu Usuario y contraseña " };

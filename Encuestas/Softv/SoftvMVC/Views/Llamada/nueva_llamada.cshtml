@@ -385,10 +385,13 @@
     var count_queja = 2;
     var id_plaza;
     $(function () {
+        //tomamos el valor de la variable que viene por url
         id_plaza = location.search.split('id_plaza=')[1];
+        //si la plaza es nula redirigios al menu de llamadas
         if(id_plaza == ""){
             location.href='/Llamada';
         }else{
+            //si la variable no es nula activamos las funciones mandandoles el id de la palza
             tipoServicio(id_plaza);
             plaza_conexion(id_plaza);
         }
@@ -426,6 +429,7 @@
             type: "GET",
             data: { "IdPlaza": id },
             success: function (data, textStatus, jqXHR) {
+                // una vez que fue exitosa la peticion asignamos los datos a un select
                 for (var i = 0; i < data.length; i++) {
                     $('#tipo_servicio').append($('<option>', {
                         value: data[i].Clv_TipSer,
@@ -504,9 +508,7 @@
 
     function plaza_conexion(id) {
         $('#contenedor_llamda').hide();
-        $('#llamdaForm').show();
-        $('#Modal_Plaza').modal("hide");
-        
+        $('#llamdaForm').show();       
         $('#tipo_llamante').show();
         $('#panel_cliente').show();
         
@@ -862,6 +864,8 @@
                                     $('#btn_enviar').hide();
                                     $('#tipo_llamante').show();
                                     $('#regresar').hide();
+                                    $('#panel_tipo_llamada_cliente').hide();
+                                    $('#panel_tipo_informacion').hide();
                                     document.getElementById("llamadaForm").reset();
                                     swal("La llamada se guaró exitosamente", "", "success");
                                 },

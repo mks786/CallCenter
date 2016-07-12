@@ -439,7 +439,13 @@ namespace SoftvMVC.Controllers
                     cliente.eshotel = bool.Parse(reader[11].ToString());
                     cliente.Clv_Ciudad = Int32.Parse(reader[12].ToString());
                     cliente.Email = reader[13].ToString();
-                    cliente.clv_sector = Int32.Parse(reader[14].ToString());
+                    try
+                    {
+                        cliente.clv_sector = Int32.Parse(reader[14].ToString());
+                    }catch{
+                        cliente.clv_sector = 0;
+                    }
+                    
                     cliente.Clv_Periodo = Int32.Parse(reader[15].ToString());
                     //cliente.Clv_Tap = Int32.Parse(reader[16].ToString());
                     cliente.Zona2 = bool.Parse(reader[17].ToString());

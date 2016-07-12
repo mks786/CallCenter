@@ -1,12 +1,24 @@
 ﻿@{
-
     List<Softv.Entities.PermisoEntity> Permiso = (List<Softv.Entities.PermisoEntity>)ViewData["Permiso"];
     List<Softv.Entities.RoleEntity> Role = (List<Softv.Entities.RoleEntity>)ViewData["Roles"];
     List<Softv.Entities.ModuleEntity> Module = (List<Softv.Entities.ModuleEntity>)ViewData["Module"];
-    
-    List<Softv.Entities.PermisoEntity> Permisos = ViewBag.Permisos;
-    var per = Permisos.Where(p => p.IdModule == 23).FirstOrDefault();
+    try
+    {
 
+        List<Softv.Entities.PermisoEntity> Permisos = ViewBag.Permisos;
+        var per = Permisos.Where(p => p.IdModule == 23).FirstOrDefault();
+        <script>
+            var permiso_editar = "@per.OptUpdate";
+            var permiso_agregar = "@per.OptAdd";
+            var permiso_eliminar = "@per.OptDelete";
+        </script>
+    }
+    catch
+    {
+        <script>
+            location.href = "/";
+        </script>
+    }
 }
 
 @*  *@
@@ -31,8 +43,8 @@
                 <table id="TablaPermisos" class="table table-bordered table-hover dataTable">
                     <thead>
                         <tr>
-                            <td><b>Id Rol</b></td>
-                            <td><b>Id Module</b></td>
+                            <td><b>Rol</b></td>
+                            <td><b>Modulo</b></td>
                             <td><b>Agregar</b></td>
                             <td><b>Actualizar</b></td>
                             <td><b>Eliminar</b></td>
@@ -303,11 +315,7 @@
         </div>
     </div>
 </div>
-<script>
-    var permiso_editar = "@per.OptUpdate";
-    var permiso_agregar = "@per.OptAdd";
-    var permiso_eliminar = "@per.OptDelete";
-</script>
+
 <script>
     $(document).ready(function () {
         $('#poner_activo li').siblings('li').removeClass('active');

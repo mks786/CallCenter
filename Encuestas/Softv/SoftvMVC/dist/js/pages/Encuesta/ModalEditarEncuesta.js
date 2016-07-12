@@ -93,10 +93,6 @@ function mostrarDatos() {
 
 $('#EditarEncuesta').click(function () {
     //validamos que existan preguntas en la tabla y los detalles de la encuesta no esten vacios 
-
-   
-
-
     var titulo_encuesta = $('#nombreEncuesta').val();
     var descripcion_encuesta = $('#Descripcion_encuesta').val();
 

@@ -1,7 +1,24 @@
 ﻿@{
     List<Softv.Entities.RoleEntity> Roles = (List<Softv.Entities.RoleEntity>)ViewData["Roles"];
-    List<Softv.Entities.PermisoEntity> Permiso = ViewBag.Permisos;
-    var per = Permiso.Where(p => p.IdModule == 16).FirstOrDefault();
+    try
+    {
+        
+        List<Softv.Entities.PermisoEntity> Permiso = ViewBag.Permisos;
+        var per = Permiso.Where(p => p.IdModule == 16).FirstOrDefault();
+
+        <script>
+            var permiso_editar = "@per.OptUpdate";
+            var permiso_agregar = "@per.OptAdd";
+            var permiso_eliminar = "@per.OptDelete";
+        </script>
+
+    }
+    catch
+    {
+        <script>
+            location.href = "/";
+        </script>
+    }
 }
 <link rel="stylesheet" href="~/plugins/iCheck/square/blue.css">
 <script src="~/plugins/iCheck/icheck.min.js"></script>
@@ -231,12 +248,6 @@
 
 
 </div>
-
-<script>
-    var permiso_editar = "@per.OptUpdate";
-    var permiso_agregar = "@per.OptAdd";
-    var permiso_eliminar = "@per.OptDelete";
-</script>
 
 <script src="~/dist/js/pages/Usuario/Lista.js"></script>
     <script>
