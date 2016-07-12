@@ -6,8 +6,24 @@
     <h2>Index</h2>*@
 @{
     List<Softv.Entities.RoleEntity> Roles = (List<Softv.Entities.RoleEntity>)ViewData["Roles"];
-    List<Softv.Entities.PermisoEntity> Permiso = ViewBag.Permisos;
-    var per = Permiso.Where(p => p.IdModule == 22).FirstOrDefault();
+    try
+    {
+        
+        List<Softv.Entities.PermisoEntity> Permiso = ViewBag.Permisos;
+        var per = Permiso.Where(p => p.IdModule == 22).FirstOrDefault();
+        <script>
+            var permiso_editar = "@per.OptUpdate";
+            var permiso_agregar = "@per.OptAdd";
+            var permiso_eliminar = "@per.OptDelete";
+        </script>
+    }
+    catch
+    {
+        <script>
+            location.href = "/";
+        </script>
+    }
+
 }
 <section class="content-header">
     <h1>
@@ -82,8 +98,8 @@
 
 
             <div class="modal-footer">
-                <button class="btn btn-primary" type="button" data-dismiss="modal">Cancelar</button>
                 <button class="btn btn-success" onclick="enviar_role()" type="button">Guardar</button>
+                <button class="btn btn-primary" type="button" data-dismiss="modal">Cancelar</button>
             </div>
         </div>
     </div>
@@ -158,8 +174,9 @@
             </div>
 
             <div class="modal-footer">
-                <button class="btn btn-primary" type="button" data-dismiss="modal">Cerrar</button>
                 <button class="btn btn-success" onclick="enviar_editar_role()" type="button">Guardar</button>
+                <button class="btn btn-primary" type="button" data-dismiss="modal">Cerrar</button>
+
             </div>
         </div>
     </div>
@@ -183,17 +200,13 @@
             </div>
 
             <div class="modal-footer">
-                <button class="btn btn-primary" type="button" data-dismiss="modal">Cerrar</button>
                 <button class="btn btn-danger" type="button" onclick="confirmar_eliminar_rol()">Eliminar</button>
+                <button class="btn btn-primary" type="button" data-dismiss="modal">Cerrar</button>
             </div>
         </div>
     </div>
 </div>
-<script>
-    var permiso_editar = "@per.OptUpdate";
-    var permiso_agregar = "@per.OptAdd";
-    var permiso_eliminar = "@per.OptDelete";
-</script>
+
 <script>
     $(document).ready(function () {
         $('#poner_activo li').siblings('li').removeClass('active');

@@ -5,8 +5,24 @@
 
     <h2>Index</h2>*@
 @{
-    List<Softv.Entities.PermisoEntity> Permiso = ViewBag.Permisos;
-    var a = Permiso.Where(p => p.IdModule == 9).FirstOrDefault();
+    try
+    {
+        List<Softv.Entities.PermisoEntity> Permiso = ViewBag.Permisos;
+        var a = Permiso.Where(p => p.IdModule == 9).FirstOrDefault();
+
+        <script>
+            var permiso_editar = "@a.OptUpdate";
+            var permiso_agregar = "@a.OptAdd";
+            var permiso_eliminar = "@a.OptDelete";
+        </script>
+
+    }
+    catch
+    {
+        <script>
+            location.href = "/";
+        </script>
+    }
 
 }
 
@@ -212,13 +228,6 @@
         </div>
     </div>
 </div>
-
-
-<script>
-    var permiso_editar = "@a.OptUpdate";
-    var permiso_agregar = "@a.OptAdd";
-    var permiso_eliminar = "@a.OptDelete";
-</script>
 
 <script src="~/dist/js/pages/Pregunta/Lista.js"></script>
 <script src="~/dist/js/pages/Pregunta/editar_pregunta.js"></script>

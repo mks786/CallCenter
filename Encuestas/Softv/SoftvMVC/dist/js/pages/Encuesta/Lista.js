@@ -26,7 +26,6 @@ function MostrarModalEncuesta() {
     Lista_preguntas = [];
     Lista_opciones = [];
     document.getElementById("tituloModalAgregarEncuesta").innerHTML = "Agregar Encuesta";
-    //document.getElementById("guardarEncuesta").innerHTML = "Guardar Encuesta";
 }
 
     //funcion:Cuando el documento este listo se llenara la tabla principal  con los registros de

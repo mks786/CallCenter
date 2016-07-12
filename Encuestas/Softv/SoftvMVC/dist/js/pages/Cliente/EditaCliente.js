@@ -15,10 +15,14 @@ function cambiarColonia(id) {
         type: "POST",
         data: { 'idciudad': id, 'plaza': id_plaza },
         success: function (data, textStatus, jqXHR) {
+            console.log(data);
             $('#colonia_select').find('option').remove().end();
             $('#calle_editar').find('option').remove().end();
             for (var i = 0; i < data.length; i++) {
                 $('#colonia_select').append("<option id='seleccion' value='" + data[i].clv_colonia + "' selected>" + data[i].Nombre + "</option>");
+                if(data.length == 1){
+                    $('#colonia_select').val(data[i].clv_colonia).change();
+                }
             }
         },
         error: function (jqXHR, textStatus, errorThrown) {

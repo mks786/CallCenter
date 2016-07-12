@@ -1,13 +1,12 @@
-﻿@*@{
-        ViewBag.Title = "Index";
-        Layout = "~/Views/Shared/_Layout.cshtml";
-    }
+﻿@{
 
-    <h2>Index</h2>*@
-@{
     List<Softv.Entities.PermisoEntity> Permiso = ViewBag.Permisos;
-    var a = Permiso.Where(p => p.IdModule == 1).FirstOrDefault();
-    
+    var a = Permiso.Where(p => p.IdModule == 14).FirstOrDefault();
+    <script>
+        var permiso_editar = "@a.OptUpdate";
+    </script>
+
+
 }
 
 
@@ -32,7 +31,7 @@
                 <div class="row">
                     @if (a.OptAdd == true)
                     {
-                        <div class="col-md-12">
+                        <div class="col-md-12" id="nueva_llamada_panel">
                             <a href="/Llamada/nueva" class="btn btn-success btn-sm disabled" id="nueva_llamada_link" style="float:right;"><i class="fa fa-phone" aria-hidden="true"></i> Nueva Llamada </a>
                         </div>
                     }
@@ -579,9 +578,7 @@
 
 
 <script src="~/plugins/input-mask/jquery.inputmask.js"></script>
-<script>
-    var permiso_editar = "@a.OptUpdate";
-</script>
+
 <script src="~/dist/js/pages/Llamada/Lista.js"></script>
 <script src="~/dist/js/pages/Llamada/agregar_llamada.js"></script>
 <link href="~/plugins/sweetAlert/sweetalert.css" rel="stylesheet" />

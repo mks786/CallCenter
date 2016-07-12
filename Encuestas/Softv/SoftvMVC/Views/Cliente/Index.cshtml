@@ -1,17 +1,23 @@
-﻿@*@{
-        ViewBag.Title = "Index";
-        Layout = "~/Views/Shared/_Layout.cshtml";
-    }
-
-    <h2>Index</h2>*@
-@{
-    List<Softv.Entities.PermisoEntity> Permiso = ViewBag.Permisos;
-    var per = Permiso.Where(p => p.IdModule == 4 || p.IdModule == 15).FirstOrDefault();
-}
+﻿
 @{
     List<Softv.Entities.ConexionEntity> conexiones = (List<Softv.Entities.ConexionEntity>)ViewData["Conexiones"];
-    
-
+    try
+    {
+        List<Softv.Entities.PermisoEntity> Permiso = ViewBag.Permisos;
+        var per = Permiso.Where(p => p.IdModule == 4 || p.IdModule == 15).FirstOrDefault();
+        
+        <script>
+            var permiso_editar = "@per.OptUpdate";
+            var permiso_agregar = "@per.OptAdd";
+            var permiso_eliminar = "@per.OptDelete";
+        </script>
+    }
+    catch
+    {
+        <script>
+            location.href = "/";
+        </script>
+    }
 }
 <section class="content-header">
     <h1>
@@ -551,26 +557,6 @@
         </div>
     </div>
 </div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<script>
-    var permiso_editar = "@per.OptUpdate";
-    var permiso_agregar = "@per.OptAdd";
-    var permiso_eliminar = "@per.OptDelete";
-</script>
 
 
 <script src="~/dist/js/pages/Cliente/Lista.js"></script>    

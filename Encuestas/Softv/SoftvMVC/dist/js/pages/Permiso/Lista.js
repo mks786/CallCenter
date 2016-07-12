@@ -4,7 +4,7 @@
 });
 
 
-function LlenarTabla() {
+function LlenarTabla(cadena) {
     $('#TablaPermisos').dataTable({
         "processing": true,
         "serverSide": true,
@@ -17,7 +17,7 @@ function LlenarTabla() {
         "ajax": {
             "url": "/Permiso/GetList/",
             "type": "POST",
-            "data": { 'data': 1 },
+            "data": { 'cadena': cadena },
         },
 
 
@@ -66,10 +66,10 @@ function LlenarTabla() {
         "order": [[0, "asc"]]
     });
     if (permiso_agregar == "False") {
-        $("div.toolbar").html('<div class="input-group input-group-sm"><input class="form-control" id="abuscar" type="text"><span class="input-group-btn"><button onclick="BuscarPermiso();" class="btn btn-info btn-flat" type="button">Buscar</button></span></div>');
+        $("div.toolbar").html('<div class="input-group input-group-sm"><input class="form-control" id="buscar" type="text"><span class="input-group-btn"><button onclick="BuscarPermiso();" class="btn btn-info btn-flat" type="button">Buscar</button></span></div>');
 
     } else {
-        $("div.toolbar").html('<button class="btn btn-sm bg-olive Agregar" style="float:right;" onclick="agregar();" ><i class="fa fa-key" aria-hidden="true"></i> Nuevo Permiso</button> <div class="input-group input-group-sm"><input class="form-control" id="abuscar" type="text"><span class="input-group-btn"><button onclick="BuscarPermiso();" class="btn btn-info btn-flat" type="button">Buscar</button></span></div>');
+        $("div.toolbar").html('<button class="btn btn-sm bg-olive Agregar" style="float:right;" onclick="agregar();" ><i class="fa fa-key" aria-hidden="true"></i> Nuevo Permiso</button> <div class="input-group input-group-sm"><input class="form-control" id="buscar" type="text"><span class="input-group-btn"><button onclick="BuscarPermiso();" class="btn btn-info btn-flat" type="button">Buscar</button></span></div>');
 
     }
 }
@@ -87,8 +87,9 @@ function Opciones(e) {
 }
 
 
-//$('#TablaPermisos').on('click', '.Editar', function () {
-//    $('#ModalEditarPermiso').modal('show');
-//});
+function BuscarPermiso() {
+    var cadena = $('#buscar').val();
+    LlenarTabla(cadena);
+}
 
 

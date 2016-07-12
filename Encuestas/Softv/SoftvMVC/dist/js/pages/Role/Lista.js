@@ -5,7 +5,7 @@
 
 
 
-function LlenarTabla() {
+function LlenarTabla(cadena) {
     $('#TablaRoles').dataTable({
         "processing": true,
         "serverSide": true,
@@ -18,7 +18,7 @@ function LlenarTabla() {
         "ajax": {
             "url": "/Role/GetList/",
             "type": "POST",
-            "data": { 'data': 1 },
+            "data": { 'cadena': cadena },
         },
         "fnInitComplete": function (oSettings, json) {
 
@@ -75,9 +75,9 @@ function LlenarTabla() {
         "order": [[0, "asc"]]
     })
     if (permiso_agregar == "False") {
-        $("div.toolbar").html('<div class="input-group input-group-sm"><input class="form-control" type="text"><span class="input-group-btn"><button onclick="BuscarRole()"; class="btn btn-info btn-flat" type="button">Buscar</button></span></div>');
+        $("div.toolbar").html('<div class="input-group input-group-sm"><input class="form-control" type="text" id="buscar"><span class="input-group-btn"><button onclick="BuscarRole()"; class="btn btn-info btn-flat" type="button">Buscar</button></span></div>');
     } else {
-        $("div.toolbar").html('<button class="btn btn-success btn-sm Agregar" style="float:right;" onclick="agregar()"><i class="fa fa-plus" aria-hidden="true"></i> Nuevo Rol </button> <div class="input-group input-group-sm"><input class="form-control" type="text"><span class="input-group-btn"><button onclick="BuscarRole()"; class="btn btn-info btn-flat" type="button">Buscar</button></span></div>');
+        $("div.toolbar").html('<button class="btn btn-success btn-sm Agregar" style="float:right;" onclick="agregar()"><i class="fa fa-plus" aria-hidden="true"></i> Nuevo Rol </button> <div class="input-group input-group-sm"><input class="form-control" type="text"  id="buscar"><span class="input-group-btn"><button onclick="BuscarRole()"; class="btn btn-info btn-flat" type="button">Buscar</button></span></div>');
     }
 
 }
@@ -107,7 +107,7 @@ function Opciones(e) {
 
 function BuscarRole() {
 
-    var id = $('#abuscar').val();
-    LlenarTabla(id);
+    var cadena = $('#buscar').val();
+    LlenarTabla(cadena);
 
 }

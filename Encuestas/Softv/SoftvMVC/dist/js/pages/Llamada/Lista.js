@@ -158,6 +158,7 @@ function LlenarTabla(idplaza,contrato,cadena,id_llamada,tipo_llamada) {
 
 
         "order": [[0, "asc"]]
+
     })
 
     

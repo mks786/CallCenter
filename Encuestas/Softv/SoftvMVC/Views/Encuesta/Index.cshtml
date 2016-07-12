@@ -1,6 +1,20 @@
 ﻿@{
-    List<Softv.Entities.PermisoEntity> Permiso = ViewBag.Permisos;
-    var a = Permiso.Where(p => p.IdModule == 2 || p.IdModule == 8).FirstOrDefault();
+    try
+    {
+        List<Softv.Entities.PermisoEntity> Permiso = ViewBag.Permisos;
+        var a = Permiso.Where(p => p.IdModule == 2 || p.IdModule == 8).FirstOrDefault();
+        <script>
+            var permiso_editar = "@a.OptUpdate";
+            var permiso_agregar = "@a.OptAdd";
+            var permiso_eliminar = "@a.OptDelete";
+        </script>
+    }
+    catch
+    {
+      <script>
+          location.href = "/";
+      </script>  
+    }
 
 }
 
@@ -478,28 +492,6 @@
 <form action='/Encuesta/EncuestaPDF' style="display:none;" id="formImprimir">
     <input type='hidden' id='id_imprimir' name="idencuesta">
 </form>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-    <script>
-        var permiso_editar = "@a.OptUpdate";
-        var permiso_agregar = "@a.OptAdd";
-        var permiso_eliminar = "@a.OptDelete";
-    </script>
 
     <script src="~/dist/js/pages/Encuesta/Lista.js"></script>
     <script src="~/dist/js/pages/Encuesta/Utilerias.js"></script>
