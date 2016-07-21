@@ -49,9 +49,14 @@ function LlenarTabla(cadena) {
             {
                 sortable: false,
                 "render": function (data, type, full, meta) {
-                    var status = full.Estado;
-                    var res = status.toString().replace("true", "Activo").replace("false","Desactivado");
-                    return res;
+                    var ruta;
+                    if (full.Estado == true) {
+                        ruta = '/dist/img/true.png';
+                    } else {
+                        ruta = '/dist/img/check-false.png'
+                    }
+                    return "<img src='" + ruta + "' />";  //Es el campo de opciones de la tabla.
+
                 }
             },
             {
@@ -91,7 +96,7 @@ function LlenarTabla(cadena) {
     if (permiso_agregar == "False") {
         $("div.toolbar").html('<div class="input-group input-group-sm"><input class="form-control" type="text" id="buscar"><span class="input-group-btn"><button class="btn btn-info btn-flat" type="button" onclick="Busqueda()"><i class="fa fa-search" aria-hidden="true"></i> Buscar</button></span></div>');
     } else {
-        $("div.toolbar").html('<button class="btn btn-success btn-sm" style="float:right;" onclick="agregarUsuario()"><i class="fa fa-user-plus" aria-hidden="true"></i> Nuevo Usuario </button> <div class="input-group input-group-sm"><input class="form-control" type="text" id="buscar"><span class="input-group-btn"><button class="btn btn-info btn-flat" type="button" onclick="Busqueda()"><i class="fa fa-search" aria-hidden="true"></i> Buscar</button></span></div>');
+        $("div.toolbar").html('<button class="btn btn-success" style="float:right;" onclick="agregarUsuario()"><i class="fa fa-user-plus" aria-hidden="true"></i> Nuevo Usuario </button> <div class="input-group input-group-sm"><input class="form-control" type="text" id="buscar"><span class="input-group-btn"><button class="btn btn-info btn-flat" type="button" onclick="Busqueda()"><i class="fa fa-search" aria-hidden="true"></i> Buscar</button></span></div>');
     }
 
 }
@@ -219,8 +224,6 @@ function deleteUsuario() {
 }
 
 function GuardaUsuario() {
-
-
     if ($('#Nombre').val() == "") {
         swal("Define un nombre para el usuario", "", "error");
     }
@@ -236,9 +239,7 @@ function GuardaUsuario() {
     else if ($('#pass').val() != $('#cpass').val()) {
         swal("Las contraseñas no coinciden", "", "error");
     }
-
     else if ($('#rol').val() == null) {
-
         swal("Define un rol para el usuario", "", "error");
     }
     else {

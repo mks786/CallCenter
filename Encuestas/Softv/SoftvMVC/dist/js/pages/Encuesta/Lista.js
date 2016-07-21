@@ -116,7 +116,7 @@ function MostrarModalEncuesta() {
             $("div.toolbar").html('<div class="input-group input-group-sm"><input class="form-control" id="abuscar" type="text"><span class="input-group-btn"><button onclick="BuscarEncuesta();" class="btn btn-info btn-flat" type="button"><i class="fa fa-search" aria-hidden="true"></i> Buscar</button></span></div>');
 
         } else {
-            $("div.toolbar").html('<button class="btn bg-olive Agregar btn-sm" style="float:right;" onclick="MostrarModalEncuesta();" ><i class="fa fa-bar-chart" aria-hidden="true"></i> Nueva Encuesta </button> <div class="input-group input-group-sm"><input class="form-control" id="abuscar" type="text"><span class="input-group-btn"><button onclick="BuscarEncuesta();" class="btn btn-info btn-flat" type="button"><i class="fa fa-search" aria-hidden="true"></i> Buscar</button></span></div>');
+            $("div.toolbar").html('<button class="btn btn-success Agregar" style="float:right;" onclick="MostrarModalEncuesta();" ><i class="fa fa-bar-chart" aria-hidden="true"></i> Nueva Encuesta </button> <div class="input-group input-group-sm"><input class="form-control" id="abuscar" type="text"><span class="input-group-btn"><button onclick="BuscarEncuesta();" class="btn btn-info btn-flat" type="button"><i class="fa fa-search" aria-hidden="true"></i> Buscar</button></span></div>');
 
         }
 

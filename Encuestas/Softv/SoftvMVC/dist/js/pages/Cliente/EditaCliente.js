@@ -17,7 +17,7 @@ function cambiarColonia(id) {
         success: function (data, textStatus, jqXHR) {
             console.log(data);
             $('#colonia_select').find('option').remove().end();
-            $('#calle_editar').find('option').remove().end();
+            $('#calle_editar').empty();
             for (var i = 0; i < data.length; i++) {
                 $('#colonia_select').append("<option id='seleccion' value='" + data[i].clv_colonia + "' selected>" + data[i].Nombre + "</option>");
                 if(data.length == 1){
@@ -39,8 +39,7 @@ function cambiarCalle(id) {
         type: "POST",
         data: { 'colonia': id, 'plaza': id_plaza },
         success: function (data, textStatus, jqXHR) {
-            $('#calle_editar').find('option').remove().end();
-            console.log(data);
+            $('#calle_editar').empty();
             for (var i = 0; i < data.length; i++) {
                 $('#calle_editar').append("<option id='seleccion' value='" + data[i].Clv_Calle + "' selected>" + data[i].Nombre + "</option>");
             }
@@ -202,8 +201,6 @@ $('#Editar').click(function () {
     Datosfiscales.IDENTIFICADOR = $('#identificadorfiscal').val();
     Datosfiscales.CURP = $('#curp').val();
     Datosfiscales.id_asociado = $('#idasociadofiscal').val();
-
-    console.log(cliente);
     $.ajax({
         url: "/CLIENTE/UpdateCliente/",
         type: "POST",
@@ -265,6 +262,7 @@ function getCalle(id, id_plaza, calle) {
         type: "GET",
         data: { 'colonia': id, 'plaza': id_plaza },
         success: function (data, textStatus, jqXHR) {
+            $('#calle_editar').empty();
             for (var a = 0; a < data.length; a++) {
                 if (calle == data[a].Clv_Calle) {
                     $('#calle_editar').append("<option id='seleccion_calle' value='" + data[a].Clv_Calle + "' selected>" + data[a].Nombre + "</option>");

@@ -25,10 +25,54 @@ function LlenarTabla(cadena) {
             //{ "data": "IdPermiso", "orderable": false },
             { "data": "Rol", "orderable": false },
             { "data": "Modulo", "orderable": false },
-            { "data": "OptAdd", "orderable": false },
-            { "data": "OptUpdate", "orderable": false },
-            { "data": "OptDelete", "orderable": false },
-            { "data": "OptSelect", "orderable": false },
+            {
+                sortable: false,
+                "render": function (data, type, full, meta) {
+                    var ruta;
+                    if(full.OptAdd == true){
+                        ruta = '/dist/img/true.png';
+                    }else{
+                        ruta = '/dist/img/check-false.png'
+                    }
+                    return "<img src='" + ruta + "' />";  //Es el campo de opciones de la tabla.
+                }
+            },
+             {
+                 sortable: false,
+                 "render": function (data, type, full, meta) {
+                     var ruta;
+                     if (full.OptUpdate == true) {
+                         ruta = '/dist/img/true.png';
+                     } else {
+                         ruta = '/dist/img/check-false.png'
+                     }
+                     return "<img src='" + ruta + "' />";  //Es el campo de opciones de la tabla.
+                 }
+             },
+             {
+                 sortable: false,
+                 "render": function (data, type, full, meta) {
+                     var ruta;
+                     if (full.OptDelete == true) {
+                         ruta = '/dist/img/true.png';
+                     } else {
+                         ruta = '/dist/img/check-false.png'
+                     }
+                     return "<img src='" + ruta + "' />";  //Es el campo de opciones de la tabla.
+                 }
+             },
+             {
+                 sortable: false,
+                 "render": function (data, type, full, meta) {
+                     var ruta;
+                     if (full.OptSelect == true) {
+                         ruta = '/dist/img/true.png';
+                     } else {
+                         ruta = '/dist/img/check-false.png'
+                     }
+                     return "<img src='" + ruta + "' />";  //Es el campo de opciones de la tabla.
+                 }
+             },
             {
                 sortable: false,
                 "render": function (data, type, full, meta) {
@@ -69,7 +113,7 @@ function LlenarTabla(cadena) {
         $("div.toolbar").html('<div class="input-group input-group-sm"><input class="form-control" id="buscar" type="text"><span class="input-group-btn"><button onclick="BuscarPermiso();" class="btn btn-info btn-flat" type="button">Buscar</button></span></div>');
 
     } else {
-        $("div.toolbar").html('<button class="btn btn-sm bg-olive Agregar" style="float:right;" onclick="agregar();" ><i class="fa fa-key" aria-hidden="true"></i> Nuevo Permiso</button> <div class="input-group input-group-sm"><input class="form-control" id="buscar" type="text"><span class="input-group-btn"><button onclick="BuscarPermiso();" class="btn btn-info btn-flat" type="button">Buscar</button></span></div>');
+        $("div.toolbar").html('<button class="btn btn-success Agregar" style="float:right;" onclick="agregar();" ><i class="fa fa-key" aria-hidden="true"></i> Nuevo Permiso</button> <div class="input-group input-group-sm"><input class="form-control" id="buscar" type="text"><span class="input-group-btn"><button onclick="BuscarPermiso();" class="btn btn-info btn-flat" type="button">Buscar</button></span></div>');
 
     }
 }

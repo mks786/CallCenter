@@ -32,46 +32,78 @@ namespace Softv.BAL
         /// <summary>
         ///Adds Pregunta
         ///</summary>
+        //[DataObjectMethod(DataObjectMethodType.Insert, true)]
+        //public static int Add(PreguntaEntity objPregunta)
+        //{
+        //    //int result = ProviderSoftv.Pregunta.AddPregunta(objPregunta);
+        //    int result = 0;
+
+        //    if (objPregunta.IdTipoPregunta == 1)
+        //    {
+        //        objPregunta.Cerrada = true;
+        //        objPregunta.OpcMultiple = false;
+        //        objPregunta.Abierta = false;
+
+        //        result = ProviderSoftv.Pregunta.AddPregunta(objPregunta);
+
+        //    }
+
+        //    if (objPregunta.IdTipoPregunta == 2)
+        //    {
+        //        objPregunta.Cerrada = false;
+        //        objPregunta.OpcMultiple = true;
+        //        objPregunta.Abierta = false;
+
+        //        result = ProviderSoftv.Pregunta.AddPregunta(objPregunta);
+
+        //    }
+
+        //    if (objPregunta.IdTipoPregunta == 3)
+        //    {
+        //        objPregunta.Cerrada = false;
+        //        objPregunta.OpcMultiple = false;
+        //        objPregunta.Abierta = true;
+
+        //        result = ProviderSoftv.Pregunta.AddPregunta(objPregunta);
+
+        //    }
+
+
+
+        //    return result;
+        //}
+
         [DataObjectMethod(DataObjectMethodType.Insert, true)]
-        public static int Add(PreguntaEntity objPregunta)
+        public static int Add(string data)
         {
-            //int result = ProviderSoftv.Pregunta.AddPregunta(objPregunta);
-            int result = 0;
-
-            if (objPregunta.IdTipoPregunta == 1)
-            {
-                objPregunta.Cerrada = true;
-                objPregunta.OpcMultiple = false;
-                objPregunta.Abierta = false;
-
-                result = ProviderSoftv.Pregunta.AddPregunta(objPregunta);
-
-            }
-
-            if (objPregunta.IdTipoPregunta == 2)
-            {
-                objPregunta.Cerrada = false;
-                objPregunta.OpcMultiple = true;
-                objPregunta.Abierta = false;
-
-                result = ProviderSoftv.Pregunta.AddPregunta(objPregunta);
-
-            }
-
-            if (objPregunta.IdTipoPregunta == 3)
-            {
-                objPregunta.Cerrada = false;
-                objPregunta.OpcMultiple = false;
-                objPregunta.Abierta = true;
-
-                result = ProviderSoftv.Pregunta.AddPregunta(objPregunta);
-
-            }
-
-
+             int result = result = ProviderSoftv.Pregunta.AddPregunta(data);
 
             return result;
         }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
         /// <summary>
         ///Delete Pregunta

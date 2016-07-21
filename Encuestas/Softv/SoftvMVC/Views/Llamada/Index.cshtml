@@ -32,7 +32,7 @@
                     @if (a.OptAdd == true)
                     {
                         <div class="col-md-12" id="nueva_llamada_panel">
-                            <a href="/Llamada/nueva" class="btn btn-success btn-sm disabled" id="nueva_llamada_link" style="float:right;"><i class="fa fa-phone" aria-hidden="true"></i> Nueva Llamada </a>
+                            <a href="/Llamada/nueva" class="btn btn-success disabled" id="nueva_llamada_link" style="float:right;"><i class="fa fa-phone" aria-hidden="true"></i> Nueva Llamada </a>
                         </div>
                     }
                    
@@ -331,7 +331,13 @@
                                             <select class="form-control" id="tipo_informacion_editar"></select>
                                         </div>
                                     </div>
-                                    <div class="row">
+                                    <div class="row" style="display:none;" id="panel_motivo_llamada">
+                                        <div class="col-xs-6">
+                                            <label>Motivo Llamada</label>
+                                            <select class="form-control" id="selec_motivo_llamada"></select>
+                                        </div>
+                                    </div>
+                                    <div class="row" style="display:none;" id="panel_detalle_llamada">
                                         <div class="col-xs-6">
                                             <label>Detalle</label>
                                             <textarea class="form-control" id="detalle_editar"></textarea>

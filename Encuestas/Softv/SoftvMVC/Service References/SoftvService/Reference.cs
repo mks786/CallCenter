@@ -854,12 +854,6 @@ namespace SoftvMVC.SoftvService {
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IPregunta/GetPreguntaPagedListXml", ReplyAction="http://tempuri.org/IPregunta/GetPreguntaPagedListXmlResponse")]
         System.Threading.Tasks.Task<Globals.SoftvList<Softv.Entities.PreguntaEntity>> GetPreguntaPagedListXmlAsync(int page, int pageSize, string xml);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IPregunta/AddPregunta", ReplyAction="http://tempuri.org/IPregunta/AddPreguntaResponse")]
-        int AddPregunta(Softv.Entities.PreguntaEntity objPregunta);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IPregunta/AddPregunta", ReplyAction="http://tempuri.org/IPregunta/AddPreguntaResponse")]
-        System.Threading.Tasks.Task<int> AddPreguntaAsync(Softv.Entities.PreguntaEntity objPregunta);
-        
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IPregunta/UpdatePregunta", ReplyAction="http://tempuri.org/IPregunta/UpdatePreguntaResponse")]
         int UpdatePregunta(string xml);
         
@@ -871,6 +865,12 @@ namespace SoftvMVC.SoftvService {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IPregunta/DeletePregunta", ReplyAction="http://tempuri.org/IPregunta/DeletePreguntaResponse")]
         System.Threading.Tasks.Task<int> DeletePreguntaAsync(System.Nullable<int> IdPregunta);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IPregunta/AddPregunta", ReplyAction="http://tempuri.org/IPregunta/AddPreguntaResponse")]
+        int AddPregunta(string data);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IPregunta/AddPregunta", ReplyAction="http://tempuri.org/IPregunta/AddPreguntaResponse")]
+        System.Threading.Tasks.Task<int> AddPreguntaAsync(string data);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -940,14 +940,6 @@ namespace SoftvMVC.SoftvService {
             return base.Channel.GetPreguntaPagedListXmlAsync(page, pageSize, xml);
         }
         
-        public int AddPregunta(Softv.Entities.PreguntaEntity objPregunta) {
-            return base.Channel.AddPregunta(objPregunta);
-        }
-        
-        public System.Threading.Tasks.Task<int> AddPreguntaAsync(Softv.Entities.PreguntaEntity objPregunta) {
-            return base.Channel.AddPreguntaAsync(objPregunta);
-        }
-        
         public int UpdatePregunta(string xml) {
             return base.Channel.UpdatePregunta(xml);
         }
@@ -962,6 +954,14 @@ namespace SoftvMVC.SoftvService {
         
         public System.Threading.Tasks.Task<int> DeletePreguntaAsync(System.Nullable<int> IdPregunta) {
             return base.Channel.DeletePreguntaAsync(IdPregunta);
+        }
+        
+        public int AddPregunta(string data) {
+            return base.Channel.AddPregunta(data);
+        }
+        
+        public System.Threading.Tasks.Task<int> AddPreguntaAsync(string data) {
+            return base.Channel.AddPreguntaAsync(data);
         }
     }
     

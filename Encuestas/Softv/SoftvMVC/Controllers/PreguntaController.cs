@@ -235,13 +235,24 @@ namespace SoftvMVC.Controllers
         }
 
 
-        public ActionResult EditarPregunta(detallePregunta detallePregunta, List<respuesta> respuestas)
+        public ActionResult EditarPregunta(detallePregunta detallePregunta, List<ResOpcMultsEntity> respuestas)
         {
 
             XElement xe = XElement.Parse(Globals.SerializeTool.Serialize<detallePregunta>(detallePregunta));
+            XElement fg = XElement.Parse(Globals.SerializeTool.SerializeList<ResOpcMultsEntity>(respuestas));
+            xe.Add(fg);
             int result = proxy.UpdatePregunta(xe.ToString());
            
             return Json(result,JsonRequestBehavior.AllowGet);
+        }
+        public ActionResult AddPregunta(PreguntaEntity pregunta,List<ResOpcMultsEntity> respuestas)
+        {
+            XElement xe = XElement.Parse(Globals.SerializeTool.Serialize<PreguntaEntity>(pregunta));
+
+            XElement fg = XElement.Parse(Globals.SerializeTool.SerializeList<ResOpcMultsEntity>(respuestas));
+            xe.Add(fg);
+            int result = proxy.AddPregunta(xe.ToString());
+            return Json(result, JsonRequestBehavior.AllowGet);
         }
     }
 

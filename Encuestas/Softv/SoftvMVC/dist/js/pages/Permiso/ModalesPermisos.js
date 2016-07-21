@@ -55,8 +55,6 @@ function enviar_permiso() {
 
 
 function detalle_permiso(data) {
-
-
     var IdPermiso = (data.getAttribute('id'));
     var IdRol = (data.getAttribute('data-name'));
     var IdModule = (data.getAttribute('data-name2'));

@@ -626,24 +626,25 @@ namespace SoftvMVC.Controllers
                 else
                 {
 
-                    comandoSql = new SqlCommand("insert into Llamadas(idUsuario,Tipo_Llamada,Contrato,Detalle,Fecha,HoraInicio,HoraFin,IdTurno,Clv_Queja,IdConexion,Clv_Trabajo,Clv_TipSer) values(@idUsuario,@Tipo_Llamada,null,@motivo,@Fecha,@HoraInicio,@HoraFin,null,null,@IdConexion,null,null) SELECT SCOPE_IDENTITY()");
+                    comandoSql = new SqlCommand("insert into Llamadas(idUsuario,Tipo_Llamada,Contrato,Detalle,Fecha,HoraInicio,HoraFin,IdTurno,Clv_Queja,IdConexion,Clv_Trabajo,Clv_TipSer) values(@idUsuario,@Tipo_Llamada,null,null,@Fecha,@HoraInicio,@HoraFin,null,null,@IdConexion,null,null) SELECT SCOPE_IDENTITY()");
                     comandoSql.Parameters.AddWithValue("@Tipo_Llamada", false);
                     comandoSql.Parameters.AddWithValue("@idUsuario", llamada.usuario);
                     comandoSql.Parameters.AddWithValue("@Fecha", llamada.fecha);
-                    comandoSql.Parameters.AddWithValue("@motivo", llamada.motivo);
+                    //comandoSql.Parameters.AddWithValue("@motivo", llamada.motivo);
                     comandoSql.Parameters.AddWithValue("@HoraInicio", llamada.horainicio);
                     comandoSql.Parameters.AddWithValue("@HoraFin", llamada.horatermino);
                     comandoSql.Parameters.AddWithValue("@IdConexion", llamada.IdConexion);
                     comandoSql.Connection = conexionSQL;
                     var Id_llamada = Int32.Parse(comandoSql.ExecuteScalar().ToString());
 
-                    comandoSql = new SqlCommand("insert into NoClientes(IdLlamada,Nombre,Direccion,Telefono,Celular,Email) values(@IdLlamada,@Nombre,@Direccion,@Telefono,@Celular,@Email)");
+                    comandoSql = new SqlCommand("insert into NoClientes(IdLlamada,Nombre,Direccion,Telefono,Celular,Email,MotivoLlamada) values(@IdLlamada,@Nombre,@Direccion,@Telefono,@Celular,@Email,@select_motivo)");
                     comandoSql.Parameters.AddWithValue("@IdLlamada", Id_llamada);
                     comandoSql.Parameters.AddWithValue("@Nombre", llamada.nombre);
                     comandoSql.Parameters.AddWithValue("@Direccion", llamada.domicilio);
                     comandoSql.Parameters.AddWithValue("@Telefono", llamada.telefono);
                     comandoSql.Parameters.AddWithValue("@Celular", llamada.celular);
                     comandoSql.Parameters.AddWithValue("@Email", llamada.email);
+                    comandoSql.Parameters.AddWithValue("@select_motivo", llamada.select_motivo);
                     comandoSql.Connection = conexionSQL;
                     comandoSql.ExecuteReader();
                 }
@@ -681,6 +682,7 @@ namespace SoftvMVC.Controllers
             public string nombre { get; set; }
             public bool tipo_llamada_cliente { get; set; }
             public int tipo_informacion { get; set; }
+            public int select_motivo { get; set; }
 
         }
         public ActionResult GetIdTrabajo(int IdPlaza, int idServicio)
@@ -726,6 +728,47 @@ namespace SoftvMVC.Controllers
         }
 
 
+        public ActionResult GetMotivoLlamada(int IdPlaza)
+        {
+            ConexionController c = new ConexionController();
+            SqlCommand comandoSql;
+            List<motivo_llamada> lista = new List<motivo_llamada>();
+            SqlConnection conexionSQL = new SqlConnection(c.DameConexion(IdPlaza));
+            try
+            {
+                conexionSQL.Open();
+            }
+            catch
+            { }
+
+            try
+            {
+
+                comandoSql = new SqlCommand("select * from MotAtenTel");
+                comandoSql.Connection = conexionSQL;
+                SqlDataReader reader = comandoSql.ExecuteReader();
+                if (reader.HasRows)
+                {
+                    while (reader.Read())
+                    {
+                        motivo_llamada motivo = new motivo_llamada();
+                        motivo.Clv_Motivo = Int32.Parse(reader[0].ToString());
+                        motivo.Descripcion = reader[1].ToString();
+                        lista.Add(motivo);
+                    }
+                }
+            }
+
+            catch { }
+            return Json(lista, JsonRequestBehavior.AllowGet);
+        }
+
+        public class motivo_llamada
+        {
+            public int Clv_Motivo { get; set; }
+            public string Descripcion { get; set; }
+        }
+
         public ActionResult getOneCall(int plaza, int id_llamada)
         {
 
@@ -769,7 +812,6 @@ namespace SoftvMVC.Controllers
                             llamada_detalles.HoraFin = llamada.HoraFin;
                             llamada_detalles.ProblemaSolucion = llamada.ProblemaSolucion;
                             llamada_detalles.Clv_Motivo = llamada.Clv_Motivo;
-
                             lista.Add(llamada_detalles);
                         }
                         reader.Close();
@@ -801,6 +843,7 @@ namespace SoftvMVC.Controllers
                             llamada_detalles.HoraFin = llamada.HoraFin;
                             llamada_detalles.ProblemaSolucion = llamada.ProblemaSolucion;
                             llamada_detalles.Clv_Motivo = llamada.Clv_Motivo;
+                            llamada_detalles.MotivoLlamada = item.MotivoLlamada;
                             lista.Add(llamada_detalles);
                         }
                     }
@@ -835,6 +878,7 @@ namespace SoftvMVC.Controllers
             public string Clv_Trabajo { get; set; }
             public int? Clv_Motivo { get; set; }
             public bool? ProblemaSolucion { get; set; }
+            public int? MotivoLlamada { get; set; }
 
         }
         public ActionResult getTreeView(int plaza, int contrato)
@@ -982,7 +1026,7 @@ namespace SoftvMVC.Controllers
                     comandoSql = new SqlCommand("UPDATE LLamadas SET Detalle ='" + llamada.detalle + "', Solucion='" + llamada.solucion + "' WHERE IdLlamada=" + llamada.id_llamada);
                     comandoSql.Connection = conexionSQL;
                     comandoSql.ExecuteNonQuery();
-                    comandoSql = new SqlCommand("UPDATE NoClientes SET Nombre ='" + llamada.nombre + "', Direccion='" + llamada.domicilio + "', Telefono='" + llamada.telefono + "', Celular='" + llamada.celular + "', Email='" + llamada.email + "' WHERE IdLlamada=" + llamada.id_llamada);
+                    comandoSql = new SqlCommand("UPDATE NoClientes SET Nombre ='" + llamada.nombre + "', Direccion='" + llamada.domicilio + "', Telefono='" + llamada.telefono + "', Celular='" + llamada.celular + "', Email='" + llamada.email + "', MotivoLlamada='" + llamada.MotivoLlamada + "' WHERE IdLlamada=" + llamada.id_llamada);
                     comandoSql.Connection = conexionSQL;
                     comandoSql.ExecuteNonQuery();
                 }else{
@@ -1031,6 +1075,7 @@ namespace SoftvMVC.Controllers
             public string queja { get; set; }
             public int id_llamada { get; set; }
             public int clv_motivo { get; set; }
+            public int MotivoLlamada { get; set; }
         }
         
         public ActionResult TipoLlamada(){

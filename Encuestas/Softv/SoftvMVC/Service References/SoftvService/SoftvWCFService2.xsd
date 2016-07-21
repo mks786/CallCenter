@@ -76,10 +76,12 @@
           <xs:element minOccurs="0" name="IdPermiso" nillable="true" type="xs:int" />
           <xs:element minOccurs="0" name="IdRol" nillable="true" type="xs:int" />
           <xs:element minOccurs="0" name="Module" nillable="true" type="tns:ModuleEntity" />
+          <xs:element minOccurs="0" name="Modulo" nillable="true" type="xs:string" />
           <xs:element minOccurs="0" name="OptAdd" nillable="true" type="xs:boolean" />
           <xs:element minOccurs="0" name="OptDelete" nillable="true" type="xs:boolean" />
           <xs:element minOccurs="0" name="OptSelect" nillable="true" type="xs:boolean" />
           <xs:element minOccurs="0" name="OptUpdate" nillable="true" type="xs:boolean" />
+          <xs:element minOccurs="0" name="Rol" nillable="true" type="xs:string" />
           <xs:element minOccurs="0" name="Role" nillable="true" type="tns:RoleEntity" />
         </xs:sequence>
       </xs:extension>
@@ -142,6 +144,7 @@
           <xs:element minOccurs="0" name="RelEnProcesos" nillable="true" type="tns:RelEnProcesosEntity" />
           <xs:element minOccurs="0" name="RelPreguntaEncuestas" nillable="true" type="tns:RelPreguntaEncuestasEntity" />
           <xs:element minOccurs="0" name="RelPreguntaOpcMults" nillable="true" type="tns:RelPreguntaOpcMultsEntity" />
+          <xs:element minOccurs="0" name="RespuestasAdd" nillable="true" type="tns:ArrayOfResOpcMultsEntity" />
           <xs:element minOccurs="0" name="TipoPreguntas" nillable="true" type="tns:TipoPreguntasEntity" />
         </xs:sequence>
       </xs:extension>
@@ -249,6 +252,12 @@
     </xs:complexContent>
   </xs:complexType>
   <xs:element name="RelPreguntaEncuestasEntity" nillable="true" type="tns:RelPreguntaEncuestasEntity" />
+  <xs:complexType name="ArrayOfResOpcMultsEntity">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="ResOpcMultsEntity" nillable="true" type="tns:ResOpcMultsEntity" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfResOpcMultsEntity" nillable="true" type="tns:ArrayOfResOpcMultsEntity" />
   <xs:complexType name="TipoPreguntasEntity">
     <xs:complexContent mixed="false">
       <xs:extension base="tns:BaseEntity">
@@ -291,12 +300,6 @@
     </xs:sequence>
   </xs:complexType>
   <xs:element name="ArrayOfRelPreguntaEncuestasEntity" nillable="true" type="tns:ArrayOfRelPreguntaEncuestasEntity" />
-  <xs:complexType name="ArrayOfResOpcMultsEntity">
-    <xs:sequence>
-      <xs:element minOccurs="0" maxOccurs="unbounded" name="ResOpcMultsEntity" nillable="true" type="tns:ResOpcMultsEntity" />
-    </xs:sequence>
-  </xs:complexType>
-  <xs:element name="ArrayOfResOpcMultsEntity" nillable="true" type="tns:ArrayOfResOpcMultsEntity" />
   <xs:complexType name="ArrayOfRelEnProcesosEntity">
     <xs:sequence>
       <xs:element minOccurs="0" maxOccurs="unbounded" name="RelEnProcesosEntity" nillable="true" type="tns:RelEnProcesosEntity" />
@@ -324,6 +327,7 @@
       <xs:extension base="tns:BaseEntity">
         <xs:sequence>
           <xs:element minOccurs="0" name="CLIENTE" nillable="true" type="tns:CLIENTEEntity" />
+          <xs:element minOccurs="0" name="Clv_Motivo" nillable="true" type="xs:int" />
           <xs:element minOccurs="0" name="Clv_Problema" nillable="true" type="xs:int" />
           <xs:element minOccurs="0" name="Clv_Queja" nillable="true" type="xs:long" />
           <xs:element minOccurs="0" name="Clv_TipSer" nillable="true" type="xs:int" />
@@ -338,6 +342,7 @@
           <xs:element minOccurs="0" name="IdLlamada" nillable="true" type="xs:int" />
           <xs:element minOccurs="0" name="IdTurno" nillable="true" type="xs:int" />
           <xs:element minOccurs="0" name="IdUsuario" nillable="true" type="xs:int" />
+          <xs:element minOccurs="0" name="ProblemaSolucion" nillable="true" type="xs:boolean" />
           <xs:element minOccurs="0" name="Queja" nillable="true" type="tns:QuejaEntity" />
           <xs:element minOccurs="0" name="Solucion" nillable="true" type="xs:string" />
           <xs:element minOccurs="0" name="TipServ" nillable="true" type="tns:TipServEntity" />

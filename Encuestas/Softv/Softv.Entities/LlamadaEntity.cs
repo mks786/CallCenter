@@ -97,7 +97,8 @@ namespace Softv.Entities
         [DataMember]
         public int? Clv_Motivo { get; set; }
 
-
+        [DataMember]
+        public int? MotivoLlamada { get; set; }
 
         /// <summary>
         /// Property Clv_TipSer

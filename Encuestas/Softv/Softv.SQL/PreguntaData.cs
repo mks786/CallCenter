@@ -25,7 +25,46 @@ namespace Softv.DAO
         /// <summary>
         ///</summary>
         /// <param name="Pregunta"> Object Pregunta added to List</param>
-        public override int AddPregunta(PreguntaEntity entity_Pregunta)
+        //public override int AddPregunta(PreguntaEntity entity_Pregunta)
+        //{
+        //    int result = 0;
+        //    using (SqlConnection connection = new SqlConnection(SoftvSettings.Settings.Pregunta.ConnectionString))
+        //    {
+
+        //        SqlCommand comandoSql = CreateCommand("Softv_PreguntaAdd", connection);
+
+        //        AssingParameter(comandoSql, "@IdPregunta", null, pd: ParameterDirection.Output, IsKey: true);
+
+        //        AssingParameter(comandoSql, "@Pregunta", entity_Pregunta.Pregunta);
+
+        //        AssingParameter(comandoSql, "@IdTipoPregunta", entity_Pregunta.IdTipoPregunta);
+
+        //        AssingParameter(comandoSql, "@Cerrada", entity_Pregunta.Cerrada);
+
+        //        AssingParameter(comandoSql, "@OpcMultiple", entity_Pregunta.OpcMultiple);
+
+        //        AssingParameter(comandoSql, "@Abierta", entity_Pregunta.Abierta);
+
+        //        try
+        //        {
+        //            if (connection.State == ConnectionState.Closed)
+        //                connection.Open();
+        //            result = ExecuteNonQuery(comandoSql);
+        //        }
+        //        catch (Exception ex)
+        //        {
+        //            throw new Exception("Error adding Pregunta " + ex.Message, ex);
+        //        }
+        //        finally
+        //        {
+        //            connection.Close();
+        //        }
+        //        result = (int)comandoSql.Parameters["@IdPregunta"].Value;
+        //    }
+        //    return result;
+        //}
+
+        public override int AddPregunta(string data)
         {
             int result = 0;
             using (SqlConnection connection = new SqlConnection(SoftvSettings.Settings.Pregunta.ConnectionString))
@@ -33,17 +72,8 @@ namespace Softv.DAO
 
                 SqlCommand comandoSql = CreateCommand("Softv_PreguntaAdd", connection);
 
+                AssingParameter(comandoSql, "@xml", data);
                 AssingParameter(comandoSql, "@IdPregunta", null, pd: ParameterDirection.Output, IsKey: true);
-
-                AssingParameter(comandoSql, "@Pregunta", entity_Pregunta.Pregunta);
-
-                AssingParameter(comandoSql, "@IdTipoPregunta", entity_Pregunta.IdTipoPregunta);
-
-                AssingParameter(comandoSql, "@Cerrada", entity_Pregunta.Cerrada);
-
-                AssingParameter(comandoSql, "@OpcMultiple", entity_Pregunta.OpcMultiple);
-
-                AssingParameter(comandoSql, "@Abierta", entity_Pregunta.Abierta);
 
                 try
                 {
@@ -63,6 +93,29 @@ namespace Softv.DAO
             }
             return result;
         }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
         /// <summary>
         /// Deletes a Pregunta
@@ -96,6 +149,7 @@ namespace Softv.DAO
             }
             return result;
         }
+        
 
         /// <summary>
         /// Edits a Pregunta

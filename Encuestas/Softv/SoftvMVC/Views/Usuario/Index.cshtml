@@ -66,7 +66,7 @@
 
 
 
-<div class="modal fade bs-example-modal-lg" id="ModalAgregarUsuario" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel">
+<div class="modal fade bs-example-modal-lg" id="ModalAgregarUsuario" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" data-backdrop="static" data-keyboard="false">
     <div class="modal-dialog modal-lg">
         <div class="modal-content">
             <div class="modal-header">
@@ -89,8 +89,8 @@
                                         </div>
                                         <div class="col-sm-4">
                                             <label>Usuario</label>
-                                            <input type="text" class="form-control" id="Username" placeholder="Username" >
-                                        </div>                                           
+                                            <input type="text" class="form-control" id="Username" placeholder="Username">
+                                        </div>
                                     </div>
                                     <br />
                                     <div class="row">
@@ -128,7 +128,7 @@
                                                 <label for=""> Activo</label>
                                             </div>
                                         </div>
-                                    </div>                                 
+                                    </div>
                                 </div>
                             </div>
                             <br />
@@ -147,10 +147,10 @@
 </div>
 
 
-<div class="modal fade bs-example-modal-lg" id="ModalEliminarUsuario" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel">
+<div class="modal fade bs-example-modal-lg" id="ModalEliminarUsuario" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" data-backdrop="static" data-keyboard="false">
     <div class="modal-dialog modal-md">
         <div class="modal-content">
-            <div class="modal-header">
+            <div class="modal-header alert-error">
                 <button class="close" aria-label="Close" type="button" data-dismiss="modal"><span aria-hidden="true">×</span></button>
                 <h4 class="modal-title" id="tituloModalAgregarEncuesta">Eliminar Usuario</h4>
             </div>
@@ -167,7 +167,7 @@
     </div>
 </div>
 
-<div class="modal fade bs-example-modal-lg" id="ModalEditarUsuario" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel">
+<div class="modal fade bs-example-modal-lg" id="ModalEditarUsuario" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" data-backdrop="static" data-keyboard="false">
     <div class="modal-dialog modal-lg">
         <div class="modal-content">
             <div class="modal-header">
@@ -181,7 +181,7 @@
                     </ul>
                     <div class="tab-content">
                         <div class="tab-pane active" id="tab_1">
-                        <input type="hidden" id="id_editar" />
+                            <input type="hidden" id="id_editar" />
                             <div class="row">
                                 <div class="col-xs-12">
                                     <div class="row">

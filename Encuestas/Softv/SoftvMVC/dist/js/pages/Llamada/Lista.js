@@ -21,6 +21,7 @@ $(document).ready(function () {
         var url = '/Llamada/nueva?id_plaza='+$(this).val();
         $('#nueva_llamada_link').attr('href',url);
         $('#nueva_llamada_link').removeClass('disabled');
+        LlenarTabla($(this).val(), '', '', '', '');
         
     });
     $("#tipo_llamada").change(function () {
@@ -197,6 +198,7 @@ function MostrarDetalles(e){
         type: "GET",
         data: { 'plaza': id_plaza, 'id_llamada': llamada },
         success: function (data, textStatus, jqXHR) {
+            console.log(data);
             $('#id_llamda').text(data[0].IdLlamada);
             var contrato = data[0].Contrato;
             var queja = data[0].Clv_Queja;
@@ -214,7 +216,7 @@ function MostrarDetalles(e){
             }
             if (contrato == "") {
                 $('#pan_contrato').hide();
-                $('#pan_detalle').show();
+                $('#pan_detalle').hide();
                 $('#pan_nombre').show();
                 $('#pan_domicilio').show();
                 $('#pan_telefono').show();
@@ -232,7 +234,7 @@ function MostrarDetalles(e){
                 $('#pan_domicilio').hide();
                 $('#pan_telefono').hide();
                 $('#pan_celular').hide();
-                $('#pan_email').hide()
+                $('#pan_email').hide();
             }
             $('#contrato_detalle').text(contrato);
             var fecha = data[0].Fecha; 
@@ -321,12 +323,15 @@ function editarLlamada(e) {
                 $('#contrato_panel_editar').show(); 
                 $('#celular_panel_editar').hide();
                 $('#nombre_panel_editar').hide();
+                $('#panel_detalle_llamada').show();
                 $('#telefono_panel_editar').hide();
                 $('#domicilio_panel_editar').hide();
-                $('#email_panel_editar').hide(); 
+                $('#email_panel_editar').hide();
+                $('#panel_motivo_llamada').hide();
                 getClasificacionSolucion(data[0].Clv_TipSer, data[0].Clv_Trabajo);
                 getClasificacionProblemas(data[0].Clv_Problema);
             } else {
+                $('#panel_detalle_llamada').hide();
                 $('#telefono_editar').inputmask("(999)9999999");
                 $('#celular_editar').inputmask("999-999-99-99");
                 $('#nombre_editar').val(data[0].nombre);
@@ -337,12 +342,15 @@ function editarLlamada(e) {
                 $('#clasificacion_editar').hide();
                 $('#contrato_panel_editar').hide();
                 $('#celular_panel_editar').show();
+                getMotivoLlamada(data[0].MotivoLlamada);
                 $('#nombre_panel_editar').show();
+                $('#panel_motivo_llamada').show();
                 $('#telefono_panel_editar').show();
                 $('#domicilio_panel_editar').show();
                 $('#email_panel_editar').show();
-                $('#panel_solucion').hide();
+                $('#panel_solucion').hide(); 
                 $('#clasificacion_solucion_editar').hide();
+                
             }
         },
         error: function (jqXHR, textStatus, errorThrown) {
@@ -350,6 +358,30 @@ function editarLlamada(e) {
         }
     });
     setTimeout("mostrarDatos()", 1000);
+}
+
+function getMotivoLlamada(id) {
+    var id_plaza = $("#plaza_llamadas").val();
+    $.ajax({
+        url: "/Llamada/GetMotivoLlamada/",
+        type: "GET",
+        data: { 'IdPlaza': id_plaza},
+        success: function (data, textStatus, jqXHR) {
+            $("#selec_motivo_llamada option").remove();
+            console.log(data);
+            console.log(id);
+            for (var i = 0; i < data.length; i++) {
+                if (data[i].Clv_Motivo == id) {
+                    $('#selec_motivo_llamada').append('<option value="' + data[i].Clv_Motivo + '" selected>' + data[i].Descripcion + '</option>');
+                } else {
+                    $('#selec_motivo_llamada').append('<option value="' + data[i].Clv_Motivo + '">' + data[i].Descripcion + '</option>');
+                }
+            }
+        },
+        error: function (jqXHR, textStatus, errorThrown) {
+
+        }
+    });
 }
 
 function mostrarDatos() {
@@ -511,6 +543,7 @@ function guardarLlamada(e) {
         llamada.telefono = $('#telefono_editar').inputmask('unmaskedvalue');
         llamada.celular = $('#celular_editar').inputmask('unmaskedvalue');
         llamada.email = $('#email_editar').val();
+        llamada.MotivoLlamada = $('#selec_motivo_llamada').val();
     }
     $.ajax({
         url: "/Llamada/editarLLamada/",

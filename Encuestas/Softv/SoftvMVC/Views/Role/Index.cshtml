@@ -70,7 +70,7 @@
 
 
 @*MODAL AGREGAR*@
-<div class="modal fade bs-example-modal-xs" id="ModalAgregarRoles" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel">
+<div class="modal fade bs-example-modal-xs" id="ModalAgregarRoles" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" data-backdrop="static" data-keyboard="false">
     <div class="modal-dialog modal-xs">
         <div class="modal-content">
             <div class="modal-header">
@@ -107,7 +107,7 @@
 
 
 @*MODAL DETALLE*@
-<div class="modal fade bs-example-modal-md" id="ModalDetalleRoles" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel">
+<div class="modal fade bs-example-modal-md" id="ModalDetalleRoles" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" data-backdrop="static" data-keyboard="false">
     <div class="modal-dialog modal-md">
         <div class="modal-content">
             <div class="modal-header">
@@ -140,7 +140,7 @@
 
 
 @*MODAL EDITAR*@
-<div class="modal fade bs-example-modal-md" id="ModalEditarRoles" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel">
+<div class="modal fade bs-example-modal-md" id="ModalEditarRoles" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" data-backdrop="static" data-keyboard="false">
     <div class="modal-dialog modal-md">
         <div class="modal-content">
             <div class="modal-header">
@@ -184,10 +184,10 @@
 
 
 @*MODAL ELIMINAR*@
-<div class="modal fade" id="ModalEliminaRol" role="dialog">
+<div class="modal fade" id="ModalEliminaRol" role="dialog" data-backdrop="static" data-keyboard="false">
     <div class="modal-dialog modal-md">
         <div class="modal-content">
-            <div class="modal-header">
+            <div class="modal-header alert-danger">
                 <button class="close" aria-label="Close" type="button" data-dismiss="modal"><span aria-hidden="true">×</span></button>
                 <h4 class="modal-title">Eliminar Role</h4>
             </div>
@@ -195,7 +195,7 @@
             <div class="modal-body">
 
                 <input type="hidden" id="IdRol" />
-                <p class="red">¿Realmente deseas eliminar el Rol "<strong id="Eliminar_Nombre"></strong>"?</p>
+                <p class="red">¿Realmente deseas eliminar el Rol <strong id="Eliminar_Nombre"></strong>?</p>
 
             </div>
 

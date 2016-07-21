@@ -57,7 +57,11 @@ namespace Softv.Providers
         ///  /summary>
         /// <param name="Pregunta"></param>
         /// <returns></returns>
-        public abstract int AddPregunta(PreguntaEntity entity_Pregunta);
+        //public abstract int AddPregunta(PreguntaEntity entity_Pregunta);
+
+
+
+        public abstract int AddPregunta(string data);
 
         /// <summary>
         /// Abstract method to delete Pregunta
