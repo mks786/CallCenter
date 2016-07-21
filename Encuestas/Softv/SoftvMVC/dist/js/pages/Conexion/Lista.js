@@ -86,7 +86,7 @@ function LlenarTabla(cadena) {
         $("div.toolbar").html('<div class="input-group input-group-sm"><input class="form-control" id="buscar" type="text"><span class="input-group-btn"><button onclick="Busqueda()" class="btn btn-info btn-flat" type="button"><i class="fa fa-search" aria-hidden="true"></i> Buscar</button></span></div>');
 
     } else {
-        $("div.toolbar").html('<button class="btn bg-olive btn-sm" style="float:right;" onclick="agregrarConexion()"><i class="fa fa-plug" aria-hidden="true"></i> Nueva Plaza</button> <div class="input-group input-group-sm"><input class="form-control" id="buscar" type="text"><span class="input-group-btn"><button onclick="Busqueda()" class="btn btn-info btn-flat" type="button"><i class="fa fa-search" aria-hidden="true"></i> Buscar</button></span></div>');
+        $("div.toolbar").html('<button class="btn btn-success" style="float:right;" onclick="agregrarConexion()"><i class="fa fa-plug" aria-hidden="true"></i> Nueva Plaza</button> <div class="input-group input-group-sm"><input class="form-control" id="buscar" type="text"><span class="input-group-btn"><button onclick="Busqueda()" class="btn btn-info btn-flat" type="button"><i class="fa fa-search" aria-hidden="true"></i> Buscar</button></span></div>');
 
     }
 }

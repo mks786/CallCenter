@@ -369,7 +369,7 @@ namespace SoftvMVC.Controllers
             try
             {
 
-                comandoSql = new SqlCommand("Select * from [dbo].[TipServ]");
+                comandoSql = new SqlCommand("select * from TipServ where Habilitar=0");
                 comandoSql.Connection = conexionSQL;
                 SqlDataReader reader = comandoSql.ExecuteReader();
                 if (reader.HasRows)

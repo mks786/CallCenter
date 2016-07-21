@@ -284,9 +284,17 @@
                         </select>
                     </div>
                 </div>
+                <div class="row" id="motivo_llamada_cliente" style="padding-left:10px; display:none;">
+                    <div class="col-md-6">
+                        <label style="color:#4b646f; font-size:12px;">Motivo Llamada</label>
+                        <select class="form-control" id="motivo_de_llamada">
+                            <option value="0" selected disabled>Motivo Llamada</option>
+                        </select>
+                    </div>
+                </div>
                 <div class="row" id="motivo_no_cliente" style="padding-left:10px; display:none;">
                     <div class="col-md-6">
-                        <label style="color:#4b646f; font-size:12px;">Motivo de la llamada</label>
+                        <label style="color:#4b646f; font-size:12px;">Detalle</label>
                         <textarea class="form-control" id="motivo"></textarea>
                     </div>
                 </div>
@@ -420,6 +428,23 @@
             var id = $(this).val();
             getSolucuionLlenar(id);
         });
+        $.ajax({
+            url: "/Llamada/GetMotivoLlamada/",
+            type: "GET",
+            data: { "IdPlaza": id_plaza },
+            success: function (data, textStatus, jqXHR) {
+                // una vez que fue exitosa la peticion asignamos los datos a un select
+                for (var i = 0; i < data.length; i++) {
+                    $('#motivo_de_llamada').append($('<option>', {
+                        value: data[i].Clv_Motivo,
+                        text: data[i].Descripcion
+                    }));
+                }
+            },
+            error: function (jqXHR, textStatus, errorThrown) {
+
+            }
+        });
     });
 
 
@@ -470,6 +495,8 @@
         $('#email_no_cliente').hide();
         $('#panel_tipo_informacion').hide();
         $('#panel_tipo_llamada_cliente').hide();
+        $('#motivo_llamada_cliente').hide();
+        
         document.getElementById("llamadaForm").reset();
     }
 
@@ -481,6 +508,7 @@
             $('#panel_clasificacion').hide();
             $('#solucion_no_cliente').hide();
             $('#panel_solucion').hide();
+            $('#motivo_llamada_cliente').hide();
             $.ajax({
                 url: "/Llamada/TipoLlamada/",
                 type: "GET",
@@ -503,6 +531,7 @@
             $('#panel_clasificacion').show();
             $('#solucion_no_cliente').show();
             $('#panel_solucion').show();
+            $('#motivo_llamada_cliente').hiden();
         }
     });
 
@@ -600,6 +629,8 @@
             $('#domicilio_no_cliente').hide();
             $('#email_no_cliente').hide();
             $('#panel_tipo_llamada_cliente').hide();
+            $('#motivo_llamada_cliente').hide();
+            
             //valores a default
         } else if (tipo == 2) {
             $('#panel_no_cliente').show();
@@ -610,12 +641,13 @@
             $('#queja').hide();
             $('#tipo_servicio').hide();
             $('#panel_queja').hide();
-            $('#motivo_no_cliente').show();
+            $('#motivo_no_cliente').hide();
             $('#panel_clasificacion').hide();
             $('#trabajo_panel').hide();
             $('#telefono_no_cliente').show();
             $('#domicilio_no_cliente').show();
             $('#panel_tipo_llamada_cliente').hide();
+            $('#motivo_llamada_cliente').show();
             var now = new Date();
             var hour = now.getHours();
             if (hour < 10) {
@@ -776,6 +808,7 @@
         $('#panel_tabla_clientes').hide();
         $('#panel_llamante').hide();
         $('#panel_datos_cliente').show();
+        $('#motivo_llamada_cliente').hide();
         $('#queja').show();
         
         $('#tipo_servicio').show();
@@ -1020,39 +1053,44 @@
             } else {
                 llamada.nombre = $('#nombre_no_cliente').val();
                 if($('#motivo').val() == "") {
-                    swal("Por favor ingresa el motivo de la llamda", "", "error");
+                    swal("Por favor ingresa el motivo de la llamada", "", "error");
                 }else{
-                    llamada.motivo = $('#motivo').val();
-                    llamada.telefono = $('#telefono').inputmask('unmaskedvalue');
-                    llamada.celular = $('#celular').inputmask('unmaskedvalue');
-                    llamada.domicilio = $('#domicilio').val();
-                    llamada.email = $('#email').val();
-                    console.log(llamada);
-                    $.ajax({
-                        url: "/Llamada/InsertLlamada",
-                        type: "POST",
-                        data: { 'IdPlaza': id_plaza, "llamada": llamada},
-                        success: function (data, textStatus, jqXHR) {
-                            $('#panel_no_cliente').hide();
-                            $('#btn_enviar').hide();
-                            $('#motivo_no_cliente').hide();
-                            $('#solucion_no_cliente').hide();
-                            $('#panel_fecha').hide();
-                            $('#telefono_no_cliente').hide();
-                            $('#domicilio_no_cliente').hide();
-                            $('#email_no_cliente').hide();
-                            $('#tipo_llamante').show();
-                            $('#regresar').hide();
-                            $('#panel_tipo_llamada_cliente').hide();
-                            document.getElementById("llamadaForm").reset();
-                            swal("La llamada se guaró exitosamente", "", "success");
-                        },
-                        error: function (data, jqXHR, textStatus) {
-                            swal("Error la llamada no se guardo", "", "danger");
-                        }
+                    if($('#motivo_de_llamada').val() == null){
+                        swal("Por favor selecciona el motivo de la llamada", "", "error");
+                    }else{
+                        llamada.select_motivo = $('#motivo_de_llamada').val();
+                        //llamada.motivo = $('#motivo').val();
+                        llamada.telefono = $('#telefono').inputmask('unmaskedvalue');
+                        llamada.celular = $('#celular').inputmask('unmaskedvalue');
+                        llamada.domicilio = $('#domicilio').val();
+                        llamada.email = $('#email').val();
+                        $.ajax({
+                            url: "/Llamada/InsertLlamada",
+                            type: "POST",
+                            data: { 'IdPlaza': id_plaza, "llamada": llamada},
+                            success: function (data, textStatus, jqXHR) {
+                                $('#panel_no_cliente').hide();
+                                $('#btn_enviar').hide();
+                                $('#motivo_no_cliente').hide();
+                                $('#solucion_no_cliente').hide();
+                                $('#panel_fecha').hide();
+                                $('#telefono_no_cliente').hide();
+                                $('#domicilio_no_cliente').hide();
+                                $('#email_no_cliente').hide();
+                                $('#tipo_llamante').show();
+                                $('#regresar').hide();
+                                $('#panel_tipo_llamada_cliente').hide();
+                                $('#motivo_llamada_cliente').hide();
+                                document.getElementById("llamadaForm").reset();
+                                swal("La llamada se guaró exitosamente", "", "success");
+                            },
+                            error: function (data, jqXHR, textStatus) {
+                                swal("Error la llamada no se guardo", "", "danger");
+                            }
 
-                    });
-                    
+                        });
+                    }
+                                        
                 }
             }
         }

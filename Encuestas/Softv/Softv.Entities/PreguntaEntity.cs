@@ -52,6 +52,8 @@ namespace Softv.Entities
         public bool? Abierta { get; set; }
 
 
+        [DataMember]
+        public List<ResOpcMultsEntity> RespuestasAdd { get; set; }
 
         [DataMember]
         public TipoPreguntasEntity TipoPreguntas { get; set; }
@@ -65,7 +67,7 @@ namespace Softv.Entities
         [DataMember]
         public RelEnProcesosEntity RelEnProcesos { get; set; }
 
-
+        public PreguntaEntity Preguntas { get; set; }
 
 
 

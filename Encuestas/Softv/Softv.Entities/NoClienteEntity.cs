@@ -60,6 +60,11 @@
       /// </summary>
       [DataMember]
       public String Email { get; set; }
+
+
+      [DataMember]
+      public int? MotivoLlamada { get; set; }
+
     #endregion
     }
     }

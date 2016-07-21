@@ -104,7 +104,7 @@
             $('#btnlog').button('loading');
             setTimeout(function () {
                 $('#btnlog').button('reset');
-            }, 3000);// el boton hace un pequeño efecto de cargado mientras hace la peticion al servidor
+            }, 4000);// el boton hace un pequeño efecto de cargado mientras hace la peticion al servidor
             setTimeout(function () {
                 $.ajax({
                     type: "POST",
@@ -188,42 +188,52 @@
     </script>
 </head>
 <body class="hold-transition login-page">
-    <div class="login-box">
-        <div class="login-logo">
-            <a href="#"><b>Softv </b></a>
-        </div><!-- /.login-logo -->
-        <div class="login-box-body">
-            <p class="login-box-msg">Ingresa tus credenciales de acceso</p>
-            <section id="loginForm" class="Loginform">
-                <div class="form-group has-feedback">
-                    <input type="text" id="usuario" name="usuario" class="form-control" placeholder="Email">
-                    <span class="glyphicon glyphicon-envelope form-control-feedback"></span>
-                </div>
-                <div class="form-group has-feedback">
-                    <input type="password" class="form-control" name="password" id="password" placeholder="Password">
-                    <span class="glyphicon glyphicon-lock form-control-feedback"></span>
-                </div>
-                <div class="row">
-                    <div class="col-xs-8">
-                        <div class="checkbox icheck">
-                            <label>
-                                <input type="checkbox"> Recordar contraseña
-                            </label>
+    <div class="row">
+        <div class="col-md-12">
+            <p class="text-center" style="padding-top:30px;">
+                <img src="~/dist/img/logo.png" width="200" height="150" />
+            </p>
+        </div>
+        <div class="col-md-12" style='margin-top:-100px;'>
+            <div class="login-box">
+                <div class="login-logo">
+                    <a href="#"><b>Softv </b></a>
+                </div><!-- /.login-logo -->
+                <div class="login-box-body">
+                    <p class="login-box-msg">Ingresa tus credenciales de acceso</p>
+                    <section id="loginForm" class="Loginform">
+                        <div class="form-group has-feedback">
+                            <input type="text" id="usuario" name="usuario" class="form-control" placeholder="Email">
+                            <span class="glyphicon glyphicon-envelope form-control-feedback"></span>
                         </div>
-                    </div><!-- /.col -->
-                    <div class="col-xs-4">
-                        <button type="submit" id="btnlog" class="btn btn-primary btn-flat" data-loading-text="<i class='fa fa-circle-o-notch fa-spin'></i> Accesando">Accesar</button>
-                    </div><!-- /.col -->
-                </div>
+                        <div class="form-group has-feedback">
+                            <input type="password" class="form-control" name="password" id="password" placeholder="Password">
+                            <span class="glyphicon glyphicon-lock form-control-feedback"></span>
+                        </div>
+                        <div class="row">
+                            <div class="col-xs-8">
+                                <div class="checkbox icheck">
+                                    <label>
+                                        <input type="checkbox"> Recordar contraseña
+                                    </label>
+                                </div>
+                            </div><!-- /.col -->
+                            <div class="col-xs-4">
+                                <button type="submit" id="btnlog" class="btn btn-primary btn-flat" data-loading-text="<i class='fa fa-circle-o-notch fa-spin'></i> Accesando">Accesar</button>
+                            </div><!-- /.col -->
+                        </div>
 
-                </section>
+                    </section>
 
 
-                <a href="#">Recuperar contraseña</a><br>
+                    <a href="#">Recuperar contraseña</a><br>
 
 
-</div><!-- /.login-box-body -->
-    </div><!-- /.login-box -->
+                </div><!-- /.login-box-body -->
+            </div><!-- /.login-box -->
+        </div>
+    </div>
+
     <!-- jQuery 2.1.4 -->
     <script src="../../plugins/jQuery/jQuery-2.1.4.min.js"></script>
     <!-- Bootstrap 3.3.5 -->

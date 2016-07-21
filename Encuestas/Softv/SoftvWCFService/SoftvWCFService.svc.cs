@@ -296,10 +296,19 @@ namespace SoftvWCFService
             return Pregunta.GetPagedList(page, pageSize, xml);
         }
 
-        public int AddPregunta(PreguntaEntity objPregunta)
+        //public int AddPregunta(PreguntaEntity objPregunta)
+        //{
+        //    return Pregunta.Add(objPregunta);
+        //}
+
+
+
+        public int AddPregunta(string data)
         {
-            return Pregunta.Add(objPregunta);
+            return Pregunta.Add(data);
         }
+
+
 
         public int UpdatePregunta(string xml)
         {

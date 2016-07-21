@@ -314,12 +314,6 @@
   <wsdl:message name="IPregunta_GetPreguntaPagedListXml_OutputMessage">
     <wsdl:part name="parameters" element="tns:GetPreguntaPagedListXmlResponse" />
   </wsdl:message>
-  <wsdl:message name="IPregunta_AddPregunta_InputMessage">
-    <wsdl:part name="parameters" element="tns:AddPregunta" />
-  </wsdl:message>
-  <wsdl:message name="IPregunta_AddPregunta_OutputMessage">
-    <wsdl:part name="parameters" element="tns:AddPreguntaResponse" />
-  </wsdl:message>
   <wsdl:message name="IPregunta_UpdatePregunta_InputMessage">
     <wsdl:part name="parameters" element="tns:UpdatePregunta" />
   </wsdl:message>
@@ -331,6 +325,12 @@
   </wsdl:message>
   <wsdl:message name="IPregunta_DeletePregunta_OutputMessage">
     <wsdl:part name="parameters" element="tns:DeletePreguntaResponse" />
+  </wsdl:message>
+  <wsdl:message name="IPregunta_AddPregunta_InputMessage">
+    <wsdl:part name="parameters" element="tns:AddPregunta" />
+  </wsdl:message>
+  <wsdl:message name="IPregunta_AddPregunta_OutputMessage">
+    <wsdl:part name="parameters" element="tns:AddPreguntaResponse" />
   </wsdl:message>
   <wsdl:message name="ITipoPreguntas_GetTipoPreguntas_InputMessage">
     <wsdl:part name="parameters" element="tns:GetTipoPreguntas" />
@@ -2041,10 +2041,6 @@
       <wsdl:input wsaw:Action="http://tempuri.org/IPregunta/GetPreguntaPagedListXml" message="tns:IPregunta_GetPreguntaPagedListXml_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IPregunta/GetPreguntaPagedListXmlResponse" message="tns:IPregunta_GetPreguntaPagedListXml_OutputMessage" />
     </wsdl:operation>
-    <wsdl:operation name="AddPregunta">
-      <wsdl:input wsaw:Action="http://tempuri.org/IPregunta/AddPregunta" message="tns:IPregunta_AddPregunta_InputMessage" />
-      <wsdl:output wsaw:Action="http://tempuri.org/IPregunta/AddPreguntaResponse" message="tns:IPregunta_AddPregunta_OutputMessage" />
-    </wsdl:operation>
     <wsdl:operation name="UpdatePregunta">
       <wsdl:input wsaw:Action="http://tempuri.org/IPregunta/UpdatePregunta" message="tns:IPregunta_UpdatePregunta_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IPregunta/UpdatePreguntaResponse" message="tns:IPregunta_UpdatePregunta_OutputMessage" />
@@ -2052,6 +2048,10 @@
     <wsdl:operation name="DeletePregunta">
       <wsdl:input wsaw:Action="http://tempuri.org/IPregunta/DeletePregunta" message="tns:IPregunta_DeletePregunta_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IPregunta/DeletePreguntaResponse" message="tns:IPregunta_DeletePregunta_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="AddPregunta">
+      <wsdl:input wsaw:Action="http://tempuri.org/IPregunta/AddPregunta" message="tns:IPregunta_AddPregunta_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IPregunta/AddPreguntaResponse" message="tns:IPregunta_AddPregunta_OutputMessage" />
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:portType name="ITipoPreguntas">
@@ -3590,15 +3590,6 @@
         <soap:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
-    <wsdl:operation name="AddPregunta">
-      <soap:operation soapAction="http://tempuri.org/IPregunta/AddPregunta" style="document" />
-      <wsdl:input>
-        <soap:body use="literal" />
-      </wsdl:input>
-      <wsdl:output>
-        <soap:body use="literal" />
-      </wsdl:output>
-    </wsdl:operation>
     <wsdl:operation name="UpdatePregunta">
       <soap:operation soapAction="http://tempuri.org/IPregunta/UpdatePregunta" style="document" />
       <wsdl:input>
@@ -3610,6 +3601,15 @@
     </wsdl:operation>
     <wsdl:operation name="DeletePregunta">
       <soap:operation soapAction="http://tempuri.org/IPregunta/DeletePregunta" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AddPregunta">
+      <soap:operation soapAction="http://tempuri.org/IPregunta/AddPregunta" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>

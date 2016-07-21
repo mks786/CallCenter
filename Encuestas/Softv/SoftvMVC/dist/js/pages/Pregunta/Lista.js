@@ -4,8 +4,20 @@
    
 
     $(".Agregar").click(function () {
+        $('#NombrePregunta').val(" "); 
+        $('#TipoPregunta').val(0); 
+        $('#PanelPreguntaOptMultiple').hide(); 
+        $('#PanelPreguntaOptMultiple-tbody').empty();
         $('#ModalAgregarPregunta').modal('show');
 
+    });
+    $('#TipoPregunta').on('change', function () {
+        var tipo = $(this).val();
+        if (tipo == 3) {
+            $('#PanelPreguntaOptMultiple').show();
+        } else {
+            $('#PanelPreguntaOptMultiple').hide();
+        }
     });
 
 });
@@ -93,9 +105,9 @@ function LlenarTabla(cadena) {
         "order": [[0, "asc"]]
     })
 
-    $("div.toolbar").html('<div class="input-group input-group-sm"><input class="form-control" type="text" id="buscar"><span class="input-group-btn"><button class="btn btn-info btn-flat" type="button" onclick="Busqueda()"><i class="fa fa-search" aria-hidden="true"></i> Buscar</button></span></div>');
+    //$("div.toolbar").html('<div class="input-group input-group-sm"><input class="form-control" type="text" id="buscar"><span class="input-group-btn"><button class="btn btn-info btn-flat" type="button" onclick="Busqueda()"><i class="fa fa-search" aria-hidden="true"></i> Buscar</button></span></div>');
     //respaldo de boton agregar
-    //$("div.toolbar").html('<button class="btn btn-success btn-sm Agregar" style="float:right;" ><i class="fa fa-plus" aria-hidden="true"></i> Nueva Pregunta </button> <div class="input-group input-group-sm"><input class="form-control" type="text"><span class="input-group-btn"><button class="btn btn-info btn-flat" type="button">Buscar</button></span></div>');
+    $("div.toolbar").html('<button class="btn btn-success Agregar" style="float:right;" ><i class="fa fa-plus" aria-hidden="true"></i> Nueva Pregunta </button> <div class="input-group input-group-sm"><input class="form-control" type="text"><span class="input-group-btn"><button class="btn btn-info btn-flat" type="button">Buscar</button></span></div>');
 
 }
 
@@ -163,8 +175,8 @@ function editar_dom(datos) {
         $('#panel_opcion_multiple').show();
         $("#tabla_respuestas > tbody").html("");
         for (var i = 0; i < datos.respuestas.length; i++) {
-            $('#body_opcion_multiple').append("<tr><td><input type='text' class='form-control' id='" + datos.respuestas[i].Id_ResOpcMult + "' value='" + datos.respuestas[i].ResOpcMult + "' disabled> </td></tr>");
-           //con boton eliminar $('#body_opcion_multiple').append("<tr><td><input type='text' class='form-control' id='" + datos.respuestas[i].Id_ResOpcMult + "' value='" + datos.respuestas[i].ResOpcMult + "' disabled> </td><td><button class='btn btn-danger btn-xs eliminar_respuestas'>Quitar</button></td></tr>");
+            //$('#body_opcion_multiple').append("<tr><td><input type='text' class='form-control' id='" + datos.respuestas[i].Id_ResOpcMult + "' value='" + datos.respuestas[i].ResOpcMult + "' disabled> </td></tr>");
+            $('#body_opcion_multiple').append("<tr><td><input type='text' class='form-control' id='" + datos.respuestas[i].Id_ResOpcMult + "' value='" + datos.respuestas[i].ResOpcMult + "' disabled> </td><td><button class='btn btn-danger btn-xs eliminar_respuestas'>Quitar</button></td></tr>");
         }
 
     }
@@ -204,6 +216,13 @@ $('#TablaPreguntas').on('click', '.Eliminar', function () {
     alert("click");
 });
 
+
+function AgregarRespuesta_editar() {
+    //$('#body_opcion_multiple').append("<tr><td><input type='text' id='focus' onkeypress='removeFocus()' class='form-control focus'></td></tr>");
+    $('#body_opcion_multiple').append("<tr><td><input type='text' id='focus' onkeypress='removeFocus()' class='form-control focus'> </td><td><button class='btn btn-danger btn-xs eliminar_respuestas'>Quitar</button></td></tr>");
+    $('#focus').focus();
+}
+
 function AgregarRespuesta() {
     $('#body_opcion_multiple').append("<tr><td><input type='text' id='focus' onkeypress='removeFocus()' class='form-control focus'></td></tr>");
     //boton de eliminar $('#body_opcion_multiple').append("<tr><td><input type='text' id='focus' onkeypress='removeFocus()' class='form-control focus'> </td><td><button class='btn btn-danger btn-xs eliminar_respuestas'>Quitar</button></td></tr>");
@@ -233,6 +252,7 @@ function guardar_pregunta() {
     var nombre = $('#pregunta_nombre').val();
     var tipo_pregunta = $('#id_tipo_pregunta').val();
     var nulo = 0;
+    var duplicado = [];
     if(nombre == ""){
         swal("Por favor introduce el nombre de la pregunta", "", "error");
     } else {
@@ -257,28 +277,133 @@ function guardar_pregunta() {
                 }
 
                 respuestas.push(respuesta);
+                duplicado.push(respuesta);
             });
 
         }
 
     }
     if (nulo == 0) {
-        console.log(respuestas);
-        $.ajax({
-            url: "/Pregunta/editarPregunta/",
-            type: "POST",
-            data: { 'detallePregunta': detallePregunta, 'respuestas': respuestas },
-            success: function (data, textStatus, jqXHR) {
-                $('#ModalEditarPregunta').modal("hide");
-                LlenarTabla();
-                swal("La pregunta se editó exitosamente", "", "success");
-            },
-            error: function (jqXHR, textStatus, errorThrown) {
-
+        var contador = 0;
+        for (var i = 0; i < duplicado.length - 1; i++) {
+            for (var j = i + 1; j < duplicado.length; j++) {
+                if (duplicado[i].ResOpcMult == duplicado[j].ResOpcMult) {
+                    contador += 1;
+                }
             }
-        });
+
+        }
+        if(contador > 0){
+            swal("No puede haber preguntas iguales", "", "error");
+        } else {
+            $.ajax({
+                url: "/Pregunta/editarPregunta/",
+                type: "POST",
+                data: { 'detallePregunta': detallePregunta, 'respuestas': respuestas },
+                success: function (data, textStatus, jqXHR) {
+                    $('#ModalEditarPregunta').modal("hide");
+                    LlenarTabla();
+                    swal("La pregunta se editó exitosamente", "", "success");
+                },
+                error: function (jqXHR, textStatus, errorThrown) {
+
+                }
+            });
+        }
+        
     } else {
-        console.log('completar respuestas');
+        swal("Por favor llena todas las respuestas o elimina las vacias", "", "error");
     }
     
 }
+
+$('#TablaRespuestasOM').on('click', '.EliminarRespuestaC', function () {
+    $(this).closest('tr').remove();;
+});
+
+function AgregarRespuesta() {
+    $('#PanelPreguntaOptMultiple-tbody').append("<tr class='nrespuestac'><td></td><td class='nrespuesta'><input class='agregar_reciclado form-control resp' placeholder='Respuestas' type='text' id='focus' onkeypress='quitAutofocus()'></td><td><button class='btn btn-danger btn-xs EliminarRespuestaC'>Quitar</button></td></tr>");
+    $('#focus').focus();
+}
+function quitAutofocus() {
+    $('#focus').removeAttr("id");
+    $('#focus').removeClass("agregar_reciclado");
+}
+
+$('#GuardarPregunta').on('click', function () {
+    var nombre_pregunta = $('#NombrePregunta').val();
+    var tipo_pregunta = $('#TipoPregunta').val();
+    var pregunta = {};
+    if (nombre_pregunta == " ") {
+        swal("El nombre de la pregunta es obligatorio", "", "error");
+    } else {
+        pregunta.Pregunta = nombre_pregunta;
+        if (tipo_pregunta == null) {
+            swal("Seleccione el tipo de pregunta", "", "error");
+        } else {
+            pregunta.IdTipoPregunta = tipo_pregunta;
+            if (tipo_pregunta == 3) {
+                var Lista_opciones = [];
+                var duplicado = [];
+                var vacios = 0;
+                $('#TablaRespuestasOM > tbody  > tr').each(function () {
+                    var test1 = $(this).closest(".nrespuestac").find("input:text").map(function () { return $(this).val(); });
+                    for (var a = 0; a < test1.length; a++) {
+                        Opciones = {};
+                        Opciones.ResOpcMult = test1[a];
+                        duplicado.push(test1[a]);
+                        Lista_opciones.push(Opciones);
+                        if (test1[a] == "") {
+                            vacios = vacios + 1;
+
+                        }
+                    }
+                });
+                var contador = 0;
+                for (var i = 0; i < duplicado.length - 1; i++) {
+                    for (var j = i + 1; j < duplicado.length; j++) {
+                        if (duplicado[i] == duplicado[j]) {
+                            contador += 1;
+                        }
+                    }
+
+                }
+                if (vacios > 0) {
+                    swal("Por favor llena todas las respuestas o elimina las vacias", "", "error");
+                } else if (contador > 0) {
+                    swal("No puede haber respuestas duplicadas", "", "error");
+                } else {
+                    $.ajax({
+                        url: "/Pregunta/AddPregunta/",
+                        type: "POST",
+                        data: { 'pregunta': pregunta, 'respuestas': Lista_opciones },
+                        success: function (data, textStatus, jqXHR) {
+                            $('#ModalAgregarPregunta').modal("hide");
+                            LlenarTabla();
+                            swal("La pregunta se agregó exitosamente", "", "success");
+                        },
+                        error: function (jqXHR, textStatus, errorThrown) {
+
+                        }
+                    });
+                }
+
+            } else {
+                $.ajax({
+                    url: "/Pregunta/AddPregunta/",
+                    type: "POST",
+                    data: { 'pregunta': pregunta},
+                    success: function (data, textStatus, jqXHR) {
+                        $('#ModalAgregarPregunta').modal("hide");
+                        LlenarTabla();
+                        swal("La pregunta se agregó exitosamente", "", "success");
+                    },
+                    error: function (jqXHR, textStatus, errorThrown) {
+
+                    }
+                });
+            }
+        }
+    }
+
+});
