@@ -41,7 +41,13 @@ function LlenarTabla(cadena) {
 
         "columns": [
             { "data": "IdUsuario", "orderable": false },
-            { "data": "IdRol", "orderable": false },
+            {
+                sortable: false,
+                "render": function (data, type, full, meta) {
+                    return full.Role.Nombre;  //Es el campo de opciones de la tabla.
+
+                }
+            },
             { "data": "Nombre", "orderable": false },
             { "data": "Email", "orderable": false },
             { "data": "Usuario", "orderable": false },
@@ -55,13 +61,14 @@ function LlenarTabla(cadena) {
                     } else {
                         ruta = '/dist/img/check-false.png'
                     }
-                    return "<img src='" + ruta + "' />";  //Es el campo de opciones de la tabla.
+                    return "<p class='text-center'><img src='" + ruta + "' /></p>";  //Es el campo de opciones de la tabla.
 
                 }
             },
             {
             sortable: false,
             "render": function (data, type, full, meta) {
+                console.log(full);
                 return Opciones(full);  //Es el campo de opciones de la tabla.
             }
         }

@@ -224,7 +224,7 @@
                         <h5 id="texto_calle" style="color:#4b646f;"></h5>
                         <h5 id="texto_numero" style="color:#4b646f;"></h5>
                     </div>
-                    <div class="col-md-5 scroll_div" style="height:150px;">
+                    <div class="col-md-5">
                         <div id="servicios_contratados">
 
                         </div>
@@ -387,9 +387,15 @@
         </div>
     </div>
 </body>
+<script src="~/plugins/slimScroll/jquery.slimscroll.js"></script>
 <script src="~/plugins/input-mask/jquery.inputmask.js"></script>
 <script type="text/javascript" src="~/dist/js/bootstrap-switch.js"></script>
 <script type="text/javascript">
+    $(function(){
+        $('#servicios_contratados').slimScroll({
+            height: '200px'
+        });
+    });
     var count_queja = 2;
     var id_plaza;
     $(function () {
