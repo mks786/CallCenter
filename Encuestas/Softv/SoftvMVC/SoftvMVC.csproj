@@ -551,6 +551,7 @@
     <Content Include="dist\css\skins\skin-yellow.min.css" />
     <Content Include="dist\css\skins\_all-skins.css" />
     <Content Include="dist\css\skins\_all-skins.min.css" />
+    <Content Include="dist\img\check-false.png" />
     <Content Include="dist\img\credit\american-express.png" />
     <Content Include="dist\img\credit\cirrus.png" />
     <Content Include="dist\img\credit\mastercard.png" />

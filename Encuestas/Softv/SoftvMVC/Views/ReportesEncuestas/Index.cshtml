@@ -97,12 +97,17 @@
 </div>
     </div>
 
-
+<script src="~/plugins/slimScroll/jquery.slimscroll.js"></script>
 <link href="~/plugins/sweetAlert/sweetalert.css" rel="stylesheet" />
 <script src="~/plugins/sweetAlert/sweetalert.min.js"></script>
 <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
 <script src="http://neue.cc/linq.min.js"></script>
 <script>
+    $(function () {
+        $('#servicios_contratados').slimScroll({
+            height: '200px'
+        });
+    });
     $(document).ready(function () {
         $.ajax({
             url: "/Conexion/ListaConexiones/",
@@ -200,6 +205,9 @@
                                         if (result[i].source[j].IdTipoPregunta == 1) {
                                             $('#abietas' + div).show();
                                             $('#abietas' + div).append('<li>' + result[i].source[j].RespuestaAbierta + '</ul>');
+                                            $('#abietas' + div).slimScroll({
+                                                height: '200px'
+                                            });
                                         } else {
                                             $('#abietas' + div).hide();
                                             var c = {};
@@ -256,8 +264,6 @@
                 height: 350
             }
         };
-
-
 
         if (grafica == "PieChart") {
             var chart1_chart = new google.visualization.PieChart(document.getElementById(div));

@@ -34,7 +34,7 @@ function LlenarTabla(cadena) {
                     }else{
                         ruta = '/dist/img/check-false.png'
                     }
-                    return "<img src='" + ruta + "' />";  //Es el campo de opciones de la tabla.
+                    return "<p class='text-center'><img src='" + ruta + "' /></p>";  //Es el campo de opciones de la tabla.
                 }
             },
              {
@@ -46,7 +46,7 @@ function LlenarTabla(cadena) {
                      } else {
                          ruta = '/dist/img/check-false.png'
                      }
-                     return "<img src='" + ruta + "' />";  //Es el campo de opciones de la tabla.
+                     return "<p class='text-center'><img src='" + ruta + "' /></p>";  //Es el campo de opciones de la tabla.
                  }
              },
              {
@@ -58,7 +58,7 @@ function LlenarTabla(cadena) {
                      } else {
                          ruta = '/dist/img/check-false.png'
                      }
-                     return "<img src='" + ruta + "' />";  //Es el campo de opciones de la tabla.
+                     return "<p class='text-center'><img src='" + ruta + "' /></p>";  //Es el campo de opciones de la tabla.
                  }
              },
              {
@@ -70,7 +70,7 @@ function LlenarTabla(cadena) {
                      } else {
                          ruta = '/dist/img/check-false.png'
                      }
-                     return "<img src='" + ruta + "' />";  //Es el campo de opciones de la tabla.
+                     return "<p class='text-center'><img src='" + ruta + "' /></p>";  //Es el campo de opciones de la tabla.
                  }
              },
             {
