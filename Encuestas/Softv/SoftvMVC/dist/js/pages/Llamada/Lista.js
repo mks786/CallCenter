@@ -15,28 +15,19 @@ $(document).ready(function () {
 
         }
     });
+    var url;
     $("#plaza_llamadas").change(function () {
         $("#panel_busqueda").show();
         $("#tipo_llamada").removeAttr('disabled');
-        var url = '/Llamada/nueva?id_plaza='+$(this).val();
-        $('#nueva_llamada_link').attr('href',url);
-        $('#nueva_llamada_link').removeClass('disabled');
+        url = '/Llamada/nueva?id_plaza='+$(this).val();
+                
         LlenarTabla($(this).val(), '', '', '', '');
         
     });
     $("#tipo_llamada").change(function () {
-        $('.collapse').collapse('hide');
-        var tipo = $(this).val();
-        var id_plaza = $("#plaza_llamadas").val();
-        var cliente;
-        if(tipo == 1){
-            cliente = true;
-        }else if(tipo == 2){
-            cliente = false;
-        }else{
-            cliente = '';
-        }
-        LlenarTabla(id_plaza, '', '', '', cliente);
+        $('#nueva_llamada_link').removeClass('disabled');
+        var url_tipo = url + "&tipo=" + $(this).val();
+        $('#nueva_llamada_link').attr('href', url_tipo);
     });
 });
 

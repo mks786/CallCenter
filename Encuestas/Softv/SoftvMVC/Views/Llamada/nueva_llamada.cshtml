@@ -51,7 +51,7 @@
 
         <div class="row">
             <h3 style="padding-left:20px;"><a href="/Llamada" style="color:#5bc0de;"><i class="fa fa-angle-left" aria-hidden="true"></i> Menú Principal</a></h3>
-            <h1 class="text-center" style="color:#4b646f; font-size:22px;"><strong>NUEVA LLAMADA</strong></h1>
+            <h1 class="text-center" style="color:#4b646f; font-size:22px;"><strong id="titulo_llamada"></strong></h1>
             <div class="page-title" style="background-color:#3c8dbc; color:#fff; width:100%;">
                 <div class="container">
                     <h3 style="color:#fff; font-size:16px;">
@@ -77,7 +77,15 @@
                 </div><br />
                 <div class="row" style="padding-left:10px; display:none;" id="regresar">
                     <div class="col-md-3">
-                        <h4><a href="#" style="color:#5bc0de;" onclick="regresar()"><i class="fa fa-angle-left" aria-hidden="true"></i> Regresar</a></h4>
+                        <h4><a style="color:#5bc0de;" onclick="regresar()"><i class="fa fa-angle-left" aria-hidden="true"></i> Regresar</a></h4>
+                    </div>
+                </div>
+                <div class="row" style="display:none; padding-left:10px;" id="motivo_llamada_panel">
+                    <div class="col-md-3" style="padding-top:10px;">
+                        <label style="color:#4b646f; font-size:12px;">Tipo de Servicio</label>
+                        <select class="form-control" id="tipo_servicio">
+                            <option value="0" selected disabled>Tipo de servicio</option>
+                        </select>
                     </div>
                 </div>
                 <div class="row" id="panel_no_cliente" style="padding-left:10px; display:none;">
@@ -276,14 +284,6 @@
                         <textarea type="text" id="domicilio" class="form-control"></textarea>
                     </div>
                 </div>
-                <div class="row" style="display:none; padding-left:10px;" id="motivo_llamada_panel">
-                    <div class="col-md-3" style="padding-top:10px;">
-                        <label style="color:#4b646f; font-size:12px;">Tipo de Servicio</label>
-                        <select class="form-control" id="tipo_servicio">
-                            <option value="0" selected disabled>Tipo de servicio</option>
-                        </select>
-                    </div>
-                </div>
                 <div class="row" id="motivo_llamada_cliente" style="padding-left:10px; display:none;">
                     <div class="col-md-6">
                         <label style="color:#4b646f; font-size:12px;">Motivo Llamada</label>
@@ -398,16 +398,25 @@
     });
     var count_queja = 2;
     var id_plaza;
+    var url_tipo;
     $(function () {
         //tomamos el valor de la variable que viene por url
-        id_plaza = location.search.split('id_plaza=')[1];
+        id_plaza = getUrlVars()["id_plaza"];
+        url_tipo = getUrlVars()["tipo"];
         //si la plaza es nula redirigios al menu de llamadas
-        if(id_plaza == ""){
+        if(id_plaza == "" || url_tipo  == ""){
             location.href='/Llamada';
         }else{
             //si la variable no es nula activamos las funciones mandandoles el id de la palza
             tipoServicio(id_plaza);
             plaza_conexion(id_plaza);
+            if(url_tipo == 1){
+                $("#titulo_llamada").text("NUEVA LLAMADA DE INFORMACIÓN");
+                $('#tipo_llamante').show();
+            }else{
+                $("#titulo_llamada").text("NUEVA LLAMADA ATENCIÓN TELEFÓNICA");
+                
+            }
         }
         $("[name='levantar_queja']").bootstrapSwitch({
             onText: 'SI',
@@ -453,7 +462,14 @@
         });
     });
 
-
+    function getUrlVars() {
+        var vars = {};
+        var parts = window.location.href.replace(/[?&]+([^=&]+)=([^&]*)/gi,    
+        function(m,key,value) {
+            vars[key] = value;
+        });
+        return vars;
+    }
     function tipoServicio(id) {
         $.ajax({
             url: "/CLIENTE/getTipoServicio/",
@@ -510,7 +526,7 @@
         var tipo = $(this).val();
         if(tipo == 1){
             $('#panel_tipo_informacion').show();
-            $('#motivo_llamada_panel').hide();
+            //$('#motivo_llamada_panel').hide();
             $('#panel_clasificacion').hide();
             $('#solucion_no_cliente').hide();
             $('#panel_solucion').hide();
@@ -533,7 +549,7 @@
             });
         }else if(tipo == 2){
             $('#panel_tipo_informacion').hide();
-            $('#motivo_llamada_panel').show();
+            //$('#motivo_llamada_panel').show();
             $('#panel_clasificacion').show();
             $('#solucion_no_cliente').show();
             $('#panel_solucion').show();
@@ -542,9 +558,7 @@
     });
 
     function plaza_conexion(id) {
-        $('#contenedor_llamda').hide();
         $('#llamdaForm').show();       
-        $('#tipo_llamante').show();
         $('#panel_cliente').show();
         
         $.ajax({
@@ -621,8 +635,8 @@
             $('#btn_enviar').hide();
             $('#panel_no_cliente').hide();
             $('.collapse').collapse('show');
-            $('#panel_llamante').show();
-            $('#motivo_llamada_panel').hide();
+            $('#panel_llamante').hide();
+            $('#motivo_llamada_panel').show();
             $('#queja').hide();
             $('#tipo_servicio').hide();
             $('#panel_fecha').hide();
