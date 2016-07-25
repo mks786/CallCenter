@@ -1058,9 +1058,6 @@
                 swal("Por favor ingresa el nombre de la persona que habla", "", "error");
             } else {
                 llamada.nombre = $('#nombre_no_cliente').val();
-                if($('#motivo').val() == "") {
-                    swal("Por favor ingresa el motivo de la llamada", "", "error");
-                }else{
                     if($('#motivo_de_llamada').val() == null){
                         swal("Por favor selecciona el motivo de la llamada", "", "error");
                     }else{
@@ -1096,8 +1093,7 @@
 
                         });
                     }
-                                        
-                }
+
             }
         }
     }

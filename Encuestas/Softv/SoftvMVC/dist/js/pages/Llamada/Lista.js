@@ -114,8 +114,16 @@ function LlenarTabla(idplaza,contrato,cadena,id_llamada,tipo_llamada) {
                     return ("<td>"+cliente+"<td>");  //Es el campo de opciones de la tabla.
                 }
             },
-            //{ "data": "Tipo_Llamada", "orderable": false },
-            { "data": "Contrato", "orderable": false },
+            {
+                sortable: false,
+                "render": function (data, type, full, meta) {
+                    if(full.Contrato == null){
+                        return "----";
+                    } else {
+                        return full.Contrato;
+                    }
+                }
+            },
             { "data": "Nombre", "orderable": false },
             {
                 sortable: false,

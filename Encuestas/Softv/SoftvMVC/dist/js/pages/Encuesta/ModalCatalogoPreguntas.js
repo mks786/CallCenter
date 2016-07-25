@@ -87,7 +87,6 @@ function ShowCatalogoPreguntas(valor, tipo) {
 function Buscar() {
 
     var valor = $('#search').val();
-    alert(valor);
     ShowCatalogoPreguntas(valor,null);
 
 }
@@ -115,9 +114,8 @@ $('#TablaCatalogoPreguntas').on('click', '.AgregarPreguntaCatalogo', function ()
     detallePregunta.txtTipoPregunta = txtTipoPregunta;
     
     var result = $.grep(Lista_preguntas, function (e) { return e.IdPregunta == detallePregunta.IdPregunta || e.IdPregunta2 == detallePregunta.IdPregunta2; });
-    console.log(result);
     if (result.length>0){
-        sweetAlert("Oops...", "La pregunta ya esta en tu encuesta", "error");
+        sweetAlert("La pregunta que seleccionaste ya está en tu encuesta"," ", "error");
     } else {
        
         swal("Hecho", "La pregunta se ha agregado", "success");

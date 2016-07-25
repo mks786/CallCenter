@@ -20,103 +20,107 @@
 
 
 <div class="row">
-    <div class="col-xs-12">
+    <div class="col-md-12">
         <div class="box">
             <div class="box-header">
                 <h3 class="box-title">Lista de Reportes</h3>
             </div><!-- /.box-header -->
-            <div class="box-body">
-                <table id="Tabla" class="table table-bordered table-hover dataTable">
-                    <thead>
-                        <tr>
-                            <td>
-                                <div align="center">
-                                    <div class="row form-group">
-                                        <div class="col-lg-12    col-md-12    col-sm-12    col-xs-12">
-                                            <select name='listaTipoServicio' onchange='filtraOnChange(this);' id='listaTipoServicio' class='form-control'>
-                                                <option value="1">Servicio de Tv por Cable</option>
-                                                <option value="2">Internet</option>
-                                            </select>
-                                        </div>
-                                    </div>
-                                    <div class="row form-group">
-                                        <div class="col-lg-12    col-md-12    col-sm-12    col-xs-12" align="left">
-                                            <form action="">
-                                                <label>Ordenar Reportes Por</label><br>
-                                                <input type="radio" name="a" value="contrato"> Contrato<br>
-                                                <input type="radio" name="a" value="coloniaCalle"> Colonia y Calle<br>
-                                            </form>
-                                        </div>
-                                    </div>
-                                    <div class="row form-group" id="esinternet" style="display: none;" align="left">
-                                        <div class="col-lg-12    col-md-12    col-sm-12    col-xs-12">
-                                            <form action="">
-                                                <label>Filtrar Por</label><br>
-                                                <div class="checkbox">
-                                                    <label><input type="checkbox" value="soloInternet">Solo Internet</label>
+            <div class="row">
+                <div class="col-md-6">
+                    <div style="padding-left:50px;">
+                        <h4>
+                            <a role="button" data-toggle="collapse" href="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
+                                Filtros
+                            </a>
+                        </h4>
+                    </div>
+
+                    <div class="box-body collapse" id="collapseExample">
+                        <table id="Tabla" class="table table-bordered table-hover dataTable">
+                            <thead>
+                                <tr>
+                                    <td>
+                                        <div align="center">
+                                            <div class="row form-group">
+                                                <div class="col-lg-12    col-md-12    col-sm-12    col-xs-12">
+                                                    <select name='listaTipoServicio' onchange='filtraOnChange(this);' id='listaTipoServicio' class='form-control'>
+                                                        <option value="1">Servicio de Tv por Cable</option>
+                                                        <option value="2">Internet</option>
+                                                    </select>
                                                 </div>
-                                            </form>
+                                            </div>
+                                            <div class="row form-group">
+                                                <div class="col-lg-12    col-md-12    col-sm-12    col-xs-12" align="left">
+                                                    <form action="">
+                                                        <label>Ordenar Reportes Por</label><br>
+                                                        <input type="radio" name="a" value="contrato"> Contrato<br>
+                                                        <input type="radio" name="a" value="coloniaCalle"> Colonia y Calle<br>
+                                                    </form>
+                                                </div>
+                                            </div>
+                                            <div class="row form-group" id="esinternet" style="display: none;" align="left">
+                                                <div class="col-lg-12    col-md-12    col-sm-12    col-xs-12">
+                                                    <form action="">
+                                                        <label>Filtrar Por</label><br>
+                                                        <div class="checkbox">
+                                                            <label><input type="checkbox" value="soloInternet">Solo Internet</label>
+                                                        </div>
+                                                    </form>
+                                                </div>
+                                            </div>
+
+                                            <div class="row form-group">
+                                                <div class="col-lg-12    col-md-12    col-sm-12    col-xs-12" align="center">
+
+                                                    <form action="" method="post" id="formulario">
+                                                        @*ordenar alfabéticamente*@
+
+                                                        <button class='btn btn-info btn-md btn-block' type='button' id="ordenBtn"
+                                                                style="width:210px" value=" " onclick="ordenDesorden('reportes')">
+                                                            <i class='' aria-hidden='true'></i> Reportes
+                                                        </button>
+
+                                                        <select name="reporte" id="reportes" size=13 style="width:210px">
+                                                            <!--(value o idReporte, idModal)-->
+                                                            <option value="0" onclick="secuenciaModal(0, 0)">Desconectados</option>
+                                                            <option value="1" onclick="secuenciaModal(1, 0)">Suspendidos</option>
+                                                            <option value="2" onclick="secuenciaModal(2, 0)">Al corriente</option>
+                                                            <option value="3" onclick="secuenciaModal(3, 0)">Adelantados</option>
+                                                            <option value="4" onclick="secuenciaModal(4, 0)">Contrataciones</option>
+                                                            <option value="5" onclick="secuenciaModal(5, 0)">Por Pagar</option>
+                                                            <option value="6" onclick="secuenciaModal(6, 0)">Instalaciones</option>
+                                                            <option value="7" onclick="secuenciaModal(7, 0)">Cancelaciones</option>
+                                                            <option value="8" onclick="secuenciaModal(8, 0)">Por Instalar</option>
+                                                            <option value="9" onclick="secuenciaModal(9, 0)">Fueras de Area</option>
+                                                            <option value="10" onclick="secuenciaModal(10, 1)">Paquetes de Cortesia </option>
+                                                            <option value="11" onclick="secuenciaModal(11, 0)">Ciudad</option>
+                                                            <option value="12" onclick="secuenciaModal(12, 0)">Resumen por Colonia y Status</option>
+                                                        </select>
+                                                    </form>
+                                                </div>
+                                            </div>
                                         </div>
-                                    </div>
+                                    </td>
+                                    <td style="width:70%;" align="center">
+                                        <div id="reportePdf" style="width:100%;">
+                                            @*<embed src="~/Reportes/otroReporte.pdf" width="500" height="750">*@
+                                            <div class="col-md-10 col-md-offset-1   col-sm-10 col-sm-offset-1    col-xs-10 col-xs-offset-1">
 
-                                    <div class="row form-group">
-                                        <div class="col-lg-12    col-md-12    col-sm-12    col-xs-12" align="center">
-
-                                            <form action="" method="post" id="formulario">
-                                                @*ordenar alfabéticamente*@
-
-                                                <button class='btn btn-info btn-md btn-block' type='button' id="ordenBtn"
-                                                        style="width:210px" value=" " onclick="ordenDesorden('reportes')">
-                                                    <i class='' aria-hidden='true'></i> Reportes
-                                                </button>
-
-                                                <select name="reporte" id="reportes" size=13 style="width:210px">
-                                                    <!--(value o idReporte, idModal)-->
-                                                    <option value="0" onclick="secuenciaModal(0, 0)">Desconectados</option>
-                                                    <option value="1" onclick="secuenciaModal(1, 0)">Suspendidos</option>
-                                                    <option value="2" onclick="secuenciaModal(2, 0)">Al corriente</option>
-                                                    <option value="3" onclick="secuenciaModal(3, 0)">Adelantados</option>
-                                                    <option value="4" onclick="secuenciaModal(4, 0)">Contrataciones</option>
-                                                    <option value="5" onclick="secuenciaModal(5, 0)">Por Pagar</option>
-                                                    <option value="6" onclick="secuenciaModal(6, 0)">Instalaciones</option>
-                                                    <option value="7" onclick="secuenciaModal(7, 0)">Cancelaciones</option>
-                                                    <option value="8" onclick="secuenciaModal(8, 0)">Por Instalar</option>
-                                                    <option value="9" onclick="secuenciaModal(9, 0)">Fueras de Area</option>
-                                                    <option value="10" onclick="secuenciaModal(10, 1)">Paquetes de Cortesia </option>
-                                                    <option value="11" onclick="secuenciaModal(11, 0)">Ciudad</option>
-                                                    <option value="12" onclick="secuenciaModal(12, 0)">Resumen por Colonia y Status</option>
-                                                </select>
-                                            </form>
+                                            </div>
                                         </div>
-                                    </div>
-                                </div>
-                                <div name="botones">
-                                    @*<button type="button" class="btn btn-info btn-sm" data-toggle="modal" data-target="#tipoCliente">tipoCliente</button>
-                                        <button type="button" class="btn btn-info btn-sm" data-toggle="modal" data-target="#tipoServicio">tipoServicio</button>
-                                        <button type="button" class="btn btn-info btn-sm" data-toggle="modal" data-target="#ciudades">ciudades</button>
-                                        <button type="button" class="btn btn-info btn-sm" data-toggle="modal" data-target="#colonias">colonias</button>
-                                        <button type="button" class="btn btn-info btn-sm" data-toggle="modal" data-target="#telefono">telefono</button>
-                                        <button type="button" class="btn btn-info btn-sm" data-toggle="modal" data-target="#periodo">periodo</button>
-                                        <button type="button" class="btn btn-info btn-sm" data-toggle="modal" data-target="#estatusOrden">estatusOrden</button>
-                                        <button type="button" class="btn btn-info btn-sm" data-toggle="modal" data-target="#rangoFechas">rangoFechas</button>
-                                        <button type="button" class="btn btn-info btn-sm" data-toggle="modal" data-target="#calles">calles</button>
-                                        <button class="btn btn-default" type="button" data-dismiss="modal" onclick="pdf();">pdf</button>
-                                        <button type="button" class="btn btn-info btn-sm" data-toggle="modal" data-target="#estatusCliente">estatusCliente</button>
-                                        <button type="button" class="btn btn-warning btn-sm" data-toggle="modal" onclick="functionAceptar();">Probarfunción</button>*@
-                                </div>
-
-                            </td>
-                            <td style="width:70%;" align="center">
-                                <div id="reportePdf" style="width:100%;">
-                                    @*<embed src="~/Reportes/otroReporte.pdf" width="500" height="750">*@
-                                    <div class="col-md-10 col-md-offset-1   col-sm-10 col-sm-offset-1    col-xs-10 col-xs-offset-1">
-
-                                    </div>
-                                </div>
-                            </td>
-                        </tr>
-                    </thead>
-                </table>
+                                    </td>
+                                </tr>
+                            </thead>
+                        </table>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12">
+                    <p class="text-center">
+                        <img src="~/dist/img/logo.png" width="600" height="500" />
+                    </p>
+                </div>
             </div>
         </div>
     </div>

@@ -378,8 +378,8 @@ namespace SoftvMVC.Controllers
             var Password = new HttpCookie("password");
             Password.Value = objUsuario.Password;
             Username.Value = objUsuario.Usuario;
-            Password.Expires = DateTime.Now.AddHours(1);
-            Username.Expires = DateTime.Now.AddHours(1);
+            Password.Expires = DateTime.Now.AddHours(5);
+            Username.Expires = DateTime.Now.AddHours(5);
             Response.Cookies.Add(Username);
             Response.Cookies.Add(Password);
         }

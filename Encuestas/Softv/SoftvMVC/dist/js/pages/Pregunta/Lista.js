@@ -1,16 +1,8 @@
 ﻿$(document).ready(function () {
     LlenarTabla();
     
-   
 
-    $(".Agregar").click(function () {
-        $('#NombrePregunta').val(" "); 
-        $('#TipoPregunta').val(0); 
-        $('#PanelPreguntaOptMultiple').hide(); 
-        $('#PanelPreguntaOptMultiple-tbody').empty();
-        $('#ModalAgregarPregunta').modal('show');
-
-    });
+    
     $('#TipoPregunta').on('change', function () {
         var tipo = $(this).val();
         if (tipo == 3) {
@@ -23,7 +15,14 @@
 });
 var preguntas_lista = [];
 
+function agregar_pregunta() {
+    $('#NombrePregunta').val(" ");
+    $('#TipoPregunta').val(0);
+    $('#PanelPreguntaOptMultiple').hide();
+    $('#PanelPreguntaOptMultiple-tbody').empty();
+    $('#ModalAgregarPregunta').modal('show');
 
+}
 
 function LlenarTabla(cadena) {
     if (cadena == undefined) {
@@ -107,7 +106,7 @@ function LlenarTabla(cadena) {
 
     //$("div.toolbar").html('<div class="input-group input-group-sm"><input class="form-control" type="text" id="buscar"><span class="input-group-btn"><button class="btn btn-info btn-flat" type="button" onclick="Busqueda()"><i class="fa fa-search" aria-hidden="true"></i> Buscar</button></span></div>');
     //respaldo de boton agregar
-    $("div.toolbar").html('<button class="btn btn-success Agregar" style="float:right;" ><i class="fa fa-plus" aria-hidden="true"></i> Nueva Pregunta </button> <div class="input-group input-group-sm"><input class="form-control" type="text"><span class="input-group-btn"><button class="btn btn-info btn-flat" type="button">Buscar</button></span></div>');
+    $("div.toolbar").html('<button class="btn btn-success" onclick="agregar_pregunta()" style="float:right;" ><i class="fa fa-plus" aria-hidden="true"></i> Nueva Pregunta </button> <div class="input-group input-group-sm"><input class="form-control" type="text"><span class="input-group-btn"><button class="btn btn-info btn-flat" type="button">Buscar</button></span></div>');
 
 }
 
@@ -379,8 +378,18 @@ $('#GuardarPregunta').on('click', function () {
                         data: { 'pregunta': pregunta, 'respuestas': Lista_opciones },
                         success: function (data, textStatus, jqXHR) {
                             $('#ModalAgregarPregunta').modal("hide");
-                            LlenarTabla();
-                            swal("La pregunta se agregó exitosamente", "", "success");
+                            swal({
+                                title: "!Hecho!", text: "La pregunta se agregó exitosamente",
+                                type: "success",
+                                showCancelButton: false,
+                                confirmButtonColor: "#5cb85c",
+                                confirmButtonText: "Aceptar",
+                                cancelButtonText: "Aceptar",
+                                closeOnConfirm: false,
+                                closeOnCancel: false
+                            }, function (isConfirm) {
+                                location.reload();
+                            });
                         },
                         error: function (jqXHR, textStatus, errorThrown) {
 

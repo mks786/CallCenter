@@ -62,8 +62,14 @@ function editarCliente(id) {
             $('#segundo_nombre_editar').val(data[0].segundonombre);
             $('#apaterno_editar').val(data[0].apaterno);
             $('#amaterno_editar').val(data[0].amaterno);
-            var formatted = $.datepicker.formatDate("yy-mm-dd", new Date(data[0].fnacimiento));
-            $('#fecha_editar').val(formatted);
+            var fecha = data[0].fnacimiento.split(" ", 1);
+            fecha = fecha.toString();
+            fecha = fecha.split("").reverse();
+            var yyyy = fecha[3] + fecha[2] + fecha[1] + fecha[0];
+            var mm = fecha[6] + fecha[5];
+            var dd = fecha[9] + fecha[8];
+            fecha = yyyy + "-" + mm + "-" + dd;
+            $('#fecha_editar').val(fecha);
             
         },
         error: function (jqXHR, textStatus, errorThrown) {
@@ -88,6 +94,8 @@ function editarCliente(id) {
             $('#numero_editar').val(data[0].NUMERO);
             $('#cp_editar').val(data[0].CodigoPostal);
             $('#calles_editar').val(data[0].ENTRECALLES);
+            $('#telefono_editar').inputmask("(999)9999999");
+            $('#celular_editar').inputmask("999-999-99-99");
             $('#telefono_editar').val(data[0].TELEFONO);
             $('#celular_editar').val(data[0].CELULAR);
             $('#correo_editar').val(data[0].Email);
@@ -151,7 +159,22 @@ $('#Editar').click(function () {
     nombreCliente.segundonombre = $('#segundo_nombre_editar').val();
     nombreCliente.apaterno = $('#apaterno_editar').val();
     nombreCliente.amaterno = $('#amaterno_editar').val();
-    nombreCliente.fnacimiento = $('#fecha_editar').val();
+    var today = new Date($('#fecha_editar').val());
+    var dd = today.getDate();
+    var mm = today.getMonth() + 1; //January is 0!
+    var yyyy = today.getFullYear();
+
+    if (dd < 10) {
+        dd = '0' + dd
+    }
+
+    if (mm < 10) {
+        mm = '0' + mm
+    }
+
+    fecha = dd + '-' + mm + '-' + yyyy;
+    // nombreCliente.fnacimiento = $('#fecha_editar').val();
+    nombreCliente.fnacimiento = fecha;
     cliente.CONTRATO = $('#contrato_editar').val();
     var nombre_concatenado = '';
     if ($('#nombre_editar').val() != "") {
@@ -163,15 +186,14 @@ $('#Editar').click(function () {
     }if ($('#amaterno_editar').val()) {
         nombre_concatenado += " " + $('#amaterno_editar').val();
     }
-    console.log(nombre_concatenado);
     cliente.NOMBRE = nombre_concatenado
     cliente.Clv_Calle = $('#calle_editar').val();
     cliente.NUMERO = $('#numero_editar').val();
     cliente.ENTRECALLES = $('#calles_editar').val();
     cliente.Clv_Colonia = $('#colonia_select').val();
     cliente.CodigoPostal = $('#cp_editar').val();
-    cliente.TELEFONO = $('#telefono_editar').val();
-    cliente.CELULAR = $('#celular_editar').val();
+    cliente.TELEFONO = $('#telefono_editar').inputmask('unmaskedvalue');
+    cliente.CELULAR = $('#celular_editar').inputmask('unmaskedvalue');
     cliente.DESGLOSA_Iva = $('#iva').val();
     cliente.SoloInternet = $('#solointernet_editar').val();
     cliente.eshotel = $('#eshotel_editar').val();
