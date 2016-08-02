@@ -519,4 +519,46 @@
     </xs:sequence>
   </xs:complexType>
   <xs:element name="SoftvListOfDatosLlamadaEntitykmseq5jn" nillable="true" type="tns:SoftvListOfDatosLlamadaEntitykmseq5jn" />
+  <xs:complexType name="SoftvListOfServicioEntitykmseq5jn">
+    <xs:annotation>
+      <xs:appinfo>
+        <GenericType Name="SoftvListOf{0}{#}" Namespace="http://schemas.datacontract.org/2004/07/Globals" xmlns="http://schemas.microsoft.com/2003/10/Serialization/">
+          <GenericParameter Name="ServicioEntity" Namespace="http://schemas.datacontract.org/2004/07/Softv.Entities" />
+        </GenericType>
+      </xs:appinfo>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element xmlns:q38="http://schemas.datacontract.org/2004/07/Softv.Entities" minOccurs="0" name="Entities" nillable="true" type="q38:ArrayOfServicioEntity" />
+      <xs:element minOccurs="0" name="totalCount" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="SoftvListOfServicioEntitykmseq5jn" nillable="true" type="tns:SoftvListOfServicioEntitykmseq5jn" />
+  <xs:complexType name="SoftvListOfMotAtenTelEntitykmseq5jn">
+    <xs:annotation>
+      <xs:appinfo>
+        <GenericType Name="SoftvListOf{0}{#}" Namespace="http://schemas.datacontract.org/2004/07/Globals" xmlns="http://schemas.microsoft.com/2003/10/Serialization/">
+          <GenericParameter Name="MotAtenTelEntity" Namespace="http://schemas.datacontract.org/2004/07/Softv.Entities" />
+        </GenericType>
+      </xs:appinfo>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element xmlns:q39="http://schemas.datacontract.org/2004/07/Softv.Entities" minOccurs="0" name="Entities" nillable="true" type="q39:ArrayOfMotAtenTelEntity" />
+      <xs:element minOccurs="0" name="totalCount" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="SoftvListOfMotAtenTelEntitykmseq5jn" nillable="true" type="tns:SoftvListOfMotAtenTelEntitykmseq5jn" />
+  <xs:complexType name="SoftvListOfClasificacionProblemaEntitykmseq5jn">
+    <xs:annotation>
+      <xs:appinfo>
+        <GenericType Name="SoftvListOf{0}{#}" Namespace="http://schemas.datacontract.org/2004/07/Globals" xmlns="http://schemas.microsoft.com/2003/10/Serialization/">
+          <GenericParameter Name="ClasificacionProblemaEntity" Namespace="http://schemas.datacontract.org/2004/07/Softv.Entities" />
+        </GenericType>
+      </xs:appinfo>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element xmlns:q40="http://schemas.datacontract.org/2004/07/Softv.Entities" minOccurs="0" name="Entities" nillable="true" type="q40:ArrayOfClasificacionProblemaEntity" />
+      <xs:element minOccurs="0" name="totalCount" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="SoftvListOfClasificacionProblemaEntitykmseq5jn" nillable="true" type="tns:SoftvListOfClasificacionProblemaEntitykmseq5jn" />
 </xs:schema>

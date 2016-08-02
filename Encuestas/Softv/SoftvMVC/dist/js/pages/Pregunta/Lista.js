@@ -378,9 +378,18 @@ $('#GuardarPregunta').on('click', function () {
                         type: "POST",
                         data: { 'pregunta': pregunta, 'respuestas': Lista_opciones },
                         success: function (data, textStatus, jqXHR) {
-                            $('#ModalAgregarPregunta').modal("hide");
-                            LlenarTabla();
-                            swal("La pregunta se agregó exitosamente", "", "success");
+                            swal({
+                                title: "!Hecho!", text: "Respuesta agregada con éxito!",
+                                type: "success",
+                                showCancelButton: false,
+                                confirmButtonColor: "#5cb85c",
+                                confirmButtonText: "Aceptar",
+                                cancelButtonText: "Aceptar",
+                                closeOnConfirm: false,
+                                closeOnCancel: false
+                            }, function (isConfirm) {
+                                location.reload();
+                            });
                         },
                         error: function (jqXHR, textStatus, errorThrown) {
 
@@ -395,8 +404,18 @@ $('#GuardarPregunta').on('click', function () {
                     data: { 'pregunta': pregunta},
                     success: function (data, textStatus, jqXHR) {
                         $('#ModalAgregarPregunta').modal("hide");
-                        LlenarTabla();
-                        swal("La pregunta se agregó exitosamente", "", "success");
+                        swal({
+                            title: "!Hecho!", text: "Respuesta agregada con éxito!",
+                            type: "success",
+                            showCancelButton: false,
+                            confirmButtonColor: "#5cb85c",
+                            confirmButtonText: "Aceptar",
+                            cancelButtonText: "Aceptar",
+                            closeOnConfirm: false,
+                            closeOnCancel: false
+                        }, function (isConfirm) {
+                            location.reload();
+                        });
                     },
                     error: function (jqXHR, textStatus, errorThrown) {
 

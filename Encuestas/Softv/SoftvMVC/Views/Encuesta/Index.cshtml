@@ -97,8 +97,8 @@
                 </div>
                 <div class="nav-tabs-custom" id="encuesta_cargando" style="display:none;">
                     <ul class="nav nav-tabs">
-                        <li class="active"><a href="#tab_1" data-toggle="tab" aria-expanded="true">Información principal</a></li>
-                        <li class=""><a href="#tab_2" id="tab-preguntas" data-toggle="tab" aria-expanded="false">Preguntas</a></li>
+                        <li id="info" class="active"><a href="#tab_1" id="tab_info" data-toggle="tab" aria-expanded="true">Información principal</a></li>
+                        <li id="pregu" class=""><a href="#tab_2" id="tab_preguntas" data-toggle="tab" aria-expanded="false">Preguntas</a></li>
                     </ul>
                     <div class="tab-content">
                         <div class="tab-pane active" id="tab_1">
@@ -116,8 +116,8 @@
                         </div><!-- /.tab-pane -->
                         <div class="tab-pane" id="tab_2">
                             <div class="row">
-                                <div class="col-xs-2 col-xs-offset-7"><button class="btn btn-success btn-xs pull-left" id="AddPregunta" onclick="DetallePreguntas();"><i class="fa fa-plus" aria-hidden="true"></i> Agregar pregunta</button></div>
-                                <div class="col-xs-3"><button class="btn btn-info btn-xs pull-left" id="ShowCatalogo" onclick="ShowCatalogoPreguntas();"><i class="fa fa-list" aria-hidden="true"></i> Catálogo de preguntas</button></div>
+                                
+                                <div class="col-xs-3 col-xs-offset-8"><button class="btn btn-info btn-xs pull-left" id="ShowCatalogo" onclick="ShowCatalogoPreguntas();"><i class="fa fa-list" aria-hidden="true"></i> Catálogo de preguntas</button></div>
                             </div>
 
 
@@ -159,7 +159,63 @@
         </div>
     </div>
 </div>
+<div class="modal fade bs-example-modal-lg" id="ModalCatalogoPreguntas" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" data-backdrop="static" data-keyboard="false">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button class="close" aria-label="Close" type="button" data-dismiss="modal"><span aria-hidden="true">×</span></button>
+                <h4 class="modal-title">Catálogo de preguntas </h4>
+            </div>
+            <div class="modal-body">
+                <div class="row">
+                    <div class="col-xs-2"><button class="btn btn-success btn-xs pull-left" id="AddPregunta" onclick="DetallePreguntas();"><i class="fa fa-plus" aria-hidden="true"></i> Agregar pregunta</button></div>
+                </div>
+                <div class="row" style="padding-top:20px;">
+                    <form id="formCatalogo">
+                        <div class="col-xs-5">
+                            <div class="input-group input-group-sm">
+                                <input class="form-control" type="text" id="search">
 
+                                <span class="input-group-btn">
+                                    <button class="btn btn-info btn-flat" type="button" id="buscar" onclick="Buscar();"><i class="fa fa-search" aria-hidden="true"></i> Buscar</button>
+                                </span>
+                            </div>
+                        </div>
+                        <div class="col-xs-7">
+                            <div class="form-group">
+                                <label class="col-sm-2 control-label" for="inputEmail3"> Buscar preguntas:</label>
+                                <div class="col-sm-10">
+                                    <select class="form-control" id="FiltraTipoPregunta">
+                                        <option disabled value="0" selected>selecciona </option>
+                                        <option value="1">Abierta</option>
+                                        <option value="2">Cerrada</option>
+                                        <option value="3">Opcion Multiple</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+                <table id="TablaCatalogoPreguntas" class="table table-bordered table-hover dataTable no-footer" style="width:100%">
+                    <thead>
+                        <tr>
+                            <td>Nombre</td>
+                            <td>Tipo pregunta</td>
+                            <td>Opciones</td>
+                        </tr>
+                    </thead>
+                    <tbody></tbody>
+                </table>
+
+
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-primary pull-right" type="button" data-dismiss="modal">Cerrar</button>
+
+            </div>
+        </div>
+    </div>
+</div>
 <div class="modal fade bs-example-modal-lg" id="ModalAgregarPregunta" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" data-backdrop="static" data-keyboard="false">
     <div class="modal-dialog modal-lg">
         <div class="modal-content">
@@ -422,72 +478,6 @@
     </div>
 </div>
 
-
-<div class="modal fade bs-example-modal-lg" id="ModalCatalogoPreguntas" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" data-backdrop="static" data-keyboard="false">
-    <div class="modal-dialog modal-lg">
-        <div class="modal-content">
-            <div class="modal-header">
-                <button class="close" aria-label="Close" type="button" data-dismiss="modal"><span aria-hidden="true">×</span></button>
-                <h4 class="modal-title">Catálogo de preguntas </h4>
-            </div>
-            <div class="modal-body">
-                <div class="row">
-                    <div class="col-xs-5">
-                        <div class="input-group input-group-sm">
-                            <input class="form-control" type="text" id="search">
-                            <span class="input-group-btn">
-                                <button class="btn btn-info btn-flat" type="button" id="buscar" onclick="Buscar();"><i class="fa fa-search" aria-hidden="true"></i> Buscar</button>
-                            </span>
-                        </div>
-
-
-                    </div>
-                    <div class="col-xs-7">
-                        <div class="form-group">
-                            <label class="col-sm-2 control-label" for="inputEmail3"> Buscar preguntas:</label>
-                            <div class="col-sm-10">
-                                <select class="form-control" id="FiltraTipoPregunta">
-                                    <option disabled>selecciona </option>
-                                    <option value="1">Abierta</option>
-                                    <option value="2">Cerrada</option>
-                                    <option value="3">Opcion Multiple</option>
-                                </select>
-                            </div>
-                        </div>
-
-
-
-
-
-
-
-
-                    </div>
-                </div>
-
-
-
-
-                <table id="TablaCatalogoPreguntas" class="table table-bordered table-hover dataTable no-footer" style="width:100%">
-                    <thead>
-                        <tr>
-                            <td>Nombre</td>
-                            <td>Tipo pregunta</td>
-                            <td>Opciones</td>
-                        </tr>
-                    </thead>
-                    <tbody></tbody>
-                </table>
-
-
-            </div>
-            <div class="modal-footer">
-                <button class="btn btn-primary pull-right" type="button" data-dismiss="modal">Cerrar</button>
-
-            </div>
-        </div>
-    </div>
-</div>
 
 <form action='/Encuesta/EncuestaPDF' style="display:none;" id="formImprimir">
     <input type='hidden' id='id_imprimir' name="idencuesta">

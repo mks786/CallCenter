@@ -77,6 +77,54 @@ namespace SoftvMVC.Controllers
             return Json(lista, JsonRequestBehavior.AllowGet);
         }
 
+        //public ActionResult GetCALLE()
+        //{
+        //    return Json(proxy.GetCALLEList(), JsonRequestBehavior.AllowGet);
+        //}
+
+        public class DatosCalle
+        {
+            public int Clv_Calle { get; set; }
+            public String NOMBRE { get; set; }
+        }
+
+
+        public ActionResult GetCALLE(int numModal, int idConexion)
+        {
+            ConexionController c = new ConexionController();
+            SqlCommand comandoSql;
+            SqlConnection conexionSQL2 = new SqlConnection(c.DameConexion(idConexion));
+            List<DatosCalle> lista = new List<DatosCalle>();
+            try
+            {
+                conexionSQL2.Open();
+            }
+            catch
+            { }
+
+            try
+            {
+                comandoSql = new SqlCommand("exec DatosTipoCliente " + numModal);
+
+                //comandoSql = new SqlCommand("exec DatosTipoCliente " + numModal + ", " + idConexion + "");
+                comandoSql.Connection = conexionSQL2;
+                SqlDataReader reader = comandoSql.ExecuteReader();
+                if (reader.HasRows)
+                {
+                    while (reader.Read())
+                    {
+                        DatosCalle datos = new DatosCalle();
+                        datos.Clv_Calle = Convert.ToInt32(reader[0]);
+                        datos.NOMBRE = reader[1].ToString();
+                        lista.Add(datos);
+                    }
+                }
+            }
+            catch
+            { }
+            return Json(lista, JsonRequestBehavior.AllowGet);
+        }
+
 
     }
 

@@ -9,6 +9,11 @@ using PagedList;
 using Softv.Entities;
 using Globals;
 
+using System.Data;
+using System.Data.SqlClient;
+using Softv.Entities;
+using System.Configuration;
+
 namespace SoftvMVC.Controllers
 {
     /// <summary>
@@ -194,7 +199,54 @@ namespace SoftvMVC.Controllers
                 return Json(resultNg, JsonRequestBehavior.AllowGet);
             }
         }
+        //public ActionResult GetTipoClientes()
+        //{
+        //    return Json(proxy.GetTipoClienteList(), JsonRequestBehavior.AllowGet);
+        //}
 
+
+        public class DatosTipoCliente
+        {
+            public int Clv_TipoCliente { get; set; }
+            public String Descripcion { get; set; }
+        }
+
+
+        public ActionResult GetTipoClientes(int numModal, int idConexion)
+        {
+            ConexionController c = new ConexionController();
+            SqlCommand comandoSql;
+            SqlConnection conexionSQL2 = new SqlConnection(c.DameConexion(idConexion));
+            List<DatosTipoCliente> lista = new List<DatosTipoCliente>();
+            try
+            {
+                conexionSQL2.Open();
+            }
+            catch
+            { }
+
+            try
+            {
+                comandoSql = new SqlCommand("exec DatosTipoCliente "+numModal);
+
+                //comandoSql = new SqlCommand("exec DatosTipoCliente " + numModal + ", " + idConexion + "");
+                comandoSql.Connection = conexionSQL2;
+                SqlDataReader reader = comandoSql.ExecuteReader();
+                if (reader.HasRows)
+                {
+                    while (reader.Read())
+                    {
+                        DatosTipoCliente datos = new DatosTipoCliente();
+                        datos.Clv_TipoCliente = Convert.ToInt32(reader[0]);
+                        datos.Descripcion = reader[1].ToString();
+                        lista.Add(datos);
+                    }
+                }
+            }
+            catch
+            { }
+            return Json(lista, JsonRequestBehavior.AllowGet);
+        }
 
     }
 

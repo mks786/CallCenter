@@ -31,3 +31,16 @@ C:\Users\Israel\Documents\projects\CallCenter\Encuestas\Softv\Softv.Providers\bi
 C:\Users\Israel\Documents\projects\CallCenter\Encuestas\Softv\Softv.Providers\obj\Release\Softv.Providers.csprojResolveAssemblyReference.cache
 C:\Users\Israel\Documents\projects\CallCenter\Encuestas\Softv\Softv.Providers\obj\Release\Softv.Providers.dll
 C:\Users\Israel\Documents\projects\CallCenter\Encuestas\Softv\Softv.Providers\obj\Release\Softv.Providers.pdb
+C:\Users\Israel\Documents\projects\CallCenter2\CallCenter\Encuestas\Softv\Softv.Providers\bin\Release\Softv.Providers.dll
+C:\Users\Israel\Documents\projects\CallCenter2\CallCenter\Encuestas\Softv\Softv.Providers\bin\Release\Softv.Providers.pdb
+C:\Users\Israel\Documents\projects\CallCenter2\CallCenter\Encuestas\Softv\Softv.Providers\bin\Release\Globals.dll
+C:\Users\Israel\Documents\projects\CallCenter2\CallCenter\Encuestas\Softv\Softv.Providers\bin\Release\Softv.Entities.dll
+C:\Users\Israel\Documents\projects\CallCenter2\CallCenter\Encuestas\Softv\Softv.Providers\bin\Release\SoftvConfiguration.dll
+C:\Users\Israel\Documents\projects\CallCenter2\CallCenter\Encuestas\Softv\Softv.Providers\bin\Release\Globals.pdb
+C:\Users\Israel\Documents\projects\CallCenter2\CallCenter\Encuestas\Softv\Softv.Providers\bin\Release\SoftvConfiguration.pdb
+C:\Users\Israel\Documents\projects\CallCenter2\CallCenter\Encuestas\Softv\Softv.Providers\bin\Release\Softv.Entities.pdb
+C:\Users\Israel\Documents\projects\CallCenter2\CallCenter\Encuestas\Softv\Softv.Providers\obj\Release\Softv.Providers.csprojResolveAssemblyReference.cache
+C:\Users\Israel\Documents\projects\CallCenter2\CallCenter\Encuestas\Softv\Softv.Providers\obj\Release\Softv.Providers.dll
+C:\Users\Israel\Documents\projects\CallCenter2\CallCenter\Encuestas\Softv\Softv.Providers\obj\Release\Softv.Providers.pdb
+C:\Users\Israel\Documents\projects\CallCenter2\CallCenter\Encuestas\Softv\Softv.Providers\bin\Release\Dapper.dll
+C:\Users\Israel\Documents\projects\CallCenter2\CallCenter\Encuestas\Softv\Softv.Providers\bin\Release\Dapper.xml

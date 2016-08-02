@@ -30,6 +30,10 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Dapper, Version=1.50.2.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Dapper.1.50.2\lib\net45\Dapper.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
@@ -43,6 +47,7 @@
     <Compile Include="CALLE.cs" />
     <Compile Include="CatalogoPeriodosCorte.cs" />
     <Compile Include="CIUDAD.cs" />
+    <Compile Include="ClasificacionProblema.cs" />
     <Compile Include="CLIENTE.cs" />
     <Compile Include="Cliente_Apellido.cs" />
     <Compile Include="COLONIA.cs" />
@@ -55,6 +60,7 @@
     <Compile Include="Estadistica.cs" />
     <Compile Include="Llamada.cs" />
     <Compile Include="Module.cs" />
+    <Compile Include="MotAtenTel.cs" />
     <Compile Include="MotivoCancelacion.cs" />
     <Compile Include="NoCliente.cs" />
     <Compile Include="Permiso.cs" />
@@ -69,6 +75,7 @@
     <Compile Include="Rel_Clientes_TiposClientes.cs" />
     <Compile Include="ResOpcMults.cs" />
     <Compile Include="Role.cs" />
+    <Compile Include="Servicio.cs" />
     <Compile Include="Tap.cs" />
     <Compile Include="tblClasificacionProblema.cs" />
     <Compile Include="tblPrioridadQueja.cs" />
@@ -100,6 +107,9 @@
       <Project>{e1c84d8f-0a77-4f63-ac6b-001107a2516b}</Project>
       <Name>Softv.SQL</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

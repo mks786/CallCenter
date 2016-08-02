@@ -23,11 +23,13 @@ namespace SoftvMVC.Controllers
     public partial class tblClasificacionProblemaController : BaseController, IDisposable
     {
         private SoftvService.ItblClasificacionProblemaClient proxy = null;
+        private SoftvService.ClasificacionProblemaClient proxyclass = null;
 
         public tblClasificacionProblemaController()
         {
 
             proxy = new SoftvService.ItblClasificacionProblemaClient();
+            proxyclass = new SoftvService.ClasificacionProblemaClient();
 
         }
 
@@ -137,34 +139,10 @@ namespace SoftvMVC.Controllers
 
         public ActionResult GetClasficacionSolucion(int IdPlaza, int ? idServicio)
         {
-            ConexionController c = new ConexionController();
-            SqlCommand comandoSql;
-            List<clasificacion_soluciones> lista = new List<clasificacion_soluciones>();
-            SqlConnection conexionSQL = new SqlConnection(c.DameConexion(IdPlaza));
-            try
-            {
-                conexionSQL.Open();
-            }
-            catch
-            { }
+            List<ClasificacionProblemaEntity> lista = new List<ClasificacionProblemaEntity>();
 
-            try
-            {
-                comandoSql = new SqlCommand("exec MUESTRATRABAJOSQUEJAS "+idServicio);
-                comandoSql.Connection = conexionSQL;
-                SqlDataReader reader = comandoSql.ExecuteReader();
-                if (reader.HasRows)
-                {
-                    while (reader.Read())
-                    {
-                        clasificacion_soluciones clasificacion = new clasificacion_soluciones();
-                        clasificacion.CLV_TRABAJO= Int32.Parse(reader[0].ToString());
-                        clasificacion.DESCRIPCION = reader[1].ToString();
-                        lista.Add(clasificacion);
-                    }
-                }
-            }
-            catch { }
+            lista = proxyclass.GetClasificacionProblemaList();
+    
             return Json(lista, JsonRequestBehavior.AllowGet);
         }
         public class clasificacion_soluciones

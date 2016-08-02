@@ -10,12 +10,46 @@
 }
 
 
-
+<style>
+    hr.style17 {
+	border-top: 1px solid #8c8b8b;
+	text-align: center;
+    }
+    hr.style17:after {
+	    content: '§';
+	    display: inline-block;
+	    position: relative;
+	    top: -14px;
+	    padding: 0 10px;
+	    background: #f0f0f0;
+	    color: #8c8b8b;
+	    font-size: 18px;
+	    -webkit-transform: rotate(60deg);
+	    -moz-transform: rotate(60deg);
+	    transform: rotate(60deg);
+    }
+    hr.style18 { 
+      height: 30px; 
+      border-style: solid; 
+      border-color: #8c8b8b; 
+      border-width: 1px 0 0 0; 
+      border-radius: 20px; 
+    } 
+    hr.style18:before { 
+      display: block; 
+      content: ""; 
+      height: 30px; 
+      margin-top: -31px; 
+      border-style: solid; 
+      border-color: #8c8b8b; 
+      border-width: 0 0 1px 0; 
+      border-radius: 20px; 
+    }
+</style>
 
 <section class="content-header">
     <h1>
-        Encuestas
-        <small>Lista de Llamadas</small>
+        Nueva Llamada
     </h1>
     <ol class="breadcrumb">
         <li><a href="#"><i class="fa fa-dashboard"></i> Inicio</a></li>
@@ -27,39 +61,77 @@
     <div class="col-xs-12">
         <div class="box">
             <div class="box-header">
-                <h3 class="box-title">Lista de Llamadas</h3>
-                <div class="row">
-                    @if (a.OptAdd == true)
-                    {
-                        <div class="col-md-12" id="nueva_llamada_panel">
-                            <a href="/Llamada/nueva" class="btn btn-success disabled" id="nueva_llamada_link" style="float:right;"><i class="fa fa-phone" aria-hidden="true"></i> Nueva Llamada </a>
+                <div class="panel-group" id="Mygrafica" role="tablist" aria-multiselectable="true">
+                    <div class="panel panel-default">
+                        <div class="panel-heading" id="grafica">
+                            <h3 class="panel-title">
+                                <a role="button" data-toggle="collapse" data-parent="#Mygrafica" href="#datosGrafica" aria-expanded="true" aria-controls="datosGrafica">Generar Llamada</a>
+                            </h3>
                         </div>
-                    }
-                   
-                </div>
-                <div class="row">
-                    <div class="col-md-3">
-                        <label>Selecciona la plaza</label>
-                        <select class="form-control" id="plaza_llamadas"><option selected disabled>---------</option></select>
+                        <div id="datosGrafica" class="panel-collapse collapse" role="tabpanel" aria-labelledby="datosGrafica">
+                            <div class="panel-body">
+                                <div class="row">
+                                    <div class="col-md-3">
+                                        <label>Selecciona la plaza</label>
+                                        <select class="form-control" id="plaza_llamadas"><option selected disabled>---------</option></select>
+                                    </div>
+                                    <div class="col-md-3">
+                                        <label>Selecciona el tipo de llamada</label>
+                                        <select class="form-control" id="tipo_llamada" disabled>
+                                            <option value="0" selected disabled>---------</option>
+                                            <option value="1">Información</option>
+                                            <option value="2">Atención Telefónica</option>
+                                        </select>
+                                    </div>
+                                </div><br />
+                                <div class="row" style="padding-right:20px;">
+                                    <p class="text-right">
+                                        <a class="btn btn-success disabled" id="nueva_llamada_link" onclick="nueva_llamada()"><i class="fa fa-phone" aria-hidden="true"></i> Nueva Llamada </a>
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
                     </div>
-                    <div class="col-md-3">
-                        <label>Selecciona el tipo de llamada</label>
-                        <select class="form-control" id="tipo_llamada" disabled>
-                            <option value="0" selected disabled>---------</option>
-                            <option value="1">Cliente</option>
-                            <option value="2">No Cliente</option>
-                            <option value="3">Todos</option>
+                </div>
+
+            </div>
+            <div class="row" style="display:none; padding-left:10px;" id="regresar">
+                <div class="col-md-3">
+                    <h4><a href="#" style="color:#5bc0de;" onclick="regresar()"><i class="fa fa-angle-left" aria-hidden="true"></i> Regresar</a></h4>
+                </div>
+            </div>
+            <form id="llamadaForm">
+                <div class="row">
+                    <div class="col-md-12">
+                        <h2 class="text-center" id="nombre_plaza" style="color:#4b646f;"></h2><br />
+                        <div class="row" style="padding-left:10px; display:none;" id="tipo_llamante">
+                            <div class="col-md-3">
+                                <label style="color:#4b646f;">¿Es cliente?</label>
+                                <select class="form-control" id="tipo_cliente">
+                                    <option value="0" selected disabled>---------</option>
+                                    <option value="1">Si</option>
+                                    <option value="2">No</option>
+                                </select>
+                            </div>
+                        </div><br />
+                    </div>
+                </div>
+                <div class="row" style="display:none; padding-left:10px;" id="motivo_llamada_panel">
+                    <div class="col-md-3" style="padding-top:10px;">
+                        <label style="color:#4b646f; font-size:12px;">Tipo de Servicio</label>
+                        <select class="form-control" id="tipo_servicio">
+                            <option value="0" selected disabled>Tipo de servicio</option>
                         </select>
                     </div>
                 </div><br />
-                <div class="row" id="panel_busqueda" style="display:none;">
+                <div class="row" id="panel_llamante" style="display:none;">
                     <div class="col-md-12">
                         <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
                             <div class="panel panel-default">
                                 <div class="panel-heading" role="tab" id="headingOne">
                                     <h4 class="panel-title">
                                         <a role="button" id="busqueda_collapse" data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="true" aria-controls="collapseOne" style="color:#4b646f;">
-                                            Busqueda
+                                            Buscar Cliente
                                         </a>
                                     </h4>
                                 </div>
@@ -67,34 +139,14 @@
                                     <div class="panel-body">
                                         <!-- Nav tabs -->
                                         <ul class="nav nav-tabs" role="tablist">
-                                            <li role="presentation" class="active"><a href="#llamada" aria-controls="llamada" role="tab" data-toggle="tab">ID Llamada</a></li>
-                                            <li role="presentation"><a href="#contrato" aria-controls="contrato" role="tab" data-toggle="tab">Contrato</a></li>
+                                            <li role="presentation" class="active"><a href="#contrato" aria-controls="contrato" role="tab" data-toggle="tab">Contrato</a></li>
                                             <li role="presentation"><a href="#nombre" aria-controls="nombre" role="tab" data-toggle="tab">Nombre</a></li>
+                                            <li role="presentation"><a href="#direccion" aria-controls="direccion" role="tab" data-toggle="tab">Dirección</a></li>
                                         </ul>
 
                                         <!-- Tab panes -->
                                         <div class="tab-content">
-                                            <div role="tabpanel" class="tab-pane active" id="llamada">
-                                                <br />
-                                                <div class="row">
-                                                    <div class="col-md-4">
-                                                        <p style="color:#4b646f;">Ingrese el ID de la llamada</p>
-                                                    </div>
-                                                </div>
-                                                <div class="row">
-                                                    <div class="col-md-3">
-                                                        <input type="text" class="form-control" id="input_llamada" />
-                                                    </div>
-                                                </div>
-                                                <div class="row">
-                                                    <div class="col-md-12">
-                                                        <p class="text-right">
-                                                            <a class="btn btn-primary" onclick="buscar_por_id()"><i class="fa fa-search" aria-hidden="true"></i> Buscar</a>
-                                                        </p>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div role="tabpanel" class="tab-pane" id="contrato">
+                                            <div role="tabpanel" class="tab-pane active" id="contrato">
                                                 <br />
                                                 <div class="row">
                                                     <div class="col-md-4">
@@ -114,7 +166,52 @@
                                                 <div class="row">
                                                     <div class="col-md-12">
                                                         <p class="text-right">
-                                                            <a class="btn btn-primary" onclick="buscar_por_contrato()"><i class="fa fa-search" aria-hidden="true"></i> Buscar</a>
+                                                            <a class="btn btn-primary" id="buscar_por_contrato"><i class="fa fa-search" aria-hidden="true"></i> Buscar</a>
+                                                        </p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div role="tabpanel" class="tab-pane" id="direccion">
+                                                <br />
+                                                <div class="container">
+                                                    <div class="row">
+                                                        <div class="col-md-4">
+                                                            <p style="color:#4b646f;">Ciudad</p>
+                                                            <select id="ciudad_select" class="form-control">
+                                                                <option value="0" disabled selected>---------</option>
+                                                            </select>
+                                                            @*<input type="text" class="form-control" id="ciudad_busqueda" placeholder="Ciudad" />*@
+                                                        </div>
+                                                    </div><br />
+                                                    <div class="row">
+                                                        <div class="col-md-4">
+                                                            <p style="color:#4b646f;">Colonia</p>
+                                                            <select id="colonia_select" class="form-control">
+                                                                <option value="value" disabled selected>---------</option>
+                                                            </select>
+                                                            @*<input type="text" class="form-control" id="colonia_domicilio" placeholder="Colonia" />*@
+                                                        </div>
+                                                    </div><br />
+                                                    <div class="row">
+                                                        <div class="col-md-4">
+                                                            <p style="color:#4b646f;">Calle</p>
+                                                            <select id="calle_editar" class="form-control">
+                                                                <option value="value" disabled selected>---------</option>
+                                                            </select>
+                                                            @* <input type="text" class="form-control" id="calle_busqueda" placeholder="Calle" />*@
+                                                        </div>
+                                                    </div><br />
+                                                    <div class="row">
+                                                        <div class="col-md-2">
+                                                            <p style="color:#4b646f;">Número</p>
+                                                            <input type="text" class="form-control" id="numero_domicilio" />
+                                                        </div>
+                                                    </div>
+                                                </div><br />
+                                                <div class="row">
+                                                    <div class="col-md-12">
+                                                        <p class="text-right">
+                                                            <a class="btn btn-primary" id="buscar_por_direccion"><i class="fa fa-search" aria-hidden="true"></i> Buscar</a>
                                                         </p>
                                                     </div>
                                                 </div>
@@ -134,7 +231,7 @@
                                                 <div class="row">
                                                     <div class="col-md-12">
                                                         <p class="text-right">
-                                                            <a class="btn btn-primary" onclick="buscar_por_nombre()"><i class="fa fa-search" aria-hidden="true"></i> Buscar</a>
+                                                            <a class="btn btn-primary" id="buscar_por_nombre"><i class="fa fa-search" aria-hidden="true"></i> Buscar</a>
                                                         </p>
                                                     </div>
                                                 </div>
@@ -146,446 +243,497 @@
                         </div>
                     </div>
                 </div>
-            </div><!-- /.box-header -->
-            <div class="box-body" id="panel_tabla">
+                <div class="row" style="display:none;" id="panel_tabla_clientes">
+                    <div class="col-md-12 container">
+                        <table id="Tabla_Clientes" class="table table-bordered table-hover dataTable">
+                            <thead style="font-size:12px;">
+                                <tr>
+                                    <td><b>Contrato</b></td>
+                                    <td><b>Nombre</b> </td>
+                                    <td><b>Ciudad</b></td>
+                                    <td><b>Colonia</b></td>
+                                    <td><b>Calle</b></td>
+                                    <td><b>Número</b></td>
+                                    <td><b>Opciones</b></td>
+                                </tr>
+                            </thead>
+                            <tbody style="font-size:12px;"></tbody>
+                        </table>
+                    </div>
+                </div>
+                <div class="row" id="invalido" style="display:none;">
+                    <div class="col-md-12">
+                        <div class="alert alert-warning alert-dismissible fade in" role="alert"><strong>Opsss!</strong> No se encontraron coincidencias. </div>
+                    </div>
+                </div>
+                <div class="row" style="display:none; padding-left:10px;" id="panel_datos_cliente">
+                    <div class="col-md-4">
+                        <h5 id="texto_contrato" style="color:#4b646f;"></h5>
+                        <input type="hidden" id="contrato_oculto" />
+                        <h5 id="texto_nombre" style="color:#4b646f;"></h5>
+                        <h5 id="texto_colonia" style="color:#4b646f;"></h5>
+                        <h5 id="texto_calle" style="color:#4b646f;"></h5>
+                        <h5 id="texto_numero" style="color:#4b646f;"></h5>
+                    </div>
+                    <div class="col-md-4 col-md-offset-1">
+                        <div id="servicios_contratados">
 
-                <table id="TablaLlamadas" class="table table-bordered table-hover dataTable">
-                    <thead>
-                        <tr>
-                            <td><b>Id Llamada</b></td>
-                            <td><b>Id Usuario</b></td>
-                            <td><b>Tipo Llamada</b></td>
-                            <td><b>Contrato</b></td>
-                            <td><b>Nombre</b></td>
-                            <td><b>Fecha</b></td>
-                            <td><b>Opciones</b></td>
-                        </tr>
-                    </thead>
-                </table>
-            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <a class="btn btn-warning disabled" id="btn_queja" onclick="abrir_modal()" style="width:150px;">Generar Queja</a><br /><br />
+                        <a class="btn btn-primary" onclick="ModalHistorialPagos()" style="width:150px;">Historial de Pagos</a><br /><br />
+                        <a class="btn btn-primary" onclick="ModalHistorialLlamadas()" style="width:150px;">Historial de Llamadas</a><br /><br />
+                        <a class="btn btn-primary" onclick=" ModalHistorialQuejas()" style="width:150px;">Historial de Quejas</a><br /><br />
+                        <a class="btn btn-primary" onclick=" ModalConsultarPagos()" style="width:150px;">Consultar Pagos</a><br /><br />
+                    </div>
+                </div>
+                <div class="row" style="display:none; padding-left:10px;" id="panel_hora_fecha">
+                    <div class="col-md-2">
+                        <p style="color:#4b646f;">Hora Inicial</p>
+                        <input type="text" class="form-control" disabled id="hora" />
+                    </div>
+                    <div class="col-md-2">
+                        <p style="color:#4b646f;">Fecha</p>
+                        <input type="text" class="form-control" id="fecha" disabled />
+                    </div>
+                </div><br />
+                <div class="row" style="padding-left: 10px; display: none;" id="panel_reporte_cliente">
+                    <div class="col-md-6">
+                        <label style="color:#4b646f; font-size:12px;">Reporte del cliente</label>
+                        <textarea class="form-control" id="reporte_cliente"></textarea>
+                    </div>
+                </div>
+                <div class="row" style="display:none; padding-left:10px;" id="panel_clasificacion">
+                    <div class="col-md-4">
+                        <label style="color:#4b646f; font-size:12px;">Clasificación del problema</label>
+                        <select class="form-control" id="select_problemas">
+                            <option value="0" selected disabled>Clasificación del problema</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="row" style="padding-left: 10px; display: none;" id="panel_problema_real">
+                    <div class="col-md-6">
+                        <label style="color:#4b646f; font-size:12px;">Problema Real</label>
+                        <textarea class="form-control" id="problema_real"></textarea>
+                    </div>
+                </div>
+                <div class="row" style="display:none; padding-left:10px;" id="panel_solucion">
+                    <div class="col-md-4">
+                        <label style="color:#4b646f; font-size:12px;">Clasificación de la solución</label>
+                        <select class="form-control" id="select_soluciones">
+                            <option value="0" selected disabled>Clasificación de la solución</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="row" style="display:none; padding-left:10px;" id="panel_tiene_queja">
+                    <div class="col-md-8">
+                        <p style="font-size:18px; color:red;" id="tiene_queja"></p>
+                    </div>
+                </div>
+                <div class="row" id="panel_no_cliente" style="padding-left:10px; display:none;">
+                    <div class="col-md-5">
+                        <label style="color:#4b646f; font-size:12px;">Nombre</label>
+                        <input type="text" class="form-control" id="nombre_no_cliente" placeholder="Nombre de la persona que esta llamando" />
+                    </div>
+                </div>
+                <div class="row" style="display:none; padding-left:10px;" id="telefono_no_cliente">
+                    <div class="col-md-3">
+                        <label style="color:#4b646f; font-size:12px;">Teléfono</label>
+                        <input type="text" id="telefono" class="form-control">
+                    </div>
+                    <div class="col-md-3">
+                        <label style="color:#4b646f; font-size:12px;">Celular</label>
+                        <input type="text" id="celular" class="form-control">
+                    </div>
+                </div>
+                <div class="row" style="display:none; padding-left:10px;" id="email_no_cliente">
+                    <div class="col-md-4">
+                        <label style="color:#4b646f; font-size:12px;">Email</label>
+                        <input type="email" id="email" class="form-control" required>
+                    </div>
+                </div>
+                <div class="row" style="display:none; padding-left:10px;" id="domicilio_no_cliente">
+                    <div class="col-md-6">
+                        <label style="color:#4b646f; font-size:12px;">Domicilio</label>
+                        <textarea type="text" id="domicilio" class="form-control"></textarea>
+                    </div>
+                </div>
+                <div class="row" style="padding-left: 10px; display: none;" id="panel_tipo_informacion">
+                    <div class="col-md-5">
+                        <label style="color:#4b646f; font-size:12px;">Selecciona el tipo de información</label>
+                        <select class="form-control" id="tipo_informacion">
+                            <option value="0" selected disabled>----------</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="row" style="padding-left: 10px; display: none;" id="panel_detalle_informacion">
+                    <div class="col-md-6">
+                        <label style="color:#4b646f; font-size:12px;">Detalle de la llamada</label>
+                        <textarea class="form-control" id="detalle_llamada_informacion"></textarea>
+                    </div>
+                </div>
+                <div class="row" style="padding-right:40px; display:none;" id="btn_enviar">
+                    <div class="col-md-12">
+                        <p class="text-right">
+                            <a class="btn btn-success" onclick="guardarLlamada()"> Guaradar Llamada</a>
+                        </p>
+                    </div>
+                </div>
+            </form>
         </div>
     </div>
 </div>
 
 
-@*MODAL AGREGAR LLAMADA*@
-<div class="modal fade bs-example-modal-lg" id="ModalAgregarLlamada" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" data-backdrop="static" data-keyboard="false">
-    <div class="modal-dialog modal-lg">
+<div class="modal fade" id="queja_modal" role="dialog" data-backdrop="static" data-keyboard="false">
+    <div class="modal-dialog modal-sm">
         <div class="modal-content">
             <div class="modal-header">
                 <button class="close" aria-label="Close" type="button" data-dismiss="modal"><span aria-hidden="true">×</span></button>
-                <h4 class="modal-title">Agregar Llamada</h4>
+                <h4 class="modal-title">GENERAR QUEJA</h4>
             </div>
             <div class="modal-body">
-                <div class="nav-tabs-custom">
-                    <ul class="nav nav-tabs">
-                        <li class="active"><a href="#tab_1a" data-toggle="tab" aria-expanded="true">Información principal</a></li>
-                    </ul>
-                    <div class="tab-content" style="margin:200px, 20px, 20px, 20px">
-                        <div class="tab-pane active" id="tab_1a">
-                            <div class="row">
-                                <div class=col-md-4>
-                                    <div class="form-group">
-                                        <select id="tipo_llamada" class="form-control">
-                                            <option value="0" selected disabled>¿Quíen llama?</option>
-                                            <option value="1">Cliente</option>
-                                            <option value="2">No Cliente</option>
-                                        </select>
-                                    </div>
-                                </div>
-                                <div class="col-md-7" id="nombre_llamada" style="display:none;">
-                                    <div class="form-group">
-                                        <div class="col-md-11">
-                                            <input type="text" class="form-control" placeholder="Nombre completo" />
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-md-7" id="no_contrato" style="display:none;">
-                                    <div class="form-group">
-                                        <div class="col-md-6">
-                                            <input type="text" class="form-control" placeholder="No. Contrato" />
-                                        </div>
-                                        <div class="col-md-6">
-                                            <select id="plaza" class="form-control">
-                                                <option value="0" selected disabled>Seleccione la Plaza</option>
-                                                <option value="1">Aguascalientes</option>
-                                                <option value="2">Plaza 2</option>
-                                                <option value="3">Plaza 3 multiples</option>
-                                            </select>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div><br/><!-- row 1 -->
-                            <div class="row">
-                                <div class="col-md-4">
-                                    <div class="form-group">
-                                        <select id="motivo_llamada" class="form-control">
-                                            <option value="0" selected disabled>Motivo de la llamada</option>  
-                                            <option value="1">Información</option>
-                                            <option value="2">Queja</option>
-                                            <option value="3">Asesoría Técnica</option>
-                                        </select>
-                                    </div>
-                                </div>
-                            </div><br/><!-- row 2 -->
-                            <div class="row" id="panel_queja" style="display:none;">
-                                <div class="form-group">
-                                    <div class="col-md-6">
-                                        <textarea placeholder="Redactar la queja" class="form-control"></textarea>
-                                    </div>
-                                    <div class="col-md-4">
-                                        <select id="accion_queja" class="form-control">
-                                            <option value="0" selected disabled>Acción a realizar</option>
-                                            <option value="1">Solucionado</option>
-                                            <option value="2">Realizar Reporte</option>
-                                        </select>
-                                    </div>
-                                </div>
-                            </div><br /><!-- row 3 -->
-                            <div class="row" id="panel_reporte" style="display:none;">
-                                <div class="form-group">
-                                    <div class="col-md-6">
-                                        <select id="reporte_turno" class="form-control">
-                                            <option value="0" selected disabled>¿Turno en el que esta disponible?</option>
-                                            <option value="1">Mañana</option>
-                                            <option value="2">Tarde</option>
-                                        </select>
-                                    </div>
-                                </div>
-                            </div><br /><!-- row 3 -->
-                       </div><!-- /.tab-pane -->
-                    </div><!-- /.tab-content -->
+                <div class="row">
+                    <div class="col-md-12">
+                        <label style="color:#4b646f; font-size:12px;">Departamento Responsable</label>
+                        <select class="form-control" id="departamento">
+                            <option value="0" selected disabled>Departamento Responsable</option>
+                        </select>
+                    </div>
                 </div>
+                <div class="row">
+                    <div class="col-md-12">
+                        <label style="color:#4b646f; font-size:12px;">Tipo Prioridad</label>
+                        <select class="form-control" id="prioridad">
+                            <option value="0" selected disabled>Tipo Prioridad</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-12">
+                        <label style="color:#4b646f; font-size:12px;">Turno</label>
+                        <select class="form-control" id="turno">
+                            <option value="0" selected disabled>Turno</option>
+                        </select>
+                    </div>
+                </div>
+
             </div>
             <div class="modal-footer">
+                <button class="btn btn-success" type="button" onclick="GuardarQueja()">Generar</button>
+                <button class="btn btn-primary " type="button" data-dismiss="modal">Cerrar</button>
+            </div>
+        </div>
+    </div>
+</div>
 
-                <button class="btn btn-primary" type="button" data-dismiss="modal">Cancelar</button>
-                <button class="btn btn-success" type="button">Guardar Llamada</button>
+<div class="modal fade" id="exito" role="dialog" data-backdrop="static" data-keyboard="false">
+    <div class="modal-dialog modal-sm">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button class="close" aria-label="Close" type="button" data-dismiss="modal"><span aria-hidden="true">×</span></button>
+                <h4 class="modal-title">LLAMADA GUARDADA EXITOSAMENTE</h4>
+            </div>
+            <div class="modal-body">
+                <p>El número de reporte es: <strong id="no_reporte"></strong> y el número de queja es: <strong id="no_queja"></strong></p>
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-success" type="button" onclick="regresar()">Aceptar</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="sinQueja" role="dialog" data-backdrop="static" data-keyboard="false">
+    <div class="modal-dialog modal-sm">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button class="close" aria-label="Close" type="button" data-dismiss="modal"><span aria-hidden="true">×</span></button>
+                <h4 class="modal-title">LLAMADA GUARDADA EXITOSAMENTE</h4>
+            </div>
+            <div class="modal-body">
+                <p>El número de reporte es: <strong id="no_reporte_sin"></strong></p>
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-success" type="button" onclick="regresar()">Aceptar</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="HistorialPagos" role="dialog" data-backdrop="static" data-keyboard="false">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button class="close" aria-label="Close" type="button" data-dismiss="modal"><span aria-hidden="true">×</span></button>
+                <h4 class="modal-title">Historial de Pagos</h4>
+            </div>
+            <div class="modal-body">
+                <table id="tableHistorialPago" class="table table-bordered table-hover dataTable">
+                    <thead>
+                        <tr>
+                            <td id="Serie"><b>Serie</b></td>
+                            <td id="Folio"><b>Folio</b></td>
+                            <td id="Fecha"><b>Fecha</b></td>
+                            <td id="Importe"><b>Importe</b></td>
+                            <td id="Status"><b>Status</b></td>
+                            <td id="Status"><b>Consultar</b></td>
+                        </tr>
+                    </thead>
+                    <tbody></tbody>
+                </table>
+
+
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-primary " type="button" data-dismiss="modal">Cerrar</button>
             </div>
         </div>
     </div>
 </div>
 
 
-@*MODAL Editar Llamada*@
-<div class="modal fade bs-example-modal-lg" id="ModalEditarLlamada" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" data-backdrop="static" data-keyboard="false">
-    <div class="modal-dialog modal-lg">
+<div class="modal fade" id="HistorialPagos" role="dialog" data-backdrop="static" data-keyboard="false">
+    <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
                 <button class="close" aria-label="Close" type="button" data-dismiss="modal"><span aria-hidden="true">×</span></button>
-                <h4 class="modal-title">Editar Llamada</h4>
+                <h4 class="modal-title">Historial de Pagos</h4>
+            </div>
+            <div class="modal-body">
+                <table id="tableHistorialPago" class="table table-bordered table-hover dataTable">
+                    <thead>
+                        <tr>
+                            <td id="Serie"><b>Serie</b></td>
+                            <td id="Folio"><b>Folio</b></td>
+                            <td id="Fecha"><b>Fecha</b></td>
+                            <td id="Importe"><b>Importe</b></td>
+                            <td id="Status"><b>Status</b></td>
+                        </tr>
+                    </thead>
+                    <tbody></tbody>
+                </table>
+
+
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-primary " type="button" data-dismiss="modal">Cerrar</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<div class="modal fade" id="HistorialQuejas" role="dialog" data-backdrop="static" data-keyboard="false">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button class="close" aria-label="Close" type="button" data-dismiss="modal"><span aria-hidden="true">×</span></button>
+                <h4 class="modal-title">Historial de Quejas</h4>
+            </div>
+            <div class="modal-body">
+                <table id="tableHistorialQuejas" class="table table-bordered table-hover dataTable">
+                    <thead>
+                        <tr>
+                            <td id="Queja"><b>Queja</b></td>
+                            <td id="Status"><b>Status</b></td>
+                            <td id="Contrato"><b>Contrato</b></td>
+                            <td id="Nombre"><b>Nombre</b></td>
+                            <td id="Calle"><b>Calle</b></td>
+                            <td id="Numero"><b>Numero</b></td>
+                            <td id="TipSer"><b>Tipo Servicio</b></td>
+                        </tr>
+                    </thead>
+                    <tbody></tbody>
+                </table>
+
+
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-primary " type="button" data-dismiss="modal">Cerrar</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<div class="modal fade" id="HistorialLlamadas" role="dialog" data-backdrop="static" data-keyboard="false">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button class="close" aria-label="Close" type="button" data-dismiss="modal"><span aria-hidden="true">×</span></button>
+                <h4 class="modal-title">Historial de Llamadas</h4>
+            </div>
+            <div class="modal-body">
+                <table id="tableHistorialLlamadas" class="table table-bordered table-hover dataTable" align="center">
+                    <thead>
+                        <tr>
+                            <td id="Fecha"><b>Fecha</b></td>
+                            <td id="HoraInicial"><b>Hora Inicial</b></td>
+                            <td id="HoraFinal"><b>Hora Final</b></td>
+                            <td id="Motivo"><b>Motivo</b></td>
+                            <td id="Solucion"><b>Solución</b></td>
+                            <td id="Usuario"><b>Usuario</b></td>
+                        </tr>
+                    </thead>
+                    <tbody></tbody>
+                </table>
+
+
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-primary " type="button" data-dismiss="modal">Cerrar</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+<div class="modal fade" id="ConsultaPago" role="dialog" data-backdrop="static" data-keyboard="false">
+    <div class="modal-dialog modal-lg" style="width:90%;">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button class="close" aria-label="Close" type="button" data-dismiss="modal"><span aria-hidden="true">×</span></button>
+                <h4 class="modal-title">Consultar Pago</h4>
             </div>
             <div class="modal-body">
                 <div class="overlay" id="cargando">
                     <h1 class="text-center" style="font-size:65px;"><i class="fa fa-refresh fa-spin"></i></h1>
                 </div>
-                <div class="nav-tabs-custom" style="display:none;" id="panel_tabs_llamadas">
-                    <div class="tab-content">
-                        <div class="nav-tabs-custom">
-                            <ul class="nav nav-tabs">
-                                <li class="active"><a href="#tab_1" data-toggle="tab" aria-expanded="true">Información Llamada</a></li>
-                                <li class="" style="display:none;" id="tab_queja"><a href="#tab_2" id="tab-preguntas" data-toggle="tab" aria-expanded="false">Queja</a></li>
-                            </ul>
-                            <div class="tab-content">
-                                <div class="tab-pane active" id="tab_1">
-                                    <input type="hidden" id="id_llamada" />
-                                    <input type="hidden" id="contrato_oculto" />
-                                    <input type="hidden" id="queja_oculto" />
-                                    <div class="row" style="display:none;" id="contrato_panel_editar">
-                                        <div class="col-xs-2">
-                                            <label>Contrato</label>
-                                            <input type="text" class="form-control" id="contrato_editar" disabled>
-                                        </div>
-                                    </div>
-                                    <div class="row" style="display:none;" id="nombre_panel_editar">
-                                        <div class="col-xs-6">
-                                            <label>Nombre</label>
-                                            <input type="text" class="form-control" id="nombre_editar">
-                                        </div>
-                                    </div>
-                                    <div class="row" style="display:none;" id="domicilio_panel_editar">
-                                        <div class="col-xs-6">
-                                            <label>Domicilio</label>
-                                            <textarea class="form-control" id="domicilio_editar"> </textarea>
-                                        </div>
-                                    </div>
-                                    <div class="row" style="display:none;" id="celular_panel_editar">
-                                        <div class="col-xs-4">
-                                            <label>Telefono</label>
-                                            <input type="text" class="form-control" id="telefono_editar">
-                                        </div>
-                                        <div class="col-xs-4">
-                                            <label>Celular</label>
-                                            <input type="text" class="form-control" id="celular_editar">
-                                        </div>
-                                    </div>
-                                    <div class="row" style="display:none;" id="email_panel_editar">
-                                        <div class="col-xs-4">
-                                            <label>Email</label>
-                                            <input type="text" class="form-control" id="email_editar">
-                                        </div>
-                                    </div>
-                                    <div class="row" style="display:none;" id="panel_tipo_informacion">
-                                        <div class="col-md-6">
-                                            <label>Selecciona el tipo de información</label>
-                                            <select class="form-control" id="tipo_informacion_editar"></select>
-                                        </div>
-                                    </div>
-                                    <div class="row" style="display:none;" id="panel_motivo_llamada">
-                                        <div class="col-xs-6">
-                                            <label>Motivo Llamada</label>
-                                            <select class="form-control" id="selec_motivo_llamada"></select>
-                                        </div>
-                                    </div>
-                                    <div class="row" style="display:none;" id="panel_detalle_llamada">
-                                        <div class="col-xs-6">
-                                            <label>Detalle</label>
-                                            <textarea class="form-control" id="detalle_editar"></textarea>
-                                        </div>
-                                    </div>
-                                    <div class="row" style="display:none;" id="clasificacion_editar">
-                                        <div class="col-xs-6">
-                                            <label>Clasificación del problema</label>
-                                            <select class="form-control" id="select_problemas"></select>
-                                        </div>
-                                    </div>
-                                    <div class="row" style="display:none;" id="panel_solucion">
-                                        <div class="col-xs-6">
-                                            <label>Solución</label>
-                                            <textarea class="form-control" id="solucion_editar"></textarea>
-                                        </div>
-                                    </div>
-                                    <div class="row" style="display:none;" id="clasificacion_solucion_editar">
-                                        <div class="col-xs-6">
-                                            <label>Clasificación de la solución</label>
-                                            <select class="form-control" id="select_solucion"></select>
-                                        </div>
-                                    </div>
-                                </div><!-- /.tab-pane -->
-                                <div class="tab-pane" id="tab_2">
-                                    <div class="row">
-                                        <div class="col-md-2">
-                                            <label>ID Queja</label>
-                                            <input type="text" class="form-control" id="id_queja" disabled />
-                                        </div>
-                                    </div>
-                                    <div class="row">
-                                        <div class="col-md-4">
-                                            <label>Prioridad</label>
-                                            <select class="form-control" id="prioridad_editar"></select>
-                                        </div>
-                                    </div>
-                                    <div class="row">
-                                        <div class="col-md-4">
-                                            <label>Turno</label>
-                                            <select class="form-control" id="turno_editar"></select>
-                                        </div>
-                                    </div>
-                                </div><!-- /.tab-pane -->
-                                <div class="tab-pane" id="tab_3">
-
-                                </div><!-- /.tab-pane -->
-                            </div><!-- /.tab-content -->
-                        </div>
-                    </div><!-- /.tab-content -->
+                <div class="row" id="contenido_editar" style="display:none;">
+                    <table id="tableConsultaPago1" class="table table-bordered table-hover dataTable" align="center">
+                        <thead>
+                            <tr>
+                                <td id="Aparato"><b>Aparato</b></td>
+                                <td id="Concepto"><b>Concepto</b></td>
+                                <td id="PagoAde"><b>PagosAdelantados</b></td>
+                                <td id="TVExt"><b>Tv's Extra</b></td>
+                                <td id="MesesCor"><b>Meses Cortesía</b></td>
+                                <td id="Importe"><b>Meses a Pagar</b></td>
+                                <td id="Importe"><b>Importe</b></td>
+                                <td id="PeriodoPI"><b>Periodo Pagado Inicial</b></td>
+                                <td id="PeriodoPF"><b>Periodo Pagado Final</b></td>
+                                <td id="PuntosAPO"><b>Puntos Aplicados por Pago Oportuno</b></td>
+                                <td id="PuntosAPA"><b>Puntos Aplicados por Antigüedad</b></td>
+                                <td id="PuntosAPAde"><b>Puntos Aplicados por Adelantado</b></td>
+                                <td id="PuntosCombo"><b>Puntos Combo</b></td>
+                                <td id="PuntosPPE"><b>Puntos PPE</b></td>
+                                <td id="ImporteBoni"><b>Importe a Bonificar</b></td>
+                            </tr>
+                        </thead>
+                        <tbody></tbody>
+                    </table>
                 </div>
+
+                <div class="row" id="contenido_editar2" style="display:none;">
+                    <table id="tableConsultaPago2" class="table table-bordered table-hover dataTable" style="width:200px;" align="center">
+                        <thead>
+                            <tr>
+                                <td id="Descripcion"><b>Descripción</b></td>
+                                <td id="Total"><b>Total</b></td>
+                            </tr>
+                        </thead>
+                        <tbody></tbody>
+                    </table>
+                </div>
+
             </div>
             <div class="modal-footer">
-                <button class="btn btn-success" id="guardar_llamada" type="button" onclick="guardarLlamada(this)">Guardar</button>
-                <button class="btn btn-primary" type="button" data-dismiss="modal">Cerrar</button>
+                <button class="btn btn-primary " type="button" data-dismiss="modal">Cerrar</button>
             </div>
         </div>
     </div>
 </div>
 
 
+<div class="modal fade bs-example-modal-md" data-backdrop="static" data-keyboard="false" id="Espere" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel">
+    <div class="modal-dialog modal-md">
+        <div class="modal-content">
+            <div class="modal-header">
+            </div>
+            <div class="modal-body">
+                @*<div class="nav-tabs-custom">
+                    <div class="tab-content">
+                        <div class="tab-pane active" id="tab_1">*@
+                <div class="row form-group" align="right">
 
-@*MODAL Detalle Llamada*@
-<div class="modal fade bs-example-modal-lg" id="ModalDetalleLlamada" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" data-backdrop="static" data-keyboard="false">
-    <div class="modal-dialog modal-lg">
+                    <div class="col-md-10 col-md-offset-1    col-sm-10 col-sm-offset-1    col-xs-10">
+                        <form action="" align="center">
+                            <p>Consultando información por favor espere un momento</p>
+                        </form>
+                    </div>
+                </div>
+                @*</div><!-- /.tab-pane -->
+                        </div><!-- /.tab-content -->
+                    </div>*@
+            </div>
+            <div class="modal-footer">
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<div class="modal fade bs-example-modal-md" data-backdrop="static" data-keyboard="false" id="modal_ticket" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel">
+    <div class="modal-dialog modal-sm">
         <div class="modal-content">
             <div class="modal-header">
                 <button class="close" aria-label="Close" type="button" data-dismiss="modal"><span aria-hidden="true">×</span></button>
-                <h4 class="modal-title">
-                    Detalle Llamada
-                </h4>
+                <h4 class="modal-title">Ticket</h4>
             </div>
-            <div class="modal-body">
-                <div class="box-body">
-                    <div class="row">
-                        <div class="info-box">
-                            <span class="info-box-icon bg-aqua" style="height:130px; width:100px; padding-top:30px;"><i class="fa fa-phone" aria-hidden="true"></i></span>
-                            <div class="info-box-content" style="padding-left:20px;">
-                                <span class="info-box-text"><label>ID: </label>  <small id="id_llamda"></small></span>
-                                <span class="info-box-text"><label>Fecha: </label>  <small id="fecha"></small></span>
-                                <span class="info-box-text"><label>Hora inicio: </label>  <small id="hora_inicio"></small></span>
-                                <span class="info-box-text"><label>Hora fin: </label>  <small id="hora_fin"></small></span>
-
-                            </div><!-- /.info-box-content -->
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="info-box">
-                            <span class="info-box-icon bg-aqua" style="height:150px; width:100px; padding-top:30px;"><i class="fa fa-user" aria-hidden="true"></i></span>
-                            <div class="info-box-content" style="padding-left:20px;">
-                                <span class="info-box-text" style="display:none;" id="pan_contrato"><label>Contrato: </label>  <small id="contrato_detalle"></small></span>
-                                <span class="info-box-text" style="display:none;" id="pan_nombre"><label>Nombre: </label>  <small id="nombre_completo"></small></span>
-                                <span class="info-box-text" style="display:none;" id="pan_domicilio"><label>Domicilio: </label>  <small id="domicilio"></small></span>
-                                <span class="info-box-text" style="display:none;" id="pan_telefono"><label>Telefono: </label>  <small id="telefono"></small></span>
-                                <span class="info-box-text" style="display:none;" id="pan_celualr"><label>celular: </label>  <small id="celular"></small></span>
-                                <span class="info-box-text" style="display:none;" id="pan_email"><label>email: </label>  <small id="email"></small></span>
-                                <span class="info-box-text" style="display:none;" id="pan_detalle"><label>Detalle: </label>  <small id="detalle"></small></span>
-                                <span class="info-box-text" style="display:none;" id="pan_solucion"><label>Solución: </label>  <small id="solucion"></small></span>
-                                <span class="info-box-text" style="display:none;" id="pan_queja"><label>queja: </label>  <small id="queja"></small></span>
-                            </div><!-- /.info-box-content -->
-                        </div>
+            <div class="modal-body" style="height:500px;">
+                <div class="row form-group" align="right">
+                    <div class="col-md-12">
+                        <center>
+                            <h4 id="nombre_empresa"></h4>
+                            <p id="calle_empresa"></p>
+                            <p id="colonia_empresa"></p>
+                            <p id="ciudad_empresa"></p>
+                            <p id="rfc_empresa"></p>
+                            <hr class="style17" />
+                            <p><strong>Sucursal:</strong> <small id="nombre_sucursal"></small></p>
+                            <p>Calle: <small id="calle_sucursal"></small> <small id="numero_sucursal"></small></p>
+                            <p id="colonia_sucursal"></p>
+                            <p id="cp_sucursal"></p>
+                            <p id="ciudad_sucursal"></p>
+                            <p id="telefono_sucursal"></p>
+                            <p><strong id="recibo"></strong></p>
+                            <p><strong id="contrato_ticket"></strong></p>
+                            <p id="nombre_cliente"></p>
+                            <p> <label id="nombre_calle"></label> <label id="nombre_numero"></label> <label id="cp_cliente"></label></p>
+                            <p id="colonia_cliente"></p>
+                            <p id="ciudad_cliente"></p>
+                            <p><strong>Cajera(o): </strong> <label id="cajero"></label></p>
+                            <hr class="style17" />
+                            <p><label id="descripcion_servicio"></label> <label id="monto_servicio"></label></p>
+                            <p id="mes" style="color:red;"></p>
+                            <p><strong id="puntos"></strong></p>
+                            <hr class="style17" />
+                            <p> Cantidad con letra:</p>
+                            <p><strong id="cantidad_letra"></strong></p>
+                            <p><strong id="total"></strong></p>
+                            <p><strong id="cambio"></strong></p>
+                            <p><strong id="efectivo"></strong></p>
+                            <p><strong id="sucursal"></strong></p>
+                            <p><strong id="proximo_pago"></strong></p>
+                        </center>
                     </div>
                 </div>
             </div>
             <div class="modal-footer">
-                <button class="btn btn-primary" type="button" data-dismiss="modal">Cerrar</button>
-
+                <button class="btn btn-primary " type="button" data-dismiss="modal">Cerrar</button>
             </div>
         </div>
     </div>
 </div>
 
-
-@*MODAL AGREGAR QUEJA*@
-<div class="modal fade bs-example-modal-lg" id="ModalAgregarQueja" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel">
-    <div class="modal-dialog modal-lg">
-        <div class="modal-content">
-            <div class="modal-header">
-                <button class="close" aria-label="Close" type="button" data-dismiss="modal"><span aria-hidden="true">×</span></button>
-                <h4 class="modal-title">Generar Queja</h4>
-            </div>
-            <div class="modal-body">
-                <div class="nav-tabs-custom">
-                    <ul class="nav nav-tabs">
-                        <li class="active"><a href="#tabla_2q" data-toggle="tab" aria-expanded="true">Información principal</a></li>
-                    </ul>
-                    <div class="tab-content">
-                        <div class="tab-pane active" id="tabla_2q">
-                            <div class="row form-group ">
-                                @*ROW 1*@
-                                @*<div class="col-lg-2">
-                                        <label>Clv_Queja</label>
-                                        <input type="text" class="form-control" placeholder="Clv_Queja" readonly>
-                                    </div>*@
-                                <div class="col-lg-2 col-lg-offset-0    col-md-2 col-md-offset-0    col-sm-3 col-sm-offset-1    col-xs-6">
-                                    <label>Contrato</label>@*Contrato*@
-                                    <input type="text" class="form-control" placeholder="Contrato">
-                                </div>
-                                <div class="col-lg-4    col-md-4 col-md-offset-0    col-sm-7    col-xs-12 ">
-                                    <label>Concepto de Tipo de Servicio</label>@*Clv_TipSer*@
-                                    <input type="text" class="form-control" placeholder="Concepto Tipo de Servicio">
-                                </div>
-                                <div class="col-lg-3 col-lg-offset-0    col-md-3 col-md-offset-0    col-sm-4 col-sm-offset-2    col-xs-7">
-                                    <label>Fecha de Solicitud</label>@*Fecha_Solicitud*@
-                                    <input type="text" class="form-control" placeholder="Fecha de Solicitud">
-                                </div>
-                                <div class="col-lg-3    col-md-3    col-sm-4    col-xs-7">
-                                    <label>Fecha de Captura</label>@*Fecha_Captura*@
-                                    <input type="text" class="form-control" placeholder="Fecha de Captura">
-                                </div>
-                            </div>
-                            <div class="row form-group ">
-                                @*ROW 5*@
-                                <div class="col-lg-2    col-md-2    col-sm-3    col-xs-12">
-                                    <label>Status</label>@*Status*@
-                                    <input type="text" class="form-control" placeholder="Status">
-                                </div>
-                                <div class="col-lg-5    col-md-5    col-sm-9    col-xs-12">
-                                    <label>Trabajo</label>@*Clv_Trabajo*@
-                                    <textarea class="form-control" placeholder="Trabajo"></textarea>
-                                </div>
-                                <div class="col-lg-2 col-lg-offset-0    col-md-2 col-md-offset-0    col-sm-4 col-sm-offset-2    col-xs-7">
-                                    <label>Hora de Ejecución</label>@*Hora_Ejecucion*@
-                                    <input type="text" class="form-control" placeholder="Hora de Ejecución">
-                                </div>
-                                <div class="col-lg-3    col-md-3    col-sm-4    col-xs-8">
-                                    <label>Fecha de Ejecución</label>@*Fecha_Ejecución*@
-                                    <input type="text" class="form-control" placeholder="Fecha de Ejecución">
-                                </div>
-                            </div>
-                            <div class="row form-group ">
-                                @*ROW 2*@
-                                <div class="col-lg-2    col-md-2    col-sm-3    col-xs-6">
-                                    <label>Clave Técnico</label>@*Clave_Tecnico*@
-                                    <input type="text" class="form-control" placeholder="Clave Técnico">
-                                </div>
-
-                                <div class="col-lg-3    col-md-3    col-sm-5    col-xs-12">
-                                    <label>Tipo de Queja</label>@*Clv_TipoQueja*@
-                                    <input type="text" class="form-control" placeholder="Tipo de Queja">
-                                </div>
-                                <div class="col-lg-2    col-md-2    col-sm-4    col-xs-8">
-                                    <label>Prioridad de Queja</label>@*clvPrioridadQueja    Descripcion de tabla tblPrioridadQueja*@
-                                    <input type="text" class="form-control" placeholder="Prioridad de Queja">
-                                </div>
-                                <div class="col-lg-2 col-lg-offset-0    col-md-2 col-md-offset-0    col-sm-4 col-sm-offset-2    col-xs-6">
-                                    <label>Clasificación</label>@*Clasificación*@
-                                    <input type="text" class="form-control" placeholder="Clasificación">
-                                </div>
-                                <div class="col-lg-3    col-md-2    col-sm-4 col-xs-6">
-                                    <label>Impresa</label>@*Impresa*@
-                                    <input type="text" class="form-control" placeholder="Impresa">
-                                </div>
-                            </div>
-                            <div class="row form-group ">
-                                @*ROW 3*@
-                                <div class="col-lg-4    col-md-4    col-sm-6    col-xs-12">
-                                    <label>Problema</label>@*Problema*@
-                                    <textarea class="form-control" placeholder="Problema"></textarea>
-                                </div>
-                                <div class="col-lg-4    col-md-4    col-sm-6    col-xs-12">
-                                    <label>Solución</label>@*Solucion*@
-                                    <textarea class="form-control" placeholder="Solución"></textarea>
-                                </div>
-                                <div class="col-lg-4    col-md-4    col-sm-6    col-xs-12">
-                                    <label>Observaciones</label>@*Observaciones*@
-                                    <textarea class="form-control" placeholder="Observaciones"></textarea>
-                                </div>
-                            </div>
-                            <div class="row form-group ">
-                                @*ROW 4*@
-                                <div class="col-lg-2    col-md-2    col-sm-4    col-xs-7">
-                                    <label>Visita 1</label>@*Visita1*@
-                                    <input type="text" class="form-control" placeholder="Visita 1">
-                                </div>
-                                <div class="col-lg-2    col-md-2    col-sm-4    col-xs-7">
-                                    <label>Visita 2</label>@*Visita2*@
-                                    <input type="text" class="form-control" placeholder="Visita 2">
-                                </div>
-                                <div class="col-lg-2    col-md-2    col-sm-4    col-xs-7">
-                                    <label>Visita 3</label>@*Visita3*@
-                                    <input type="text" class="form-control" placeholder="Visita 3">
-                                </div>
-                                <div class="col-lg-3 col-lg-offset-0    col-md-3 col-md-offset-0    col-sm-4 col-sm-offset-2    col-xs-7">
-                                    <label>Fecha de Actualización</label>@*Fecha_Actualización*@
-                                    <input type="text" class="form-control" placeholder="Fecha de Actualización">
-                                </div>
-                                <div class="col-lg-3    col-md-3    col-sm-4    col-xs-5">
-                                    <label>Imp</label>@*Imp*@
-                                    <input type="text" class="form-control" placeholder="Imp">
-                                </div>
-                            </div>
-                        </div><!-- /.tab-pane -->
-                    </div><!-- /.tab-content -->
-                </div>
-            </div>
-            <div class="modal-footer">
-                <button class="btn btn-default pull-left" type="button" data-dismiss="modal">Cancelar</button>
-                <button class="btn btn-primary" type="button">Guardar Queja</button>
-            </div>
-        </div>
-    </div>
-</div>
-
-
+<script>
+    var usuario = @Session["idusuario"];
+</script>
+<script src="~/plugins/slimScroll/jquery.slimscroll.js"></script>
 <script src="~/plugins/input-mask/jquery.inputmask.js"></script>
-
-<script src="~/dist/js/pages/Llamada/Lista.js"></script>
 <script src="~/dist/js/pages/Llamada/agregar_llamada.js"></script>
 <link href="~/plugins/sweetAlert/sweetalert.css" rel="stylesheet" />
 <script src="~/plugins/sweetAlert/sweetalert.min.js"></script>
@@ -595,6 +743,11 @@
         $('#sub_activo li').siblings('li').removeClass('active');
         $('.1').addClass('active');
         $('.14').addClass('active');
+    });
+    $(function () {
+        $('#servicios_contratados').slimScroll({
+            height: '200px'
+        });
     });
 </script>
 

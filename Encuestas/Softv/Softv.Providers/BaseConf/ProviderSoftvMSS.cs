@@ -211,7 +211,19 @@ namespace Softv.Providers
         {
             get { return EstadisticaProvider.Instance; }
         }
-  
+
+        public static ServicioProvider Servicio
+        {
+            get { return ServicioProvider.Instance; }
+        }
+        public static MotAtenTelProvider MotAtenTel
+        {
+            get { return MotAtenTelProvider.Instance; }
+        }
+        public static ClasificacionProblemaProvider ClasificacionProblema
+        {
+            get { return ClasificacionProblemaProvider.Instance; }
+        }
   
     }
 }

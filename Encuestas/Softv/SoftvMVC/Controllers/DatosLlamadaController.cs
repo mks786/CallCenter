@@ -243,45 +243,6 @@ namespace SoftvMVC.Controllers
             dataTableData.draw = draw;
             dataTableData.recordsTotal = 0;
             int recordFiltered = 0;
-            if (cadena != "")
-            {
-                dataTableData.data = FiltrarContenido(idplaza, contrato, cadena, id_llamada, tipo_llamada, draw, start, length, ref recordFiltered).Where(o => o.Nombre.ToLower().Contains(cadena.ToLower())).OrderByDescending(c => c.IdLlamada).ToList();
-
-            }
-            else if(contrato > 0)
-            {
-                dataTableData.data = FiltrarContenido(idplaza, contrato, cadena, id_llamada, tipo_llamada, draw, start, length, ref recordFiltered).Where(o => o.Contrato == contrato).ToList();
-            }
-            else if (tipo_llamada == true)
-            {
-                dataTableData.data = FiltrarContenido(idplaza, contrato, cadena, id_llamada, tipo_llamada, draw, start, length, ref recordFiltered).Where(o => o.TipoLlamada == true).OrderByDescending(c => c.IdLlamada).ToList();
-            }
-            else if(tipo_llamada == false)
-            {
-                dataTableData.data = FiltrarContenido(idplaza, contrato, cadena, id_llamada, tipo_llamada, draw, start, length, ref recordFiltered).Where(o => o.TipoLlamada == false && o.IdConexion == idplaza).OrderByDescending(c => c.IdLlamada).ToList();
-            }
-            else if (id_llamada > 0)
-            {
-                dataTableData.data = FiltrarContenido(idplaza, contrato, cadena, id_llamada, tipo_llamada, draw, start, length, ref recordFiltered).Where(o => o.IdLlamada == id_llamada).ToList();
-            }
-            else if(tipo_llamada.ToString() == ""){
-                dataTableData.data = FiltrarContenido(idplaza, contrato, cadena, id_llamada, tipo_llamada, draw, start, length, ref recordFiltered).OrderByDescending(c => c.IdLlamada).ToList(); ;
-            }
-            
-            dataTableData.recordsFiltered = recordFiltered;
-
-            return Json(dataTableData, JsonRequestBehavior.AllowGet);
-        }
-
-        public class conexionPlazaCliente{
-            public int idllamada { get; set; }
-            public int contrato { get; set; }
-            public string nombre { get; set; }
-            public string fecha { get; set; }
-            public string tipollamada { get; set; }
-        }
-        public List<DatosLlamadaEntity> FiltrarContenido(int idplaza, int ? contrato, string cadena, int ? id_llamada, bool ? tipo_llamada, int draw, int start, int length, ref int recordFiltered)
-        {
 
             List<conexionPlazaCliente> llamadaCliente = new List<conexionPlazaCliente>();
             List<DatosLlamadaEntity> llamada = proxy.GetDatosLlamadaList();
@@ -301,8 +262,10 @@ namespace SoftvMVC.Controllers
                 foreach (var item in llamada)
                 {
                     DatosLlamadaEntity llamadas = new DatosLlamadaEntity();
-                    if(item.Contrato > 0){
-                        if(item.IdConexion == idplaza){
+                    if (item.Contrato > 0)
+                    {
+                        if (item.IdConexion == idplaza)
+                        {
                             comandoSql = new SqlCommand("SELECT * FROM Newsoftv.dbo.CLIENTES WHERE CONTRATO =" + item.Contrato);
                             comandoSql.Connection = conexionSQL;
                             SqlDataReader reader = comandoSql.ExecuteReader();
@@ -322,7 +285,7 @@ namespace SoftvMVC.Controllers
                             }
                             reader.Close();
                         }
-                        
+
                     }
                     else
                     {
@@ -346,19 +309,74 @@ namespace SoftvMVC.Controllers
 
                             }
                         }
-                        
-                       
+
+
                     }
-                    
+
                 }
-                
+
             }
             catch { }
             recordFiltered = lista.Count;
 
-            return lista.Skip(start).Take(length).ToList();
+            int aux = 0;
+            int paginado = 0;
+            if (cadena != "")
+            {
+                dataTableData.data = lista.Where(o => o.Nombre.ToLower().Contains(cadena.ToLower())).OrderByDescending(o => o.IdLlamada).ToList();
+                paginado = dataTableData.data.Count;
+                dataTableData.data = lista.Where(o => o.Nombre.ToLower().Contains(cadena.ToLower())).OrderByDescending(o => o.IdLlamada).Skip(start).Take(length).ToList();
 
+            }
+            else if(contrato > 0)
+            {
+                dataTableData.data = lista.Where(o => o.Contrato == contrato).ToList();
+                paginado = dataTableData.data.Count;
+                dataTableData.data = lista.Where(o => o.Contrato == contrato).Skip(start).Take(length).ToList();
+            }
+            else if (tipo_llamada == true)
+            {
+                dataTableData.data = lista.Where(o => o.Contrato != null).OrderByDescending(o => o.IdLlamada).ToList();
+                paginado = dataTableData.data.Count;
+                dataTableData.data = lista.Where(o => o.Contrato != null).OrderByDescending(o => o.IdLlamada).Skip(start).Take(length).ToList();
+            }
+            else if(tipo_llamada == false)
+            {
+                dataTableData.data = lista.Where(o => o.Contrato == null && o.IdConexion == idplaza).OrderByDescending(o => o.IdLlamada).ToList();
+                paginado = dataTableData.data.Count;
+                dataTableData.data = lista.Where(o => o.Contrato == null && o.IdConexion == idplaza).OrderByDescending(o => o.IdLlamada).Skip(start).Take(length).ToList();
+            }
+            else if (id_llamada > 0)
+            {
+                dataTableData.data = lista.Where(o => o.IdLlamada == id_llamada).ToList();
+                paginado = dataTableData.data.Count;
+                dataTableData.data = lista.Where(o => o.IdLlamada == id_llamada).Skip(start).Take(length).ToList();
+            }
+            else if(tipo_llamada.ToString() == ""){
+                dataTableData.data = lista.OrderByDescending(o => o.IdLlamada).Skip(start).Take(length).ToList();
+                aux = 1;
+            }
+            if(aux == 1){
+                recordFiltered = lista.Count;
+            }
+            else
+            {
+                recordFiltered = paginado;
+            }
+            
+            dataTableData.recordsFiltered = recordFiltered;
+
+            return Json(dataTableData, JsonRequestBehavior.AllowGet);
         }
+
+        public class conexionPlazaCliente{
+            public int idllamada { get; set; }
+            public int contrato { get; set; }
+            public string nombre { get; set; }
+            public string fecha { get; set; }
+            public string tipollamada { get; set; }
+        }
+        
 
 
     }

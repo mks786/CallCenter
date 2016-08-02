@@ -342,11 +342,12 @@
           <xs:element minOccurs="0" name="IdLlamada" nillable="true" type="xs:int" />
           <xs:element minOccurs="0" name="IdTurno" nillable="true" type="xs:int" />
           <xs:element minOccurs="0" name="IdUsuario" nillable="true" type="xs:int" />
-          <xs:element minOccurs="0" name="ProblemaSolucion" nillable="true" type="xs:boolean" />
+          <xs:element minOccurs="0" name="MotivoLlamada" nillable="true" type="xs:int" />
           <xs:element minOccurs="0" name="Queja" nillable="true" type="tns:QuejaEntity" />
+          <xs:element minOccurs="0" name="SiEsCliente" nillable="true" type="xs:boolean" />
           <xs:element minOccurs="0" name="Solucion" nillable="true" type="xs:string" />
           <xs:element minOccurs="0" name="TipServ" nillable="true" type="tns:TipServEntity" />
-          <xs:element minOccurs="0" name="Tipo_Llamada" nillable="true" type="xs:boolean" />
+          <xs:element minOccurs="0" name="Tipo_Llamada" nillable="true" type="xs:int" />
           <xs:element minOccurs="0" name="Trabajo" nillable="true" type="tns:TrabajoEntity" />
           <xs:element minOccurs="0" name="Turnos" nillable="true" type="tns:TurnoEntity" />
           <xs:element minOccurs="0" name="Usuario" nillable="true" type="tns:UsuarioEntity" />
@@ -573,10 +574,12 @@
           <xs:element minOccurs="0" name="Contrato" nillable="true" type="xs:long" />
           <xs:element minOccurs="0" name="ENTRECALLES" nillable="true" type="xs:string" />
           <xs:element minOccurs="0" name="ESTADO_RS" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="Email" nillable="true" type="xs:string" />
           <xs:element minOccurs="0" name="FAX_RS" nillable="true" type="xs:string" />
           <xs:element minOccurs="0" name="IDENTIFICADOR" nillable="true" type="xs:decimal" />
           <xs:element minOccurs="0" name="IVADESGLOSADO" nillable="true" type="xs:unsignedByte" />
           <xs:element minOccurs="0" name="NUMERO_RS" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="Pais" nillable="true" type="xs:string" />
           <xs:element minOccurs="0" name="RAZON_SOCIAL" nillable="true" type="xs:string" />
           <xs:element minOccurs="0" name="RFC" nillable="true" type="xs:string" />
           <xs:element minOccurs="0" name="TELEFONO_RS" nillable="true" type="xs:string" />
@@ -820,6 +823,7 @@
           <xs:element minOccurs="0" name="Id" nillable="true" type="xs:int" />
           <xs:element minOccurs="0" name="IdConexion" nillable="true" type="xs:int" />
           <xs:element minOccurs="0" name="IdLlamada" nillable="true" type="xs:int" />
+          <xs:element minOccurs="0" name="MotivoLlamada" nillable="true" type="xs:int" />
           <xs:element minOccurs="0" name="Nombre" nillable="true" type="xs:string" />
           <xs:element minOccurs="0" name="Telefono" nillable="true" type="xs:string" />
         </xs:sequence>
@@ -879,4 +883,64 @@
     </xs:complexContent>
   </xs:complexType>
   <xs:element name="EstadisticaEntity" nillable="true" type="tns:EstadisticaEntity" />
+  <xs:complexType name="ServicioEntity">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:BaseEntity">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="AplicanCom" nillable="true" type="xs:boolean" />
+          <xs:element minOccurs="0" name="Clv_Servicio" nillable="true" type="xs:int" />
+          <xs:element minOccurs="0" name="Clv_TipSer" nillable="true" type="xs:int" />
+          <xs:element minOccurs="0" name="Clv_Trabajo" nillable="true" type="xs:int" />
+          <xs:element minOccurs="0" name="Clv_Txt" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="Descripcion" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="Es_Principal" nillable="true" type="xs:boolean" />
+          <xs:element minOccurs="0" name="Genera_Orden" nillable="true" type="xs:boolean" />
+          <xs:element minOccurs="0" name="Precio" nillable="true" type="xs:decimal" />
+          <xs:element minOccurs="0" name="Sale_en_Cartera" nillable="true" type="xs:boolean" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="ServicioEntity" nillable="true" type="tns:ServicioEntity" />
+  <xs:complexType name="ArrayOfServicioEntity">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="ServicioEntity" nillable="true" type="tns:ServicioEntity" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfServicioEntity" nillable="true" type="tns:ArrayOfServicioEntity" />
+  <xs:complexType name="MotAtenTelEntity">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:BaseEntity">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="Clv_Motivo" nillable="true" type="xs:int" />
+          <xs:element minOccurs="0" name="Descripcion" nillable="true" type="xs:string" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="MotAtenTelEntity" nillable="true" type="tns:MotAtenTelEntity" />
+  <xs:complexType name="ArrayOfMotAtenTelEntity">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="MotAtenTelEntity" nillable="true" type="tns:MotAtenTelEntity" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfMotAtenTelEntity" nillable="true" type="tns:ArrayOfMotAtenTelEntity" />
+  <xs:complexType name="ClasificacionProblemaEntity">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:BaseEntity">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="Activo" nillable="true" type="xs:boolean" />
+          <xs:element minOccurs="0" name="ClvProblema" nillable="true" type="xs:long" />
+          <xs:element minOccurs="0" name="Descripcion" nillable="true" type="xs:string" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="ClasificacionProblemaEntity" nillable="true" type="tns:ClasificacionProblemaEntity" />
+  <xs:complexType name="ArrayOfClasificacionProblemaEntity">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="ClasificacionProblemaEntity" nillable="true" type="tns:ClasificacionProblemaEntity" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfClasificacionProblemaEntity" nillable="true" type="tns:ArrayOfClasificacionProblemaEntity" />
 </xs:schema>

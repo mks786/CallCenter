@@ -39,6 +39,10 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Dapper, Version=1.50.2.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Dapper.1.50.2\lib\net451\Dapper.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
       <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.dll</HintPath>
       <Private>True</Private>
@@ -226,6 +230,7 @@
     <Compile Include="Controllers\CALLEController.cs" />
     <Compile Include="Controllers\CatalogoPeriodosCorteController.cs" />
     <Compile Include="Controllers\CIUDADController.cs" />
+    <Compile Include="Controllers\ClasificacionProblemaController.cs" />
     <Compile Include="Controllers\CLIENTEController.cs" />
     <Compile Include="Controllers\Cliente_ApellidoController.cs" />
     <Compile Include="Controllers\COLONIAController.cs" />
@@ -240,6 +245,7 @@
     <Compile Include="Controllers\LlamadaController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\ModuleController.cs" />
+    <Compile Include="Controllers\MotAtenTelController.cs" />
     <Compile Include="Controllers\MotivoCancelacionController.cs" />
     <Compile Include="Controllers\NoClienteController.cs" />
     <Compile Include="Controllers\PartialClass\BaseControllerFunc.cs" />
@@ -258,6 +264,7 @@
     <Compile Include="Controllers\ReportesVariosController.cs" />
     <Compile Include="Controllers\ResOpcMultsController.cs" />
     <Compile Include="Controllers\RoleController.cs" />
+    <Compile Include="Controllers\ServicioController.cs" />
     <Compile Include="Controllers\TapController.cs" />
     <Compile Include="Controllers\tblClasificacionProblemaController.cs" />
     <Compile Include="Controllers\tblPrioridadQuejaController.cs" />
@@ -280,7 +287,7 @@
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
       <DependentUpon>Settings.settings</DependentUpon>
     </Compile>
-    <Compile Include="Service References\SoftvService\Reference.cs">
+    <Compile Include="Service References\SoftvService\Reference1.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>Reference.svcmap</DependentUpon>
@@ -525,6 +532,7 @@
     <Content Include="dist\css\AdminLTE.min.css" />
     <Content Include="dist\css\bootstrap-switch.css" />
     <Content Include="dist\css\pace.css" />
+    <Content Include="dist\css\pnotify.custom.min.css" />
     <Content Include="dist\css\skins\skin-black-light.css" />
     <Content Include="dist\css\skins\skin-black-light.min.css" />
     <Content Include="dist\css\skins\skin-black.css" />
@@ -570,6 +578,8 @@
     <Content Include="dist\js\jquery.flexdatalist.css" />
     <Content Include="dist\js\jquery.flexdatalist.js" />
     <Content Include="dist\js\pace.min.js" />
+    <Content Include="dist\js\pages\ClasificacionProblema\Lista.js" />
+    <Content Include="dist\js\pages\ClasificacionProblema\ModalProblem.js" />
     <Content Include="dist\js\pages\Cliente\DetalleCliente.js" />
     <Content Include="dist\js\pages\Cliente\EditaCliente.js" />
     <Content Include="dist\js\pages\Cliente\Lista.js" />
@@ -590,12 +600,16 @@
     <Content Include="dist\js\pages\Encuesta\Utilerias.js" />
     <Content Include="dist\js\pages\Llamada\agregar_llamada.js" />
     <Content Include="dist\js\pages\Llamada\Lista.js" />
+    <Content Include="dist\js\pages\MotAtenTel\Lista.js" />
+    <Content Include="dist\js\pages\MotAtenTel\ModalesMonAtenTel.js" />
     <Content Include="dist\js\pages\Permiso\Lista.js" />
     <Content Include="dist\js\pages\Permiso\ModalesPermisos.js" />
     <Content Include="dist\js\pages\Pregunta\editar_pregunta.js" />
     <Content Include="dist\js\pages\Pregunta\Lista.js" />
     <Content Include="dist\js\pages\RelEncuestaCliente\Lista.js" />
     <Content Include="dist\js\pages\ReportesVarios\Lista.js" />
+    <Content Include="dist\js\pages\ReportesVarios\LLenarSelect.js" />
+    <Content Include="dist\js\pages\ReportesVarios\Objeto.js" />
     <Content Include="dist\js\pages\ResOpcMult\Lista.js" />
     <Content Include="dist\js\pages\ResOpcMult\modales_respuestas.js" />
     <Content Include="dist\js\pages\ResOpcMult\modal_detalle_pregunta.js" />
@@ -604,6 +618,7 @@
     <Content Include="dist\js\pages\TipoPregunta\Lista.js" />
     <Content Include="dist\js\pages\Usuario\AgregarUsuario.js" />
     <Content Include="dist\js\pages\Usuario\Lista.js" />
+    <Content Include="dist\js\pnotify.custom.min.js" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
@@ -1402,6 +1417,9 @@
     <Content Include="Properties\DataSources\Softv.Entities.NoClienteEntity.datasource" />
     <Content Include="Properties\DataSources\Softv.Entities.DatosLlamadaEntity.datasource" />
     <Content Include="Properties\DataSources\Softv.Entities.EstadisticaEntity.datasource" />
+    <Content Include="Properties\DataSources\Softv.Entities.ServicioEntity.datasource" />
+    <Content Include="Properties\DataSources\Softv.Entities.MotAtenTelEntity.datasource" />
+    <Content Include="Properties\DataSources\Softv.Entities.ClasificacionProblemaEntity.datasource" />
     <None Include="Properties\PublishProfiles\SoftvMVC.pubxml" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
@@ -1442,7 +1460,7 @@
     <None Include="Service References\SoftvService\configuration.svcinfo" />
     <None Include="Service References\SoftvService\Reference.svcmap">
       <Generator>WCF Proxy Generator</Generator>
-      <LastGenOutput>Reference.cs</LastGenOutput>
+      <LastGenOutput>Reference1.cs</LastGenOutput>
     </None>
     <Content Include="Scripts\Prettify\lang-apollo.js" />
     <Content Include="Scripts\Prettify\lang-basic.js" />
@@ -1489,19 +1507,6 @@
     <Content Include="Web.Release.config">
       <DependentUpon>Web.config</DependentUpon>
     </Content>
-    <None Include="Service References\SoftvService\SoftvWCFService.wsdl" />
-    <None Include="Service References\SoftvService\SoftvWCFService.xsd">
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="Service References\SoftvService\SoftvWCFService1.xsd">
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="Service References\SoftvService\SoftvWCFService2.xsd">
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="Service References\SoftvService\SoftvWCFService3.xsd">
-      <SubType>Designer</SubType>
-    </None>
     <Content Include="Views\Account\ConfirmEmail.cshtml" />
     <Content Include="Views\Account\ExternalLoginConfirmation.cshtml" />
     <Content Include="Views\Account\ExternalLoginFailure.cshtml" />
@@ -1569,7 +1574,6 @@
     <Content Include="Views\RelEncuestaClientes\Index.cshtml" />
     <Content Include="Views\Cliente\Index.cshtml" />
     <Content Include="Views\Encuesta\PreView.cshtml" />
-    <Content Include="Views\Llamada\nueva_llamada.cshtml" />
     <Content Include="Views\ReportesVarios\Index.cshtml" />
     <Content Include="Views\ReportesEncuestas\Index.cshtml" />
     <Content Include="Views\Role\Create.cshtml" />
@@ -1580,6 +1584,31 @@
     <Content Include="Views\Permiso\Create.cshtml" />
     <Content Include="Views\Permiso\Edit.cshtml" />
     <Content Include="Views\Permiso\Index.cshtml" />
+    <Content Include="Views\MotAtenTel\Create.cshtml" />
+    <Content Include="Views\MotAtenTel\Details.cshtml" />
+    <Content Include="Views\MotAtenTel\Edit.cshtml" />
+    <Content Include="Views\MotAtenTel\Index.cshtml" />
+    <Content Include="Views\MotAtenTel\QuickIndex.cshtml" />
+    <Content Include="Views\ReportesLlamadas\ReportesLlamadas.cshtml" />
+    <Content Include="Views\Llamada\ReportesLlamadas.cshtml" />
+    <Content Include="Views\ClasificacionProblema\Create.cshtml" />
+    <Content Include="Views\ClasificacionProblema\Details.cshtml" />
+    <Content Include="Views\ClasificacionProblema\Edit.cshtml" />
+    <Content Include="Views\ClasificacionProblema\Index.cshtml" />
+    <Content Include="Views\ClasificacionProblema\QuickIndex.cshtml" />
+    <None Include="Service References\SoftvService\SoftvWCFService.wsdl" />
+    <None Include="Service References\SoftvService\SoftvWCFService.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\SoftvService\SoftvWCFService1.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\SoftvService\SoftvWCFService2.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\SoftvService\SoftvWCFService3.xsd">
+      <SubType>Designer</SubType>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

@@ -105,6 +105,12 @@ namespace Softv.Entities
         /// </summary>
         [DataMember]
         public int? id_asociado { get; set; }
+        
+        [DataMember]
+        public String Email { get; set; }
+
+        [DataMember]
+        public String Pais { get; set; }
         #endregion
     }
 }

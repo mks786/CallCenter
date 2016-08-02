@@ -185,16 +185,11 @@
                 </div>
                 <div class="nav-tabs-custom" id="contenido_editar" style="display:none;">
                     <ul class="nav nav-tabs">
-                        <li class="active"><a href="#tab_1" data-toggle="tab" aria-expanded="true"><i class="fa fa-folder" aria-hidden="true"></i> Información principal</a></li>
-                        @*<li class=""><a href="#tab_2a" id="tab-preguntas" data-toggle="tab" aria-expanded="false"><i class="fa fa-book" aria-hidden="true"></i> Datos Fiscales</a></li>*@
+                        <li class="active" id="personal"><a href="#tab_1" data-toggle="tab" aria-expanded="true"><i class="fa fa-folder" aria-hidden="true"></i> Información principal</a></li>
+                        <li class="" style="display:none;" id="fiscal"><a href="#tab_2a" id="tab-preguntas" data-toggle="tab" aria-expanded="false"><i class="fa fa-book" aria-hidden="true"></i> Datos Fiscales</a></li>
                     </ul>
                     <div class="tab-content">
                         <div class="tab-pane active" id="tab_1">
-
-
-
-
-
                             <div class="row">
                                 <div class="col-xs-2">
                                     <div class="form-group">
@@ -234,20 +229,20 @@
                             <div class="row">
                                 <div class="col-xs-3">
                                     <div class="form-group">
-                                        <label for="exampleInputEmail1">Fecha Nacimiento</label>
-                                        <input class="form-control" type="date" id="fecha_editar" required>
+                                        <label for="exampleInputEmail1">Fecha Nacimiento</label><br />
+                                        <input class="form-control" type="date" id="fecha_editar" required style="width: 150px;" disabled>
                                     </div>
                                 </div>
                                 <div class="col-xs-4">
                                     <div class="form-group">
                                         <label for="exampleInputEmail1">Ciudad</label>
-                                        <select class="form-control" id="ciudad_select" required></select>
+                                        <select class="form-control" id="ciudad_select" required disabled></select>
                                     </div>
                                 </div>
                                 <div class="col-xs-5">
                                     <div class="form-group">
                                         <label for="exampleInputEmail1">Colonia</label>
-                                        <select class="form-control" id="colonia_select" name="colonia" required></select>
+                                        <select class="form-control" id="colonia_select" name="colonia" required disabled></select>
                                     </div>
                                 </div>
 
@@ -257,13 +252,13 @@
                                 <div class="col-xs-4">
                                     <div class="form-group">
                                         <label for="exampleInputEmail1">Calle</label>
-                                        <select class="form-control" id="calle_editar" name="calle" required></select>
+                                        <select class="form-control" id="calle_editar" name="calle" required disabled></select>
                                     </div>
                                 </div>
                                 <div class="col-xs-3">
                                     <div class="form-group">
                                         <label for="exampleInputEmail1">Número</label>
-                                        <input class="form-control" type="text" id="numero_editar" required>
+                                        <input class="form-control" type="text" id="numero_editar" required disabled>
                                     </div>
                                 </div>
                             </div>
@@ -272,7 +267,7 @@
                                 <div class="col-xs-6">
                                     <div class="form-group">
                                         <label for="exampleInputEmail1">Entre Calles</label>
-                                        <input class="form-control" type="text" id="calles_editar">
+                                        <input class="form-control" type="text" id="calles_editar" disabled>
                                     </div>
                                 </div>
 
@@ -315,93 +310,93 @@
                                     <div class="form-group">
                                         <label for="exampleInputEmail1">RFC</label>
 
-                                        <input class="form-control" type="text" id="rfc">
+                                        <input class="form-control" type="text" id="rfc" disabled>
                                     </div>
                                 </div>
                                 <div class="col-xs-4">
                                     <div class="form-group">
                                         <label for="exampleInputEmail1">CURP</label>
-                                        <input class="form-control" type="text" id="curp">
+                                        <input class="form-control" type="text" id="curp" disabled>
                                     </div>
                                 </div>
                                 <div class="col-xs-4">
                                     <div class="form-group">
                                         <label for="exampleInputEmail1">Razón social</label>
-                                        <input class="form-control" type="text" id="rsocial">
+                                        <input class="form-control" type="text" id="rsocial" disabled>
                                     </div>
                                 </div>
                             </div>
                             <div class="row">
                                 <div class="col-xs-4">
                                     <div class="form-group">
+                                        <label for="exampleInputEmail1">Pais</label>
+
+                                        <input class="form-control" type="text" id="PaisFiscal" disabled>
+                                    </div>
+                                </div>
+                                <div class="col-xs-4">
+                                    <div class="form-group">
                                         <label for="exampleInputEmail1">Estado</label>
 
-                                        <input class="form-control" type="text" id="EstadoFiscal">
+                                        <input class="form-control" type="text" id="EstadoFiscal" disabled>
                                     </div>
                                 </div>
                                 <div class="col-xs-4">
                                     <div class="form-group">
                                         <label for="exampleInputEmail1">Ciudad</label>
-                                        <input class="form-control" type="text" id="CiudadFiscal">
+                                        <input class="form-control" type="text" id="CiudadFiscal" disabled>
                                     </div>
-                                </div>
-                                <div class="col-xs-4">
-                                    <div class="form-group">
-                                        <label for="exampleInputEmail1">Colonia</label>
-                                        <input class="form-control" type="text" id="ColoniaFiscal">
-                                    </div>
-                                </div>
-
+                                </div>                              
                             </div>
-
-
-
-
 
                             <div class="row">
                                 <div class="col-xs-4">
                                     <div class="form-group">
+                                        <label for="exampleInputEmail1">Colonia</label>
+                                        <input class="form-control" type="text" id="ColoniaFiscal" disabled>
+                                    </div>
+                                </div>
+                                <div class="col-xs-4">
+                                    <div class="form-group">
                                         <label for="exampleInputEmail1">Calle</label>
 
-                                        <input class="form-control" type="text" id="calleFiscal">
+                                        <input class="form-control" type="text" id="calleFiscal" disabled>
                                     </div>
                                 </div>
                                 <div class="col-xs-4">
                                     <div class="form-group">
                                         <label for="exampleInputEmail1">Entre calles</label>
 
-                                        <input class="form-control" type="text" id="callesFiscal">
+                                        <input class="form-control" type="text" id="callesFiscal" disabled>
                                     </div>
                                 </div>
+                            </div>
 
+                            <div class="row">
                                 <div class="col-xs-2">
                                     <div class="form-group">
                                         <label for="exampleInputEmail1">Numero</label>
-                                        <input class="form-control" type="text" id="NumeroFiscal">
+                                        <input class="form-control" type="text" id="NumeroFiscal" disabled>
                                     </div>
                                 </div>
                                 <div class="col-xs-2">
                                     <div class="form-group">
                                         <label for="exampleInputEmail1">Código postal</label>
-                                        <input class="form-control" type="text" id="postafiscal">
+                                        <input class="form-control" type="text" id="postafiscal" disabled>
                                     </div>
                                 </div>
-
-                            </div>
-
-                            <div class="row">
                                 <div class="col-xs-4">
                                     <div class="form-group">
                                         <label for="exampleInputEmail1">Teléfono</label>
 
-                                        <input class="form-control" type="text" id="TelefonoFiscal">
+                                        <input class="form-control" type="text" id="TelefonoFiscal" disabled>
                                     </div>
                                 </div>
 
                                 <div class="col-xs-4">
                                     <div class="form-group">
                                         <label for="exampleInputEmail1">Fax</label>
-                                        <input class="form-control" type="text" id="FaxFiscal">
+                                        <input class="form-control" type="text" id="FaxFiscal" disabled>
                                     </div>
                                 </div>
                                 <div class="col-xs-4">
@@ -412,6 +407,15 @@
 
                                 </div>
 
+                            </div>
+                            <div class="row">
+                                <div class="col-xs-4">
+                                    <div class="form-group">
+                                        <label for="exampleInputEmail1">Email</label>
+
+                                        <input class="form-control" type="text" id="EmailFiscal" disabled>
+                                    </div>
+                                </div>
                             </div>
 
 
@@ -558,7 +562,7 @@
     </div>
 </div>
 
-
+<script src="~/plugins/input-mask/jquery.inputmask.js"></script>
 <script src="~/dist/js/pages/Cliente/Lista.js"></script>    
 <script src="~/dist/js/pages/Cliente/DetalleCliente.js"></script>
 <script src="~/dist/js/pages/Cliente/EditaCliente.js"></script>    

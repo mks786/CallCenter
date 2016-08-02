@@ -39,6 +39,10 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Dapper, Version=1.50.2.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Dapper.1.50.2\lib\net45\Dapper.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Web.DynamicData" />
     <Reference Include="System.Web.Entity" />
@@ -69,6 +73,7 @@
     <Compile Include="Contracts\ICALLE.cs" />
     <Compile Include="Contracts\ICatalogoPeriodosCorte.cs" />
     <Compile Include="Contracts\ICIUDAD.cs" />
+    <Compile Include="Contracts\IClasificacionProblema.cs" />
     <Compile Include="Contracts\ICLIENTE.cs" />
     <Compile Include="Contracts\ICliente_Apellido.cs" />
     <Compile Include="Contracts\ICOLONIA.cs" />
@@ -81,6 +86,7 @@
     <Compile Include="Contracts\IEstadistica.cs" />
     <Compile Include="Contracts\ILlamada.cs" />
     <Compile Include="Contracts\IModule.cs" />
+    <Compile Include="Contracts\IMotAtenTel.cs" />
     <Compile Include="Contracts\IMotivoCancelacion.cs" />
     <Compile Include="Contracts\INoCliente.cs" />
     <Compile Include="Contracts\IPermiso.cs" />
@@ -94,6 +100,7 @@
     <Compile Include="Contracts\IRel_Clientes_TiposClientes.cs" />
     <Compile Include="Contracts\IResOpcMults.cs" />
     <Compile Include="Contracts\IRole.cs" />
+    <Compile Include="Contracts\IServicio.cs" />
     <Compile Include="Contracts\ITap.cs" />
     <Compile Include="Contracts\ItblClasificacionProblema.cs" />
     <Compile Include="Contracts\ItblPrioridadQueja.cs" />
@@ -115,7 +122,9 @@
     <Folder Include="PartialService\" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="packages.config" />
     <None Include="Properties\PublishProfiles\Services.pubxml" />
+    <None Include="Properties\PublishProfiles\SoftvWCFService.pubxml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

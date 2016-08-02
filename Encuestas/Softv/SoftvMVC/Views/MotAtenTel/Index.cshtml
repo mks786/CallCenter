@@ -1,0 +1,187 @@
+﻿@{
+    List<Softv.Entities.MotAtenTelEntity> MotAtenTel = (List<Softv.Entities.MotAtenTelEntity>)ViewData["Roles"];
+    try
+    {
+
+        List<Softv.Entities.PermisoEntity> Permiso = ViewBag.Permisos;
+        var per = Permiso.Where(p => p.IdModule == 25).FirstOrDefault();
+        <script>
+            var MotAtenTel_editar = "@per.OptUpdate";
+            var permiso_MotAtenTel = "@per.OptAdd";
+            var MotAtenTel_eliminar = "@per.OptDelete";
+        </script>
+    }
+    catch
+    {
+        <script>
+            location.href = "/";
+        </script>
+    }
+
+}
+
+
+
+<section class="content-header">
+    <h1>
+        Motivos Información
+        <small>Lista de Motivos Información</small>
+    </h1>
+    <ol class="breadcrumb">
+        <li><a href="#"><i class="fa fa-dashboard"></i> Inicio</a></li>
+        <li class="active">Lista de Motivos Información</li>
+    </ol>
+</section>
+
+
+<div class="row">
+    <div class="col-xs-12">
+        <div class="box">
+            <div class="box-header">
+                <h3 class="box-title">Lista de Motivos Información</h3>
+
+            </div><!-- /.box-header -->
+            <div class="box-body">
+
+                <table id="TablaMotAtenTel" class="table table-bordered table-hover dataTable">
+                    <thead>
+                        <tr>
+                            <td><b>IdMotivo</b></td>
+                            <td><b>Motivo</b></td>
+                            <td><b>Opciones</b></td>
+                        </tr>
+                    </thead>
+
+                </table>
+
+            </div>
+        </div>
+
+    </div>
+
+</div>
+
+
+
+@*MODAL AGREGAR*@
+<div class="modal fade bs-example-modal-xs" id="ModalAgregarMotivoInfo" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" data-backdrop="static" data-keyboard="false">
+    <div class="modal-dialog modal-xs">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button class="close" aria-label="Close" type="button" data-dismiss="modal"><span aria-hidden="true">×</span></button>
+                <h4 class="modal-title">Agregar Motivo de Información</h4>
+            </div>
+
+            <div class="modal-body">
+
+                <div class="row">
+                    <div class="col-md-6">
+                        <input type="text" class="form-control" id="Descripcion" name="Descripcion" placeholder="Descripción Motivo">
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="modal-footer">
+                <button class="btn btn-success" onclick="enviar_MotAtenTel()" type="button">Guardar</button>
+                <button class="btn btn-primary" type="button" data-dismiss="modal">Cancelar</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+@*MODAL DETALLE*@
+<div class="modal fade bs-example-modal-md" id="ModalDetalleMotivoInfo" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" data-backdrop="static" data-keyboard="false">
+    <div class="modal-dialog modal-md">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button class="close" aria-label="Close" type="button" data-dismiss="modal"><span aria-hidden="true">×</span></button>
+                <h4 class="modal-title">Detalles de Motivos Información</h4>
+            </div>
+
+            <div class="modal-body">
+                <div class="row">
+
+                    <div class="col-md-6">
+                        <label>Motivo:</label>
+                        <input type="text" class="form-control detalle_MotAtenTel" disabled />
+                    </div>
+
+                </div>
+            </div>
+
+            <div class="modal-footer">
+                <button class="btn btn-primary" type="button" data-dismiss="modal">Cerrar</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+@*MODAL EDITAR*@
+<div class="modal fade bs-example-modal-md" id="ModalEditarMotivoInfo" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" data-backdrop="static" data-keyboard="false">
+    <div class="modal-dialog modal-md">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button class="close" aria-label="Close" type="button" data-dismiss="modal"><span aria-hidden="true">×</span></button>
+                <h4 class="modal-title">Detalles de Motivos de Información</h4>
+            </div>
+
+            <div class="modal-body">
+
+                <div class="row">
+                    <div class="col-md-6">
+                        <label>Motivo:</label>
+                        <input type="text" class="form-control editar_MotAtenTel" />
+                    </div>
+
+                </div>
+
+            </div>
+
+            <div class="modal-footer">
+                <button class="btn btn-success" onclick="enviar_editar_MotivoInfo()" type="button">Guardar</button>
+                <button class="btn btn-primary" type="button" data-dismiss="modal">Cerrar</button>
+
+            </div>
+        </div>
+    </div>
+</div>
+
+
+@*MODAL ELIMINAR*@
+<div class="modal fade" id="ModalEliminaMotivoInfo" role="dialog" data-backdrop="static" data-keyboard="false">
+    <div class="modal-dialog modal-md">
+        <div class="modal-content">
+            <div class="modal-header alert-danger">
+                <button class="close" aria-label="Close" type="button" data-dismiss="modal"><span aria-hidden="true">×</span></button>
+                <h4 class="modal-title">Eliminar Motivo de Información</h4>
+            </div>
+
+            <div class="modal-body">
+
+                <input type="hidden" id="IdMotivo" />
+                <p class="red">¿Realmente deseas eliminar el Motivo de Información <strong id="Eliminar_Motivo"></strong>?</p>
+
+            </div>
+
+            <div class="modal-footer">
+                <button class="btn btn-danger" type="button" onclick="confirmar_eliminar_MotivoInfo()">Eliminar</button>
+                <button class="btn btn-primary" type="button" data-dismiss="modal">Cerrar</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    $(document).ready(function () {
+        $('#poner_activo li').siblings('li').removeClass('active');
+        $('.25').addClass('active');
+        $('#sub_activo li').siblings('li').removeClass('active');
+        $('.24').addClass('active');
+    });
+</script>
+
+<script src="~/dist/js/pages/MotAtenTel/Lista.js"></script>
+<script src="~/dist/js/pages/MotAtenTel/ModalesMonAtenTel.js"></script>

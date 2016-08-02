@@ -68,8 +68,8 @@ namespace Softv.BAL
             List<CIUDADEntity> entities = new List<CIUDADEntity>();
             entities = ProviderSoftv.CIUDAD.GetCIUDAD();
 
-            List<CVECOLCIUEntity> lCVECOLCIU = ProviderSoftv.CVECOLCIU.GetCVECOLCIU(entities.Where(x => x.Clv_Ciudad.HasValue).Select(x => x.Clv_Ciudad.Value).ToList());
-            lCVECOLCIU.ForEach(XCVECOLCIU => entities.Where(x => x.Clv_Ciudad.HasValue).Where(x => x.Clv_Ciudad == XCVECOLCIU.Clv_Ciudad).ToList().ForEach(y => y.CVECOLCIU = XCVECOLCIU));
+            //List<CVECOLCIUEntity> lCVECOLCIU = ProviderSoftv.CVECOLCIU.GetCVECOLCIU(entities.Where(x => x.Clv_Ciudad.HasValue).Select(x => x.Clv_Ciudad.Value).ToList());
+            //lCVECOLCIU.ForEach(XCVECOLCIU => entities.Where(x => x.Clv_Ciudad.HasValue).Where(x => x.Clv_Ciudad == XCVECOLCIU.Clv_Ciudad).ToList().ForEach(y => y.CVECOLCIU = XCVECOLCIU));
 
             return entities ?? new List<CIUDADEntity>();
         }

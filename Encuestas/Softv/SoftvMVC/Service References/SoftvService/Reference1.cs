@@ -5558,4 +5558,443 @@ namespace SoftvMVC.SoftvService {
             return base.Channel.GetEstadisticaListAsync(plaza, idencuesta, finicio, ffin);
         }
     }
+    
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ServiceModel.ServiceContractAttribute(ConfigurationName="SoftvService.IServicio")]
+    public interface IServicio {
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServicio/GetServicio", ReplyAction="http://tempuri.org/IServicio/GetServicioResponse")]
+        Softv.Entities.ServicioEntity GetServicio(System.Nullable<int> Clv_Servicio);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServicio/GetServicio", ReplyAction="http://tempuri.org/IServicio/GetServicioResponse")]
+        System.Threading.Tasks.Task<Softv.Entities.ServicioEntity> GetServicioAsync(System.Nullable<int> Clv_Servicio);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServicio/GetDeepServicio", ReplyAction="http://tempuri.org/IServicio/GetDeepServicioResponse")]
+        Softv.Entities.ServicioEntity GetDeepServicio(System.Nullable<int> Clv_Servicio);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServicio/GetDeepServicio", ReplyAction="http://tempuri.org/IServicio/GetDeepServicioResponse")]
+        System.Threading.Tasks.Task<Softv.Entities.ServicioEntity> GetDeepServicioAsync(System.Nullable<int> Clv_Servicio);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServicio/GetServicioList", ReplyAction="http://tempuri.org/IServicio/GetServicioListResponse")]
+        System.Collections.Generic.List<Softv.Entities.ServicioEntity> GetServicioList();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServicio/GetServicioList", ReplyAction="http://tempuri.org/IServicio/GetServicioListResponse")]
+        System.Threading.Tasks.Task<System.Collections.Generic.List<Softv.Entities.ServicioEntity>> GetServicioListAsync();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServicio/GetServicioPagedList", ReplyAction="http://tempuri.org/IServicio/GetServicioPagedListResponse")]
+        Globals.SoftvList<Softv.Entities.ServicioEntity> GetServicioPagedList(int page, int pageSize);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServicio/GetServicioPagedList", ReplyAction="http://tempuri.org/IServicio/GetServicioPagedListResponse")]
+        System.Threading.Tasks.Task<Globals.SoftvList<Softv.Entities.ServicioEntity>> GetServicioPagedListAsync(int page, int pageSize);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServicio/GetServicioPagedListXml", ReplyAction="http://tempuri.org/IServicio/GetServicioPagedListXmlResponse")]
+        Globals.SoftvList<Softv.Entities.ServicioEntity> GetServicioPagedListXml(int page, int pageSize, string xml);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServicio/GetServicioPagedListXml", ReplyAction="http://tempuri.org/IServicio/GetServicioPagedListXmlResponse")]
+        System.Threading.Tasks.Task<Globals.SoftvList<Softv.Entities.ServicioEntity>> GetServicioPagedListXmlAsync(int page, int pageSize, string xml);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServicio/AddServicio", ReplyAction="http://tempuri.org/IServicio/AddServicioResponse")]
+        int AddServicio(Softv.Entities.ServicioEntity objServicio);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServicio/AddServicio", ReplyAction="http://tempuri.org/IServicio/AddServicioResponse")]
+        System.Threading.Tasks.Task<int> AddServicioAsync(Softv.Entities.ServicioEntity objServicio);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServicio/UpdateServicio", ReplyAction="http://tempuri.org/IServicio/UpdateServicioResponse")]
+        int UpdateServicio(Softv.Entities.ServicioEntity objServicio);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServicio/UpdateServicio", ReplyAction="http://tempuri.org/IServicio/UpdateServicioResponse")]
+        System.Threading.Tasks.Task<int> UpdateServicioAsync(Softv.Entities.ServicioEntity objServicio);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServicio/DeleteServicio", ReplyAction="http://tempuri.org/IServicio/DeleteServicioResponse")]
+        int DeleteServicio(string BaseRemoteIp, int BaseIdUser, System.Nullable<int> Clv_Servicio);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServicio/DeleteServicio", ReplyAction="http://tempuri.org/IServicio/DeleteServicioResponse")]
+        System.Threading.Tasks.Task<int> DeleteServicioAsync(string BaseRemoteIp, int BaseIdUser, System.Nullable<int> Clv_Servicio);
+    }
+    
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    public interface IServicioChannel : SoftvMVC.SoftvService.IServicio, System.ServiceModel.IClientChannel {
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    public partial class ServicioClient : System.ServiceModel.ClientBase<SoftvMVC.SoftvService.IServicio>, SoftvMVC.SoftvService.IServicio {
+        
+        public ServicioClient() {
+        }
+        
+        public ServicioClient(string endpointConfigurationName) : 
+                base(endpointConfigurationName) {
+        }
+        
+        public ServicioClient(string endpointConfigurationName, string remoteAddress) : 
+                base(endpointConfigurationName, remoteAddress) {
+        }
+        
+        public ServicioClient(string endpointConfigurationName, System.ServiceModel.EndpointAddress remoteAddress) : 
+                base(endpointConfigurationName, remoteAddress) {
+        }
+        
+        public ServicioClient(System.ServiceModel.Channels.Binding binding, System.ServiceModel.EndpointAddress remoteAddress) : 
+                base(binding, remoteAddress) {
+        }
+        
+        public Softv.Entities.ServicioEntity GetServicio(System.Nullable<int> Clv_Servicio) {
+            return base.Channel.GetServicio(Clv_Servicio);
+        }
+        
+        public System.Threading.Tasks.Task<Softv.Entities.ServicioEntity> GetServicioAsync(System.Nullable<int> Clv_Servicio) {
+            return base.Channel.GetServicioAsync(Clv_Servicio);
+        }
+        
+        public Softv.Entities.ServicioEntity GetDeepServicio(System.Nullable<int> Clv_Servicio) {
+            return base.Channel.GetDeepServicio(Clv_Servicio);
+        }
+        
+        public System.Threading.Tasks.Task<Softv.Entities.ServicioEntity> GetDeepServicioAsync(System.Nullable<int> Clv_Servicio) {
+            return base.Channel.GetDeepServicioAsync(Clv_Servicio);
+        }
+        
+        public System.Collections.Generic.List<Softv.Entities.ServicioEntity> GetServicioList() {
+            return base.Channel.GetServicioList();
+        }
+        
+        public System.Threading.Tasks.Task<System.Collections.Generic.List<Softv.Entities.ServicioEntity>> GetServicioListAsync() {
+            return base.Channel.GetServicioListAsync();
+        }
+        
+        public Globals.SoftvList<Softv.Entities.ServicioEntity> GetServicioPagedList(int page, int pageSize) {
+            return base.Channel.GetServicioPagedList(page, pageSize);
+        }
+        
+        public System.Threading.Tasks.Task<Globals.SoftvList<Softv.Entities.ServicioEntity>> GetServicioPagedListAsync(int page, int pageSize) {
+            return base.Channel.GetServicioPagedListAsync(page, pageSize);
+        }
+        
+        public Globals.SoftvList<Softv.Entities.ServicioEntity> GetServicioPagedListXml(int page, int pageSize, string xml) {
+            return base.Channel.GetServicioPagedListXml(page, pageSize, xml);
+        }
+        
+        public System.Threading.Tasks.Task<Globals.SoftvList<Softv.Entities.ServicioEntity>> GetServicioPagedListXmlAsync(int page, int pageSize, string xml) {
+            return base.Channel.GetServicioPagedListXmlAsync(page, pageSize, xml);
+        }
+        
+        public int AddServicio(Softv.Entities.ServicioEntity objServicio) {
+            return base.Channel.AddServicio(objServicio);
+        }
+        
+        public System.Threading.Tasks.Task<int> AddServicioAsync(Softv.Entities.ServicioEntity objServicio) {
+            return base.Channel.AddServicioAsync(objServicio);
+        }
+        
+        public int UpdateServicio(Softv.Entities.ServicioEntity objServicio) {
+            return base.Channel.UpdateServicio(objServicio);
+        }
+        
+        public System.Threading.Tasks.Task<int> UpdateServicioAsync(Softv.Entities.ServicioEntity objServicio) {
+            return base.Channel.UpdateServicioAsync(objServicio);
+        }
+        
+        public int DeleteServicio(string BaseRemoteIp, int BaseIdUser, System.Nullable<int> Clv_Servicio) {
+            return base.Channel.DeleteServicio(BaseRemoteIp, BaseIdUser, Clv_Servicio);
+        }
+        
+        public System.Threading.Tasks.Task<int> DeleteServicioAsync(string BaseRemoteIp, int BaseIdUser, System.Nullable<int> Clv_Servicio) {
+            return base.Channel.DeleteServicioAsync(BaseRemoteIp, BaseIdUser, Clv_Servicio);
+        }
+    }
+    
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ServiceModel.ServiceContractAttribute(ConfigurationName="SoftvService.IMotAtenTel")]
+    public interface IMotAtenTel {
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IMotAtenTel/GetMotAtenTel", ReplyAction="http://tempuri.org/IMotAtenTel/GetMotAtenTelResponse")]
+        Softv.Entities.MotAtenTelEntity GetMotAtenTel(System.Nullable<int> Clv_Motivo);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IMotAtenTel/GetMotAtenTel", ReplyAction="http://tempuri.org/IMotAtenTel/GetMotAtenTelResponse")]
+        System.Threading.Tasks.Task<Softv.Entities.MotAtenTelEntity> GetMotAtenTelAsync(System.Nullable<int> Clv_Motivo);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IMotAtenTel/GetDeepMotAtenTel", ReplyAction="http://tempuri.org/IMotAtenTel/GetDeepMotAtenTelResponse")]
+        Softv.Entities.MotAtenTelEntity GetDeepMotAtenTel(System.Nullable<int> Clv_Motivo);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IMotAtenTel/GetDeepMotAtenTel", ReplyAction="http://tempuri.org/IMotAtenTel/GetDeepMotAtenTelResponse")]
+        System.Threading.Tasks.Task<Softv.Entities.MotAtenTelEntity> GetDeepMotAtenTelAsync(System.Nullable<int> Clv_Motivo);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IMotAtenTel/GetMotAtenTelList", ReplyAction="http://tempuri.org/IMotAtenTel/GetMotAtenTelListResponse")]
+        System.Collections.Generic.List<Softv.Entities.MotAtenTelEntity> GetMotAtenTelList();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IMotAtenTel/GetMotAtenTelList", ReplyAction="http://tempuri.org/IMotAtenTel/GetMotAtenTelListResponse")]
+        System.Threading.Tasks.Task<System.Collections.Generic.List<Softv.Entities.MotAtenTelEntity>> GetMotAtenTelListAsync();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IMotAtenTel/GetMotAtenTelPagedList", ReplyAction="http://tempuri.org/IMotAtenTel/GetMotAtenTelPagedListResponse")]
+        Globals.SoftvList<Softv.Entities.MotAtenTelEntity> GetMotAtenTelPagedList(int page, int pageSize);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IMotAtenTel/GetMotAtenTelPagedList", ReplyAction="http://tempuri.org/IMotAtenTel/GetMotAtenTelPagedListResponse")]
+        System.Threading.Tasks.Task<Globals.SoftvList<Softv.Entities.MotAtenTelEntity>> GetMotAtenTelPagedListAsync(int page, int pageSize);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IMotAtenTel/GetMotAtenTelPagedListXml", ReplyAction="http://tempuri.org/IMotAtenTel/GetMotAtenTelPagedListXmlResponse")]
+        Globals.SoftvList<Softv.Entities.MotAtenTelEntity> GetMotAtenTelPagedListXml(int page, int pageSize, string xml);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IMotAtenTel/GetMotAtenTelPagedListXml", ReplyAction="http://tempuri.org/IMotAtenTel/GetMotAtenTelPagedListXmlResponse")]
+        System.Threading.Tasks.Task<Globals.SoftvList<Softv.Entities.MotAtenTelEntity>> GetMotAtenTelPagedListXmlAsync(int page, int pageSize, string xml);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IMotAtenTel/AddMotAtenTel", ReplyAction="http://tempuri.org/IMotAtenTel/AddMotAtenTelResponse")]
+        int AddMotAtenTel(Softv.Entities.MotAtenTelEntity objMotAtenTel);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IMotAtenTel/AddMotAtenTel", ReplyAction="http://tempuri.org/IMotAtenTel/AddMotAtenTelResponse")]
+        System.Threading.Tasks.Task<int> AddMotAtenTelAsync(Softv.Entities.MotAtenTelEntity objMotAtenTel);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IMotAtenTel/UpdateMotAtenTel", ReplyAction="http://tempuri.org/IMotAtenTel/UpdateMotAtenTelResponse")]
+        int UpdateMotAtenTel(Softv.Entities.MotAtenTelEntity objMotAtenTel);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IMotAtenTel/UpdateMotAtenTel", ReplyAction="http://tempuri.org/IMotAtenTel/UpdateMotAtenTelResponse")]
+        System.Threading.Tasks.Task<int> UpdateMotAtenTelAsync(Softv.Entities.MotAtenTelEntity objMotAtenTel);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IMotAtenTel/DeleteMotAtenTel", ReplyAction="http://tempuri.org/IMotAtenTel/DeleteMotAtenTelResponse")]
+        int DeleteMotAtenTel(string BaseRemoteIp, int BaseIdUser, System.Nullable<int> Clv_Motivo);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IMotAtenTel/DeleteMotAtenTel", ReplyAction="http://tempuri.org/IMotAtenTel/DeleteMotAtenTelResponse")]
+        System.Threading.Tasks.Task<int> DeleteMotAtenTelAsync(string BaseRemoteIp, int BaseIdUser, System.Nullable<int> Clv_Motivo);
+    }
+    
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    public interface IMotAtenTelChannel : SoftvMVC.SoftvService.IMotAtenTel, System.ServiceModel.IClientChannel {
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    public partial class MotAtenTelClient : System.ServiceModel.ClientBase<SoftvMVC.SoftvService.IMotAtenTel>, SoftvMVC.SoftvService.IMotAtenTel {
+        
+        public MotAtenTelClient() {
+        }
+        
+        public MotAtenTelClient(string endpointConfigurationName) : 
+                base(endpointConfigurationName) {
+        }
+        
+        public MotAtenTelClient(string endpointConfigurationName, string remoteAddress) : 
+                base(endpointConfigurationName, remoteAddress) {
+        }
+        
+        public MotAtenTelClient(string endpointConfigurationName, System.ServiceModel.EndpointAddress remoteAddress) : 
+                base(endpointConfigurationName, remoteAddress) {
+        }
+        
+        public MotAtenTelClient(System.ServiceModel.Channels.Binding binding, System.ServiceModel.EndpointAddress remoteAddress) : 
+                base(binding, remoteAddress) {
+        }
+        
+        public Softv.Entities.MotAtenTelEntity GetMotAtenTel(System.Nullable<int> Clv_Motivo) {
+            return base.Channel.GetMotAtenTel(Clv_Motivo);
+        }
+        
+        public System.Threading.Tasks.Task<Softv.Entities.MotAtenTelEntity> GetMotAtenTelAsync(System.Nullable<int> Clv_Motivo) {
+            return base.Channel.GetMotAtenTelAsync(Clv_Motivo);
+        }
+        
+        public Softv.Entities.MotAtenTelEntity GetDeepMotAtenTel(System.Nullable<int> Clv_Motivo) {
+            return base.Channel.GetDeepMotAtenTel(Clv_Motivo);
+        }
+        
+        public System.Threading.Tasks.Task<Softv.Entities.MotAtenTelEntity> GetDeepMotAtenTelAsync(System.Nullable<int> Clv_Motivo) {
+            return base.Channel.GetDeepMotAtenTelAsync(Clv_Motivo);
+        }
+        
+        public System.Collections.Generic.List<Softv.Entities.MotAtenTelEntity> GetMotAtenTelList() {
+            return base.Channel.GetMotAtenTelList();
+        }
+        
+        public System.Threading.Tasks.Task<System.Collections.Generic.List<Softv.Entities.MotAtenTelEntity>> GetMotAtenTelListAsync() {
+            return base.Channel.GetMotAtenTelListAsync();
+        }
+        
+        public Globals.SoftvList<Softv.Entities.MotAtenTelEntity> GetMotAtenTelPagedList(int page, int pageSize) {
+            return base.Channel.GetMotAtenTelPagedList(page, pageSize);
+        }
+        
+        public System.Threading.Tasks.Task<Globals.SoftvList<Softv.Entities.MotAtenTelEntity>> GetMotAtenTelPagedListAsync(int page, int pageSize) {
+            return base.Channel.GetMotAtenTelPagedListAsync(page, pageSize);
+        }
+        
+        public Globals.SoftvList<Softv.Entities.MotAtenTelEntity> GetMotAtenTelPagedListXml(int page, int pageSize, string xml) {
+            return base.Channel.GetMotAtenTelPagedListXml(page, pageSize, xml);
+        }
+        
+        public System.Threading.Tasks.Task<Globals.SoftvList<Softv.Entities.MotAtenTelEntity>> GetMotAtenTelPagedListXmlAsync(int page, int pageSize, string xml) {
+            return base.Channel.GetMotAtenTelPagedListXmlAsync(page, pageSize, xml);
+        }
+        
+        public int AddMotAtenTel(Softv.Entities.MotAtenTelEntity objMotAtenTel) {
+            return base.Channel.AddMotAtenTel(objMotAtenTel);
+        }
+        
+        public System.Threading.Tasks.Task<int> AddMotAtenTelAsync(Softv.Entities.MotAtenTelEntity objMotAtenTel) {
+            return base.Channel.AddMotAtenTelAsync(objMotAtenTel);
+        }
+        
+        public int UpdateMotAtenTel(Softv.Entities.MotAtenTelEntity objMotAtenTel) {
+            return base.Channel.UpdateMotAtenTel(objMotAtenTel);
+        }
+        
+        public System.Threading.Tasks.Task<int> UpdateMotAtenTelAsync(Softv.Entities.MotAtenTelEntity objMotAtenTel) {
+            return base.Channel.UpdateMotAtenTelAsync(objMotAtenTel);
+        }
+        
+        public int DeleteMotAtenTel(string BaseRemoteIp, int BaseIdUser, System.Nullable<int> Clv_Motivo) {
+            return base.Channel.DeleteMotAtenTel(BaseRemoteIp, BaseIdUser, Clv_Motivo);
+        }
+        
+        public System.Threading.Tasks.Task<int> DeleteMotAtenTelAsync(string BaseRemoteIp, int BaseIdUser, System.Nullable<int> Clv_Motivo) {
+            return base.Channel.DeleteMotAtenTelAsync(BaseRemoteIp, BaseIdUser, Clv_Motivo);
+        }
+    }
+    
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ServiceModel.ServiceContractAttribute(ConfigurationName="SoftvService.IClasificacionProblema")]
+    public interface IClasificacionProblema {
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IClasificacionProblema/GetClasificacionProblema", ReplyAction="http://tempuri.org/IClasificacionProblema/GetClasificacionProblemaResponse")]
+        Softv.Entities.ClasificacionProblemaEntity GetClasificacionProblema(System.Nullable<long> ClvProblema);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IClasificacionProblema/GetClasificacionProblema", ReplyAction="http://tempuri.org/IClasificacionProblema/GetClasificacionProblemaResponse")]
+        System.Threading.Tasks.Task<Softv.Entities.ClasificacionProblemaEntity> GetClasificacionProblemaAsync(System.Nullable<long> ClvProblema);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IClasificacionProblema/GetDeepClasificacionProblema", ReplyAction="http://tempuri.org/IClasificacionProblema/GetDeepClasificacionProblemaResponse")]
+        Softv.Entities.ClasificacionProblemaEntity GetDeepClasificacionProblema(System.Nullable<long> ClvProblema);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IClasificacionProblema/GetDeepClasificacionProblema", ReplyAction="http://tempuri.org/IClasificacionProblema/GetDeepClasificacionProblemaResponse")]
+        System.Threading.Tasks.Task<Softv.Entities.ClasificacionProblemaEntity> GetDeepClasificacionProblemaAsync(System.Nullable<long> ClvProblema);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IClasificacionProblema/GetClasificacionProblemaList", ReplyAction="http://tempuri.org/IClasificacionProblema/GetClasificacionProblemaListResponse")]
+        System.Collections.Generic.List<Softv.Entities.ClasificacionProblemaEntity> GetClasificacionProblemaList();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IClasificacionProblema/GetClasificacionProblemaList", ReplyAction="http://tempuri.org/IClasificacionProblema/GetClasificacionProblemaListResponse")]
+        System.Threading.Tasks.Task<System.Collections.Generic.List<Softv.Entities.ClasificacionProblemaEntity>> GetClasificacionProblemaListAsync();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IClasificacionProblema/GetClasificacionProblemaPagedList", ReplyAction="http://tempuri.org/IClasificacionProblema/GetClasificacionProblemaPagedListRespon" +
+            "se")]
+        Globals.SoftvList<Softv.Entities.ClasificacionProblemaEntity> GetClasificacionProblemaPagedList(int page, int pageSize);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IClasificacionProblema/GetClasificacionProblemaPagedList", ReplyAction="http://tempuri.org/IClasificacionProblema/GetClasificacionProblemaPagedListRespon" +
+            "se")]
+        System.Threading.Tasks.Task<Globals.SoftvList<Softv.Entities.ClasificacionProblemaEntity>> GetClasificacionProblemaPagedListAsync(int page, int pageSize);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IClasificacionProblema/GetClasificacionProblemaPagedListXml", ReplyAction="http://tempuri.org/IClasificacionProblema/GetClasificacionProblemaPagedListXmlRes" +
+            "ponse")]
+        Globals.SoftvList<Softv.Entities.ClasificacionProblemaEntity> GetClasificacionProblemaPagedListXml(int page, int pageSize, string xml);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IClasificacionProblema/GetClasificacionProblemaPagedListXml", ReplyAction="http://tempuri.org/IClasificacionProblema/GetClasificacionProblemaPagedListXmlRes" +
+            "ponse")]
+        System.Threading.Tasks.Task<Globals.SoftvList<Softv.Entities.ClasificacionProblemaEntity>> GetClasificacionProblemaPagedListXmlAsync(int page, int pageSize, string xml);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IClasificacionProblema/AddClasificacionProblema", ReplyAction="http://tempuri.org/IClasificacionProblema/AddClasificacionProblemaResponse")]
+        int AddClasificacionProblema(Softv.Entities.ClasificacionProblemaEntity objClasificacionProblema);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IClasificacionProblema/AddClasificacionProblema", ReplyAction="http://tempuri.org/IClasificacionProblema/AddClasificacionProblemaResponse")]
+        System.Threading.Tasks.Task<int> AddClasificacionProblemaAsync(Softv.Entities.ClasificacionProblemaEntity objClasificacionProblema);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IClasificacionProblema/UpdateClasificacionProblema", ReplyAction="http://tempuri.org/IClasificacionProblema/UpdateClasificacionProblemaResponse")]
+        int UpdateClasificacionProblema(Softv.Entities.ClasificacionProblemaEntity objClasificacionProblema);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IClasificacionProblema/UpdateClasificacionProblema", ReplyAction="http://tempuri.org/IClasificacionProblema/UpdateClasificacionProblemaResponse")]
+        System.Threading.Tasks.Task<int> UpdateClasificacionProblemaAsync(Softv.Entities.ClasificacionProblemaEntity objClasificacionProblema);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IClasificacionProblema/DeleteClasificacionProblema", ReplyAction="http://tempuri.org/IClasificacionProblema/DeleteClasificacionProblemaResponse")]
+        int DeleteClasificacionProblema(string BaseRemoteIp, int BaseIdUser, System.Nullable<long> ClvProblema);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IClasificacionProblema/DeleteClasificacionProblema", ReplyAction="http://tempuri.org/IClasificacionProblema/DeleteClasificacionProblemaResponse")]
+        System.Threading.Tasks.Task<int> DeleteClasificacionProblemaAsync(string BaseRemoteIp, int BaseIdUser, System.Nullable<long> ClvProblema);
+    }
+    
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    public interface IClasificacionProblemaChannel : SoftvMVC.SoftvService.IClasificacionProblema, System.ServiceModel.IClientChannel {
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    public partial class ClasificacionProblemaClient : System.ServiceModel.ClientBase<SoftvMVC.SoftvService.IClasificacionProblema>, SoftvMVC.SoftvService.IClasificacionProblema {
+        
+        public ClasificacionProblemaClient() {
+        }
+        
+        public ClasificacionProblemaClient(string endpointConfigurationName) : 
+                base(endpointConfigurationName) {
+        }
+        
+        public ClasificacionProblemaClient(string endpointConfigurationName, string remoteAddress) : 
+                base(endpointConfigurationName, remoteAddress) {
+        }
+        
+        public ClasificacionProblemaClient(string endpointConfigurationName, System.ServiceModel.EndpointAddress remoteAddress) : 
+                base(endpointConfigurationName, remoteAddress) {
+        }
+        
+        public ClasificacionProblemaClient(System.ServiceModel.Channels.Binding binding, System.ServiceModel.EndpointAddress remoteAddress) : 
+                base(binding, remoteAddress) {
+        }
+        
+        public Softv.Entities.ClasificacionProblemaEntity GetClasificacionProblema(System.Nullable<long> ClvProblema) {
+            return base.Channel.GetClasificacionProblema(ClvProblema);
+        }
+        
+        public System.Threading.Tasks.Task<Softv.Entities.ClasificacionProblemaEntity> GetClasificacionProblemaAsync(System.Nullable<long> ClvProblema) {
+            return base.Channel.GetClasificacionProblemaAsync(ClvProblema);
+        }
+        
+        public Softv.Entities.ClasificacionProblemaEntity GetDeepClasificacionProblema(System.Nullable<long> ClvProblema) {
+            return base.Channel.GetDeepClasificacionProblema(ClvProblema);
+        }
+        
+        public System.Threading.Tasks.Task<Softv.Entities.ClasificacionProblemaEntity> GetDeepClasificacionProblemaAsync(System.Nullable<long> ClvProblema) {
+            return base.Channel.GetDeepClasificacionProblemaAsync(ClvProblema);
+        }
+        
+        public System.Collections.Generic.List<Softv.Entities.ClasificacionProblemaEntity> GetClasificacionProblemaList() {
+            return base.Channel.GetClasificacionProblemaList();
+        }
+        
+        public System.Threading.Tasks.Task<System.Collections.Generic.List<Softv.Entities.ClasificacionProblemaEntity>> GetClasificacionProblemaListAsync() {
+            return base.Channel.GetClasificacionProblemaListAsync();
+        }
+        
+        public Globals.SoftvList<Softv.Entities.ClasificacionProblemaEntity> GetClasificacionProblemaPagedList(int page, int pageSize) {
+            return base.Channel.GetClasificacionProblemaPagedList(page, pageSize);
+        }
+        
+        public System.Threading.Tasks.Task<Globals.SoftvList<Softv.Entities.ClasificacionProblemaEntity>> GetClasificacionProblemaPagedListAsync(int page, int pageSize) {
+            return base.Channel.GetClasificacionProblemaPagedListAsync(page, pageSize);
+        }
+        
+        public Globals.SoftvList<Softv.Entities.ClasificacionProblemaEntity> GetClasificacionProblemaPagedListXml(int page, int pageSize, string xml) {
+            return base.Channel.GetClasificacionProblemaPagedListXml(page, pageSize, xml);
+        }
+        
+        public System.Threading.Tasks.Task<Globals.SoftvList<Softv.Entities.ClasificacionProblemaEntity>> GetClasificacionProblemaPagedListXmlAsync(int page, int pageSize, string xml) {
+            return base.Channel.GetClasificacionProblemaPagedListXmlAsync(page, pageSize, xml);
+        }
+        
+        public int AddClasificacionProblema(Softv.Entities.ClasificacionProblemaEntity objClasificacionProblema) {
+            return base.Channel.AddClasificacionProblema(objClasificacionProblema);
+        }
+        
+        public System.Threading.Tasks.Task<int> AddClasificacionProblemaAsync(Softv.Entities.ClasificacionProblemaEntity objClasificacionProblema) {
+            return base.Channel.AddClasificacionProblemaAsync(objClasificacionProblema);
+        }
+        
+        public int UpdateClasificacionProblema(Softv.Entities.ClasificacionProblemaEntity objClasificacionProblema) {
+            return base.Channel.UpdateClasificacionProblema(objClasificacionProblema);
+        }
+        
+        public System.Threading.Tasks.Task<int> UpdateClasificacionProblemaAsync(Softv.Entities.ClasificacionProblemaEntity objClasificacionProblema) {
+            return base.Channel.UpdateClasificacionProblemaAsync(objClasificacionProblema);
+        }
+        
+        public int DeleteClasificacionProblema(string BaseRemoteIp, int BaseIdUser, System.Nullable<long> ClvProblema) {
+            return base.Channel.DeleteClasificacionProblema(BaseRemoteIp, BaseIdUser, ClvProblema);
+        }
+        
+        public System.Threading.Tasks.Task<int> DeleteClasificacionProblemaAsync(string BaseRemoteIp, int BaseIdUser, System.Nullable<long> ClvProblema) {
+            return base.Channel.DeleteClasificacionProblemaAsync(BaseRemoteIp, BaseIdUser, ClvProblema);
+        }
+    }
 }

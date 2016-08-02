@@ -392,6 +392,33 @@ namespace SoftvConfiguration
         {
             get { return (EstadisticaElement)base["Estadistica"]; }
         }
+
+
+        /// <summary>
+        /// Gets Servicio configuration data
+        /// </summary>
+        [ConfigurationProperty("Servicio")]
+        public ServicioElement Servicio
+        {
+            get { return (ServicioElement)base["Servicio"]; }
+        }
+
+        /// <summary>
+        /// Gets MotAtenTel configuration data
+        /// </summary>
+        [ConfigurationProperty("MotAtenTel")]
+        public MotAtenTelElement MotAtenTel
+        {
+            get { return (MotAtenTelElement)base["MotAtenTel"]; }
+        }
+        /// <summary>
+        /// Gets ClasificacionProblema configuration data
+        /// </summary>
+        [ConfigurationProperty("ClasificacionProblema")]
+        public ClasificacionProblemaElement ClasificacionProblema
+        {
+            get { return (ClasificacionProblemaElement)base["ClasificacionProblema"]; }
+        }
   
     }
 }

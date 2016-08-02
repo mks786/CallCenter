@@ -12,3 +12,10 @@ C:\Users\Israel\Documents\projects\CallCenter\Encuestas\Softv\Globals\bin\Releas
 C:\Users\Israel\Documents\projects\CallCenter\Encuestas\Softv\Globals\obj\Release\Globals.csprojResolveAssemblyReference.cache
 C:\Users\Israel\Documents\projects\CallCenter\Encuestas\Softv\Globals\obj\Release\Globals.dll
 C:\Users\Israel\Documents\projects\CallCenter\Encuestas\Softv\Globals\obj\Release\Globals.pdb
+C:\Users\Israel\Documents\projects\CallCenter2\CallCenter\Encuestas\Softv\Globals\bin\Release\Globals.dll
+C:\Users\Israel\Documents\projects\CallCenter2\CallCenter\Encuestas\Softv\Globals\bin\Release\Globals.pdb
+C:\Users\Israel\Documents\projects\CallCenter2\CallCenter\Encuestas\Softv\Globals\obj\Release\Globals.csprojResolveAssemblyReference.cache
+C:\Users\Israel\Documents\projects\CallCenter2\CallCenter\Encuestas\Softv\Globals\obj\Release\Globals.dll
+C:\Users\Israel\Documents\projects\CallCenter2\CallCenter\Encuestas\Softv\Globals\obj\Release\Globals.pdb
+C:\Users\Israel\Documents\projects\CallCenter2\CallCenter\Encuestas\Softv\Globals\bin\Release\Dapper.dll
+C:\Users\Israel\Documents\projects\CallCenter2\CallCenter\Encuestas\Softv\Globals\bin\Release\Dapper.xml

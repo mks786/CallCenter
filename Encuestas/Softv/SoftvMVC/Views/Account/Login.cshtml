@@ -36,10 +36,31 @@
     <![endif]-->
     <link href="~/plugins/sweetAlert/sweetalert.css" rel="stylesheet" />
     <script src="~/plugins/sweetAlert/sweetalert.min.js"></script>
+    <link href="~/dist/css/pnotify.custom.min.css" rel="stylesheet" />
+    <script src="~/dist/js/pnotify.custom.min.js"></script>
 
     <script>
 
-    $(document).ready(function () {
+        $(document).ready(function () {
+            var isOpera = (!!window.opr && !!opr.addons) || !!window.opera || navigator.userAgent.indexOf(' OPR/') >= 0;
+            // Firefox 1.0+
+            var isFirefox = typeof InstallTrigger !== 'undefined';
+            // At least Safari 3+: "[object HTMLElementConstructor]"
+            var isSafari = Object.prototype.toString.call(window.HTMLElement).indexOf('Constructor') > 0;
+            // Internet Explorer 6-11
+            // Chrome 1+
+            var isChrome = !!window.chrome && !!window.chrome.webstore;
+            // Blink engine detection
+            var isBlink = (isChrome || isOpera) && !!window.CSS;
+            if (isFirefox == false && isOpera == false && isChrome == false) {
+                new PNotify({
+                    title: 'Tienes un navegador no soportado',
+                    text: 'Por favor usa un navegador actualizado como Chrome ó Firefox, de lo contrario el sistema no funcionará correctamente.',
+                    icon: 'fa fa-info-circle',
+                    type: 'error'
+                });
+            }
+           
         $("#textonissantitulo").hide();
         $("#imagennissantitulo").hide();
         //Funcion para hacer login

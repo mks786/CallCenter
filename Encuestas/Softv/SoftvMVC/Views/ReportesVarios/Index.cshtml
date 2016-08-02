@@ -33,6 +33,11 @@
                                 <div align="center">
                                     <div class="row form-group">
                                         <div class="col-lg-12    col-md-12    col-sm-12    col-xs-12">
+                                            <select name='listaConexionPlaza' onchange='' id='listaConexionPlaza' class='form-control'></select>
+                                        </div>
+                                    </div>
+                                    <div class="row form-group">
+                                        <div class="col-lg-12    col-md-12    col-sm-12    col-xs-12">
                                             <select name='listaTipoServicio' onchange='filtraOnChange(this);' id='listaTipoServicio' class='form-control'>
                                                 <option value="1">Servicio de Tv por Cable</option>
                                                 <option value="2">Internet</option>
@@ -43,8 +48,8 @@
                                         <div class="col-lg-12    col-md-12    col-sm-12    col-xs-12" align="left">
                                             <form action="">
                                                 <label>Ordenar Reportes Por</label><br>
-                                                <input type="radio" name="a" value="contrato"> Contrato<br>
-                                                <input type="radio" name="a" value="coloniaCalle"> Colonia y Calle<br>
+                                                <input type="radio" name="ordenar" value="1" checked="checked"> Contrato<br>
+                                                <input type="radio" name="ordenar" value="2"> Colonia y Calle<br>
                                             </form>
                                         </div>
                                     </div>
@@ -53,7 +58,7 @@
                                             <form action="">
                                                 <label>Filtrar Por</label><br>
                                                 <div class="checkbox">
-                                                    <label><input type="checkbox" value="soloInternet">Solo Internet</label>
+                                                    <label><input type="checkbox" id="soloInternet">Solo Internet</label>
                                                 </div>
                                             </form>
                                         </div>
@@ -70,28 +75,30 @@
                                                     <i class='' aria-hidden='true'></i> Reportes
                                                 </button>
 
-                                                <select name="reporte" id="reportes" size=13 style="width:210px">
+                                                <select name="reportes" id="reportes" size=13 style="width:210px">
                                                     <!--(value o idReporte, idModal)-->
-                                                    <option value="0" onclick="secuenciaModal(0, 0)">Desconectados</option>
-                                                    <option value="1" onclick="secuenciaModal(1, 0)">Suspendidos</option>
-                                                    <option value="2" onclick="secuenciaModal(2, 0)">Al corriente</option>
-                                                    <option value="3" onclick="secuenciaModal(3, 0)">Adelantados</option>
-                                                    <option value="4" onclick="secuenciaModal(4, 0)">Contrataciones</option>
-                                                    <option value="5" onclick="secuenciaModal(5, 0)">Por Pagar</option>
-                                                    <option value="6" onclick="secuenciaModal(6, 0)">Instalaciones</option>
-                                                    <option value="7" onclick="secuenciaModal(7, 0)">Cancelaciones</option>
-                                                    <option value="8" onclick="secuenciaModal(8, 0)">Por Instalar</option>
-                                                    <option value="9" onclick="secuenciaModal(9, 0)">Fueras de Area</option>
-                                                    <option value="10" onclick="secuenciaModal(10, 1)">Paquetes de Cortesia </option>
-                                                    <option value="11" onclick="secuenciaModal(11, 0)">Ciudad</option>
-                                                    <option value="12" onclick="secuenciaModal(12, 0)">Resumen por Colonia y Status</option>
+                                                    <option value="0" id="3" onclick="borrarObj(); secuenciaModal(0, 0)">Desconectados</option>
+                                                    <option value="1" id="2" onclick="borrarObj();secuenciaModal(1, 0)">Suspendidos</option>
+                                                    <option value="2" onclick="borrarObj();secuenciaModal(2, 0)">Al corriente</option>
+                                                    <option value="3" onclick="borrarObj();secuenciaModal(3, 0)">Adelantados</option>
+                                                    <option value="4" onclick="borrarObj();secuenciaModal(4, 0)">Contrataciones</option>
+                                                    <option value="5" id="1" onclick="borrarObj();secuenciaModal(5, 0)">Por Pagar</option>
+                                                    <option value="6" onclick="borrarObj(); secuenciaModal(6, 0)">Instalaciones</option>
+                                                    <option value="7" onclick="borrarObj(); secuenciaModal(7, 0)">Cancelaciones</option>
+                                                    <option value="8" onclick="borrarObj(); secuenciaModal(8, 0)">Por Instalar</option>
+                                                    <option value="9" onclick="borrarObj(); secuenciaModal(9, 0)">Fueras de Área</option>
+                                                    <option value="10" onclick="borrarObj(); secuenciaModal(10, 1)">Paquetes de Cortesía </option>
+                                                    <option value="11" onclick="borrarObj(); secuenciaModal(11, 0)">Ciudad</option>
+                                                    <option value="12" onclick="borrarObj(); secuenciaModal(12, 0)">Resumen por Colonia y Status</option>
                                                 </select>
                                             </form>
                                         </div>
                                     </div>
                                 </div>
-                                <div name="botones">
-                                    @*<button type="button" class="btn btn-info btn-sm" data-toggle="modal" data-target="#tipoCliente">tipoCliente</button>
+
+                                @*<div name="botones">
+                                        <button type="button" class="btn btn-info btn-sm" onclick="guardarDatos(0)">datos</button>
+                                        <button type="button" class="btn btn-info btn-sm" data-toggle="modal" data-target="#tipoCliente">tipoCliente</button>
                                         <button type="button" class="btn btn-info btn-sm" data-toggle="modal" data-target="#tipoServicio">tipoServicio</button>
                                         <button type="button" class="btn btn-info btn-sm" data-toggle="modal" data-target="#ciudades">ciudades</button>
                                         <button type="button" class="btn btn-info btn-sm" data-toggle="modal" data-target="#colonias">colonias</button>
@@ -102,8 +109,8 @@
                                         <button type="button" class="btn btn-info btn-sm" data-toggle="modal" data-target="#calles">calles</button>
                                         <button class="btn btn-default" type="button" data-dismiss="modal" onclick="pdf();">pdf</button>
                                         <button type="button" class="btn btn-info btn-sm" data-toggle="modal" data-target="#estatusCliente">estatusCliente</button>
-                                        <button type="button" class="btn btn-warning btn-sm" data-toggle="modal" onclick="functionAceptar();">Probarfunción</button>*@
-                                </div>
+                                        <button type="button" class="btn btn-warning btn-sm" data-toggle="modal" onclick="functionAceptar();">Probarfunción</button>
+                                    </div>*@
 
                             </td>
                             <td style="width:70%;" align="center">
@@ -134,64 +141,64 @@
                 <h4 class="modal-title">Selección Tipos de Clientes</h4>
             </div>
             <div class="modal-body">
-                <div class="nav-tabs-custom">
+                @*<div class="nav-tabs-custom">
                     <div class="tab-content">
-                        <div class="tab-pane active" id="tab_1">
-                            <div class="row form-group" align="center">
-                                <input type="hidden" value="" id="idReporte1" />  @****guarda el index del reporte al que se le dio click ******@
+                        <div class="tab-pane active" id="tab_1">*@
+                <div class="row form-group" align="center">
+                    <input type="hidden" value="" id="idReporte1" />  @****guarda el index del reporte al que se le dio click ******@
 
-                                <form action="" method="post" id="formulario" class="validar_form">
-                                    <table>
-                                        <tr>
-                                            <td style="width:45%;" align="center">
-                                                <div>
-                                                    <label>Seleccione Tipo(s) de Cliente(s)</label>
+                    <form action="" method="post" id="formulario" class="validar_form">
+                        <table>
+                            <tr>
+                                <td style="width:45%;" align="center">
+                                    <div>
+                                        <label>Seleccione Tipo(s) de Cliente(s)</label>
 
-                                                    <select name="origenClientes" id="origenClientes" multiple="multiple" size=10 style="width:170px">
-                                                        <option value="0">Cargo Automático</option>
-                                                        <option value="1">Hoteles</option>
-                                                        <option value="2">Pago en Sucursales</option>
-                                                    </select>
-                                                </div>
-                                            </td>
-                                            <td style="width:10%;" align="center">
-                                                <div>
-                                                    <br><button class='btn btn-default btn-sm btn-block pasar' type='button' id="pasar"
-                                                                value="pasar" onclick="seleccionar('tipoCliente');">
-                                                        @*envío idModal*@
-                                                        <i class='' aria-hidden='true'></i> >
-                                                    </button>
-                                                    <br><button class='btn btn-default btn-sm btn-block pasarTodos' type='button' id="pasarTodos"
-                                                                value="pasarTodos" onclick="seleccionar('tipoCliente');">
-                                                        <i class='' aria-hidden='true'></i> >>
-                                                    </button>
-                                                    <br><button class='btn btn-default btn-sm btn-block quitar' type='button' id="quitar"
-                                                                value="quitar" onclick="seleccionar('tipoCliente');">
-                                                        <i class='' aria-hidden='true'></i> <
-                                                    </button>
-                                                    <br><button class='btn btn-default btn-sm btn-block quitarTodos' type='button' id="quitarTodos"
-                                                                value="quitarTodos" onclick="seleccionar('tipoCliente');">
-                                                        <i class='' aria-hidden='true'></i> <<
-                                                    </button>
-                                                </div>
-                                            </td>
-                                            <td style="width:45%;" align="center">
-                                                <div>
-                                                    <label>Tipos de Clientes Seleccionados</label>
-                                                    <select name="destinoClientes" id="destinoClientes" multiple="multiple" size=10 style="width:170px"></select>
-                                                </div>
-                                            </td>
-                                        </tr>
-                                    </table>
+                                        <select name="origenClientes" id="origenClientes" multiple="multiple" size=10 style="width:194px">
+                                            @*<option value="0">Cargo Automático</option>
+                                                <option value="1">Hoteles</option>
+                                                <option value="2">Pago en Sucursales</option>*@
+                                        </select>
+                                    </div>
+                                </td>
+                                <td style="width:10%;" align="center">
+                                    <div>
+                                        <br><button class='btn btn-default btn-sm btn-block pasar' type='button' id="pasar"
+                                                    value="pasar" onclick="seleccionar('tipoCliente');">
+                                            @*envío idModal*@
+                                            <i class='' aria-hidden='true'></i> >
+                                        </button>
+                                        <br><button class='btn btn-default btn-sm btn-block pasarTodos' type='button' id="pasarTodos"
+                                                    value="pasarTodos" onclick="seleccionar('tipoCliente');">
+                                            <i class='' aria-hidden='true'></i> >>
+                                        </button>
+                                        <br><button class='btn btn-default btn-sm btn-block quitar' type='button' id="quitar"
+                                                    value="quitar" onclick="seleccionar('tipoCliente');">
+                                            <i class='' aria-hidden='true'></i> <
+                                        </button>
+                                        <br><button class='btn btn-default btn-sm btn-block quitarTodos' type='button' id="quitarTodos"
+                                                    value="quitarTodos" onclick="seleccionar('tipoCliente');">
+                                            <i class='' aria-hidden='true'></i> <<
+                                        </button>
+                                    </div>
+                                </td>
+                                <td style="width:45%;" align="center">
+                                    <div>
+                                        <label>Tipos de Clientes Seleccionados</label>
+                                        <select name="destinoClientes" id="destinoClientes" multiple="multiple" size=10 style="width:194px"></select>
+                                    </div>
+                                </td>
+                            </tr>
+                        </table>
 
-                                </form>
-                            </div>
-                        </div><!-- /.tab-pane -->
-                    </div><!-- /.tab-content -->
+                    </form>
                 </div>
+                @*</div><!-- /.tab-pane -->
+                        </div><!-- /.tab-content -->
+                    </div>*@
             </div>
             <div class="modal-footer">
-                <button class="btn btn-default" id="aceptar1" type="button" data-toggle="modal" onclick="functionAceptar($('#idReporte1').val(), 1, '#tipoCliente')">
+                <button class="btn btn-default" id="aceptar1" type="button" onclick=" guardarDatos(1);functionAceptar($('#idReporte1').val(), 1, '#tipoCliente');" data-toggle="modal">
                     Aceptar
                 </button>
                 <button class="btn btn-primary" type="button" onclick="cancelar(1,'#tipoCliente')">Cancelar</button>
@@ -210,62 +217,60 @@
         <div class="modal-content">
             <div class="modal-header">
                 <button class="close" aria-label="Close" type="button" onclick="cancelar(2, '#tipoServicio')">×</button>
-                <h4 class="modal-title">Selección Tipos de Servicios</h4>
+                <h4 class="modal-title">Selección de Servicios</h4>
             </div>
             <div class="modal-body">
-                <div class="nav-tabs-custom">
+                @*<div class="nav-tabs-custom">
                     <div class="tab-content">
-                        <div class="tab-pane active" id="tab_1">
-                            <div class="row form-group" align="center">
+                        <div class="tab-pane active" id="tab_1">*@
+                <div class="row form-group" align="center">
 
-                                <form action="" method="post" id="formulario">
-                                    <table>
-                                        <tr>
-                                            <td style="width:45%;" align="center">
-                                                <div>
-                                                    <label>Seleccione Servicio(s)</label>
-                                                    <select name="origenServicios" id="origenServicios" multiple="multiple" size=10 style="width:170px">
-                                                        <option value="0">Servicio Básico</option>
-                                                    </select>
-                                                </div>
-                                            </td>
-                                            <td style="width:10%;" align="center">
-                                                <div>
-                                                    <br><button class='btn btn-default btn-sm btn-block pasar' type='button' id="pasar"
-                                                                value="pasar" onclick="seleccionar('tipoServicio');">
-                                                        <i class='' aria-hidden='true'></i> >
-                                                    </button>
-                                                    <br><button class='btn btn-default btn-sm btn-block pasarTodos' type='button' id="pasarTodos"
-                                                                value="pasarTodos" onclick="seleccionar('tipoServicio');">
-                                                        <i class='' aria-hidden='true'></i> >>
-                                                    </button>
-                                                    <br><button class='btn btn-default btn-sm btn-block quitar' type='button' id="quitar"
-                                                                value="quitar" onclick="seleccionar('tipoServicio');">
-                                                        <i class='' aria-hidden='true'></i> <
-                                                    </button>
-                                                    <br><button class='btn btn-default btn-sm btn-block quitarTodos' type='button' id="quitarTodos"
-                                                                value="quitarTodos" onclick="seleccionar('tipoServicio');">
-                                                        <i class='' aria-hidden='true'></i> <<
-                                                    </button>
-                                                </div>
-                                            </td>
-                                            <td style="width:45%;" align="center">
-                                                <div>
-                                                    <label>Servicios Seleccionados</label>
-                                                    <select name="destinoServicios" id="destinoServicios" multiple="multiple" size=10 style="width:170px"></select>
+                    <form action="" method="post" id="formulario">
+                        <table>
+                            <tr>
+                                <td style="width:45%;" align="center">
+                                    <div>
+                                        <label>Seleccione Servicio(s)</label>
+                                        <select name="origenServicios" id="origenServicios" multiple="multiple" size=10 style="width:194px"></select>
+                                    </div>
+                                </td>
+                                <td style="width:10%;" align="center">
+                                    <div>
+                                        <br><button class='btn btn-default btn-sm btn-block pasar' type='button' id="pasar"
+                                                    value="pasar" onclick="seleccionar('tipoServicio');">
+                                            <i class='' aria-hidden='true'></i> >
+                                        </button>
+                                        <br><button class='btn btn-default btn-sm btn-block pasarTodos' type='button' id="pasarTodos"
+                                                    value="pasarTodos" onclick="seleccionar('tipoServicio');">
+                                            <i class='' aria-hidden='true'></i> >>
+                                        </button>
+                                        <br><button class='btn btn-default btn-sm btn-block quitar' type='button' id="quitar"
+                                                    value="quitar" onclick="seleccionar('tipoServicio');">
+                                            <i class='' aria-hidden='true'></i> <
+                                        </button>
+                                        <br><button class='btn btn-default btn-sm btn-block quitarTodos' type='button' id="quitarTodos"
+                                                    value="quitarTodos" onclick="seleccionar('tipoServicio');">
+                                            <i class='' aria-hidden='true'></i> <<
+                                        </button>
+                                    </div>
+                                </td>
+                                <td style="width:45%;" align="center">
+                                    <div>
+                                        <label>Servicios Seleccionados</label>
+                                        <select name="destinoServicios" id="destinoServicios" multiple="multiple" size=10 style="width:194px"></select>
 
-                                                </div>
-                                            </td>
-                                        </tr>
-                                    </table>
-                                </form>
-                            </div>
-                        </div><!-- /.tab-pane -->
-                    </div><!-- /.tab-content -->
+                                    </div>
+                                </td>
+                            </tr>
+                        </table>
+                    </form>
                 </div>
+                @*</div><!-- /.tab-pane -->
+                        </div><!-- /.tab-content -->
+                    </div>*@
             </div>
             <div class="modal-footer">
-                <button class="btn btn-default" id="aceptar2" type="button" data-toggle="modal" onclick="functionAceptar($('#idReporte1').val(), 2, '#tipoServicio')">Aceptar</button>
+                <button class="btn btn-default" id="aceptar2" type="button" data-toggle="modal" onclick="guardarDatos(2);functionAceptar($('#idReporte1').val(), 2, '#tipoServicio');">Aceptar</button>
                 <button class="btn btn-primary" type="button" onclick="cancelar(2,'#tipoServicio')">Cancelar</button>
             </div>
         </div>
@@ -283,59 +288,60 @@
                 <h4 class="modal-title">Selección de Ciudades</h4>
             </div>
             <div class="modal-body">
-                <div class="nav-tabs-custom">
+                @*<div class="nav-tabs-custom">
                     <div class="tab-content">
-                        <div class="tab-pane active" id="tab_1">
-                            <div class="row form-group" align="center">
+                        <div class="tab-pane active" id="tab_1">*@
+                <div class="row form-group" align="center">
 
-                                <form action="" method="post" id="formulario">
-                                    <table>
-                                        <tr>
-                                            <td style="width:45%;" align="center">
-                                                <div>
-                                                    <label>Seleccione Ciudad(es)</label>
-                                                    <select name="origenCiudades" id="origenCiudades" multiple="multiple" size=10 style="width:170px">
-                                                        <option value="0">Mérida</option>
-                                                    </select>
-                                                </div>
-                                            </td>
-                                            <td style="width:10%;" align="center">
-                                                <div>
-                                                    <br><button class='btn btn-default btn-sm btn-block pasar' type='button' id="pasar"
-                                                                value="pasar" onclick="seleccionar('ciudades');">
-                                                        <i class='' aria-hidden='true'></i> >
-                                                    </button>
-                                                    <br><button class='btn btn-default btn-sm btn-block pasarTodos' type='button' id="pasarTodos"
-                                                                value="pasarTodos" onclick="seleccionar('ciudades');">
-                                                        <i class='' aria-hidden='true'></i> >>
-                                                    </button>
-                                                    <br><button class='btn btn-default btn-sm btn-block quitar' type='button' id="quitar"
-                                                                value="quitar" onclick="seleccionar('ciudades');">
-                                                        <i class='' aria-hidden='true'></i> <
-                                                    </button>
-                                                    <br><button class='btn btn-default btn-sm btn-block quitarTodos' type='button' id="quitarTodos"
-                                                                value="quitarTodos" onclick="seleccionar('ciudades');">
-                                                        <i class='' aria-hidden='true'></i> <<
-                                                    </button>
-                                                </div>
-                                            </td>
-                                            <td style="width:45%;" align="center">
-                                                <div>
-                                                    <label>Ciudad(es) Seleccionadas</label>
-                                                    <select name="destinoCiudades" id="destinoCiudades" multiple="multiple" size=10 style="width:170px"></select>
-                                                </div>
-                                            </td>
-                                        </tr>
-                                    </table>
-                                </form>
-                            </div>
-                        </div><!-- /.tab-pane -->
-                    </div><!-- /.tab-content -->
+                    <form action="" method="post" id="formulario">
+                        <table>
+                            <tr>
+                                <td style="width:45%;" align="center">
+                                    <div>
+                                        <label>Seleccione Ciudad(es)</label>
+                                        <select name="origenCiudades" id="origenCiudades" multiple="multiple" size=10 style="width:194px">
+                                            @*<option value="0">Mérida</option>*@
+                                        </select>
+                                    </div>
+                                </td>
+                                <td style="width:10%;" align="center">
+                                    <div>
+                                        <br><button class='btn btn-default btn-sm btn-block pasar' type='button' id="pasar"
+                                                    value="pasar" onclick="seleccionar('ciudades');">
+                                            <i class='' aria-hidden='true'></i> >
+                                        </button>
+                                        <br><button class='btn btn-default btn-sm btn-block pasarTodos' type='button' id="pasarTodos"
+                                                    value="pasarTodos" onclick="seleccionar('ciudades');">
+                                            <i class='' aria-hidden='true'></i> >>
+                                        </button>
+                                        <br><button class='btn btn-default btn-sm btn-block quitar' type='button' id="quitar"
+                                                    value="quitar" onclick="seleccionar('ciudades');">
+                                            <i class='' aria-hidden='true'></i> <
+                                        </button>
+                                        <br><button class='btn btn-default btn-sm btn-block quitarTodos' type='button' id="quitarTodos"
+                                                    value="quitarTodos" onclick="seleccionar('ciudades');">
+                                            <i class='' aria-hidden='true'></i> <<
+                                        </button>
+                                    </div>
+                                </td>
+                                <td style="width:45%;" align="center">
+                                    <div>
+                                        <label>Ciudad(es) Seleccionadas</label>
+                                        <select name="destinoCiudades" id="destinoCiudades" multiple="multiple" size=10 style="width:194px"></select>
+                                    </div>
+                                </td>
+                            </tr>
+                        </table>
+                    </form>
                 </div>
+                @*</div><!-- /.tab-pane -->
+                        </div><!-- /.tab-content -->
+                    </div>*@
             </div>
             <div class="modal-footer">
-                <button class="btn btn-default" id="aceptar3" type="button" data-toggle="modal" onclick="functionAceptar($('#idReporte1').val(), 3, '#ciudades')">Aceptar</button>
+                <button class="btn btn-default" id="aceptar3" type="button" data-toggle="modal" onclick=" guardarDatos(3);functionAceptar($('#idReporte1').val(), 3, '#ciudades');">Aceptar</button>
                 <button class="btn btn-primary" type="button" onclick="cancelar(3,'#ciudades')">Cancelar</button>
+
             </div>
         </div>
     </div>
@@ -350,61 +356,61 @@
                 <h4 class="modal-title">Selección de Colonias</h4>
             </div>
             <div class="modal-body">
-                <div class="nav-tabs-custom">
+                @*<div class="nav-tabs-custom">
                     <div class="tab-content">
-                        <div class="tab-pane active" id="tab_1">
-                            <div class="row form-group" align="center">
-                                <form action="" method="post" id="formulario">
-                                    <table>
-                                        <tr>
-                                            <td style="width:45%;" align="center">
-                                                <div>
-                                                    <label>Seleccione Colonia(s)</label>
-                                                    <select name="origenColonias" id="origenColonias" multiple="multiple" size=10 style="width:170px">
-                                                        <option value="0">una</option>
-                                                        <option value="1">dos</option>
-                                                        <option value="2">tres</option>
-                                                    </select>
-                                                </div>
-                                            </td>
-                                            <td style="width:10%;" align="center">
-                                                <div>
-                                                    <br><button class='btn btn-default btn-sm btn-block pasar' type='button' id="pasar"
-                                                                value="pasar" onclick="seleccionar('colonias');">
-                                                        <i class='' aria-hidden='true'></i> >
-                                                    </button>
-                                                    <br><button class='btn btn-default btn-sm btn-block pasarTodos' type='button' id="pasarTodos"
-                                                                value="pasarTodos" onclick="seleccionar('colonias');">
-                                                        <i class='' aria-hidden='true'></i> >>
-                                                    </button>
-                                                    <br><button class='btn btn-default btn-sm btn-block quitar' type='button' id="quitar"
-                                                                value="quitar" onclick="seleccionar('colonias');">
-                                                        <i class='' aria-hidden='true'></i> <
-                                                    </button>
-                                                    <br><button class='btn btn-default btn-sm btn-block quitarTodos' type='button' id="quitarTodos"
-                                                                value="quitarTodos" onclick="seleccionar('colonias');">
-                                                        <i class='' aria-hidden='true'></i> <<
-                                                    </button>
-                                                </div>
-                                            </td>
-                                            <td style="width:45%;" align="center">
-                                                <div>
-
-                                                    <label>Colonia(s) Seleccionadas</label>
-                                                    <select name="destinoColonias" id="destinoColonias" multiple="multiple" size=10 style="width:170px"></select>
-                                                </div>
-                                            </td>
-                                        </tr>
-                                    </table>
-                                </form>
-                            </div>
-                        </div><!-- /.tab-pane -->
-                    </div><!-- /.tab-content -->
+                        <div class="tab-pane active" id="tab_1">*@
+                <div class="row form-group" align="center">
+                    <form action="" method="post" id="formulario">
+                        <table>
+                            <tr>
+                                <td style="width:45%;" align="center">
+                                    <div>
+                                        <label>Seleccione Colonia(s)</label>
+                                        <select name="origenColonias" id="origenColonias" multiple="multiple" size=17 style="width:230px">
+                                            @*<option value="0">una</option>
+                                                <option value="1">dos</option>
+                                                <option value="2">tres</option>*@
+                                        </select>
+                                    </div>
+                                </td>
+                                <td style="width:10%;" align="center">
+                                    <div>
+                                        <br><button class='btn btn-default btn-sm btn-block pasar' type='button' id="pasar"
+                                                    value="pasar" onclick="seleccionar('colonias');">
+                                            <i class='' aria-hidden='true'></i> >
+                                        </button>
+                                        <br><button class='btn btn-default btn-sm btn-block pasarTodos' type='button' id="pasarTodos"
+                                                    value="pasarTodos" onclick="seleccionar('colonias');">
+                                            <i class='' aria-hidden='true'></i> >>
+                                        </button>
+                                        <br><button class='btn btn-default btn-sm btn-block quitar' type='button' id="quitar"
+                                                    value="quitar" onclick="seleccionar('colonias');">
+                                            <i class='' aria-hidden='true'></i> <
+                                        </button>
+                                        <br><button class='btn btn-default btn-sm btn-block quitarTodos' type='button' id="quitarTodos"
+                                                    value="quitarTodos" onclick="seleccionar('colonias');">
+                                            <i class='' aria-hidden='true'></i> <<
+                                        </button>
+                                    </div>
+                                </td>
+                                <td style="width:45%;" align="center">
+                                    <div>
+                                        <label>Colonia(s) Seleccionadas</label>
+                                        <select name="destinoColonias" id="destinoColonias" multiple="multiple" size=17 style="width:230px"></select>
+                                    </div>
+                                </td>
+                            </tr>
+                        </table>
+                    </form>
                 </div>
+                @*</div><!-- /.tab-pane -->
+                        </div><!-- /.tab-content -->
+                    </div>*@
             </div>
             <div class="modal-footer">
-                <button class="btn btn-default" type="button" id="aceptar4" data-toggle="modal" onclick="functionAceptar($('#idReporte1').val(), 4, '#colonias')">Aceptar</button>
+                <button class="btn btn-default" type="button" id="aceptar4" data-toggle="modal" onclick="guardarDatos(4); functionAceptar($('#idReporte1').val(), 4, '#colonias');">Aceptar</button>
                 <button class="btn btn-primary" type="button" onclick="cancelar(4,'#colonias')">Cancelar</button>
+
             </div>
         </div>
     </div>
@@ -420,29 +426,30 @@
                 <h4 class="modal-title">Selección Teléfono</h4>
             </div>
             <div class="modal-body">
-                <div class="nav-tabs-custom">
+                @*<div class="nav-tabs-custom">
                     <div class="tab-content">
-                        <div class="tab-pane active" id="tab_1">
-                            <div class="row form-group" align="right">
+                        <div class="tab-pane active" id="tab_1">*@
+                <div class="row form-group" align="right">
 
-                                <div class="col-md-10 col-md-offset-1    col-sm-10 col-sm-offset-1    col-xs-10">
-                                    <form action="" align="left">
-                                        <label>Seleccione la opción </label><br>
-                                        <div class="checkbox">
-                                            <label><input type="checkbox" value="conTel" id="conTel">Con Teléfono</label>
-                                            <br>
-                                            <label><input type="checkbox" value="sinTel" id="sinTel">Sin Teléfono</label>
-                                        </div>
-                                    </form>
-                                </div>
+                    <div class="col-md-10 col-md-offset-1    col-sm-10 col-sm-offset-1    col-xs-10">
+                        <form action="" align="left">
+                            <label>Seleccione la opción </label><br>
+                            <div class="checkbox">
+                                <label><input type="checkbox" value="1" id="conTel">Con Teléfono</label>
+                                <br>
+                                <label><input type="checkbox" value="0" id="sinTel">Sin Teléfono</label>
                             </div>
-                        </div><!-- /.tab-pane -->
-                    </div><!-- /.tab-content -->
+                        </form>
+                    </div>
                 </div>
+                @*</div><!-- /.tab-pane -->
+                        </div><!-- /.tab-content -->
+                    </div>*@
             </div>
             <div class="modal-footer">
-                <button class="btn btn-default" id="aceptar5" type="button" data-toggle="modal" onclick="functionAceptar($('#idReporte1').val(), 5, '#telefono')">Aceptar</button>
+                <button class="btn btn-default" id="aceptar5" type="button" data-toggle="modal" onclick="guardarDatos(5); functionAceptar($('#idReporte1').val(), 5, '#telefono');">Aceptar</button>
                 <button class="btn btn-primary" type="button" onclick="cancelar(5,'#telefono')">Cancelar</button>
+
             </div>
         </div>
     </div>
@@ -459,86 +466,94 @@
                 <h4 class="modal-title">Selección de Periodos</h4>
             </div>
             <div class="modal-body">
-                <div class="nav-tabs-custom">
+                @*<div class="nav-tabs-custom">
                     <div class="tab-content">
-                        <div class="tab-pane active" id="tab_1">
-                            <div class="row form-group" align="center">
-                                <input type="hidden" value="" id="idReporte" />  @****guarda el index del reporte al que se le dio click ******@
-                                <form action="" method="post" id="formulario">
-                                    <table>
-                                        <tr>
-                                            <td style="width:45%;" align="center">
-                                                <div>
-                                                    <br>
-                                                    <label>Periodo(s) Disponible(s)</label>
-                                                    <select name="origenPeriodo" id="origenPeriodo" multiple="multiple" size=10 style="width:170px">
-                                                        <option value="0">Periodo 30</option>
-                                                    </select>
-                                                </div>
-                                            </td>
-                                            <td style="width:10%;" align="center">
-                                                <div>
-                                                    <br>
-                                                    <br><button class='btn btn-default btn-sm btn-block pasar' type='button' id="pasar"
-                                                                value="pasar" onclick="seleccionar('periodo');">
-                                                        <i class='' aria-hidden='true'></i> >
-                                                    </button>
-                                                    <br><button class='btn btn-default btn-sm btn-block pasarTodos' type='button' id="pasarTodos"
-                                                                value="pasarTodos" onclick="seleccionar('periodo');">
-                                                        <i class='' aria-hidden='true'></i> >>
-                                                    </button>
-                                                    <br><button class='btn btn-default btn-sm btn-block quitar' type='button' id="quitar"
-                                                                value="quitar" onclick="seleccionar('periodo');">
-                                                        <i class='' aria-hidden='true'></i> <
-                                                    </button>
-                                                    <br><button class='btn btn-default btn-sm btn-block quitarTodos' type='button' id="quitarTodos"
-                                                                value="quitarTodos" onclick="seleccionar('periodo');">
-                                                        <i class='' aria-hidden='true'></i> <<
-                                                    </button>
-                                                </div>
-                                            </td>
-                                            <td style="width:45%;" align="center">
-                                                <div>
-                                                    <br>
-                                                    <label>Periodo(s) Seleccionado(s)</label>
-                                                    <select name="destinoPeriodo" id="destinoPeriodo" multiple="multiple" size=10 style="width:170px"></select>
-                                                </div>
-                                            </td>
-                                        </tr>
-                                    </table>
-                                </form>
-                            </div>
-                            <div class="row form-group" align="center">
-                                <div id="mesP" class="col-md-5 col-md-offset-1  col-sm-5  col-sm-offset-1   col-xs-6">
-                                    <label>Mes que Adeuda</label>
-                                    <select name='listaMes' onchange='' id='listaMes' class='form-control'>
-                                        <option value="">Enero</option>
-                                        <option value="">Febrero</option>
-                                        <option value="">Marzo</option>
-                                        <option value=""></option>
-                                        <option value=""></option>
-                                        <option value=""></option>
-                                        <option value=""></option>
-                                        <option value=""></option>
-                                        <option value=""></option>
-                                        <option value=""></option>
-                                        <option value=""></option>
-                                        <option value=""></option>
-                                    </select>
-                                </div>
-                                <div id="anioP" class="col-md-5    col-sm-5    col-xs-6">
-                                    <label>Año</label>
-                                    <input type='text' id="anioCP" class='form-control' onkeypress="return valida(event)">
-
-                                </div>
-                            </div>
-                        </div><!-- /.tab-pane -->
-                    </div><!-- /.tab-content -->
+                        <div class="tab-pane active" id="tab_1">*@
+                <div class="row form-group" align="center">
+                    <input type="hidden" value="" id="idReporte" />  @****guarda el index del reporte al que se le dio click ******@
+                    <form action="" method="post" id="formulario">
+                        <table>
+                            <tr>
+                                <td style="width:45%;" align="center">
+                                    <div>
+                                        <br>
+                                        <label>Periodo(s) Disponible(s)</label>
+                                        <select name="origenPeriodo" id="origenPeriodo" multiple="multiple" size=10 style="width:194px">
+                                            @*<option value="0">Periodo 30</option>*@
+                                        </select>
+                                    </div>
+                                </td>
+                                <td style="width:10%;" align="center">
+                                    <div>
+                                        <br>
+                                        <br><button class='btn btn-default btn-sm btn-block pasar' type='button' id="pasar"
+                                                    value="pasar" onclick="seleccionar('periodo');">
+                                            <i class='' aria-hidden='true'></i> >
+                                        </button>
+                                        <br><button class='btn btn-default btn-sm btn-block pasarTodos' type='button' id="pasarTodos"
+                                                    value="pasarTodos" onclick="seleccionar('periodo');">
+                                            <i class='' aria-hidden='true'></i> >>
+                                        </button>
+                                        <br><button class='btn btn-default btn-sm btn-block quitar' type='button' id="quitar"
+                                                    value="quitar" onclick="seleccionar('periodo');">
+                                            <i class='' aria-hidden='true'></i> <
+                                        </button>
+                                        <br><button class='btn btn-default btn-sm btn-block quitarTodos' type='button' id="quitarTodos"
+                                                    value="quitarTodos" onclick="seleccionar('periodo');">
+                                            <i class='' aria-hidden='true'></i> <<
+                                        </button>
+                                    </div>
+                                </td>
+                                <td style="width:45%;" align="center">
+                                    <div>
+                                        <br>
+                                        <label>Periodo(s) Seleccionado(s)</label>
+                                        <select name="destinoPeriodo" id="destinoPeriodo" multiple="multiple" size=10 style="width:194px"></select>
+                                    </div>
+                                </td>
+                            </tr>
+                        </table>
+                    </form>
                 </div>
+                <div class="row form-group" align="center">
+                    <div id="mesP" class="col-md-5 col-md-offset-1  col-sm-5  col-sm-offset-1   col-xs-6">
+                        <label>Mes que Adeuda</label>
+                        <select name='listaMesP' onchange='' id='listaMesP' class='form-control'>
+                            <option value="1">Enero</option>
+                            <option value="2">Febrero</option>
+                            <option value="3">Marzo</option>
+                            <option value="4">Abril</option>
+                            <option value="5">Mayo</option>
+                            <option value="6">Junio</option>
+                            <option value="7">Julio</option>
+                            <option value="8">Agosto</option>
+                            <option value="9">Septiembre</option>
+                            <option value="10">Octubre</option>
+                            <option value="11">Noviembre</option>
+                            <option value="12">Diciembre</option>
+                        </select>
+                    </div>
+                    <div id="anioP" class="col-md-5    col-sm-5    col-xs-6">
+                        <label>Año</label>
+                        <input type='text' id="anioCP" class='form-control' onkeypress="return valida(event)">
+
+                    </div>
+                </div>
+                @*</div><!-- /.tab-pane -->
+                        </div><!-- /.tab-content -->
+                    </div>*@
             </div>
             <div class="modal-footer">
-                <button class="btn btn-default" id="aceptar6" type="button" data-toggle="modal" onclick="functionAceptar($('#idReporte1').val(), 6, '#periodo')">Aceptar</button>
-                <button class="btn btn-primary" type="button" onclick="cancelar(6,'#periodo')">Cancelar</button>
+
+                <input type="hidden" name="xmlComoCadena" id="xmlComoCadena" placeholder="xmlComoCadena" />
+
+                <button class="btn btn-default" id="aceptar6" type="button" data-toggle="modal"
+                        onclick=" guardarDatos(6); functionAceptar($('#idReporte1').val(), 6, '#periodo')">
+                    Aceptar
+                </button>
+                <button class="btn btn-primary" type="button" onclick="cancelar(6, '#periodo')">Cancelar</button>
+                @* <button class="btn btn-primary" type="button" onclick="enviarXmlComoString()">enviar a controlador</button>*@
+
             </div>
         </div>
     </div>
@@ -554,29 +569,30 @@
                 <h4 class="modal-title">Selección de Estatus de Orden</h4>
             </div>
             <div class="modal-body">
-                <div class="nav-tabs-custom">
+                @*<div class="nav-tabs-custom">
                     <div class="tab-content">
-                        <div class="tab-pane active" id="tab_1">
-                            <div class="row form-group" align="right">
+                        <div class="tab-pane active" id="tab_1">*@
+                <div class="row form-group" align="right">
 
-                                <div class="col-md-10 col-md-offset-1    col-sm-10 col-sm-offset-1    col-xs-10">
-                                    <form action="" align="left">
-                                        <label>Seleccione el Estatus de la Orden </label><br>
-                                        <div class="checkbox">
-                                            <label><input type="checkbox" value="ejecutada" id="ejecutada">Ejecutada</label>
-                                            <br>
-                                            <label><input type="checkbox" value="pendiente" id="pendiente">Pendiente</label>
-                                        </div>
-                                    </form>
-                                </div>
+                    <div class="col-md-10 col-md-offset-1    col-sm-10 col-sm-offset-1    col-xs-10">
+                        <form action="" align="left">
+                            <label>Seleccione el Estatus de la Orden </label><br>
+                            <div class="checkbox">
+                                <label><input type="checkbox" value="1" id="ejecutada">Ejecutada</label>
+                                <br>
+                                <label><input type="checkbox" value="0" id="pendiente">Pendiente</label>
                             </div>
-                        </div><!-- /.tab-pane -->
-                    </div><!-- /.tab-content -->
+                        </form>
+                    </div>
                 </div>
+                @*</div><!-- /.tab-pane -->
+                        </div><!-- /.tab-content -->
+                    </div>*@
             </div>
             <div class="modal-footer">
-                <button class="btn btn-default" id="aceptar7" type="button" data-toggle="modal" onclick="functionAceptar($('#idReporte1').val(), 7, '#estatusOrden'); pdf();">Aceptar</button>
+                <button class="btn btn-default" id="aceptar7" type="button" data-toggle="modal" onclick=" guardarDatos(7); functionAceptar($('#idReporte1').val(), 7, '#estatusOrden');">Aceptar</button>
                 <button class="btn btn-primary" type="button" onclick="cancelar(7,'#estatusOrden')">Cancelar</button>
+
             </div>
         </div>
     </div>
@@ -592,51 +608,38 @@
                 <h4 class="modal-title">Selección Rango de Fechas</h4>
             </div>
             <div class="modal-body">
-                <div class="nav-tabs-custom">
+                @*<div class="nav-tabs-custom">
                     <div class="tab-content">
-
-                        <div class="tab-pane active" id="tab_1">
-                            <div class="row form-group" align="center">
-                                <div class="col-md-10 col-md-offset-1   col-sm-10 col-sm-offset-1    col-xs-10 col-xs-offset-1">
-                                    <label>Fecha Inicial: </label>
-                                    <input type="date" id="fechaInicial" name="fechaInicial">
-                                </div>
-                            </div>
-
-                            <div class="row form-group" align="center">
-                                <div class="col-md-10 col-md-offset-1   col-sm-10 col-sm-offset-1    col-xs-10 col-xs-offset-1">
-                                    <label>Fecha Final: </label>
-                                    <input type="date" id="fechaFinal" name="fechaFinal" value="">
-                                </div>
-                            </div>
-                            <div class="row form-group" align="center">
-                                <div id="motivoCancelacion" class="col-md-10 col-md-offset-1   col-sm-10 col-sm-offset-1    col-xs-10 col-xs-offset-1">
-                                    <label>Seleccione el Motivo de Cancelación</label>
-                                    <br>
-                                    <select name='listaMotivo' onchange='' id='listaMotivo' class='form-control'>
-                                        <option value="">Todos</option>
-                                        <option value="">Ninguno</option>
-                                        <option value="">Cancelación</option>
-                                        <option value="">Fuera de área</option>
-                                        <option value="">Cancelación solicitada</option>
-                                        <option value="">Fallas constantes</option>
-                                        <option value="">No tiene dinero</option>
-                                        <option value="">Cambio de residencia</option>
-                                        <option value="">Cancelación temporal no deja adeudo</option>
-                                        <option value="">Contrato otro servicio</option>
-                                        <option value="">Hizo fraude</option>
-                                        <option value="">Tiempo excesivo de instalación</option>
-                                    </select>
-                                </div>
-                            </div>
-
-                        </div><!-- /.tab-pane -->
-                    </div><!-- /.tab-content -->
+                        <div class="tab-pane active" id="tab_1">*@
+                <div class="row form-group" align="center">
+                    <div class="col-md-10 col-md-offset-1   col-sm-10 col-sm-offset-1    col-xs-10 col-xs-offset-1">
+                        <label>Fecha Inicial: </label>
+                        <input type="date" id="fechaInicial" name="fechaInicial">
+                    </div>
                 </div>
+
+                <div class="row form-group" align="center">
+                    <div class="col-md-10 col-md-offset-1   col-sm-10 col-sm-offset-1    col-xs-10 col-xs-offset-1">
+                        <label>Fecha Final: </label>
+                        <input type="date" id="fechaFinal" name="fechaFinal" value="">
+                    </div>
+                </div>
+                <div class="row form-group" align="center">
+                    <div id="motivoCancelacion" class="col-md-10 col-md-offset-1   col-sm-10 col-sm-offset-1    col-xs-10 col-xs-offset-1">
+                        <label>Seleccione el Motivo de Cancelación</label>
+                        <br>
+                        <select name='listaMotivoCancelacion' onchange='' id='listaMotivoCancelacion' class='form-control'></select>
+                    </div>
+                </div>
+
+                @*</div><!-- /.tab-pane -->
+                        </div><!-- /.tab-content -->
+                    </div>*@
             </div>
             <div class="modal-footer">
-                <button class="btn btn-default" id="aceptar8" type="button" data-toggle="modal" onclick="functionAceptar($('#idReporte1').val(), 8, '#rangoFechas'); pdf();">Aceptar</button>
+                <button class="btn btn-default" id="aceptar8" type="button" data-toggle="modal" onclick="guardarDatos(8); functionAceptar($('#idReporte1').val(), 8, '#rangoFechas');">Aceptar</button>
                 <button class="btn btn-primary" type="button" onclick="cancelar(8,'#rangoFechas')">Cancelar</button>
+
             </div>
         </div>
     </div>
@@ -653,61 +656,59 @@
                 <h4 class="modal-title">Selección Calles</h4>
             </div>
             <div class="modal-body">
-                <div class="nav-tabs-custom">
+                @*<div class="nav-tabs-custom">
                     <div class="tab-content">
-                        <div class="tab-pane active" id="tab_1">
-                            <div class="row form-group" align="center">
+                        <div class="tab-pane active" id="tab_1">*@
+                <div class="row form-group" align="center">
 
-                                <form action="" method="post" id="formulario">
-                                    <table>
-                                        <tr>
-                                            <td style="width:45%;" align="center">
-                                                <div>
-                                                    <label>Seleccione Calle(s)</label>
-                                                    <select name="origenCalles" id="origenCalles" multiple="multiple" size=10 style="width:170px">
-                                                        <option value="0">1</option>
-                                                        <option value="1">10</option>
-                                                    </select>
-                                                </div>
-                                            </td>
-                                            <td style="width:10%;" align="center">
-                                                <div>
-                                                    <br><button class='btn btn-default btn-sm btn-block pasar' type='button' id="pasar"
-                                                                value="pasar" onclick="seleccionar('calles');">
-                                                        <i class='' aria-hidden='true'></i> >
-                                                    </button>
-                                                    <br><button class='btn btn-default btn-sm btn-block pasarTodos' type='button' id="pasarTodos"
-                                                                value="pasarTodos" onclick="seleccionar('calles');">
-                                                        <i class='' aria-hidden='true'></i> >>
-                                                    </button>
-                                                    <br><button class='btn btn-default btn-sm btn-block quitar' type='button' id="quitar"
-                                                                value="quitar" onclick="seleccionar('calles');">
-                                                        <i class='' aria-hidden='true'></i> <
-                                                    </button>
-                                                    <br><button class='btn btn-default btn-sm btn-block quitarTodos' type='button' id="quitarTodos"
-                                                                value="quitarTodos" onclick="seleccionar('calles');">
-                                                        <i class='' aria-hidden='true'></i> <<
-                                                    </button>
-                                                </div>
-                                            </td>
-                                            <td style="width:45%;" align="center">
-                                                <div>
-                                                    <label>Calles Seleccionadas</label>
-                                                    <select name="destinoCalles" id="destinoCalles" multiple="multiple" size=10 style="width:170px"></select>
-                                                </div>
-                                            </td>
-                                        </tr>
-                                    </table>
+                    <form action="" method="post" id="formulario">
+                        <table>
+                            <tr>
+                                <td style="width:45%;" align="center">
+                                    <div>
+                                        <label>Seleccione Calle(s)</label>
+                                        <select name="origenCalles" id="origenCalles" multiple="multiple" size=17 style="width:187px"></select>
+                                    </div>
+                                </td>
+                                <td style="width:10%;" align="center">
+                                    <div>
+                                        <br><button class='btn btn-default btn-sm btn-block pasar' type='button' id="pasar"
+                                                    value="pasar" onclick="seleccionar('calles');">
+                                            <i class='' aria-hidden='true'></i> >
+                                        </button>
+                                        <br><button class='btn btn-default btn-sm btn-block pasarTodos' type='button' id="pasarTodos"
+                                                    value="pasarTodos" onclick="seleccionar('calles');">
+                                            <i class='' aria-hidden='true'></i> >>
+                                        </button>
+                                        <br><button class='btn btn-default btn-sm btn-block quitar' type='button' id="quitar"
+                                                    value="quitar" onclick="seleccionar('calles');">
+                                            <i class='' aria-hidden='true'></i> <
+                                        </button>
+                                        <br><button class='btn btn-default btn-sm btn-block quitarTodos' type='button' id="quitarTodos"
+                                                    value="quitarTodos" onclick="seleccionar('calles');">
+                                            <i class='' aria-hidden='true'></i> <<
+                                        </button>
+                                    </div>
+                                </td>
+                                <td style="width:45%;" align="center">
+                                    <div>
+                                        <label>Calles Seleccionadas</label>
+                                        <select name="destinoCalles" id="destinoCalles" multiple="multiple" size=17 style="width:187px"></select>
+                                    </div>
+                                </td>
+                            </tr>
+                        </table>
 
-                                </form>
-                            </div>
-                        </div><!-- /.tab-pane -->
-                    </div><!-- /.tab-content -->
+                    </form>
                 </div>
+                @*</div><!-- /.tab-pane -->
+                                    </div><!-- /.tab-content -->
+                    </div>*@
             </div>
             <div class="modal-footer">
-                <button class="btn btn-default" id="aceptar11" type="button" data-toggle="modal" onclick="functionAceptar($('#idReporte1').val(), 11, '#calles')">Aceptar</button>
+                <button class="btn btn-default" id="aceptar11" type="button" data-toggle="modal" onclick=" guardarDatos(11); functionAceptar($('#idReporte1').val(), 11, '#calles');">Aceptar</button>
                 <button class="btn btn-primary" type="button" onclick="cancelar(11,'#calles')">Cancelar</button>
+
             </div>
         </div>
     </div>
@@ -724,157 +725,190 @@
                 <h4 class="modal-title">Selección de Estatus de Clientes</h4>
             </div>
             <div class="modal-body">
-                <div class="nav-tabs-custom">
+                @*<div class="nav-tabs-custom">
                     <div class="tab-content">
-                        <div class="tab-pane active" id="tab_1">
+                        <div class="tab-pane active" id="tab_1">*@
+                <table border="0" cellpadding="0" cellspacing="1" style="width:100%;">
+                    <tr>
+                        <td style="width:65%;">
                             <table border="0" cellpadding="0" cellspacing="1" style="width:100%;">
                                 <tr>
-                                    <td style="width:65%;">
-                                        <table border="0" cellpadding="0" cellspacing="1" style="width:100%;">
-                                            <tr>
-                                                <td>
-                                                    <form action="" align="center">
-                                                        <label>Selecciona el Estatus de Cliente</label>
-                                                        <br>
-                                                        <div class="checkbox" style="background-color:#F5F5F5">
-                                                            <div class="row form-group" align="left">
-                                                                <div class="col-md-3 col-md-offset-1    col-sm-4   col-xs-6">
-                                                                    <label><input type="checkbox" value="contratado" id="contratado">Contratado</label>
-                                                                </div>
+                                    <td>
+                                        <form action="" align="center">
+                                            <label>Selecciona el Estatus de Cliente</label>
+                                            <br>
+                                            <div class="checkbox" style="background-color:#F5F5F5">
+                                                <div class="row form-group" align="left">
+                                                    <div class="col-md-3 col-md-offset-1    col-sm-4   col-xs-6">
+                                                        <label><input type="checkbox" value="contratado" id="contratado">Contratado</label>
+                                                    </div>
 
-                                                                <div class="col-md-4    col-sm-4   col-xs-6">
-                                                                    <label><input type="checkbox" value="fuera" id="fuera">Fuera de Área</label>
-                                                                </div>
-                                                                <div class="col-md-3    col-sm-4   col-xs-6">
-                                                                    <label><input type="checkbox" value="suspendidos" id="suspendidos">Suspendidos Temporales</label>
-                                                                </div>
-                                                            </div>
-                                                            <div class="row form-group" align="left">
-                                                                <div class="col-md-3 col-md-offset-1     col-sm-4   col-xs-6">
-                                                                    <label><input type="checkbox" value="instalados" id="instalados">Instalado</label>
-                                                                </div>
-                                                                <div class="col-md-4    col-sm-4   col-xs-6">
-                                                                    <label><input type="checkbox" value="desconectado" id="desconectado">Desconectado</label>
-                                                                </div>
-                                                                <div class="col-md-3    col-sm-4   col-xs-6">
-                                                                    <label>
-                                                                        <input type="checkbox" value="cancelados" id="cancelados" name="cancelados"
-                                                                               onchange="checar()">Cancelados
-                                                                    </label>
-                                                                </div>
-                                                            </div>
-                                                            <div class="row form-group" align="center">
-                                                                <div class="row form-group" align="center">
-                                                                    <div class="col-md-12     col-sm-12   col-xs-12">
-                                                                        <label><input type="checkbox" value="suspendidosTempo" id="suspendidosTempo">Suspendidos Temporales</label>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </form>
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <td>
+                                                    <div class="col-md-4    col-sm-4   col-xs-6">
+                                                        <label><input type="checkbox" value="fuera" id="fuera">Fuera de Área</label>
+                                                    </div>
+                                                    <div class="col-md-3    col-sm-4   col-xs-6">
+                                                        <label><input type="checkbox" value="suspendidos" id="suspendidos">Suspendidos</label>
+                                                    </div>
+                                                </div>
+                                                <div class="row form-group" align="left">
+                                                    <div class="col-md-3 col-md-offset-1     col-sm-4   col-xs-6">
+                                                        <label><input type="checkbox" value="instalados" id="instalados">Instalado</label>
+                                                    </div>
+                                                    <div class="col-md-4    col-sm-4   col-xs-6">
+                                                        <label><input type="checkbox" value="desconectado" id="desconectado">Desconectado</label>
+                                                    </div>
+                                                    <div class="col-md-3    col-sm-4   col-xs-6">
+                                                        <label>
+                                                            <input type="checkbox" value="cancelados" id="cancelados" name="cancelados"
+                                                                   onchange="checar()">Cancelados
+                                                        </label>
+                                                    </div>
+                                                </div>
+                                                <div class="row form-group" align="center">
                                                     <div class="row form-group" align="center">
-                                                        <div class="col-md-12    col-sm-12   col-xs-12">
-                                                            <label>
-                                                                <input type="checkbox" value="" id="ocultarMostrar" name="ocultarMostrar"
-                                                                       onchange="checar()">Buscar por mes que adeudan y año
-                                                            </label>
+                                                        <div class="col-md-12     col-sm-12   col-xs-12">
+                                                            <label><input type="checkbox" value="suspendidosTempo" id="suspendidosTempo">Suspendidos Temporales</label>
                                                         </div>
                                                     </div>
-
-                                                    <div id="ocultarMostrarDiv" style="background-color:#F5F5F5">
-                                                        <div class="row form-group">
-                                                            <br>
-                                                            <div class="col-md-5 col-md-offset-0    col-sm-6 col-sm-offset-0    col-xs-10 col-xs-offset-1" align="center">
-                                                                <label>Buscar por el mes que sea:</label>
-                                                            </div>
-                                                            <div class="col-md-5 col-md-offset-1    col-sm-6 col-sm-offset-0   col-xs-10 col-xs-offset-1" align="center">
-                                                                <select name='listaMenorIgual' onchange='' id='listaMenorIgual' class='form-control' disabled>
-                                                                    <option value="">Menor o igual</option>
-                                                                    <option value="">Igual</option>
-                                                                </select>
-                                                            </div>
-                                                        </div>
-
-                                                        <div class="row form-group" align="center">
-                                                            <div class="col-md-5 col-md-offset-1    col-sm-6 col-sm-offset-0    col-xs-10 col-xs-offset-1" align="center">
-                                                                <label>Mes que adeuda</label>
-                                                                <select name='listaMesQueAdeuda' onchange='' id='listaMesQueAdeuda' class='form-control' disabled>
-                                                                    <option value="">Enero</option>
-                                                                    <option value="">Febrero</option>
-                                                                </select>
-                                                            </div>
-                                                            <div class="col-md-5 col-md-offset-0    col-sm-6 col-sm-offset-0   col-xs-10 col-xs-offset-1" align="center">
-                                                                <label>Año</label>
-                                                                <input type="text" id="anioC" class="form-control" onkeypress="return valida(event)" disabled>
-                                                            </div>
-                                                        </div>
-                                                        <br>
-                                                    </div>
-                                                </td>
-                                            </tr>
-                                        </table>
-
-                                    </td>
-                                    <td align="left">
-                                        <div class="row form-group" align="center">
-                                            <div class="col-md-10 col-md-offset-1    col-sm-10 col-sm-offset-1   col-xs-10 col-xs-offset-1" id="cancelacionDiv">
-                                                <label>Seleccione el motivo de la cancelación</label>
-                                                <select name='listaCancelacion' onchange='' id='listaCancelacion' class='form-control' disabled>
-                                                    <option value="">Todos</option>
-                                                    <option value="">Ninguno</option>
-                                                    <option value="">Cancelación por falta de pago</option>
-                                                    <option value="">Fuera de área</option>
-                                                    <option value="">Cancelación solicitada</option>
-                                                    <option value="">Fallas constantes</option>
-                                                    <option value="">Cancelación temporal no deja adeudo</option>
-                                                </select>
-                                                <br>
+                                                </div>
                                             </div>
-
-                                            <div class="col-md-6    col-md-offset-3     col-sm-8 col-sm-offset-2   col-xs-12">
-                                                <div>
-                                                    <button class="btn btn-default btn-block" id="aceptar12" type="button" data-toggle="modal"
-                                                            onclick="functionAceptar($('#idReporte1').val(), 12, '#estatusCliente')">
-                                                        Imprimir Reporte
-                                                    </button>
-                                                </div>
-                                                <br>
-                                                <div id="imprimirEtiquetas">
-                                                    <button class="btn btn-default btn-block" id="aceptar12" type="button" data-toggle="modal"
-                                                            onclick="functionAceptar($('#idReporte1').val(), 12,'#estatusCliente')">
-                                                        Imprimir Etiquetas
-                                                    </button>
-                                                </div>
-                                                <div id="txtEscondido" type="hidden" style="display:none"></div>
+                                        </form>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <div class="row form-group" align="center">
+                                            <div class="col-md-12    col-sm-12   col-xs-12">
+                                                <label>
+                                                    <input type="checkbox" value="" id="ocultarMostrar" name="ocultarMostrar"
+                                                           onchange="checar()">Buscar por mes que adeudan y año
+                                                </label>
                                             </div>
                                         </div>
 
+                                        <div id="ocultarMostrarDiv" style="background-color:#F5F5F5">
+                                            <div class="row form-group">
+                                                <br>
+                                                <div class="col-md-5 col-md-offset-0    col-sm-6 col-sm-offset-0    col-xs-10 col-xs-offset-1" align="center">
+                                                    <label>Buscar por el mes que sea:</label>
+                                                </div>
+                                                <div class="col-md-5 col-md-offset-1    col-sm-6 col-sm-offset-0   col-xs-10 col-xs-offset-1" align="center">
+                                                    <select name='listaMenorIgual' onchange='' id='listaMenorIgual' class='form-control' disabled>
+                                                        <option value="1">Menor o igual</option>
+                                                        <option value="2">Igual</option>
+                                                    </select>
+                                                </div>
+                                            </div>
+
+                                            <div class="row form-group" align="center">
+                                                <div class="col-md-5 col-md-offset-1    col-sm-6 col-sm-offset-0    col-xs-10 col-xs-offset-1" align="center">
+                                                    <label>Mes que adeuda</label>
+                                                    <select name='listaMesQueAdeuda' onchange='' id='listaMesQueAdeuda' class='form-control' disabled>
+                                                        <option value="1">Enero</option>
+                                                        <option value="2">Febrero</option>
+                                                        <option value="3">Marzo</option>
+                                                        <option value="4">Abril</option>
+                                                        <option value="5">Mayo</option>
+                                                        <option value="6">Junio</option>
+                                                        <option value="7">Julio</option>
+                                                        <option value="8">Agosto</option>
+                                                        <option value="9">Septiembre</option>
+                                                        <option value="10">Octubre</option>
+                                                        <option value="11">Noviembre</option>
+                                                        <option value="12">Diciembre</option>
+                                                    </select>
+                                                </div>
+                                                <div class="col-md-5 col-md-offset-0    col-sm-6 col-sm-offset-0   col-xs-10 col-xs-offset-1" align="center">
+                                                    <label>Año</label>
+                                                    <input type="text" id="anioC" class="form-control" onkeypress="return valida(event)" disabled>
+                                                </div>
+                                            </div>
+                                            <br>
+                                        </div>
                                     </td>
                                 </tr>
                             </table>
-                        </div><!-- /.tab-pane -->
-                    </div><!-- /.tab-content -->
-                </div>
+
+                        </td>
+                        <td align="left">
+                            <div class="row form-group" align="center">
+                                <div class="col-md-10 col-md-offset-1    col-sm-10 col-sm-offset-1   col-xs-10 col-xs-offset-1" id="cancelacionDiv">
+                                    <label>Seleccione el motivo de la cancelación</label>
+                                    <select name='listaMotivoCancelacion12' onchange='' id='listaMotivoCancelacion12' class='form-control' disabled></select>
+                                    <br>
+                                </div>
+
+                                <div class="col-md-6    col-md-offset-3     col-sm-8 col-sm-offset-2   col-xs-12">
+                                    <div>
+                                        <button class="btn btn-default btn-block" id="aceptar12" type="button" data-toggle="modal"
+                                                onclick="guardarDatos(12); functionAceptar($('#idReporte1').val(), 12, '#estatusCliente');">
+                                            Imprimir Reporte
+                                        </button>
+                                    </div>
+                                    <br>
+                                    <div id="imprimirEtiquetas">
+                                        <button class="btn btn-default btn-block" id="aceptar12" type="button" data-toggle="modal"
+                                                onclick=" guardarDatos(12);functionAceptar($('#idReporte1').val(), 12, '#estatusCliente');">
+                                            Imprimir Etiquetas
+                                        </button>
+                                    </div>
+                                    <div id="txtEscondido" type="hidden" style="display:none"></div>
+                                </div>
+                            </div>
+
+                        </td>
+                    </tr>
+                </table>
+                @*</div><!-- /.tab-pane -->
+                        </div><!-- /.tab-content -->
+                    </div>*@
             </div>
             <div class="modal-footer">
                 @*<button class="btn btn-default" type="button" data-dismiss="modal" data-toggle="modal" onclick="secuenciaModal($('#idReporte1').val(), 12)">Aceptar</button>*@
                 <button class="btn btn-primary" type="button" onclick="cancelar(12,'#estatusCliente')">Cancelar</button>
+
             </div>
         </div>
     </div>
 </div>
 
 
-<script>
+@*MODAL Espera mientras se genera pdf*@
+<div class="modal fade bs-example-modal-md" data-backdrop="static" data-keyboard="false" id="Espere" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel">
+    <div class="modal-dialog modal-md">
+        <div class="modal-content">
+            <div class="modal-header">
+            </div>
+            <div class="modal-body">
+                @*<div class="nav-tabs-custom">
+                    <div class="tab-content">
+                        <div class="tab-pane active" id="tab_1">*@
+                <div class="row form-group" align="right">
 
-</script>
+                    <div class="col-md-10 col-md-offset-1    col-sm-10 col-sm-offset-1    col-xs-10">
+                        <form action="" align="center">
+                            <p>Espere mientras se procesa el documento</p>
+                        </form>
+                    </div>
+                </div>
+                @*</div><!-- /.tab-pane -->
+                        </div><!-- /.tab-content -->
+                    </div>*@
+            </div>
+            <div class="modal-footer">
+            </div>
+        </div>
+    </div>
+</div>
 
-<script src="~/dist/js/pages/ReportesVarios/Lista.js">
-</script>
+
+
+
+
+<script src="~/dist/js/pages/ReportesVarios/LlenarSelect.js"></script>
+<script src="~/dist/js/pages/ReportesVarios/Objeto.js"></script>
+<script src="~/dist/js/pages/ReportesVarios/Lista.js"></script>
+@*<script src="~/dist/js/pages/ReportesVarios/Xml.js"></script>*@
 <script>
     $(function () {
         $('#poner_activo li').siblings('li').removeClass('active');
@@ -883,10 +917,3 @@
         $('.20').addClass('active');
     });
 </script>
-
-
-
-
-
-
-

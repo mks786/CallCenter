@@ -121,7 +121,7 @@ namespace Softv.Providers
                 entity_Llamada = new LlamadaEntity();
                 entity_Llamada.IdLlamada = (int?)(GetFromReader(reader, "IdLlamada"));
                 entity_Llamada.IdUsuario = (int?)(GetFromReader(reader, "IdUsuario"));
-                entity_Llamada.Tipo_Llamada = (bool?)(GetFromReader(reader, "Tipo_Llamada"));
+                entity_Llamada.Tipo_Llamada = (int?)(GetFromReader(reader, "Tipo_Llamada"));
                 entity_Llamada.Contrato = (long?)(GetFromReader(reader, "Contrato"));
                 entity_Llamada.Detalle = (String)(GetFromReader(reader, "Detalle", IsString: true));
                 entity_Llamada.Solucion = (String)(GetFromReader(reader, "Solucion", IsString: true));
@@ -134,7 +134,7 @@ namespace Softv.Providers
                 entity_Llamada.Clv_Trabajo = (int?)(GetFromReader(reader, "Clv_Trabajo"));
                 entity_Llamada.Clv_TipSer = (int?)(GetFromReader(reader, "Clv_TipSer"));
                 entity_Llamada.Clv_Problema = (int?)(GetFromReader(reader, "Clv_Problema"));
-                entity_Llamada.ProblemaSolucion = (bool?)(GetFromReader(reader, "ProblemaSolucion"));
+                entity_Llamada.SiEsCliente = (bool?)(GetFromReader(reader, "SiEsCliente"));
                 entity_Llamada.Clv_Motivo = (int?)(GetFromReader(reader, "Clv_Motivo"));
 
             }

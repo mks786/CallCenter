@@ -11,12 +11,22 @@ function Opciones(id) {
     var opc = ""
     return opc;
 }
+$("#ModalAgregarEncuesta").on('hidden.bs.modal', function () {
+    $('#tab_info').attr('aria-expanded', 'true');
+    $('#info').addClass('active'); 
+    $('#tab_1').addClass('active');
+    $('#tab_2').removeClass('active');
+    $('#pregu').removeClass('active');
+    $('#tab_preguntas').attr('aria-expanded', 'false');
+    $(this).data('bs.modal', null);
+});
+
 
 function MostrarModalEncuesta() {
     $('#EditarEncuesta').hide();
     $('#cargando').hide();
     $('#encuesta_cargando').show();
-    $('#guardarEncuesta').show();
+    $('#guardarEncuesta').show(); 
     $('#ModalAgregarEncuesta').modal('show');
     $('#msnTablavacia').show();
     $('#tablaPreguntas').hide();

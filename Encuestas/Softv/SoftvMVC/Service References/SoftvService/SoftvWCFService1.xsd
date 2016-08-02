@@ -4344,4 +4344,349 @@
       </xs:sequence>
     </xs:complexType>
   </xs:element>
+  <xs:element name="GetServicio">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="Clv_Servicio" nillable="true" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetServicioResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q263="http://schemas.datacontract.org/2004/07/Softv.Entities" minOccurs="0" name="GetServicioResult" nillable="true" type="q263:ServicioEntity" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetDeepServicio">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="Clv_Servicio" nillable="true" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetDeepServicioResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q264="http://schemas.datacontract.org/2004/07/Softv.Entities" minOccurs="0" name="GetDeepServicioResult" nillable="true" type="q264:ServicioEntity" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetServicioList">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetServicioListResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q265="http://schemas.datacontract.org/2004/07/Softv.Entities" minOccurs="0" name="GetServicioListResult" nillable="true" type="q265:ArrayOfServicioEntity" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetServicioPagedList">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="page" type="xs:int" />
+        <xs:element minOccurs="0" name="pageSize" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetServicioPagedListResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q266="http://schemas.datacontract.org/2004/07/Globals" minOccurs="0" name="GetServicioPagedListResult" nillable="true" type="q266:SoftvListOfServicioEntitykmseq5jn" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetServicioPagedListXml">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="page" type="xs:int" />
+        <xs:element minOccurs="0" name="pageSize" type="xs:int" />
+        <xs:element minOccurs="0" name="xml" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetServicioPagedListXmlResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q267="http://schemas.datacontract.org/2004/07/Globals" minOccurs="0" name="GetServicioPagedListXmlResult" nillable="true" type="q267:SoftvListOfServicioEntitykmseq5jn" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="AddServicio">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q268="http://schemas.datacontract.org/2004/07/Softv.Entities" minOccurs="0" name="objServicio" nillable="true" type="q268:ServicioEntity" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="AddServicioResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="AddServicioResult" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="UpdateServicio">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q269="http://schemas.datacontract.org/2004/07/Softv.Entities" minOccurs="0" name="objServicio" nillable="true" type="q269:ServicioEntity" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="UpdateServicioResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="UpdateServicioResult" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="DeleteServicio">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="BaseRemoteIp" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="BaseIdUser" type="xs:int" />
+        <xs:element minOccurs="0" name="Clv_Servicio" nillable="true" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="DeleteServicioResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="DeleteServicioResult" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetMotAtenTel">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="Clv_Motivo" nillable="true" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetMotAtenTelResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q270="http://schemas.datacontract.org/2004/07/Softv.Entities" minOccurs="0" name="GetMotAtenTelResult" nillable="true" type="q270:MotAtenTelEntity" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetDeepMotAtenTel">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="Clv_Motivo" nillable="true" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetDeepMotAtenTelResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q271="http://schemas.datacontract.org/2004/07/Softv.Entities" minOccurs="0" name="GetDeepMotAtenTelResult" nillable="true" type="q271:MotAtenTelEntity" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetMotAtenTelList">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetMotAtenTelListResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q272="http://schemas.datacontract.org/2004/07/Softv.Entities" minOccurs="0" name="GetMotAtenTelListResult" nillable="true" type="q272:ArrayOfMotAtenTelEntity" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetMotAtenTelPagedList">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="page" type="xs:int" />
+        <xs:element minOccurs="0" name="pageSize" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetMotAtenTelPagedListResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q273="http://schemas.datacontract.org/2004/07/Globals" minOccurs="0" name="GetMotAtenTelPagedListResult" nillable="true" type="q273:SoftvListOfMotAtenTelEntitykmseq5jn" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetMotAtenTelPagedListXml">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="page" type="xs:int" />
+        <xs:element minOccurs="0" name="pageSize" type="xs:int" />
+        <xs:element minOccurs="0" name="xml" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetMotAtenTelPagedListXmlResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q274="http://schemas.datacontract.org/2004/07/Globals" minOccurs="0" name="GetMotAtenTelPagedListXmlResult" nillable="true" type="q274:SoftvListOfMotAtenTelEntitykmseq5jn" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="AddMotAtenTel">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q275="http://schemas.datacontract.org/2004/07/Softv.Entities" minOccurs="0" name="objMotAtenTel" nillable="true" type="q275:MotAtenTelEntity" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="AddMotAtenTelResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="AddMotAtenTelResult" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="UpdateMotAtenTel">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q276="http://schemas.datacontract.org/2004/07/Softv.Entities" minOccurs="0" name="objMotAtenTel" nillable="true" type="q276:MotAtenTelEntity" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="UpdateMotAtenTelResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="UpdateMotAtenTelResult" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="DeleteMotAtenTel">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="BaseRemoteIp" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="BaseIdUser" type="xs:int" />
+        <xs:element minOccurs="0" name="Clv_Motivo" nillable="true" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="DeleteMotAtenTelResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="DeleteMotAtenTelResult" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetClasificacionProblema">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="ClvProblema" nillable="true" type="xs:long" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetClasificacionProblemaResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q277="http://schemas.datacontract.org/2004/07/Softv.Entities" minOccurs="0" name="GetClasificacionProblemaResult" nillable="true" type="q277:ClasificacionProblemaEntity" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetDeepClasificacionProblema">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="ClvProblema" nillable="true" type="xs:long" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetDeepClasificacionProblemaResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q278="http://schemas.datacontract.org/2004/07/Softv.Entities" minOccurs="0" name="GetDeepClasificacionProblemaResult" nillable="true" type="q278:ClasificacionProblemaEntity" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetClasificacionProblemaList">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetClasificacionProblemaListResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q279="http://schemas.datacontract.org/2004/07/Softv.Entities" minOccurs="0" name="GetClasificacionProblemaListResult" nillable="true" type="q279:ArrayOfClasificacionProblemaEntity" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetClasificacionProblemaPagedList">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="page" type="xs:int" />
+        <xs:element minOccurs="0" name="pageSize" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetClasificacionProblemaPagedListResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q280="http://schemas.datacontract.org/2004/07/Globals" minOccurs="0" name="GetClasificacionProblemaPagedListResult" nillable="true" type="q280:SoftvListOfClasificacionProblemaEntitykmseq5jn" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetClasificacionProblemaPagedListXml">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="page" type="xs:int" />
+        <xs:element minOccurs="0" name="pageSize" type="xs:int" />
+        <xs:element minOccurs="0" name="xml" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetClasificacionProblemaPagedListXmlResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q281="http://schemas.datacontract.org/2004/07/Globals" minOccurs="0" name="GetClasificacionProblemaPagedListXmlResult" nillable="true" type="q281:SoftvListOfClasificacionProblemaEntitykmseq5jn" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="AddClasificacionProblema">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q282="http://schemas.datacontract.org/2004/07/Softv.Entities" minOccurs="0" name="objClasificacionProblema" nillable="true" type="q282:ClasificacionProblemaEntity" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="AddClasificacionProblemaResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="AddClasificacionProblemaResult" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="UpdateClasificacionProblema">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q283="http://schemas.datacontract.org/2004/07/Softv.Entities" minOccurs="0" name="objClasificacionProblema" nillable="true" type="q283:ClasificacionProblemaEntity" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="UpdateClasificacionProblemaResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="UpdateClasificacionProblemaResult" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="DeleteClasificacionProblema">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="BaseRemoteIp" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="BaseIdUser" type="xs:int" />
+        <xs:element minOccurs="0" name="ClvProblema" nillable="true" type="xs:long" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="DeleteClasificacionProblemaResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="DeleteClasificacionProblemaResult" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
 </xs:schema>

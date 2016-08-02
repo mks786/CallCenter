@@ -1826,6 +1826,150 @@
   <wsdl:message name="IEstadistica_GetEstadisticaList_OutputMessage">
     <wsdl:part name="parameters" element="tns:GetEstadisticaListResponse" />
   </wsdl:message>
+  <wsdl:message name="IServicio_GetServicio_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetServicio" />
+  </wsdl:message>
+  <wsdl:message name="IServicio_GetServicio_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetServicioResponse" />
+  </wsdl:message>
+  <wsdl:message name="IServicio_GetDeepServicio_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetDeepServicio" />
+  </wsdl:message>
+  <wsdl:message name="IServicio_GetDeepServicio_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetDeepServicioResponse" />
+  </wsdl:message>
+  <wsdl:message name="IServicio_GetServicioList_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetServicioList" />
+  </wsdl:message>
+  <wsdl:message name="IServicio_GetServicioList_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetServicioListResponse" />
+  </wsdl:message>
+  <wsdl:message name="IServicio_GetServicioPagedList_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetServicioPagedList" />
+  </wsdl:message>
+  <wsdl:message name="IServicio_GetServicioPagedList_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetServicioPagedListResponse" />
+  </wsdl:message>
+  <wsdl:message name="IServicio_GetServicioPagedListXml_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetServicioPagedListXml" />
+  </wsdl:message>
+  <wsdl:message name="IServicio_GetServicioPagedListXml_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetServicioPagedListXmlResponse" />
+  </wsdl:message>
+  <wsdl:message name="IServicio_AddServicio_InputMessage">
+    <wsdl:part name="parameters" element="tns:AddServicio" />
+  </wsdl:message>
+  <wsdl:message name="IServicio_AddServicio_OutputMessage">
+    <wsdl:part name="parameters" element="tns:AddServicioResponse" />
+  </wsdl:message>
+  <wsdl:message name="IServicio_UpdateServicio_InputMessage">
+    <wsdl:part name="parameters" element="tns:UpdateServicio" />
+  </wsdl:message>
+  <wsdl:message name="IServicio_UpdateServicio_OutputMessage">
+    <wsdl:part name="parameters" element="tns:UpdateServicioResponse" />
+  </wsdl:message>
+  <wsdl:message name="IServicio_DeleteServicio_InputMessage">
+    <wsdl:part name="parameters" element="tns:DeleteServicio" />
+  </wsdl:message>
+  <wsdl:message name="IServicio_DeleteServicio_OutputMessage">
+    <wsdl:part name="parameters" element="tns:DeleteServicioResponse" />
+  </wsdl:message>
+  <wsdl:message name="IMotAtenTel_GetMotAtenTel_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetMotAtenTel" />
+  </wsdl:message>
+  <wsdl:message name="IMotAtenTel_GetMotAtenTel_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetMotAtenTelResponse" />
+  </wsdl:message>
+  <wsdl:message name="IMotAtenTel_GetDeepMotAtenTel_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetDeepMotAtenTel" />
+  </wsdl:message>
+  <wsdl:message name="IMotAtenTel_GetDeepMotAtenTel_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetDeepMotAtenTelResponse" />
+  </wsdl:message>
+  <wsdl:message name="IMotAtenTel_GetMotAtenTelList_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetMotAtenTelList" />
+  </wsdl:message>
+  <wsdl:message name="IMotAtenTel_GetMotAtenTelList_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetMotAtenTelListResponse" />
+  </wsdl:message>
+  <wsdl:message name="IMotAtenTel_GetMotAtenTelPagedList_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetMotAtenTelPagedList" />
+  </wsdl:message>
+  <wsdl:message name="IMotAtenTel_GetMotAtenTelPagedList_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetMotAtenTelPagedListResponse" />
+  </wsdl:message>
+  <wsdl:message name="IMotAtenTel_GetMotAtenTelPagedListXml_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetMotAtenTelPagedListXml" />
+  </wsdl:message>
+  <wsdl:message name="IMotAtenTel_GetMotAtenTelPagedListXml_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetMotAtenTelPagedListXmlResponse" />
+  </wsdl:message>
+  <wsdl:message name="IMotAtenTel_AddMotAtenTel_InputMessage">
+    <wsdl:part name="parameters" element="tns:AddMotAtenTel" />
+  </wsdl:message>
+  <wsdl:message name="IMotAtenTel_AddMotAtenTel_OutputMessage">
+    <wsdl:part name="parameters" element="tns:AddMotAtenTelResponse" />
+  </wsdl:message>
+  <wsdl:message name="IMotAtenTel_UpdateMotAtenTel_InputMessage">
+    <wsdl:part name="parameters" element="tns:UpdateMotAtenTel" />
+  </wsdl:message>
+  <wsdl:message name="IMotAtenTel_UpdateMotAtenTel_OutputMessage">
+    <wsdl:part name="parameters" element="tns:UpdateMotAtenTelResponse" />
+  </wsdl:message>
+  <wsdl:message name="IMotAtenTel_DeleteMotAtenTel_InputMessage">
+    <wsdl:part name="parameters" element="tns:DeleteMotAtenTel" />
+  </wsdl:message>
+  <wsdl:message name="IMotAtenTel_DeleteMotAtenTel_OutputMessage">
+    <wsdl:part name="parameters" element="tns:DeleteMotAtenTelResponse" />
+  </wsdl:message>
+  <wsdl:message name="IClasificacionProblema_GetClasificacionProblema_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetClasificacionProblema" />
+  </wsdl:message>
+  <wsdl:message name="IClasificacionProblema_GetClasificacionProblema_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetClasificacionProblemaResponse" />
+  </wsdl:message>
+  <wsdl:message name="IClasificacionProblema_GetDeepClasificacionProblema_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetDeepClasificacionProblema" />
+  </wsdl:message>
+  <wsdl:message name="IClasificacionProblema_GetDeepClasificacionProblema_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetDeepClasificacionProblemaResponse" />
+  </wsdl:message>
+  <wsdl:message name="IClasificacionProblema_GetClasificacionProblemaList_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetClasificacionProblemaList" />
+  </wsdl:message>
+  <wsdl:message name="IClasificacionProblema_GetClasificacionProblemaList_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetClasificacionProblemaListResponse" />
+  </wsdl:message>
+  <wsdl:message name="IClasificacionProblema_GetClasificacionProblemaPagedList_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetClasificacionProblemaPagedList" />
+  </wsdl:message>
+  <wsdl:message name="IClasificacionProblema_GetClasificacionProblemaPagedList_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetClasificacionProblemaPagedListResponse" />
+  </wsdl:message>
+  <wsdl:message name="IClasificacionProblema_GetClasificacionProblemaPagedListXml_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetClasificacionProblemaPagedListXml" />
+  </wsdl:message>
+  <wsdl:message name="IClasificacionProblema_GetClasificacionProblemaPagedListXml_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetClasificacionProblemaPagedListXmlResponse" />
+  </wsdl:message>
+  <wsdl:message name="IClasificacionProblema_AddClasificacionProblema_InputMessage">
+    <wsdl:part name="parameters" element="tns:AddClasificacionProblema" />
+  </wsdl:message>
+  <wsdl:message name="IClasificacionProblema_AddClasificacionProblema_OutputMessage">
+    <wsdl:part name="parameters" element="tns:AddClasificacionProblemaResponse" />
+  </wsdl:message>
+  <wsdl:message name="IClasificacionProblema_UpdateClasificacionProblema_InputMessage">
+    <wsdl:part name="parameters" element="tns:UpdateClasificacionProblema" />
+  </wsdl:message>
+  <wsdl:message name="IClasificacionProblema_UpdateClasificacionProblema_OutputMessage">
+    <wsdl:part name="parameters" element="tns:UpdateClasificacionProblemaResponse" />
+  </wsdl:message>
+  <wsdl:message name="IClasificacionProblema_DeleteClasificacionProblema_InputMessage">
+    <wsdl:part name="parameters" element="tns:DeleteClasificacionProblema" />
+  </wsdl:message>
+  <wsdl:message name="IClasificacionProblema_DeleteClasificacionProblema_OutputMessage">
+    <wsdl:part name="parameters" element="tns:DeleteClasificacionProblemaResponse" />
+  </wsdl:message>
   <wsdl:portType name="IUsuario">
     <wsdl:operation name="GetUsuario">
       <wsdl:input wsaw:Action="http://tempuri.org/IUsuario/GetUsuario" message="tns:IUsuario_GetUsuario_InputMessage" />
@@ -3112,6 +3256,108 @@
     <wsdl:operation name="GetEstadisticaList">
       <wsdl:input wsaw:Action="http://tempuri.org/IEstadistica/GetEstadisticaList" message="tns:IEstadistica_GetEstadisticaList_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IEstadistica/GetEstadisticaListResponse" message="tns:IEstadistica_GetEstadisticaList_OutputMessage" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:portType name="IServicio">
+    <wsdl:operation name="GetServicio">
+      <wsdl:input wsaw:Action="http://tempuri.org/IServicio/GetServicio" message="tns:IServicio_GetServicio_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IServicio/GetServicioResponse" message="tns:IServicio_GetServicio_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetDeepServicio">
+      <wsdl:input wsaw:Action="http://tempuri.org/IServicio/GetDeepServicio" message="tns:IServicio_GetDeepServicio_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IServicio/GetDeepServicioResponse" message="tns:IServicio_GetDeepServicio_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetServicioList">
+      <wsdl:input wsaw:Action="http://tempuri.org/IServicio/GetServicioList" message="tns:IServicio_GetServicioList_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IServicio/GetServicioListResponse" message="tns:IServicio_GetServicioList_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetServicioPagedList">
+      <wsdl:input wsaw:Action="http://tempuri.org/IServicio/GetServicioPagedList" message="tns:IServicio_GetServicioPagedList_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IServicio/GetServicioPagedListResponse" message="tns:IServicio_GetServicioPagedList_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetServicioPagedListXml">
+      <wsdl:input wsaw:Action="http://tempuri.org/IServicio/GetServicioPagedListXml" message="tns:IServicio_GetServicioPagedListXml_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IServicio/GetServicioPagedListXmlResponse" message="tns:IServicio_GetServicioPagedListXml_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="AddServicio">
+      <wsdl:input wsaw:Action="http://tempuri.org/IServicio/AddServicio" message="tns:IServicio_AddServicio_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IServicio/AddServicioResponse" message="tns:IServicio_AddServicio_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="UpdateServicio">
+      <wsdl:input wsaw:Action="http://tempuri.org/IServicio/UpdateServicio" message="tns:IServicio_UpdateServicio_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IServicio/UpdateServicioResponse" message="tns:IServicio_UpdateServicio_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="DeleteServicio">
+      <wsdl:input wsaw:Action="http://tempuri.org/IServicio/DeleteServicio" message="tns:IServicio_DeleteServicio_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IServicio/DeleteServicioResponse" message="tns:IServicio_DeleteServicio_OutputMessage" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:portType name="IMotAtenTel">
+    <wsdl:operation name="GetMotAtenTel">
+      <wsdl:input wsaw:Action="http://tempuri.org/IMotAtenTel/GetMotAtenTel" message="tns:IMotAtenTel_GetMotAtenTel_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IMotAtenTel/GetMotAtenTelResponse" message="tns:IMotAtenTel_GetMotAtenTel_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetDeepMotAtenTel">
+      <wsdl:input wsaw:Action="http://tempuri.org/IMotAtenTel/GetDeepMotAtenTel" message="tns:IMotAtenTel_GetDeepMotAtenTel_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IMotAtenTel/GetDeepMotAtenTelResponse" message="tns:IMotAtenTel_GetDeepMotAtenTel_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetMotAtenTelList">
+      <wsdl:input wsaw:Action="http://tempuri.org/IMotAtenTel/GetMotAtenTelList" message="tns:IMotAtenTel_GetMotAtenTelList_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IMotAtenTel/GetMotAtenTelListResponse" message="tns:IMotAtenTel_GetMotAtenTelList_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetMotAtenTelPagedList">
+      <wsdl:input wsaw:Action="http://tempuri.org/IMotAtenTel/GetMotAtenTelPagedList" message="tns:IMotAtenTel_GetMotAtenTelPagedList_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IMotAtenTel/GetMotAtenTelPagedListResponse" message="tns:IMotAtenTel_GetMotAtenTelPagedList_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetMotAtenTelPagedListXml">
+      <wsdl:input wsaw:Action="http://tempuri.org/IMotAtenTel/GetMotAtenTelPagedListXml" message="tns:IMotAtenTel_GetMotAtenTelPagedListXml_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IMotAtenTel/GetMotAtenTelPagedListXmlResponse" message="tns:IMotAtenTel_GetMotAtenTelPagedListXml_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="AddMotAtenTel">
+      <wsdl:input wsaw:Action="http://tempuri.org/IMotAtenTel/AddMotAtenTel" message="tns:IMotAtenTel_AddMotAtenTel_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IMotAtenTel/AddMotAtenTelResponse" message="tns:IMotAtenTel_AddMotAtenTel_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="UpdateMotAtenTel">
+      <wsdl:input wsaw:Action="http://tempuri.org/IMotAtenTel/UpdateMotAtenTel" message="tns:IMotAtenTel_UpdateMotAtenTel_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IMotAtenTel/UpdateMotAtenTelResponse" message="tns:IMotAtenTel_UpdateMotAtenTel_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="DeleteMotAtenTel">
+      <wsdl:input wsaw:Action="http://tempuri.org/IMotAtenTel/DeleteMotAtenTel" message="tns:IMotAtenTel_DeleteMotAtenTel_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IMotAtenTel/DeleteMotAtenTelResponse" message="tns:IMotAtenTel_DeleteMotAtenTel_OutputMessage" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:portType name="IClasificacionProblema">
+    <wsdl:operation name="GetClasificacionProblema">
+      <wsdl:input wsaw:Action="http://tempuri.org/IClasificacionProblema/GetClasificacionProblema" message="tns:IClasificacionProblema_GetClasificacionProblema_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IClasificacionProblema/GetClasificacionProblemaResponse" message="tns:IClasificacionProblema_GetClasificacionProblema_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetDeepClasificacionProblema">
+      <wsdl:input wsaw:Action="http://tempuri.org/IClasificacionProblema/GetDeepClasificacionProblema" message="tns:IClasificacionProblema_GetDeepClasificacionProblema_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IClasificacionProblema/GetDeepClasificacionProblemaResponse" message="tns:IClasificacionProblema_GetDeepClasificacionProblema_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetClasificacionProblemaList">
+      <wsdl:input wsaw:Action="http://tempuri.org/IClasificacionProblema/GetClasificacionProblemaList" message="tns:IClasificacionProblema_GetClasificacionProblemaList_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IClasificacionProblema/GetClasificacionProblemaListResponse" message="tns:IClasificacionProblema_GetClasificacionProblemaList_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetClasificacionProblemaPagedList">
+      <wsdl:input wsaw:Action="http://tempuri.org/IClasificacionProblema/GetClasificacionProblemaPagedList" message="tns:IClasificacionProblema_GetClasificacionProblemaPagedList_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IClasificacionProblema/GetClasificacionProblemaPagedListResponse" message="tns:IClasificacionProblema_GetClasificacionProblemaPagedList_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetClasificacionProblemaPagedListXml">
+      <wsdl:input wsaw:Action="http://tempuri.org/IClasificacionProblema/GetClasificacionProblemaPagedListXml" message="tns:IClasificacionProblema_GetClasificacionProblemaPagedListXml_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IClasificacionProblema/GetClasificacionProblemaPagedListXmlResponse" message="tns:IClasificacionProblema_GetClasificacionProblemaPagedListXml_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="AddClasificacionProblema">
+      <wsdl:input wsaw:Action="http://tempuri.org/IClasificacionProblema/AddClasificacionProblema" message="tns:IClasificacionProblema_AddClasificacionProblema_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IClasificacionProblema/AddClasificacionProblemaResponse" message="tns:IClasificacionProblema_AddClasificacionProblema_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="UpdateClasificacionProblema">
+      <wsdl:input wsaw:Action="http://tempuri.org/IClasificacionProblema/UpdateClasificacionProblema" message="tns:IClasificacionProblema_UpdateClasificacionProblema_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IClasificacionProblema/UpdateClasificacionProblemaResponse" message="tns:IClasificacionProblema_UpdateClasificacionProblema_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="DeleteClasificacionProblema">
+      <wsdl:input wsaw:Action="http://tempuri.org/IClasificacionProblema/DeleteClasificacionProblema" message="tns:IClasificacionProblema_DeleteClasificacionProblema_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IClasificacionProblema/DeleteClasificacionProblemaResponse" message="tns:IClasificacionProblema_DeleteClasificacionProblema_OutputMessage" />
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:binding name="BasicHttpBinding_IUsuario" type="tns:IUsuario">
@@ -5955,6 +6201,231 @@
       </wsdl:output>
     </wsdl:operation>
   </wsdl:binding>
+  <wsdl:binding name="BasicHttpBinding_IServicio" type="tns:IServicio">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="GetServicio">
+      <soap:operation soapAction="http://tempuri.org/IServicio/GetServicio" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetDeepServicio">
+      <soap:operation soapAction="http://tempuri.org/IServicio/GetDeepServicio" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetServicioList">
+      <soap:operation soapAction="http://tempuri.org/IServicio/GetServicioList" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetServicioPagedList">
+      <soap:operation soapAction="http://tempuri.org/IServicio/GetServicioPagedList" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetServicioPagedListXml">
+      <soap:operation soapAction="http://tempuri.org/IServicio/GetServicioPagedListXml" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AddServicio">
+      <soap:operation soapAction="http://tempuri.org/IServicio/AddServicio" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdateServicio">
+      <soap:operation soapAction="http://tempuri.org/IServicio/UpdateServicio" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DeleteServicio">
+      <soap:operation soapAction="http://tempuri.org/IServicio/DeleteServicio" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="BasicHttpBinding_IMotAtenTel" type="tns:IMotAtenTel">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="GetMotAtenTel">
+      <soap:operation soapAction="http://tempuri.org/IMotAtenTel/GetMotAtenTel" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetDeepMotAtenTel">
+      <soap:operation soapAction="http://tempuri.org/IMotAtenTel/GetDeepMotAtenTel" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetMotAtenTelList">
+      <soap:operation soapAction="http://tempuri.org/IMotAtenTel/GetMotAtenTelList" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetMotAtenTelPagedList">
+      <soap:operation soapAction="http://tempuri.org/IMotAtenTel/GetMotAtenTelPagedList" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetMotAtenTelPagedListXml">
+      <soap:operation soapAction="http://tempuri.org/IMotAtenTel/GetMotAtenTelPagedListXml" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AddMotAtenTel">
+      <soap:operation soapAction="http://tempuri.org/IMotAtenTel/AddMotAtenTel" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdateMotAtenTel">
+      <soap:operation soapAction="http://tempuri.org/IMotAtenTel/UpdateMotAtenTel" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DeleteMotAtenTel">
+      <soap:operation soapAction="http://tempuri.org/IMotAtenTel/DeleteMotAtenTel" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="BasicHttpBinding_IClasificacionProblema" type="tns:IClasificacionProblema">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="GetClasificacionProblema">
+      <soap:operation soapAction="http://tempuri.org/IClasificacionProblema/GetClasificacionProblema" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetDeepClasificacionProblema">
+      <soap:operation soapAction="http://tempuri.org/IClasificacionProblema/GetDeepClasificacionProblema" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetClasificacionProblemaList">
+      <soap:operation soapAction="http://tempuri.org/IClasificacionProblema/GetClasificacionProblemaList" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetClasificacionProblemaPagedList">
+      <soap:operation soapAction="http://tempuri.org/IClasificacionProblema/GetClasificacionProblemaPagedList" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetClasificacionProblemaPagedListXml">
+      <soap:operation soapAction="http://tempuri.org/IClasificacionProblema/GetClasificacionProblemaPagedListXml" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AddClasificacionProblema">
+      <soap:operation soapAction="http://tempuri.org/IClasificacionProblema/AddClasificacionProblema" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdateClasificacionProblema">
+      <soap:operation soapAction="http://tempuri.org/IClasificacionProblema/UpdateClasificacionProblema" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DeleteClasificacionProblema">
+      <soap:operation soapAction="http://tempuri.org/IClasificacionProblema/DeleteClasificacionProblema" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
   <wsdl:service name="SoftvWCFService">
     <wsdl:port name="BasicHttpBinding_IUsuario" binding="tns:BasicHttpBinding_IUsuario">
       <soap:address location="http://localhost:64481/SoftvWCFService.svc" />
@@ -6068,6 +6539,15 @@
       <soap:address location="http://localhost:64481/SoftvWCFService.svc" />
     </wsdl:port>
     <wsdl:port name="BasicHttpBinding_IEstadistica" binding="tns:BasicHttpBinding_IEstadistica">
+      <soap:address location="http://localhost:64481/SoftvWCFService.svc" />
+    </wsdl:port>
+    <wsdl:port name="BasicHttpBinding_IServicio" binding="tns:BasicHttpBinding_IServicio">
+      <soap:address location="http://localhost:64481/SoftvWCFService.svc" />
+    </wsdl:port>
+    <wsdl:port name="BasicHttpBinding_IMotAtenTel" binding="tns:BasicHttpBinding_IMotAtenTel">
+      <soap:address location="http://localhost:64481/SoftvWCFService.svc" />
+    </wsdl:port>
+    <wsdl:port name="BasicHttpBinding_IClasificacionProblema" binding="tns:BasicHttpBinding_IClasificacionProblema">
       <soap:address location="http://localhost:64481/SoftvWCFService.svc" />
     </wsdl:port>
   </wsdl:service>

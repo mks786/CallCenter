@@ -15,25 +15,25 @@ $(document).ready(function () {
 
         }
     });
+    $('#telefono_editar').inputmask("(999)9999999");
+    $('#celular_editar').inputmask("999-999-99-99");
+    var url;
     $("#plaza_llamadas").change(function () {
         $("#panel_busqueda").show();
         $("#tipo_llamada").removeAttr('disabled');
-        var url = '/Llamada/nueva?id_plaza='+$(this).val();
-        $('#nueva_llamada_link').attr('href',url);
-        $('#nueva_llamada_link').removeClass('disabled');
         LlenarTabla($(this).val(), '', '', '', '');
         
     });
     $("#tipo_llamada").change(function () {
-        $('.collapse').collapse('hide');
-        var tipo = $(this).val();
+        $('#nueva_llamada_link').removeClass('disabled');
         var id_plaza = $("#plaza_llamadas").val();
+        var tipo = $(this).val();
         var cliente;
-        if(tipo == 1){
+        if (tipo == 1) {
             cliente = true;
-        }else if(tipo == 2){
+        } else if (tipo == 2) {
             cliente = false;
-        }else{
+        } else {
             cliente = '';
         }
         LlenarTabla(id_plaza, '', '', '', cliente);
@@ -83,7 +83,7 @@ function LlenarTabla(idplaza,contrato,cadena,id_llamada,tipo_llamada) {
         "dom": '<"toolbar">frtip',
         "bDestroy": true,
         "info": true,
-        "stateSave": true,
+        "stateSave": false,
         "lengthMenu": [[10, 20, 50, 100], [10, 20, 50, 100]],
         "ajax": {
             "url": "/DatosLlamada/GetList/",
@@ -106,16 +106,24 @@ function LlenarTabla(idplaza,contrato,cadena,id_llamada,tipo_llamada) {
                 sortable: false,
                 "render": function (data, type, full, meta) {
                     var cliente;
-                    if (full.TipoLlamada == true) {
-                        cliente = 'Es Cliente';
-                    } else {
+                    if (full.Contrato == null) {
                         cliente = 'No Es Cliente';
+                    } else {
+                        cliente = 'Es Cliente';
                     }
                     return ("<td>"+cliente+"<td>");  //Es el campo de opciones de la tabla.
                 }
             },
-            //{ "data": "Tipo_Llamada", "orderable": false },
-            { "data": "Contrato", "orderable": false },
+            {
+                sortable: false,
+                "render": function (data, type, full, meta) {
+                    if(full.Contrato == null){
+                        return "----";
+                    } else {
+                        return full.Contrato;
+                    }
+                }
+            },
             { "data": "Nombre", "orderable": false },
             {
                 sortable: false,
@@ -182,6 +190,12 @@ $('#TablaLlamadas').on('click', '.Detalle', function () {
 });
 
 $('#TablaLlamadas').on('click', '.Editar', function () {
+    $('#tab_info').attr('aria-expanded', 'true');
+    $('#li_info').addClass('active');
+    $('#tab_1').addClass('active');
+    $('#tab_2').removeClass('active');
+    $('#li_queja').removeClass('active');
+    $('#tab_queja').attr('aria-expanded', 'false');
     $('#ModalEditarLlamada').modal('show');
 });
 
@@ -264,26 +278,99 @@ function editarLlamada(e) {
         type: "GET",
         data: { 'plaza': id_plaza, 'id_llamada': llamada },
         success: function (data, textStatus, jqXHR) {
-            console.log(data);
             var contrato = data[0].Contrato;
             $('#detalle_editar').val(data[0].Detalle);
             $('#solucion_editar').val(data[0].Solucion);
             $('#contrato_editar').val(data[0].Contrato);
             $('#id_llamada').val(data[0].IdLlamada);
+            $('#inicio').val(data[0].HoraInicio);
+            $('#fin').val(data[0].HoraFin);
+            $('#fecha').val(data[0].Fecha); 
+            $('#id_llamada').val(llamada);
             var queja = data[0].Clv_Queja;
-            var problemaSolucion = data[0].ProblemaSolucion;
-            if (problemaSolucion == true) {
-                $('#clasificacion_editar').show();
-                $('#panel_solucion').show();
-                $('#clasificacion_solucion_editar').show();
-                $('#panel_tipo_informacion').hide(); 
-                $('#guardar_llamada').attr('data-problem', problemaSolucion);
-            } else if (problemaSolucion == false) {
-                $('#clasificacion_editar').hide();
-                $('#panel_solucion').hide();
-                $('#clasificacion_solucion_editar').hide(); 
-                $('#panel_tipo_informacion').show();
-                $('#guardar_llamada').attr('data-problem', problemaSolucion);
+            var informacion = data[0].Clv_Motivo;
+            var cliente = data[0].SiEsCliente;
+            if(cliente == true){
+                if (queja > 1) {
+                    $('#contrato_oculto').val(contrato);
+                    $('#tipo_llamada_oculto').val(2);
+                    $('#contrato_panel_editar').show();
+                    $('#detalle_texto').text('Reporte del cliente ');
+                    $('#panel_detalle_llamada').show(); 
+                    $('#li_queja').show();
+                    $('#id_queja').val(queja);
+                    getDatosQueja(queja);
+                    $('#queja_oculto').val(queja);
+                    getTurno(data[0].IdTurno);
+                    getClasificacionProblemas(data[0].Clv_Problema);
+                    $('#panel_solucion').hide();
+                    $('#clasificacion_editar').show(); 
+                    $('#clasificacion_solucion_editar').hide();
+                    $('#celular_panel_editar').hide();
+                    $('#nombre_panel_editar').hide();
+                    $('#telefono_panel_editar').hide();
+                    $('#domicilio_panel_editar').hide();
+                    $('#email_panel_editar').hide(); 
+                    $('#panel_tipo_informacion').hide();
+                } else if (informacion != null) {
+                    $('#contrato_oculto').val(contrato);
+                    $('#tipo_llamada_oculto').val(1);
+                    $('#queja_oculto').val("");
+                    $.ajax({
+                        url: "/Llamada/TipoLlamada/",
+                        type: "GET",
+                        success: function (datas, textStatus, jqXHR) {
+                            $('#tipo_informacion_editar option').remove();
+                            for (var i = 0; i < datas.length; i++) {
+                                if (datas[i].clv_motivo == data[0].Clv_Motivo) {
+                                    $('#tipo_informacion_editar').append('<option value="' + datas[i].clv_motivo + '" selected>' + datas[i].descricpion + '</option>');
+                                } else {
+                                    $('#tipo_informacion_editar').append('<option value="' + datas[i].clv_motivo + '">' + datas[i].descricpion + '</option>');
+                                }
+                            }
+                        },
+                        error: function (jqXHR, textStatus, errorThrown) {
+
+                        }
+                    });
+                    $('#li_queja').hide();
+                    $('#contrato_panel_editar').show();
+                    $('#detalle_texto').text('Detalle Llamada');
+                    $('#panel_detalle_llamada').show();
+                    $('#panel_tipo_informacion').hide(); 
+                    $('#clasificacion_editar').hide();
+                    $('#panel_solucion').hide();
+                    $('#clasificacion_solucion_editar').hide(); 
+                    $('#panel_tipo_informacion').show();
+                    $('#celular_panel_editar').hide();
+                    $('#nombre_panel_editar').hide();
+                    $('#telefono_panel_editar').hide();
+                    $('#domicilio_panel_editar').hide();
+                    $('#email_panel_editar').hide();
+                } else {
+                    $('#contrato_oculto').val(contrato);
+                    $('#queja_oculto').val("");
+                    $('#tipo_llamada_oculto').val(2);
+                    getClasificacionSolucion(data[0].Clv_TipSer, data[0].Clv_Trabajo);
+                    getClasificacionProblemas(data[0].Clv_Problema);
+                    $('#li_queja').hide();
+                    $('#contrato_panel_editar').show();
+                    $('#detalle_texto').text('Reporte del cliente ');
+                    $('#panel_detalle_llamada').show(); 
+                    $('#panel_tipo_informacion').hide();
+                    $('#clasificacion_editar').show();
+                    $('#panel_solucion').show();
+                    $('#clasificacion_solucion_editar').show();
+                    $('#celular_panel_editar').hide();
+                    $('#nombre_panel_editar').hide();
+                    $('#telefono_panel_editar').hide();
+                    $('#domicilio_panel_editar').hide();
+                    $('#email_panel_editar').hide();
+                }
+            } else {
+                $('#queja_oculto').val("");
+                $('#contrato_oculto').val("");
+                $('#tipo_llamada_oculto').val(1);
                 $.ajax({
                     url: "/Llamada/TipoLlamada/",
                     type: "GET",
@@ -301,63 +388,34 @@ function editarLlamada(e) {
 
                     }
                 });
-            } else if (problemaSolucion == null) {
-                $('#panel_solucion').hide();
+                $('#li_queja').hide();
+                $('#contrato_panel_editar').hide();
+                $('#detalle_texto').text('Detalle Llamada');
+                $('#panel_detalle_llamada').show();
+                $('#panel_tipo_informacion').hide();
                 $('#clasificacion_editar').hide();
                 $('#panel_solucion').hide();
                 $('#clasificacion_solucion_editar').hide();
-                $('#panel_tipo_informacion').hide();
-                $('#guardar_llamada').removeAttr('data-problem');
-            }
-            $('#contrato_oculto').val(contrato);
-            $('#queja_oculto').val(queja);
-            if(queja > 0){
-                $('#tab_queja').show();
-                $('#id_queja').val(queja);
-                getDatosQueja(queja);
-                getTurno(data[0].IdTurno)
-            } else {
-                $('#tab_queja').hide();
-            }
-            if (contrato != "") {          
-                $('#contrato_panel_editar').show(); 
-                $('#celular_panel_editar').hide();
-                $('#nombre_panel_editar').hide();
-                $('#panel_detalle_llamada').show();
-                $('#telefono_panel_editar').hide();
-                $('#domicilio_panel_editar').hide();
-                $('#email_panel_editar').hide();
-                $('#panel_motivo_llamada').hide();
-                getClasificacionSolucion(data[0].Clv_TipSer, data[0].Clv_Trabajo);
-                getClasificacionProblemas(data[0].Clv_Problema);
-            } else {
-                $('#panel_detalle_llamada').hide();
-                $('#telefono_editar').inputmask("(999)9999999");
-                $('#celular_editar').inputmask("999-999-99-99");
+                $('#panel_tipo_informacion').show();
+                $('#telefono_editar').inputmask('unmaskedvalue');
+                $('#celular_editar').inputmask('unmaskedvalue');
                 $('#nombre_editar').val(data[0].nombre);
                 $('#domicilio_editar').val(data[0].domicilio);
                 $('#telefono_editar').val(data[0].telefono);
                 $('#celular_editar').val(data[0].celular);
                 $('#email_editar').val(data[0].email);
-                $('#clasificacion_editar').hide();
-                $('#contrato_panel_editar').hide();
                 $('#celular_panel_editar').show();
-                getMotivoLlamada(data[0].MotivoLlamada);
                 $('#nombre_panel_editar').show();
-                $('#panel_motivo_llamada').show();
                 $('#telefono_panel_editar').show();
                 $('#domicilio_panel_editar').show();
                 $('#email_panel_editar').show();
-                $('#panel_solucion').hide(); 
-                $('#clasificacion_solucion_editar').hide();
-                
             }
         },
         error: function (jqXHR, textStatus, errorThrown) {
 
         }
     });
-    setTimeout("mostrarDatos()", 1000);
+    setTimeout("mostrarDatos()", 1800);
 }
 
 function getMotivoLlamada(id) {
@@ -368,8 +426,6 @@ function getMotivoLlamada(id) {
         data: { 'IdPlaza': id_plaza},
         success: function (data, textStatus, jqXHR) {
             $("#selec_motivo_llamada option").remove();
-            console.log(data);
-            console.log(id);
             for (var i = 0; i < data.length; i++) {
                 if (data[i].Clv_Motivo == id) {
                     $('#selec_motivo_llamada').append('<option value="' + data[i].Clv_Motivo + '" selected>' + data[i].Descripcion + '</option>');
@@ -520,30 +576,38 @@ function guardarLlamada(e) {
     var llamada = {};
     var contrato = $('#contrato_oculto').val();
     var queja = $('#queja_oculto').val();
-    llamada.solucion = $('#solucion_editar').val();
-    llamada.detalle = $('#detalle_editar').val();
+    var tipo_llamada = $('#tipo_llamada_oculto').val();
+    llamada.tipo_llamada = tipo_llamada;
     llamada.id_llamada = $('#id_llamada').val();
-    llamada.contrato = $('#contrato_editar').val();
-    if(contrato > 0){
-        llamada.clas_problema = $('#select_problemas').val();
-        llamada.clas_solucion = $('#select_solucion').val();
-        var clv_motivo = $('#tipo_informacion_editar').val();
-        var problemasolucion = e.getAttribute('data-problem');
-        if(problemasolucion == "false"){
-            llamada.clv_motivo = clv_motivo;
-        }
-        if (queja > 0) {
-            llamada.prioridad = $('#prioridad_editar').val();
-            llamada.turno = $('#turno_editar').val();
-            llamada.queja = queja;
+    if(tipo_llamada == 1){
+        if(contrato != ""){
+            llamada.contrato = contrato;
+            llamada.clv_motivo = $('#tipo_informacion_editar').val();
+            llamada.detalle = $('#detalle_editar').val();
+        }else{
+            llamada.clv_motivo = $('#tipo_informacion_editar').val();
+            llamada.detalle = $('#detalle_editar').val();
+            llamada.domicilio = $('#domicilio_editar').val();
+            llamada.nombre = $('#nombre_editar').val();
+            llamada.telefono = $('#telefono_editar').inputmask('unmaskedvalue');
+            llamada.celular = $('#celular_editar').inputmask('unmaskedvalue');
+            llamada.email = $('#email_editar').val();
         }
     } else {
-        llamada.nombre = $('#nombre_editar').val();
-        llamada.domicilio = $('#domicilio_editar').val();
-        llamada.telefono = $('#telefono_editar').inputmask('unmaskedvalue');
-        llamada.celular = $('#celular_editar').inputmask('unmaskedvalue');
-        llamada.email = $('#email_editar').val();
-        llamada.MotivoLlamada = $('#selec_motivo_llamada').val();
+        if(queja > 0){
+            llamada.contrato = contrato;
+            llamada.detalle = $('#detalle_editar').val();
+            llamada.clas_problema = $('#select_problemas').val();
+            llamada.queja = queja;
+            llamada.prioridad = $('#prioridad_editar').val();
+            llamada.turno = $('#turno_editar').val();
+        } else {
+            llamada.contrato = contrato;
+            llamada.detalle = $('#detalle_editar').val();
+            llamada.clas_problema = $('#select_problemas').val();
+            llamada.solucion = $('#solucion_editar').val();
+            llamada.clas_solucion = $('#select_solucion').val();
+        }        
     }
     $.ajax({
         url: "/Llamada/editarLLamada/",
@@ -551,7 +615,7 @@ function guardarLlamada(e) {
         data: { 'plaza': id_plaza, 'llamada': llamada },
         success: function (data, textStatus, jqXHR) {
             $('#ModalEditarLlamada').modal("hide");
-            LlenarTabla(id_plaza,'','',data,'');
+            LlenarTabla(id_plaza, '', '', data, '');
             swal("La llamada se guaró exitosamente", "", "success");
         },
         error: function (jqXHR, textStatus, errorThrown) {

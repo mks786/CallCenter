@@ -30,6 +30,10 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Dapper, Version=1.50.2.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Dapper.1.50.2\lib\net45\Dapper.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Configuration" />
     <Reference Include="System.Core" />
@@ -45,6 +49,7 @@
     <Compile Include="CALLEProvider.cs" />
     <Compile Include="CatalogoPeriodosCorteProvider.cs" />
     <Compile Include="CIUDADProvider.cs" />
+    <Compile Include="ClasificacionProblemaProvider.cs" />
     <Compile Include="CLIENTEProvider.cs" />
     <Compile Include="Cliente_ApellidoProvider.cs" />
     <Compile Include="COLONIAProvider.cs" />
@@ -57,6 +62,7 @@
     <Compile Include="EstadisticaProvider.cs" />
     <Compile Include="LlamadaProvider.cs" />
     <Compile Include="ModuleProvider.cs" />
+    <Compile Include="MotAtenTelProvider.cs" />
     <Compile Include="MotivoCancelacionProvider.cs" />
     <Compile Include="NoClienteProvider.cs" />
     <Compile Include="PermisoProvider.cs" />
@@ -71,6 +77,7 @@
     <Compile Include="Rel_Clientes_TiposClientesProvider.cs" />
     <Compile Include="ResOpcMultsProvider.cs" />
     <Compile Include="RoleProvider.cs" />
+    <Compile Include="ServicioProvider.cs" />
     <Compile Include="TapProvider.cs" />
     <Compile Include="tblClasificacionProblemaProvider.cs" />
     <Compile Include="tblPrioridadQuejaProvider.cs" />
@@ -94,6 +101,9 @@
       <Project>{15c63329-3235-4f56-8f7a-ae44c969e3c8}</Project>
       <Name>Softv.Entities</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

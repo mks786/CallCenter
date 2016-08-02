@@ -100,9 +100,55 @@ namespace SoftvMVC.Controllers
             return Json(lista, JsonRequestBehavior.AllowGet);
         }
 
-       
-     
-       
+
+        //public ActionResult GetColonia()
+        //{
+        //    return Json(proxy.GetCOLONIAList(), JsonRequestBehavior.AllowGet);
+        //}
+
+        public class DatosTipoCliente
+        {
+            public int clv_colonia { get; set; }
+            public String Nombre { get; set; }
+        }
+
+
+        public ActionResult GetColonia(int numModal, int idConexion)
+        {
+            ConexionController c = new ConexionController();
+            SqlCommand comandoSql;
+            SqlConnection conexionSQL2 = new SqlConnection(c.DameConexion(idConexion));
+            List<DatosTipoCliente> lista = new List<DatosTipoCliente>();
+            try
+            {
+                conexionSQL2.Open();
+            }
+            catch
+            { }
+
+            try
+            {
+                comandoSql = new SqlCommand("exec DatosTipoCliente " + numModal);
+
+                //comandoSql = new SqlCommand("exec DatosTipoCliente " + numModal + ", " + idConexion + "");
+                comandoSql.Connection = conexionSQL2;
+                SqlDataReader reader = comandoSql.ExecuteReader();
+                if (reader.HasRows)
+                {
+                    while (reader.Read())
+                    {
+                        DatosTipoCliente datos = new DatosTipoCliente();
+                        datos.clv_colonia = Convert.ToInt32(reader[0]);
+                        datos.Nombre = reader[5].ToString();
+                        lista.Add(datos);
+                    }
+                }
+            }
+            catch
+            { }
+            return Json(lista, JsonRequestBehavior.AllowGet);
+        }
+
 
 
     }

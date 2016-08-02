@@ -5,6 +5,7 @@
 
 //se muestra modal de detalle preguntas y se borran tablas y controles
 function DetallePreguntas() {
+    $('#ModalCatalogoPreguntas').modal('hide');
     $('#ModalAgregarPregunta').modal('show');
     $('#NombrePregunta').val('');
     $('#TipoPregunta').val(0);

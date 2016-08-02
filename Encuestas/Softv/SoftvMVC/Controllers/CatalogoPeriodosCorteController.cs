@@ -9,6 +9,9 @@ using PagedList;
 using Softv.Entities;
 using Globals;
 
+using System.Data;
+using System.Data.SqlClient;
+
 namespace SoftvMVC.Controllers
 {
     /// <summary>
@@ -201,6 +204,53 @@ namespace SoftvMVC.Controllers
             }
         }
 
+        //public ActionResult GetCatalogoPeriodosCorte()
+        //{
+        //    return Json(proxy.GetCatalogoPeriodosCorteList(), JsonRequestBehavior.AllowGet);
+        //}
+
+        public class DatosTipoCliente
+        {
+            public int Clv_Periodo { get; set; }
+            public String Descripcion { get; set; }
+        }
+
+
+        public ActionResult GetCatalogoPeriodosCorte(int numModal, int idConexion)
+        {
+            ConexionController c = new ConexionController();
+            SqlCommand comandoSql;
+            SqlConnection conexionSQL2 = new SqlConnection(c.DameConexion(idConexion));
+            List<DatosTipoCliente> lista = new List<DatosTipoCliente>();
+            try
+            {
+                conexionSQL2.Open();
+            }
+            catch
+            { }
+
+            try
+            {
+                comandoSql = new SqlCommand("exec DatosTipoCliente " + numModal);
+
+                //comandoSql = new SqlCommand("exec DatosTipoCliente " + numModal + ", " + idConexion + "");
+                comandoSql.Connection = conexionSQL2;
+                SqlDataReader reader = comandoSql.ExecuteReader();
+                if (reader.HasRows)
+                {
+                    while (reader.Read())
+                    {
+                        DatosTipoCliente datos = new DatosTipoCliente();
+                        datos.Clv_Periodo = Convert.ToInt32(reader[0]);
+                        datos.Descripcion = reader[1].ToString();
+                        lista.Add(datos);
+                    }
+                }
+            }
+            catch
+            { }
+            return Json(lista, JsonRequestBehavior.AllowGet);
+        }
 
     }
 

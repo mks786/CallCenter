@@ -18,7 +18,7 @@ namespace SoftvWCFService
     public partial class SoftvWCFService : IUsuario, IRole, IModule, IPermiso, IEncuesta, IPregunta, ITipoPreguntas, IRelEncuestaClientes, IRelPreguntaOpcMults,
         IRelPreguntaEncuestas, IResOpcMults, IRelEnProcesos, IConexion, ICLIENTE, ITurno, ILlamada, IRel_Clientes_TiposClientes, ITipoCliente, ICatalogoPeriodosCorte,
         ICliente_Apellido, ITap, IDatoFiscal, ITrabajo, ITipServ, IMotivoCancelacion, IRelEncuestaPreguntaRes, IQueja, ICIUDAD, ICVECOLCIU, ICOLONIA, ICVECAROL, ICALLE, IBusquedaIndividual,
-        ItblClasificacionProblema, ItblPrioridadQueja, INoCliente, IDatosLlamada, IEstadistica
+        ItblClasificacionProblema, ItblPrioridadQueja, INoCliente, IDatosLlamada, IEstadistica, IServicio, IMotAtenTel, IClasificacionProblema
     {
         #region Usuario
         public UsuarioEntity GetUsuario(int? IdUsuario)
@@ -320,7 +320,7 @@ namespace SoftvWCFService
             return Pregunta.Delete(IdPregunta);
         }
 
-        
+
 
         #endregion
 
@@ -1534,7 +1534,7 @@ namespace SoftvWCFService
         }
 
         #endregion
-        
+
         #region tblPrioridadQueja
         public tblPrioridadQuejaEntity GettblPrioridadQueja(int? clvPrioridadQueja)
         {
@@ -1666,12 +1666,12 @@ namespace SoftvWCFService
         #endregion
 
         #region Estadistica
- 
+
         public IEnumerable<EstadisticaEntity> GetEstadisticaList(int plaza, int idencuesta, DateTime finicio, DateTime ffin)
         {
             return Estadistica.GetAll(plaza, idencuesta, finicio, ffin);
         }
-         
+
         #endregion
 
         #region Permiso
@@ -1732,6 +1732,137 @@ namespace SoftvWCFService
         }
 
         #endregion
+
+        #region Servicio
+        public ServicioEntity GetServicio(int? Clv_Servicio)
+        {
+            return Servicio.GetOne(Clv_Servicio);
+        }
+
+        public ServicioEntity GetDeepServicio(int? Clv_Servicio)
+        {
+            return Servicio.GetOneDeep(Clv_Servicio);
+        }
+
+        public IEnumerable<ServicioEntity> GetServicioList()
+        {
+            return Servicio.GetAll();
+        }
+
+        public SoftvList<ServicioEntity> GetServicioPagedList(int page, int pageSize)
+        {
+            return Servicio.GetPagedList(page, pageSize);
+        }
+
+        public SoftvList<ServicioEntity> GetServicioPagedListXml(int page, int pageSize, String xml)
+        {
+            return Servicio.GetPagedList(page, pageSize, xml);
+        }
+
+        public int AddServicio(ServicioEntity objServicio)
+        {
+            return Servicio.Add(objServicio);
+        }
+
+        public int UpdateServicio(ServicioEntity objServicio)
+        {
+            return Servicio.Edit(objServicio);
+        }
+
+        public int DeleteServicio(String BaseRemoteIp, int BaseIdUser, int? Clv_Servicio)
+        {
+            return Servicio.Delete(Clv_Servicio);
+        }
+
+        #endregion
+
+        #region MotAtenTel
+        public MotAtenTelEntity GetMotAtenTel(int? Clv_Motivo)
+        {
+            return MotAtenTel.GetOne(Clv_Motivo);
+        }
+
+        public MotAtenTelEntity GetDeepMotAtenTel(int? Clv_Motivo)
+        {
+            return MotAtenTel.GetOneDeep(Clv_Motivo);
+        }
+
+        public IEnumerable<MotAtenTelEntity> GetMotAtenTelList()
+        {
+            return MotAtenTel.GetAll();
+        }
+
+        public SoftvList<MotAtenTelEntity> GetMotAtenTelPagedList(int page, int pageSize)
+        {
+            return MotAtenTel.GetPagedList(page, pageSize);
+        }
+
+        public SoftvList<MotAtenTelEntity> GetMotAtenTelPagedListXml(int page, int pageSize, String xml)
+        {
+            return MotAtenTel.GetPagedList(page, pageSize, xml);
+        }
+
+        public int AddMotAtenTel(MotAtenTelEntity objMotAtenTel)
+        {
+            return MotAtenTel.Add(objMotAtenTel);
+        }
+
+        public int UpdateMotAtenTel(MotAtenTelEntity objMotAtenTel)
+        {
+            return MotAtenTel.Edit(objMotAtenTel);
+        }
+
+        public int DeleteMotAtenTel(String BaseRemoteIp, int BaseIdUser, int? Clv_Motivo)
+        {
+            return MotAtenTel.Delete(Clv_Motivo);
+        }
+
+        #endregion
+
+        #region ClasificacionProblema
+        public ClasificacionProblemaEntity GetClasificacionProblema(long? ClvProblema)
+        {
+            return ClasificacionProblema.GetOne(ClvProblema);
+        }
+
+        public ClasificacionProblemaEntity GetDeepClasificacionProblema(long? ClvProblema)
+        {
+            return ClasificacionProblema.GetOneDeep(ClvProblema);
+        }
+
+        public IEnumerable<ClasificacionProblemaEntity> GetClasificacionProblemaList()
+        {
+            return ClasificacionProblema.GetAll();
+        }
+
+        public SoftvList<ClasificacionProblemaEntity> GetClasificacionProblemaPagedList(int page, int pageSize)
+        {
+            return ClasificacionProblema.GetPagedList(page, pageSize);
+        }
+
+        public SoftvList<ClasificacionProblemaEntity> GetClasificacionProblemaPagedListXml(int page, int pageSize, String xml)
+        {
+            return ClasificacionProblema.GetPagedList(page, pageSize, xml);
+        }
+
+        public int AddClasificacionProblema(ClasificacionProblemaEntity objClasificacionProblema)
+        {
+            return ClasificacionProblema.Add(objClasificacionProblema);
+        }
+
+        public int UpdateClasificacionProblema(ClasificacionProblemaEntity objClasificacionProblema)
+        {
+            return ClasificacionProblema.Edit(objClasificacionProblema);
+        }
+
+        public int DeleteClasificacionProblema(String BaseRemoteIp, int BaseIdUser, long? ClvProblema)
+        {
+            return ClasificacionProblema.Delete(ClvProblema);
+        }
+
+        #endregion
+  
+
 
     }
 }

@@ -135,7 +135,7 @@ namespace Softv.DAO
             using (SqlConnection connection = new SqlConnection(SoftvSettings.Settings.MotivoCancelacion.ConnectionString))
             {
 
-                SqlCommand comandoSql = CreateCommand("Softv_MotivoCancelacionGet", connection);
+                SqlCommand comandoSql = CreateCommand("Muestra_MotCanc_Reporte", connection);
                 IDataReader rd = null;
                 try
                 {

@@ -68,11 +68,11 @@ namespace Softv.BAL
             List<COLONIAEntity> entities = new List<COLONIAEntity>();
             entities = ProviderSoftv.COLONIA.GetCOLONIA();
 
-            List<CVECAROLEntity> lCVECAROL = ProviderSoftv.CVECAROL.GetCVECAROL(entities.Where(x => x.Clv_Colonia.HasValue).Select(x => x.Clv_Colonia.Value).ToList());
-            lCVECAROL.ForEach(XCVECAROL => entities.Where(x => x.Clv_Colonia.HasValue).Where(x => x.Clv_Colonia == XCVECAROL.Clv_Colonia).ToList().ForEach(y => y.CVECAROL = XCVECAROL));
+            //List<CVECAROLEntity> lCVECAROL = ProviderSoftv.CVECAROL.GetCVECAROL(entities.Where(x => x.Clv_Colonia.HasValue).Select(x => x.Clv_Colonia.Value).ToList());
+            //lCVECAROL.ForEach(XCVECAROL => entities.Where(x => x.Clv_Colonia.HasValue).Where(x => x.Clv_Colonia == XCVECAROL.Clv_Colonia).ToList().ForEach(y => y.CVECAROL = XCVECAROL));
 
-            List<CVECOLCIUEntity> lCVECOLCIU = ProviderSoftv.CVECOLCIU.GetCVECOLCIU(entities.Where(x => x.Clv_Colonia.HasValue).Select(x => x.Clv_Colonia.Value).ToList());
-            lCVECOLCIU.ForEach(XCVECOLCIU => entities.Where(x => x.Clv_Colonia.HasValue).Where(x => x.Clv_Colonia == XCVECOLCIU.Clv_Colonia).ToList().ForEach(y => y.CVECOLCIU = XCVECOLCIU));
+            //List<CVECOLCIUEntity> lCVECOLCIU = ProviderSoftv.CVECOLCIU.GetCVECOLCIU(entities.Where(x => x.Clv_Colonia.HasValue).Select(x => x.Clv_Colonia.Value).ToList());
+            //lCVECOLCIU.ForEach(XCVECOLCIU => entities.Where(x => x.Clv_Colonia.HasValue).Where(x => x.Clv_Colonia == XCVECOLCIU.Clv_Colonia).ToList().ForEach(y => y.CVECOLCIU = XCVECOLCIU));
 
             return entities ?? new List<COLONIAEntity>();
         }

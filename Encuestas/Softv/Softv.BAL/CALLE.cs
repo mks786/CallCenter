@@ -71,8 +71,8 @@ namespace Softv.BAL
             //List<CLIENTEEntity> lCLIENTE = ProviderSoftv.CLIENTE.GetCLIENTE(entities.Where(x => x.Clv_Calle.HasValue).Select(x => x.Clv_Calle.Value).ToList());
             //lCLIENTE.ForEach(XCLIENTE => entities.Where(x => x.Clv_Calle.HasValue).Where(x => x.Clv_Calle == XCLIENTE.Clv_Calle).ToList().ForEach(y => y.CLIENTE = XCLIENTE));
 
-            List<CVECAROLEntity> lCVECAROL = ProviderSoftv.CVECAROL.GetCVECAROL(entities.Where(x => x.Clv_Calle.HasValue).Select(x => x.Clv_Calle.Value).ToList());
-            lCVECAROL.ForEach(XCVECAROL => entities.Where(x => x.Clv_Calle.HasValue).Where(x => x.Clv_Calle == XCVECAROL.Clv_Calle).ToList().ForEach(y => y.CVECAROL = XCVECAROL));
+           //List<CVECAROLEntity> lCVECAROL = ProviderSoftv.CVECAROL.GetCVECAROL(entities.Where(x => x.Clv_Calle.HasValue).Select(x => x.Clv_Calle.Value).ToList());
+            //lCVECAROL.ForEach(XCVECAROL => entities.Where(x => x.Clv_Calle.HasValue).Where(x => x.Clv_Calle == XCVECAROL.Clv_Calle).ToList().ForEach(y => y.CVECAROL = XCVECAROL));
 
             return entities ?? new List<CALLEEntity>();
         }

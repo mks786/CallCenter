@@ -8,6 +8,8 @@ using System.Web.Mvc;
 using PagedList;
 using Softv.Entities;
 using Globals;
+using System.Data;
+using System.Data.SqlClient;
 
 namespace SoftvMVC.Controllers
 {
@@ -193,6 +195,52 @@ namespace SoftvMVC.Controllers
                 var resultNg = new { tipomsj = "warning", titulomsj = "Aviso", Success = "False", Message = "El Registro de MotivoCancelacion No puede ser Eliminado validar dependencias." };
                 return Json(resultNg, JsonRequestBehavior.AllowGet);
             }
+        }
+        //public ActionResult GetMotivoCancelacion()
+        //{
+        //    return Json(proxy.GetMotivoCancelacionList(), JsonRequestBehavior.AllowGet);
+        //}
+
+        public class DatosMotCan
+        {
+            public int Clv_MOTCAN { get; set; }
+            public String MOTCAN { get; set; }
+        }
+
+        public ActionResult GetMotivoCancelacion(int numModal, int idConexion)
+        {
+            ConexionController c = new ConexionController();
+            SqlCommand comandoSql;
+            SqlConnection conexionSQL2 = new SqlConnection(c.DameConexion(idConexion));
+            List<DatosMotCan> lista = new List<DatosMotCan>();
+            try
+            {
+                conexionSQL2.Open();
+            }
+            catch
+            { }
+
+            try
+            {
+                comandoSql = new SqlCommand("exec Muestra_MotCanc_Reporte ");
+
+                //comandoSql = new SqlCommand("exec DatosTipoCliente " + numModal + ", " + idConexion + "");
+                comandoSql.Connection = conexionSQL2;
+                SqlDataReader reader = comandoSql.ExecuteReader();
+                if (reader.HasRows)
+                {
+                    while (reader.Read())
+                    {
+                        DatosMotCan datos = new DatosMotCan();
+                        datos.Clv_MOTCAN = Convert.ToInt32(reader[0]);
+                        datos.MOTCAN = reader[1].ToString();
+                        lista.Add(datos);
+                    }
+                }
+            }
+            catch
+            { }
+            return Json(lista, JsonRequestBehavior.AllowGet);
         }
 
 

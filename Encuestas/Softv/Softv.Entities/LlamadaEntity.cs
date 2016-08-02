@@ -34,7 +34,7 @@ namespace Softv.Entities
         /// Property Tipo_Llamada
         /// </summary>
         [DataMember]
-        public bool? Tipo_Llamada { get; set; }
+        public int? Tipo_Llamada { get; set; }
         /// <summary>
         /// Property Contrato
         /// </summary>
@@ -92,7 +92,7 @@ namespace Softv.Entities
 
 
         [DataMember]
-        public bool? ProblemaSolucion { get; set; }
+        public bool? SiEsCliente { get; set; }
 
         [DataMember]
         public int? Clv_Motivo { get; set; }

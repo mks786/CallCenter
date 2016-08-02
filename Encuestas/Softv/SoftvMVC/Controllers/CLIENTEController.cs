@@ -88,24 +88,12 @@ namespace SoftvMVC.Controllers
 
         public ActionResult FiltradoMasivo(int idplaza, int idtipser, int tipobusqueda, string contratado, string suspendidos, string cancelados, string temporales, string instalados, string desconectados, string fuera_servicio, string fecha, string finicio, string ftermino, int draw, int start, int length)
         {
-
-            DataTableData dataTableData = new DataTableData();
-            dataTableData.draw = draw;
-            dataTableData.recordsTotal = 0;
-            int recordFiltered = 0;
-            dataTableData.data = Filtrar(idplaza, idtipser, tipobusqueda, contratado, suspendidos, cancelados, temporales, instalados, desconectados, fuera_servicio, fecha, finicio, ftermino, draw, start, length, ref recordFiltered);
-            dataTableData.recordsFiltered = recordFiltered;
-
-            return Json(dataTableData, JsonRequestBehavior.AllowGet);
-        }
-
-        public List<CLIENTEEntity2> Filtrar(int idplaza, int idtipser, int tipobusqueda, string contratado, string suspendidos, string cancelados, string temporales, string instalados, string desconectados, string fuera_servicio, string fecha, string finicio, string ftermino, int draw, int start, int length, ref int recordFiltered)
-        {
             List<CLIENTEEntity2> lista = new List<CLIENTEEntity2>();
             ConexionController c = new ConexionController();
             SqlCommand comandoSql;
             List<TipServEntity> lista_servicio = new List<TipServEntity>();
             SqlConnection conexionSQL = new SqlConnection(c.DameConexion(idplaza));
+            int recordFiltered = 0;
             try
             {
                 conexionSQL.Open();
@@ -207,9 +195,13 @@ namespace SoftvMVC.Controllers
             catch { }
             recordFiltered = lista.Count;
 
-            return lista.Skip(start).Take(length).ToList();
+            DataTableData dataTableData = new DataTableData();
+            dataTableData.draw = draw;
+            dataTableData.recordsTotal = 0;
+            dataTableData.data = lista.Skip(start).Take(length).ToList();
+            dataTableData.recordsFiltered = recordFiltered;
 
-
+            return Json(dataTableData, JsonRequestBehavior.AllowGet);
         }
 
         public ActionResult GetList(int plaza, string contrato, string cliente, string direccion, int draw, int start, int length)
@@ -307,6 +299,63 @@ namespace SoftvMVC.Controllers
 
         }
 
+        public ActionResult GetClientesLlamada(int IdPlaza, string contrato, string Nombrecliente, string ciudad, string colonia, string calle, string numero,int servicio)
+        {
+
+            ConexionController c = new ConexionController();
+            SqlCommand comandoSql;
+            List<CLIENTEEntity2> lista = new List<CLIENTEEntity2>();
+            SqlConnection conexionSQL = new SqlConnection(c.DameConexion(IdPlaza));
+            IList<ClientesFiltrado> TestList = null;
+            try
+            {
+                conexionSQL.Open();
+            }
+            catch
+            { }
+
+            try
+            {
+                if (contrato != null)
+                {
+                    TestList = Dapper.SqlMapper.Query<ClientesFiltrado>(
+                                conexionSQL, "exec ConsultaClientesTipServ " + servicio).Where(o => o.CONTRATO == Int32.Parse(contrato)).ToList();
+                }
+                else if (Nombrecliente != null)
+                {
+                    TestList = Dapper.SqlMapper.Query<ClientesFiltrado>(
+                                conexionSQL, "exec ConsultaClientesTipServ " + servicio).Where(o => o.Nombre.ToUpper().Contains(Nombrecliente.ToUpper())).Take(10).ToList();
+                }
+                else if (ciudad != "")
+                {
+                    TestList = Dapper.SqlMapper.Query<ClientesFiltrado>(
+                                conexionSQL, "exec ConsultaClientesTipServ " + servicio).Where(o => o.Ciudad.ToUpper() == ciudad.ToUpper() && o.Colonia.ToUpper() == colonia.ToUpper() && o.calle.ToUpper() == calle.ToUpper() && o.Numero == numero).Take(10).ToList();
+                }
+                else
+                {
+                    TestList = Dapper.SqlMapper.Query<ClientesFiltrado>(
+                               conexionSQL, "exec ConsultaClientesTipServ " + servicio).ToList();
+                }
+
+
+                
+            }
+            catch { }
+            return Json(TestList, JsonRequestBehavior.AllowGet);
+
+        }
+        public class ClientesFiltrado
+        {
+            public int CONTRATO { get; set; }
+            public string Nombre { get; set; }
+            public string Telefono { get; set; }
+            public string Celular { get; set; }
+            public string calle { get; set; }
+            public string Numero { get; set; }
+            public string Colonia { get; set; }
+            public string Ciudad { get; set; }
+            public string STATUS { get; set; }
+        }
         public ActionResult getNombreCliente(int IdPlaza, int contrato)
         {
             ConexionController c = new ConexionController();
@@ -476,7 +525,7 @@ namespace SoftvMVC.Controllers
             }
             catch
             { }
-            comandoSql = new SqlCommand("SELECT * FROM DatosFiscales where Contrato=" + contrato);
+            comandoSql = new SqlCommand("exec ConsultarDatosFiscales " + contrato);
 
 
             comandoSql.Connection = conexionSQL;
@@ -501,6 +550,8 @@ namespace SoftvMVC.Controllers
                     datos.IDENTIFICADOR = Int32.Parse(reader[14].ToString());
                     datos.CURP = reader[15].ToString();
                     datos.id_asociado = Int32.Parse(reader[16].ToString());
+                    datos.Email = reader[17].ToString();
+                    datos.Pais = reader[18].ToString();
 
                 }
             }
@@ -557,7 +608,7 @@ namespace SoftvMVC.Controllers
         }
 
 
-        public ActionResult UpdateCliente(CLIENTEEntity2 cliente, DatoFiscalEntity fiscales, clientes_apellidos clienteNombres)
+        public ActionResult UpdateCliente(CLIENTEEntity2 cliente, clientes_apellidos clienteNombres)
         {
             ConexionController c = new ConexionController();
             SqlCommand comandoSql2;
@@ -575,15 +626,6 @@ namespace SoftvMVC.Controllers
                 comandoSql2.Connection = conexionSQL;
                 comandoSql2.ExecuteNonQuery();
                 result = 1;
-            }
-            catch { }
-
-            try
-            {
-                comandoSql2 = new SqlCommand("UPDATE DatosFiscales set Razon_Social='" + fiscales.RAZON_SOCIAL + "',RFC='" + fiscales.RFC + "',Calle_RS='" + fiscales.CALLE_RS + "',Numero_RS='" + fiscales.NUMERO_RS + "',EntreCalles='" + fiscales.ENTRECALLES + "',Colonia_RS='" + fiscales.COLONIA_RS + "',Ciudad_RS='" + fiscales.CIUDAD_RS + "',Estado_RS='" + fiscales.ESTADO_RS + "',CP_RS='" + fiscales.CP_RS + "',Telefono_RS='" + fiscales.TELEFONO_RS + "',Fax_RS='" + fiscales.FAX_RS + "',CURP='" + fiscales.CURP + "' where contrato=" + cliente.CONTRATO);
-                comandoSql2.Connection = conexionSQL;
-
-                comandoSql2.ExecuteNonQuery();
             }
             catch { }
             try

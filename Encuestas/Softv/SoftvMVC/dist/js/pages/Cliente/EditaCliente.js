@@ -5,6 +5,8 @@
     $("#colonia_select").change(function () {
         cambiarCalle($(this).val());
     });
+    $('#telefono_editar').inputmask("(999)9999999");
+    $('#celular_editar').inputmask("999-999-99-99");
 });
 
 
@@ -52,6 +54,10 @@ function cambiarCalle(id) {
 
 function editarCliente(id) {
     BorraFormulario();
+    $('#personal').addClass('active');
+    $('#fiscal').removeClass('active');
+    $('#tab_1').addClass('active');
+    $('#tab_2a').removeClass('active');
     var id_plaza = $('#paza_conectando').val();
     $.ajax({
         url: "/CLIENTE/getNombreCliente/",
@@ -63,7 +69,10 @@ function editarCliente(id) {
             $('#apaterno_editar').val(data[0].apaterno);
             $('#amaterno_editar').val(data[0].amaterno);
             var formatted = $.datepicker.formatDate("yy-mm-dd", new Date(data[0].fnacimiento));
-            $('#fecha_editar').val(formatted);
+            var fecha = data[0].fnacimiento;
+            fecha = fecha.split("", 10);
+            fecha = fecha[6] + fecha[7] + fecha[8] + fecha[9] + "-" + fecha[3] + fecha[4] + "-" + fecha[0] + fecha[1];
+            $('#fecha_editar').val(fecha);
             
         },
         error: function (jqXHR, textStatus, errorThrown) {
@@ -108,6 +117,13 @@ function editarCliente(id) {
         type: "POST",
         data: { 'plaza': id_plaza, 'contrato': id },
         success: function (data, textStatus, jqXHR) {
+            console.log(data);
+            if (data.Contrato != null) {
+                $('#fiscal').show();
+                
+            } else {
+                $('#fiscal').hide();
+            }
             $('#rfc').val(data.RFC);
             $('#curp').val(data.CURP);
             $('#rsocial').val(data.RAZON_SOCIAL);
@@ -124,6 +140,8 @@ function editarCliente(id) {
             $('#idasociadofiscal').val(data.id_asociado);
             $('#identificadorfiscal').val(data.IDENTIFICADOR);
             $('#tipofiscal').val(data.TIPO);
+            $('#PaisFiscal').val(data.Pais);
+            $('#EmailFiscal').val(data.Email);
             
         },
         error: function (jqXHR, textStatus, errorThrown) {
@@ -131,7 +149,7 @@ function editarCliente(id) {
         }
     });
     
-    setTimeout("mostrarDatos()", 1200);
+    setTimeout("mostrarDatos()", 1800);
 
 }
 
@@ -151,7 +169,9 @@ $('#Editar').click(function () {
     nombreCliente.segundonombre = $('#segundo_nombre_editar').val();
     nombreCliente.apaterno = $('#apaterno_editar').val();
     nombreCliente.amaterno = $('#amaterno_editar').val();
-    nombreCliente.fnacimiento = $('#fecha_editar').val();
+    var currentdate = new Date($('#fecha_editar').val());
+    var fecha = currentdate.getDate() + "/" + (currentdate.getMonth() + 1) + "/" + currentdate.getFullYear();
+    nombreCliente.fnacimiento = fecha;
     cliente.CONTRATO = $('#contrato_editar').val();
     var nombre_concatenado = '';
     if ($('#nombre_editar').val() != "") {
@@ -170,8 +190,8 @@ $('#Editar').click(function () {
     cliente.ENTRECALLES = $('#calles_editar').val();
     cliente.Clv_Colonia = $('#colonia_select').val();
     cliente.CodigoPostal = $('#cp_editar').val();
-    cliente.TELEFONO = $('#telefono_editar').val();
-    cliente.CELULAR = $('#celular_editar').val();
+    cliente.TELEFONO = $('#telefono_editar').inputmask('unmaskedvalue');
+    cliente.CELULAR = $('#celular_editar').inputmask('unmaskedvalue');
     cliente.DESGLOSA_Iva = $('#iva').val();
     cliente.SoloInternet = $('#solointernet_editar').val();
     cliente.eshotel = $('#eshotel_editar').val();
@@ -183,28 +203,11 @@ $('#Editar').click(function () {
     cliente.Zona2 = $('#zona2_editar').val();
     cliente.conexion = $('#paza_conectando').val();
 
-    var Datosfiscales = {};
-    Datosfiscales.Contrato = $('#contrato').val();
-    Datosfiscales.IVADESGLOSADO = $('#ivafiscal').val();
-    Datosfiscales.RAZON_SOCIAL = $('#rsocial').val();
-    Datosfiscales.RFC = $('#rfc').val();
-    Datosfiscales.CALLE_RS = $('#calleFiscal').val();
-    Datosfiscales.NUMERO_RS = $('#NumeroFiscal').val();
-    Datosfiscales.ENTRECALLES = $('#callesFiscal').val();
-    Datosfiscales.COLONIA_RS = $('#ColoniaFiscal').val();
-    Datosfiscales.CIUDAD_RS = $('#CiudadFiscal').val();
-    Datosfiscales.ESTADO_RS = $('#EstadoFiscal').val();
-    Datosfiscales.CP_RS = $('#postafiscal').val();
-    Datosfiscales.TELEFONO_RS = $('#TelefonoFiscal').val();
-    Datosfiscales.FAX_RS = $('#FaxFiscal').val();
-    Datosfiscales.TIPO="";
-    Datosfiscales.IDENTIFICADOR = $('#identificadorfiscal').val();
-    Datosfiscales.CURP = $('#curp').val();
-    Datosfiscales.id_asociado = $('#idasociadofiscal').val();
+  
     $.ajax({
         url: "/CLIENTE/UpdateCliente/",
         type: "POST",
-        data: { 'cliente': cliente, 'fiscales': Datosfiscales, 'clienteNombres': nombreCliente },
+        data: { 'cliente': cliente, 'clienteNombres': nombreCliente },
         success: function (data, textStatus, jqXHR) {
             setUpdateCliente(cliente.CONTRATO);
             swal("Hecho!", "El cliente se edito correctamente!", "success");

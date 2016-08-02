@@ -99,14 +99,55 @@ namespace SoftvMVC.Controllers
 
             return Json(lista,JsonRequestBehavior.AllowGet);
         }
-       
-
-     
-
-        
 
 
 
+        //public ActionResult GetCiudad()
+        //{
+        //    return Json(proxy.GetCIUDADList(), JsonRequestBehavior.AllowGet);
+        //}
+
+        public class DatosCiudad
+        {
+            public int Clv_Ciudad { get; set; }
+            public String Nombre { get; set; }
+        }
+
+        public ActionResult GetCiudad(int numModal, int idConexion)
+        {
+            ConexionController c = new ConexionController();
+            SqlCommand comandoSql;
+            SqlConnection conexionSQL2 = new SqlConnection(c.DameConexion(idConexion));
+            List<DatosCiudad> lista = new List<DatosCiudad>();
+            try
+            {
+                conexionSQL2.Open();
+            }
+            catch
+            { }
+
+            try
+            {
+                comandoSql = new SqlCommand("exec DatosTipoCliente " + numModal);
+
+                //comandoSql = new SqlCommand("exec DatosTipoCliente " + numModal + ", " + idConexion + "");
+                comandoSql.Connection = conexionSQL2;
+                SqlDataReader reader = comandoSql.ExecuteReader();
+                if (reader.HasRows)
+                {
+                    while (reader.Read())
+                    {
+                        DatosCiudad datos = new DatosCiudad();
+                        datos.Clv_Ciudad = Convert.ToInt32(reader[0]);
+                        datos.Nombre = reader[1].ToString();
+                        lista.Add(datos);
+                    }
+                }
+            }
+            catch
+            { }
+            return Json(lista, JsonRequestBehavior.AllowGet);
+        }
     }
 
 }

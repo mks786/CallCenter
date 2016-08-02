@@ -1,13 +1,15 @@
 ﻿
 
 function ShowCatalogoPreguntas(valor, tipo) {
-
+    document.getElementById("formCatalogo").reset();
+    //$('#FiltraTipoPregunta').val("0").change();
     if (tipo == ""|| tipo==undefined) {
         tipo = 0;
     }
     if (valor == "" || valor == undefined) {
         valor = "";
     }
+    
     $('#ModalCatalogoPreguntas').modal('show');
     
     $('#TablaCatalogoPreguntas').dataTable({
@@ -87,7 +89,6 @@ function ShowCatalogoPreguntas(valor, tipo) {
 function Buscar() {
 
     var valor = $('#search').val();
-    alert(valor);
     ShowCatalogoPreguntas(valor,null);
 
 }

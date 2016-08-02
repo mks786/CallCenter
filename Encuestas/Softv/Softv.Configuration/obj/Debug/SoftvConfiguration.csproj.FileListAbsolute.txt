@@ -117,3 +117,12 @@ C:\Users\Israel\Documents\projects\CallCenter\Encuestas\Softv\Softv.Configuratio
 C:\Users\Israel\Documents\projects\CallCenter\Encuestas\Softv\Softv.Configuration\obj\Debug\SoftvConfiguration.csprojResolveAssemblyReference.cache
 C:\Users\Israel\Documents\projects\CallCenter\Encuestas\Softv\Softv.Configuration\obj\Debug\SoftvConfiguration.dll
 C:\Users\Israel\Documents\projects\CallCenter\Encuestas\Softv\Softv.Configuration\obj\Debug\SoftvConfiguration.pdb
+C:\Users\Israel\Documents\projects\CallCenter2\CallCenter\Encuestas\Softv\Softv.Configuration\bin\Debug\SoftvConfiguration.dll
+C:\Users\Israel\Documents\projects\CallCenter2\CallCenter\Encuestas\Softv\Softv.Configuration\bin\Debug\SoftvConfiguration.pdb
+C:\Users\Israel\Documents\projects\CallCenter2\CallCenter\Encuestas\Softv\Softv.Configuration\bin\Debug\Globals.dll
+C:\Users\Israel\Documents\projects\CallCenter2\CallCenter\Encuestas\Softv\Softv.Configuration\bin\Debug\Globals.pdb
+C:\Users\Israel\Documents\projects\CallCenter2\CallCenter\Encuestas\Softv\Softv.Configuration\obj\Debug\SoftvConfiguration.csprojResolveAssemblyReference.cache
+C:\Users\Israel\Documents\projects\CallCenter2\CallCenter\Encuestas\Softv\Softv.Configuration\obj\Debug\SoftvConfiguration.dll
+C:\Users\Israel\Documents\projects\CallCenter2\CallCenter\Encuestas\Softv\Softv.Configuration\obj\Debug\SoftvConfiguration.pdb
+C:\Users\Israel\Documents\projects\CallCenter2\CallCenter\Encuestas\Softv\Softv.Configuration\bin\Debug\Dapper.dll
+C:\Users\Israel\Documents\projects\CallCenter2\CallCenter\Encuestas\Softv\Softv.Configuration\bin\Debug\Dapper.xml
