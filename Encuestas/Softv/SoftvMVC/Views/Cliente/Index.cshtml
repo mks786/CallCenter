@@ -38,6 +38,7 @@
     </div>
     <div class="col-xs-12" >
         <div class="box">
+            <h2 class="text-center" id="nombre_plaza" style="color:#4b646f;"></h2>
             <div class="panel-body" id="panel_clientes" style="display:none;">
                 <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
                     <div class="panel panel-default">
@@ -68,12 +69,7 @@
                                         </div>
                                         <div class="row">
                                             <div class="col-md-3">
-                                                <input type="text" class="form-control" id="input_contrato" />
-                                            </div>
-                                        </div>
-                                        <div class="row">
-                                            <div class="col-md-8">
-                                                <span class="help-block">El número de contrato está formado por 2 grupos de números con un guión intermedio p.e. (1234-1)</span>
+                                                <input type="number" class="form-control" id="input_contrato" />
                                             </div>
                                         </div>
                                         <div class="row">
@@ -539,14 +535,9 @@
             <div class="modal-body">
                 <div class="col-md-12">
                     <div class="form-group">
-                        <p class="col-md-4 control-label" for="selectbasic" style="padding-top:10px; color:#4b646f;">Selecciona la plaza</p>
+                        <p class="col-md-4 control-label" for="selectbasic" style="padding-top:10px; color:#4b646f;">Selecciona la ciudad</p>
                         <div class="col-md-6">
                             <select class="form-control" id="paza_conectando">
-                                @foreach (var a in conexiones)
-                                {
-                                    <option value="@a.IdConexion.Value">@a.Plaza</option>
-                                }
-
                             </select>
                         </div>
                     </div>

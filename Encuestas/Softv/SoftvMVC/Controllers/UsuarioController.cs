@@ -417,6 +417,11 @@ namespace SoftvMVC.Controllers
             return RedirectToAction("Index", "Home");
         }
 
+        public ActionResult todosUsuarios()
+        {
+            List<UsuarioEntity> lista = proxy.GetUsuarioList();
+            return Json(lista, JsonRequestBehavior.AllowGet);
+        }
     }
 
 }

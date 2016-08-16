@@ -136,7 +136,7 @@ namespace Softv.Providers
                 entity_Llamada.Clv_Problema = (int?)(GetFromReader(reader, "Clv_Problema"));
                 entity_Llamada.SiEsCliente = (bool?)(GetFromReader(reader, "SiEsCliente"));
                 entity_Llamada.Clv_Motivo = (int?)(GetFromReader(reader, "Clv_Motivo"));
-
+                entity_Llamada.Ciudad = (string)(GetFromReader(reader, "Ciudad", IsString: true));
             }
             catch (Exception ex)
             {

@@ -26,18 +26,24 @@ $('#guardarEncuesta').click(function () {
         if ($('#TbodyPreguntas').children().length == 0) {
             swal("Tu encuesta no contiene preguntas", "", "error");
         } else {
+            var activa = document.getElementById('encuesta_activa');
+            if (activa.checked) {
+                activa = 1;
+            } else {
+                activa = 0;
+            }
             var encuesta = {
                 IdEncuesta: 4,
                 TituloEncuesta: titulo_encuesta,
                 Descripcion: descripcion_encuesta,
-
             }
+            alert(activa);
             var usuario = document.getElementById("username").innerHTML;
 
             $.ajax({
                 url: "/Encuesta/Create/",
                 type: "POST",
-                data: { 'encuesta': encuesta, 'Preguntas': Lista_preguntas, 'respuestas': Lista_opciones, 'usuario': usuario },
+                data: { 'encuesta': encuesta, 'Preguntas': Lista_preguntas, 'respuestas': Lista_opciones, 'usuario': usuario,'activa':activa },
                 success: function (data, textStatus, jqXHR) {
                     LlenaTabla();
                     $('#ModalAgregarEncuesta').modal('hide');                    

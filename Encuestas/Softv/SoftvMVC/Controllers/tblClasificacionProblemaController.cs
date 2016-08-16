@@ -104,11 +104,24 @@ namespace SoftvMVC.Controllers
             return View(objtblClasificacionProblema);
         }
 
-        public ActionResult GetClasficacionProblema(int IdPlaza)
+        public ActionResult GetClasficacionProblema(int IdPlaza, int idServicio)
         {
+            List<tblClasificacionProblemaEntity> lista = new List<tblClasificacionProblemaEntity>();
+            lista = proxy.GettblClasificacionProblemaList().Where(o => o.IdTipSer == idServicio || o.IdTipSer == 0).ToList();
+            return Json(lista, JsonRequestBehavior.AllowGet);
+        }
+        public ActionResult GetClasficacionProblemas(int IdPlaza)
+        {
+            List<tblClasificacionProblemaEntity> lista = new List<tblClasificacionProblemaEntity>();
+            lista = proxy.GettblClasificacionProblemaList();
+            return Json(lista, JsonRequestBehavior.AllowGet);
+        }
+        public ActionResult GetClasficacionSolucion(int IdPlaza, int ? idServicio)
+        {
+            
             ConexionController c = new ConexionController();
             SqlCommand comandoSql;
-            List<tblClasificacionProblemaEntity> lista = new List<tblClasificacionProblemaEntity>();
+            List<clasificacion_soluciones> lista = new List<clasificacion_soluciones>();
             SqlConnection conexionSQL = new SqlConnection(c.DameConexion(IdPlaza));
             try
             {
@@ -119,30 +132,21 @@ namespace SoftvMVC.Controllers
 
             try
             {
-                comandoSql = new SqlCommand("Select * from tblClasificacionProblemas");
+                comandoSql = new SqlCommand("exec MUESTRATRABAJOSQUEJAS "+idServicio);
                 comandoSql.Connection = conexionSQL;
                 SqlDataReader reader = comandoSql.ExecuteReader();
                 if (reader.HasRows)
                 {
                     while (reader.Read())
                     {
-                        tblClasificacionProblemaEntity clasificacion = new tblClasificacionProblemaEntity();
-                        clasificacion.clvProblema = Int32.Parse(reader[0].ToString());
-                        clasificacion.descripcion = reader[1].ToString();
+                        clasificacion_soluciones clasificacion = new clasificacion_soluciones();
+                        clasificacion.CLV_TRABAJO = Int32.Parse(reader[0].ToString());
+                        clasificacion.DESCRIPCION = reader[1].ToString();
                         lista.Add(clasificacion);
                     }
                 }
             }
             catch { }
-            return Json(lista, JsonRequestBehavior.AllowGet);
-        }
-
-        public ActionResult GetClasficacionSolucion(int IdPlaza, int ? idServicio)
-        {
-            List<ClasificacionProblemaEntity> lista = new List<ClasificacionProblemaEntity>();
-
-            lista = proxyclass.GetClasificacionProblemaList();
-    
             return Json(lista, JsonRequestBehavior.AllowGet);
         }
         public class clasificacion_soluciones

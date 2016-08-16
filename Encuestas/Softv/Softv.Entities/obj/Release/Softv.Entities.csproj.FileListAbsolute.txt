@@ -19,3 +19,10 @@ C:\Users\Israel\Documents\projects\CallCenter2\CallCenter\Encuestas\Softv\Softv.
 C:\Users\Israel\Documents\projects\CallCenter2\CallCenter\Encuestas\Softv\Softv.Entities\obj\Release\Softv.Entities.pdb
 C:\Users\Israel\Documents\projects\CallCenter2\CallCenter\Encuestas\Softv\Softv.Entities\bin\Release\Dapper.dll
 C:\Users\Israel\Documents\projects\CallCenter2\CallCenter\Encuestas\Softv\Softv.Entities\bin\Release\Dapper.xml
+C:\Users\Israel\Documents\projects\CallCenter\CallCenter\Encuestas\Softv\Softv.Entities\bin\Release\Softv.Entities.dll
+C:\Users\Israel\Documents\projects\CallCenter\CallCenter\Encuestas\Softv\Softv.Entities\bin\Release\Softv.Entities.pdb
+C:\Users\Israel\Documents\projects\CallCenter\CallCenter\Encuestas\Softv\Softv.Entities\bin\Release\Dapper.dll
+C:\Users\Israel\Documents\projects\CallCenter\CallCenter\Encuestas\Softv\Softv.Entities\bin\Release\Dapper.xml
+C:\Users\Israel\Documents\projects\CallCenter\CallCenter\Encuestas\Softv\Softv.Entities\obj\Release\Softv.Entities.csprojResolveAssemblyReference.cache
+C:\Users\Israel\Documents\projects\CallCenter\CallCenter\Encuestas\Softv\Softv.Entities\obj\Release\Softv.Entities.dll
+C:\Users\Israel\Documents\projects\CallCenter\CallCenter\Encuestas\Softv\Softv.Entities\obj\Release\Softv.Entities.pdb

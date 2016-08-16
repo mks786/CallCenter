@@ -73,6 +73,7 @@
     <Compile Include="Contracts\ICALLE.cs" />
     <Compile Include="Contracts\ICatalogoPeriodosCorte.cs" />
     <Compile Include="Contracts\ICIUDAD.cs" />
+    <Compile Include="Contracts\ICiudadServidor.cs" />
     <Compile Include="Contracts\IClasificacionProblema.cs" />
     <Compile Include="Contracts\ICLIENTE.cs" />
     <Compile Include="Contracts\ICliente_Apellido.cs" />
@@ -91,6 +92,7 @@
     <Compile Include="Contracts\INoCliente.cs" />
     <Compile Include="Contracts\IPermiso.cs" />
     <Compile Include="Contracts\IPregunta.cs" />
+    <Compile Include="Contracts\IProcesoEncuesta.cs" />
     <Compile Include="Contracts\IQueja.cs" />
     <Compile Include="Contracts\IRelEncuestaClientes.cs" />
     <Compile Include="Contracts\IRelEncuestaPreguntaRes.cs" />
@@ -109,6 +111,7 @@
     <Compile Include="Contracts\ITipServ.cs" />
     <Compile Include="Contracts\ITrabajo.cs" />
     <Compile Include="Contracts\ITurno.cs" />
+    <Compile Include="Contracts\IUniversoEncuesta.cs" />
     <Compile Include="Contracts\IUsuario.cs" />
     <Compile Include="Message\MessageInspector.cs" />
     <Compile Include="Message\MessageLoggerExtension.cs" />

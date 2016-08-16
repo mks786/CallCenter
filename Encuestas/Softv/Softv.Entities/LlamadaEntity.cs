@@ -96,6 +96,8 @@ namespace Softv.Entities
 
         [DataMember]
         public int? Clv_Motivo { get; set; }
+        [DataMember]
+        public string Ciudad { get; set; }
 
         [DataMember]
         public int? MotivoLlamada { get; set; }

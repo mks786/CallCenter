@@ -169,7 +169,7 @@ function cargarDatos(numModal) {
 
 $(document).ready(function () {
     $.ajax({
-        url: "/Conexion/ListaConexiones/",
+        url: "/Conexion/Plazas/",
         type: "GET",
         success: function (data, textStatus, jqXHR) {
             for (var i = 0; i < data.length; i++) {

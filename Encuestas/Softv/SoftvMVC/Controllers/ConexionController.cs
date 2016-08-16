@@ -23,12 +23,13 @@ namespace SoftvMVC.Controllers
     public partial class ConexionController : BaseController, IDisposable
     {
         private SoftvService.ConexionClient proxy = null;
-       
+        private SoftvService.CiudadServidorClient proxyciu = null;
 
         public ConexionController()
         {
 
             proxy = new SoftvService.ConexionClient();
+            proxyciu = new SoftvService.CiudadServidorClient();
 
         }
 
@@ -77,15 +78,23 @@ namespace SoftvMVC.Controllers
 
         public ActionResult ListaConexiones()
         {
-            var lista=proxy.GetConexionList().Select(o => new { o.IdConexion, o.Plaza });
-            return Json(lista,JsonRequestBehavior.AllowGet);
+            var lista = proxyciu.GetCiudadServidorList().OrderBy(o=>o.Ciudad);
+           
+            return Json(lista, JsonRequestBehavior.AllowGet);
 
         }
 
+        public ActionResult listaPlazas(int ? idPlaza){
+            var lista = proxy.GetConexion(idPlaza);
+            return Json(lista, JsonRequestBehavior.AllowGet);
+        }
 
 
-     
-
+        public ActionResult Plazas()
+        {
+            var lista = proxy.GetConexionList();
+            return Json(lista, JsonRequestBehavior.AllowGet);
+        }
     
      
         //Nuevas funciones 

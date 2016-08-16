@@ -224,6 +224,21 @@ namespace Softv.Providers
         {
             get { return ClasificacionProblemaProvider.Instance; }
         }
+
+        public static CiudadServidorProvider CiudadServidor
+        {
+            get { return CiudadServidorProvider.Instance; }
+        }
+
+        public static UniversoEncuestaProvider UniversoEncuesta
+        {
+            get { return UniversoEncuestaProvider.Instance; }
+        }
+
+        public static ProcesoEncuestaProvider ProcesoEncuesta
+        {
+            get { return ProcesoEncuestaProvider.Instance; }
+        }
   
     }
 }

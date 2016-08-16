@@ -18,7 +18,7 @@ namespace SoftvWCFService
     public partial class SoftvWCFService : IUsuario, IRole, IModule, IPermiso, IEncuesta, IPregunta, ITipoPreguntas, IRelEncuestaClientes, IRelPreguntaOpcMults,
         IRelPreguntaEncuestas, IResOpcMults, IRelEnProcesos, IConexion, ICLIENTE, ITurno, ILlamada, IRel_Clientes_TiposClientes, ITipoCliente, ICatalogoPeriodosCorte,
         ICliente_Apellido, ITap, IDatoFiscal, ITrabajo, ITipServ, IMotivoCancelacion, IRelEncuestaPreguntaRes, IQueja, ICIUDAD, ICVECOLCIU, ICOLONIA, ICVECAROL, ICALLE, IBusquedaIndividual,
-        ItblClasificacionProblema, ItblPrioridadQueja, INoCliente, IDatosLlamada, IEstadistica, IServicio, IMotAtenTel, IClasificacionProblema
+        ItblClasificacionProblema, ItblPrioridadQueja, INoCliente, IDatosLlamada, IEstadistica, IServicio, IMotAtenTel, IClasificacionProblema, ICiudadServidor, IUniversoEncuesta, IProcesoEncuesta
     {
         #region Usuario
         public UsuarioEntity GetUsuario(int? IdUsuario)
@@ -1861,8 +1861,135 @@ namespace SoftvWCFService
         }
 
         #endregion
+
+        #region CiudadServidor
+        public CiudadServidorEntity GetCiudadServidor(int? Id)
+        {
+            return CiudadServidor.GetOne(Id);
+        }
+
+        public CiudadServidorEntity GetDeepCiudadServidor(int? Id)
+        {
+            return CiudadServidor.GetOneDeep(Id);
+        }
+
+        public IEnumerable<CiudadServidorEntity> GetCiudadServidorList()
+        {
+            return CiudadServidor.GetAll();
+        }
+
+        public SoftvList<CiudadServidorEntity> GetCiudadServidorPagedList(int page, int pageSize)
+        {
+            return CiudadServidor.GetPagedList(page, pageSize);
+        }
+
+        public SoftvList<CiudadServidorEntity> GetCiudadServidorPagedListXml(int page, int pageSize, String xml)
+        {
+            return CiudadServidor.GetPagedList(page, pageSize, xml);
+        }
+
+        public int AddCiudadServidor(CiudadServidorEntity objCiudadServidor)
+        {
+            return CiudadServidor.Add(objCiudadServidor);
+        }
+
+        public int UpdateCiudadServidor(CiudadServidorEntity objCiudadServidor)
+        {
+            return CiudadServidor.Edit(objCiudadServidor);
+        }
+
+        public int DeleteCiudadServidor(String BaseRemoteIp, int BaseIdUser, int? Id)
+        {
+            return CiudadServidor.Delete(Id);
+        }
+
+        #endregion
+
+        #region UniversoEncuesta
+        public UniversoEncuestaEntity GetUniversoEncuesta(int? Id)
+        {
+            return UniversoEncuesta.GetOne(Id);
+        }
+
+        public UniversoEncuestaEntity GetDeepUniversoEncuesta(int? Id)
+        {
+            return UniversoEncuesta.GetOneDeep(Id);
+        }
+
+        public IEnumerable<UniversoEncuestaEntity> GetUniversoEncuestaList()
+        {
+            return UniversoEncuesta.GetAll();
+        }
+
+        public SoftvList<UniversoEncuestaEntity> GetUniversoEncuestaPagedList(int page, int pageSize)
+        {
+            return UniversoEncuesta.GetPagedList(page, pageSize);
+        }
+
+        public SoftvList<UniversoEncuestaEntity> GetUniversoEncuestaPagedListXml(int page, int pageSize, String xml)
+        {
+            return UniversoEncuesta.GetPagedList(page, pageSize, xml);
+        }
+
+        public int AddUniversoEncuesta(UniversoEncuestaEntity objUniversoEncuesta)
+        {
+            return UniversoEncuesta.Add(objUniversoEncuesta);
+        }
+
+        public int UpdateUniversoEncuesta(UniversoEncuestaEntity objUniversoEncuesta)
+        {
+            return UniversoEncuesta.Edit(objUniversoEncuesta);
+        }
+
+        public int DeleteUniversoEncuesta(String BaseRemoteIp, int BaseIdUser, int? Id)
+        {
+            return UniversoEncuesta.Delete(Id);
+        }
+
+        #endregion
+
+        #region ProcesoEncuesta
+        public ProcesoEncuestaEntity GetProcesoEncuesta(int? IdProcesoEnc)
+        {
+            return ProcesoEncuesta.GetOne(IdProcesoEnc);
+        }
+
+        public ProcesoEncuestaEntity GetDeepProcesoEncuesta(int? IdProcesoEnc)
+        {
+            return ProcesoEncuesta.GetOneDeep(IdProcesoEnc);
+        }
+
+        public IEnumerable<ProcesoEncuestaEntity> GetProcesoEncuestaList()
+        {
+            return ProcesoEncuesta.GetAll();
+        }
+
+        public SoftvList<ProcesoEncuestaEntity> GetProcesoEncuestaPagedList(int page, int pageSize)
+        {
+            return ProcesoEncuesta.GetPagedList(page, pageSize);
+        }
+
+        public SoftvList<ProcesoEncuestaEntity> GetProcesoEncuestaPagedListXml(int page, int pageSize, String xml)
+        {
+            return ProcesoEncuesta.GetPagedList(page, pageSize, xml);
+        }
+
+        public int AddProcesoEncuesta(ProcesoEncuestaEntity objProcesoEncuesta)
+        {
+            return ProcesoEncuesta.Add(objProcesoEncuesta);
+        }
+
+        public int UpdateProcesoEncuesta(ProcesoEncuestaEntity objProcesoEncuesta)
+        {
+            return ProcesoEncuesta.Edit(objProcesoEncuesta);
+        }
+
+        public int DeleteProcesoEncuesta(String BaseRemoteIp, int BaseIdUser, int? IdProcesoEnc)
+        {
+            return ProcesoEncuesta.Delete(IdProcesoEnc);
+        }
+
+        #endregion
   
-
-
     }
 }

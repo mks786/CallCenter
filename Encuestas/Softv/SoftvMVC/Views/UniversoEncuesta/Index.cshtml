@@ -1,0 +1,258 @@
+﻿@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<section class="content-header">
+    <h1>
+        Aplicar Encuesta
+    </h1>
+    <ol class="breadcrumb">
+        <li><a href="#"><i class="fa fa-dashboard"></i> Inicio</a></li>
+        <li class="active">Aplicar Encuesta</li>
+    </ol>
+</section>
+<div class="row">
+    <div class="col-xs-12">
+        <div class="box">
+            <div class="box-header">
+                <h3 class="box-title">Lista de Encuestas</h3>
+            </div><!-- /.box-header -->
+            <div class="box-body">
+                <div class="col-md-12">
+                    <div class="row">
+                        <div class="col-md-3">
+                            <div class="input-group input-group-sm"><input class="form-control" id="texto_buscar" type="text"><span class="input-group-btn"><button onclick="Buscar();" class="btn btn-info btn-flat" type="button"><i class="fa fa-search" aria-hidden="true"></i> Buscar</button></span></div>
+                        </div>
+                        <div class="col-md-3">
+                            <select class="form-control" id="select_filtro">
+                                <option selected disabled>Tipo de Proceso</option>
+                                <option value="1">Pendiente</option>
+                                <option value="2">Terminado</option>
+                                <option value="3">Todas</option>
+                            </select>
+                        </div>
+                        <div class="col-md-6">
+                            <button class="btn btn-success Agregar" style="float:right;" onclick="MostrarModalProceso();"><i class="fa fa-bar-chart" aria-hidden="true"></i> Nuevo Proceso </button>
+                        </div>
+                    </div>
+                    <table id="TablaUniverso" class="table table-bordered table-hover dataTable">
+                    <thead>
+                        <tr>
+                            <td><b>ID</b></td>
+                            <td><b>Nombre</b></td>
+                            <td><b>Encuesta</b></td>
+                            <td><b>Tipo Servicio</b></td>
+                            <td><b>Fecha Creación</b></td>
+                            <td><b>Creada Por</b></td>
+                            <td><b>Estado</b></td>
+                            <td><b>Opciones</b></td>
+                        </tr>
+                    </thead>
+
+                    <tbody></tbody>
+
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+<div class="modal fade" id="NuevoProceso" role="dialog" data-backdrop="static" data-keyboard="false">
+    <div class="modal-dialog modal-lg" style="width:90%;">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button class="close" aria-label="Close" type="button" data-dismiss="modal"><span aria-hidden="true">×</span></button>
+                <h4 class="modal-title">Nuevo Proceso</h4>
+            </div>
+            <div class="modal-body">
+                <div class="row">
+                    <div class="col-md-3">
+                        <label>Selecciona la plaza</label>
+                        <select class="form-control" id="plazas"><option selected disabled>--------------------</option></select>
+                    </div>
+                    <div class="col-md-3">
+                        <label>Selecciona la Ciudad</label>
+                        <select class="form-control" id="ciudades" disabled><option selected disabled>--------------------</option></select>
+                    </div>
+                    <div class="col-md-3">
+                        <label>Encuesta</label>
+                        <select class="form-control" id="encuestas" disabled><option selected disabled>--------------------</option></select>
+                    </div>
+                    <div class="col-md-3">
+                        <label>Nombre Proceso</label>
+                        <input type="text" class="form-control" id="nombre_proceso" disabled />
+                    </div>
+                </div><br />
+                <div class="row container" id="contenido_editar" style="width:98%; display:none;">
+                    <div class="row" id="panel_busqueda">
+                        <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
+                            <div class="panel panel-default">
+                                <div>
+                                    <div class="panel-body">
+                                        <br />
+                                        <div class="row">
+                                            <fieldset>
+                                                <legend class="text-center" style="font-size:19px; color:#4b646f;">Selecciona un tipo de servicio</legend>
+                                                <div class="col-md-4 col-md-offset-4">
+                                                    <p class="text-center">
+                                                        <select class="form-control" id="tipo_servicio"></select>
+                                                    </p>
+
+                                                </div>
+                                            </fieldset>
+                                        </div>
+                                        <div class="row">
+                                            <fieldset>
+                                                <legend class="text-center" style="font-size:19px; color:#4b646f;">Selecciona un tipo de busqueda</legend>
+                                                <div class="col-md-4 col-md-offset-4">
+                                                    <p class="text-center">
+                                                        <label class="radio-inline" for="estatus">
+                                                            <input type="radio" name="busqueda" id="estatus" value="1">
+                                                            Status
+                                                        </label>
+                                                        <label class="radio-inline" for="rango">
+                                                            <input type="radio" name="busqueda" id="rango" value="2">
+                                                            Rango de fechas
+                                                        </label>
+                                                    </p>
+                                                </div>
+                                            </fieldset>
+                                        </div>
+                                        <div id="panel_status" style="display:none;">
+                                            <div class="row">
+                                                <fieldset>
+                                                    <legend class="text-center" style="font-size:19px; color:#4b646f;">Selecciona un status del cliente</legend>
+                                                    <div class="col-md-7 col-md-offset-2">
+                                                        <div class="row">
+                                                            <p class="text-center">
+                                                                <label class="radio-inline" for="contratado">
+                                                                    <input type="checkbox" name="contratado" id="contratado" value="C">
+                                                                    Contratado
+                                                                </label>
+                                                                <label class="radio-inline" for="suspendidos">
+                                                                    <input type="checkbox" name="suspendidos" id="suspendidos" value="S">
+                                                                    Suspendidos
+                                                                </label>
+                                                                <label class="radio-inline" for="cancelados">
+                                                                    <input type="checkbox" name="cancelados" id="cancelados" value="B">
+                                                                    Cancelados
+                                                                </label>
+                                                                <label class="radio-inline" for="temporales">
+                                                                    <input type="checkbox" name="temporales" id="temporales" value="T">
+                                                                    Temporales
+                                                                </label>
+                                                            </p>
+                                                        </div>
+                                                        <div class="row">
+                                                            <p class="text-center">
+                                                                <label class="radio-inline" for="instalados">
+                                                                    <input type="checkbox" name="instalados" id="instalados" value="I">
+                                                                    Instalado
+                                                                </label>
+                                                                <label class="radio-inline" for="desconectados">
+                                                                    <input type="checkbox" name="desconectados" id="desconectados" value="D">
+                                                                    Desconectados
+                                                                </label>
+                                                                <label class="radio-inline" for="fuera_servicio">
+                                                                    <input type="checkbox" name="fuera_servicio" id="fuera_servicio" value="F">
+                                                                    Fuera de servicio
+                                                                </label>
+                                                            </p>
+                                                        </div>
+                                                    </div>
+                                                </fieldset>
+                                            </div>
+                                        </div>
+                                        <div id="panel_fechas" style="display:none;">
+                                            <div class="row">
+                                                <fieldset>
+                                                    <legend class="text-center" style="font-size:19px; color:#4b646f;">Selecciona un rango de fechas basado en el status seleccioando</legend>
+                                                    <div class="col-md-6 col-md-offset-3">
+                                                        <div class="row">
+                                                            <p class="text-center">
+                                                                <label class="radio-inline" for="fecha_contratacion">
+                                                                    <input type="radio" name="fechas" id="fecha_contratacion" value="1">
+                                                                    Fecha de contratacion
+                                                                </label>
+                                                                <label class="radio-inline" for="fecha_instalacion">
+                                                                    <input type="radio" name="fechas" id="fecha_instalacion" value="2">
+                                                                    Fecha de instalación
+                                                                </label>
+                                                                <label class="radio-inline" for="fecha_cancelacion">
+                                                                    <input type="radio" name="fechas" id="fecha_cancelacion" value="3">
+                                                                    Fecha de cancelación
+                                                                </label>
+                                                            </p>
+                                                        </div>
+                                                    </div>
+                                                </fieldset>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-md-12">
+                                                    <div class="col-md-3 col-md-offset-3">
+                                                        <p class="text-right">
+                                                            <span>Fecha inicial</span>
+                                                            <input type="date" id="fecha_inicio" class="form-control" />
+                                                        </p>
+                                                    </div>
+                                                    <div class="col-md-3">
+                                                        <p class="text-left">
+                                                            <span>Fecha final</span>
+                                                            <input type="date" id="fecha_final" class="form-control" />
+                                                        </p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-success" onclick="GuardarUniverso()"> Guardar</button>
+                <button class="btn btn-primary " type="button" data-dismiss="modal">Cerrar</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<div class="modal fade bs-example-modal-md" data-backdrop="static" data-keyboard="false" id="Espere" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel">
+    <div class="modal-dialog modal-md">
+        <div class="modal-content">
+            <div class="modal-header">
+            </div>
+            <div class="modal-body">
+                <div class="row form-group" align="right">
+
+                    <div class="col-md-12">
+                        <p class="text-center">Realizando opereación espere un momento por favor</p>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    //poner activo el menu izquierdo
+    $(function () {
+        $('#poner_activo li').siblings('li').removeClass('active');
+        $('.2').addClass('active');
+        $('#sub_activo li').siblings('li').removeClass('active');
+        $('.28').addClass('active');
+    });
+
+    var usuario = @Session["idusuario"];
+</script>
+<script src="~/dist/js/pages/UniversoEncuesta/Listar.js"></script>
+
+

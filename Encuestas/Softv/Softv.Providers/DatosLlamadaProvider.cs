@@ -121,6 +121,7 @@ namespace Softv.Providers
                 entity_DatosLlamada.Usuario = (String)(GetFromReader(reader, "Usuario", IsString: true));
                 entity_DatosLlamada.TipoLlamada = (bool)(GetFromReader(reader, "TipoLlamada"));
                 entity_DatosLlamada.IdConexion = (int?)(GetFromReader(reader, "IdConexion"));
+                entity_DatosLlamada.Ciudad = (String)(GetFromReader(reader, "Ciudad", IsString: true));
 
             }
             catch (Exception ex)

@@ -1,0 +1,105 @@
+﻿@{
+    ViewBag.Title = "LlamadasReporte";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<section class="content-header">
+    <h1>
+        Reportes de Llamadas
+    </h1>
+    <ol class="breadcrumb">
+        <li><a href="#"><i class="fa fa-dashboard"></i> Inicio</a></li>
+        <li class="active">Reporte Llamadas</li>
+    </ol>
+</section>
+<div class="row">
+    <div class="col-xs-12">
+        <div class="box">
+            <div class="box-header">
+                <h3 class="box-title">Generar Reporte</h3>
+            </div><!-- /.box-header -->
+            <div class="box-body">
+                <div class="col-md-12">
+                    <div class="panel-group" id="ReporteLlamada" role="tablist" aria-multiselectable="true">
+                        <div class="panel panel-default">
+                            <div class="panel-heading" id="grafica">
+                                <h3 class="panel-title">
+                                    <a role="button" data-toggle="collapse" data-parent="#ReporteLlamada" href="#filtros" aria-expanded="true" aria-controls="filtros">Filtros Reporte</a>
+                                </h3>
+                            </div>
+                            <div id="filtros" class="panel-collapse collapse" role="tabpanel" aria-labelledby="datosGrafica">
+                                <div class="panel-body">
+                                    <div class="row">
+                                        <div class="row">
+                                            <div class="col-md-3">
+                                                <label>Selecciona la plaza</label>
+                                                <select class="form-control" id="plazas"><option selected disabled>--------------------</option></select>
+                                            </div>
+                                            <div class="col-md-3">
+                                                <label>Selecciona la ciudad</label>
+                                                <select class="form-control" id="ciudades" disabled><option selected disabled>--------------------</option></select>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-3">
+                                                <label>Motivo Llamada</label>
+                                                <select class="form-control" id="motivo" disabled>
+                                                    <option selected disabled>--------------------</option>
+                                                    <option value="99999">Todos los Motivos</option>
+                                                    <option value="1">Informacíon</option>
+                                                    <option value="2">Atención Telefónica</option>
+                                                </select>
+                                            </div>
+                                            <div class="col-md-3">
+                                                <label>Problema</label>
+                                                <select class="form-control" id="problema" disabled>
+                                                    <option selected disabled>--------------------</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-3">
+                                                <label>Usuario</label>
+                                                <select class="form-control" id="usuario" disabled>
+                                                    <option selected disabled>--------------------</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-3">
+                                                <label>Fecha inicio</label>
+                                                <input type="date" id="inicio" class="form-control" disabled />
+                                            </div>
+                                            <div class="col-md-3">
+                                                <label>Fecha termino</label>
+                                                <input type="date" id="fin" class="form-control" disabled />
+                                            </div>
+                                        </div>
+                                        <div class="row" style="padding-right:20px;">
+                                            <p class="text-right">
+                                                <button class="btn btn-primary disabled" id="btn-reporte" onclick="reportear()"><i class="fa fa-list-alt" aria-hidden="true"></i> Generar</button>
+                                            </p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                    </div>
+                    
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script src="~/dist/js/pages/LlamadasReportes/reporte.js"></script>
+<script>
+    //poner activo el menu izquierdo
+    $(function () {
+        $('#poner_activo li').siblings('li').removeClass('active');
+        $('.5').addClass('active');
+        $('#sub_activo li').siblings('li').removeClass('active');
+        $('.29').addClass('active');
+    });
+
+</script>
+
+

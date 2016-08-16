@@ -1,0 +1,205 @@
+﻿@{
+    Layout = "";
+    List<SoftvMVC.Controllers.ProcesoEncuestaController.Detalle_pregunta> preguntas = (List<SoftvMVC.Controllers.ProcesoEncuestaController.Detalle_pregunta>)ViewData["preguntas"];
+    Softv.Entities.ProcesoEncuestaEntity proceso = ( Softv.Entities.ProcesoEncuestaEntity)ViewData["proceso"];
+    Random rnd = new Random();
+    int number = rnd.Next(1, 13);
+    <script>
+        var id_proceso_cargar = @ViewData["id"];
+    </script>
+}
+@if (Session["username"] == null)
+{
+   <script>
+       location.href = "/Account/Login/";
+   </script>
+}
+<html>
+
+<head>
+    <script src="~/plugins/jQuery/jQuery-2.1.4.min.js"></script>
+    <!-- Tell the browser to be responsive to screen width -->
+    <!-- Bootstrap 3.3.5 -->
+    <title>PreView | @ViewBag.NombreEncuesta</title>
+    <link rel="stylesheet" href="~/bootstrap/css/bootstrap.css">
+    <script src="~/bootstrap/js/bootstrap.min.js"></script>
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+    <!-- Ionicons -->
+    <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
+    <link href='https://fonts.googleapis.com/css?family=Arimo' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" href="~/plugins/iCheck/square/blue.css">
+    <link rel="stylesheet" href="~/plugins/iCheck/square/purple.css">
+    <link href="~/plugins/iCheck/square/orange.css" rel="stylesheet" />
+    <link href="~/plugins/sweetAlert/sweetalert.css" rel="stylesheet" />
+    <script src="~/plugins/sweetAlert/sweetalert.min.js"></script>
+    <link href="~/dist/js/jquery.flexdatalist.css" rel="stylesheet" />
+    <script src="~/dist/js/jquery.flexdatalist.js"></script>
+    <style>
+        body {
+            background-color: #ECF0F5;
+        }
+
+    </style> 
+</head>
+<body>
+    <div class="container" style="background-color:#fff;  box-shadow: 2px 2px 5px #999; margin-top:10px; width:70%;">
+
+        <div class="row">
+            <section class="content-header">
+                <h3 class="text-center">
+                    Aplicar Encuesta
+                </h3>
+                <h5 class="text-center">
+                    @proceso.NombreProceso
+                </h5>
+            </section>
+            <h3 style="padding-left:20px;"><a href="/UniversoEncuesta" style="color:#5bc0de;"><i class="fa fa-angle-left" aria-hidden="true"></i> Menú Principal</a></h3>
+            <h1 class="text-center" style="color:#4b646f;"><strong>@ViewBag.NombreEncuesta</strong></h1>
+            
+
+            <div class="page-title" style="background-color:#3c8dbc; color:#fff; width:100%;">
+                <div class="container">
+                    <h3 style="color:#fff; font-size:16px;">
+                        @ViewBag.Descripcion
+                    </h3>
+                </div>
+            </div><br />
+            <div class="row">
+                <h3 class="text-center" id="texto_plaza" style="color:#4b646f;"></h3>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-4">
+                <div class="input-group input-group-sm"><input class="form-control" type="text" id="text_buscar"><span class="input-group-btn"><button class="btn btn-info btn-flat" type="button" onclick="buscar()">Buscar</button></span></div>
+            </div>
+            <div class="col-md-3">
+                <select class="form-control" id="filtro_select">
+                    <option selected disabled>Filtrar Por..</option>
+                    <option value="1">Aplicada</option>
+                    <option value="2">Por aplicar</option>
+                    <option value="3">Todas</option>
+                </select>
+            </div>
+        </div><br />
+        <div class="row">
+            <div class="col-xs-12">
+                <div class="box">
+                    <div class="box-body">
+                        <div id="panel_masivo">
+                            <table id="TablaUniversoClientes" class="table table-bordered table-hover dataTable">
+                                <thead>
+                                    <tr>
+                                        <td><b>Contrato</b></td>
+                                        <td><b>Nombre</b> </td>
+                                        <td><b>Telefono</b></td>
+                                        <td><b>Cel</b></td>
+                                        <td><b>Opciones</b></td>
+                                    </tr>
+                                </thead>
+
+                                <tbody></tbody>
+
+                            </table>
+                        </div>
+                        
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+
+    <div class="modal fade bs-example-modal-md" id="modal_aplicar" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" data-backdrop="static" data-keyboard="false">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button class="close" aria-label="Close" type="button" data-dismiss="modal"><span aria-hidden="true">×</span></button>
+                    <h4 class="modal-title text-center" style="color:#4b646f;">@ViewBag.NombreEncuesta</h4>
+                </div>
+                <div class="modal-body">
+                    <script>
+                        var contador_preguntas = 0;
+                    </script>
+
+                    <div class="container" style="background-color:#fff;  box-shadow: 2px 2px 5px #999; margin-top:10px; width:96%;">
+                        <h4 id="nombre_cliente_modal" style="color:#4b646f;"></h4>
+                        <h5 id="ciudad_modal" style="color:#4b646f;"></h5>
+                        <h5 id="colonia_modal" style="color:#4b646f;"></h5>
+                        <h5 id="calle_modal" style="color:#4b646f;"></h5>
+                        <h5 id="numero_modal" style="color:#4b646f;"></h5>
+                        <h5 id="telefono_modal" style="color:#4b646f;"></h5>
+                        <input type="hidden" id="cliente_id" />
+                        <input type="hidden" id="encuesta_id" name="id_encuesta" value="@ViewBag.IdEncuesta">
+                        <input type="hidden" id="id_universo" name="id_universo">
+                        <input type="hidden" id="id_proceso">
+                        <br />
+                        <hr />
+                        <form id="encuestaForm">
+                            @foreach (var a in preguntas)
+                            {
+
+                                <script>
+                                    contador_preguntas += 1;
+                                </script>
+                                <h4 style="color:#4b646f; font-size:14px; padding-left:10px;"><b>@a.Pregunta.Pregunta</b></h4>
+                                <input type="hidden" name="p@(a.Pregunta.IdTipoPregunta)s(@a.Pregunta.IdPregunta)" value="@(a.Pregunta.Pregunta)" />
+
+                                if (a.Pregunta.IdTipoPregunta.Value == 1)
+                                {
+                                    <div style="padding-left:30px;">
+                                        <textarea class="form-control" style="width:50%" name="@a.Pregunta.IdPregunta"></textarea>
+                                    </div>
+                                }
+
+                                else if (a.Pregunta.IdTipoPregunta.Value == 2)
+                                {
+                                    <div style="padding-left:60px;" class="wrapper">
+                                        <div class="radio icheck">
+                                            <input type="radio" id="@a.Pregunta.IdPregunta s" name="@a.Pregunta.IdPregunta" value=1>
+                                            <label for="@a.Pregunta.IdPregunta s">Si</label>
+                                        </div>
+                                        <div class="radio icheck">
+                                            <input type="radio" id="@a.Pregunta.IdPregunta n" name="@a.Pregunta.IdPregunta" value=0>
+                                            <label for="@a.Pregunta.IdPregunta n">No</label>
+                                        </div>
+                                    </div>
+                                }
+                                else if (a.Pregunta.IdTipoPregunta.Value == 3)
+                                {
+                                    <div style="padding-left:60px;" class="wrapper">
+                                        @foreach (var b in a.Respuestas)
+                                        {
+
+                                            <div class="radio icheck">
+                                                <input id="@b.ResOpcMult" type="radio" name="@a.Pregunta.IdPregunta" value="@b.Id_ResOpcMult">
+                                                <label for="@b.ResOpcMult">@b.ResOpcMult</label>
+                                            </div>
+
+                                        }
+                                    </div>
+
+
+                                }
+
+                            }
+                        </form>
+
+                        <br />
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button class="btn btn-success" onclick="enviarEncuesta()" type="button">Guardar</button>
+                    <button class="btn btn-primary" type="button" data-dismiss="modal">Cerrar</button>
+                </div>
+            </div>
+        </div>
+    </div></body>
+</html>
+<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/u/bs/jszip-2.5.0,pdfmake-0.1.18,dt-1.10.12,b-1.2.1,b-flash-1.2.1,b-html5-1.2.1,b-print-1.2.1,r-2.1.0/datatables.min.css" />
+<script type="text/javascript" src="https://cdn.datatables.net/u/bs/jszip-2.5.0,pdfmake-0.1.18,dt-1.10.12,b-1.2.1,b-flash-1.2.1,b-html5-1.2.1,b-print-1.2.1,r-2.1.0/datatables.min.js"></script>
+<script src="~/dist/js/pages/ProcesoEncuesta/Listar.js"></script>

@@ -1,6 +1,20 @@
 ﻿$(document).ready(function () {
 
+    $.ajax({
+        url: "/Conexion/ListaConexiones/",
+        type: "GET",
+        success: function (data, textStatus, jqXHR) {
+            for (var i = 0; i < data.length; i++) {
+                $('#paza_conectando').append($('<option>', {
+                    value: data[i].IdPlaza,
+                    text: data[i].Ciudad
+                }));
+            }
+        },
+        error: function (jqXHR, textStatus, errorThrown) {
 
+        }
+    });
     /*DATOS GENERALES*/
     $('#contrato').val('');
     $('#nombre').val('');

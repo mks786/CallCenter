@@ -44,6 +44,8 @@ namespace Softv.Entities
         /// Property RespCerrada
         /// </summary>
         [DataMember]
+        public int? IdUniverso { get; set; }
+        [DataMember]
         public bool? RespCerrada { get; set; }
         [DataMember]
         public PreguntaEntity Pregunta { get; set; }

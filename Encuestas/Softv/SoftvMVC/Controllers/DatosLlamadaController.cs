@@ -24,6 +24,7 @@ namespace SoftvMVC.Controllers
     {
         private SoftvService.DatosLlamadaClient proxy = null;
         private SoftvService.NoClienteClient proxyNoCliente = null;
+        private SoftvService.LlamadaClient proxyllamada = null;
 
         public DatosLlamadaController()
         {
@@ -32,7 +33,7 @@ namespace SoftvMVC.Controllers
             proxy = new SoftvService.DatosLlamadaClient();
 
             proxyNoCliente = new SoftvService.NoClienteClient();
-
+            proxyllamada = new SoftvService.LlamadaClient();
         }
 
         new public void Dispose()
@@ -236,7 +237,7 @@ namespace SoftvMVC.Controllers
             public int recordsFiltered { get; set; }
             public List<DatosLlamadaEntity> data { get; set; }
         }
-        public ActionResult GetList(int idplaza, int ? contrato, string cadena, int ? id_llamada, bool ? tipo_llamada, int draw, int start, int length)
+        public ActionResult GetList(int idplaza, int ? contrato, string cadena, int ? id_llamada, bool ? tipo_llamada, int draw, int start, int length, string ciudad)
         {
 
             DataTableData dataTableData = new DataTableData();
@@ -245,7 +246,7 @@ namespace SoftvMVC.Controllers
             int recordFiltered = 0;
 
             List<conexionPlazaCliente> llamadaCliente = new List<conexionPlazaCliente>();
-            List<DatosLlamadaEntity> llamada = proxy.GetDatosLlamadaList();
+            List<DatosLlamadaEntity> llamada = proxy.GetDatosLlamadaList().Where(o=>o.Ciudad==ciudad).ToList();
             List<DatosLlamadaEntity> lista = new List<DatosLlamadaEntity>();
 
             ConexionController c = new ConexionController();
@@ -266,7 +267,7 @@ namespace SoftvMVC.Controllers
                     {
                         if (item.IdConexion == idplaza)
                         {
-                            comandoSql = new SqlCommand("SELECT * FROM Newsoftv.dbo.CLIENTES WHERE CONTRATO =" + item.Contrato);
+                            comandoSql = new SqlCommand("SELECT * FROM CLIENTES WHERE CONTRATO =" + item.Contrato);
                             comandoSql.Connection = conexionSQL;
                             SqlDataReader reader = comandoSql.ExecuteReader();
                             if (reader.HasRows)
@@ -376,8 +377,23 @@ namespace SoftvMVC.Controllers
             public string fecha { get; set; }
             public string tipollamada { get; set; }
         }
-        
 
+        public ActionResult GenerarReporte(obj_reporte reporte)
+        {
+
+
+            return null;
+        }
+        public class obj_reporte
+        {
+            public int plaza { get; set; }
+            public string ciudad { get; set; }
+            public int problema { get; set; }
+            public int motivo { get; set; }
+            public int usuario { get; set; }
+            public DateTime inicio { get; set; }
+            public DateTime fin { get; set; }
+        }
 
     }
 

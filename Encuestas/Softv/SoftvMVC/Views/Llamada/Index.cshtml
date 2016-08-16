@@ -49,19 +49,19 @@
 
 <section class="content-header">
     <h1>
-        Nueva Llamada
+       Nueva Llamada <small id="titulo_llamada" style="font-size:16px;"></small>
     </h1>
     <ol class="breadcrumb">
         <li><a href="#"><i class="fa fa-dashboard"></i> Inicio</a></li>
-        <li class="active">Lista de Llamadas</li>
+        <li class="active">Atencíon de Llamadas</li>
     </ol>
 </section>
 
 <div class="row">
     <div class="col-xs-12">
         <div class="box">
-            <div class="box-header">
-                <div class="panel-group" id="Mygrafica" role="tablist" aria-multiselectable="true">
+            <div class="box-header" id="Mygrafica">
+                <div class="panel-group" role="tablist" aria-multiselectable="true">
                     <div class="panel panel-default">
                         <div class="panel-heading" id="grafica">
                             <h3 class="panel-title">
@@ -83,7 +83,7 @@
                                             <option value="2">Atención Telefónica</option>
                                         </select>
                                     </div>
-                                </div><br />
+                                </div>
                                 <div class="row" style="padding-right:20px;">
                                     <p class="text-right">
                                         <a class="btn btn-success disabled" id="nueva_llamada_link" onclick="nueva_llamada()"><i class="fa fa-phone" aria-hidden="true"></i> Nueva Llamada </a>
@@ -95,15 +95,19 @@
                 </div>
 
             </div>
-            <div class="row" style="display:none; padding-left:10px;" id="regresar">
-                <div class="col-md-3">
-                    <h4><a href="#" style="color:#5bc0de;" onclick="regresar()"><i class="fa fa-angle-left" aria-hidden="true"></i> Regresar</a></h4>
+            <div class="row">
+                <div class="col-md-4">
+                    <h4 style="display:none; padding-left:10px;" id="regresar"><a href="#" style="color:#5bc0de;" onclick="regresar()"><i class="fa fa-angle-left" aria-hidden="true"></i> Regresar</a></h4>
+                </div>
+                <div class="col-md-4">
+                    <h3 class="text-center" id="nombre_plaza" style="color:#4b646f;"></h3>
+                    <h5 class="text-center" id="sub_titulo" style="color:#4b646f;"></h5>
                 </div>
             </div>
-            <form id="llamadaForm">
+             <form id="llamadaForm">
                 <div class="row">
                     <div class="col-md-12">
-                        <h2 class="text-center" id="nombre_plaza" style="color:#4b646f;"></h2><br />
+                        
                         <div class="row" style="padding-left:10px; display:none;" id="tipo_llamante">
                             <div class="col-md-3">
                                 <label style="color:#4b646f;">¿Es cliente?</label>
@@ -113,7 +117,7 @@
                                     <option value="2">No</option>
                                 </select>
                             </div>
-                        </div><br />
+                        </div>
                     </div>
                 </div>
                 <div class="row" style="display:none; padding-left:10px;" id="motivo_llamada_panel">
@@ -155,12 +159,7 @@
                                                 </div>
                                                 <div class="row">
                                                     <div class="col-md-3">
-                                                        <input type="text" class="form-control" id="input_contrato" />
-                                                    </div>
-                                                </div>
-                                                <div class="row">
-                                                    <div class="col-md-8">
-                                                        <span class="help-block">El número de contrato está formado por 2 grupos de números con un guión intermedio p.e. (1234-1)</span>
+                                                        <input type="number" class="form-control" id="input_contrato" />
                                                     </div>
                                                 </div>
                                                 <div class="row">
@@ -266,113 +265,134 @@
                         <div class="alert alert-warning alert-dismissible fade in" role="alert"><strong>Opsss!</strong> No se encontraron coincidencias. </div>
                     </div>
                 </div>
-                <div class="row" style="display:none; padding-left:10px;" id="panel_datos_cliente">
-                    <div class="col-md-4">
-                        <h5 id="texto_contrato" style="color:#4b646f;"></h5>
-                        <input type="hidden" id="contrato_oculto" />
-                        <h5 id="texto_nombre" style="color:#4b646f;"></h5>
-                        <h5 id="texto_colonia" style="color:#4b646f;"></h5>
-                        <h5 id="texto_calle" style="color:#4b646f;"></h5>
-                        <h5 id="texto_numero" style="color:#4b646f;"></h5>
-                    </div>
-                    <div class="col-md-4 col-md-offset-1">
-                        <div id="servicios_contratados">
+                 <div class="row">
+                     <div class="col-md-9">
+                         <div class="row" style="display:none; padding-left:10px;" id="panel_datos_cliente">
+                             <div class="col-md-6">
+                                 <h5 style="color:#4b646f;"><strong>Datos del cliente</strong> </h5>
+                                 <h5 id="texto_contrato" style="color:#4b646f;"></h5>
+                                 <input type="hidden" id="contrato_oculto" />
+                                 <h5 id="texto_nombre" style="color:#4b646f;"></h5>
+                                 <h5 id="texto_colonia" style="color:#4b646f;"></h5>
+                                 <h5 id="texto_calle" style="color:#4b646f;"></h5>
+                                 <h5 id="texto_numero" style="color:#4b646f;"></h5>
+                             </div>
+                             <div class="col-md-5 col-md-offset-1">
+                                 <h5 style="color:#4b646f;"><strong>Servicios contratados</strong> </h5>
+                                 <div id="servicios_contratados">
 
-                        </div>
-                    </div>
-                    <div class="col-md-3">
-                        <a class="btn btn-warning disabled" id="btn_queja" onclick="abrir_modal()" style="width:150px;">Generar Queja</a><br /><br />
-                        <a class="btn btn-primary" onclick="ModalHistorialPagos()" style="width:150px;">Historial de Pagos</a><br /><br />
-                        <a class="btn btn-primary" onclick="ModalHistorialLlamadas()" style="width:150px;">Historial de Llamadas</a><br /><br />
-                        <a class="btn btn-primary" onclick=" ModalHistorialQuejas()" style="width:150px;">Historial de Quejas</a><br /><br />
-                        <a class="btn btn-primary" onclick=" ModalConsultarPagos()" style="width:150px;">Consultar Pagos</a><br /><br />
-                    </div>
-                </div>
-                <div class="row" style="display:none; padding-left:10px;" id="panel_hora_fecha">
-                    <div class="col-md-2">
-                        <p style="color:#4b646f;">Hora Inicial</p>
-                        <input type="text" class="form-control" disabled id="hora" />
-                    </div>
-                    <div class="col-md-2">
-                        <p style="color:#4b646f;">Fecha</p>
-                        <input type="text" class="form-control" id="fecha" disabled />
-                    </div>
-                </div><br />
-                <div class="row" style="padding-left: 10px; display: none;" id="panel_reporte_cliente">
-                    <div class="col-md-6">
-                        <label style="color:#4b646f; font-size:12px;">Reporte del cliente</label>
-                        <textarea class="form-control" id="reporte_cliente"></textarea>
-                    </div>
-                </div>
-                <div class="row" style="display:none; padding-left:10px;" id="panel_clasificacion">
-                    <div class="col-md-4">
-                        <label style="color:#4b646f; font-size:12px;">Clasificación del problema</label>
-                        <select class="form-control" id="select_problemas">
-                            <option value="0" selected disabled>Clasificación del problema</option>
-                        </select>
-                    </div>
-                </div>
-                <div class="row" style="padding-left: 10px; display: none;" id="panel_problema_real">
-                    <div class="col-md-6">
-                        <label style="color:#4b646f; font-size:12px;">Problema Real</label>
-                        <textarea class="form-control" id="problema_real"></textarea>
-                    </div>
-                </div>
-                <div class="row" style="display:none; padding-left:10px;" id="panel_solucion">
-                    <div class="col-md-4">
-                        <label style="color:#4b646f; font-size:12px;">Clasificación de la solución</label>
-                        <select class="form-control" id="select_soluciones">
-                            <option value="0" selected disabled>Clasificación de la solución</option>
-                        </select>
-                    </div>
-                </div>
-                <div class="row" style="display:none; padding-left:10px;" id="panel_tiene_queja">
-                    <div class="col-md-8">
-                        <p style="font-size:18px; color:red;" id="tiene_queja"></p>
-                    </div>
-                </div>
-                <div class="row" id="panel_no_cliente" style="padding-left:10px; display:none;">
-                    <div class="col-md-5">
-                        <label style="color:#4b646f; font-size:12px;">Nombre</label>
-                        <input type="text" class="form-control" id="nombre_no_cliente" placeholder="Nombre de la persona que esta llamando" />
-                    </div>
-                </div>
-                <div class="row" style="display:none; padding-left:10px;" id="telefono_no_cliente">
-                    <div class="col-md-3">
-                        <label style="color:#4b646f; font-size:12px;">Teléfono</label>
-                        <input type="text" id="telefono" class="form-control">
-                    </div>
-                    <div class="col-md-3">
-                        <label style="color:#4b646f; font-size:12px;">Celular</label>
-                        <input type="text" id="celular" class="form-control">
-                    </div>
-                </div>
-                <div class="row" style="display:none; padding-left:10px;" id="email_no_cliente">
-                    <div class="col-md-4">
-                        <label style="color:#4b646f; font-size:12px;">Email</label>
-                        <input type="email" id="email" class="form-control" required>
-                    </div>
-                </div>
-                <div class="row" style="display:none; padding-left:10px;" id="domicilio_no_cliente">
-                    <div class="col-md-6">
-                        <label style="color:#4b646f; font-size:12px;">Domicilio</label>
-                        <textarea type="text" id="domicilio" class="form-control"></textarea>
-                    </div>
-                </div>
-                <div class="row" style="padding-left: 10px; display: none;" id="panel_tipo_informacion">
-                    <div class="col-md-5">
-                        <label style="color:#4b646f; font-size:12px;">Selecciona el tipo de información</label>
-                        <select class="form-control" id="tipo_informacion">
-                            <option value="0" selected disabled>----------</option>
-                        </select>
-                    </div>
-                </div>
-                <div class="row" style="padding-left: 10px; display: none;" id="panel_detalle_informacion">
-                    <div class="col-md-6">
-                        <label style="color:#4b646f; font-size:12px;">Detalle de la llamada</label>
-                        <textarea class="form-control" id="detalle_llamada_informacion"></textarea>
-                    </div>
-                </div>
+                                 </div>
+                             </div>
+                         </div>
+                         <div class="row" style="display:none; padding-left:10px;" id="panel_hora_fecha">
+                             <div class="col-md-2">
+                                 <p style="color:#4b646f;">Hora Inicial</p>
+                                 <input type="text" class="form-control" disabled id="hora" />
+                             </div>
+                             <div class="col-md-2">
+                                 <p style="color:#4b646f;">Fecha</p>
+                                 <input type="text" class="form-control" id="fecha" disabled />
+                             </div>
+                         </div>
+                         <div class="row" style="padding-left: 10px; display: none;" id="panel_reporte_cliente">
+                             <div class="col-md-6">
+                                 <label style="color:#4b646f; font-size:12px;">Reporte del cliente</label>
+                                 <textarea class="form-control" id="reporte_cliente"></textarea>
+                             </div>
+                         </div>
+                         <div class="row" style="display:none; padding-left:10px;" id="panel_clasificacion">
+                             <div class="col-md-4">
+                                 <label style="color:#4b646f; font-size:12px;">Clasificación del problema</label>
+                                 <select class="form-control" id="select_problemas">
+                                     <option value="0" selected disabled>Clasificación del problema</option>
+                                 </select>
+                             </div>
+                         </div>
+                         <div class="row" style="padding-left: 10px; display: none;" id="panel_problema_real">
+                             <div class="col-md-6">
+                                 <label style="color:#4b646f; font-size:12px;">Problema Real</label>
+                                 <textarea class="form-control" id="problema_real"></textarea>
+                             </div>
+                         </div>
+                         <div class="row" style="display:none; padding-left:10px;" id="panel_solucion">
+                             <div class="col-md-4">
+                                 <label style="color:#4b646f; font-size:12px;">Clasificación de la solución</label>
+                                 <select class="form-control" id="select_soluciones">
+                                     <option value="0" selected disabled>Clasificación de la solución</option>
+                                 </select>
+                             </div>
+                         </div>
+                         <div class="row" style="display:none; padding-left:10px;" id="panel_tiene_queja">
+                             <div class="col-md-8">
+                                 <p style="font-size:18px; color:red;" id="tiene_queja"></p>
+                             </div>
+                         </div>
+                         <div class="row" id="panel_no_cliente" style="padding-left:10px; display:none;">
+                             <div class="col-md-5">
+                                 <label style="color:#4b646f; font-size:12px;">Nombre</label>
+                                 <input type="text" class="form-control" id="nombre_no_cliente" placeholder="Nombre de la persona que esta llamando" />
+                             </div>
+                         </div>
+                         <div class="row" style="display:none; padding-left:10px;" id="telefono_no_cliente">
+                             <div class="col-md-3">
+                                 <label style="color:#4b646f; font-size:12px;">Teléfono</label>
+                                 <input type="text" id="telefono" class="form-control">
+                             </div>
+                             <div class="col-md-3">
+                                 <label style="color:#4b646f; font-size:12px;">Celular</label>
+                                 <input type="text" id="celular" class="form-control">
+                             </div>
+                         </div>
+                         <div class="row" style="display:none; padding-left:10px;" id="email_no_cliente">
+                             <div class="col-md-4">
+                                 <label style="color:#4b646f; font-size:12px;">Email</label>
+                                 <input type="email" id="email" class="form-control" required>
+                             </div>
+                         </div>
+                         <div class="row" style="display:none; padding-left:10px;" id="domicilio_no_cliente">
+                             <div class="col-md-6">
+                                 <label style="color:#4b646f; font-size:12px;">Domicilio</label>
+                                 <textarea type="text" id="domicilio" class="form-control"></textarea>
+                             </div>
+                         </div>
+                         <div class="row" style="padding-left: 10px; display: none;" id="panel_tipo_informacion">
+                             <div class="col-md-5">
+                                 <label style="color:#4b646f; font-size:12px;">Selecciona el tipo de información</label>
+                                 <select class="form-control" id="tipo_informacion">
+                                     <option value="0" selected disabled>----------</option>
+                                 </select>
+                             </div>
+                         </div>
+                         <div class="row" style="padding-left: 10px; display: none;" id="panel_detalle_informacion">
+                             <div class="col-md-6">
+                                 <label style="color:#4b646f; font-size:12px;">Detalle de la llamada</label>
+                                 <textarea class="form-control" id="detalle_llamada_informacion"></textarea>
+                             </div>
+                         </div>
+                     </div>
+                     <div class="col-md-3" style="display: none;" id="panel_botones">
+                         <div class="row">
+                             <div class="col-md-3">
+                                 <div class="row">
+                                     <a class="btn btn-warning disabled" id="btn_queja" onclick="abrir_modal()" style="width:150px;">Generar Queja</a>
+                                 </div><br />
+                                 <div class="row">
+                                     <a class="btn btn-primary" onclick="ModalHistorialPagos()" style="width:150px;">Historial de Pagos</a><br />
+                                 </div><br />
+                                 <div class="row">
+                                     <a class="btn btn-primary" onclick="ModalHistorialLlamadas()" style="width:150px;">Historial de Llamadas</a><br />
+                                 </div><br />
+                                 <div class="row">
+                                     <a class="btn btn-primary" onclick=" ModalHistorialQuejas()" style="width:150px;">Historial de Quejas</a><br />
+                                 </div><br />
+                                 <div class="row">
+                                     <a class="btn btn-primary" onclick=" ModalConsultarPagos()" style="width:150px;">Consultar Pagos</a><br />
+                                 </div><br />
+                             </div>
+                         </div>
+                     </div>
+                 </div>
+                
                 <div class="row" style="padding-right:40px; display:none;" id="btn_enviar">
                     <div class="col-md-12">
                         <p class="text-right">
@@ -396,29 +416,18 @@
             <div class="modal-body">
                 <div class="row">
                     <div class="col-md-12">
-                        <label style="color:#4b646f; font-size:12px;">Departamento Responsable</label>
-                        <select class="form-control" id="departamento">
-                            <option value="0" selected disabled>Departamento Responsable</option>
-                        </select>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-md-12">
-                        <label style="color:#4b646f; font-size:12px;">Tipo Prioridad</label>
-                        <select class="form-control" id="prioridad">
-                            <option value="0" selected disabled>Tipo Prioridad</option>
-                        </select>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-md-12">
                         <label style="color:#4b646f; font-size:12px;">Turno</label>
                         <select class="form-control" id="turno">
                             <option value="0" selected disabled>Turno</option>
                         </select>
                     </div>
                 </div>
-
+                <div class="row">
+                    <div class="col-md-12">
+                        <label style="color:#4b646f; font-size:12px;">Comentarios</label>
+                        <textarea class="form-control" id="comentario"></textarea>
+                    </div>
+                </div>
             </div>
             <div class="modal-footer">
                 <button class="btn btn-success" type="button" onclick="GuardarQueja()">Generar</button>
@@ -533,6 +542,14 @@
                 <h4 class="modal-title">Historial de Quejas</h4>
             </div>
             <div class="modal-body">
+                <label style="color:#4b646f; font-size:12px;">Tipo de Queja</label><br />
+                <select id="tipo_queja">
+                    <option value="0" selected disabled>------------</option>
+                    <option value="1">Pendientes</option>
+                    <option value="2">Ejecutadas</option>
+                    <option value="3">Visita</option>
+                    <option value="4">Todas</option>
+                </select>
                 <table id="tableHistorialQuejas" class="table table-bordered table-hover dataTable">
                     <thead>
                         <tr>
@@ -543,6 +560,7 @@
                             <td id="Calle"><b>Calle</b></td>
                             <td id="Numero"><b>Numero</b></td>
                             <td id="TipSer"><b>Tipo Servicio</b></td>
+                            <td id="options"><b>Opciones</b></td>
                         </tr>
                     </thead>
                     <tbody></tbody>
@@ -574,7 +592,7 @@
                             <td id="HoraFinal"><b>Hora Final</b></td>
                             <td id="Motivo"><b>Motivo</b></td>
                             <td id="Solucion"><b>Solución</b></td>
-                            <td id="Usuario"><b>Usuario</b></td>
+                            <td id="Usuario"><b>Atendido por</b></td>
                         </tr>
                     </thead>
                     <tbody></tbody>
@@ -654,20 +672,12 @@
             <div class="modal-header">
             </div>
             <div class="modal-body">
-                @*<div class="nav-tabs-custom">
-                    <div class="tab-content">
-                        <div class="tab-pane active" id="tab_1">*@
                 <div class="row form-group" align="right">
 
-                    <div class="col-md-10 col-md-offset-1    col-sm-10 col-sm-offset-1    col-xs-10">
-                        <form action="" align="center">
-                            <p>Consultando información por favor espere un momento</p>
-                        </form>
+                    <div class="col-md-12">
+                        <p class="text-center">Consultando información por favor espere un momento</p>
                     </div>
                 </div>
-                @*</div><!-- /.tab-pane -->
-                        </div><!-- /.tab-content -->
-                    </div>*@
             </div>
             <div class="modal-footer">
             </div>
@@ -702,7 +712,7 @@
                             <p><strong id="recibo"></strong></p>
                             <p><strong id="contrato_ticket"></strong></p>
                             <p id="nombre_cliente"></p>
-                            <p> <label id="nombre_calle"></label> <label id="nombre_numero"></label> <label id="cp_cliente"></label></p>
+                            <p> <span id="nombre_calle"></span> <span id="nombre_numero"></span> <span id="cp_cliente"></span></p>
                             <p id="colonia_cliente"></p>
                             <p id="ciudad_cliente"></p>
                             <p><strong>Cajera(o): </strong> <label id="cajero"></label></p>
@@ -729,6 +739,118 @@
     </div>
 </div>
 
+<div class="modal fade" id="detalle_queja" role="dialog" data-backdrop="static" data-keyboard="false">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button class="close" aria-label="Close" type="button" data-dismiss="modal"><span aria-hidden="true">×</span></button>
+                <h4 class="modal-title">Detalle Queja</h4>
+            </div>
+            <div class="modal-body">
+                <h4 class="text-center alert-error" style="display:none;" id="queja_error">Ocurrió un error al consultar la información</h4>
+                <div class="row" id="panel_detalle_queja" style="display:none;">
+                    <div class="col-md-6">
+                        <div class="row">
+                            <div class="col-md-12">
+                                <p><strong>Tipo de Servicio</strong></p>
+                                <select class="form-control" id="queja_servicio" disabled></select>
+                            </div>
+                            <div class="col-md-12">
+                                <h5><strong>Clave: </strong><span id="queja_id"></span></h5>
+                            </div>
+                            <div class="col-md-12">
+                                <h5><strong>Contrato: </strong><span id="queja_contrato"></span></h5>
+                            </div>
+                            <div class="col-md-12">
+                                <h5><strong>Nombre: </strong><span id="queja_nombre_cliente"></span></h5>
+                            </div>
+                            <div class="col-md-12">
+                                <h5><strong>Colonia: </strong><span id="queja_colonia"></span></h5>
+                            </div>
+                            <div class="col-md-12">
+                                <h5><strong>Calle: </strong><span id="queja_calle"></span></h5>
+                            </div>
+                            <div class="col-md-12">
+                                <h5><strong>Número: </strong><span id="queja_numero"></span></h5>
+                            </div>
+                            <div class="col-md-12">
+                                <p><strong>Reporte del Cliente</strong></p>
+                                <textarea class="form-control" id="queja_reporte" disabled></textarea>
+                            </div>
+                            <div class="col-md-12">
+                                <p><strong>Clasificación del Problema</strong></p>
+                                <select class="form-control" id="queja_problema" disabled></select>
+                            </div>
+                            <div class="col-md-12">
+                                <p><strong>Observaciones</strong></p>
+                                <textarea class="form-control" id="queja_observaciones" disabled></textarea>
+                            </div>
+                            <div class="col-md-12">
+                                <p><strong>Clasificación de la solución</strong></p>
+                                <select class="form-control" id="queja_clas_solucion" disabled></select>
+                            </div>
+                            <div class="col-md-12">
+                                <p><strong>Solución</strong></p>
+                                <textarea class="form-control" id="queja_solucion" disabled></textarea>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="row">
+                            <div class="col-md-12">
+                                <h5 class="text-center"><strong>Status: </strong><span id="queja_status"></span></h5>
+                            </div>
+                            <div class="col-md-12">
+                                <h5 class="text-center"><strong>Generó: </strong><span id="queja_usuario"></span></h5>
+                            </div>
+                            <div class="col-md-12">
+                                <h5 class="text-center"><strong>Ejecutó: </strong><span id="queja_ejecuto"></span></h5>
+                            </div>
+                            <div class="col-md-12">
+                                <h5 class="text-center"><strong>Solicitud: </strong><span id="queja_solicitud"></span></h5>
+                            </div>
+                            <div class="col-md-12">
+                                <h5 class="text-center"><strong>Ejecución: </strong><span id="queja_fecha_ejecuto"></span></h5>
+                            </div>
+                            <div class="col-md-12">
+                                <p>Vista 1:</p>
+                                <div class="col-md-6">
+                                    <input type="text" class="form-control" id="queja_fecha_v1" disabled/>
+                                </div>
+                                <div class="col-md-6">
+                                    <input type="text" class="form-control" id="queja_hora_v1" disabled />
+                                </div>
+                            </div>
+                            <div class="col-md-12">
+                                <p>Vista 2:</p>
+                                <div class="col-md-6">
+                                    <input type="text" class="form-control" id="queja_fecha_v2" disabled />
+                                </div>
+                                <div class="col-md-6">
+                                    <input type="text" class="form-control" id="queja_hora_v2" disabled />
+                                </div>
+                            </div>
+                            <div class="col-md-12">
+                                <p>Vista 3:</p>
+                                <div class="col-md-6">
+                                    <input type="text" class="form-control" id="queja_fecha_v3" disabled />
+                                </div>
+                                <div class="col-md-6">
+                                    <input type="text" class="form-control" id="queja_hora_v3" disabled />
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-primary " type="button" data-dismiss="modal">Cerrar</button>
+            </div>
+        </div>
+    </div>
+</div>
+
 <script>
     var usuario = @Session["idusuario"];
 </script>
@@ -746,7 +868,7 @@
     });
     $(function () {
         $('#servicios_contratados').slimScroll({
-            height: '200px'
+            height: '150px'
         });
     });
 </script>

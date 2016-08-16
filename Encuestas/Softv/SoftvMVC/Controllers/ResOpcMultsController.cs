@@ -227,6 +227,12 @@ namespace SoftvMVC.Controllers
             public List<ResOpcMultsEntity> data { get; set; }
         }
 
+        public ActionResult TodasRespuestas()
+        {
+            List<ResOpcMultsEntity> respuestas = proxy.GetResOpcMultsList();
+
+            return Json(respuestas, JsonRequestBehavior.AllowGet);
+        }
 
     }
 

@@ -171,8 +171,10 @@ namespace SoftvMVC.Controllers
 
                 datos = FiltrarPreguntas(ref recordsFiltered, start, 100).Where(x => x.Pregunta.Pregunta.ToLower().Contains(data.ToLower())).ToList();
 
+            }else if(tipo == 4){
+                datos = FiltrarPreguntas(ref recordsFiltered, start, length);
             }
-            else if (tipo > 0)
+            else if (tipo > 0 && tipo < 4)
             {
                 datos = FiltrarPreguntas(ref recordsFiltered, start, length).Where(x => x.Pregunta.IdTipoPregunta == tipo).ToList();
             }
@@ -254,6 +256,8 @@ namespace SoftvMVC.Controllers
             int result = proxy.AddPregunta(xe.ToString());
             return Json(result, JsonRequestBehavior.AllowGet);
         }
+
+
     }
 
 }

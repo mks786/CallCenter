@@ -419,6 +419,34 @@ namespace SoftvConfiguration
         {
             get { return (ClasificacionProblemaElement)base["ClasificacionProblema"]; }
         }
+
+        /// <summary>
+        /// Gets CiudadServidor configuration data
+        /// </summary>
+        [ConfigurationProperty("CiudadServidor")]
+        public CiudadServidorElement CiudadServidor
+        {
+            get { return (CiudadServidorElement)base["CiudadServidor"]; }
+        }
+
+        /// <summary>
+        /// Gets UniversoEncuesta configuration data
+        /// </summary>
+        [ConfigurationProperty("UniversoEncuesta")]
+        public UniversoEncuestaElement UniversoEncuesta
+        {
+            get { return (UniversoEncuestaElement)base["UniversoEncuesta"]; }
+        }
+
+
+        /// <summary>
+        /// Gets ProcesoEncuesta configuration data
+        /// </summary>
+        [ConfigurationProperty("ProcesoEncuesta")]
+        public ProcesoEncuestaElement ProcesoEncuesta
+        {
+            get { return (ProcesoEncuestaElement)base["ProcesoEncuesta"]; }
+        }
   
     }
 }

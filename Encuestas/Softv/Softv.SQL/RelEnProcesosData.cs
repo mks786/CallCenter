@@ -42,6 +42,7 @@ namespace Softv.DAO
                 AssingParameter(comandoSql, "@RespAbi", entity_RelEnProcesos.RespAbi);
 
                 AssingParameter(comandoSql, "@RespCerrada", entity_RelEnProcesos.RespCerrada);
+                AssingParameter(comandoSql, "@IdUniverso", entity_RelEnProcesos.IdUniverso);
 
                 try
                 {

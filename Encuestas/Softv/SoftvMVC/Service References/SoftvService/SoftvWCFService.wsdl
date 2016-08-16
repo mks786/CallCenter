@@ -1970,6 +1970,150 @@
   <wsdl:message name="IClasificacionProblema_DeleteClasificacionProblema_OutputMessage">
     <wsdl:part name="parameters" element="tns:DeleteClasificacionProblemaResponse" />
   </wsdl:message>
+  <wsdl:message name="ICiudadServidor_GetCiudadServidor_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetCiudadServidor" />
+  </wsdl:message>
+  <wsdl:message name="ICiudadServidor_GetCiudadServidor_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetCiudadServidorResponse" />
+  </wsdl:message>
+  <wsdl:message name="ICiudadServidor_GetDeepCiudadServidor_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetDeepCiudadServidor" />
+  </wsdl:message>
+  <wsdl:message name="ICiudadServidor_GetDeepCiudadServidor_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetDeepCiudadServidorResponse" />
+  </wsdl:message>
+  <wsdl:message name="ICiudadServidor_GetCiudadServidorList_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetCiudadServidorList" />
+  </wsdl:message>
+  <wsdl:message name="ICiudadServidor_GetCiudadServidorList_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetCiudadServidorListResponse" />
+  </wsdl:message>
+  <wsdl:message name="ICiudadServidor_GetCiudadServidorPagedList_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetCiudadServidorPagedList" />
+  </wsdl:message>
+  <wsdl:message name="ICiudadServidor_GetCiudadServidorPagedList_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetCiudadServidorPagedListResponse" />
+  </wsdl:message>
+  <wsdl:message name="ICiudadServidor_GetCiudadServidorPagedListXml_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetCiudadServidorPagedListXml" />
+  </wsdl:message>
+  <wsdl:message name="ICiudadServidor_GetCiudadServidorPagedListXml_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetCiudadServidorPagedListXmlResponse" />
+  </wsdl:message>
+  <wsdl:message name="ICiudadServidor_AddCiudadServidor_InputMessage">
+    <wsdl:part name="parameters" element="tns:AddCiudadServidor" />
+  </wsdl:message>
+  <wsdl:message name="ICiudadServidor_AddCiudadServidor_OutputMessage">
+    <wsdl:part name="parameters" element="tns:AddCiudadServidorResponse" />
+  </wsdl:message>
+  <wsdl:message name="ICiudadServidor_UpdateCiudadServidor_InputMessage">
+    <wsdl:part name="parameters" element="tns:UpdateCiudadServidor" />
+  </wsdl:message>
+  <wsdl:message name="ICiudadServidor_UpdateCiudadServidor_OutputMessage">
+    <wsdl:part name="parameters" element="tns:UpdateCiudadServidorResponse" />
+  </wsdl:message>
+  <wsdl:message name="ICiudadServidor_DeleteCiudadServidor_InputMessage">
+    <wsdl:part name="parameters" element="tns:DeleteCiudadServidor" />
+  </wsdl:message>
+  <wsdl:message name="ICiudadServidor_DeleteCiudadServidor_OutputMessage">
+    <wsdl:part name="parameters" element="tns:DeleteCiudadServidorResponse" />
+  </wsdl:message>
+  <wsdl:message name="IUniversoEncuesta_GetUniversoEncuesta_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetUniversoEncuesta" />
+  </wsdl:message>
+  <wsdl:message name="IUniversoEncuesta_GetUniversoEncuesta_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetUniversoEncuestaResponse" />
+  </wsdl:message>
+  <wsdl:message name="IUniversoEncuesta_GetDeepUniversoEncuesta_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetDeepUniversoEncuesta" />
+  </wsdl:message>
+  <wsdl:message name="IUniversoEncuesta_GetDeepUniversoEncuesta_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetDeepUniversoEncuestaResponse" />
+  </wsdl:message>
+  <wsdl:message name="IUniversoEncuesta_GetUniversoEncuestaList_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetUniversoEncuestaList" />
+  </wsdl:message>
+  <wsdl:message name="IUniversoEncuesta_GetUniversoEncuestaList_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetUniversoEncuestaListResponse" />
+  </wsdl:message>
+  <wsdl:message name="IUniversoEncuesta_GetUniversoEncuestaPagedList_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetUniversoEncuestaPagedList" />
+  </wsdl:message>
+  <wsdl:message name="IUniversoEncuesta_GetUniversoEncuestaPagedList_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetUniversoEncuestaPagedListResponse" />
+  </wsdl:message>
+  <wsdl:message name="IUniversoEncuesta_GetUniversoEncuestaPagedListXml_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetUniversoEncuestaPagedListXml" />
+  </wsdl:message>
+  <wsdl:message name="IUniversoEncuesta_GetUniversoEncuestaPagedListXml_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetUniversoEncuestaPagedListXmlResponse" />
+  </wsdl:message>
+  <wsdl:message name="IUniversoEncuesta_AddUniversoEncuesta_InputMessage">
+    <wsdl:part name="parameters" element="tns:AddUniversoEncuesta" />
+  </wsdl:message>
+  <wsdl:message name="IUniversoEncuesta_AddUniversoEncuesta_OutputMessage">
+    <wsdl:part name="parameters" element="tns:AddUniversoEncuestaResponse" />
+  </wsdl:message>
+  <wsdl:message name="IUniversoEncuesta_UpdateUniversoEncuesta_InputMessage">
+    <wsdl:part name="parameters" element="tns:UpdateUniversoEncuesta" />
+  </wsdl:message>
+  <wsdl:message name="IUniversoEncuesta_UpdateUniversoEncuesta_OutputMessage">
+    <wsdl:part name="parameters" element="tns:UpdateUniversoEncuestaResponse" />
+  </wsdl:message>
+  <wsdl:message name="IUniversoEncuesta_DeleteUniversoEncuesta_InputMessage">
+    <wsdl:part name="parameters" element="tns:DeleteUniversoEncuesta" />
+  </wsdl:message>
+  <wsdl:message name="IUniversoEncuesta_DeleteUniversoEncuesta_OutputMessage">
+    <wsdl:part name="parameters" element="tns:DeleteUniversoEncuestaResponse" />
+  </wsdl:message>
+  <wsdl:message name="IProcesoEncuesta_GetProcesoEncuesta_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetProcesoEncuesta" />
+  </wsdl:message>
+  <wsdl:message name="IProcesoEncuesta_GetProcesoEncuesta_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetProcesoEncuestaResponse" />
+  </wsdl:message>
+  <wsdl:message name="IProcesoEncuesta_GetDeepProcesoEncuesta_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetDeepProcesoEncuesta" />
+  </wsdl:message>
+  <wsdl:message name="IProcesoEncuesta_GetDeepProcesoEncuesta_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetDeepProcesoEncuestaResponse" />
+  </wsdl:message>
+  <wsdl:message name="IProcesoEncuesta_GetProcesoEncuestaList_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetProcesoEncuestaList" />
+  </wsdl:message>
+  <wsdl:message name="IProcesoEncuesta_GetProcesoEncuestaList_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetProcesoEncuestaListResponse" />
+  </wsdl:message>
+  <wsdl:message name="IProcesoEncuesta_GetProcesoEncuestaPagedList_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetProcesoEncuestaPagedList" />
+  </wsdl:message>
+  <wsdl:message name="IProcesoEncuesta_GetProcesoEncuestaPagedList_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetProcesoEncuestaPagedListResponse" />
+  </wsdl:message>
+  <wsdl:message name="IProcesoEncuesta_GetProcesoEncuestaPagedListXml_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetProcesoEncuestaPagedListXml" />
+  </wsdl:message>
+  <wsdl:message name="IProcesoEncuesta_GetProcesoEncuestaPagedListXml_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetProcesoEncuestaPagedListXmlResponse" />
+  </wsdl:message>
+  <wsdl:message name="IProcesoEncuesta_AddProcesoEncuesta_InputMessage">
+    <wsdl:part name="parameters" element="tns:AddProcesoEncuesta" />
+  </wsdl:message>
+  <wsdl:message name="IProcesoEncuesta_AddProcesoEncuesta_OutputMessage">
+    <wsdl:part name="parameters" element="tns:AddProcesoEncuestaResponse" />
+  </wsdl:message>
+  <wsdl:message name="IProcesoEncuesta_UpdateProcesoEncuesta_InputMessage">
+    <wsdl:part name="parameters" element="tns:UpdateProcesoEncuesta" />
+  </wsdl:message>
+  <wsdl:message name="IProcesoEncuesta_UpdateProcesoEncuesta_OutputMessage">
+    <wsdl:part name="parameters" element="tns:UpdateProcesoEncuestaResponse" />
+  </wsdl:message>
+  <wsdl:message name="IProcesoEncuesta_DeleteProcesoEncuesta_InputMessage">
+    <wsdl:part name="parameters" element="tns:DeleteProcesoEncuesta" />
+  </wsdl:message>
+  <wsdl:message name="IProcesoEncuesta_DeleteProcesoEncuesta_OutputMessage">
+    <wsdl:part name="parameters" element="tns:DeleteProcesoEncuestaResponse" />
+  </wsdl:message>
   <wsdl:portType name="IUsuario">
     <wsdl:operation name="GetUsuario">
       <wsdl:input wsaw:Action="http://tempuri.org/IUsuario/GetUsuario" message="tns:IUsuario_GetUsuario_InputMessage" />
@@ -3358,6 +3502,108 @@
     <wsdl:operation name="DeleteClasificacionProblema">
       <wsdl:input wsaw:Action="http://tempuri.org/IClasificacionProblema/DeleteClasificacionProblema" message="tns:IClasificacionProblema_DeleteClasificacionProblema_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IClasificacionProblema/DeleteClasificacionProblemaResponse" message="tns:IClasificacionProblema_DeleteClasificacionProblema_OutputMessage" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:portType name="ICiudadServidor">
+    <wsdl:operation name="GetCiudadServidor">
+      <wsdl:input wsaw:Action="http://tempuri.org/ICiudadServidor/GetCiudadServidor" message="tns:ICiudadServidor_GetCiudadServidor_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ICiudadServidor/GetCiudadServidorResponse" message="tns:ICiudadServidor_GetCiudadServidor_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetDeepCiudadServidor">
+      <wsdl:input wsaw:Action="http://tempuri.org/ICiudadServidor/GetDeepCiudadServidor" message="tns:ICiudadServidor_GetDeepCiudadServidor_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ICiudadServidor/GetDeepCiudadServidorResponse" message="tns:ICiudadServidor_GetDeepCiudadServidor_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetCiudadServidorList">
+      <wsdl:input wsaw:Action="http://tempuri.org/ICiudadServidor/GetCiudadServidorList" message="tns:ICiudadServidor_GetCiudadServidorList_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ICiudadServidor/GetCiudadServidorListResponse" message="tns:ICiudadServidor_GetCiudadServidorList_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetCiudadServidorPagedList">
+      <wsdl:input wsaw:Action="http://tempuri.org/ICiudadServidor/GetCiudadServidorPagedList" message="tns:ICiudadServidor_GetCiudadServidorPagedList_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ICiudadServidor/GetCiudadServidorPagedListResponse" message="tns:ICiudadServidor_GetCiudadServidorPagedList_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetCiudadServidorPagedListXml">
+      <wsdl:input wsaw:Action="http://tempuri.org/ICiudadServidor/GetCiudadServidorPagedListXml" message="tns:ICiudadServidor_GetCiudadServidorPagedListXml_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ICiudadServidor/GetCiudadServidorPagedListXmlResponse" message="tns:ICiudadServidor_GetCiudadServidorPagedListXml_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="AddCiudadServidor">
+      <wsdl:input wsaw:Action="http://tempuri.org/ICiudadServidor/AddCiudadServidor" message="tns:ICiudadServidor_AddCiudadServidor_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ICiudadServidor/AddCiudadServidorResponse" message="tns:ICiudadServidor_AddCiudadServidor_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="UpdateCiudadServidor">
+      <wsdl:input wsaw:Action="http://tempuri.org/ICiudadServidor/UpdateCiudadServidor" message="tns:ICiudadServidor_UpdateCiudadServidor_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ICiudadServidor/UpdateCiudadServidorResponse" message="tns:ICiudadServidor_UpdateCiudadServidor_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="DeleteCiudadServidor">
+      <wsdl:input wsaw:Action="http://tempuri.org/ICiudadServidor/DeleteCiudadServidor" message="tns:ICiudadServidor_DeleteCiudadServidor_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ICiudadServidor/DeleteCiudadServidorResponse" message="tns:ICiudadServidor_DeleteCiudadServidor_OutputMessage" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:portType name="IUniversoEncuesta">
+    <wsdl:operation name="GetUniversoEncuesta">
+      <wsdl:input wsaw:Action="http://tempuri.org/IUniversoEncuesta/GetUniversoEncuesta" message="tns:IUniversoEncuesta_GetUniversoEncuesta_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IUniversoEncuesta/GetUniversoEncuestaResponse" message="tns:IUniversoEncuesta_GetUniversoEncuesta_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetDeepUniversoEncuesta">
+      <wsdl:input wsaw:Action="http://tempuri.org/IUniversoEncuesta/GetDeepUniversoEncuesta" message="tns:IUniversoEncuesta_GetDeepUniversoEncuesta_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IUniversoEncuesta/GetDeepUniversoEncuestaResponse" message="tns:IUniversoEncuesta_GetDeepUniversoEncuesta_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetUniversoEncuestaList">
+      <wsdl:input wsaw:Action="http://tempuri.org/IUniversoEncuesta/GetUniversoEncuestaList" message="tns:IUniversoEncuesta_GetUniversoEncuestaList_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IUniversoEncuesta/GetUniversoEncuestaListResponse" message="tns:IUniversoEncuesta_GetUniversoEncuestaList_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetUniversoEncuestaPagedList">
+      <wsdl:input wsaw:Action="http://tempuri.org/IUniversoEncuesta/GetUniversoEncuestaPagedList" message="tns:IUniversoEncuesta_GetUniversoEncuestaPagedList_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IUniversoEncuesta/GetUniversoEncuestaPagedListResponse" message="tns:IUniversoEncuesta_GetUniversoEncuestaPagedList_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetUniversoEncuestaPagedListXml">
+      <wsdl:input wsaw:Action="http://tempuri.org/IUniversoEncuesta/GetUniversoEncuestaPagedListXml" message="tns:IUniversoEncuesta_GetUniversoEncuestaPagedListXml_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IUniversoEncuesta/GetUniversoEncuestaPagedListXmlResponse" message="tns:IUniversoEncuesta_GetUniversoEncuestaPagedListXml_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="AddUniversoEncuesta">
+      <wsdl:input wsaw:Action="http://tempuri.org/IUniversoEncuesta/AddUniversoEncuesta" message="tns:IUniversoEncuesta_AddUniversoEncuesta_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IUniversoEncuesta/AddUniversoEncuestaResponse" message="tns:IUniversoEncuesta_AddUniversoEncuesta_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="UpdateUniversoEncuesta">
+      <wsdl:input wsaw:Action="http://tempuri.org/IUniversoEncuesta/UpdateUniversoEncuesta" message="tns:IUniversoEncuesta_UpdateUniversoEncuesta_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IUniversoEncuesta/UpdateUniversoEncuestaResponse" message="tns:IUniversoEncuesta_UpdateUniversoEncuesta_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="DeleteUniversoEncuesta">
+      <wsdl:input wsaw:Action="http://tempuri.org/IUniversoEncuesta/DeleteUniversoEncuesta" message="tns:IUniversoEncuesta_DeleteUniversoEncuesta_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IUniversoEncuesta/DeleteUniversoEncuestaResponse" message="tns:IUniversoEncuesta_DeleteUniversoEncuesta_OutputMessage" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:portType name="IProcesoEncuesta">
+    <wsdl:operation name="GetProcesoEncuesta">
+      <wsdl:input wsaw:Action="http://tempuri.org/IProcesoEncuesta/GetProcesoEncuesta" message="tns:IProcesoEncuesta_GetProcesoEncuesta_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IProcesoEncuesta/GetProcesoEncuestaResponse" message="tns:IProcesoEncuesta_GetProcesoEncuesta_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetDeepProcesoEncuesta">
+      <wsdl:input wsaw:Action="http://tempuri.org/IProcesoEncuesta/GetDeepProcesoEncuesta" message="tns:IProcesoEncuesta_GetDeepProcesoEncuesta_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IProcesoEncuesta/GetDeepProcesoEncuestaResponse" message="tns:IProcesoEncuesta_GetDeepProcesoEncuesta_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetProcesoEncuestaList">
+      <wsdl:input wsaw:Action="http://tempuri.org/IProcesoEncuesta/GetProcesoEncuestaList" message="tns:IProcesoEncuesta_GetProcesoEncuestaList_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IProcesoEncuesta/GetProcesoEncuestaListResponse" message="tns:IProcesoEncuesta_GetProcesoEncuestaList_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetProcesoEncuestaPagedList">
+      <wsdl:input wsaw:Action="http://tempuri.org/IProcesoEncuesta/GetProcesoEncuestaPagedList" message="tns:IProcesoEncuesta_GetProcesoEncuestaPagedList_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IProcesoEncuesta/GetProcesoEncuestaPagedListResponse" message="tns:IProcesoEncuesta_GetProcesoEncuestaPagedList_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetProcesoEncuestaPagedListXml">
+      <wsdl:input wsaw:Action="http://tempuri.org/IProcesoEncuesta/GetProcesoEncuestaPagedListXml" message="tns:IProcesoEncuesta_GetProcesoEncuestaPagedListXml_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IProcesoEncuesta/GetProcesoEncuestaPagedListXmlResponse" message="tns:IProcesoEncuesta_GetProcesoEncuestaPagedListXml_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="AddProcesoEncuesta">
+      <wsdl:input wsaw:Action="http://tempuri.org/IProcesoEncuesta/AddProcesoEncuesta" message="tns:IProcesoEncuesta_AddProcesoEncuesta_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IProcesoEncuesta/AddProcesoEncuestaResponse" message="tns:IProcesoEncuesta_AddProcesoEncuesta_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="UpdateProcesoEncuesta">
+      <wsdl:input wsaw:Action="http://tempuri.org/IProcesoEncuesta/UpdateProcesoEncuesta" message="tns:IProcesoEncuesta_UpdateProcesoEncuesta_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IProcesoEncuesta/UpdateProcesoEncuestaResponse" message="tns:IProcesoEncuesta_UpdateProcesoEncuesta_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="DeleteProcesoEncuesta">
+      <wsdl:input wsaw:Action="http://tempuri.org/IProcesoEncuesta/DeleteProcesoEncuesta" message="tns:IProcesoEncuesta_DeleteProcesoEncuesta_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IProcesoEncuesta/DeleteProcesoEncuestaResponse" message="tns:IProcesoEncuesta_DeleteProcesoEncuesta_OutputMessage" />
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:binding name="BasicHttpBinding_IUsuario" type="tns:IUsuario">
@@ -6426,6 +6672,231 @@
       </wsdl:output>
     </wsdl:operation>
   </wsdl:binding>
+  <wsdl:binding name="BasicHttpBinding_ICiudadServidor" type="tns:ICiudadServidor">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="GetCiudadServidor">
+      <soap:operation soapAction="http://tempuri.org/ICiudadServidor/GetCiudadServidor" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetDeepCiudadServidor">
+      <soap:operation soapAction="http://tempuri.org/ICiudadServidor/GetDeepCiudadServidor" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetCiudadServidorList">
+      <soap:operation soapAction="http://tempuri.org/ICiudadServidor/GetCiudadServidorList" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetCiudadServidorPagedList">
+      <soap:operation soapAction="http://tempuri.org/ICiudadServidor/GetCiudadServidorPagedList" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetCiudadServidorPagedListXml">
+      <soap:operation soapAction="http://tempuri.org/ICiudadServidor/GetCiudadServidorPagedListXml" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AddCiudadServidor">
+      <soap:operation soapAction="http://tempuri.org/ICiudadServidor/AddCiudadServidor" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdateCiudadServidor">
+      <soap:operation soapAction="http://tempuri.org/ICiudadServidor/UpdateCiudadServidor" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DeleteCiudadServidor">
+      <soap:operation soapAction="http://tempuri.org/ICiudadServidor/DeleteCiudadServidor" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="BasicHttpBinding_IUniversoEncuesta" type="tns:IUniversoEncuesta">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="GetUniversoEncuesta">
+      <soap:operation soapAction="http://tempuri.org/IUniversoEncuesta/GetUniversoEncuesta" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetDeepUniversoEncuesta">
+      <soap:operation soapAction="http://tempuri.org/IUniversoEncuesta/GetDeepUniversoEncuesta" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetUniversoEncuestaList">
+      <soap:operation soapAction="http://tempuri.org/IUniversoEncuesta/GetUniversoEncuestaList" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetUniversoEncuestaPagedList">
+      <soap:operation soapAction="http://tempuri.org/IUniversoEncuesta/GetUniversoEncuestaPagedList" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetUniversoEncuestaPagedListXml">
+      <soap:operation soapAction="http://tempuri.org/IUniversoEncuesta/GetUniversoEncuestaPagedListXml" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AddUniversoEncuesta">
+      <soap:operation soapAction="http://tempuri.org/IUniversoEncuesta/AddUniversoEncuesta" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdateUniversoEncuesta">
+      <soap:operation soapAction="http://tempuri.org/IUniversoEncuesta/UpdateUniversoEncuesta" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DeleteUniversoEncuesta">
+      <soap:operation soapAction="http://tempuri.org/IUniversoEncuesta/DeleteUniversoEncuesta" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="BasicHttpBinding_IProcesoEncuesta" type="tns:IProcesoEncuesta">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="GetProcesoEncuesta">
+      <soap:operation soapAction="http://tempuri.org/IProcesoEncuesta/GetProcesoEncuesta" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetDeepProcesoEncuesta">
+      <soap:operation soapAction="http://tempuri.org/IProcesoEncuesta/GetDeepProcesoEncuesta" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetProcesoEncuestaList">
+      <soap:operation soapAction="http://tempuri.org/IProcesoEncuesta/GetProcesoEncuestaList" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetProcesoEncuestaPagedList">
+      <soap:operation soapAction="http://tempuri.org/IProcesoEncuesta/GetProcesoEncuestaPagedList" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetProcesoEncuestaPagedListXml">
+      <soap:operation soapAction="http://tempuri.org/IProcesoEncuesta/GetProcesoEncuestaPagedListXml" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AddProcesoEncuesta">
+      <soap:operation soapAction="http://tempuri.org/IProcesoEncuesta/AddProcesoEncuesta" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdateProcesoEncuesta">
+      <soap:operation soapAction="http://tempuri.org/IProcesoEncuesta/UpdateProcesoEncuesta" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DeleteProcesoEncuesta">
+      <soap:operation soapAction="http://tempuri.org/IProcesoEncuesta/DeleteProcesoEncuesta" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
   <wsdl:service name="SoftvWCFService">
     <wsdl:port name="BasicHttpBinding_IUsuario" binding="tns:BasicHttpBinding_IUsuario">
       <soap:address location="http://localhost:64481/SoftvWCFService.svc" />
@@ -6548,6 +7019,15 @@
       <soap:address location="http://localhost:64481/SoftvWCFService.svc" />
     </wsdl:port>
     <wsdl:port name="BasicHttpBinding_IClasificacionProblema" binding="tns:BasicHttpBinding_IClasificacionProblema">
+      <soap:address location="http://localhost:64481/SoftvWCFService.svc" />
+    </wsdl:port>
+    <wsdl:port name="BasicHttpBinding_ICiudadServidor" binding="tns:BasicHttpBinding_ICiudadServidor">
+      <soap:address location="http://localhost:64481/SoftvWCFService.svc" />
+    </wsdl:port>
+    <wsdl:port name="BasicHttpBinding_IUniversoEncuesta" binding="tns:BasicHttpBinding_IUniversoEncuesta">
+      <soap:address location="http://localhost:64481/SoftvWCFService.svc" />
+    </wsdl:port>
+    <wsdl:port name="BasicHttpBinding_IProcesoEncuesta" binding="tns:BasicHttpBinding_IProcesoEncuesta">
       <soap:address location="http://localhost:64481/SoftvWCFService.svc" />
     </wsdl:port>
   </wsdl:service>

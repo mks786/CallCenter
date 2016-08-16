@@ -59,6 +59,8 @@ namespace Softv.Entities
 
         [DataMember]
         public bool TipoLlamada { get; set; }
+        [DataMember]
+        public String Ciudad { get; set; }
 
         #endregion
     }

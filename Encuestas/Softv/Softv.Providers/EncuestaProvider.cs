@@ -123,6 +123,7 @@ namespace Softv.Providers
                 entity_Encuesta.FechaCreacion = (String)(GetFromReader(reader, "FechaCreacion"));
                 entity_Encuesta.IdUsuario = (int?)(GetFromReader(reader, "IdUsuario"));
                 entity_Encuesta.Aplicada = (bool?)(GetFromReader(reader, "Aplicada"));
+                entity_Encuesta.Activa = (bool?)(GetFromReader(reader, "Activa"));
 
             }
             catch (Exception ex)

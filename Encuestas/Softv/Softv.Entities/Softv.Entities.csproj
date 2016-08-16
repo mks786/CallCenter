@@ -49,6 +49,7 @@
     <Compile Include="CALLEEntity.cs" />
     <Compile Include="CatalogoPeriodosCorteEntity.cs" />
     <Compile Include="CIUDADEntity.cs" />
+    <Compile Include="CiudadServidorEntity.cs" />
     <Compile Include="ClasificacionProblemaEntity.cs" />
     <Compile Include="CLIENTEEntity.cs" />
     <Compile Include="Cliente_ApellidoEntity.cs" />
@@ -69,6 +70,7 @@
     <Compile Include="NoClienteEntity.cs" />
     <Compile Include="PermisoEntity.cs" />
     <Compile Include="PreguntaEntity.cs" />
+    <Compile Include="ProcesoEncuestaEntity.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="QuejaEntity.cs" />
     <Compile Include="RelEncuestaClientesEntity.cs" />
@@ -88,6 +90,7 @@
     <Compile Include="TipServEntity.cs" />
     <Compile Include="TrabajoEntity.cs" />
     <Compile Include="TurnoEntity.cs" />
+    <Compile Include="UniversoEncuestaEntity.cs" />
     <Compile Include="UsuarioEntity.cs" />
   </ItemGroup>
   <ItemGroup>

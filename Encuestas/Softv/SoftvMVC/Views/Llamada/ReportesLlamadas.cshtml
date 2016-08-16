@@ -25,10 +25,11 @@
 <div class="row">
     <div class="col-xs-12">
         <div class="box">
+            <h2 class="text-center" id="nombre_plaza" style="color:#4b646f;"></h2>
             <div class="box-header">
                 <div class="row">
                     <div class="col-md-3">
-                        <label>Selecciona la plaza</label>
+                        <label>Selecciona la ciudad</label>
                         <select class="form-control" id="plaza_llamadas"><option selected disabled>---------</option></select>
                     </div>
                     <div class="col-md-3">
@@ -56,7 +57,7 @@
                                     <div class="panel-body">
                                         <!-- Nav tabs -->
                                         <ul class="nav nav-tabs" role="tablist">
-                                            <li role="presentation" class="active"><a href="#llamada" aria-controls="llamada" role="tab" data-toggle="tab">ID Llamada</a></li>
+                                            <li role="presentation" class="active"><a href="#llamada" aria-controls="llamada" role="tab" data-toggle="tab">No. Reporte</a></li>
                                             <li role="presentation"><a href="#contrato" aria-controls="contrato" role="tab" data-toggle="tab">Contrato</a></li>
                                             <li role="presentation"><a href="#nombre" aria-controls="nombre" role="tab" data-toggle="tab">Nombre</a></li>
                                         </ul>
@@ -67,7 +68,7 @@
                                                 <br />
                                                 <div class="row">
                                                     <div class="col-md-4">
-                                                        <p style="color:#4b646f;">Ingrese el ID de la llamada</p>
+                                                        <p style="color:#4b646f;">Ingrese el No. de reporte de la llamada</p>
                                                     </div>
                                                 </div>
                                                 <div class="row">
@@ -92,12 +93,7 @@
                                                 </div>
                                                 <div class="row">
                                                     <div class="col-md-3">
-                                                        <input type="text" class="form-control" id="input_contrato" />
-                                                    </div>
-                                                </div>
-                                                <div class="row">
-                                                    <div class="col-md-8">
-                                                        <span class="help-block">El número de contrato está formado por 2 grupos de números con un guión intermedio p.e. (1234-1)</span>
+                                                        <input type="number" class="form-control" id="input_contrato" />
                                                     </div>
                                                 </div>
                                                 <div class="row">
@@ -141,9 +137,9 @@
                 <table id="TablaLlamadas" class="table table-bordered table-hover dataTable">
                     <thead>
                         <tr>
-                            <td><b>ID</b></td>
-                            <td><b>Usuario</b></td>
-                            <td><b>Tipo Llamada</b></td>
+                            <td><b>No. Reporte</b></td>
+                            <td><b>Atendió</b></td>
+                            <td><b>Es Cliente</b></td>
                             <td><b>Contrato</b></td>
                             <td><b>Nombre</b></td>
                             <td><b>Fecha</b></td>
@@ -163,7 +159,7 @@
         <div class="modal-content">
             <div class="modal-header">
                 <button class="close" aria-label="Close" type="button" data-dismiss="modal"><span aria-hidden="true">×</span></button>
-                <h4 class="modal-title">Editar Llamada</h4>
+                <h4 class="modal-title">Detalle Llamada</h4>
             </div>
             <div class="modal-body">
                 <div class="overlay" id="cargando">
@@ -195,6 +191,10 @@
                                             <label>Fecha</label>
                                             <input type="text" class="form-control" id="fecha" disabled>
                                         </div>
+                                        <div class="col-xs-5">
+                                            <label>Atendió</label>
+                                            <input type="text" class="form-control" id="atendio" disabled>
+                                        </div>
                                     </div>
                                     <div class="row" style="display:none;" id="contrato_panel_editar">
                                         <div class="col-xs-2">
@@ -205,65 +205,65 @@
                                     <div class="row" style="display:none;" id="nombre_panel_editar">
                                         <div class="col-xs-6">
                                             <label>Nombre</label>
-                                            <input type="text" class="form-control" id="nombre_editar">
+                                            <input type="text" class="form-control" id="nombre_editar" disabled>
                                         </div>
                                     </div>
                                     <div class="row" style="display:none;" id="domicilio_panel_editar">
                                         <div class="col-xs-6">
                                             <label>Domicilio</label>
-                                            <textarea class="form-control" id="domicilio_editar"> </textarea>
+                                            <textarea class="form-control" id="domicilio_editar" disabled> </textarea>
                                         </div>
                                     </div>
                                     <div class="row" style="display:none;" id="celular_panel_editar">
                                         <div class="col-xs-4">
                                             <label>Telefono</label>
-                                            <input type="text" class="form-control" id="telefono_editar">
+                                            <input type="text" class="form-control" id="telefono_editar" disabled>
                                         </div>
                                         <div class="col-xs-4">
                                             <label>Celular</label>
-                                            <input type="text" class="form-control" id="celular_editar">
+                                            <input type="text" class="form-control" id="celular_editar" disabled>
                                         </div>
                                     </div>
                                     <div class="row" style="display:none;" id="email_panel_editar">
                                         <div class="col-xs-4">
                                             <label>Email</label>
-                                            <input type="text" class="form-control" id="email_editar">
+                                            <input type="text" class="form-control" id="email_editar" disabled>
                                         </div>
                                     </div>
                                     <div class="row" style="display:none;" id="panel_tipo_informacion">
                                         <div class="col-md-6">
                                             <label>Selecciona el tipo de información</label>
-                                            <select class="form-control" id="tipo_informacion_editar"></select>
+                                            <select class="form-control" id="tipo_informacion_editar" disabled></select>
                                         </div>
                                     </div>
                                     <div class="row" style="display:none;" id="panel_motivo_llamada">
                                         <div class="col-xs-6">
                                             <label>Motivo Llamada</label>
-                                            <select class="form-control" id="selec_motivo_llamada"></select>
+                                            <select class="form-control" id="selec_motivo_llamada" disabled></select>
                                         </div>
                                     </div>
                                     <div class="row" style="display:none;" id="panel_detalle_llamada">
                                         <div class="col-xs-6">
                                             <label id="detalle_texto">Reporte del cliente </label>
-                                            <textarea class="form-control" id="detalle_editar"></textarea>
+                                            <textarea class="form-control" id="detalle_editar" disabled></textarea>
                                         </div>
                                     </div>
                                     <div class="row" style="display:none;" id="clasificacion_editar">
                                         <div class="col-xs-6">
                                             <label>Clasificación del problema</label>
-                                            <select class="form-control" id="select_problemas"></select>
+                                            <select class="form-control" id="select_problemas" disabled></select>
                                         </div>
                                     </div>
                                     <div class="row" style="display:none;" id="panel_solucion">
                                         <div class="col-xs-6">
                                             <label>Problema Real</label>
-                                            <textarea class="form-control" id="solucion_editar"></textarea>
+                                            <textarea class="form-control" id="solucion_editar" disabled></textarea>
                                         </div>
                                     </div>
                                     <div class="row" style="display:none;" id="clasificacion_solucion_editar">
                                         <div class="col-xs-6">
                                             <label>Clasificación de la solución</label>
-                                            <select class="form-control" id="select_solucion"></select>
+                                            <select class="form-control" id="select_solucion" disabled></select>
                                         </div>
                                     </div>
                                 </div><!-- /.tab-pane -->
@@ -277,13 +277,13 @@
                                     <div class="row">
                                         <div class="col-md-4">
                                             <label>Prioridad</label>
-                                            <select class="form-control" id="prioridad_editar"></select>
+                                            <select class="form-control" id="prioridad_editar" disabled></select>
                                         </div>
                                     </div>
                                     <div class="row">
                                         <div class="col-md-4">
                                             <label>Turno</label>
-                                            <select class="form-control" id="turno_editar"></select>
+                                            <select class="form-control" id="turno_editar" disabled></select>
                                         </div>
                                     </div>
                                 </div><!-- /.tab-pane -->
@@ -296,7 +296,7 @@
                 </div>
             </div>
             <div class="modal-footer">
-                <button class="btn btn-success" id="guardar_llamada" type="button" onclick="guardarLlamada(this)">Guardar</button>
+                @*<button class="btn btn-success" id="guardar_llamada" type="button" onclick="guardarLlamada(this)">Guardar</button>*@
                 <button class="btn btn-primary" type="button" data-dismiss="modal">Cerrar</button>
             </div>
         </div>
@@ -322,9 +322,10 @@
                             <span class="info-box-icon bg-aqua" style="height:130px; width:100px; padding-top:30px;"><i class="fa fa-phone" aria-hidden="true"></i></span>
                             <div class="info-box-content" style="padding-left:20px;">
                                 <span class="info-box-text"><label>ID: </label>  <small id="id_llamda"></small></span>
-                                <span class="info-box-text"><label>Fecha: </label>  <small id="fecha"></small></span>
+                                <span class="info-box-text"><label>Fecha: </label>  <small id="fecha_llamada"></small></span>
                                 <span class="info-box-text"><label>Hora inicio: </label>  <small id="hora_inicio"></small></span>
                                 <span class="info-box-text"><label>Hora fin: </label>  <small id="hora_fin"></small></span>
+                                <span class="info-box-text"><label>Atendió: </label>  <small id="atendio_detalle"></small></span>
 
                             </div><!-- /.info-box-content -->
                         </div>

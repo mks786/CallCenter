@@ -36,13 +36,15 @@
                             <div id="datosGrafica" class="panel-collapse collapse" role="tabpanel" aria-labelledby="datosGrafica">
                                 <div class="panel-body">
                                     <div class="row">
-                                        <div class="col-md-3">
+                                        <div class="col-md-5">
                                             <label>Selecciona la plaza</label>
-                                            <select class="form-control" id="plazas"><option selected disabled>---------</option></select>
+                                            <select class="form-control" id="encuestas_list">
+                                                <option value="0" selected disabled>---------</option>
+                                            </select>
                                         </div>
-                                        <div class="col-md-6">
-                                            <label>Selecciona la encuesta</label>
-                                            <select class="form-control" id="encuestas_list" disabled>
+                                        <div class="col-md-3">
+                                            <label>Selecciona el proceso</label>
+                                            <select class="form-control" id="proceso_list" disabled>
                                                 <option value="0" selected disabled>---------</option>
                                             </select>
                                         </div>
@@ -83,7 +85,8 @@
                 <hr />
                 <div class="row">
                     <div class="col-md-12">
-                        <h3 id="nombre_encuesta" class="text-center"></h3><br />
+                        <h2 class="text-center" id="texto_plaza" style="color:#4b646f;"></h2>
+                        <h3 id="nombre_encuesta" class="text-center" style="color: #4b646f"></h3><br />
                         <hr />
                         <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
                             
@@ -108,21 +111,6 @@
         });
     });
     $(document).ready(function () {
-        $.ajax({
-            url: "/Conexion/ListaConexiones/",
-            type: "GET",
-            success: function (data, textStatus, jqXHR) {
-                for (var i = 0; i < data.length; i++) {
-                    $('#plazas').append($('<option>', {
-                        value: data[i].IdConexion,
-                        text: data[i].Plaza
-                    }));
-                }
-            },
-            error: function (jqXHR, textStatus, errorThrown) {
-
-            }
-        });
         $('.collapse').collapse('show');
         google.charts.load('current', { 'packages': ['corechart'] });
 
@@ -144,8 +132,26 @@
 
         
     });
-    $("#plazas").change(function () {
-        $("#encuestas_list").removeAttr('disabled');
+    $("#encuestas_list").change(function () {
+        $.ajax({
+            url: "/ProcesoEncuesta/todosProcesos/",
+            type: "GET",
+            data:{'id_encuesta':$(this).val()},
+            success: function (data, textStatus, jqXHR) {
+                $('#proceso_list').empty();
+                $('#proceso_list').append('<option value="0" selected disabled>---------</option>');
+                for (var i = 0; i < data.length; i++) {
+                    $('#proceso_list').append($('<option>', {
+                        value: data[i].IdProcesoEnc,
+                        text: data[i].NombreProceso
+                    }));
+                }
+            },
+            error: function (jqXHR, textStatus, errorThrown) {
+
+            }
+        });
+        $("#proceso_list").removeAttr('disabled');
         $("#inicio").removeAttr('disabled');
         $("#fin").removeAttr('disabled'); 
         $("#grafica_list").removeAttr('disabled');
@@ -168,6 +174,18 @@
         var inicio = $('#inicio').val();
         var fin = $('#fin').val();
         var plaza = $('#plazas').val();
+        $.ajax({
+            url: "/Conexion/listaPlazas/",
+            type: "GET",
+            data: { "idPlaza": plaza },
+            success: function (data, textStatus, jqXHR) {
+                var ciudad_select = $("#plazas option:selected").text();
+                $('#texto_plaza').text("CIUDAD DE " + ciudad_select.toUpperCase() + ", " + data.Plaza.toUpperCase());
+            },
+            error: function (jqXHR, textStatus, errorThrown) {
+
+            }
+        });
         var grafica_tipo = $('#grafica_list').val();
         if (encuesta == null) {
             swal("Por favor selecciona una encuesta", "", "error");
@@ -189,7 +207,9 @@
                             success: function (data, textStatus, jqXHR) {
                                 var linq = Enumerable.From(data);
                                 var result = linq.GroupBy(function (x) { return x.IdPregunta; }).ToArray();
-                                $('#nombre_encuesta').text(result[0].source[0].NombreEncuesta);
+                                $('#nombre_encuesta').html("");
+                                var titulo = result[0].source[0].NombreEncuesta;
+                                $('#nombre_encuesta').append(titulo.toUpperCase());
                                 for (var i = 0; i < result.length; i++) {
                                     var grafica = {};
                                     grafica.cols = new Array();

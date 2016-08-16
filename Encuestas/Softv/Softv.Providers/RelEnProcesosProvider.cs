@@ -116,6 +116,7 @@ namespace Softv.Providers
                 entity_RelEnProcesos.Id_ResOpcMult = (int?)(GetFromReader(reader, "Id_ResOpcMult"));
                 entity_RelEnProcesos.RespAbi = (String)(GetFromReader(reader, "RespAbi", IsString: true));
                 entity_RelEnProcesos.RespCerrada = (bool?)(GetFromReader(reader, "RespCerrada"));
+                entity_RelEnProcesos.IdUniverso = (int?)(GetFromReader(reader, "IdUniverso"));
 
             }
             catch (Exception ex)

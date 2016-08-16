@@ -1,8 +1,4 @@
-﻿
-
-
-
-$('#TablaEncuesta').on('click', '.Editar', function () {
+﻿$('#TablaEncuesta').on('click', '.Editar', function () {
     $('#cargando').show();
     $('#encuesta_cargando').hide();
     $('#EditarEncuesta').show();
@@ -21,11 +17,16 @@ $('#TablaEncuesta').on('click', '.Editar', function () {
     var id = $(this).attr('rel');
     $('#idEncuesta').val(id);
     $.ajax({
-        url: "Encuesta/DeepDetails/",
+        url: "/Encuesta/DeepDetails/",
         type: "POST",
         data: { 'id':id},
         success: function (data, textStatus, jqXHR) {
-        
+            if(data.Encuesta.Activa == true){
+                $('#encuesta_activa').prop('checked', true);
+            }
+            else {
+                $('#encuesta_activa').prop('checked', false);
+            }
             $('#nombreEncuesta').val(data.Encuesta.TituloEncuesta);
             $('#Descripcion_encuesta').val(data.Encuesta.Descripcion);
             $('#tablaPreguntas').show();
@@ -68,8 +69,8 @@ $('#TablaEncuesta').on('click', '.Editar', function () {
                     
 
                 }
-                $('#TbodyPreguntas').append("<tr><td>" + data.Preguntas[r].Pregunta.Pregunta + "</td><td>" + tipo_pregunta + "</td><td><button class='btn btn-info btn-xs detallepregunta' rel='" + data.Preguntas[r].Pregunta.IdPregunta + "'>Detalles</button> <button class='btn btn-warning btn-xs EditarPregunta ' rel='" + data.Preguntas[r].Pregunta.IdPregunta + "'>Editar</button> <button class='btn btn-danger btn-xs EliminaPregunta' data-name='" + data.Preguntas[r].Pregunta.Pregunta + "' rel='" + detallePregunta.IdPregunta + "'>Eliminar</button></td></tr>");
-                // $('#TbodyPreguntas').append("<tr><td>" + data.Preguntas[r].Pregunta.Pregunta + "</td><td>" + data.Preguntas[r].Pregunta.TipoPreguntas.Descripcion + "</td><td><button class='btn btn-info btn-xs detallepregunta' rel='" + data.Preguntas[r].Pregunta.IdPregunta + "'>Detalles</button> <button class='btn btn-warning btn-xs EditarPregunta ' rel='" + data.Preguntas[r].Pregunta.IdPregunta + "'>Editar</button> <button class='btn btn-danger btn-xs EliminaPregunta' data-name='" + data.Preguntas[r].Pregunta.Pregunta + "' rel='" + data.Preguntas[r].Pregunta.IdPregunta + "'>Eliminar</button></td></tr>")
+                $('#TbodyPreguntas').append("<tr><td>" + data.Preguntas[r].Pregunta.Pregunta + "</td><td>" + tipo_pregunta + "</td><td><button class='btn btn-info btn-xs detallepregunta' rel='" + data.Preguntas[r].Pregunta.IdPregunta + "'>Detalles</button> <button class='btn btn-danger btn-xs EliminaPregunta' data-name='" + data.Preguntas[r].Pregunta.Pregunta + "' rel='" + detallePregunta.IdPregunta + "'>Eliminar</button></td></tr>");
+               // boton editar $('#TbodyPreguntas').append("<tr><td>" + data.Preguntas[r].Pregunta.Pregunta + "</td><td>" + tipo_pregunta + "</td><td><button class='btn btn-info btn-xs detallepregunta' rel='" + data.Preguntas[r].Pregunta.IdPregunta + "'>Detalles</button> <button class='btn btn-warning btn-xs EditarPregunta ' rel='" + data.Preguntas[r].Pregunta.IdPregunta + "'>Editar</button> <button class='btn btn-danger btn-xs EliminaPregunta' data-name='" + data.Preguntas[r].Pregunta.Pregunta + "' rel='" + detallePregunta.IdPregunta + "'>Eliminar</button></td></tr>");
             }
             
         },
@@ -111,11 +112,16 @@ $('#EditarEncuesta').click(function () {
 
             }
             var usuario = document.getElementById("username").innerHTML;
-
+            var activa = document.getElementById('encuesta_activa');
+            if (activa.checked) {
+                activa = 1;
+            } else {
+                activa = 0;
+            }
             $.ajax({
                 url: "/Encuesta/Update/",
                 type: "POST",
-                data: { 'encuesta': encuesta, 'Preguntas': Lista_preguntas, 'respuestas': Lista_opciones, 'usuario': usuario },
+                data: { 'encuesta': encuesta, 'Preguntas': Lista_preguntas, 'respuestas': Lista_opciones, 'usuario': usuario,'activa':activa },
                 success: function (data, textStatus, jqXHR) {
                     LlenaTabla();
                     $('#ModalAgregarEncuesta').modal('hide');

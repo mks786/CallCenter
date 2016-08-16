@@ -5997,4 +5997,439 @@ namespace SoftvMVC.SoftvService {
             return base.Channel.DeleteClasificacionProblemaAsync(BaseRemoteIp, BaseIdUser, ClvProblema);
         }
     }
+    
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ServiceModel.ServiceContractAttribute(ConfigurationName="SoftvService.ICiudadServidor")]
+    public interface ICiudadServidor {
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ICiudadServidor/GetCiudadServidor", ReplyAction="http://tempuri.org/ICiudadServidor/GetCiudadServidorResponse")]
+        Softv.Entities.CiudadServidorEntity GetCiudadServidor(System.Nullable<int> Id);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ICiudadServidor/GetCiudadServidor", ReplyAction="http://tempuri.org/ICiudadServidor/GetCiudadServidorResponse")]
+        System.Threading.Tasks.Task<Softv.Entities.CiudadServidorEntity> GetCiudadServidorAsync(System.Nullable<int> Id);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ICiudadServidor/GetDeepCiudadServidor", ReplyAction="http://tempuri.org/ICiudadServidor/GetDeepCiudadServidorResponse")]
+        Softv.Entities.CiudadServidorEntity GetDeepCiudadServidor(System.Nullable<int> Id);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ICiudadServidor/GetDeepCiudadServidor", ReplyAction="http://tempuri.org/ICiudadServidor/GetDeepCiudadServidorResponse")]
+        System.Threading.Tasks.Task<Softv.Entities.CiudadServidorEntity> GetDeepCiudadServidorAsync(System.Nullable<int> Id);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ICiudadServidor/GetCiudadServidorList", ReplyAction="http://tempuri.org/ICiudadServidor/GetCiudadServidorListResponse")]
+        System.Collections.Generic.List<Softv.Entities.CiudadServidorEntity> GetCiudadServidorList();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ICiudadServidor/GetCiudadServidorList", ReplyAction="http://tempuri.org/ICiudadServidor/GetCiudadServidorListResponse")]
+        System.Threading.Tasks.Task<System.Collections.Generic.List<Softv.Entities.CiudadServidorEntity>> GetCiudadServidorListAsync();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ICiudadServidor/GetCiudadServidorPagedList", ReplyAction="http://tempuri.org/ICiudadServidor/GetCiudadServidorPagedListResponse")]
+        Globals.SoftvList<Softv.Entities.CiudadServidorEntity> GetCiudadServidorPagedList(int page, int pageSize);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ICiudadServidor/GetCiudadServidorPagedList", ReplyAction="http://tempuri.org/ICiudadServidor/GetCiudadServidorPagedListResponse")]
+        System.Threading.Tasks.Task<Globals.SoftvList<Softv.Entities.CiudadServidorEntity>> GetCiudadServidorPagedListAsync(int page, int pageSize);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ICiudadServidor/GetCiudadServidorPagedListXml", ReplyAction="http://tempuri.org/ICiudadServidor/GetCiudadServidorPagedListXmlResponse")]
+        Globals.SoftvList<Softv.Entities.CiudadServidorEntity> GetCiudadServidorPagedListXml(int page, int pageSize, string xml);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ICiudadServidor/GetCiudadServidorPagedListXml", ReplyAction="http://tempuri.org/ICiudadServidor/GetCiudadServidorPagedListXmlResponse")]
+        System.Threading.Tasks.Task<Globals.SoftvList<Softv.Entities.CiudadServidorEntity>> GetCiudadServidorPagedListXmlAsync(int page, int pageSize, string xml);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ICiudadServidor/AddCiudadServidor", ReplyAction="http://tempuri.org/ICiudadServidor/AddCiudadServidorResponse")]
+        int AddCiudadServidor(Softv.Entities.CiudadServidorEntity objCiudadServidor);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ICiudadServidor/AddCiudadServidor", ReplyAction="http://tempuri.org/ICiudadServidor/AddCiudadServidorResponse")]
+        System.Threading.Tasks.Task<int> AddCiudadServidorAsync(Softv.Entities.CiudadServidorEntity objCiudadServidor);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ICiudadServidor/UpdateCiudadServidor", ReplyAction="http://tempuri.org/ICiudadServidor/UpdateCiudadServidorResponse")]
+        int UpdateCiudadServidor(Softv.Entities.CiudadServidorEntity objCiudadServidor);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ICiudadServidor/UpdateCiudadServidor", ReplyAction="http://tempuri.org/ICiudadServidor/UpdateCiudadServidorResponse")]
+        System.Threading.Tasks.Task<int> UpdateCiudadServidorAsync(Softv.Entities.CiudadServidorEntity objCiudadServidor);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ICiudadServidor/DeleteCiudadServidor", ReplyAction="http://tempuri.org/ICiudadServidor/DeleteCiudadServidorResponse")]
+        int DeleteCiudadServidor(string BaseRemoteIp, int BaseIdUser, System.Nullable<int> Id);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ICiudadServidor/DeleteCiudadServidor", ReplyAction="http://tempuri.org/ICiudadServidor/DeleteCiudadServidorResponse")]
+        System.Threading.Tasks.Task<int> DeleteCiudadServidorAsync(string BaseRemoteIp, int BaseIdUser, System.Nullable<int> Id);
+    }
+    
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    public interface ICiudadServidorChannel : SoftvMVC.SoftvService.ICiudadServidor, System.ServiceModel.IClientChannel {
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    public partial class CiudadServidorClient : System.ServiceModel.ClientBase<SoftvMVC.SoftvService.ICiudadServidor>, SoftvMVC.SoftvService.ICiudadServidor {
+        
+        public CiudadServidorClient() {
+        }
+        
+        public CiudadServidorClient(string endpointConfigurationName) : 
+                base(endpointConfigurationName) {
+        }
+        
+        public CiudadServidorClient(string endpointConfigurationName, string remoteAddress) : 
+                base(endpointConfigurationName, remoteAddress) {
+        }
+        
+        public CiudadServidorClient(string endpointConfigurationName, System.ServiceModel.EndpointAddress remoteAddress) : 
+                base(endpointConfigurationName, remoteAddress) {
+        }
+        
+        public CiudadServidorClient(System.ServiceModel.Channels.Binding binding, System.ServiceModel.EndpointAddress remoteAddress) : 
+                base(binding, remoteAddress) {
+        }
+        
+        public Softv.Entities.CiudadServidorEntity GetCiudadServidor(System.Nullable<int> Id) {
+            return base.Channel.GetCiudadServidor(Id);
+        }
+        
+        public System.Threading.Tasks.Task<Softv.Entities.CiudadServidorEntity> GetCiudadServidorAsync(System.Nullable<int> Id) {
+            return base.Channel.GetCiudadServidorAsync(Id);
+        }
+        
+        public Softv.Entities.CiudadServidorEntity GetDeepCiudadServidor(System.Nullable<int> Id) {
+            return base.Channel.GetDeepCiudadServidor(Id);
+        }
+        
+        public System.Threading.Tasks.Task<Softv.Entities.CiudadServidorEntity> GetDeepCiudadServidorAsync(System.Nullable<int> Id) {
+            return base.Channel.GetDeepCiudadServidorAsync(Id);
+        }
+        
+        public System.Collections.Generic.List<Softv.Entities.CiudadServidorEntity> GetCiudadServidorList() {
+            return base.Channel.GetCiudadServidorList();
+        }
+        
+        public System.Threading.Tasks.Task<System.Collections.Generic.List<Softv.Entities.CiudadServidorEntity>> GetCiudadServidorListAsync() {
+            return base.Channel.GetCiudadServidorListAsync();
+        }
+        
+        public Globals.SoftvList<Softv.Entities.CiudadServidorEntity> GetCiudadServidorPagedList(int page, int pageSize) {
+            return base.Channel.GetCiudadServidorPagedList(page, pageSize);
+        }
+        
+        public System.Threading.Tasks.Task<Globals.SoftvList<Softv.Entities.CiudadServidorEntity>> GetCiudadServidorPagedListAsync(int page, int pageSize) {
+            return base.Channel.GetCiudadServidorPagedListAsync(page, pageSize);
+        }
+        
+        public Globals.SoftvList<Softv.Entities.CiudadServidorEntity> GetCiudadServidorPagedListXml(int page, int pageSize, string xml) {
+            return base.Channel.GetCiudadServidorPagedListXml(page, pageSize, xml);
+        }
+        
+        public System.Threading.Tasks.Task<Globals.SoftvList<Softv.Entities.CiudadServidorEntity>> GetCiudadServidorPagedListXmlAsync(int page, int pageSize, string xml) {
+            return base.Channel.GetCiudadServidorPagedListXmlAsync(page, pageSize, xml);
+        }
+        
+        public int AddCiudadServidor(Softv.Entities.CiudadServidorEntity objCiudadServidor) {
+            return base.Channel.AddCiudadServidor(objCiudadServidor);
+        }
+        
+        public System.Threading.Tasks.Task<int> AddCiudadServidorAsync(Softv.Entities.CiudadServidorEntity objCiudadServidor) {
+            return base.Channel.AddCiudadServidorAsync(objCiudadServidor);
+        }
+        
+        public int UpdateCiudadServidor(Softv.Entities.CiudadServidorEntity objCiudadServidor) {
+            return base.Channel.UpdateCiudadServidor(objCiudadServidor);
+        }
+        
+        public System.Threading.Tasks.Task<int> UpdateCiudadServidorAsync(Softv.Entities.CiudadServidorEntity objCiudadServidor) {
+            return base.Channel.UpdateCiudadServidorAsync(objCiudadServidor);
+        }
+        
+        public int DeleteCiudadServidor(string BaseRemoteIp, int BaseIdUser, System.Nullable<int> Id) {
+            return base.Channel.DeleteCiudadServidor(BaseRemoteIp, BaseIdUser, Id);
+        }
+        
+        public System.Threading.Tasks.Task<int> DeleteCiudadServidorAsync(string BaseRemoteIp, int BaseIdUser, System.Nullable<int> Id) {
+            return base.Channel.DeleteCiudadServidorAsync(BaseRemoteIp, BaseIdUser, Id);
+        }
+    }
+    
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ServiceModel.ServiceContractAttribute(ConfigurationName="SoftvService.IUniversoEncuesta")]
+    public interface IUniversoEncuesta {
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IUniversoEncuesta/GetUniversoEncuesta", ReplyAction="http://tempuri.org/IUniversoEncuesta/GetUniversoEncuestaResponse")]
+        Softv.Entities.UniversoEncuestaEntity GetUniversoEncuesta(System.Nullable<int> Id);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IUniversoEncuesta/GetUniversoEncuesta", ReplyAction="http://tempuri.org/IUniversoEncuesta/GetUniversoEncuestaResponse")]
+        System.Threading.Tasks.Task<Softv.Entities.UniversoEncuestaEntity> GetUniversoEncuestaAsync(System.Nullable<int> Id);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IUniversoEncuesta/GetDeepUniversoEncuesta", ReplyAction="http://tempuri.org/IUniversoEncuesta/GetDeepUniversoEncuestaResponse")]
+        Softv.Entities.UniversoEncuestaEntity GetDeepUniversoEncuesta(System.Nullable<int> Id);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IUniversoEncuesta/GetDeepUniversoEncuesta", ReplyAction="http://tempuri.org/IUniversoEncuesta/GetDeepUniversoEncuestaResponse")]
+        System.Threading.Tasks.Task<Softv.Entities.UniversoEncuestaEntity> GetDeepUniversoEncuestaAsync(System.Nullable<int> Id);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IUniversoEncuesta/GetUniversoEncuestaList", ReplyAction="http://tempuri.org/IUniversoEncuesta/GetUniversoEncuestaListResponse")]
+        System.Collections.Generic.List<Softv.Entities.UniversoEncuestaEntity> GetUniversoEncuestaList();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IUniversoEncuesta/GetUniversoEncuestaList", ReplyAction="http://tempuri.org/IUniversoEncuesta/GetUniversoEncuestaListResponse")]
+        System.Threading.Tasks.Task<System.Collections.Generic.List<Softv.Entities.UniversoEncuestaEntity>> GetUniversoEncuestaListAsync();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IUniversoEncuesta/GetUniversoEncuestaPagedList", ReplyAction="http://tempuri.org/IUniversoEncuesta/GetUniversoEncuestaPagedListResponse")]
+        Globals.SoftvList<Softv.Entities.UniversoEncuestaEntity> GetUniversoEncuestaPagedList(int page, int pageSize);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IUniversoEncuesta/GetUniversoEncuestaPagedList", ReplyAction="http://tempuri.org/IUniversoEncuesta/GetUniversoEncuestaPagedListResponse")]
+        System.Threading.Tasks.Task<Globals.SoftvList<Softv.Entities.UniversoEncuestaEntity>> GetUniversoEncuestaPagedListAsync(int page, int pageSize);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IUniversoEncuesta/GetUniversoEncuestaPagedListXml", ReplyAction="http://tempuri.org/IUniversoEncuesta/GetUniversoEncuestaPagedListXmlResponse")]
+        Globals.SoftvList<Softv.Entities.UniversoEncuestaEntity> GetUniversoEncuestaPagedListXml(int page, int pageSize, string xml);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IUniversoEncuesta/GetUniversoEncuestaPagedListXml", ReplyAction="http://tempuri.org/IUniversoEncuesta/GetUniversoEncuestaPagedListXmlResponse")]
+        System.Threading.Tasks.Task<Globals.SoftvList<Softv.Entities.UniversoEncuestaEntity>> GetUniversoEncuestaPagedListXmlAsync(int page, int pageSize, string xml);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IUniversoEncuesta/AddUniversoEncuesta", ReplyAction="http://tempuri.org/IUniversoEncuesta/AddUniversoEncuestaResponse")]
+        int AddUniversoEncuesta(Softv.Entities.UniversoEncuestaEntity objUniversoEncuesta);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IUniversoEncuesta/AddUniversoEncuesta", ReplyAction="http://tempuri.org/IUniversoEncuesta/AddUniversoEncuestaResponse")]
+        System.Threading.Tasks.Task<int> AddUniversoEncuestaAsync(Softv.Entities.UniversoEncuestaEntity objUniversoEncuesta);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IUniversoEncuesta/UpdateUniversoEncuesta", ReplyAction="http://tempuri.org/IUniversoEncuesta/UpdateUniversoEncuestaResponse")]
+        int UpdateUniversoEncuesta(Softv.Entities.UniversoEncuestaEntity objUniversoEncuesta);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IUniversoEncuesta/UpdateUniversoEncuesta", ReplyAction="http://tempuri.org/IUniversoEncuesta/UpdateUniversoEncuestaResponse")]
+        System.Threading.Tasks.Task<int> UpdateUniversoEncuestaAsync(Softv.Entities.UniversoEncuestaEntity objUniversoEncuesta);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IUniversoEncuesta/DeleteUniversoEncuesta", ReplyAction="http://tempuri.org/IUniversoEncuesta/DeleteUniversoEncuestaResponse")]
+        int DeleteUniversoEncuesta(string BaseRemoteIp, int BaseIdUser, System.Nullable<int> Id);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IUniversoEncuesta/DeleteUniversoEncuesta", ReplyAction="http://tempuri.org/IUniversoEncuesta/DeleteUniversoEncuestaResponse")]
+        System.Threading.Tasks.Task<int> DeleteUniversoEncuestaAsync(string BaseRemoteIp, int BaseIdUser, System.Nullable<int> Id);
+    }
+    
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    public interface IUniversoEncuestaChannel : SoftvMVC.SoftvService.IUniversoEncuesta, System.ServiceModel.IClientChannel {
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    public partial class UniversoEncuestaClient : System.ServiceModel.ClientBase<SoftvMVC.SoftvService.IUniversoEncuesta>, SoftvMVC.SoftvService.IUniversoEncuesta {
+        
+        public UniversoEncuestaClient() {
+        }
+        
+        public UniversoEncuestaClient(string endpointConfigurationName) : 
+                base(endpointConfigurationName) {
+        }
+        
+        public UniversoEncuestaClient(string endpointConfigurationName, string remoteAddress) : 
+                base(endpointConfigurationName, remoteAddress) {
+        }
+        
+        public UniversoEncuestaClient(string endpointConfigurationName, System.ServiceModel.EndpointAddress remoteAddress) : 
+                base(endpointConfigurationName, remoteAddress) {
+        }
+        
+        public UniversoEncuestaClient(System.ServiceModel.Channels.Binding binding, System.ServiceModel.EndpointAddress remoteAddress) : 
+                base(binding, remoteAddress) {
+        }
+        
+        public Softv.Entities.UniversoEncuestaEntity GetUniversoEncuesta(System.Nullable<int> Id) {
+            return base.Channel.GetUniversoEncuesta(Id);
+        }
+        
+        public System.Threading.Tasks.Task<Softv.Entities.UniversoEncuestaEntity> GetUniversoEncuestaAsync(System.Nullable<int> Id) {
+            return base.Channel.GetUniversoEncuestaAsync(Id);
+        }
+        
+        public Softv.Entities.UniversoEncuestaEntity GetDeepUniversoEncuesta(System.Nullable<int> Id) {
+            return base.Channel.GetDeepUniversoEncuesta(Id);
+        }
+        
+        public System.Threading.Tasks.Task<Softv.Entities.UniversoEncuestaEntity> GetDeepUniversoEncuestaAsync(System.Nullable<int> Id) {
+            return base.Channel.GetDeepUniversoEncuestaAsync(Id);
+        }
+        
+        public System.Collections.Generic.List<Softv.Entities.UniversoEncuestaEntity> GetUniversoEncuestaList() {
+            return base.Channel.GetUniversoEncuestaList();
+        }
+        
+        public System.Threading.Tasks.Task<System.Collections.Generic.List<Softv.Entities.UniversoEncuestaEntity>> GetUniversoEncuestaListAsync() {
+            return base.Channel.GetUniversoEncuestaListAsync();
+        }
+        
+        public Globals.SoftvList<Softv.Entities.UniversoEncuestaEntity> GetUniversoEncuestaPagedList(int page, int pageSize) {
+            return base.Channel.GetUniversoEncuestaPagedList(page, pageSize);
+        }
+        
+        public System.Threading.Tasks.Task<Globals.SoftvList<Softv.Entities.UniversoEncuestaEntity>> GetUniversoEncuestaPagedListAsync(int page, int pageSize) {
+            return base.Channel.GetUniversoEncuestaPagedListAsync(page, pageSize);
+        }
+        
+        public Globals.SoftvList<Softv.Entities.UniversoEncuestaEntity> GetUniversoEncuestaPagedListXml(int page, int pageSize, string xml) {
+            return base.Channel.GetUniversoEncuestaPagedListXml(page, pageSize, xml);
+        }
+        
+        public System.Threading.Tasks.Task<Globals.SoftvList<Softv.Entities.UniversoEncuestaEntity>> GetUniversoEncuestaPagedListXmlAsync(int page, int pageSize, string xml) {
+            return base.Channel.GetUniversoEncuestaPagedListXmlAsync(page, pageSize, xml);
+        }
+        
+        public int AddUniversoEncuesta(Softv.Entities.UniversoEncuestaEntity objUniversoEncuesta) {
+            return base.Channel.AddUniversoEncuesta(objUniversoEncuesta);
+        }
+        
+        public System.Threading.Tasks.Task<int> AddUniversoEncuestaAsync(Softv.Entities.UniversoEncuestaEntity objUniversoEncuesta) {
+            return base.Channel.AddUniversoEncuestaAsync(objUniversoEncuesta);
+        }
+        
+        public int UpdateUniversoEncuesta(Softv.Entities.UniversoEncuestaEntity objUniversoEncuesta) {
+            return base.Channel.UpdateUniversoEncuesta(objUniversoEncuesta);
+        }
+        
+        public System.Threading.Tasks.Task<int> UpdateUniversoEncuestaAsync(Softv.Entities.UniversoEncuestaEntity objUniversoEncuesta) {
+            return base.Channel.UpdateUniversoEncuestaAsync(objUniversoEncuesta);
+        }
+        
+        public int DeleteUniversoEncuesta(string BaseRemoteIp, int BaseIdUser, System.Nullable<int> Id) {
+            return base.Channel.DeleteUniversoEncuesta(BaseRemoteIp, BaseIdUser, Id);
+        }
+        
+        public System.Threading.Tasks.Task<int> DeleteUniversoEncuestaAsync(string BaseRemoteIp, int BaseIdUser, System.Nullable<int> Id) {
+            return base.Channel.DeleteUniversoEncuestaAsync(BaseRemoteIp, BaseIdUser, Id);
+        }
+    }
+    
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ServiceModel.ServiceContractAttribute(ConfigurationName="SoftvService.IProcesoEncuesta")]
+    public interface IProcesoEncuesta {
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IProcesoEncuesta/GetProcesoEncuesta", ReplyAction="http://tempuri.org/IProcesoEncuesta/GetProcesoEncuestaResponse")]
+        Softv.Entities.ProcesoEncuestaEntity GetProcesoEncuesta(System.Nullable<int> IdProcesoEnc);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IProcesoEncuesta/GetProcesoEncuesta", ReplyAction="http://tempuri.org/IProcesoEncuesta/GetProcesoEncuestaResponse")]
+        System.Threading.Tasks.Task<Softv.Entities.ProcesoEncuestaEntity> GetProcesoEncuestaAsync(System.Nullable<int> IdProcesoEnc);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IProcesoEncuesta/GetDeepProcesoEncuesta", ReplyAction="http://tempuri.org/IProcesoEncuesta/GetDeepProcesoEncuestaResponse")]
+        Softv.Entities.ProcesoEncuestaEntity GetDeepProcesoEncuesta(System.Nullable<int> IdProcesoEnc);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IProcesoEncuesta/GetDeepProcesoEncuesta", ReplyAction="http://tempuri.org/IProcesoEncuesta/GetDeepProcesoEncuestaResponse")]
+        System.Threading.Tasks.Task<Softv.Entities.ProcesoEncuestaEntity> GetDeepProcesoEncuestaAsync(System.Nullable<int> IdProcesoEnc);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IProcesoEncuesta/GetProcesoEncuestaList", ReplyAction="http://tempuri.org/IProcesoEncuesta/GetProcesoEncuestaListResponse")]
+        System.Collections.Generic.List<Softv.Entities.ProcesoEncuestaEntity> GetProcesoEncuestaList();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IProcesoEncuesta/GetProcesoEncuestaList", ReplyAction="http://tempuri.org/IProcesoEncuesta/GetProcesoEncuestaListResponse")]
+        System.Threading.Tasks.Task<System.Collections.Generic.List<Softv.Entities.ProcesoEncuestaEntity>> GetProcesoEncuestaListAsync();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IProcesoEncuesta/GetProcesoEncuestaPagedList", ReplyAction="http://tempuri.org/IProcesoEncuesta/GetProcesoEncuestaPagedListResponse")]
+        Globals.SoftvList<Softv.Entities.ProcesoEncuestaEntity> GetProcesoEncuestaPagedList(int page, int pageSize);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IProcesoEncuesta/GetProcesoEncuestaPagedList", ReplyAction="http://tempuri.org/IProcesoEncuesta/GetProcesoEncuestaPagedListResponse")]
+        System.Threading.Tasks.Task<Globals.SoftvList<Softv.Entities.ProcesoEncuestaEntity>> GetProcesoEncuestaPagedListAsync(int page, int pageSize);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IProcesoEncuesta/GetProcesoEncuestaPagedListXml", ReplyAction="http://tempuri.org/IProcesoEncuesta/GetProcesoEncuestaPagedListXmlResponse")]
+        Globals.SoftvList<Softv.Entities.ProcesoEncuestaEntity> GetProcesoEncuestaPagedListXml(int page, int pageSize, string xml);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IProcesoEncuesta/GetProcesoEncuestaPagedListXml", ReplyAction="http://tempuri.org/IProcesoEncuesta/GetProcesoEncuestaPagedListXmlResponse")]
+        System.Threading.Tasks.Task<Globals.SoftvList<Softv.Entities.ProcesoEncuestaEntity>> GetProcesoEncuestaPagedListXmlAsync(int page, int pageSize, string xml);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IProcesoEncuesta/AddProcesoEncuesta", ReplyAction="http://tempuri.org/IProcesoEncuesta/AddProcesoEncuestaResponse")]
+        int AddProcesoEncuesta(Softv.Entities.ProcesoEncuestaEntity objProcesoEncuesta);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IProcesoEncuesta/AddProcesoEncuesta", ReplyAction="http://tempuri.org/IProcesoEncuesta/AddProcesoEncuestaResponse")]
+        System.Threading.Tasks.Task<int> AddProcesoEncuestaAsync(Softv.Entities.ProcesoEncuestaEntity objProcesoEncuesta);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IProcesoEncuesta/UpdateProcesoEncuesta", ReplyAction="http://tempuri.org/IProcesoEncuesta/UpdateProcesoEncuestaResponse")]
+        int UpdateProcesoEncuesta(Softv.Entities.ProcesoEncuestaEntity objProcesoEncuesta);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IProcesoEncuesta/UpdateProcesoEncuesta", ReplyAction="http://tempuri.org/IProcesoEncuesta/UpdateProcesoEncuestaResponse")]
+        System.Threading.Tasks.Task<int> UpdateProcesoEncuestaAsync(Softv.Entities.ProcesoEncuestaEntity objProcesoEncuesta);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IProcesoEncuesta/DeleteProcesoEncuesta", ReplyAction="http://tempuri.org/IProcesoEncuesta/DeleteProcesoEncuestaResponse")]
+        int DeleteProcesoEncuesta(string BaseRemoteIp, int BaseIdUser, System.Nullable<int> IdProcesoEnc);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IProcesoEncuesta/DeleteProcesoEncuesta", ReplyAction="http://tempuri.org/IProcesoEncuesta/DeleteProcesoEncuestaResponse")]
+        System.Threading.Tasks.Task<int> DeleteProcesoEncuestaAsync(string BaseRemoteIp, int BaseIdUser, System.Nullable<int> IdProcesoEnc);
+    }
+    
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    public interface IProcesoEncuestaChannel : SoftvMVC.SoftvService.IProcesoEncuesta, System.ServiceModel.IClientChannel {
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    public partial class ProcesoEncuestaClient : System.ServiceModel.ClientBase<SoftvMVC.SoftvService.IProcesoEncuesta>, SoftvMVC.SoftvService.IProcesoEncuesta {
+        
+        public ProcesoEncuestaClient() {
+        }
+        
+        public ProcesoEncuestaClient(string endpointConfigurationName) : 
+                base(endpointConfigurationName) {
+        }
+        
+        public ProcesoEncuestaClient(string endpointConfigurationName, string remoteAddress) : 
+                base(endpointConfigurationName, remoteAddress) {
+        }
+        
+        public ProcesoEncuestaClient(string endpointConfigurationName, System.ServiceModel.EndpointAddress remoteAddress) : 
+                base(endpointConfigurationName, remoteAddress) {
+        }
+        
+        public ProcesoEncuestaClient(System.ServiceModel.Channels.Binding binding, System.ServiceModel.EndpointAddress remoteAddress) : 
+                base(binding, remoteAddress) {
+        }
+        
+        public Softv.Entities.ProcesoEncuestaEntity GetProcesoEncuesta(System.Nullable<int> IdProcesoEnc) {
+            return base.Channel.GetProcesoEncuesta(IdProcesoEnc);
+        }
+        
+        public System.Threading.Tasks.Task<Softv.Entities.ProcesoEncuestaEntity> GetProcesoEncuestaAsync(System.Nullable<int> IdProcesoEnc) {
+            return base.Channel.GetProcesoEncuestaAsync(IdProcesoEnc);
+        }
+        
+        public Softv.Entities.ProcesoEncuestaEntity GetDeepProcesoEncuesta(System.Nullable<int> IdProcesoEnc) {
+            return base.Channel.GetDeepProcesoEncuesta(IdProcesoEnc);
+        }
+        
+        public System.Threading.Tasks.Task<Softv.Entities.ProcesoEncuestaEntity> GetDeepProcesoEncuestaAsync(System.Nullable<int> IdProcesoEnc) {
+            return base.Channel.GetDeepProcesoEncuestaAsync(IdProcesoEnc);
+        }
+        
+        public System.Collections.Generic.List<Softv.Entities.ProcesoEncuestaEntity> GetProcesoEncuestaList() {
+            return base.Channel.GetProcesoEncuestaList();
+        }
+        
+        public System.Threading.Tasks.Task<System.Collections.Generic.List<Softv.Entities.ProcesoEncuestaEntity>> GetProcesoEncuestaListAsync() {
+            return base.Channel.GetProcesoEncuestaListAsync();
+        }
+        
+        public Globals.SoftvList<Softv.Entities.ProcesoEncuestaEntity> GetProcesoEncuestaPagedList(int page, int pageSize) {
+            return base.Channel.GetProcesoEncuestaPagedList(page, pageSize);
+        }
+        
+        public System.Threading.Tasks.Task<Globals.SoftvList<Softv.Entities.ProcesoEncuestaEntity>> GetProcesoEncuestaPagedListAsync(int page, int pageSize) {
+            return base.Channel.GetProcesoEncuestaPagedListAsync(page, pageSize);
+        }
+        
+        public Globals.SoftvList<Softv.Entities.ProcesoEncuestaEntity> GetProcesoEncuestaPagedListXml(int page, int pageSize, string xml) {
+            return base.Channel.GetProcesoEncuestaPagedListXml(page, pageSize, xml);
+        }
+        
+        public System.Threading.Tasks.Task<Globals.SoftvList<Softv.Entities.ProcesoEncuestaEntity>> GetProcesoEncuestaPagedListXmlAsync(int page, int pageSize, string xml) {
+            return base.Channel.GetProcesoEncuestaPagedListXmlAsync(page, pageSize, xml);
+        }
+        
+        public int AddProcesoEncuesta(Softv.Entities.ProcesoEncuestaEntity objProcesoEncuesta) {
+            return base.Channel.AddProcesoEncuesta(objProcesoEncuesta);
+        }
+        
+        public System.Threading.Tasks.Task<int> AddProcesoEncuestaAsync(Softv.Entities.ProcesoEncuestaEntity objProcesoEncuesta) {
+            return base.Channel.AddProcesoEncuestaAsync(objProcesoEncuesta);
+        }
+        
+        public int UpdateProcesoEncuesta(Softv.Entities.ProcesoEncuestaEntity objProcesoEncuesta) {
+            return base.Channel.UpdateProcesoEncuesta(objProcesoEncuesta);
+        }
+        
+        public System.Threading.Tasks.Task<int> UpdateProcesoEncuestaAsync(Softv.Entities.ProcesoEncuestaEntity objProcesoEncuesta) {
+            return base.Channel.UpdateProcesoEncuestaAsync(objProcesoEncuesta);
+        }
+        
+        public int DeleteProcesoEncuesta(string BaseRemoteIp, int BaseIdUser, System.Nullable<int> IdProcesoEnc) {
+            return base.Channel.DeleteProcesoEncuesta(BaseRemoteIp, BaseIdUser, IdProcesoEnc);
+        }
+        
+        public System.Threading.Tasks.Task<int> DeleteProcesoEncuestaAsync(string BaseRemoteIp, int BaseIdUser, System.Nullable<int> IdProcesoEnc) {
+            return base.Channel.DeleteProcesoEncuestaAsync(BaseRemoteIp, BaseIdUser, IdProcesoEnc);
+        }
+    }
 }

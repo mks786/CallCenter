@@ -19,7 +19,7 @@ function ShowCatalogoPreguntas(valor, tipo) {
         "dom": '<"toolbar">frtip',
         "bDestroy": true,
         "info": true,
-        "stateSave": true,
+        "stateSave": false,
         "lengthMenu": [[10, 20, 50, 100], [10, 20, 50, 100]],
         "ajax": {
             "url": "/Pregunta/GetDetallePregunta/",

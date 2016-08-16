@@ -230,6 +230,7 @@
     <Compile Include="Controllers\CALLEController.cs" />
     <Compile Include="Controllers\CatalogoPeriodosCorteController.cs" />
     <Compile Include="Controllers\CIUDADController.cs" />
+    <Compile Include="Controllers\CiudadServidorController.cs" />
     <Compile Include="Controllers\ClasificacionProblemaController.cs" />
     <Compile Include="Controllers\CLIENTEController.cs" />
     <Compile Include="Controllers\Cliente_ApellidoController.cs" />
@@ -243,6 +244,7 @@
     <Compile Include="Controllers\EstadisticaController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\LlamadaController.cs" />
+    <Compile Include="Controllers\LlamadasReportesController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\ModuleController.cs" />
     <Compile Include="Controllers\MotAtenTelController.cs" />
@@ -253,6 +255,7 @@
     <Compile Include="Controllers\PartialClass\UsuarioController.cs" />
     <Compile Include="Controllers\PermisoController.cs" />
     <Compile Include="Controllers\PreguntaController.cs" />
+    <Compile Include="Controllers\ProcesoEncuestaController.cs" />
     <Compile Include="Controllers\QuejaController.cs" />
     <Compile Include="Controllers\RelEncuestaClientesController.cs" />
     <Compile Include="Controllers\RelEncuestaPreguntaResController.cs" />
@@ -273,6 +276,7 @@
     <Compile Include="Controllers\TipServController.cs" />
     <Compile Include="Controllers\TrabajoController.cs" />
     <Compile Include="Controllers\TurnoController.cs" />
+    <Compile Include="Controllers\UniversoEncuestaController.cs" />
     <Compile Include="Controllers\UsuarioController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -343,6 +347,8 @@
     <Content Include="bootstrap\css\bootstrap.css" />
     <Content Include="bootstrap\css\bootstrap.min.css" />
     <Content Include="bootstrap\fonts\glyphicons-halflings-regular.svg" />
+    <Content Include="bootstrap\js\auto-complete.css" />
+    <Content Include="bootstrap\js\auto-complete.js" />
     <Content Include="bootstrap\js\bootstrap.js" />
     <Content Include="bootstrap\js\bootstrap.min.js" />
     <Content Include="bootstrap\js\icheck.js" />
@@ -598,6 +604,7 @@
     <Content Include="dist\js\pages\Encuesta\ModalEliminarEncuesta.js" />
     <Content Include="dist\js\pages\Encuesta\preview_scripts.js" />
     <Content Include="dist\js\pages\Encuesta\Utilerias.js" />
+    <Content Include="dist\js\pages\LlamadasReportes\reporte.js" />
     <Content Include="dist\js\pages\Llamada\agregar_llamada.js" />
     <Content Include="dist\js\pages\Llamada\Lista.js" />
     <Content Include="dist\js\pages\MotAtenTel\Lista.js" />
@@ -606,6 +613,7 @@
     <Content Include="dist\js\pages\Permiso\ModalesPermisos.js" />
     <Content Include="dist\js\pages\Pregunta\editar_pregunta.js" />
     <Content Include="dist\js\pages\Pregunta\Lista.js" />
+    <Content Include="dist\js\pages\ProcesoEncuesta\Listar.js" />
     <Content Include="dist\js\pages\RelEncuestaCliente\Lista.js" />
     <Content Include="dist\js\pages\ReportesVarios\Lista.js" />
     <Content Include="dist\js\pages\ReportesVarios\LLenarSelect.js" />
@@ -616,6 +624,7 @@
     <Content Include="dist\js\pages\Role\Lista.js" />
     <Content Include="dist\js\pages\Role\modales_role.js" />
     <Content Include="dist\js\pages\TipoPregunta\Lista.js" />
+    <Content Include="dist\js\pages\UniversoEncuesta\Listar.js" />
     <Content Include="dist\js\pages\Usuario\AgregarUsuario.js" />
     <Content Include="dist\js\pages\Usuario\Lista.js" />
     <Content Include="dist\js\pnotify.custom.min.js" />
@@ -1420,6 +1429,9 @@
     <Content Include="Properties\DataSources\Softv.Entities.ServicioEntity.datasource" />
     <Content Include="Properties\DataSources\Softv.Entities.MotAtenTelEntity.datasource" />
     <Content Include="Properties\DataSources\Softv.Entities.ClasificacionProblemaEntity.datasource" />
+    <Content Include="Properties\DataSources\Softv.Entities.CiudadServidorEntity.datasource" />
+    <Content Include="Properties\DataSources\Softv.Entities.ProcesoEncuestaEntity.datasource" />
+    <Content Include="Properties\DataSources\Softv.Entities.UniversoEncuestaEntity.datasource" />
     <None Include="Properties\PublishProfiles\SoftvMVC.pubxml" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
@@ -1573,7 +1585,7 @@
     <Content Include="Views\ResOpcMults\Index.cshtml" />
     <Content Include="Views\RelEncuestaClientes\Index.cshtml" />
     <Content Include="Views\Cliente\Index.cshtml" />
-    <Content Include="Views\Encuesta\PreView.cshtml" />
+    <Content Include="Views\ProcesoEncuesta\PreView.cshtml" />
     <Content Include="Views\ReportesVarios\Index.cshtml" />
     <Content Include="Views\ReportesEncuestas\Index.cshtml" />
     <Content Include="Views\Role\Create.cshtml" />
@@ -1609,6 +1621,8 @@
     <None Include="Service References\SoftvService\SoftvWCFService3.xsd">
       <SubType>Designer</SubType>
     </None>
+    <Content Include="Views\LlamadasReportes\Index.cshtml" />
+    <Content Include="Views\UniversoEncuesta\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

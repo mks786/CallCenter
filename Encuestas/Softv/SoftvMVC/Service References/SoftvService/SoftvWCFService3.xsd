@@ -561,4 +561,46 @@
     </xs:sequence>
   </xs:complexType>
   <xs:element name="SoftvListOfClasificacionProblemaEntitykmseq5jn" nillable="true" type="tns:SoftvListOfClasificacionProblemaEntitykmseq5jn" />
+  <xs:complexType name="SoftvListOfCiudadServidorEntitykmseq5jn">
+    <xs:annotation>
+      <xs:appinfo>
+        <GenericType Name="SoftvListOf{0}{#}" Namespace="http://schemas.datacontract.org/2004/07/Globals" xmlns="http://schemas.microsoft.com/2003/10/Serialization/">
+          <GenericParameter Name="CiudadServidorEntity" Namespace="http://schemas.datacontract.org/2004/07/Softv.Entities" />
+        </GenericType>
+      </xs:appinfo>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element xmlns:q41="http://schemas.datacontract.org/2004/07/Softv.Entities" minOccurs="0" name="Entities" nillable="true" type="q41:ArrayOfCiudadServidorEntity" />
+      <xs:element minOccurs="0" name="totalCount" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="SoftvListOfCiudadServidorEntitykmseq5jn" nillable="true" type="tns:SoftvListOfCiudadServidorEntitykmseq5jn" />
+  <xs:complexType name="SoftvListOfUniversoEncuestaEntitykmseq5jn">
+    <xs:annotation>
+      <xs:appinfo>
+        <GenericType Name="SoftvListOf{0}{#}" Namespace="http://schemas.datacontract.org/2004/07/Globals" xmlns="http://schemas.microsoft.com/2003/10/Serialization/">
+          <GenericParameter Name="UniversoEncuestaEntity" Namespace="http://schemas.datacontract.org/2004/07/Softv.Entities" />
+        </GenericType>
+      </xs:appinfo>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element xmlns:q42="http://schemas.datacontract.org/2004/07/Softv.Entities" minOccurs="0" name="Entities" nillable="true" type="q42:ArrayOfUniversoEncuestaEntity" />
+      <xs:element minOccurs="0" name="totalCount" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="SoftvListOfUniversoEncuestaEntitykmseq5jn" nillable="true" type="tns:SoftvListOfUniversoEncuestaEntitykmseq5jn" />
+  <xs:complexType name="SoftvListOfProcesoEncuestaEntitykmseq5jn">
+    <xs:annotation>
+      <xs:appinfo>
+        <GenericType Name="SoftvListOf{0}{#}" Namespace="http://schemas.datacontract.org/2004/07/Globals" xmlns="http://schemas.microsoft.com/2003/10/Serialization/">
+          <GenericParameter Name="ProcesoEncuestaEntity" Namespace="http://schemas.datacontract.org/2004/07/Softv.Entities" />
+        </GenericType>
+      </xs:appinfo>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element xmlns:q43="http://schemas.datacontract.org/2004/07/Softv.Entities" minOccurs="0" name="Entities" nillable="true" type="q43:ArrayOfProcesoEncuestaEntity" />
+      <xs:element minOccurs="0" name="totalCount" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="SoftvListOfProcesoEncuestaEntitykmseq5jn" nillable="true" type="tns:SoftvListOfProcesoEncuestaEntitykmseq5jn" />
 </xs:schema>

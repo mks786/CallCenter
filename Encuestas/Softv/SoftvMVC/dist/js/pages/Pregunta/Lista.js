@@ -1,7 +1,19 @@
-﻿$(document).ready(function () {
+﻿var datos_respuestas;
+$(document).ready(function () {
     LlenarTabla();
     
-   
+    
+    $.ajax({
+        url: "/ResOpcMults/TodasRespuestas/",
+        type: "GET",
+        success: function (data, textStatus, jqXHR) {
+            console.log(data);
+            datos_respuestas = data;
+        },
+        error: function (jqXHR, textStatus, errorThrown) {
+
+        }
+    });
 
     $(".Agregar").click(function () {
         $('#NombrePregunta').val(" "); 
@@ -37,7 +49,7 @@ function LlenarTabla(cadena) {
         "dom": '<"toolbar">frtip',
         "bDestroy": true,
         "info": true,
-        "stateSave": true,
+        "stateSave": false,
         "lengthMenu": [[10, 20, 50, 100], [10, 20, 50, 100]],
         "ajax": {
             "url": "/Pregunta/GetList/",
@@ -221,12 +233,17 @@ function AgregarRespuesta_editar() {
     //$('#body_opcion_multiple').append("<tr><td><input type='text' id='focus' onkeypress='removeFocus()' class='form-control focus'></td></tr>");
     $('#body_opcion_multiple').append("<tr><td><input type='text' id='focus' onkeypress='removeFocus()' class='form-control focus'> </td><td><button class='btn btn-danger btn-xs eliminar_respuestas'>Quitar</button></td></tr>");
     $('#focus').focus();
-}
-
-function AgregarRespuesta() {
-    $('#body_opcion_multiple').append("<tr><td><input type='text' id='focus' onkeypress='removeFocus()' class='form-control focus'></td></tr>");
-    //boton de eliminar $('#body_opcion_multiple').append("<tr><td><input type='text' id='focus' onkeypress='removeFocus()' class='form-control focus'> </td><td><button class='btn btn-danger btn-xs eliminar_respuestas'>Quitar</button></td></tr>");
-    $('#focus').focus();
+    var demo2 = new autoComplete({
+        selector: '.focus',
+        minChars: 1,
+        source: function (term, suggest) {
+            term = term.toUpperCase();
+            var suggestions = [];
+            for (i = 0; i < datos_respuestas.length; i++)
+                if (~datos_respuestas[i].ResOpcMult.toUpperCase().indexOf(term)) suggestions.push(datos_respuestas[i].ResOpcMult);
+            suggest(suggestions);
+        }
+    });
 }
 
 function removeFocus() {
@@ -302,11 +319,21 @@ function guardar_pregunta() {
                 data: { 'detallePregunta': detallePregunta, 'respuestas': respuestas },
                 success: function (data, textStatus, jqXHR) {
                     $('#ModalEditarPregunta').modal("hide");
-                    LlenarTabla();
-                    swal("La pregunta se editó exitosamente", "", "success");
+                    swal({
+                        title: "!Hecho!", text: "La pregunta se editó exitosamente!",
+                        type: "success",
+                        showCancelButton: false,
+                        confirmButtonColor: "#5cb85c",
+                        confirmButtonText: "Aceptar",
+                        cancelButtonText: "Aceptar",
+                        closeOnConfirm: false,
+                        closeOnCancel: false
+                    }, function (isConfirm) {
+                        location.reload();
+                    });
                 },
                 error: function (jqXHR, textStatus, errorThrown) {
-
+                    swal("No puede haber preguntas iguales", "", "error");
                 }
             });
         }
@@ -324,7 +351,20 @@ $('#TablaRespuestasOM').on('click', '.EliminarRespuestaC', function () {
 function AgregarRespuesta() {
     $('#PanelPreguntaOptMultiple-tbody').append("<tr class='nrespuestac'><td></td><td class='nrespuesta'><input class='agregar_reciclado form-control resp' placeholder='Respuestas' type='text' id='focus' onkeypress='quitAutofocus()'></td><td><button class='btn btn-danger btn-xs EliminarRespuestaC'>Quitar</button></td></tr>");
     $('#focus').focus();
+    
+    var demo1 = new autoComplete({
+        selector: '.agregar_reciclado',
+        minChars: 1,
+        source: function (term, suggest) {
+            term = term.toUpperCase();
+            var suggestions = [];
+            for (i = 0; i < datos_respuestas.length; i++)
+                if (~datos_respuestas[i].ResOpcMult.toUpperCase().indexOf(term)) suggestions.push(datos_respuestas[i].ResOpcMult);
+            suggest(suggestions);
+        }
+    });
 }
+
 function quitAutofocus() {
     $('#focus').removeAttr("id");
     $('#focus').removeClass("agregar_reciclado");
@@ -392,7 +432,7 @@ $('#GuardarPregunta').on('click', function () {
                             });
                         },
                         error: function (jqXHR, textStatus, errorThrown) {
-
+                            swal("No puede haber preguntas iguales", "", "error");
                         }
                     });
                 }

@@ -316,12 +316,18 @@ namespace SoftvMVC.Controllers
             public string Id_ResOpcMult2 { get; set; }
         }
 
-        public ActionResult Create(EncuestaEntity encuesta, List<PreguntaEntity1> Preguntas, List<ResOpcMultsEntity1> respuestas, string usuario)
+        public ActionResult Create(EncuestaEntity encuesta, List<PreguntaEntity1> Preguntas, List<ResOpcMultsEntity1> respuestas, string usuario, int activa)
         {
             UsuarioEntity user = proxyUsuario.GetUsuarioList().Where(o => o.Usuario.ToLower() == usuario.ToLower()).FirstOrDefault();
             encuesta.FechaCreacion = DateTime.Now.ToShortDateString();
             encuesta.IdUsuario = user.IdUsuario.Value;
-
+            if(activa == 0){
+                encuesta.Activa = false;
+            }
+            else
+            {
+                encuesta.Activa = true;
+            }
             XElement xe = XElement.Parse(Globals.SerializeTool.Serialize<EncuestaEntity>(encuesta));
 
             XElement xmll = XElement.Parse(Globals.SerializeTool.SerializeList<PreguntaEntity1>(Preguntas));
@@ -339,11 +345,18 @@ namespace SoftvMVC.Controllers
         }
 
 
-        public ActionResult Update(EncuestaEntity encuesta, List<PreguntaEntity1> Preguntas, List<ResOpcMultsEntity1> respuestas, string usuario)
+        public ActionResult Update(EncuestaEntity encuesta, List<PreguntaEntity1> Preguntas, List<ResOpcMultsEntity1> respuestas, string usuario, int activa)
         {
             UsuarioEntity user = proxyUsuario.GetUsuarioList().Where(o => o.Usuario.ToLower() == usuario.ToLower()).FirstOrDefault();
             encuesta.FechaCreacion = DateTime.Now.ToShortDateString();
             encuesta.IdUsuario = user.IdUsuario.Value;
+            if(activa == 1){
+                encuesta.Activa = true;
+            }
+            else
+            {
+                encuesta.Activa = false;
+            }
 
             XElement xe = XElement.Parse(Globals.SerializeTool.Serialize<EncuestaEntity>(encuesta));
 
@@ -596,7 +609,7 @@ namespace SoftvMVC.Controllers
 
 
 
-        public ActionResult DatosEncuesta(ObjEncuesta encuesta)
+        public ActionResult DatosEncuesta(ObjEncuesta encuesta, int universo)
         {
             /*Creando objeto RelEncuestaClientes*/
             RelEncuestaClientesEntity rel = new RelEncuestaClientesEntity();
@@ -615,6 +628,7 @@ namespace SoftvMVC.Controllers
                 RelEnProcesosEntity re = new RelEnProcesosEntity();
                 re.IdPregunta = a.id_pregunta;
                 re.IdProceso = result;
+                re.IdUniverso = universo;
                 foreach (var b in encuesta.respuestas.Where(o => o.id_pregunta == a.id_pregunta))
                 {
                     if (a.tipoPregunta == 1)

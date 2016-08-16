@@ -1,5 +1,9 @@
 ﻿var contrato_enviar;
 var tiene_queja_aux = 0;
+var nombre;
+var colonia;
+var calle;
+var numero;
 $(document).ready(function () {
     $.ajax({
         url: "/Conexion/ListaConexiones/",
@@ -7,8 +11,8 @@ $(document).ready(function () {
         success: function (data, textStatus, jqXHR) {
             for (var i = 0; i < data.length; i++) {
                 $('#plaza_llamadas').append($('<option>', {
-                    value: data[i].IdConexion,
-                    text: data[i].Plaza
+                    value: data[i].IdPlaza,
+                    text: data[i].Ciudad
                 }));
             }
         },
@@ -17,14 +21,20 @@ $(document).ready(function () {
         }
     });
     $('#select_soluciones').on('change', function () {
+
         var option = $(this).val();
-        if(tiene_queja_aux == 0){
-            if (option == 0) {
-                $('#btn_queja').removeClass('disabled');
-            } else {
-                $('#btn_queja').addClass('disabled');
-            }
+        if (option == 0) {
+            $('#btn_queja').removeClass('disabled');
+        } else {
+            $('#btn_queja').addClass('disabled');
         }
+        //if(tiene_queja_aux == 0){
+        //    if (option == 0) {
+        //        $('#btn_queja').removeClass('disabled');
+        //    } else {
+        //        $('#btn_queja').addClass('disabled'); validacion para que solo se pueda una queja pendiente
+        //    }
+        //}
         
     });
     $('#telefono').inputmask("(999)9999999");
@@ -34,8 +44,34 @@ $(document).ready(function () {
         $("#panel_busqueda").show();
         $("#tipo_llamada").removeAttr('disabled');
         llenarDireccion($(this).val());
+    }); 
+    $("#tipo_queja").change(function () {
+        var filtro = $(this).val();
+        var id_plaza = $("#plaza_llamadas").val();
+        $.ajax({
+            url: "/Llamada/HistorialQuejasL/",
+            type: "GET",
+            data: { 'plaza': id_plaza, 'contrato': contrato_enviar, 'filtro': filtro },
+            success: function (data, textStatus, jqXHR) {
+                $('#tableHistorialQuejas tbody').empty();
+                for (var i = 0; i < data.length; i++) {
+                    $('#tableHistorialQuejas tbody').append('<tr  onclick="detalleQueja(' + data[i].Queja + ')"><td>' + data[i].Queja + '</td><td>' + data[i].Status + '</td><td>' + data[i].Contrato + '</td><td>' + data[i].Nombre + '</td><td>' + data[i].Calle + '</td><td>' + data[i].Numero + '</td><td>' + data[i].TipSer + '</td><td><button class="btn btn-sm btn-priamry" onclick="detalleQueja(' + data[i].Queja + ')"> Ver</button></td></tr>');
+                }
+            },
+            error: function (jqXHR, textStatus, errorThrown) {
+
+            }
+        });
     });
     $("#tipo_llamada").change(function () {
+        var tipo = $(this).val();
+        if (tipo == 1) {
+            $('#titulo_llamada').text(' > Información');
+            $('#btn_queja').addClass('disabled');
+        } else {
+            $('#btn_queja').removeClass('disabled');
+            $('#titulo_llamada').text(' > Atención Telefónica');
+        }
         $('#nueva_llamada_link').removeClass('disabled');
     });
     $("#tipo_cliente").change(function () {
@@ -172,17 +208,34 @@ function llenarDireccion(id_plaza) {
 }
 
 function nueva_llamada() {
+    var ciudad = $("#plaza_llamadas").val()
+    $.ajax({
+        url: "/Conexion/listaPlazas/",
+        type: "GET",
+        data: { "idPlaza": ciudad },
+        success: function (data, textStatus, jqXHR) {
+            var ciudad_select = $("#plaza_llamadas option:selected").text();
+            $('#nombre_plaza').text("CIUDAD DE " + ciudad_select.toUpperCase() + ", SERVIDOR " + data.Plaza.toUpperCase());
+        },
+        error: function (jqXHR, textStatus, errorThrown) {
+
+        }
+    });
     regresar();
     var plaza = $("#plaza_llamadas").val();
     $('#regresar').show();
-    $('#nombre_plaza').text($("#plaza_llamadas option:selected").text());
+    
     var tipo = $("#tipo_llamada").val();
     $('#datosGrafica').collapse('hide');
+    $('#Mygrafica').hide();
     if(tipo == 1){
         $("#tipo_llamante").show();
+        $('#sub_titulo').text("Llamada de Información");
+        
     } else {
         tipoServicio();
         $("#motivo_llamada_panel").show();
+        $('#sub_titulo').text("Llamada de Atención Telefónica");
     }
 }
 
@@ -196,6 +249,97 @@ $('#buscar_por_contrato').on('click', function () {
         url: "/CLIENTE/GetClientesLlamada/",
         type: "GET",
         data: { 'IdPlaza': id_plaza, "contrato": contrato,'servicio':servicio},
+        success: function (data, textStatus, jqXHR) {
+            if (data.length == 0) {
+                $('#panel_tabla_clientes').hide();
+                $('#invalido').show();
+            } else {         
+                $('#Tabla_Clientes tbody > tr').remove();
+                var tipo_llamada = $('#tipo_llamada').val();
+                if (tipo_llamada == 1) {
+                    $('#Tabla_Clientes tbody').append('<tr><td>' + data[0].CONTRATO + '</td><td>' + data[0].Nombre + '</td><td>' + data[0].Ciudad + '</td><td>' + data[0].Colonia + '</td><td>' + data[0].calle + '</td><td>' + data[0].Numero + '</td><td><a id="' + data[0].CONTRATO + '" data-name="' + data[0].Nombre + '" data-colonia="' + data[0].Colonia + '" data-calle="' + data[0].calle + '" data-numero="' + data[0].Numero + '" class="btn btn-success" onclick="selecion_cliente(this)">Seleccionar</a></td></tr>');
+                } else {
+                    if (data[0].STATUS == 'B') {
+                        $('#Tabla_Clientes tbody').append('<tr><td>' + data[0].CONTRATO + '</td><td>' + data[0].Nombre + '</td><td>' + data[0].Ciudad + '</td><td>' + data[0].Colonia + '</td><td>' + data[0].calle + '</td><td>' + data[0].Numero + '</td><td><p style="color:red;">BAJA</td></tr>');
+                    } else if (data[0].STATUS == 'S') {
+                        $('#Tabla_Clientes tbody').append('<tr><td>' + data[0].CONTRATO + '</td><td>' + data[0].Nombre + '</td><td>' + data[0].Ciudad + '</td><td>' + data[0].Colonia + '</td><td>' + data[0].calle + '</td><td>' + data[0].Numero + '</td><td><p style="color:red;">SUSPENDIDO</td></tr>');
+                    } else if (data[0].STATUS == 'C') {
+                        $('#Tabla_Clientes tbody').append('<tr><td>' + data[0].CONTRATO + '</td><td>' + data[0].Nombre + '</td><td>' + data[0].Ciudad + '</td><td>' + data[0].Colonia + '</td><td>' + data[0].calle + '</td><td>' + data[0].Numero + '</td><td><p style="color:red;">CONTRATADO</td></tr>');
+                    } else if (data[0].STATUS == 'F') {
+                        $('#Tabla_Clientes tbody').append('<tr><td>' + data[0].CONTRATO + '</td><td>' + data[0].Nombre + '</td><td>' + data[0].Ciudad + '</td><td>' + data[0].Colonia + '</td><td>' + data[0].calle + '</td><td>' + data[0].Numero + '</td><td><p style="color:red;">FUERA DE AREA</td></tr>');
+                    } else if (data[0].STATUS == 'T') {
+                        $('#Tabla_Clientes tbody').append('<tr><td>' + data[0].CONTRATO + '</td><td>' + data[0].Nombre + '</td><td>' + data[0].Ciudad + '</td><td>' + data[0].Colonia + '</td><td>' + data[0].calle + '</td><td>' + data[0].Numero + '</td><td><p style="color:red;">SUSPENDIDO TEMPORAL</td></tr>');
+                    } else {
+                        $('#Tabla_Clientes tbody').append('<tr><td>' + data[0].CONTRATO + '</td><td>' + data[0].Nombre + '</td><td>' + data[0].Ciudad + '</td><td>' + data[0].Colonia + '</td><td>' + data[0].calle + '</td><td>' + data[0].Numero + '</td><td><a id="' + data[0].CONTRATO + '" data-name="' + data[0].Nombre + '" data-colonia="' + data[0].Colonia + '" data-calle="' + data[0].calle + '" data-numero="' + data[0].Numero + '" class="btn btn-success" onclick="selecion_cliente(this)">Seleccionar</a></td></tr>');
+                    }
+                }
+                $('#invalido').hide();
+                $('#panel_tabla_clientes').show();
+            }
+        },
+        error: function (data, jqXHR, textStatus) {
+            console.log(data);
+        }
+
+    });
+});
+$('#buscar_por_nombre').on('click', function () {
+    $('#collapseOne').collapse('hide');
+    var id_plaza = $("#plaza_llamadas").val(); nombre_individual
+    var servicio = $('#tipo_servicio').val();
+    var Nombrecliente = $('#nombre_individual').val();
+    $.ajax({
+        url: "/CLIENTE/GetClientesLlamada/",
+        type: "GET",
+        data: { 'IdPlaza': id_plaza, "Nombrecliente": Nombrecliente, 'servicio': servicio },
+        success: function (data, textStatus, jqXHR) {
+            if (data.length == 0) {
+                $('#panel_tabla_clientes').hide();
+                $('#invalido').show();
+            } else {
+                $('#invalido').hide();
+                $('#panel_tabla_clientes').show();
+                $('#Tabla_Clientes tbody > tr').remove();
+                var tipo_llamada = $('#tipo_llamada').val();
+                for (var i = 0; i < data.length; i++) {
+                    if (tipo_llamada == 1) {
+                        $('#Tabla_Clientes tbody').append('<tr><td>' + data[i].CONTRATO + '</td><td>' + data[i].Nombre + '</td><td>' + data[i].Ciudad + '</td><td>' + data[i].Colonia + '</td><td>' + data[i].calle + '</td><td>' + data[i].Numero + '</td><td><a id="' + data[i].CONTRATO + '" data-name="' + data[i].Nombre + '" data-colonia="' + data[i].Colonia + '" data-calle="' + data[i].calle + '" data-numero="' + data[i].Numero + '" class="btn btn-success" onclick="selecion_cliente(this)">Seleccionar</a></td></tr>');
+                    } else {
+                        if (data[i].STATUS == 'B') {
+                            $('#Tabla_Clientes tbody').append('<tr><td>' + data[i].CONTRATO + '</td><td>' + data[i].Nombre + '</td><td>' + data[i].Ciudad + '</td><td>' + data[i].Colonia + '</td><td>' + data[i].calle + '</td><td>' + data[i].Numero + '</td><td><p style="color:red;">BAJA</td></tr>');
+                        } else if (data[i].STATUS == 'S') {
+                            $('#Tabla_Clientes tbody').append('<tr><td>' + data[i].CONTRATO + '</td><td>' + data[i].Nombre + '</td><td>' + data[i].Ciudad + '</td><td>' + data[i].Colonia + '</td><td>' + data[i].calle + '</td><td>' + data[i].Numero + '</td><td><p style="color:red;">SUSPENDIDO</td></tr>');
+                        } else if (data[i].STATUS == 'C') {
+                            $('#Tabla_Clientes tbody').append('<tr><td>' + data[i].CONTRATO + '</td><td>' + data[i].Nombre + '</td><td>' + data[i].Ciudad + '</td><td>' + data[i].Colonia + '</td><td>' + data[i].calle + '</td><td>' + data[i].Numero + '</td><td><p style="color:red;">CONTRATADO</td></tr>');
+                        } else if (data[i].STATUS == 'F') {
+                            $('#Tabla_Clientes tbody').append('<tr><td>' + data[i].CONTRATO + '</td><td>' + data[i].Nombre + '</td><td>' + data[i].Ciudad + '</td><td>' + data[i].Colonia + '</td><td>' + data[i].calle + '</td><td>' + data[i].Numero + '</td><td><p style="color:red;">FUERA DE AREA</td></tr>');
+                        } else if (data[i].STATUS == 'T') {
+                            $('#Tabla_Clientes tbody').append('<tr><td>' + data[i].CONTRATO + '</td><td>' + data[i].Nombre + '</td><td>' + data[i].Ciudad + '</td><td>' + data[i].Colonia + '</td><td>' + data[i].calle + '</td><td>' + data[i].Numero + '</td><td><p style="color:red;">SUSPENDIDO TEMPORAL</td></tr>');
+                        } else {
+                            $('#Tabla_Clientes tbody').append('<tr><td>' + data[i].CONTRATO + '</td><td>' + data[i].Nombre + '</td><td>' + data[i].Ciudad + '</td><td>' + data[i].Colonia + '</td><td>' + data[i].calle + '</td><td>' + data[i].Numero + '</td><td><a id="' + data[i].CONTRATO + '" data-name="' + data[i].Nombre + '" data-colonia="' + data[i].Colonia + '" data-calle="' + data[i].calle + '" data-numero="' + data[i].Numero + '" class="btn btn-success" onclick="selecion_cliente(this)">Seleccionar</a></td></tr>');
+                        }
+                    }
+                }
+            }
+        },
+        error: function (data, jqXHR, textStatus) {
+            console.log(data);
+        }
+
+    });
+});
+$('#buscar_por_direccion').on('click', function () {
+    $('#collapseOne').collapse('hide');
+    var id_plaza = $("#plaza_llamadas").val();
+    var servicio = $('#tipo_servicio').val();
+    var ciudad = $("#ciudad_select option:selected").text();
+    var colonia = $("#colonia_select option:selected").text();
+    var calle = $("#calle_editar option:selected").text();
+    var numero = $("#numero_domicilio").val();
+    $.ajax({
+        url: "/CLIENTE/GetClientesLlamada/",
+        type: "GET",
+        data: { 'IdPlaza': id_plaza, "ciudad": ciudad, 'servicio': servicio, 'colonia': colonia, 'calle': calle,'numero':numero },
         success: function (data, textStatus, jqXHR) {
             if (data.length == 0) {
                 $('#panel_tabla_clientes').hide();
@@ -230,67 +374,12 @@ $('#buscar_por_contrato').on('click', function () {
 
     });
 });
-$('#buscar_por_nombre').on('click', function () {
-    $('#collapseOne').collapse('hide');
-    var id_plaza = $("#plaza_llamadas").val(); nombre_individual
-    var servicio = $('#tipo_servicio').val();
-    var Nombrecliente = $('#nombre_individual').val();
-    $.ajax({
-        url: "/CLIENTE/GetClientesLlamada/",
-        type: "GET",
-        data: { 'IdPlaza': id_plaza, "Nombrecliente": Nombrecliente, 'servicio': servicio },
-        success: function (data, textStatus, jqXHR) {
-            if (data.length == 0) {
-                $('#panel_tabla_clientes').hide();
-                $('#invalido').show();
-            } else {
-                $('#invalido').hide();
-                $('#panel_tabla_clientes').show();
-                $('#Tabla_Clientes tbody > tr').remove();
-                for (var i = 0; i < data.length; i++) {
-                    $('#Tabla_Clientes tbody').append('<tr><td>' + data[i].CONTRATO + '</td><td>' + data[i].Nombre + '</td><td>' + data[i].Ciudad + '</td><td>' + data[i].Colonia + '</td><td>' + data[i].calle + '</td><td>' + data[i].Numero + '</td><td><a id="' + data[i].CONTRATO + '" data-name="' + data[i].Nombre + '" data-colonia="' + data[i].Colonia + '" data-calle="' + data[i].calle + '" data-numero="' + data[i].Numero + '" class="btn btn-success" onclick="selecion_cliente(this)">Seleccionar</a></td></tr>');
-                }
-            }
-        },
-        error: function (data, jqXHR, textStatus) {
-            console.log(data);
-        }
-
-    });
-});
-$('#buscar_por_direccion').on('click', function () {
-    $('#collapseOne').collapse('hide');
-    var id_plaza = $("#plaza_llamadas").val();
-    var servicio = $('#tipo_servicio').val();
-    var ciudad = $("#ciudad_select option:selected").text();
-    var colonia = $("#colonia_select option:selected").text();
-    var calle = $("#calle_editar option:selected").text();
-    var numero = $("#numero_domicilio").val();
-    $.ajax({
-        url: "/CLIENTE/GetClientesLlamada/",
-        type: "GET",
-        data: { 'IdPlaza': id_plaza, "ciudad": ciudad, 'servicio': servicio, 'colonia': colonia, 'calle': calle,'numero':numero },
-        success: function (data, textStatus, jqXHR) {
-            if (data.length == 0) {
-                $('#panel_tabla_clientes').hide();
-                $('#invalido').show();
-            } else {
-                $('#invalido').hide();
-                $('#panel_tabla_clientes').show();
-                $('#Tabla_Clientes tbody > tr').remove();
-                $('#Tabla_Clientes tbody').append('<tr><td>' + data[0].CONTRATO + '</td><td>' + data[0].Nombre + '</td><td>' + data[0].Ciudad + '</td><td>' + data[0].Colonia + '</td><td>' + data[0].calle + '</td><td>' + data[0].Numero + '</td><td><a id="' + data[0].CONTRATO + '" data-name="' + data[0].Nombre + '" data-colonia="' + data[0].Colonia + '" data-calle="' + data[0].calle + '" data-numero="' + data[0].Numero + '" class="btn btn-success" onclick="selecion_cliente(this)">Seleccionar</a></td></tr>');
-            }
-        },
-        error: function (data, jqXHR, textStatus) {
-            console.log(data);
-        }
-
-    });
-});
 
 
 function selecion_cliente(e) {
     $('#Espere').modal('show');
+    $('#panel_botones').show();
+    $('#btn_enviar').show();
     var currentdate = new Date();
     var minutos;
     if (currentdate.getMinutes() < 10) {
@@ -329,15 +418,24 @@ function selecion_cliente(e) {
         type: "GET",
         data: { 'id_plaza': id_plaza, "contrato": contrato },
         success: function (data, textStatus, jqXHR) {
-            if(data.length > 0){
+            if (data.length > 0) {
+                new PNotify({
+                    title: 'El cliente tiene una queja pendiente',
+                    text: 'El número de contrato ' + contrato + ' tiene una queja pendiente con el número ' + data[0].Clv_Queja,
+                    icon: 'fa fa-info-circle',
+                    type: 'info',
+                    hide: false
+                });
                 $('#panel_tiene_queja').show();
-                $('#btn_queja').addClass('disabled');
+                if ($('#tipo_llamada').val() == 2) {
+                    $('#tiene_queja').text('El número de contrato: ' + contrato + ' tiene una queja pendiente con el número: ' + data[0].Clv_Queja);
+                } else {
+                    $('#tiene_queja').text('');
+                }
                 tiene_queja_aux = 1;
-                $('#tiene_queja').text('El número de contrato: ' + contrato + ' tiene una queja pendiente con el número: ' + data[0].Clv_Queja+' con la fecha: '+data[0].Fecha);
             } else {
                 $('#panel_tiene_queja').hide();
                 tiene_queja_aux = 0;
-                $('#btn_queja').removeClass('disabled');
             }
         },
         error: function (data, jqXHR, textStatus) {
@@ -351,7 +449,7 @@ function selecion_cliente(e) {
         data: { 'plaza': id_plaza, "contrato": contrato },
         success: function (data, textStatus, jqXHR) {
             for (var i = 0; i < data.length; i++) {
-                $('#servicios_contratados').append('<p style="color:#4b646f; font-size:16px;">' + data[i].cadena + '</p>');
+                $('#servicios_contratados').append('<p style="color:#4b646f; font-size:12px;">' + data[i].cadena + '</p>');
             }
         },
         error: function (data, jqXHR, textStatus) {
@@ -360,12 +458,21 @@ function selecion_cliente(e) {
 
     });
     if ($('#tipo_llamada').val() == 1) {
-        $('#texto_contrato').text("No. contrato: " + e.getAttribute('id'));
         contrato_enviar = e.getAttribute('id');
-        $('#texto_nombre').text("Nombre: " + e.getAttribute('data-name'));
-        $('#texto_colonia').text("Colonia: " + e.getAttribute('data-colonia'));
-        $('#texto_calle').text("Calle: " + e.getAttribute('data-calle'));
-        $('#texto_numero').text("Número: " + e.getAttribute('data-numero'));
+        $('#texto_contrato').html("");
+        $('#texto_nombre').html("");
+        $('#texto_colonia').html("");
+        $('#texto_calle').html("");
+        $('#texto_numero').html("");
+         nombre = e.getAttribute('data-name');
+         colonia = e.getAttribute('data-colonia');
+         calle = e.getAttribute('data-calle');
+         numero = e.getAttribute('data-numero');
+        $('#texto_contrato').append("<strong>Contrato: </strong>" + e.getAttribute('id'));
+        $('#texto_nombre').append('<strong>Nombre: </strong>' + e.getAttribute('data-name'));
+        $('#texto_colonia').append('<strong>Colonia: </strong>' + e.getAttribute('data-colonia'));
+        $('#texto_calle').append("<strong>Calle: </strong> " + e.getAttribute('data-calle'));
+        $('#texto_numero').append("<strong>Número: </strong>" + e.getAttribute('data-numero'));
         $('#panel_tabla_clientes').hide();
         $('#panel_llamante').hide();
         $('#panel_datos_cliente').show();
@@ -374,12 +481,14 @@ function selecion_cliente(e) {
         $('#panel_detalle_informacion').show();
         $('#btn_enviar').show();
     } else {
-        $('#btn_queja').removeClass('disabled');
+        var tipo_servicio = $('#tipo_servicio').val();
         $.ajax({
             url: "/tblClasificacionProblema/GetClasficacionProblema/",
             type: "GET",
-            data: { 'IdPlaza': id_plaza },
+            data: { 'IdPlaza': id_plaza, 'idServicio': tipo_servicio },
             success: function (data, textStatus, jqXHR) {
+                $("#select_problemas option").remove();
+                $('#select_problemas').append('<option selected value="0">----------------------------</option>');
                 for (var i = 0; i < data.length; i++) {
                     $('#select_problemas').append($('<option>', {
                         value: data[i].clvProblema,
@@ -391,7 +500,7 @@ function selecion_cliente(e) {
 
             }
         });
-        var tipo_servicio = $('#tipo_servicio').val();
+        
         $.ajax({
             url: "/tblClasificacionProblema/GetClasficacionSolucion/",
             type: "GET",
@@ -401,8 +510,8 @@ function selecion_cliente(e) {
                 $('#select_soluciones').append('<option selected value="0">----------------------------</option>');
                 for (var i = 0; i < data.length; i++) {
                     $('#select_soluciones').append($('<option>', {
-                        value: data[i].ClvProblema,
-                        text: data[i].Descripcion
+                        value: data[i].CLV_TRABAJO,
+                        text: data[i].DESCRIPCION
                     }));
                 }
             },
@@ -411,20 +520,28 @@ function selecion_cliente(e) {
             }
         });
         $('#busqueda_collapse').removeClass('collapsed');
-        $('#panel_datos_cliente').show(); 
-        $('#texto_contrato').text("No. contrato: " + e.getAttribute('id'));
+        $('#texto_contrato').html("");
+        $('#texto_nombre').html("");
+        $('#texto_colonia').html("");
+        $('#texto_calle').html("");
+        $('#texto_numero').html("");
+        $('#panel_datos_cliente').show();
+        $('#texto_contrato').append('<strong>Contrato: </strong>' + e.getAttribute('id'));
         contrato_enviar = e.getAttribute('id');
-        $('#texto_nombre').text("Nombre: " + e.getAttribute('data-name'));
-        $('#texto_colonia').text("Colonia: " + e.getAttribute('data-colonia'));
-        $('#texto_calle').text("Calle: " + e.getAttribute('data-calle'));
-        $('#texto_numero').text("Número: " + e.getAttribute('data-numero'));
+        nombre = e.getAttribute('data-name');
+        colonia = e.getAttribute('data-colonia');
+        calle = e.getAttribute('data-calle');
+        numero = e.getAttribute('data-numero');
+        $('#texto_nombre').append('<strong>Nombre: </strong>' + e.getAttribute('data-name'));
+        $('#texto_colonia').append('<strong>Colonia: </strong>' + e.getAttribute('data-colonia'));
+        $('#texto_calle').append("<strong>Calle: </strong> " + e.getAttribute('data-calle'));
+        $('#texto_numero').append("<strong>Número: </strong>" + e.getAttribute('data-numero'));
         $('#panel_tabla_clientes').hide();
         $('#panel_llamante').hide(); 
         $('#panel_reporte_cliente').show(); 
         $('#panel_clasificacion').show(); 
         $('#panel_problema_real').show(); 
         $('#panel_solucion').show();
-        $('#btn_enviar').show();
     }
     setTimeout("mostrarDatos()", 1800);
     
@@ -437,8 +554,10 @@ function guardarLlamada() {
     var tipo = $('#tipo_llamada').val();
     var llamada = {};
     var id_plaza = $("#plaza_llamadas").val();
+    var ciudad = $("#plaza_llamadas option:selected").text();
     llamada.IdConexion = id_plaza;
     llamada.usuario = usuario;
+    llamada.ciudad = ciudad;
     var currentdate = new Date();
     var minutos;
     if (currentdate.getMinutes() < 10) {
@@ -471,7 +590,11 @@ function guardarLlamada() {
                         type: "POST",
                         data: { 'IdPlaza': id_plaza, "llamada": llamada },
                         success: function (data, textStatus, jqXHR) {
-                            $('#regresar').hide();
+                            PNotify.removeAll();
+                            $('#regresar').hide(); 
+                            $('#sub_titulo').hide(); 
+                            $('#panel_botones').hide(); 
+                            $('#Mygrafica').show();
                             $('#panel_tiene_queja').hide();
                             $('#nombre_plaza').text("");
                             $('#motivo_llamada_panel').hide();
@@ -518,6 +641,10 @@ function guardarLlamada() {
                             type: "POST",
                             data: { 'IdPlaza': id_plaza, "llamada": llamada },
                             success: function (data, textStatus, jqXHR) {
+                                PNotify.removeAll();
+                                $('#sub_titulo').hide();
+                                $('#panel_botones').hide();
+                                $('#Mygrafica').show();
                                 $('#regresar').hide();
                                 $('#panel_tiene_queja').hide();
                                 $('#nombre_plaza').text("");
@@ -567,6 +694,9 @@ function guardarLlamada() {
                 data: { 'IdPlaza': id_plaza, "llamada": llamada },
                 success: function (data, textStatus, jqXHR) {
                     modalSinQueja(data.reporte);
+                    $('#sub_titulo').hide();
+                    $('#panel_botones').hide();
+                    $('#Mygrafica').show();
                 },
                 error: function (data, jqXHR, textStatus) {
                     swal("Error la llamada no se guardo", "", "error");
@@ -583,58 +713,60 @@ function modalSinQueja(reporte) {
 }
 
 function GuardarQueja() {
-    var departamento = $("#departamento").val();
+    var comenatrio = $("#comentario").val();
     var turno = $("#turno").val();
     var prioridad = $("#prioridad").val();
-    if(departamento == null){
-        swal("Seleccione el departamento responsable", "", "error");
+    if(turno == null){
+        swal("Seleccione el turno", "", "error");
     } else {
-        if(prioridad == null){
-            swal("Seleccione la prioridad de la queja", "", "error");
+        var tipo = $('#tipo_llamada').val();
+        var llamada = {};
+        var id_plaza = $("#plaza_llamadas").val();
+        llamada.comentario = comenatrio;
+        llamada.IdConexion = id_plaza;
+        llamada.usuario = usuario;
+        var ciudad = $("#plaza_llamadas option:selected").text();
+        llamada.ciudad = ciudad;
+        var currentdate = new Date();
+        var minutos;
+        if (currentdate.getMinutes() < 10) {
+            minutos = "0" + currentdate.getMinutes();
         } else {
-            if(turno == null){
-                swal("Seleccione el turno", "", "error");
-            } else {
-                var tipo = $('#tipo_llamada').val();
-                var llamada = {};
-                var id_plaza = $("#plaza_llamadas").val();
-                llamada.IdConexion = id_plaza;
-                llamada.usuario = usuario;
-                var currentdate = new Date();
-                var minutos;
-                if (currentdate.getMinutes() < 10) {
-                    minutos = "0" + currentdate.getMinutes();
-                } else {
-                    minutos = currentdate.getMinutes();
-                }
-                var hora_fin = currentdate.getHours() + ":" + minutos + ":" + currentdate.getSeconds();
-                llamada.fecha = $('#fecha').val();
-                llamada.horainicio = $('#fecha').val() + " " + $('#hora').val();
-                llamada.horatermino = $('#fecha').val() + " " + hora_fin;
-                llamada.tipo_llamada = tipo;
-                llamada.queja = 1;
-                llamada.tipo_llamada_cliente = true; 
-                llamada.motivo = $('#reporte_cliente').val(); 
-                llamada.clas_problema = $('#select_problemas').val();
-                llamada.prioridad = prioridad;
-                llamada.Clv_TipSer = $('#tipo_servicio').val();
-                llamada.contrato = contrato_enviar;
-                llamada.IdTurno = turno;
-                $.ajax({
-                    url: "/Llamada/InsertLlamada",
-                    type: "POST",
-                    data: { 'IdPlaza': id_plaza, "llamada": llamada },
-                    success: function (data, textStatus, jqXHR) {
-                        $('#queja_modal').modal('hide');
-                        modalExito(data.reporte, data.queja);
-                    },
-                    error: function (data, jqXHR, textStatus) {
-                        swal("Error la llamada no se guardo", "", "danger");
-                    }
-
-                });
-            }
+            minutos = currentdate.getMinutes();
         }
+        var hora_fin = currentdate.getHours() + ":" + minutos + ":" + currentdate.getSeconds();
+        llamada.fecha = $('#fecha').val();
+        llamada.horainicio = $('#fecha').val() + " " + $('#hora').val();
+        llamada.horatermino = $('#fecha').val() + " " + hora_fin;
+        llamada.tipo_llamada = tipo;
+        llamada.queja = 1;
+        llamada.tipo_llamada_cliente = true; 
+        llamada.motivo = $('#reporte_cliente').val(); 
+        llamada.clas_problema = $('#select_problemas').val();
+        llamada.prioridad = prioridad;
+        llamada.Clv_TipSer = $('#tipo_servicio').val();
+        llamada.contrato = contrato_enviar;
+        llamada.IdTurno = turno;
+        console.log(llamada);
+        $.ajax({
+            url: "/Llamada/InsertLlamada",
+            type: "POST",
+            data: { 'IdPlaza': id_plaza, "llamada": llamada },
+            success: function (data, textStatus, jqXHR) {
+                $('#queja_modal').modal('hide');
+                modalExito(data.reporte, data.queja);
+                $('#sub_titulo').hide();
+                $('#panel_botones').hide();
+                $('#Mygrafica').show();
+                $("#comentario").val(" ");
+            },
+            error: function (data, jqXHR, textStatus) {
+                swal("Error la llamada no se guardo", "", "danger");
+            }
+
+        });
+
+        
     }
 }
 
@@ -646,42 +778,42 @@ function modalExito(reporte,queja) {
 
 function abrir_modal() {
     var id_plaza = $("#plaza_llamadas").val();
-    $.ajax({
-        url: "/tblClasificacionProblema/GetDepartamentoResponsable/",
-        type: "GET",
-        data: { 'IdPlaza': id_plaza },
-        success: function (data, textStatus, jqXHR) {
-            $('#departamento').empty();
-            $('#departamento').append('<option disabled selected>Departamento</option>');
-            for (var i = 0; i < data.length; i++) {
-                $('#departamento').append($('<option>', {
-                    value: data[i].Clave,
-                    text: data[i].Concepto
-                }));
-            }
-        },
-        error: function (jqXHR, textStatus, errorThrown) {
+    //$.ajax({
+    //    url: "/tblClasificacionProblema/GetDepartamentoResponsable/",
+    //    type: "GET",
+    //    data: { 'IdPlaza': id_plaza },
+    //    success: function (data, textStatus, jqXHR) {
+    //        $('#departamento').empty();
+    //        $('#departamento').append('<option disabled selected>Departamento</option>');
+    //        for (var i = 0; i < data.length; i++) {
+    //            $('#departamento').append($('<option>', {
+    //                value: data[i].Clave,
+    //                text: data[i].Concepto
+    //            }));
+    //        }
+    //    },
+    //    error: function (jqXHR, textStatus, errorThrown) {
 
-        }
-    });
-    $.ajax({
-        url: "/tblClasificacionProblema/GetPrioridad/",
-        type: "GET",
-        data: { 'IdPlaza': id_plaza },
-        success: function (data, textStatus, jqXHR) {
-            $('#prioridad').empty();
-            $('#prioridad').append('<option disabled selected>Prioridad</option>');
-            for (var i = 0; i < data.length; i++) {
-                $('#prioridad').append($('<option>', {
-                    value: data[i].clvPrioridadQueja,
-                    text: data[i].Descripcion
-                }));
-            }
-        },
-        error: function (jqXHR, textStatus, errorThrown) {
+    //    }
+    //});
+    //$.ajax({
+    //    url: "/tblClasificacionProblema/GetPrioridad/",
+    //    type: "GET",
+    //    data: { 'IdPlaza': id_plaza },
+    //    success: function (data, textStatus, jqXHR) {
+    //        $('#prioridad').empty();
+    //        $('#prioridad').append('<option disabled selected>Prioridad</option>');
+    //        for (var i = 0; i < data.length; i++) {
+    //            $('#prioridad').append($('<option>', {
+    //                value: data[i].clvPrioridadQueja,
+    //                text: data[i].Descripcion
+    //            }));
+    //        }
+    //    },
+    //    error: function (jqXHR, textStatus, errorThrown) {
 
-        }
-    });
+    //    }
+    //});
     $.ajax({
         url: "/tblClasificacionProblema/GetTurno/",
         type: "GET",
@@ -714,9 +846,12 @@ function abrir_modal() {
     
 }
 function regresar() {
+    PNotify.removeAll()
+    $('#panel_botones').hide();
     $('#panel_tiene_queja').hide();
     $('#sinQueja').modal('hide');
-    $('#nombre_plaza').text("");
+    $('#nombre_plaza').text(""); 
+    $('#sub_titulo').text(""); 
     $('#tipo_llamante').hide();
     $('#exito').modal('hide');
     $('#regresar').hide();
@@ -741,6 +876,7 @@ function regresar() {
     $('#panel_solucion').hide();
     $('.collapse').collapse('show');
     document.getElementById("llamadaForm").reset();
+    $('#Mygrafica').show();
 }
 
 
@@ -753,10 +889,14 @@ function ModalHistorialPagos() {
         data: { 'plaza': id_plaza, 'contrato': contrato_enviar },
         success: function (data, textStatus, jqXHR) {
             $('#tableHistorialPago tbody').empty();
-            for (var i = 0; i < data.length; i++) {
-                var fecha = data[i].Fecha;
-                fecha = fecha.slice(0,10);
-                $('#tableHistorialPago tbody').append('<tr><td>' + data[i].Serie + '</td><td>' + data[i].Folio + '</td><td>' + fecha + '</td><td>' + data[i].Importe + '</td><td>' + data[i].Status + '</td><td><button class="btn btn-sm btn-priamry" id="' + data[i].clv_Factura + '" onclick="mostrar_ticket(this)">Ticket</button></td></tr>');
+            if (data.length == 0) {
+                $('#tableHistorialPago tbody').append('<tr><td colspan="6"><p class="text-center alert-warning">No hay registros con este número de contrato</p></td></tr>');
+            } else {
+                for (var i = 0; i < data.length; i++) {
+                    var fecha = data[i].Fecha;
+                    fecha = fecha.slice(0, 10);
+                    $('#tableHistorialPago tbody').append('<tr><td>' + data[i].Serie + '</td><td>' + data[i].Folio + '</td><td>' + fecha + '</td><td>' + data[i].Importe + '</td><td>' + data[i].Status + '</td><td><button class="btn btn-sm btn-priamry" id="' + data[i].clv_Factura + '" onclick="mostrar_ticket(this)">Ticket</button></td></tr>');
+                }
             }
         },
         error: function (jqXHR, textStatus, errorThrown) {
@@ -776,14 +916,18 @@ function ModalHistorialLlamadas() {
         data: { 'contrato': contrato_enviar },
         success: function (data, textStatus, jqXHR) {
             $('#tableHistorialLlamadas tbody').empty();
-            for (var i = 0; i < data.length; i++) {
-                var fecha = data[i].Fecha;
-                fecha = fecha.slice(0, 10);
-                var inicio = data[i].HoraInicial;
-                inicio = inicio.slice(11, 19);
-                var fin = data[i].HoraFinal;
-                fin = fin.slice(11, 19);
-                $('#tableHistorialLlamadas tbody').append('<tr><td>' + fecha + '</td><td>' + inicio + '</td><td>' + fin + '</td><td>' + data[i].Motivo + '</td><td>' + data[i].Solucion + '</td><td>' + data[i].Usuario + '</td></tr>');
+            if (data.length == 0) {
+                $('#tableHistorialLlamadas tbody').append('<tr><td colspan="6"><p class="text-center alert-warning">No hay registros con este número de contrato</p></td></tr>');
+            } else {
+                for (var i = 0; i < data.length; i++) {
+                    var fecha = data[i].Fecha;
+                    fecha = fecha.slice(0, 10);
+                    var inicio = data[i].HoraInicial;
+                    inicio = inicio.slice(11, 19);
+                    var fin = data[i].HoraFinal;
+                    fin = fin.slice(11, 19);
+                    $('#tableHistorialLlamadas tbody').append('<tr><td>' + fecha + '</td><td>' + inicio + '</td><td>' + fin + '</td><td>' + data[i].Motivo + '</td><td>' + data[i].Solucion + '</td><td>' + data[i].Usuario + '</td></tr>');
+                }
             }
         },
         error: function (jqXHR, textStatus, errorThrown) {
@@ -803,11 +947,15 @@ function ModalHistorialQuejas() {
     $.ajax({
         url: "/Llamada/HistorialQuejasL/",
         type: "GET",
-        data: { 'plaza': id_plaza, 'tipser': tipser, 'contrato': contrato_enviar },
+        data: { 'plaza': id_plaza, 'contrato': contrato_enviar,'filtro':0},
         success: function (data, textStatus, jqXHR) {
             $('#tableHistorialQuejas tbody').empty();
-            for (var i = 0; i < data.length; i++) {
-                $('#tableHistorialQuejas tbody').append('<tr><td>' + data[i].Queja + '</td><td>' + data[i].Status + '</td><td>' + data[i].Contrato + '</td><td>' + data[i].Nombre + '</td><td>' + data[i].Calle + '</td><td>' + data[i].Numero + '</td><td>' + data[i].TipSer + '</td></tr>');
+            if (data.length == 0) {
+                $('#tableHistorialQuejas tbody').append('<tr><td colspan="7"><p class="text-center alert-warning">No hay registros con este número de contrato</p></td></tr>');
+            } else {
+                for (var i = 0; i < data.length; i++) {
+                    $('#tableHistorialQuejas tbody').append('<tr onclick="detalleQueja(' + data[i].Queja + ')"><td>' + data[i].Queja + '</td><td>' + data[i].Status + '</td><td>' + data[i].Contrato + '</td><td>' + data[i].Nombre + '</td><td>' + data[i].Calle + '</td><td>' + data[i].Numero + '</td><td>' + data[i].TipSer + '</td><td><button class="btn btn-sm btn-priamry" onclick="detalleQueja(' + data[i].Queja + ')"> Ver</button></td></tr>');
+                }
             }
         },
         error: function (jqXHR, textStatus, errorThrown) {
@@ -832,12 +980,16 @@ function ModalConsultarPagos() {
         success: function (data, textStatus, jqXHR) {
             $('#tableConsultaPago1 tbody').empty();
             $('#tableConsultaPago2 tbody').empty();
-            for (var i = 0; i < data.length; i++) {
-                for (var j = 0; j < data[i].pagos.length; j++) {
-                    $('#tableConsultaPago1 tbody').append('<tr><td>' + data[i].pagos[j].Aparato + '</td><td>' + data[i].pagos[j].Concepto + '</td><td>' + data[i].pagos[j].PagoAde + '</td><td>' + data[i].pagos[j].TVExt + '</td><td>' + data[i].pagos[j].MesesCor + '</td><td>' + data[i].pagos[j].MesesPa + '</td><td>' + data[i].pagos[j].Importe + '</td><td>' + data[i].pagos[j].PeriodoPI + '</td><td>' + data[i].pagos[j].PeriodoPF + '</td><td>' + data[i].pagos[j].PuntosAPO + '</td><td>' + data[i].pagos[j].PuntosAPA + '</td><td>' + data[i].pagos[j].PuntosAPAde + '</td><td>' + data[i].pagos[j].PuntosCombo + '</td><td>' + data[i].pagos[j].PuntosPPE + '</td><td>' + data[i].pagos[j].ImporteBoni + '</td></tr>');
-                }
-                for (var j = 0; j < data[i].pagosl.length; j++) {
-                    $('#tableConsultaPago2 tbody').append('<tr><td>' + data[i].pagosl[j].Descripcion + '</td><td>' + data[i].pagosl[j].Total + '</td></tr>');
+            if (data.length == 0) {
+                $('#tableConsultaPago1 tbody').append('<tr><td colspan="15"><p class="text-center alert-warning">No hay registros con este número de contrato</p></td></tr>');
+            } else {
+                for (var i = 0; i < data.length; i++) {
+                    for (var j = 0; j < data[i].pagos.length; j++) {
+                        $('#tableConsultaPago1 tbody').append('<tr><td>' + data[i].pagos[j].Aparato + '</td><td>' + data[i].pagos[j].Concepto + '</td><td>' + data[i].pagos[j].PagoAde + '</td><td>' + data[i].pagos[j].TVExt + '</td><td>' + data[i].pagos[j].MesesCor + '</td><td>' + data[i].pagos[j].MesesPa + '</td><td>$' + data[i].pagos[j].Importe + '</td><td>' + data[i].pagos[j].PeriodoPI + '</td><td>' + data[i].pagos[j].PeriodoPF + '</td><td>' + data[i].pagos[j].PuntosAPO + '</td><td>' + data[i].pagos[j].PuntosAPA + '</td><td>' + data[i].pagos[j].PuntosAPAde + '</td><td>' + data[i].pagos[j].PuntosCombo + '</td><td>' + data[i].pagos[j].PuntosPPE + '</td><td>' + data[i].pagos[j].ImporteBoni + '</td></tr>');
+                    }
+                    for (var j = 0; j < data[i].pagosl.length; j++) {
+                        $('#tableConsultaPago2 tbody').append('<tr><td>' + data[i].pagosl[j].Descripcion + '</td><td>$' + data[i].pagosl[j].Total + '</td></tr>');
+                    }
                 }
             }
         },
@@ -873,14 +1025,14 @@ function mostrar_ticket(e) {
             $('#calle_sucursal').text(data[0].calle_sucursal);
             $('#numero_sucursal').text("#"+data[0].numero_sucursal);
             $('#colonia_sucursal').text(data[0].colonia_sucursal);
-            $('#cp_sucursal').text(data[0].cp_sucursal);
+            $('#cp_sucursal').text("CP:"+data[0].cp_sucursal);
             $('#ciudad_sucursal').text(data[0].ciudad_sucursal);
             $('#telefono_sucursal').text(data[0].telefono_sucursal);
             $('#recibo').text("Recibo " + data[0].serie_factura);
             $('#contrato_ticket').text("Contrato: " + data[0].contrato);
             $('#nombre_cliente').text(data[0].nombre_cliente);
             $('#nombre_calle').text(data[0].nombre_calle);
-            $('#nombre_numero').text(data[0].nombre_numero);
+            $('#nombre_numero').text("#"+data[0].nombre_numero);
             $('#cp_cliente').text("CP " + data[0].cp_cliente);
             $('#colonia_cliente').text("Col: "+data[0].colonia_cliente);
             $('#ciudad_cliente').text(data[0].ciudad_cliente);
@@ -902,4 +1054,54 @@ function mostrar_ticket(e) {
     });
 
     $('#modal_ticket').modal('show');
+}
+
+function detalleQueja(e) {
+    var id_plaza = $("#plaza_llamadas").val();
+    $.ajax({
+        url: "/Llamada/detalleQueja/",
+        type: "GET",
+        data: { 'id_plaza': id_plaza, 'queja': e },
+        success: function (data, textStatus, jqXHR) {
+            $('#queja_error').hide();
+            $('#panel_detalle_queja').show();
+            $('#queja_servicio').empty();
+            $('#queja_servicio').append('<option selected disabled>' + data.tipo_servicio + '</option>');
+            $('#queja_id').text(data.queja);
+            $('#queja_contrato').text(data.contrato);
+            $('#queja_reporte').val(data.problema);
+            $('#queja_observaciones').val(data.observaciones);
+            $('#queja_status').text(data.status);
+            $('#queja_solicitud').text(data.solicitud);
+            $('#queja_fecha_ejecuto').text(data.ejecucion);
+            $('#queja_ejecuto').text(data.usuario_ejecuto); 
+            var v1 = data.v1;
+            var v1 = v1.split(" ", 2);
+            var v2 = data.v2;
+            var v2 = v2.split(" ", 2);
+            var v3 = data.v3;
+            var v3 = v3.split(" ", 2);
+            $('#queja_fecha_v1').val(v1[0]);
+            $('#queja_hora_v1').val(v1[1]);
+            $('#queja_fecha_v2').val(v2[0]);
+            $('#queja_hora_v2').val(v2[1]);
+            $('#queja_fecha_v3').val(v3[0]);
+            $('#queja_hora_v3').val(v3[1]);
+            $('#queja_nombre_cliente').text(nombre);
+            $('#queja_colonia').text(colonia);
+            $('#queja_calle').text(calle);
+            $('#queja_numero').text(numero);
+            $('#queja_usuario').text(data.usuario);
+            $('#queja_problema').empty();
+            $('#queja_problema').append('<option selected disabled>' + data.class_problema + '</option>');
+            $('#queja_clas_solucion').empty();
+            $('#queja_clas_solucion').append('<option selected disabled>' + data.clas_solucion + '</option>');
+            $('#queja_solucion').val(data.solucion);
+        },
+        error: function (jqXHR, textStatus, errorThrown) {
+            $('#panel_detalle_queja').hide(); 
+            $('#queja_error').show();
+        }
+    });
+    $('#detalle_queja').modal('show');
 }

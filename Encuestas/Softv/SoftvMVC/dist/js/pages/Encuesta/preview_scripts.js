@@ -8,8 +8,8 @@ $(function () {
         success: function (data, textStatus, jqXHR) {
             for (var i = 0; i < data.length; i++) {
                 $('#conexion_plaza').append($('<option>', {
-                    value: data[i].IdConexion,
-                    text: data[i].Plaza
+                    value: data[i].IdPlaza,
+                    text: data[i].Ciudad
                 }));
             }
         },
@@ -55,6 +55,18 @@ function plaza_conexion() {
     $('#panel_busqueda').show();
 
     var id_plaza = $('#conexion_plaza').val();
+    $.ajax({
+        url: "/Conexion/listaPlazas/",
+        type: "GET",
+        data: { "idPlaza": id_plaza },
+        success: function (data, textStatus, jqXHR) {
+            var ciudad_select = $("#conexion_plaza option:selected").text();
+            $('#texto_plaza').text("CIUDAD DE " + ciudad_select.toUpperCase() + ", SERVIDOR " + data.Plaza.toUpperCase());
+        },
+        error: function (jqXHR, textStatus, errorThrown) {
+
+        }
+    });
     $.ajax({
         url: "/CLIENTE/getTipoServicio/",
         type: "GET",

@@ -233,6 +233,19 @@ function plaza_conexion() {
     $('#panel_tabla_clientes').hide();
     $('#panel_clientes').show();
     $('.collapse').collapse('show');
+    var id_plaza = $('#paza_conectando').val();
+    $.ajax({
+        url: "/Conexion/listaPlazas/",
+        type: "GET",
+        data: { "idPlaza": id_plaza },
+        success: function (data, textStatus, jqXHR) {
+            var ciudad_select = $("#paza_conectando option:selected").text();
+            $('#nombre_plaza').text("CIUDAD DE " + ciudad_select.toUpperCase() + ", SERVIDOR " + data.Plaza.toUpperCase());
+        },
+        error: function (jqXHR, textStatus, errorThrown) {
+
+        }
+    });
 }
 
 function getColonia(id, id_plaza,colonia) {
