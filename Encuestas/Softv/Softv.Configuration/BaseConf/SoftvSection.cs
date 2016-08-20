@@ -447,6 +447,13 @@ namespace SoftvConfiguration
         {
             get { return (ProcesoEncuestaElement)base["ProcesoEncuesta"]; }
         }
+
+        [ConfigurationProperty("ClienteNoContesto")]
+        public ClienteNoContestoElement ClienteNoContesto
+        {
+            get { return (ClienteNoContestoElement)base["ClienteNoContesto"]; }
+        }
+  
   
     }
 }

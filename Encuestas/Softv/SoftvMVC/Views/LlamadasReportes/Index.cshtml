@@ -42,10 +42,15 @@
                                         </div>
                                         <div class="row">
                                             <div class="col-md-3">
+                                                <label>Selecciona el servicio</label>
+                                                <select class="form-control" id="tipo_servicio" disabled><option selected disabled>--------------------</option></select>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-3">
                                                 <label>Motivo Llamada</label>
                                                 <select class="form-control" id="motivo" disabled>
                                                     <option selected disabled>--------------------</option>
-                                                    <option value="99999">Todos los Motivos</option>
                                                     <option value="1">Informacíon</option>
                                                     <option value="2">Atención Telefónica</option>
                                                 </select>
@@ -58,6 +63,15 @@
                                             </div>
                                         </div>
                                         <div class="row">
+                                            <div class="col-md-3">
+                                                <label>Llamadas Telefónicas con</label>
+                                                <select class="form-control" id="quejas" disabled>
+                                                    <option selected disabled>--------------------</option>
+                                                    <option value="1">Con Queja</option>
+                                                    <option value="1">Sin Queja</option>
+                                                    <option value="1">Ambos</option>
+                                                </select>
+                                            </div>
                                             <div class="col-md-3">
                                                 <label>Usuario</label>
                                                 <select class="form-control" id="usuario" disabled>

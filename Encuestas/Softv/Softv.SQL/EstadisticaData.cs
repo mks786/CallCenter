@@ -64,34 +64,36 @@ namespace Softv.DAO
 
 
 
-        public override List<EstadisticaEntity> GetEstadistica(int plaza, int idencuesta, DateTime finicio, DateTime ffin)
+        public override List<EstadisticaEntity> GetEstadistica(int? IdUniverso, int? IdEncuesta, string Inicio, string Fin)
         {
             List<EstadisticaEntity> EncuestaList = new List<EstadisticaEntity>();
             using (SqlConnection connection = new SqlConnection(SoftvSettings.Settings.Estadistica.ConnectionString))
             {
 
                 SqlCommand comandoSql = CreateCommand("GraficasPreguntas", connection);
-                AssingParameter(comandoSql, "@IdConexion", plaza);
-                AssingParameter(comandoSql, "@IdEncuesta", idencuesta);
-                AssingParameter(comandoSql, "@FechaInicio", finicio);
-                AssingParameter(comandoSql, "@FechaFin", ffin);
+                AssingParameter(comandoSql, "@IdEncuesta", IdEncuesta);
+                AssingParameter(comandoSql, "@IdUniverso", IdUniverso);
+                AssingParameter(comandoSql, "@FechaI", Inicio);
+                AssingParameter(comandoSql, "@FechaF", Fin);
                 IDataReader rd = null;
                 try
                 {
                     if (connection.State == ConnectionState.Closed)
                         connection.Open();
                     rd = ExecuteReader(comandoSql);
-
+                    int total = rd.FieldCount;
                     while (rd.Read())
                     {
+
                         EstadisticaEntity a = new EstadisticaEntity();
+                        a.Cantidad = Int32.Parse(rd[6].ToString());
                         a.NombreEncuesta = rd[0].ToString();
-                        a.IdTipoPregunta = Int32.Parse(rd[1].ToString());
-                        a.IdPregunta = Int32.Parse(rd[2].ToString());
+                        a.IdTipoPregunta = Int32.Parse(rd[2].ToString());
+                        a.IdPregunta = Int32.Parse(rd[1].ToString());
                         a.Pregunta = rd[3].ToString();
                         a.Respuesta = rd[5].ToString();
                         a.RespuestaAbierta = rd[4].ToString();
-                        a.Cantidad = Int32.Parse(rd[6].ToString());
+                        a.RespuestaAbierta = rd[4].ToString();
                         EncuestaList.Add(a);
                     }
                 }

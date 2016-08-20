@@ -188,20 +188,50 @@ function LlenarTabla(cadena, filtro) {
 function Opciones(full) {
     var opc;
     if (full.StatusEncuesta == "Pendiente") {
-        opc = "<a href='/ProcesoEncuesta/Details/" + full.IdProcesoEnc + "' class='btn btn-success btn-xs' type='button' id='" + full.IdProcesoEnc + "' onclick='aplicarEncuesta(this)'><i class='fa fa-chart' aria-hidden='true'></i> Aplicar</a> <button id='" + full.IdProcesoEnc + "' class='btn btn-xs btn-danger'><i class='fa fa-trash-o' aria-hidden='true'></i> Eliminar</button>";
+        opc = "<a href='/ProcesoEncuesta/Details/" + full.IdProcesoEnc + "' class='btn btn-success btn-xs' type='button' id='" + full.IdProcesoEnc + "' onclick='aplicarEncuesta(this)'><i class='fa fa-chart' aria-hidden='true'></i> Aplicar</a> <button id='" + full.IdProcesoEnc + "' class='btn btn-xs btn-danger' id='" + full.IdProcesoEnc + "' onclick='ModalElimiar(this.id);'><i class='fa fa-trash-o' aria-hidden='true'></i> Eliminar</button>";
 
     } else {
-        opc = "<a href='/ProcesoEncuesta/Details/" + full.IdProcesoEnc + "' class='btn btn-primary btn-xs' type='button' id='" + full.IdProcesoEnc + "' onclick='aplicarEncuesta(this)'><i class='fa fa-chart' aria-hidden='true'></i> Consultar</a> <button id='" + full.IdProcesoEnc + "' class='btn btn-xs btn-danger'><i class='fa fa-trash-o' aria-hidden='true'></i> Eliminar</button>";
+        opc = "<a href='/ProcesoEncuesta/Details/" + full.IdProcesoEnc + "' class='btn btn-primary btn-xs' type='button' id='" + full.IdProcesoEnc + "' onclick='aplicarEncuesta(this)'><i class='fa fa-chart' aria-hidden='true'></i> Consultar</a> <button id='" + full.IdProcesoEnc + "' class='btn btn-xs btn-danger' id='" + full.IdProcesoEnc + "' onclick='ModalElimiar(this.id)'><i class='fa fa-trash-o' aria-hidden='true'></i> Eliminar</button>";
     }
         // opc = "<button class='btn btn-info btn-xs Detalle' type='button' id='" + id + "' onclick='MostrarDetalles(this)'><i class='fa fa-info' aria-hidden='true'></i> Detalles</button> <button class='btn btn-warning btn-xs Editar' type='button' id='" + id + "' onclick='editarLlamada(this)'><i class='fa fa-pencil' aria-hidden='true'></i> Editar</button>";
     return opc;
 }
 
+function ModalElimiar(id) {
+    $('#eliminar_proceso').val(id);
+    $('#ModalEliminarOpen').modal('show');
+}
 
-
-function MostrarModalProceso() {
+function MostrarModalProceso(id) {
     $('#NuevoProceso').modal('show');
 }
+
+$('#confirmaElimina').on('click', function () {
+    var id = $('#eliminar_proceso').val();
+    $('#NuevoProceso').modal('hide');
+    $.ajax({
+        url: "/ProcesoEncuesta/EliminarProceso/",
+        type: "POST",
+        data: {'proceso':id},
+        success: function (data, textStatus, jqXHR) {
+            swal({
+                title: "!Hecho!", text: "Proceso eliminado correctamente!",
+                type: "success",
+                showCancelButton: false,
+                confirmButtonColor: "#5cb85c",
+                confirmButtonText: "Aceptar",
+                cancelButtonText: "Aceptar",
+                closeOnConfirm: false,
+                closeOnCancel: false
+            }, function (isConfirm) {
+                location.reload();
+            });
+        },
+        error: function (jqXHR, textStatus, errorThrown) {
+
+        }
+    });
+});
 
 function GuardarUniverso() {
     var universo = {};
@@ -278,6 +308,7 @@ function GuardarUniverso() {
                        if (contratado == '' && suspendidos == '' && cancelados == '' && temporales == '' && instalados == '' && desconectados == '' && fuera_servicio == '') {
                            swal("Por favor selecciona un status del cliente", "", "error");
                        } else {
+                           $('#NuevoProceso').modal('hide');
                            universo.tipo_busqueda = tipo_de_busqueda;
                            universo.contratado = contratado;
                            universo.suspendidos = suspendidos;
@@ -286,13 +317,11 @@ function GuardarUniverso() {
                            universo.desconectados = desconectados;
                            universo.fuera_servicio = fuera_servicio;
                            //envio de datos po estatus
-                           $('#Espere').modal('show');
                            $.ajax({
                                url: "/ProcesoEncuesta/Create/",
                                type: "POST",
                                data:universo,
                                success: function (data, textStatus, jqXHR) {
-                                   $('#Espere').modal('hide');
                                    swal({
                                        title: "!Hecho!", text: "Proceso agregado exitosamente, ahora puedes aplicar la encuesta!",
                                        type: "success",
@@ -364,7 +393,7 @@ function GuardarUniverso() {
                                        universo.tipo_fecha_nombre = "Fecha de Cancelación";
                                    }
                                    //enviar datos con fechas
-                                   console.log(universo);
+                                   $('#NuevoProceso').modal('hide');
                                    $.ajax({
                                        url: "/ProcesoEncuesta/Create/",
                                        type: "POST",

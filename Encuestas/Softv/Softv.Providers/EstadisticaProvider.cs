@@ -62,7 +62,7 @@ namespace Softv.Providers
         /// <summary>
         /// Abstract method to get all Estadistica
         /// </summary>
-        public abstract List<EstadisticaEntity> GetEstadistica(int plaza, int idencuesta, DateTime finicio, DateTime ffin);
+        public abstract List<EstadisticaEntity> GetEstadistica(int? IdUniverso, int? IdEncuesta, string Inicio, string Fin);
 
       
         //public abstract List<EstadisticaEntity> GetEstadisticasEncuestas(int plaza, int idencuesta, DateTime finicio, DateTime ffin);

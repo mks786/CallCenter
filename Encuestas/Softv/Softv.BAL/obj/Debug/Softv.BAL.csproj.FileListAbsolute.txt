@@ -300,8 +300,6 @@ C:\Users\Israel\Documents\projects\CallCenter2\CallCenter\Encuestas\Softv\Softv.
 C:\Users\Israel\Documents\projects\CallCenter2\CallCenter\Encuestas\Softv\Softv.BAL\obj\Debug\Softv.BAL.pdb
 C:\Users\Israel\Documents\projects\CallCenter2\CallCenter\Encuestas\Softv\Softv.BAL\bin\Debug\Dapper.dll
 C:\Users\Israel\Documents\projects\CallCenter2\CallCenter\Encuestas\Softv\Softv.BAL\bin\Debug\Dapper.xml
-C:\Users\Israel\Documents\projects\CallCenter\CallCenter\Encuestas\Softv\Softv.BAL\obj\Debug\Softv.BAL.csprojResolveAssemblyReference.cache
-C:\Users\Israel\Documents\projects\CallCenter\CallCenter\Encuestas\Softv\Softv.BAL\obj\Debug\Softv.BAL.dll
 C:\Users\Israel\Documents\projects\CallCenter\CallCenter\Encuestas\Softv\Softv.BAL\bin\Debug\Softv.BAL.dll
 C:\Users\Israel\Documents\projects\CallCenter\CallCenter\Encuestas\Softv\Softv.BAL\bin\Debug\Softv.BAL.pdb
 C:\Users\Israel\Documents\projects\CallCenter\CallCenter\Encuestas\Softv\Softv.BAL\bin\Debug\Dapper.dll
@@ -316,4 +314,6 @@ C:\Users\Israel\Documents\projects\CallCenter\CallCenter\Encuestas\Softv\Softv.B
 C:\Users\Israel\Documents\projects\CallCenter\CallCenter\Encuestas\Softv\Softv.BAL\bin\Debug\Softv.Providers.pdb
 C:\Users\Israel\Documents\projects\CallCenter\CallCenter\Encuestas\Softv\Softv.BAL\bin\Debug\Softv.SQL.pdb
 C:\Users\Israel\Documents\projects\CallCenter\CallCenter\Encuestas\Softv\Softv.BAL\bin\Debug\Dapper.xml
+C:\Users\Israel\Documents\projects\CallCenter\CallCenter\Encuestas\Softv\Softv.BAL\obj\Debug\Softv.BAL.csprojResolveAssemblyReference.cache
+C:\Users\Israel\Documents\projects\CallCenter\CallCenter\Encuestas\Softv\Softv.BAL\obj\Debug\Softv.BAL.dll
 C:\Users\Israel\Documents\projects\CallCenter\CallCenter\Encuestas\Softv\Softv.BAL\obj\Debug\Softv.BAL.pdb

@@ -76,6 +76,7 @@
     <Compile Include="Contracts\ICiudadServidor.cs" />
     <Compile Include="Contracts\IClasificacionProblema.cs" />
     <Compile Include="Contracts\ICLIENTE.cs" />
+    <Compile Include="Contracts\IClienteNoContesto.cs" />
     <Compile Include="Contracts\ICliente_Apellido.cs" />
     <Compile Include="Contracts\ICOLONIA.cs" />
     <Compile Include="Contracts\IConexion.cs" />

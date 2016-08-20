@@ -406,6 +406,7 @@ namespace SoftvMVC.Controllers
             ViewBag.FechaCreacion = Encuesta.Encuesta.FechaCreacion;
             ViewData["preguntas"] = Lista_de_preguntas;
             ViewData["id"] = id;
+            ViewData["terminado"] = proceso.StatusEncuesta;
             ViewData["proceso"] = proceso;
             return View("PreView");
         }
@@ -557,6 +558,36 @@ namespace SoftvMVC.Controllers
         {
             var lista = proxy.GetProcesoEncuestaList().Where(o => o.IdEncuesta == id_encuesta).ToList();
             return Json(lista,JsonRequestBehavior.AllowGet);
+        }
+
+        public ActionResult EliminarProceso(int proceso)
+        {
+             ConexionController c = new ConexionController();
+            SqlCommand comandoSql;
+            SqlCommand comandoSql2;
+            SqlConnection conexionSQL = new SqlConnection("Data Source=FABIAN-PC\\INSTANCIASQL2014;Initial Catalog=Encuestas;User ID =sa;Password=0601x-2Ñ;");
+            SqlConnection conexionSQL2 = new SqlConnection("Data Source=FABIAN-PC\\INSTANCIASQL2014;Initial Catalog=Encuestas;User ID =sa;Password=0601x-2Ñ;");
+            try
+            {
+                conexionSQL.Open();
+                conexionSQL2.Open();
+            }
+            catch
+            { }
+
+            try
+            {
+                comandoSql = new SqlCommand("delete from UniversoEncuesta where IdProcesoEnc =" + proceso + "");
+                comandoSql.Connection = conexionSQL;
+                comandoSql.ExecuteReader();
+                comandoSql2 = new SqlCommand("delete from ProcesosEncuestas where IdProcesoEnc =" + proceso + "");
+                comandoSql2.Connection = conexionSQL2;
+                comandoSql2.ExecuteReader();
+                
+            }
+            catch { }
+
+            return Json(1,JsonRequestBehavior.AllowGet);
         }
     }
 

@@ -110,6 +110,7 @@
     <xs:complexContent mixed="false">
       <xs:extension base="tns:BaseEntity">
         <xs:sequence>
+          <xs:element minOccurs="0" name="Activa" nillable="true" type="xs:boolean" />
           <xs:element minOccurs="0" name="Aplicada" nillable="true" type="xs:boolean" />
           <xs:element minOccurs="0" name="Descripcion" nillable="true" type="xs:string" />
           <xs:element minOccurs="0" name="FechaCreacion" nillable="true" type="xs:string" />
@@ -157,6 +158,7 @@
         <xs:sequence>
           <xs:element minOccurs="0" name="IdPregunta" nillable="true" type="xs:int" />
           <xs:element minOccurs="0" name="IdProceso" nillable="true" type="xs:int" />
+          <xs:element minOccurs="0" name="IdUniverso" nillable="true" type="xs:int" />
           <xs:element minOccurs="0" name="Id_ResOpcMult" nillable="true" type="xs:int" />
           <xs:element minOccurs="0" name="Pregunta" nillable="true" type="tns:PreguntaEntity" />
           <xs:element minOccurs="0" name="RelEncuestaClientes" nillable="true" type="tns:RelEncuestaClientesEntity" />
@@ -971,8 +973,10 @@
         <xs:sequence>
           <xs:element minOccurs="0" name="Aplicada" nillable="true" type="xs:boolean" />
           <xs:element minOccurs="0" name="Cel" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="Ciudad" nillable="true" type="xs:string" />
           <xs:element minOccurs="0" name="Contrato" nillable="true" type="xs:long" />
           <xs:element minOccurs="0" name="Id" nillable="true" type="xs:int" />
+          <xs:element minOccurs="0" name="IdPlaza" nillable="true" type="xs:int" />
           <xs:element minOccurs="0" name="IdProcesoEnc" nillable="true" type="xs:int" />
           <xs:element minOccurs="0" name="Nombre" nillable="true" type="xs:string" />
           <xs:element minOccurs="0" name="Tel" nillable="true" type="xs:string" />
@@ -992,8 +996,9 @@
       <xs:extension base="tns:BaseEntity">
         <xs:sequence>
           <xs:element minOccurs="0" name="Encuesta" nillable="true" type="xs:string" />
-          <xs:element minOccurs="0" name="FechaFin" nillable="true" type="xs:dateTime" />
-          <xs:element minOccurs="0" name="FechaInicio" nillable="true" type="xs:dateTime" />
+          <xs:element minOccurs="0" name="FechaFin" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="FechaInicio" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="IdEncuesta" type="xs:int" />
           <xs:element minOccurs="0" name="IdProcesoEnc" nillable="true" type="xs:int" />
           <xs:element minOccurs="0" name="NombreProceso" nillable="true" type="xs:string" />
           <xs:element minOccurs="0" name="StatusEncuesta" nillable="true" type="xs:string" />
@@ -1001,6 +1006,7 @@
           <xs:element minOccurs="0" name="TipSer" nillable="true" type="xs:string" />
           <xs:element minOccurs="0" name="TipoBusqueda" nillable="true" type="xs:string" />
           <xs:element minOccurs="0" name="TipoFecha" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="Total" type="xs:int" />
           <xs:element minOccurs="0" name="UniversoEncuesta" nillable="true" type="tns:UniversoEncuestaEntity" />
           <xs:element minOccurs="0" name="Usuario" nillable="true" type="xs:string" />
         </xs:sequence>
@@ -1014,4 +1020,25 @@
     </xs:sequence>
   </xs:complexType>
   <xs:element name="ArrayOfProcesoEncuestaEntity" nillable="true" type="tns:ArrayOfProcesoEncuestaEntity" />
+  <xs:complexType name="ClienteNoContestoEntity">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:BaseEntity">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="Contrato" nillable="true" type="xs:long" />
+          <xs:element minOccurs="0" name="FechaApli" nillable="true" type="xs:dateTime" />
+          <xs:element minOccurs="0" name="IdEncuesta" nillable="true" type="xs:int" />
+          <xs:element minOccurs="0" name="IdNoContesto" nillable="true" type="xs:int" />
+          <xs:element minOccurs="0" name="IdPlaza" nillable="true" type="xs:int" />
+          <xs:element minOccurs="0" name="IdProcesoEnc" nillable="true" type="xs:int" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="ClienteNoContestoEntity" nillable="true" type="tns:ClienteNoContestoEntity" />
+  <xs:complexType name="ArrayOfClienteNoContestoEntity">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="ClienteNoContestoEntity" nillable="true" type="tns:ClienteNoContestoEntity" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfClienteNoContestoEntity" nillable="true" type="tns:ArrayOfClienteNoContestoEntity" />
 </xs:schema>

@@ -34,10 +34,10 @@ namespace Softv.BAL
         ///Get Estadistica
         ///</summary>
         [DataObjectMethod(DataObjectMethodType.Select, true)]
-        public static List<EstadisticaEntity> GetAll(int plaza, int idencuesta, DateTime finicio, DateTime ffin)
+        public static List<EstadisticaEntity> GetAll(int? IdUniverso, int? IdEncuesta, string Inicio, string Fin)
         {
             List<EstadisticaEntity> entities = new List<EstadisticaEntity>();
-            entities = ProviderSoftv.Estadistica.GetEstadistica(plaza, idencuesta, finicio, ffin);
+            entities = ProviderSoftv.Estadistica.GetEstadistica(IdUniverso,IdEncuesta,Inicio,Fin);
 
             return entities ?? new List<EstadisticaEntity>();
         }

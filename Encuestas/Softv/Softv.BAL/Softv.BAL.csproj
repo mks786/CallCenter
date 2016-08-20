@@ -50,6 +50,7 @@
     <Compile Include="CiudadServidor.cs" />
     <Compile Include="ClasificacionProblema.cs" />
     <Compile Include="CLIENTE.cs" />
+    <Compile Include="ClienteNoContesto.cs" />
     <Compile Include="Cliente_Apellido.cs" />
     <Compile Include="COLONIA.cs" />
     <Compile Include="Conexion.cs" />

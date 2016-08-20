@@ -105,9 +105,10 @@
     try
     {
       entity_ClasificacionProblema = new ClasificacionProblemaEntity();
-    entity_ClasificacionProblema.ClvProblema = (long?)(GetFromReader(reader,"ClvProblema"));
+    entity_ClasificacionProblema.ClvProblema = (int?)(GetFromReader(reader,"ClvProblema"));
           entity_ClasificacionProblema.Descripcion = (String)(GetFromReader(reader,"Descripcion", IsString : true));
         entity_ClasificacionProblema.Activo = (bool?)(GetFromReader(reader,"Activo"));
+        entity_ClasificacionProblema.TipServ = (string)(GetFromReader(reader, "TipServ", IsString: true));
           
     }
     catch (Exception ex)

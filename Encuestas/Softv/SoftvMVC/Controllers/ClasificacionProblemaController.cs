@@ -337,7 +337,49 @@ namespace SoftvMVC.Controllers
             public List<ClasificacionProblemaEntity> data { get; set; }
         }
 
+        public ActionResult getAllServicios()
+        {
+            var lista = proxycon.GetConexionList();
+            List<TipServ> clasificacion = new List<TipServ>();
+            foreach (var item in lista)
+            {
+                ConexionController c = new ConexionController();
+                SqlCommand comandoSql;
+                int id = Int32.Parse(item.IdConexion.ToString());
+                SqlConnection conexionSQL2 = new SqlConnection(c.DameConexion(id));
+                try
+                {
+                    conexionSQL2.Open();
+                }
+                catch
+                { }
+                try
+                {
+                    comandoSql = new SqlCommand("SELECT * FROM TipServ WHERE Habilitar = 0");
+                    comandoSql.Connection = conexionSQL2;
+                    SqlDataReader reader = comandoSql.ExecuteReader();
+                    if (reader.HasRows)
+                    {
+                        while (reader.Read())
+                        {
+                            TipServ datos = new TipServ();
+                            datos.clvProblema = Int32.Parse(reader[0].ToString());
+                            datos.descripcion = reader[1].ToString();
+                            clasificacion.Add(datos);
+                        }
+                    }
+                }
+                catch { }
+            }
+            var listado = clasificacion.GroupBy(x => x.descripcion).Select(y => y.First());
+            return Json(listado, JsonRequestBehavior.AllowGet);
+        }
 
+        public class TipServ
+        {
+            public int clvProblema { get; set; }
+            public string descripcion { get; set; }
+        }
     }
 
 }

@@ -1,4 +1,5 @@
-﻿$(document).ready(function () {
+﻿var id_proceso_encuesta;
+$(document).ready(function () {
     LlenarTabla();
     $('#filtro_select').on('change', function () {
         var tipo = $(this).val();
@@ -16,11 +17,12 @@ function LlenarTabla(cadena,filtro) {
     $('#TablaUniversoClientes').dataTable({
         "processing": true,
         "serverSide": true,
-        "bFilter": false,
-        "dom": '<"toolbar">frtip',
+        "bFilter": true,
+        //"dom": '<"toolbar">frtip',
+        dom: 'lirtip',
         "bDestroy": true,
         "info": true,
-        "stateSave": false,
+        "stateSave": true,
         "lengthMenu": [[10, 20, 50, 100], [10, 20, 50, 100]],
         "ajax": {
             "url": "/UniversoEncuesta/GetList/",
@@ -44,7 +46,6 @@ function LlenarTabla(cadena,filtro) {
             {
                 sortable: false,
                 "render": function (data, type, full, meta) {
-                    console.log(full);
                     return Opciones(full);  //Es el campo de opciones de la tabla.
                 }
             }
@@ -80,7 +81,7 @@ function LlenarTabla(cadena,filtro) {
 }
 
 function Opciones(full) {
-    console.log(full);
+    id_proceso_encuesta = full.IdProcesoEnc;
     if(full.Aplicada == false){
         return "<button class='btn btn-primary' onclick='aplicando_encuesta(this)' data-proceso='" + full.IdProcesoEnc + "' id='" + full.Id + "' data-contrato='" + full.Contrato + "' data-name='" + full.Nombre + "' data-plaza='" + full.IdPlaza + "'>Aplicar</button>";
     } else {
@@ -93,6 +94,7 @@ function aplicando_encuesta(e) {
     var contrato = e.getAttribute("data-contrato");
     var id = e.getAttribute("id");
     var proceso = e.getAttribute("data-proceso");
+    
     $('#id_universo').val(id);
     $('#id_proceso').val(proceso);
     
@@ -245,4 +247,58 @@ function changeStatus(id) {
 function buscar() {
     var cadena = $('#text_buscar').val();
     LlenarTabla(cadena,'');
+}
+
+function confirmaTerminar() {
+    $('#Espere').modal('show');
+    $.ajax({
+        url: "/UniversoEncuesta/TerminarProceso/",
+        type: "POST",
+        data: { 'id_proceso': id_proceso_encuesta },
+        success: function (data, textStatus, jqXHR) {
+            $('#Espere').modal('hide');
+            swal({
+                title: "!Hecho!", text: "El proceso fue terminado exitosamente!!",
+                type: "success",
+                showCancelButton: false,
+                confirmButtonColor: "#5cb85c",
+                confirmButtonText: "Aceptar",
+                cancelButtonText: "Aceptar",
+                closeOnConfirm: false,
+                closeOnCancel: false
+            }, function (isConfirm) {
+                location.reload();
+            });
+        },
+        error: function (jqXHR, textStatus, errorThrown) {
+
+        }
+    });
+}
+
+function confirmaTerminarEncuesta() {
+    var id_universo = $('#id_universo').val();
+    var contrato_id = $('#cliente_id').val();
+    $.ajax({
+        url: "/UniversoEncuesta/TerminarEncuesta/",
+        type: "POST",
+        data: { 'id_proceso': id_universo, 'contrato': contrato_id },
+        success: function (data, textStatus, jqXHR) {
+            swal({
+                title: "!Hecho!", text: "El proceso fue terminado exitosamente!!",
+                type: "success",
+                showCancelButton: false,
+                confirmButtonColor: "#5cb85c",
+                confirmButtonText: "Aceptar",
+                cancelButtonText: "Aceptar",
+                closeOnConfirm: false,
+                closeOnCancel: false
+            }, function (isConfirm) {
+                location.reload();
+            });
+        },
+        error: function (jqXHR, textStatus, errorThrown) {
+
+        }
+    });
 }

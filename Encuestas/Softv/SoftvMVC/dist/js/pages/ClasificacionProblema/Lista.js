@@ -1,6 +1,21 @@
 ﻿$(document).ready(function () {
     LlenarTabla();
+    
+    $.ajax({
+        url: "/ClasificacionProblema/getAllServicios/",
+        type: "GET",
+        success: function (data, textStatus, jqXHR) {
+            console.log(data);
+            $('#tipo_servicio_select').empty();
+            $('#tipo_servicio_select').append('<option selected disabled>--------------------------</option>');
+            for (var i = 0; i < data.length; i++) {
+                $('#tipo_servicio_select').append('<option value="' + data[i].descripcion + '"> ' + data[i].descripcion + '</option>');
+            }
+        },
+        error: function (jqXHR, textStatus, errorThrown) {
 
+        }
+    });
 });
 
 
@@ -45,6 +60,7 @@ function LlenarTabla(cadena) {
                      return "<p class='text-center'><img src='" + ruta + "' /></p>";  //Es el campo de opciones de la tabla.
                  }
              },
+             { "data": "TipServ", "orderable": false },
 
         {
             sortable: false,
@@ -96,15 +112,15 @@ function Opciones(e) {
     var opc;
     if (Problema_editar == "False") {
         if (Problema_eliminar == "False") {
-            opc = "<button class='btn btn-info btn-xs Detalle' data-name='" + e.Descripcion + "'data-name2='" + e.Activo + "' id='" + e.ClvProblema + "' onclick='detalle_Problema(this)' type='button'>Detalles</button>";
+            opc = '';
         } else {
-            opc = "<button class='btn btn-info btn-xs Detalle' data-name='" + e.Descripcion + "'data-name2='" + e.Activo + "' id='" + e.ClvProblema + "' onclick='detalle_Problema(this)' type='button'>Detalles</button> <button class='btn btn-danger btn-xs eliminar'  type='button' data-name='" + e.Descripcion + "'data-name2='" + e.Activo + "' id='" + e.ClvProblema + "' > <i class='fa fa-trash-o' aria-hidden='true'></i> Eliminar</button>";
+            opc = "<button class='btn btn-danger btn-xs eliminar'  type='button' data-name='" + e.Descripcion + "'data-name2='" + e.Activo + "' id='" + e.ClvProblema + "' > <i class='fa fa-trash-o' aria-hidden='true'></i> Eliminar</button>";
         }
     } else {
         if (Problema_eliminar == "False") {
-            opc = "<button class='btn btn-info btn-xs Detalle' data-name='" + e.Descripcion + "'data-name2='" + e.Activo + "' id='" + e.ClvProblema + "' onclick='detalle_Problema(this)' type='button'>Detalles</button> <button class='btn btn-warning btn-xs Editar' data-name='" + e.Descripcion + "'data-name2='" + e.Activo + "' id='" + e.ClvProblema + "' type='button' onclick='editar_Problema(this)'><i class='fa fa-pencil' aria-hidden='true'></i> Editar</button>";
+            opc = "<button class='btn btn-warning btn-xs Editar' data-name='" + e.Descripcion + "'data-name2='" + e.Activo + "' id='" + e.ClvProblema + "' data-name3='" + e.TipServ + "' type='button' onclick='editar_Problema(this)'><i class='fa fa-pencil' aria-hidden='true'></i> Editar</button>";
         } else {
-            opc = "<button class='btn btn-info btn-xs Detalle' data-name='" + e.Descripcion + "'data-name2='" + e.Activo + "' id='" + e.ClvProblema + "' onclick='detalle_Problema(this)' type='button'>Detalles</button> <button class='btn btn-warning btn-xs Editar' data-name='" + e.Descripcion + "'data-name2='" + e.Activo + "' id='" + e.ClvProblema + "' type='button' onclick='editar_Problema(this)'><i class='fa fa-pencil' aria-hidden='true'></i> Editar</button> <button class='btn btn-danger btn-xs eliminar'  type='button' data-name='" + e.Descripcion + "'data-name2='" + e.Activo + "' id='" + e.ClvProblema + "' > <i class='fa fa-trash-o' aria-hidden='true'></i> Eliminar</button>";
+            opc = "<button class='btn btn-warning btn-xs Editar' data-name='" + e.Descripcion + "'data-name2='" + e.Activo + "' id='" + e.ClvProblema + "' data-name3='" + e.TipServ + "' type='button' onclick='editar_Problema(this)'><i class='fa fa-pencil' aria-hidden='true'></i> Editar</button> <button class='btn btn-danger btn-xs eliminar'  type='button' data-name='" + e.Descripcion + "'data-name2='" + e.Activo + "' id='" + e.ClvProblema + "' > <i class='fa fa-trash-o' aria-hidden='true'></i> Eliminar</button>";
         }
     }
 

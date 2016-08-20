@@ -153,6 +153,20 @@ namespace Softv.BAL
         }
 
 
+
+
+
+
+        [DataObjectMethod(DataObjectMethodType.Update, true)]
+        public static int ActualizarUniverso(int? Id)
+        {
+            int result = ProviderSoftv.UniversoEncuesta.ActualizarUniverso(Id);
+            return result;
+        }
+
+
+
+
     }
 
 

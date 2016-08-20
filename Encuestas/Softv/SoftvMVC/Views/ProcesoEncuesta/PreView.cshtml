@@ -5,7 +5,8 @@
     Random rnd = new Random();
     int number = rnd.Next(1, 13);
     <script>
-        var id_proceso_cargar = @ViewData["id"];
+    var id_proceso_cargar = @ViewData["id"];
+        var status =  @Html.Raw(Json.Encode(ViewData["terminado"]));
     </script>
 }
 @if (Session["username"] == null)
@@ -18,6 +19,15 @@
 
 <head>
     <script src="~/plugins/jQuery/jQuery-2.1.4.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            if(status == "Pendiente"){
+                $('#ter_proceso').prop('disabled',false);
+            }else{
+                $('#ter_proceso').prop('disabled',true);
+            }
+        });
+    </script>
     <!-- Tell the browser to be responsive to screen width -->
     <!-- Bootstrap 3.3.5 -->
     <title>PreView | @ViewBag.NombreEncuesta</title>
@@ -44,7 +54,7 @@
 </head>
 <body>
     <div class="container" style="background-color:#fff;  box-shadow: 2px 2px 5px #999; margin-top:10px; width:70%;">
-
+        <h3 style="padding-left:20px;"><a href="/UniversoEncuesta" style="color:#5bc0de;"><i class="fa fa-angle-left" aria-hidden="true"></i> Menú Principal</a></h3>
         <div class="row">
             <section class="content-header">
                 <h3 class="text-center">
@@ -54,7 +64,6 @@
                     @proceso.NombreProceso
                 </h5>
             </section>
-            <h3 style="padding-left:20px;"><a href="/UniversoEncuesta" style="color:#5bc0de;"><i class="fa fa-angle-left" aria-hidden="true"></i> Menú Principal</a></h3>
             <h1 class="text-center" style="color:#4b646f;"><strong>@ViewBag.NombreEncuesta</strong></h1>
             
 
@@ -80,6 +89,11 @@
                     <option value="2">Por aplicar</option>
                     <option value="3">Todas</option>
                 </select>
+            </div>
+            <div class="col-md-5">
+                <p class="text-right">
+                    <button class="btn btn-danger" data-toggle="modal" data-target="#ModalTerminar" id="ter_proceso" disabled><i class="fa fa-exclamation-triangle" aria-hidden="true"></i> Terminar Proceso</button>
+                </p>
             </div>
         </div><br />
         <div class="row">
@@ -127,16 +141,25 @@
                     </script>
 
                     <div class="container" style="background-color:#fff;  box-shadow: 2px 2px 5px #999; margin-top:10px; width:96%;">
-                        <h4 id="nombre_cliente_modal" style="color:#4b646f;"></h4>
-                        <h5 id="ciudad_modal" style="color:#4b646f;"></h5>
-                        <h5 id="colonia_modal" style="color:#4b646f;"></h5>
-                        <h5 id="calle_modal" style="color:#4b646f;"></h5>
-                        <h5 id="numero_modal" style="color:#4b646f;"></h5>
-                        <h5 id="telefono_modal" style="color:#4b646f;"></h5>
-                        <input type="hidden" id="cliente_id" />
-                        <input type="hidden" id="encuesta_id" name="id_encuesta" value="@ViewBag.IdEncuesta">
-                        <input type="hidden" id="id_universo" name="id_universo">
-                        <input type="hidden" id="id_proceso">
+                        <div class="row">
+                            <div class="col-md-7">
+                                <h4 id="nombre_cliente_modal" style="color:#4b646f;"></h4>
+                                <h5 id="ciudad_modal" style="color:#4b646f;"></h5>
+                                <h5 id="colonia_modal" style="color:#4b646f;"></h5>
+                                <h5 id="calle_modal" style="color:#4b646f;"></h5>
+                                <h5 id="numero_modal" style="color:#4b646f;"></h5>
+                                <h5 id="telefono_modal" style="color:#4b646f;"></h5>
+                                <input type="hidden" id="cliente_id" />
+                                <input type="hidden" id="encuesta_id" name="id_encuesta" value="@ViewBag.IdEncuesta">
+                                <input type="hidden" id="id_universo" name="id_universo">
+                                <input type="hidden" id="id_proceso">
+                            </div>
+                            <div class="col-md-5">
+                                <p class="text-right">
+                                    <button class="btn btn-danger" data-toggle="modal" data-target="#TerminarEncuestaModal"><i class="fa fa-exclamation-triangle" aria-hidden="true"></i> Terminar Encuesta</button>
+                                </p>
+                            </div>
+                        </div>
                         <br />
                         <hr />
                         <form id="encuestaForm">
@@ -198,7 +221,67 @@
                 </div>
             </div>
         </div>
-    </div></body>
+    </div>
+
+    <div class="modal fade" id="ModalTerminar" role="dialog">
+        <div class="modal-dialog modal-sm">
+            <div class="modal-content">
+                <div class="modal-header alert-danger">
+                    <button class="close" aria-label="Close" type="button" data-dismiss="modal"><span aria-hidden="true">×</span></button>
+                    <h4 class="modal-title text-center">Terminar Encuesta</h4>
+                </div>
+                <div class="modal-body">
+                    <input type="hidden" id="idpregunta" />
+                    <p><strong>¿Realmente deseas terminar el proceso?</strong> <br /> <small class="text-justify">Sí terminas el proceso todas las encuestas pendientes seran cambiadas a terminanas afectando tus estadísticas.</small></p>
+
+                </div>
+                <div class="modal-footer">
+                    <button class="btn btn-danger" type="button" onclick="confirmaTerminar()">Terminar</button>
+                    <button class="btn btn-primary " type="button" data-dismiss="modal">Cerrar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade" id="TerminarEncuestaModal" role="dialog">
+        <div class="modal-dialog modal-sm">
+            <div class="modal-content">
+                <div class="modal-header alert-danger">
+                    <button class="close" aria-label="Close" type="button" data-dismiss="modal"><span aria-hidden="true">×</span></button>
+                    <h4 class="modal-title text-center">Terminar Encuesta</h4>
+                </div>
+                <div class="modal-body">
+                    <input type="hidden" id="idpregunta" />
+                    <p><strong>¿Realmente deseas terminar la encuesta?</strong> <br /> <small class="text-justify">Esta opción se usa para encuestas donde el cliente no contestó o no quiso realizar la encuesta.</small></p>
+
+                </div>
+                <div class="modal-footer">
+                    <button class="btn btn-danger" type="button" onclick="confirmaTerminarEncuesta()">Terminar</button>
+                    <button class="btn btn-primary " type="button" data-dismiss="modal">Cerrar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade bs-example-modal-md" data-backdrop="static" data-keyboard="false" id="Espere" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel">
+        <div class="modal-dialog modal-md">
+            <div class="modal-content">
+                <div class="modal-header">
+                </div>
+                <div class="modal-body">
+                    <div class="row form-group" align="right">
+
+                        <div class="col-md-12">
+                            <p class="text-center">Realizando opereación espere un momento por favor</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
 </html>
 <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/u/bs/jszip-2.5.0,pdfmake-0.1.18,dt-1.10.12,b-1.2.1,b-flash-1.2.1,b-html5-1.2.1,b-print-1.2.1,r-2.1.0/datatables.min.css" />
 <script type="text/javascript" src="https://cdn.datatables.net/u/bs/jszip-2.5.0,pdfmake-0.1.18,dt-1.10.12,b-1.2.1,b-flash-1.2.1,b-html5-1.2.1,b-print-1.2.1,r-2.1.0/datatables.min.js"></script>

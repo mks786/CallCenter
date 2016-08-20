@@ -52,6 +52,7 @@
     <Compile Include="CiudadServidorEntity.cs" />
     <Compile Include="ClasificacionProblemaEntity.cs" />
     <Compile Include="CLIENTEEntity.cs" />
+    <Compile Include="ClienteNoContestoEntity.cs" />
     <Compile Include="Cliente_ApellidoEntity.cs" />
     <Compile Include="COLONIAEntity.cs" />
     <Compile Include="ConexionEntity.cs" />

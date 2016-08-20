@@ -69,6 +69,19 @@
     /// </summary>
     public abstract int EditUniversoEncuesta(UniversoEncuestaEntity entity_UniversoEncuesta);
 
+
+
+
+
+
+
+    public abstract int ActualizarUniverso(int? Id);
+
+
+
+
+
+
     /// <summary>
     /// Abstract method to get all UniversoEncuesta
     /// </summary>

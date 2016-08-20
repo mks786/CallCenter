@@ -239,6 +239,10 @@ namespace Softv.Providers
         {
             get { return ProcesoEncuestaProvider.Instance; }
         }
+        public static ClienteNoContestoProvider ClienteNoContesto
+        {
+            get { return ClienteNoContestoProvider.Instance; }
+        }
   
     }
 }

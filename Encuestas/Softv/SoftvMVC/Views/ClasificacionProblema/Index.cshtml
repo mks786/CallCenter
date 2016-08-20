@@ -50,6 +50,7 @@
                             <td><b>IdProblema</b></td>
                             <td><b>Descripción</b></td>
                             <td class="text-center"><b>Activo</b></td>
+                            <td><b>Tipo Servicio</b></td>
                             <td><b>Opciones</b></td>
                         </tr>
                     </thead>
@@ -91,8 +92,8 @@
                     </div>
                     <div class="col-md-4">
                         <p>Tipo de Servicio</p>
-                        <select class="form-control">
-                            <option value="value">text</option>
+                        <select class="form-control" id="tipo_servicio_select">
+                            <option selected disabled>--------------------------</option>
                         </select>
                     </div>
                 </div>
@@ -152,26 +153,32 @@
             <div class="modal-header">
                 <button class="close" aria-label="Close" type="button" data-dismiss="modal"><span aria-hidden="true">×</span></button>
                 <h4 class="modal-title">Editar Clasificación Problemas</h4>
-                <input type="hidden" class="form-control detalle_permiso6" id="idProblem_edit" />
+                <input type="hidden" class="form-control detalle_permiso6" id="id_clasificacion" />
             </div>
 
             <div class="modal-body">
 
                 <div class="row">
-                    <div class="col-md-6">
-                        <label>Descripción:</label>
-                        <input type="text" class="form-control editar_Problem" />
+                    <div class="col-md-5">
+                        <p>Descripción</p>
+                        <input type="text" class="form-control" id="descripcion_editar" >
                     </div>
 
-                    <div class="col-xs-3">
-                        <div style="padding-left:65px;">
-                            <label for="Activo_editar">Activo:</label>
-                            <div>
-                                <input type="checkbox" id="Activo_editar" checked="checked" />
+                    <div class="col-md-2">
+                        <p>Status</p>
+                        <div style="padding-left:20px;">
+                            <div class="checkbox icheck">
+                                <input id="Activo_editar" type="checkbox" name="Activo" />
+                                <label for="Activo_editar">Activo</label>
                             </div>
                         </div>
                     </div>
-
+                    <div class="col-md-5">
+                        <p>Tipo de Servicio</p>
+                        <select class="form-control" id="tipo_servicio_edit">
+                            <option selected disabled>--------------------------</option>
+                        </select>
+                    </div>
                 </div>
 
                 <div class="modal-footer">

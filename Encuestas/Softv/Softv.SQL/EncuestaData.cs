@@ -125,17 +125,14 @@ namespace Softv.DAO
         }
 
 
-        public override List<EstadisticaEncuesta> getestadisticas(int plaza, int idencuesta, DateTime finicio, DateTime ffin)
+        public override List<EstadisticaEncuesta> getestadisticas(int IdUniverso)
         {
             List<EstadisticaEncuesta> EncuestaList = new List<EstadisticaEncuesta>();
             using (SqlConnection connection = new SqlConnection(SoftvSettings.Settings.Encuesta.ConnectionString))
             {
 
                 SqlCommand comandoSql = CreateCommand("GraficasPreguntas", connection);
-                AssingParameter(comandoSql, "@IdConexion", plaza);
-                AssingParameter(comandoSql, "@IdEncuesta", idencuesta);
-                AssingParameter(comandoSql, "@FechaInicio", finicio);
-                AssingParameter(comandoSql, "@FechaFin", ffin);
+                AssingParameter(comandoSql, "@IdUniverso", IdUniverso);
                 IDataReader rd = null;
                 try
                 {
@@ -146,7 +143,7 @@ namespace Softv.DAO
                     while (rd.Read())
                     {
                         EstadisticaEncuesta a = new EstadisticaEncuesta();
-                        a.NombreEncuesta=rd[0].ToString();
+                        a.NombreEncuesta = rd[0].ToString();
                         a.pregunta = rd[1].ToString();
                         a.respuesta = rd[2].ToString();
                         a.cantidad = Int32.Parse(rd[3].ToString());

@@ -1432,6 +1432,8 @@ C:\Users\Israel\Documents\projects\CallCenter2\CallCenter\Encuestas\Softv\SoftvM
 C:\Users\Israel\Documents\projects\CallCenter2\CallCenter\Encuestas\Softv\SoftvMVC\obj\Debug\SoftvMVC.pdb
 C:\Users\Israel\Documents\projects\CallCenter2\CallCenter\Encuestas\Softv\SoftvMVC\bin\Dapper.dll
 C:\Users\Israel\Documents\projects\CallCenter2\CallCenter\Encuestas\Softv\SoftvMVC\bin\Dapper.xml
+C:\Users\Israel\Documents\projects\CallCenter\CallCenter\Encuestas\Softv\SoftvMVC\obj\Debug\SoftvMVC.csproj.App.config
+C:\Users\Israel\Documents\projects\CallCenter\CallCenter\Encuestas\Softv\SoftvMVC\obj\Debug\SoftvMVC.csprojResolveAssemblyReference.cache
 C:\Users\Israel\Documents\projects\CallCenter\CallCenter\Encuestas\Softv\SoftvMVC\bin\SoftvMVC.dll.config
 C:\Users\Israel\Documents\projects\CallCenter\CallCenter\Encuestas\Softv\SoftvMVC\bin\SoftvMVC.dll
 C:\Users\Israel\Documents\projects\CallCenter\CallCenter\Encuestas\Softv\SoftvMVC\bin\SoftvMVC.pdb
@@ -1441,7 +1443,5 @@ C:\Users\Israel\Documents\projects\CallCenter\CallCenter\Encuestas\Softv\SoftvMV
 C:\Users\Israel\Documents\projects\CallCenter\CallCenter\Encuestas\Softv\SoftvMVC\bin\Globals.pdb
 C:\Users\Israel\Documents\projects\CallCenter\CallCenter\Encuestas\Softv\SoftvMVC\bin\Softv.Entities.pdb
 C:\Users\Israel\Documents\projects\CallCenter\CallCenter\Encuestas\Softv\SoftvMVC\bin\Dapper.xml
-C:\Users\Israel\Documents\projects\CallCenter\CallCenter\Encuestas\Softv\SoftvMVC\obj\Debug\SoftvMVC.csproj.App.config
-C:\Users\Israel\Documents\projects\CallCenter\CallCenter\Encuestas\Softv\SoftvMVC\obj\Debug\SoftvMVC.csprojResolveAssemblyReference.cache
 C:\Users\Israel\Documents\projects\CallCenter\CallCenter\Encuestas\Softv\SoftvMVC\obj\Debug\SoftvMVC.dll
 C:\Users\Israel\Documents\projects\CallCenter\CallCenter\Encuestas\Softv\SoftvMVC\obj\Debug\SoftvMVC.pdb

@@ -2066,6 +2066,12 @@
   <wsdl:message name="IUniversoEncuesta_DeleteUniversoEncuesta_OutputMessage">
     <wsdl:part name="parameters" element="tns:DeleteUniversoEncuestaResponse" />
   </wsdl:message>
+  <wsdl:message name="IUniversoEncuesta_ActualizarUniverso_InputMessage">
+    <wsdl:part name="parameters" element="tns:ActualizarUniverso" />
+  </wsdl:message>
+  <wsdl:message name="IUniversoEncuesta_ActualizarUniverso_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ActualizarUniversoResponse" />
+  </wsdl:message>
   <wsdl:message name="IProcesoEncuesta_GetProcesoEncuesta_InputMessage">
     <wsdl:part name="parameters" element="tns:GetProcesoEncuesta" />
   </wsdl:message>
@@ -2113,6 +2119,54 @@
   </wsdl:message>
   <wsdl:message name="IProcesoEncuesta_DeleteProcesoEncuesta_OutputMessage">
     <wsdl:part name="parameters" element="tns:DeleteProcesoEncuestaResponse" />
+  </wsdl:message>
+  <wsdl:message name="IClienteNoContesto_GetClienteNoContesto_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetClienteNoContesto" />
+  </wsdl:message>
+  <wsdl:message name="IClienteNoContesto_GetClienteNoContesto_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetClienteNoContestoResponse" />
+  </wsdl:message>
+  <wsdl:message name="IClienteNoContesto_GetDeepClienteNoContesto_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetDeepClienteNoContesto" />
+  </wsdl:message>
+  <wsdl:message name="IClienteNoContesto_GetDeepClienteNoContesto_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetDeepClienteNoContestoResponse" />
+  </wsdl:message>
+  <wsdl:message name="IClienteNoContesto_GetClienteNoContestoList_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetClienteNoContestoList" />
+  </wsdl:message>
+  <wsdl:message name="IClienteNoContesto_GetClienteNoContestoList_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetClienteNoContestoListResponse" />
+  </wsdl:message>
+  <wsdl:message name="IClienteNoContesto_GetClienteNoContestoPagedList_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetClienteNoContestoPagedList" />
+  </wsdl:message>
+  <wsdl:message name="IClienteNoContesto_GetClienteNoContestoPagedList_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetClienteNoContestoPagedListResponse" />
+  </wsdl:message>
+  <wsdl:message name="IClienteNoContesto_GetClienteNoContestoPagedListXml_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetClienteNoContestoPagedListXml" />
+  </wsdl:message>
+  <wsdl:message name="IClienteNoContesto_GetClienteNoContestoPagedListXml_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetClienteNoContestoPagedListXmlResponse" />
+  </wsdl:message>
+  <wsdl:message name="IClienteNoContesto_AddClienteNoContesto_InputMessage">
+    <wsdl:part name="parameters" element="tns:AddClienteNoContesto" />
+  </wsdl:message>
+  <wsdl:message name="IClienteNoContesto_AddClienteNoContesto_OutputMessage">
+    <wsdl:part name="parameters" element="tns:AddClienteNoContestoResponse" />
+  </wsdl:message>
+  <wsdl:message name="IClienteNoContesto_UpdateClienteNoContesto_InputMessage">
+    <wsdl:part name="parameters" element="tns:UpdateClienteNoContesto" />
+  </wsdl:message>
+  <wsdl:message name="IClienteNoContesto_UpdateClienteNoContesto_OutputMessage">
+    <wsdl:part name="parameters" element="tns:UpdateClienteNoContestoResponse" />
+  </wsdl:message>
+  <wsdl:message name="IClienteNoContesto_DeleteClienteNoContesto_InputMessage">
+    <wsdl:part name="parameters" element="tns:DeleteClienteNoContesto" />
+  </wsdl:message>
+  <wsdl:message name="IClienteNoContesto_DeleteClienteNoContesto_OutputMessage">
+    <wsdl:part name="parameters" element="tns:DeleteClienteNoContestoResponse" />
   </wsdl:message>
   <wsdl:portType name="IUsuario">
     <wsdl:operation name="GetUsuario">
@@ -3571,6 +3625,10 @@
       <wsdl:input wsaw:Action="http://tempuri.org/IUniversoEncuesta/DeleteUniversoEncuesta" message="tns:IUniversoEncuesta_DeleteUniversoEncuesta_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IUniversoEncuesta/DeleteUniversoEncuestaResponse" message="tns:IUniversoEncuesta_DeleteUniversoEncuesta_OutputMessage" />
     </wsdl:operation>
+    <wsdl:operation name="ActualizarUniverso">
+      <wsdl:input wsaw:Action="http://tempuri.org/IUniversoEncuesta/ActualizarUniverso" message="tns:IUniversoEncuesta_ActualizarUniverso_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IUniversoEncuesta/ActualizarUniversoResponse" message="tns:IUniversoEncuesta_ActualizarUniverso_OutputMessage" />
+    </wsdl:operation>
   </wsdl:portType>
   <wsdl:portType name="IProcesoEncuesta">
     <wsdl:operation name="GetProcesoEncuesta">
@@ -3604,6 +3662,40 @@
     <wsdl:operation name="DeleteProcesoEncuesta">
       <wsdl:input wsaw:Action="http://tempuri.org/IProcesoEncuesta/DeleteProcesoEncuesta" message="tns:IProcesoEncuesta_DeleteProcesoEncuesta_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IProcesoEncuesta/DeleteProcesoEncuestaResponse" message="tns:IProcesoEncuesta_DeleteProcesoEncuesta_OutputMessage" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:portType name="IClienteNoContesto">
+    <wsdl:operation name="GetClienteNoContesto">
+      <wsdl:input wsaw:Action="http://tempuri.org/IClienteNoContesto/GetClienteNoContesto" message="tns:IClienteNoContesto_GetClienteNoContesto_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IClienteNoContesto/GetClienteNoContestoResponse" message="tns:IClienteNoContesto_GetClienteNoContesto_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetDeepClienteNoContesto">
+      <wsdl:input wsaw:Action="http://tempuri.org/IClienteNoContesto/GetDeepClienteNoContesto" message="tns:IClienteNoContesto_GetDeepClienteNoContesto_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IClienteNoContesto/GetDeepClienteNoContestoResponse" message="tns:IClienteNoContesto_GetDeepClienteNoContesto_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetClienteNoContestoList">
+      <wsdl:input wsaw:Action="http://tempuri.org/IClienteNoContesto/GetClienteNoContestoList" message="tns:IClienteNoContesto_GetClienteNoContestoList_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IClienteNoContesto/GetClienteNoContestoListResponse" message="tns:IClienteNoContesto_GetClienteNoContestoList_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetClienteNoContestoPagedList">
+      <wsdl:input wsaw:Action="http://tempuri.org/IClienteNoContesto/GetClienteNoContestoPagedList" message="tns:IClienteNoContesto_GetClienteNoContestoPagedList_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IClienteNoContesto/GetClienteNoContestoPagedListResponse" message="tns:IClienteNoContesto_GetClienteNoContestoPagedList_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetClienteNoContestoPagedListXml">
+      <wsdl:input wsaw:Action="http://tempuri.org/IClienteNoContesto/GetClienteNoContestoPagedListXml" message="tns:IClienteNoContesto_GetClienteNoContestoPagedListXml_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IClienteNoContesto/GetClienteNoContestoPagedListXmlResponse" message="tns:IClienteNoContesto_GetClienteNoContestoPagedListXml_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="AddClienteNoContesto">
+      <wsdl:input wsaw:Action="http://tempuri.org/IClienteNoContesto/AddClienteNoContesto" message="tns:IClienteNoContesto_AddClienteNoContesto_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IClienteNoContesto/AddClienteNoContestoResponse" message="tns:IClienteNoContesto_AddClienteNoContesto_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="UpdateClienteNoContesto">
+      <wsdl:input wsaw:Action="http://tempuri.org/IClienteNoContesto/UpdateClienteNoContesto" message="tns:IClienteNoContesto_UpdateClienteNoContesto_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IClienteNoContesto/UpdateClienteNoContestoResponse" message="tns:IClienteNoContesto_UpdateClienteNoContesto_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="DeleteClienteNoContesto">
+      <wsdl:input wsaw:Action="http://tempuri.org/IClienteNoContesto/DeleteClienteNoContesto" message="tns:IClienteNoContesto_DeleteClienteNoContesto_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IClienteNoContesto/DeleteClienteNoContestoResponse" message="tns:IClienteNoContesto_DeleteClienteNoContesto_OutputMessage" />
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:binding name="BasicHttpBinding_IUsuario" type="tns:IUsuario">
@@ -6821,6 +6913,15 @@
         <soap:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
+    <wsdl:operation name="ActualizarUniverso">
+      <soap:operation soapAction="http://tempuri.org/IUniversoEncuesta/ActualizarUniverso" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
   </wsdl:binding>
   <wsdl:binding name="BasicHttpBinding_IProcesoEncuesta" type="tns:IProcesoEncuesta">
     <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
@@ -6889,6 +6990,81 @@
     </wsdl:operation>
     <wsdl:operation name="DeleteProcesoEncuesta">
       <soap:operation soapAction="http://tempuri.org/IProcesoEncuesta/DeleteProcesoEncuesta" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="BasicHttpBinding_IClienteNoContesto" type="tns:IClienteNoContesto">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="GetClienteNoContesto">
+      <soap:operation soapAction="http://tempuri.org/IClienteNoContesto/GetClienteNoContesto" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetDeepClienteNoContesto">
+      <soap:operation soapAction="http://tempuri.org/IClienteNoContesto/GetDeepClienteNoContesto" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetClienteNoContestoList">
+      <soap:operation soapAction="http://tempuri.org/IClienteNoContesto/GetClienteNoContestoList" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetClienteNoContestoPagedList">
+      <soap:operation soapAction="http://tempuri.org/IClienteNoContesto/GetClienteNoContestoPagedList" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetClienteNoContestoPagedListXml">
+      <soap:operation soapAction="http://tempuri.org/IClienteNoContesto/GetClienteNoContestoPagedListXml" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AddClienteNoContesto">
+      <soap:operation soapAction="http://tempuri.org/IClienteNoContesto/AddClienteNoContesto" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdateClienteNoContesto">
+      <soap:operation soapAction="http://tempuri.org/IClienteNoContesto/UpdateClienteNoContesto" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DeleteClienteNoContesto">
+      <soap:operation soapAction="http://tempuri.org/IClienteNoContesto/DeleteClienteNoContesto" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>
@@ -7028,6 +7204,9 @@
       <soap:address location="http://localhost:64481/SoftvWCFService.svc" />
     </wsdl:port>
     <wsdl:port name="BasicHttpBinding_IProcesoEncuesta" binding="tns:BasicHttpBinding_IProcesoEncuesta">
+      <soap:address location="http://localhost:64481/SoftvWCFService.svc" />
+    </wsdl:port>
+    <wsdl:port name="BasicHttpBinding_IClienteNoContesto" binding="tns:BasicHttpBinding_IClienteNoContesto">
       <soap:address location="http://localhost:64481/SoftvWCFService.svc" />
     </wsdl:port>
   </wsdl:service>

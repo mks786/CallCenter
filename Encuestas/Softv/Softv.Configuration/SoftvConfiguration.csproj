@@ -53,6 +53,7 @@
     <Compile Include="CiudadServidorElement.cs" />
     <Compile Include="ClasificacionProblemaElement.cs" />
     <Compile Include="CLIENTEElement.cs" />
+    <Compile Include="ClienteNoContestoElement.cs" />
     <Compile Include="Cliente_ApellidoElement.cs" />
     <Compile Include="COLONIAElement.cs" />
     <Compile Include="ConexionElement.cs" />

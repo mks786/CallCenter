@@ -1,7 +1,7 @@
 ﻿$(document).ready(function () {
 
     $.ajax({
-        url: "/Conexion/ListaConexiones/",
+        url: "/CIUDAD/getAllCiudades/",
         type: "GET",
         success: function (data, textStatus, jqXHR) {
             for (var i = 0; i < data.length; i++) {

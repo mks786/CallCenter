@@ -360,9 +360,6 @@ C:\Users\Israel\Documents\projects\CallCenter2\CallCenter\Encuestas\Softv\SoftvW
 C:\Users\Israel\Documents\projects\CallCenter2\CallCenter\Encuestas\Softv\SoftvWCFService\obj\Debug\SoftvWCFService.pdb
 C:\Users\Israel\Documents\projects\CallCenter2\CallCenter\Encuestas\Softv\SoftvWCFService\bin\Dapper.dll
 C:\Users\Israel\Documents\projects\CallCenter2\CallCenter\Encuestas\Softv\SoftvWCFService\bin\Dapper.xml
-C:\Users\Israel\Documents\projects\CallCenter\CallCenter\Encuestas\Softv\SoftvWCFService\obj\Debug\SoftvWCFService.csprojResolveAssemblyReference.cache
-C:\Users\Israel\Documents\projects\CallCenter\CallCenter\Encuestas\Softv\SoftvWCFService\obj\Debug\SoftvWCFService.dll
-C:\Users\Israel\Documents\projects\CallCenter\CallCenter\Encuestas\Softv\SoftvWCFService\obj\Debug\SoftvWCFService.pdb
 C:\Users\Israel\Documents\projects\CallCenter\CallCenter\Encuestas\Softv\SoftvWCFService\bin\SoftvWCFService.dll.config
 C:\Users\Israel\Documents\projects\CallCenter\CallCenter\Encuestas\Softv\SoftvWCFService\bin\SoftvWCFService.dll
 C:\Users\Israel\Documents\projects\CallCenter\CallCenter\Encuestas\Softv\SoftvWCFService\bin\SoftvWCFService.pdb
@@ -380,3 +377,6 @@ C:\Users\Israel\Documents\projects\CallCenter\CallCenter\Encuestas\Softv\SoftvWC
 C:\Users\Israel\Documents\projects\CallCenter\CallCenter\Encuestas\Softv\SoftvWCFService\bin\Softv.Providers.pdb
 C:\Users\Israel\Documents\projects\CallCenter\CallCenter\Encuestas\Softv\SoftvWCFService\bin\Softv.SQL.pdb
 C:\Users\Israel\Documents\projects\CallCenter\CallCenter\Encuestas\Softv\SoftvWCFService\bin\Dapper.xml
+C:\Users\Israel\Documents\projects\CallCenter\CallCenter\Encuestas\Softv\SoftvWCFService\obj\Debug\SoftvWCFService.csprojResolveAssemblyReference.cache
+C:\Users\Israel\Documents\projects\CallCenter\CallCenter\Encuestas\Softv\SoftvWCFService\obj\Debug\SoftvWCFService.dll
+C:\Users\Israel\Documents\projects\CallCenter\CallCenter\Encuestas\Softv\SoftvWCFService\obj\Debug\SoftvWCFService.pdb

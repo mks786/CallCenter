@@ -671,16 +671,15 @@ namespace SoftvMVC.Controllers
 
 
 
-        public ActionResult getGrafica(int plaza, int idencuesta, DateTime finicio, DateTime ffin)
+        public ActionResult getGrafica(int ? proceso, int? encuesta,string inicio, string fin)
         {
-            List<EstadisticaEntity> lista = new List<EstadisticaEntity>();
-            lista = proxyEstadistica.GetEstadisticaList(plaza, idencuesta, finicio, ffin);
+            var lista = proxyEstadistica.GetEstadisticaList(proceso,encuesta,inicio,fin).ToList();
             return Json(lista, JsonRequestBehavior.AllowGet);
         }
         public ActionResult getAllEncuestas()
         {
             List<EncuestaEntity> lista = new List<EncuestaEntity>();
-            lista = proxy.GetEncuestaList();
+            lista = proxy.GetEncuestaList().Where(o=>o.Aplicada == true).ToList();
             return Json(lista, JsonRequestBehavior.AllowGet);
         }
 

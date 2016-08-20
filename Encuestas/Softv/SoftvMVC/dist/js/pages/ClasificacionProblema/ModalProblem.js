@@ -11,6 +11,7 @@ function enviar_problema() {
 
     objClasificacionProblema.Descripcion = $('#Descripcion').val();
     objClasificacionProblema.Activo = a;
+    objClasificacionProblema.TipServ = $('#tipo_servicio_select').val();
 
 
     if (objClasificacionProblema.Descripcion == "") {
@@ -43,13 +44,32 @@ function enviar_problema() {
 }
 
 function detalle_Problema(data) {
-
+    
     var IdProblema = (data.getAttribute('id'));
     var Descripcion = (data.getAttribute('data-name'));
     var Activo = (data.getAttribute('data-name2'));
+    var TipoServicio = (data.getAttribute('data-name3'));
+    $.ajax({
+        url: "/ClasificacionProblema/getAllServicios/",
+        type: "GET",
+        success: function (data, textStatus, jqXHR) {
+            $('#tipo_servicio_edit').empty();
+            for (var i = 0; i < data.length; i++) {
+                if (TipoServicio == data[i].descripcion) {
+                    $('#tipo_servicio_edit').append('<option value="' + data[i].descripcion + '" selected> ' + data[i].descripcion + '</option>');
+                } else {
+                    $('#tipo_servicio_edit').append('<option value="' + data[i].descripcion + '"> ' + data[i].descripcion + '</option>');
+                }
+              
+            }
+        },
+        error: function (jqXHR, textStatus, errorThrown) {
+
+        }
+    });
 
 
-    $('.detalle_Problem').val(data.getAttribute('data-name'));
+    $('#Descripcion_editar').val(Descripcion);
     $('.detalle_Problem').attr('id', data.getAttribute('id'));
 
 
@@ -68,9 +88,37 @@ function editar_Problema(data) {
     var IdProblema = (data.getAttribute('id'));
     var Descripcion = (data.getAttribute('data-name'));
     var Activo = (data.getAttribute('data-name2'));
+    var TipoServicio = (data.getAttribute('data-name3'));
+    console.log(TipoServicio);
+    $.ajax({
+        url: "/ClasificacionProblema/getAllServicios/",
+        type: "GET",
+        success: function (data, textStatus, jqXHR) {
+            $('#tipo_servicio_edit').empty();
+            for (var i = 0; i < data.length; i++) {
+                if(i == 0 && TipoServicio != "Todos"){
+                    $('#tipo_servicio_edit').append('<option value="Todos">Todos</option>');
+                } else {
+                    if (i == data.length -1 &&TipoServicio == "Todos") {
+                        $('#tipo_servicio_edit').append('<option value="Todos" selected>Todos</option>');
+                    }
+                }
+                 
+                if (TipoServicio == data[i].descripcion) {
+                    $('#tipo_servicio_edit').append('<option value="' + data[i].descripcion + '" selected> ' + data[i].descripcion + '</option>');
+                } else {
+                    $('#tipo_servicio_edit').append('<option value="' + data[i].descripcion + '"> ' + data[i].descripcion + '</option>');
+                }
+                    
+            }
+        },
+        error: function (jqXHR, textStatus, errorThrown) {
 
-    $('.editar_Problem').val(data.getAttribute('data-name'));
-    $('.editar_Problem').attr('id', data.getAttribute('id'));
+        }
+    });
+
+    $('#descripcion_editar').val(data.getAttribute('data-name'));
+    $('#id_clasificacion').val(data.getAttribute('id'));
 
 
     if (Activo == "true") {
@@ -87,15 +135,15 @@ function editar_Problema(data) {
 function enviar_editar_MotivoInfo() {
     var activo = $('#Activo_editar').prop("checked");
     if (activo) { var a = true } else { var a = false }
-
-    var Descripcion = $('.editar_Problem').val();
-    var IdProblem = $('.editar_Problem').attr('id');
+    var Descripcion = $('#descripcion_editar').val();
+    var IdProblem = $('#id_clasificacion').val();
 
 
     var objClasificacionProblema = {};
     objClasificacionProblema.ClvProblema = IdProblem;
     objClasificacionProblema.Descripcion = Descripcion;
     objClasificacionProblema.Activo = a;
+    objClasificacionProblema.TipServ = $('#tipo_servicio_edit').val();
 
 
     if (objClasificacionProblema.Descripcion == "") {

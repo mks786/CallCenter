@@ -241,7 +241,7 @@ namespace SoftvMVC.Controllers
 
             return Json(lista, JsonRequestBehavior.AllowGet);
         }
-        public ActionResult GetClientesPRUEBA(int IdPlaza, string contrato, string Nombrecliente, string ciudad, string colonia, string calle, string numero)
+        public ActionResult GetClientesPRUEBA(int IdPlaza, string contrato, string Nombrecliente, string ciudad, string colonia, string calle, string numero, string filtro)
         {
 
             ConexionController c = new ConexionController();
@@ -263,15 +263,15 @@ namespace SoftvMVC.Controllers
                 }
                 else if (Nombrecliente != "")
                 {
-                    comandoSql = new SqlCommand("Select TOP 10 * from [dbo].[View_BusquedaIndividual] where Nombre like '%" + Nombrecliente + "%' ");
+                    comandoSql = new SqlCommand("Select * from [dbo].[View_BusquedaIndividual] where Nombre like '%" + Nombrecliente + "%' ");
                 }
                 else if (ciudad != "")
                 {
-                    comandoSql = new SqlCommand("Select TOP 10 * from [dbo].[View_BusquedaIndividual] where Ciudad like '%" + ciudad + "%' and Colonia like '%" + colonia + "%' and Calle  like'%" + calle + "%' and Numero like '%" + numero + "%'");
+                    comandoSql = new SqlCommand("Select * from [dbo].[View_BusquedaIndividual] where Ciudad like '%" + ciudad + "%' and Colonia like '%" + colonia + "%' and Calle  like'%" + calle + "%' and Numero like '%" + numero + "%'");
                 }
                 else
                 {
-                    comandoSql = new SqlCommand("Select TOP 10 * from [dbo].[View_BusquedaIndividual]");
+                    comandoSql = new SqlCommand("Select * from [dbo].[View_BusquedaIndividual]");
                 }
 
 
@@ -295,11 +295,90 @@ namespace SoftvMVC.Controllers
                 }
             }
             catch { }
+
+            lista = lista.Where(o => o.Ciudad == filtro).Take(15).ToList();
+
+            
             return Json(lista, JsonRequestBehavior.AllowGet);
 
         }
 
-        public ActionResult GetClientesLlamada(int IdPlaza, string contrato, string Nombrecliente, string ciudad, string colonia, string calle, string numero,int servicio)
+        //public class DataTableDataClientes
+        //{
+        //    public int draw { get; set; }
+        //    public int recordsTotal { get; set; }
+        //    public int recordsFiltered { get; set; }
+        //    public List<CLIENTEEntity2> data { get; set; }
+        //}
+        //public ActionResult GetClientesCiudad(int IdPlaza, int contrato, string Nombrecliente, string ciudad, string colonia, string calle, string numero, int draw, ref int recordFiltered, int start, int length)
+        //{
+
+        //    ConexionController c = new ConexionController();
+        //    SqlCommand comandoSql;
+        //    List<CLIENTEEntity2> lista = new List<CLIENTEEntity2>();
+        //    SqlConnection conexionSQL = new SqlConnection(c.DameConexion(IdPlaza));
+        //    int total = 0;
+        //    try
+        //    {
+        //        conexionSQL.Open();
+        //    }
+        //    catch
+        //    { }
+
+        //    try
+        //    {
+        //        comandoSql = new SqlCommand("Select * from [dbo].[View_BusquedaIndividual]");
+        //        comandoSql.Connection = conexionSQL;
+        //        SqlDataReader reader = comandoSql.ExecuteReader();
+        //        if (reader.HasRows)
+        //        {
+        //            while (reader.Read())
+        //            {
+        //                CLIENTEEntity2 cliente = new CLIENTEEntity2();
+        //                cliente.CONTRATO = Int32.Parse(reader[0].ToString());
+        //                cliente.NOMBRE = reader[1].ToString();
+        //                cliente.TELEFONO = reader[2].ToString();
+        //                cliente.CELULAR = reader[3].ToString();
+        //                cliente.Calle = reader[4].ToString();
+        //                cliente.Colonia = reader[6].ToString();
+        //                cliente.NUMERO = reader[5].ToString();
+        //                cliente.Ciudad = reader[7].ToString();
+        //                lista.Add(cliente);
+        //            }
+        //        }
+        //    }
+        //    catch { }
+        //    if(contrato > 0){
+        //        lista = lista.Where(o => o.Ciudad == ciudad && o.CONTRATO == contrato).Skip(start).Take(length).ToList();
+        //        total = lista.Where(o => o.Ciudad == ciudad && o.CONTRATO == contrato).Count();
+        //    }
+        //    else if (Nombrecliente != null && Nombrecliente != "")
+        //    {
+        //        lista = lista.Where(o => o.Ciudad == ciudad && o.NOMBRE.ToLower().Contains(Nombrecliente.ToLower())).Skip(start).Take(length).ToList();
+        //        total = lista.Where(o => o.Ciudad == ciudad && o.NOMBRE.ToLower().Contains(Nombrecliente.ToLower())).Count();
+        //    }
+        //    else if (colonia != null && colonia != "")
+        //    {
+        //        lista = lista.Where(o => o.Ciudad == ciudad && o.NOMBRE.ToLower().Contains(Nombrecliente.ToLower()) && o.Colonia.ToLower().Contains(colonia.ToLower()) && o.Calle.ToLower().Contains(calle.ToLower()) && o.NUMERO.ToLower().Contains(numero.ToLower())).Skip(start).Take(length).ToList();
+        //        total = lista.Where(o => o.Ciudad == ciudad && o.NOMBRE.ToLower().Contains(Nombrecliente.ToLower()) && o.Colonia.ToLower().Contains(colonia.ToLower()) && o.Calle.ToLower().Contains(calle.ToLower()) && o.NUMERO.ToLower().Contains(numero.ToLower())).Count();
+        //    }
+        //    else
+        //    {
+        //        lista = lista.Where(o => o.Ciudad == ciudad).Skip(start).Take(length).ToList();
+        //        total = lista.Where(o => o.Ciudad == ciudad).Count();
+        //    }
+            
+        //    DataTableData dataTableData = new DataTableData();
+        //    dataTableData.draw = draw;
+        //    dataTableData.recordsTotal = 0;
+        //    dataTableData.data = lista;
+        //    dataTableData.recordsFiltered = total;
+
+        //    return Json(dataTableData, JsonRequestBehavior.AllowGet);
+
+        //}
+
+        public ActionResult GetClientesLlamada(int IdPlaza, string contrato, string Nombrecliente, string ciudad, string colonia, string calle, string numero,int servicio,string filtro)
         {
 
             ConexionController c = new ConexionController();
@@ -324,12 +403,12 @@ namespace SoftvMVC.Controllers
                 else if (Nombrecliente != null)
                 {
                     TestList = Dapper.SqlMapper.Query<ClientesFiltrado>(
-                                conexionSQL, "exec ConsultaClientesTipServ " + servicio).Where(o => o.Nombre.ToUpper().Contains(Nombrecliente.ToUpper())).Take(10).ToList();
+                                conexionSQL, "exec ConsultaClientesTipServ " + servicio).Where(o => o.Nombre.ToUpper().Contains(Nombrecliente.ToUpper())).ToList();
                 }
                 else if (ciudad != "")
                 {
                     TestList = Dapper.SqlMapper.Query<ClientesFiltrado>(
-                                conexionSQL, "exec ConsultaClientesTipServ " + servicio).Where(o => o.Ciudad.ToUpper() == ciudad.ToUpper() && o.Colonia.ToUpper() == colonia.ToUpper() && o.calle.ToUpper() == calle.ToUpper() && o.Numero == numero).Take(10).ToList();
+                                conexionSQL, "exec ConsultaClientesTipServ " + servicio).Where(o => o.Ciudad.ToUpper() == ciudad.ToUpper() && o.Colonia.ToUpper() == colonia.ToUpper() && o.calle.ToUpper() == calle.ToUpper() && o.Numero == numero).ToList();
                 }
                 else
                 {
@@ -341,6 +420,7 @@ namespace SoftvMVC.Controllers
                 
             }
             catch { }
+            TestList = TestList.Where(o => o.Ciudad == filtro).Take(10).ToList();
             return Json(TestList, JsonRequestBehavior.AllowGet);
 
         }

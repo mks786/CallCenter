@@ -104,16 +104,16 @@ namespace SoftvMVC.Controllers
             return View(objtblClasificacionProblema);
         }
 
-        public ActionResult GetClasficacionProblema(int IdPlaza, int idServicio)
+        public ActionResult GetClasficacionProblema(int IdPlaza, string idServicio)
         {
-            List<tblClasificacionProblemaEntity> lista = new List<tblClasificacionProblemaEntity>();
-            lista = proxy.GettblClasificacionProblemaList().Where(o => o.IdTipSer == idServicio || o.IdTipSer == 0).ToList();
+            List<ClasificacionProblemaEntity> lista = new List<ClasificacionProblemaEntity>();
+            lista = proxyclass.GetClasificacionProblemaList().Where(o => o.TipServ == idServicio || o.TipServ == "Todos").ToList();
             return Json(lista, JsonRequestBehavior.AllowGet);
         }
-        public ActionResult GetClasficacionProblemas(int IdPlaza)
+        public ActionResult GetClasficacionProblemas()
         {
-            List<tblClasificacionProblemaEntity> lista = new List<tblClasificacionProblemaEntity>();
-            lista = proxy.GettblClasificacionProblemaList();
+            List<ClasificacionProblemaEntity> lista = new List<ClasificacionProblemaEntity>();
+            lista = proxyclass.GetClasificacionProblemaList();
             return Json(lista, JsonRequestBehavior.AllowGet);
         }
         public ActionResult GetClasficacionSolucion(int IdPlaza, int ? idServicio)

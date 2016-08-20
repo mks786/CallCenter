@@ -368,12 +368,13 @@ $('#buscar_por_nombre').on('click', function () {
     $('.collapse').collapse('hide');
     var id_plaza = $('#paza_conectando').val();
     var nombre = $('#nombre_individual').val();
+    var ciudad = $('#paza_conectando option:selected').text();
     $('#panel_masivo').hide();
     $('#panel_individual').show();
     $.ajax({
         url: "/CLIENTE/GetClientesPRUEBA/",
         type: "GET",
-        data: { 'IdPlaza': id_plaza, "contrato": "", "Nombrecliente": nombre, "direccion": "" },
+        data: { 'IdPlaza': id_plaza, "contrato": "", "Nombrecliente": nombre, "direccion": "",'filtro':ciudad},
         success: function (data, textStatus, jqXHR) {
             if (data.length == 0) {
                 $('#panel_tabla_clientes').hide();
@@ -406,12 +407,13 @@ $('#buscar_por_direccion').on('click', function () {
     var ciudad = $('#ciudad_busqueda').val();
     var numero = $('#numero_domicilio').val();
     var colonia = $('#colonia_domicilio').val();
+    var ciudad_filtro = $('#paza_conectando option:selected').text();
     $('#panel_masivo').hide();
     $('#panel_individual').show();
     $.ajax({
         url: "/CLIENTE/GetClientesPRUEBA/",
         type: "GET",
-        data: { 'IdPlaza': id_plaza, "contrato": "", "Nombrecliente": "", "calle": calle, "colonia": colonia, "ciudad": ciudad, "numero": numero },
+        data: { 'IdPlaza': id_plaza, "contrato": "", "Nombrecliente": "", "calle": calle, "colonia": colonia, "ciudad": ciudad, "numero": numero,'filtro':ciudad_filtro },
         success: function (data, textStatus, jqXHR) {
             if (data.length == 0) {
                 $('#panel_tabla_clientes').hide();
@@ -442,12 +444,13 @@ $('#buscar_por_contrato').on('click', function () {
     $('.collapse').collapse('hide');
     var id_plaza = $('#paza_conectando').val();
     var contrato = $('#input_contrato').val();
+    var ciudad = $('#paza_conectando option:selected').text();
     $('#panel_masivo').hide();
     $('#panel_individual').show();
     $.ajax({
         url: "/CLIENTE/GetClientesPRUEBA/",
         type: "GET",
-        data: { 'IdPlaza': id_plaza, "contrato": contrato, "cliente1": "", "direccion": "" },
+        data: { 'IdPlaza': id_plaza, "contrato": contrato, "cliente1": "", "direccion": "",'filtro':ciudad },
         success: function (data, textStatus, jqXHR) {
             if (data.length == 0) {
                 $('#panel_tabla_clientes').hide();
@@ -474,10 +477,11 @@ function setUpdateCliente(id) {
     var id_plaza = $('#paza_conectando').val();
     $('#panel_masivo').hide();
     $('#panel_individual').show();
+    var ciudad = $('#paza_conectando option:selected').text();
     $.ajax({
         url: "/CLIENTE/GetClientesPRUEBA/",
         type: "GET",
-        data: { 'IdPlaza': id_plaza, "contrato": id, "cliente1": "", "direccion": "" },
+        data: { 'IdPlaza': id_plaza, "contrato": id, "cliente1": "", "direccion": "",'filtro':ciudad },
         success: function (data, textStatus, jqXHR) {
             if (data.length == 0) {
                 $('#panel_tabla_clientes').hide();

@@ -209,12 +209,12 @@ namespace Softv.BAL
             return result;
         }
 
-        //[DataObjectMethod(DataObjectMethodType.Select, true)]
-        //public static List<EstadisticaEncuesta> getEstadisticas(int plaza, int idencuesta, DateTime finicio, DateTime ffin)
-        //{
-        //    List<EstadisticaEncuesta> result = ProviderSoftv.Encuesta.getestadisticas(plaza, idencuesta, finicio, ffin);
-        //    return result;
-        //}
+        [DataObjectMethod(DataObjectMethodType.Select, true)]
+        public static List<EstadisticaEncuesta> getEstadisticas(int IdUniverso)
+        {
+            List<EstadisticaEncuesta> result = ProviderSoftv.Encuesta.getestadisticas(IdUniverso);
+            return result;
+        }
 
 
 

@@ -105,7 +105,7 @@ namespace Softv.Providers
 
 
 
-        public abstract List<EstadisticaEncuesta> getestadisticas(int plaza, int idencuesta, DateTime finicio, DateTime ffin);
+        public abstract List<EstadisticaEncuesta> getestadisticas(int IdUniverso);
 
 
         /// <summary>

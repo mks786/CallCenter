@@ -1,7 +1,7 @@
 ﻿
 $(document).ready(function () {    
     $.ajax({
-        url: "/Conexion/ListaConexiones/",
+        url: "/CIUDAD/getAllCiudades/",
         type: "GET",
         success: function (data, textStatus, jqXHR) {
             for (var i = 0; i < data.length; i++) {
@@ -125,9 +125,9 @@ function LlenarTabla(idplaza,contrato,cadena,id_llamada,tipo_llamada,ciudad) {
                 "render": function (data, type, full, meta) {
                     var cliente;
                     if (full.Contrato == null) {
-                        cliente = 'No Es Cliente';
+                        cliente = 'NO';
                     } else {
-                        cliente = 'Es Cliente';
+                        cliente = 'SI';
                     }
                     return ("<td>"+cliente+"<td>");  //Es el campo de opciones de la tabla.
                 }
@@ -497,10 +497,10 @@ function getClasificacionProblemas(select) {
         success: function (data, textStatus, jqXHR) {
             $("#select_problemas option").remove();
             for (var i = 0; i < data.length; i++) {
-                if (data[i].clvProblema == select) {
-                    $('#select_problemas').append('<option value="' + data[i].clvProblema + '" selected>' + data[i].descripcion + '</option>');
+                if (data[i].ClvProblema == select) {
+                    $('#select_problemas').append('<option value="' + data[i].ClvProblema + '" selected>' + data[i].Descripcion + '</option>');
                 } else {
-                    $('#select_problemas').append('<option value="' + data[i].clvProblema + '">' + data[i].descripcion + '</option>');
+                    $('#select_problemas').append('<option value="' + data[i].ClvProblema + '">' + data[i].Descripcion + '</option>');
                 }
             }
         },

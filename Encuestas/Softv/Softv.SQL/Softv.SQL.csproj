@@ -51,6 +51,7 @@
     <Compile Include="CiudadServidorData.cs" />
     <Compile Include="ClasificacionProblemaData.cs" />
     <Compile Include="CLIENTEData.cs" />
+    <Compile Include="ClienteNoContestoData.cs" />
     <Compile Include="Cliente_ApellidoData.cs" />
     <Compile Include="COLONIAData.cs" />
     <Compile Include="ConexionData.cs" />

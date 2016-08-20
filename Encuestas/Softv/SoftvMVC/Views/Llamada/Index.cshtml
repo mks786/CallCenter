@@ -122,9 +122,9 @@
                 </div>
                 <div class="row" style="display:none; padding-left:10px;" id="motivo_llamada_panel">
                     <div class="col-md-3" style="padding-top:10px;">
-                        <label style="color:#4b646f; font-size:12px;">Tipo de Servicio</label>
+                        <label style="color:#4b646f; font-size:12px;">Seleccione el Servicio</label>
                         <select class="form-control" id="tipo_servicio">
-                            <option value="0" selected disabled>Tipo de servicio</option>
+                            <option value="0" selected disabled>----------------</option>
                         </select>
                     </div>
                 </div><br />
@@ -396,7 +396,7 @@
                 <div class="row" style="padding-right:40px; display:none;" id="btn_enviar">
                     <div class="col-md-12">
                         <p class="text-right">
-                            <a class="btn btn-success" onclick="guardarLlamada()"> Guaradar Llamada</a>
+                            <a class="btn btn-success" onclick="guardarLlamada()" id="guardar_llamada"> Guaradar Llamada</a>
                         </p>
                     </div>
                 </div>

@@ -242,6 +242,26 @@
     </div>
 </div>
 
+<div class="modal fade" id="ModalEliminarOpen" role="dialog">
+    <div class="modal-dialog modal-sm">
+        <div class="modal-content">
+            <div class="modal-header alert-error">
+                <button class="close" aria-label="Close" type="button" data-dismiss="modal"><span aria-hidden="true">×</span></button>
+                <h4 class="modal-title">Eliminar Proceso</h4>
+            </div>
+            <div class="modal-body">
+                <input type="hidden" id="idpregunta" />
+                <p class="red"><strong>¿Realmente deseas eliminar este proceso?</strong><br /> Al eliminar este proceso también eliminarás las encuestas que fueron aplicadas en este proceso.</p>
+                <input type="hidden" id="eliminar_proceso"/>
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-danger" type="button" id="confirmaElimina">Eliminar</button>
+                <button class="btn btn-primary " type="button" data-dismiss="modal">Cerrar</button>
+            </div>
+        </div>
+    </div>
+</div>
+
 <script>
     //poner activo el menu izquierdo
     $(function () {

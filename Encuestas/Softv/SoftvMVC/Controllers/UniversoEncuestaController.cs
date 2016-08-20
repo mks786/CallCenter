@@ -26,6 +26,7 @@ namespace SoftvMVC.Controllers
 
         private SoftvService.ProcesoEncuestaClient proxyProcesoEncuesta = null;
         private SoftvService.EncuestaClient proxyEncuesta = null;
+        private SoftvService.ClienteNoContestoClient proxyNo = null;
 
         public UniversoEncuestaController()
         {
@@ -34,6 +35,7 @@ namespace SoftvMVC.Controllers
 
             proxyProcesoEncuesta = new SoftvService.ProcesoEncuestaClient();
             proxyEncuesta = new SoftvService.EncuestaClient();
+            proxyNo = new SoftvService.ClienteNoContestoClient();
         }
 
         new public void Dispose()
@@ -155,6 +157,8 @@ namespace SoftvMVC.Controllers
                 int total = proxy.GetUniversoEncuestaList().Where(o=>o.IdProcesoEnc == aux.IdProcesoEnc && o.Aplicada == true).Count();
                 if(total == aux.Total){
                     aux.StatusEncuesta = "Terminada";
+                    DateTime thisDay = DateTime.Today;
+                    aux.FechaFin = thisDay.ToString();
                     var editar = proxyProcesoEncuesta.UpdateProcesoEncuesta(aux);
                 }
             }
@@ -302,6 +306,39 @@ namespace SoftvMVC.Controllers
             dataTableData.recordsFiltered = recordFiltered;
 
             return Json(dataTableData, JsonRequestBehavior.AllowGet);
+        }
+
+        public ActionResult TerminarProceso(int id_proceso)
+        {
+            int result = proxy.ActualizarUniverso(id_proceso);
+            ProcesoEncuestaEntity proceso = proxyProcesoEncuesta.GetProcesoEncuesta(id_proceso);
+            proceso.StatusEncuesta = "Terminada";
+            int aux = proxyProcesoEncuesta.UpdateProcesoEncuesta(proceso);
+            return Json(result,JsonRequestBehavior.AllowGet);
+        }
+        public ActionResult TerminarEncuesta(int id_proceso, int contrato)
+        {
+            UniversoEncuestaEntity objUniversoEncuestaOld = proxy.GetUniversoEncuesta(id_proceso);
+            objUniversoEncuestaOld.Aplicada = true;
+            int result = proxy.UpdateUniversoEncuesta(objUniversoEncuestaOld);
+
+            ProcesoEncuestaEntity aux = proxyProcesoEncuesta.GetProcesoEncuesta(objUniversoEncuestaOld.IdProcesoEnc);
+            int total = proxy.GetUniversoEncuestaList().Where(o => o.IdProcesoEnc == aux.IdProcesoEnc && o.Aplicada == true).Count();
+            ClienteNoContestoEntity cl = new ClienteNoContestoEntity();
+            cl.IdEncuesta = aux.IdEncuesta;
+            cl.IdProcesoEnc = aux.IdProcesoEnc;
+            DateTime thisDay = DateTime.Today;
+            cl.FechaApli = thisDay;
+            cl.Contrato = contrato;
+            cl.IdPlaza = objUniversoEncuestaOld.IdPlaza;
+            int res = proxyNo.AddClienteNoContesto(cl);
+            if (total == aux.Total)
+            {
+                aux.StatusEncuesta = "Terminada";
+                aux.FechaFin = thisDay.ToString();
+                var editar = proxyProcesoEncuesta.UpdateProcesoEncuesta(aux);
+            }
+            return Json(result, JsonRequestBehavior.AllowGet);
         }
     }
 

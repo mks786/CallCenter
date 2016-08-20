@@ -233,6 +233,7 @@
     <Compile Include="Controllers\CiudadServidorController.cs" />
     <Compile Include="Controllers\ClasificacionProblemaController.cs" />
     <Compile Include="Controllers\CLIENTEController.cs" />
+    <Compile Include="Controllers\ClienteNoContestoController.cs" />
     <Compile Include="Controllers\Cliente_ApellidoController.cs" />
     <Compile Include="Controllers\COLONIAController.cs" />
     <Compile Include="Controllers\ConexionController.cs" />
@@ -565,6 +566,7 @@
     <Content Include="dist\css\skins\skin-yellow.min.css" />
     <Content Include="dist\css\skins\_all-skins.css" />
     <Content Include="dist\css\skins\_all-skins.min.css" />
+    <Content Include="dist\img\5.gif" />
     <Content Include="dist\img\check-false.png" />
     <Content Include="dist\img\credit\american-express.png" />
     <Content Include="dist\img\credit\cirrus.png" />
@@ -581,8 +583,10 @@
     <Content Include="dist\js\app.min.js" />
     <Content Include="dist\js\bootstrap-switch.js" />
     <Content Include="dist\js\demo.js" />
+    <Content Include="dist\js\jquery.blockUI.js" />
     <Content Include="dist\js\jquery.flexdatalist.css" />
     <Content Include="dist\js\jquery.flexdatalist.js" />
+    <Content Include="dist\js\live.js" />
     <Content Include="dist\js\pace.min.js" />
     <Content Include="dist\js\pages\ClasificacionProblema\Lista.js" />
     <Content Include="dist\js\pages\ClasificacionProblema\ModalProblem.js" />
@@ -1432,6 +1436,7 @@
     <Content Include="Properties\DataSources\Softv.Entities.CiudadServidorEntity.datasource" />
     <Content Include="Properties\DataSources\Softv.Entities.ProcesoEncuestaEntity.datasource" />
     <Content Include="Properties\DataSources\Softv.Entities.UniversoEncuestaEntity.datasource" />
+    <Content Include="Properties\DataSources\Softv.Entities.ClienteNoContestoEntity.datasource" />
     <None Include="Properties\PublishProfiles\SoftvMVC.pubxml" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>

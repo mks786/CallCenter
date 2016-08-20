@@ -24,7 +24,7 @@
       /// Property ClvProblema
       /// </summary>
       [DataMember]
-      public long? ClvProblema { get; set; }
+      public int? ClvProblema { get; set; }
       /// <summary>
       /// Property Descripcion
       /// </summary>
@@ -35,6 +35,8 @@
       /// </summary>
       [DataMember]
       public bool? Activo { get; set; }
+      [DataMember]
+      public string TipServ { get; set; }
     #endregion
     }
     }

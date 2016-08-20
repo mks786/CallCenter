@@ -38,6 +38,7 @@ namespace Softv.DAO
                 AssingParameter(comandoSql, "@Descripcion", entity_ClasificacionProblema.Descripcion);
 
                 AssingParameter(comandoSql, "@Activo", entity_ClasificacionProblema.Activo);
+                AssingParameter(comandoSql, "@TipServ", entity_ClasificacionProblema.TipServ);
 
                 try
                 {
@@ -108,6 +109,7 @@ namespace Softv.DAO
                 AssingParameter(comandoSql, "@Descripcion", entity_ClasificacionProblema.Descripcion);
 
                 AssingParameter(comandoSql, "@Activo", entity_ClasificacionProblema.Activo);
+                AssingParameter(comandoSql, "@TipServ", entity_ClasificacionProblema.TipServ);
 
                 try
                 {

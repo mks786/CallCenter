@@ -37,28 +37,28 @@
                                 <div class="panel-body">
                                     <div class="row">
                                         <div class="col-md-5">
-                                            <label>Selecciona la plaza</label>
+                                            <label>Selecciona la Encuesta</label>
                                             <select class="form-control" id="encuestas_list">
                                                 <option value="0" selected disabled>---------</option>
                                             </select>
                                         </div>
                                         <div class="col-md-3">
-                                            <label>Selecciona el proceso</label>
+                                            <label>Selecciona el Proceso</label>
                                             <select class="form-control" id="proceso_list" disabled>
                                                 <option value="0" selected disabled>---------</option>
                                             </select>
                                         </div>
-                                    </div><br />
+                                    </div>
                                     <div class="row">
                                         <div class="col-md-3">
                                             <label>Fecha Inicio</label>
-                                            <input type="date" id="inicio" class="form-control" disabled />
+                                            <input type="date" class="form-control" id="inicio" disabled/>
                                         </div>
                                         <div class="col-md-3">
-                                            <label>Fecha Fin</label>
-                                            <input type="date" id="fin" class="form-control" disabled />
+                                            <label>Fecha Final</label>
+                                            <input type="date" class="form-control" id="fin" disabled/>
                                         </div>
-                                    </div><br />
+                                    </div>
                                     <div class="row">
                                         <div class="col-md-3">
                                             <label>Tipo de Gráfica</label>
@@ -83,16 +83,21 @@
                    
       
                 <hr />
-                <div class="row">
-                    <div class="col-md-12">
-                        <h2 class="text-center" id="texto_plaza" style="color:#4b646f;"></h2>
-                        <h3 id="nombre_encuesta" class="text-center" style="color: #4b646f"></h3><br />
-                        <hr />
-                        <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
-                            
+                    <div class="row" style="display:none;" id="panel_imprimir">
+                        <div class="col-md-12">
+                            <h3 class="text-left">
+                                <a onclick="printDiv('imprimir')" style="color:#428bca;"><i class="fa fa-print" aria-hidden="true"></i> Imprimir</a>
+                            </h3>
+                            <div class="row">
+                                <div class="col-md-12 well scroll_div" id="imprimir" style="height: 850px;">
+                                    <h2 class="text-center" id="nombre_encuesta" style="color:#4b646f;"></h2>
+                                    <h3 id="descripcion_encuesta" class="text-center" style="color: #4b646f"></h3>
+                                    <hr />
+                                    <div id="graficas" class="col-md-8 col-md-offset-2"></div>
+                                </div>
+                            </div>
                         </div>
-                    </div>
-                </div> 
+                    </div> 
             </div>
         </div>
     </div>
@@ -105,6 +110,7 @@
 <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
 <script src="http://neue.cc/linq.min.js"></script>
 <script>
+    var encuestas;
     $(function () {
         $('#servicios_contratados').slimScroll({
             height: '200px'
@@ -118,6 +124,7 @@
             url: "/Encuesta/getAllEncuestas/",
             type: "GET",
             success: function (data, textStatus, jqXHR) {
+                encuestas = data;
                 for (var i = 0; i < data.length; i++) {
                     $('#encuestas_list').append($('<option>', {
                         value: data[i].IdEncuesta,
@@ -132,6 +139,18 @@
 
         
     });
+
+    function printDiv(divName) {
+        var printContents = document.getElementById(divName).innerHTML;
+        var originalContents = document.body.innerHTML;
+
+        document.body.innerHTML = printContents;
+
+        window.print();
+
+        document.body.innerHTML = originalContents;
+    }
+
     $("#encuestas_list").change(function () {
         $.ajax({
             url: "/ProcesoEncuesta/todosProcesos/",
@@ -139,7 +158,7 @@
             data:{'id_encuesta':$(this).val()},
             success: function (data, textStatus, jqXHR) {
                 $('#proceso_list').empty();
-                $('#proceso_list').append('<option value="0" selected disabled>---------</option>');
+                $('#proceso_list').append('<option value="0" selected>---------</option>');
                 for (var i = 0; i < data.length; i++) {
                     $('#proceso_list').append($('<option>', {
                         value: data[i].IdProcesoEnc,
@@ -156,6 +175,16 @@
         $("#fin").removeAttr('disabled'); 
         $("#grafica_list").removeAttr('disabled');
     });
+    $('#proceso_list').on('change', function () {
+        var valor = $(this).val();
+        if (valor == 0) {
+            $("#inicio").prop('disabled', false);
+            $("#fin").prop('disabled', false);
+        } else {
+            $("#inicio").prop('disabled', true);
+            $("#fin").prop('disabled', true);
+        }
+    });
 
     //poner activo el menu izquierdo
     $(function () {
@@ -168,48 +197,43 @@
     
     //genearar reporte
     function reportear() {
-        $('.collapse').collapse('hide');
         $('#chart1_div').empty();
         var encuesta = $('#encuestas_list').val();
+        var proceso = $('#proceso_list').val();
+        var grafica_tipo = $('#grafica_list').val();
         var inicio = $('#inicio').val();
+        var ifecha = new Date(inicio);
+        inicio = ifecha.getDate()+1 + "/" + (ifecha.getMonth() + 1) + "/" + ifecha.getFullYear();
         var fin = $('#fin').val();
-        var plaza = $('#plazas').val();
-        $.ajax({
-            url: "/Conexion/listaPlazas/",
-            type: "GET",
-            data: { "idPlaza": plaza },
-            success: function (data, textStatus, jqXHR) {
-                var ciudad_select = $("#plazas option:selected").text();
-                $('#texto_plaza').text("CIUDAD DE " + ciudad_select.toUpperCase() + ", " + data.Plaza.toUpperCase());
-            },
-            error: function (jqXHR, textStatus, errorThrown) {
-
-            }
-        });
+        var ffecha = new Date(fin);
+        fin = ffecha.getDate()+1 + "/" + (ffecha.getMonth() + 1) + "/" + ffecha.getFullYear();
         var grafica_tipo = $('#grafica_list').val();
         if (encuesta == null) {
             swal("Por favor selecciona una encuesta", "", "error");
         } else {
-            if(inicio == ""){
-                swal("Por favor selecciona la fecha de inicio", "", "error");
-            } else {
-                if(fin == ""){
-                    swal("Por favor selecciona la fecha final", "", "error");
+            if (proceso == 0) {
+                if(fin == "" && inicio == ""){
+                    swal("Por favor introduce la fecha de inicio y termino del reporte", "", "error");
                 } else {
                     if (grafica_tipo == null) {
                         swal("Por favor selecciona el tipo de grafica", "", "error");
                     } else {
-                        $('#accordion').empty();
+                        $('.collapse').collapse('hide'); 
+                        $('#datosGrafica').collapse('hide');
                         $.ajax({
                             url: "/Encuesta/getGrafica/",
                             type: "GET",
-                            data: { 'plaza': plaza, 'idencuesta': encuesta, 'finicio': inicio, 'ffin': fin },
-                            success: function (data, textStatus, jqXHR) {
+                            data: { 'proceso': proceso,'encuesta':encuesta,'inicio':inicio,'fin':fin },
+                            success: function (data, textStatus, jqXHR) {                             
                                 var linq = Enumerable.From(data);
                                 var result = linq.GroupBy(function (x) { return x.IdPregunta; }).ToArray();
-                                $('#nombre_encuesta').html("");
-                                var titulo = result[0].source[0].NombreEncuesta;
-                                $('#nombre_encuesta').append(titulo.toUpperCase());
+                                for (var i = 0; i < encuestas.length; i++) {
+                                    if (encuesta == encuestas[i].IdEncuesta) {
+                                        $('#nombre_encuesta').text(encuestas[i].TituloEncuesta);
+                                        $('#descripcion_encuesta').text(encuestas[i].Descripcion);
+                                    }
+                                }
+                                $('#graficas').empty();
                                 for (var i = 0; i < result.length; i++) {
                                     var grafica = {};
                                     grafica.cols = new Array();
@@ -219,14 +243,11 @@
                                     var div = randomString(5, '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ');
                                     for (var j = 0; j < result[i].source.length; j++) {
                                         if (j == 0) {
-                                            $('#accordion').append('<div class="panel panel-default"><div class="panel-heading" role="ab" id="headingOne"><h4 class="panel-title"><a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapse' + div + '" aria-expanded="true" aria-controls="collapseOne">' + result[i].source[j].Pregunta + '</a></h4></div><div id="collapse' + div + '" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingOne"><div class="panel-body"><div class="row"><div class="col-md-11 col-md-offset-1"><div id="abietas' + div + '" class="col-md-5 scroll_div" style="height:350px; display:none;"></div><div id=' + div + '></div></div></div></div></div></div>');
+                                            $('#graficas').append('<div><h5><strong>Pregunta</strong></h5> <h4>' + result[i].source[j].Pregunta + '</h4> <div id="abietas' + div + '" style="display:none;"></div><br /><div id=' + div + '></div><hr /></div>');
                                         }
                                         if (result[i].source[j].IdTipoPregunta == 1) {
                                             $('#abietas' + div).show();
                                             $('#abietas' + div).append('<li>' + result[i].source[j].RespuestaAbierta + '</ul>');
-                                            $('#abietas' + div).slimScroll({
-                                                height: '200px'
-                                            });
                                         } else {
                                             $('#abietas' + div).hide();
                                             var c = {};
@@ -239,9 +260,11 @@
                                     if (result[i].source[0].IdTipoPregunta != 1) {
                                         var datosGrafica = JSON.stringify(grafica);
                                         graficar(datosGrafica, result[i].source[0].Pregunta, div, grafica_tipo);
+                                        $('#panel_imprimir').show();
                                     }
-                                   
+
                                 }
+
                             },
                             error: function (jqXHR, textStatus, errorThrown) {
 
@@ -249,8 +272,69 @@
                         });
                     }
                 }
+            } else {
+                if (grafica_tipo == null) {
+                    swal("Por favor selecciona el tipo de grafica", "", "error");
+                } else {
+                    $('.collapse').collapse('hide');
+                    $('#datosGrafica').collapse('hide');
+                    $.ajax({
+                        url: "/Encuesta/getGrafica/",
+                        type: "GET",
+                        data: { 'proceso': proceso },
+                        success: function (data, textStatus, jqXHR) {
+                            var linq = Enumerable.From(data);
+                            var result = linq.GroupBy(function (x) { return x.IdPregunta; }).ToArray();
+                            for (var i = 0; i < encuestas.length; i++) {
+                                if (encuesta == encuestas[i].IdEncuesta) {
+                                    $('#nombre_encuesta').text(encuestas[i].TituloEncuesta);
+                                    $('#descripcion_encuesta').text(encuestas[i].Descripcion);
+                                }
+                            }
+                            $('#graficas').empty();
+                            for (var i = 0; i < result.length; i++) {
+                                var grafica = {};
+                                grafica.cols = new Array();
+                                grafica.rows = new Array();
+                                grafica.cols.push({ "id": "", "label": "Preguntas", "pattern": "", "type": "string" },
+                                                    { "id": "", "label": "Respuestas", "pattern": "", "type": "number" });
+                                var div = randomString(5, '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ');
+                                for (var j = 0; j < result[i].source.length; j++) {
+                                    if (j == 0) {
+                                        $('#graficas').append('<div><h5><strong>Pregunta</strong></h5> <h4>' + result[i].source[j].Pregunta + '</h4> <div id="abietas' + div + '" style="display:none;"></div><br /><div id=' + div + '></div><hr /><br /></div>');
+                                    }
+                                    console.log(result[i].source[j].IdTipoPregunta);
+                                    if (result[i].source[j].IdTipoPregunta == 1) {
+                                        $('#abietas' + div).show();
+                                        $('#abietas' + div).append('<li>' + result[i].source[j].RespuestaAbierta + '</ul>');
+                                    } else {
+                                        $('#abietas' + div).hide();
+                                        var c = {};
+                                        c.c = new Array();
+                                        c.c.push({ "v": result[i].source[j].Respuesta }, { 'v': result[i].source[j].Cantidad });
+                                        grafica.rows.push(c);
+                                    }
+                                }
+
+                                if (result[i].source[0].IdTipoPregunta != 1) {
+                                    var datosGrafica = JSON.stringify(grafica);
+                                    graficar(datosGrafica, result[i].source[0].Pregunta, div, grafica_tipo);
+                                    $('#panel_imprimir').show();
+                                }
+
+                            }
+
+                        },
+                        error: function (jqXHR, textStatus, errorThrown) {
+
+                        }
+                    });
+                }
             }
-        }
+            
+                
+            }
+        
     }
 
     function randomString(length, chars) {
@@ -270,19 +354,49 @@
 
     function drawChart(chart_data, chart1_main_title, chart1_vaxis_title, div, grafica) {
         var chart1_data = new google.visualization.DataTable(chart_data);
-        var chart1_options = {
-            title: chart1_main_title,
-            width: 800, height: 400,
-            vAxis: {
-                title: chart1_vaxis_title, titleTextStyle: { color: 'Black' }
-            },
-            chartArea: {
-                left: 70,
-                top: 10,
-                width: 400,
-                height: 350
-            }
-        };
+        var chart1_options;
+        if (grafica == "PieChart") {
+          chart1_options = {
+                title: chart1_main_title,
+                width: 650, height: 400,
+                legend: {
+                    position: 'labeled',
+                    textStyle: { fontSize: 12 }
+                },
+                pieSliceText: 'value',
+                fontSize: 18,
+                is3D: true,
+                vAxis: {
+                    title: chart1_vaxis_title, titleTextStyle: { color: 'Black' }
+                },
+                chartArea: {
+                    left: 70,
+                    top: 10,
+                    width: 600,
+                    height: 300
+                }
+            };
+        } else {
+            chart1_options = {
+                title: chart1_main_title,
+                width: 650, height: 400,
+                legend: {
+                    position: 'labeled',
+                },
+                pieSliceText: 'value',
+                is3D: true,
+                vAxis: {
+                    title: chart1_vaxis_title, titleTextStyle: { color: 'Black' }
+                },
+                chartArea: {
+                    left: 70,
+                    top: 10,
+                    width: 600,
+                    height: 300
+                }
+            };
+        }
+       
 
         if (grafica == "PieChart") {
             var chart1_chart = new google.visualization.PieChart(document.getElementById(div));

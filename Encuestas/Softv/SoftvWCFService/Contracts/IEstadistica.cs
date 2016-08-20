@@ -14,7 +14,7 @@ namespace SoftvWCFService.Contracts
     {
 
         [OperationContract]
-        IEnumerable<EstadisticaEntity> GetEstadisticaList(int plaza, int idencuesta, DateTime finicio, DateTime ffin);
+        IEnumerable<EstadisticaEntity> GetEstadisticaList(int? IdUniverso,int? IdEncuesta,string Inicio,string Fin);
 
     }
 }

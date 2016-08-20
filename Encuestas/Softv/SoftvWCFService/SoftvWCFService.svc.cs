@@ -18,7 +18,8 @@ namespace SoftvWCFService
     public partial class SoftvWCFService : IUsuario, IRole, IModule, IPermiso, IEncuesta, IPregunta, ITipoPreguntas, IRelEncuestaClientes, IRelPreguntaOpcMults,
         IRelPreguntaEncuestas, IResOpcMults, IRelEnProcesos, IConexion, ICLIENTE, ITurno, ILlamada, IRel_Clientes_TiposClientes, ITipoCliente, ICatalogoPeriodosCorte,
         ICliente_Apellido, ITap, IDatoFiscal, ITrabajo, ITipServ, IMotivoCancelacion, IRelEncuestaPreguntaRes, IQueja, ICIUDAD, ICVECOLCIU, ICOLONIA, ICVECAROL, ICALLE, IBusquedaIndividual,
-        ItblClasificacionProblema, ItblPrioridadQueja, INoCliente, IDatosLlamada, IEstadistica, IServicio, IMotAtenTel, IClasificacionProblema, ICiudadServidor, IUniversoEncuesta, IProcesoEncuesta
+        ItblClasificacionProblema, ItblPrioridadQueja, INoCliente, IDatosLlamada, IEstadistica, IServicio, IMotAtenTel, IClasificacionProblema, ICiudadServidor, IUniversoEncuesta, IProcesoEncuesta,
+        IClienteNoContesto
     {
         #region Usuario
         public UsuarioEntity GetUsuario(int? IdUsuario)
@@ -1667,9 +1668,9 @@ namespace SoftvWCFService
 
         #region Estadistica
 
-        public IEnumerable<EstadisticaEntity> GetEstadisticaList(int plaza, int idencuesta, DateTime finicio, DateTime ffin)
+        public IEnumerable<EstadisticaEntity> GetEstadisticaList(int? IdUniverso, int? IdEncuesta, string Inicio, string Fin)
         {
-            return Estadistica.GetAll(plaza, idencuesta, finicio, ffin);
+            return Estadistica.GetAll(IdUniverso, IdEncuesta, Inicio, Fin);
         }
 
         #endregion
@@ -1946,7 +1947,57 @@ namespace SoftvWCFService
             return UniversoEncuesta.Delete(Id);
         }
 
+
+        public int ActualizarUniverso(int? Id)
+        {
+            return UniversoEncuesta.ActualizarUniverso(Id);
+        }
+
         #endregion
+
+        #region ClienteNoContesto
+        public ClienteNoContestoEntity GetClienteNoContesto(int? IdNoContesto)
+        {
+            return ClienteNoContesto.GetOne(IdNoContesto);
+        }
+
+        public ClienteNoContestoEntity GetDeepClienteNoContesto(int? IdNoContesto)
+        {
+            return ClienteNoContesto.GetOneDeep(IdNoContesto);
+        }
+
+        public IEnumerable<ClienteNoContestoEntity> GetClienteNoContestoList()
+        {
+            return ClienteNoContesto.GetAll();
+        }
+
+        public SoftvList<ClienteNoContestoEntity> GetClienteNoContestoPagedList(int page, int pageSize)
+        {
+            return ClienteNoContesto.GetPagedList(page, pageSize);
+        }
+
+        public SoftvList<ClienteNoContestoEntity> GetClienteNoContestoPagedListXml(int page, int pageSize, String xml)
+        {
+            return ClienteNoContesto.GetPagedList(page, pageSize, xml);
+        }
+
+        public int AddClienteNoContesto(ClienteNoContestoEntity objClienteNoContesto)
+        {
+            return ClienteNoContesto.Add(objClienteNoContesto);
+        }
+
+        public int UpdateClienteNoContesto(ClienteNoContestoEntity objClienteNoContesto)
+        {
+            return ClienteNoContesto.Edit(objClienteNoContesto);
+        }
+
+        public int DeleteClienteNoContesto(String BaseRemoteIp, int BaseIdUser, int? IdNoContesto)
+        {
+            return ClienteNoContesto.Delete(IdNoContesto);
+        }
+
+        #endregion
+  
 
         #region ProcesoEncuesta
         public ProcesoEncuestaEntity GetProcesoEncuesta(int? IdProcesoEnc)

@@ -5517,10 +5517,10 @@ namespace SoftvMVC.SoftvService {
     public interface IEstadistica {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IEstadistica/GetEstadisticaList", ReplyAction="http://tempuri.org/IEstadistica/GetEstadisticaListResponse")]
-        System.Collections.Generic.List<Softv.Entities.EstadisticaEntity> GetEstadisticaList(int plaza, int idencuesta, System.DateTime finicio, System.DateTime ffin);
+        System.Collections.Generic.List<Softv.Entities.EstadisticaEntity> GetEstadisticaList(System.Nullable<int> IdUniverso, System.Nullable<int> IdEncuesta, string Inicio, string Fin);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IEstadistica/GetEstadisticaList", ReplyAction="http://tempuri.org/IEstadistica/GetEstadisticaListResponse")]
-        System.Threading.Tasks.Task<System.Collections.Generic.List<Softv.Entities.EstadisticaEntity>> GetEstadisticaListAsync(int plaza, int idencuesta, System.DateTime finicio, System.DateTime ffin);
+        System.Threading.Tasks.Task<System.Collections.Generic.List<Softv.Entities.EstadisticaEntity>> GetEstadisticaListAsync(System.Nullable<int> IdUniverso, System.Nullable<int> IdEncuesta, string Inicio, string Fin);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -5550,12 +5550,12 @@ namespace SoftvMVC.SoftvService {
                 base(binding, remoteAddress) {
         }
         
-        public System.Collections.Generic.List<Softv.Entities.EstadisticaEntity> GetEstadisticaList(int plaza, int idencuesta, System.DateTime finicio, System.DateTime ffin) {
-            return base.Channel.GetEstadisticaList(plaza, idencuesta, finicio, ffin);
+        public System.Collections.Generic.List<Softv.Entities.EstadisticaEntity> GetEstadisticaList(System.Nullable<int> IdUniverso, System.Nullable<int> IdEncuesta, string Inicio, string Fin) {
+            return base.Channel.GetEstadisticaList(IdUniverso, IdEncuesta, Inicio, Fin);
         }
         
-        public System.Threading.Tasks.Task<System.Collections.Generic.List<Softv.Entities.EstadisticaEntity>> GetEstadisticaListAsync(int plaza, int idencuesta, System.DateTime finicio, System.DateTime ffin) {
-            return base.Channel.GetEstadisticaListAsync(plaza, idencuesta, finicio, ffin);
+        public System.Threading.Tasks.Task<System.Collections.Generic.List<Softv.Entities.EstadisticaEntity>> GetEstadisticaListAsync(System.Nullable<int> IdUniverso, System.Nullable<int> IdEncuesta, string Inicio, string Fin) {
+            return base.Channel.GetEstadisticaListAsync(IdUniverso, IdEncuesta, Inicio, Fin);
         }
     }
     
@@ -6194,6 +6194,12 @@ namespace SoftvMVC.SoftvService {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IUniversoEncuesta/DeleteUniversoEncuesta", ReplyAction="http://tempuri.org/IUniversoEncuesta/DeleteUniversoEncuestaResponse")]
         System.Threading.Tasks.Task<int> DeleteUniversoEncuestaAsync(string BaseRemoteIp, int BaseIdUser, System.Nullable<int> Id);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IUniversoEncuesta/ActualizarUniverso", ReplyAction="http://tempuri.org/IUniversoEncuesta/ActualizarUniversoResponse")]
+        int ActualizarUniverso(System.Nullable<int> Id);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IUniversoEncuesta/ActualizarUniverso", ReplyAction="http://tempuri.org/IUniversoEncuesta/ActualizarUniversoResponse")]
+        System.Threading.Tasks.Task<int> ActualizarUniversoAsync(System.Nullable<int> Id);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -6285,6 +6291,14 @@ namespace SoftvMVC.SoftvService {
         
         public System.Threading.Tasks.Task<int> DeleteUniversoEncuestaAsync(string BaseRemoteIp, int BaseIdUser, System.Nullable<int> Id) {
             return base.Channel.DeleteUniversoEncuestaAsync(BaseRemoteIp, BaseIdUser, Id);
+        }
+        
+        public int ActualizarUniverso(System.Nullable<int> Id) {
+            return base.Channel.ActualizarUniverso(Id);
+        }
+        
+        public System.Threading.Tasks.Task<int> ActualizarUniversoAsync(System.Nullable<int> Id) {
+            return base.Channel.ActualizarUniversoAsync(Id);
         }
     }
     
@@ -6430,6 +6444,151 @@ namespace SoftvMVC.SoftvService {
         
         public System.Threading.Tasks.Task<int> DeleteProcesoEncuestaAsync(string BaseRemoteIp, int BaseIdUser, System.Nullable<int> IdProcesoEnc) {
             return base.Channel.DeleteProcesoEncuestaAsync(BaseRemoteIp, BaseIdUser, IdProcesoEnc);
+        }
+    }
+    
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ServiceModel.ServiceContractAttribute(ConfigurationName="SoftvService.IClienteNoContesto")]
+    public interface IClienteNoContesto {
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IClienteNoContesto/GetClienteNoContesto", ReplyAction="http://tempuri.org/IClienteNoContesto/GetClienteNoContestoResponse")]
+        Softv.Entities.ClienteNoContestoEntity GetClienteNoContesto(System.Nullable<int> IdNoContesto);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IClienteNoContesto/GetClienteNoContesto", ReplyAction="http://tempuri.org/IClienteNoContesto/GetClienteNoContestoResponse")]
+        System.Threading.Tasks.Task<Softv.Entities.ClienteNoContestoEntity> GetClienteNoContestoAsync(System.Nullable<int> IdNoContesto);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IClienteNoContesto/GetDeepClienteNoContesto", ReplyAction="http://tempuri.org/IClienteNoContesto/GetDeepClienteNoContestoResponse")]
+        Softv.Entities.ClienteNoContestoEntity GetDeepClienteNoContesto(System.Nullable<int> IdNoContesto);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IClienteNoContesto/GetDeepClienteNoContesto", ReplyAction="http://tempuri.org/IClienteNoContesto/GetDeepClienteNoContestoResponse")]
+        System.Threading.Tasks.Task<Softv.Entities.ClienteNoContestoEntity> GetDeepClienteNoContestoAsync(System.Nullable<int> IdNoContesto);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IClienteNoContesto/GetClienteNoContestoList", ReplyAction="http://tempuri.org/IClienteNoContesto/GetClienteNoContestoListResponse")]
+        System.Collections.Generic.List<Softv.Entities.ClienteNoContestoEntity> GetClienteNoContestoList();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IClienteNoContesto/GetClienteNoContestoList", ReplyAction="http://tempuri.org/IClienteNoContesto/GetClienteNoContestoListResponse")]
+        System.Threading.Tasks.Task<System.Collections.Generic.List<Softv.Entities.ClienteNoContestoEntity>> GetClienteNoContestoListAsync();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IClienteNoContesto/GetClienteNoContestoPagedList", ReplyAction="http://tempuri.org/IClienteNoContesto/GetClienteNoContestoPagedListResponse")]
+        Globals.SoftvList<Softv.Entities.ClienteNoContestoEntity> GetClienteNoContestoPagedList(int page, int pageSize);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IClienteNoContesto/GetClienteNoContestoPagedList", ReplyAction="http://tempuri.org/IClienteNoContesto/GetClienteNoContestoPagedListResponse")]
+        System.Threading.Tasks.Task<Globals.SoftvList<Softv.Entities.ClienteNoContestoEntity>> GetClienteNoContestoPagedListAsync(int page, int pageSize);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IClienteNoContesto/GetClienteNoContestoPagedListXml", ReplyAction="http://tempuri.org/IClienteNoContesto/GetClienteNoContestoPagedListXmlResponse")]
+        Globals.SoftvList<Softv.Entities.ClienteNoContestoEntity> GetClienteNoContestoPagedListXml(int page, int pageSize, string xml);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IClienteNoContesto/GetClienteNoContestoPagedListXml", ReplyAction="http://tempuri.org/IClienteNoContesto/GetClienteNoContestoPagedListXmlResponse")]
+        System.Threading.Tasks.Task<Globals.SoftvList<Softv.Entities.ClienteNoContestoEntity>> GetClienteNoContestoPagedListXmlAsync(int page, int pageSize, string xml);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IClienteNoContesto/AddClienteNoContesto", ReplyAction="http://tempuri.org/IClienteNoContesto/AddClienteNoContestoResponse")]
+        int AddClienteNoContesto(Softv.Entities.ClienteNoContestoEntity objClienteNoContesto);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IClienteNoContesto/AddClienteNoContesto", ReplyAction="http://tempuri.org/IClienteNoContesto/AddClienteNoContestoResponse")]
+        System.Threading.Tasks.Task<int> AddClienteNoContestoAsync(Softv.Entities.ClienteNoContestoEntity objClienteNoContesto);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IClienteNoContesto/UpdateClienteNoContesto", ReplyAction="http://tempuri.org/IClienteNoContesto/UpdateClienteNoContestoResponse")]
+        int UpdateClienteNoContesto(Softv.Entities.ClienteNoContestoEntity objClienteNoContesto);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IClienteNoContesto/UpdateClienteNoContesto", ReplyAction="http://tempuri.org/IClienteNoContesto/UpdateClienteNoContestoResponse")]
+        System.Threading.Tasks.Task<int> UpdateClienteNoContestoAsync(Softv.Entities.ClienteNoContestoEntity objClienteNoContesto);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IClienteNoContesto/DeleteClienteNoContesto", ReplyAction="http://tempuri.org/IClienteNoContesto/DeleteClienteNoContestoResponse")]
+        int DeleteClienteNoContesto(string BaseRemoteIp, int BaseIdUser, System.Nullable<int> IdNoContesto);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IClienteNoContesto/DeleteClienteNoContesto", ReplyAction="http://tempuri.org/IClienteNoContesto/DeleteClienteNoContestoResponse")]
+        System.Threading.Tasks.Task<int> DeleteClienteNoContestoAsync(string BaseRemoteIp, int BaseIdUser, System.Nullable<int> IdNoContesto);
+    }
+    
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    public interface IClienteNoContestoChannel : SoftvMVC.SoftvService.IClienteNoContesto, System.ServiceModel.IClientChannel {
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    public partial class ClienteNoContestoClient : System.ServiceModel.ClientBase<SoftvMVC.SoftvService.IClienteNoContesto>, SoftvMVC.SoftvService.IClienteNoContesto {
+        
+        public ClienteNoContestoClient() {
+        }
+        
+        public ClienteNoContestoClient(string endpointConfigurationName) : 
+                base(endpointConfigurationName) {
+        }
+        
+        public ClienteNoContestoClient(string endpointConfigurationName, string remoteAddress) : 
+                base(endpointConfigurationName, remoteAddress) {
+        }
+        
+        public ClienteNoContestoClient(string endpointConfigurationName, System.ServiceModel.EndpointAddress remoteAddress) : 
+                base(endpointConfigurationName, remoteAddress) {
+        }
+        
+        public ClienteNoContestoClient(System.ServiceModel.Channels.Binding binding, System.ServiceModel.EndpointAddress remoteAddress) : 
+                base(binding, remoteAddress) {
+        }
+        
+        public Softv.Entities.ClienteNoContestoEntity GetClienteNoContesto(System.Nullable<int> IdNoContesto) {
+            return base.Channel.GetClienteNoContesto(IdNoContesto);
+        }
+        
+        public System.Threading.Tasks.Task<Softv.Entities.ClienteNoContestoEntity> GetClienteNoContestoAsync(System.Nullable<int> IdNoContesto) {
+            return base.Channel.GetClienteNoContestoAsync(IdNoContesto);
+        }
+        
+        public Softv.Entities.ClienteNoContestoEntity GetDeepClienteNoContesto(System.Nullable<int> IdNoContesto) {
+            return base.Channel.GetDeepClienteNoContesto(IdNoContesto);
+        }
+        
+        public System.Threading.Tasks.Task<Softv.Entities.ClienteNoContestoEntity> GetDeepClienteNoContestoAsync(System.Nullable<int> IdNoContesto) {
+            return base.Channel.GetDeepClienteNoContestoAsync(IdNoContesto);
+        }
+        
+        public System.Collections.Generic.List<Softv.Entities.ClienteNoContestoEntity> GetClienteNoContestoList() {
+            return base.Channel.GetClienteNoContestoList();
+        }
+        
+        public System.Threading.Tasks.Task<System.Collections.Generic.List<Softv.Entities.ClienteNoContestoEntity>> GetClienteNoContestoListAsync() {
+            return base.Channel.GetClienteNoContestoListAsync();
+        }
+        
+        public Globals.SoftvList<Softv.Entities.ClienteNoContestoEntity> GetClienteNoContestoPagedList(int page, int pageSize) {
+            return base.Channel.GetClienteNoContestoPagedList(page, pageSize);
+        }
+        
+        public System.Threading.Tasks.Task<Globals.SoftvList<Softv.Entities.ClienteNoContestoEntity>> GetClienteNoContestoPagedListAsync(int page, int pageSize) {
+            return base.Channel.GetClienteNoContestoPagedListAsync(page, pageSize);
+        }
+        
+        public Globals.SoftvList<Softv.Entities.ClienteNoContestoEntity> GetClienteNoContestoPagedListXml(int page, int pageSize, string xml) {
+            return base.Channel.GetClienteNoContestoPagedListXml(page, pageSize, xml);
+        }
+        
+        public System.Threading.Tasks.Task<Globals.SoftvList<Softv.Entities.ClienteNoContestoEntity>> GetClienteNoContestoPagedListXmlAsync(int page, int pageSize, string xml) {
+            return base.Channel.GetClienteNoContestoPagedListXmlAsync(page, pageSize, xml);
+        }
+        
+        public int AddClienteNoContesto(Softv.Entities.ClienteNoContestoEntity objClienteNoContesto) {
+            return base.Channel.AddClienteNoContesto(objClienteNoContesto);
+        }
+        
+        public System.Threading.Tasks.Task<int> AddClienteNoContestoAsync(Softv.Entities.ClienteNoContestoEntity objClienteNoContesto) {
+            return base.Channel.AddClienteNoContestoAsync(objClienteNoContesto);
+        }
+        
+        public int UpdateClienteNoContesto(Softv.Entities.ClienteNoContestoEntity objClienteNoContesto) {
+            return base.Channel.UpdateClienteNoContesto(objClienteNoContesto);
+        }
+        
+        public System.Threading.Tasks.Task<int> UpdateClienteNoContestoAsync(Softv.Entities.ClienteNoContestoEntity objClienteNoContesto) {
+            return base.Channel.UpdateClienteNoContestoAsync(objClienteNoContesto);
+        }
+        
+        public int DeleteClienteNoContesto(string BaseRemoteIp, int BaseIdUser, System.Nullable<int> IdNoContesto) {
+            return base.Channel.DeleteClienteNoContesto(BaseRemoteIp, BaseIdUser, IdNoContesto);
+        }
+        
+        public System.Threading.Tasks.Task<int> DeleteClienteNoContestoAsync(string BaseRemoteIp, int BaseIdUser, System.Nullable<int> IdNoContesto) {
+            return base.Channel.DeleteClienteNoContestoAsync(BaseRemoteIp, BaseIdUser, IdNoContesto);
         }
     }
 }
