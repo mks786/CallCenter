@@ -528,7 +528,6 @@ namespace SoftvMVC.Controllers
                 PdfContentByte canvas = ps.GetOverContent(i);
                 page = ps.GetImportedPage(rd, i);
                 BaseFont bf = BaseFont.CreateFont(BaseFont.HELVETICA, BaseFont.CP1252, BaseFont.NOT_EMBEDDED);
-                canvas.SetColorFill(BaseColor.DARK_GRAY);
                 canvas.BeginText();
                 canvas.SetFontAndSize(bf, 8);
 

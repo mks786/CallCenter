@@ -7,7 +7,6 @@ $(document).ready(function () {
         url: "/ResOpcMults/TodasRespuestas/",
         type: "GET",
         success: function (data, textStatus, jqXHR) {
-            console.log(data);
             datos_respuestas = data;
         },
         error: function (jqXHR, textStatus, errorThrown) {

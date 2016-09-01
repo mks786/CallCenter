@@ -10,6 +10,13 @@ using Softv.Entities;
 using Globals;
 using System.Data.SqlClient;
 
+using System.Data;
+using System.Xml;
+using System.Xml.Linq;
+using System.Data.SqlClient;
+using Softv.Entities;
+using System.Configuration;
+
 namespace SoftvMVC.Controllers
 {
     /// <summary>
@@ -43,7 +50,6 @@ namespace SoftvMVC.Controllers
             }
 
         }
-
 
 
         public ActionResult GetCalleByColonia(int colonia, int plaza)
@@ -89,8 +95,56 @@ namespace SoftvMVC.Controllers
         }
 
 
-        public ActionResult GetCALLE(int numModal, int idConexion)
+        //public ActionResult GetCALLE(int numModal, int idConexion)
+        //{
+        //    ConexionController c = new ConexionController();
+        //    SqlCommand comandoSql;
+        //    SqlConnection conexionSQL2 = new SqlConnection(c.DameConexion(idConexion));
+        //    List<DatosCalle> lista = new List<DatosCalle>();
+        //    try
+        //    {
+        //        conexionSQL2.Open();
+        //    }
+        //    catch
+        //    { }
+
+        //    try
+        //    {
+        //        comandoSql = new SqlCommand("exec DatosTipoClienteweb " + numModal);
+
+        //        //comandoSql = new SqlCommand("exec DatosTipoClienteweb " + numModal + ", " + idConexion + "");
+        //        comandoSql.Connection = conexionSQL2;
+        //        SqlDataReader reader = comandoSql.ExecuteReader();
+        //        if (reader.HasRows)
+        //        {
+        //            while (reader.Read())
+        //            {
+        //                DatosCalle datos = new DatosCalle();
+        //                datos.Clv_Calle = Convert.ToInt32(reader[0]);
+        //                datos.NOMBRE = reader[1].ToString();
+        //                lista.Add(datos);
+        //            }
+        //        }
+        //    }
+        //    catch
+        //    { }
+        //    return Json(lista, JsonRequestBehavior.AllowGet);
+        //}
+
+
+        public class objColonias
         {
+            public List<string> colonias { get; set; }
+        }
+
+
+        public ActionResult GetCALLE(int numModal, int idConexion, int idCiudad, objColonias objColonias)
+        {
+            //objColonias contiene el id de todas las colonias seleccionadas
+
+            XElement colonias = new XElement("Colonias", objColonias.colonias.Select(i => new XElement("colonia", new XAttribute("Clv_Colonia", i))));
+            string xmlColoniasString = colonias.ToString(); //convierte el xml a String
+
             ConexionController c = new ConexionController();
             SqlCommand comandoSql;
             SqlConnection conexionSQL2 = new SqlConnection(c.DameConexion(idConexion));
@@ -104,9 +158,17 @@ namespace SoftvMVC.Controllers
 
             try
             {
-                comandoSql = new SqlCommand("exec DatosTipoCliente " + numModal);
+                if (idCiudad == 0)
+                {
+                    comandoSql = new SqlCommand("select Clv_Calle, NOMBRE from CALLES order by NOMBRE");
 
-                //comandoSql = new SqlCommand("exec DatosTipoCliente " + numModal + ", " + idConexion + "");
+                }
+                else
+                {
+                    comandoSql = new SqlCommand("EXEC MostrarCallesPorColonia_web @ciudadesXml");
+                }
+               
+                comandoSql.Parameters.AddWithValue("@ciudadesXml", xmlColoniasString); //envía xml con idColonias para seleccionar calles
                 comandoSql.Connection = conexionSQL2;
                 SqlDataReader reader = comandoSql.ExecuteReader();
                 if (reader.HasRows)
@@ -120,11 +182,13 @@ namespace SoftvMVC.Controllers
                     }
                 }
             }
-            catch
-            { }
+            catch (Exception ex)
+            {
+             
+                throw new ApplicationException(ex.ToString());
+            }
             return Json(lista, JsonRequestBehavior.AllowGet);
         }
-
 
     }
 

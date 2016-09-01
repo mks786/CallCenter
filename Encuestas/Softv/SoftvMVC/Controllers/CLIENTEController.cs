@@ -25,12 +25,14 @@ namespace SoftvMVC.Controllers
     {
         private SoftvService.CLIENTEClient proxy = null;
         private SoftvService.ConexionClient proxycon = null;
+        private SoftvService.UsuarioClient proxyuser = null;
         public CLIENTEController()
         {
 
 
             proxy = new SoftvService.CLIENTEClient();
             proxycon = new SoftvService.ConexionClient();
+            proxyuser = new SoftvService.UsuarioClient();
         }
 
         new public void Dispose()
@@ -688,11 +690,12 @@ namespace SoftvMVC.Controllers
         }
 
 
-        public ActionResult UpdateCliente(CLIENTEEntity2 cliente, clientes_apellidos clienteNombres)
+        public ActionResult UpdateCliente(CLIENTEEntity2 cliente, clientes_apellidos clienteNombres, int usuario)
         {
             ConexionController c = new ConexionController();
             SqlCommand comandoSql2;
             SqlConnection conexionSQL = new SqlConnection(c.DameConexion(cliente.conexion));
+            CLIENTEEntity2 aux_cliente = new CLIENTEEntity2();
             int result = 0;
             try
             {
@@ -700,6 +703,27 @@ namespace SoftvMVC.Controllers
             }
             catch
             { }
+            try
+            {
+                comandoSql2 = new SqlCommand("SELECT * FROM CLIENTES where contrato=" + cliente.CONTRATO);
+                comandoSql2.Connection = conexionSQL;
+                SqlDataReader reader = comandoSql2.ExecuteReader();
+
+                if (reader.HasRows)
+                {
+                    while (reader.Read())
+                    {
+                        aux_cliente.NOMBRE = reader[1].ToString();
+                        aux_cliente.ENTRECALLES = reader[4].ToString();
+                        aux_cliente.TELEFONO = reader[7].ToString();
+                        aux_cliente.CELULAR = reader[8].ToString();
+                        aux_cliente.Email = reader[13].ToString();
+
+                    }
+                    reader.Close();
+                }
+            }
+            catch { }
             try
             {
                 comandoSql2 = new SqlCommand("UPDATE CLIENTES set Nombre='" + cliente.NOMBRE + "',Clv_Calle='" + cliente.Clv_Calle + "',Numero='" + cliente.NUMERO + "',EntreCalles='" + cliente.ENTRECALLES + "',Clv_Colonia='" + cliente.Clv_Colonia + "',Telefono='" + cliente.TELEFONO + "',Celular='" + cliente.CELULAR + "',Clv_Ciudad='" + cliente.Clv_Ciudad + "',Email='" + cliente.Email + "' where contrato=" + cliente.CONTRATO);
@@ -713,6 +737,78 @@ namespace SoftvMVC.Controllers
                 comandoSql2 = new SqlCommand("UPDATE Clientes_Apellidos set Nombre='" + clienteNombres.nombre + "', SegundoNombre='" + clienteNombres.segundonombre + "',Apellido_Paterno='" + clienteNombres.apaterno + "',Apellido_Materno='" + clienteNombres.amaterno + "',FechaNacimiento='" + clienteNombres.fnacimiento + "' where contrato=" + cliente.CONTRATO);
                 comandoSql2.Connection = conexionSQL;
 
+                comandoSql2.ExecuteNonQuery();
+            }
+            catch { }
+            try
+            {
+                
+
+                ConexionEntity conect = proxycon.GetConexion(cliente.conexion);
+                DateTime today = DateTime.Now;
+                comandoSql2 = new SqlCommand("INSERT INTO MovSist(Fecha,usuario,contrato,Sistema,Pantalla,control,valorant,valornuevo,clv_ciudad) values(@Fecha,@usuario,@contrato,@Sistema,@Pantalla,@control,@valorant,@valornuevo,@clv_ciudad)");
+                UsuarioEntity user = proxyuser.GetUsuario(usuario);
+                comandoSql2.Parameters.AddWithValue("@Fecha", today);
+                comandoSql2.Parameters.AddWithValue("@usuario", user.Usuario);
+                comandoSql2.Parameters.AddWithValue("@contrato", cliente.CONTRATO);
+                comandoSql2.Parameters.AddWithValue("@Sistema", "CallCenter");
+                comandoSql2.Parameters.AddWithValue("@Pantalla", "Clientes");
+                comandoSql2.Parameters.AddWithValue("@control", "Actualizó Datos Generales del cliente- Nombre");
+                comandoSql2.Parameters.AddWithValue("@valorant", aux_cliente.NOMBRE);
+                comandoSql2.Parameters.AddWithValue("@valornuevo", cliente.NOMBRE);
+                comandoSql2.Parameters.AddWithValue("@clv_ciudad", conect.Plaza);
+                comandoSql2.Connection = conexionSQL;
+                comandoSql2.ExecuteNonQuery();
+
+                comandoSql2 = new SqlCommand("INSERT INTO MovSist(Fecha,usuario,contrato,Sistema,Pantalla,control,valorant,valornuevo,clv_ciudad) values(@Fecha,@usuario,@contrato,@Sistema,@Pantalla,@control,@valorant,@valornuevo,@clv_ciudad)");
+                comandoSql2.Parameters.AddWithValue("@Fecha", today);
+                comandoSql2.Parameters.AddWithValue("@usuario", user.Usuario);
+                comandoSql2.Parameters.AddWithValue("@contrato", cliente.CONTRATO);
+                comandoSql2.Parameters.AddWithValue("@Sistema", "CallCenter");
+                comandoSql2.Parameters.AddWithValue("@Pantalla", "Clientes");
+                comandoSql2.Parameters.AddWithValue("@control", "Actualizó Datos Generales del cliente- Teléfono");
+                if (cliente.TELEFONO == null)
+                {
+                    cliente.TELEFONO = "";
+                }
+                comandoSql2.Parameters.AddWithValue("@valorant", aux_cliente.TELEFONO);
+                comandoSql2.Parameters.AddWithValue("@valornuevo", cliente.TELEFONO);
+                comandoSql2.Parameters.AddWithValue("@clv_ciudad", conect.Plaza);
+                comandoSql2.Connection = conexionSQL;
+                comandoSql2.ExecuteNonQuery();
+
+                comandoSql2 = new SqlCommand("INSERT INTO MovSist(Fecha,usuario,contrato,Sistema,Pantalla,control,valorant,valornuevo,clv_ciudad) values(@Fecha,@usuario,@contrato,@Sistema,@Pantalla,@control,@valorant,@valornuevo,@clv_ciudad)");
+                comandoSql2.Parameters.AddWithValue("@Fecha", today);
+                comandoSql2.Parameters.AddWithValue("@usuario", user.Usuario);
+                comandoSql2.Parameters.AddWithValue("@contrato", cliente.CONTRATO);
+                comandoSql2.Parameters.AddWithValue("@Sistema", "CallCenter");
+                comandoSql2.Parameters.AddWithValue("@Pantalla", "Clientes");
+                comandoSql2.Parameters.AddWithValue("@control", "Actualizó Datos Generales del cliente- Celular");
+                if (cliente.CELULAR == null)
+                {
+                    cliente.CELULAR = "";
+                }
+                comandoSql2.Parameters.AddWithValue("@valorant", aux_cliente.CELULAR);
+                comandoSql2.Parameters.AddWithValue("@valornuevo", cliente.CELULAR);
+                comandoSql2.Parameters.AddWithValue("@clv_ciudad", conect.Plaza);
+                comandoSql2.Connection = conexionSQL;
+                comandoSql2.ExecuteNonQuery();
+
+                comandoSql2 = new SqlCommand("INSERT INTO MovSist(Fecha,usuario,contrato,Sistema,Pantalla,control,valorant,valornuevo,clv_ciudad) values(@Fecha,@usuario,@contrato,@Sistema,@Pantalla,@control,@valorant,@valornuevo,@clv_ciudad)");
+                comandoSql2.Parameters.AddWithValue("@Fecha", today);
+                comandoSql2.Parameters.AddWithValue("@usuario", user.Usuario);
+                comandoSql2.Parameters.AddWithValue("@contrato", cliente.CONTRATO);
+                comandoSql2.Parameters.AddWithValue("@Sistema", "CallCenter");
+                comandoSql2.Parameters.AddWithValue("@Pantalla", "Clientes");
+                comandoSql2.Parameters.AddWithValue("@control", "Actualizó Datos Generales del cliente- Correo");
+                if (cliente.Email == null)
+                {
+                    cliente.Email = "";
+                }
+                comandoSql2.Parameters.AddWithValue("@valorant", aux_cliente.Email);
+                comandoSql2.Parameters.AddWithValue("@valornuevo", cliente.Email);
+                comandoSql2.Parameters.AddWithValue("@clv_ciudad", conect.Plaza);
+                comandoSql2.Connection = conexionSQL;
                 comandoSql2.ExecuteNonQuery();
             }
             catch { }

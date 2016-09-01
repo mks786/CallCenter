@@ -128,9 +128,9 @@ namespace SoftvMVC.Controllers
 
             try
             {
-                comandoSql = new SqlCommand("exec DatosTipoCliente " + numModal);
+                comandoSql = new SqlCommand("exec DatosTipoClienteweb " + numModal);
 
-                //comandoSql = new SqlCommand("exec DatosTipoCliente " + numModal + ", " + idConexion + "");
+                //comandoSql = new SqlCommand("exec DatosTipoClienteweb " + numModal + ", " + idConexion + "");
                 comandoSql.Connection = conexionSQL2;
                 SqlDataReader reader = comandoSql.ExecuteReader();
                 if (reader.HasRows)
@@ -149,7 +149,50 @@ namespace SoftvMVC.Controllers
             return Json(lista, JsonRequestBehavior.AllowGet);
         }
 
+        public ActionResult GetColoniaPlazaCiudad (int idConexion, int idCiudad)
+        {
+            ConexionController c = new ConexionController();
+            SqlCommand comandoSql;
+            SqlConnection conexionSQL2 = new SqlConnection(c.DameConexion(idConexion));
+            List<DatosTipoCliente> lista = new List<DatosTipoCliente>();
+            try
+            {
+                conexionSQL2.Open();
+            }
+            catch
+            { }
 
+            try
+            {
+                if (idCiudad == 0)
+                {
+                    comandoSql = new SqlCommand("select clv_colonia, nombre from COLONIAS order by nombre");
+
+                }
+                else
+                {
+                    comandoSql = new SqlCommand("select col.clv_colonia, col.Nombre, ciu.Clv_Ciudad from colonias col inner join CVECOLCIU rel on col.clv_colonia = rel.Clv_Colonia inner join CIUDADES ciu on rel.Clv_Ciudad=ciu.Clv_Ciudad where ciu.Clv_Ciudad =" + idCiudad + "order by col.Nombre");
+
+                }
+              
+                //comandoSql = new SqlCommand("exec DatosTipoClienteweb " + numModal + ", " + idConexion + "");
+                comandoSql.Connection = conexionSQL2;
+                SqlDataReader reader = comandoSql.ExecuteReader();
+                if (reader.HasRows)
+                {
+                    while (reader.Read())
+                    {
+                        DatosTipoCliente datos = new DatosTipoCliente();
+                        datos.clv_colonia = Convert.ToInt32(reader[0]);
+                        datos.Nombre = reader[1].ToString();
+                        lista.Add(datos);
+                    }
+                }
+            }
+            catch
+            { }
+            return Json(lista, JsonRequestBehavior.AllowGet);
+        }
 
     }
 

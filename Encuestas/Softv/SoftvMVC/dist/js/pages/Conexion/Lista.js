@@ -45,7 +45,17 @@ function LlenarTabla(cadena) {
             { "data": "Servidor", "orderable": false },
             { "data": "BaseDeDatos", "orderable": false },
             { "data": "Usuario", "orderable": false },
-            { "data": "Password", "orderable": false },
+            {
+                sortable: false,
+                "render": function (data, type, full, meta) {
+                    var cont = '';
+                    for (var i = 0; i < full.Password.length; i++) {
+                        cont += "*";
+                    }
+                    return cont;
+
+                }
+            },
 
             {
                 sortable: false,
@@ -125,7 +135,6 @@ function datosConexion(e) {
         type: "POST",
         data: {'id_conexion':id},
         success: function (data, textStatus, jqXHR) {
-            console.log(data);  
             $('#idplaza_editar').val(data.IdConexion);
             $('#nombre_plaza_editar').val(data.Plaza);
             $('#intancia_editar').val(data.Servidor);

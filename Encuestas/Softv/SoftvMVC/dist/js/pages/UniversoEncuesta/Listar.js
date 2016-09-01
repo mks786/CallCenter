@@ -22,7 +22,7 @@ $(document).ready(function () {
         var id = $(this).val();
         $('#contenido_editar').show();
         $.ajax({
-            url: "/Conexion/ListaConexiones/",
+            url: "/CIUDAD/getAllCiudades/",
             type: "GET",
             success: function (data, textStatus, jqXHR) {
                 $('#ciudades').removeAttr('disabled'); 

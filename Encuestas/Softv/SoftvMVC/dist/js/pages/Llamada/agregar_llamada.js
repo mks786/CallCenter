@@ -290,6 +290,7 @@ $('#buscar_por_nombre').on('click', function () {
     var servicio = $('#tipo_servicio').val();
     var Nombrecliente = $('#nombre_individual').val();
     var ciudad_flitro = $("#plaza_llamadas option:selected").text();
+    alert(ciudad_flitro);
     $.ajax({
         url: "/CLIENTE/GetClientesLlamada/",
         type: "GET",
@@ -393,8 +394,8 @@ function selecion_cliente(e) {
             $('#guardar_llamada').addClass('disabled');
             $('#btn_queja').addClass('disabled');
             new PNotify({
-                title: 'El cliente esta en baja',
-                text: 'El cliente esta en baja, por tal motivo no se puede atender su llamada en esta sección',
+                title: 'El cliente está en baja',
+                text: 'El cliente está en baja, por tal motivo no se puede atender su llamada en esta sección',
                 icon: 'fa fa-info-circle',
                 type: 'warning',
                 hide: false
@@ -533,7 +534,7 @@ function selecion_cliente(e) {
             data: { 'IdPlaza': id_plaza, 'idServicio': tipo_servicio },
             success: function (data, textStatus, jqXHR) {
                 $("#select_soluciones option").remove();
-                $('#select_soluciones').append('<option selected disabled>----------------------------</option>');
+                $('#select_soluciones').append('<option value="0"selected>----------------------------</option>');
                 for (var i = 0; i < data.length; i++) {
                     $('#select_soluciones').append($('<option>', {
                         value: data[i].CLV_TRABAJO,
@@ -769,7 +770,6 @@ function GuardarQueja() {
         llamada.Clv_TipSer = $('#tipo_servicio').val();
         llamada.contrato = contrato_enviar;
         llamada.IdTurno = turno;
-        console.log(llamada);
         $.ajax({
             url: "/Llamada/InsertLlamada",
             type: "POST",
@@ -1037,7 +1037,6 @@ function mostrar_ticket(e) {
         type: "GET",
         data: { 'plaza': id_plaza, 'clv_factura': clv_factura, 'contrato': contrato_enviar },
         success: function (data, textStatus, jqXHR) {
-            console.log(data);
             $('#nombre_empresa').text(data[0].nombre_empresa); 
             $('#calle_empresa').text(data[0].direccion_empresa);
             $('#colonia_empresa').text(data[0].colonia_empresa);

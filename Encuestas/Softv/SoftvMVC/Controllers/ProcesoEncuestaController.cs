@@ -565,8 +565,10 @@ namespace SoftvMVC.Controllers
              ConexionController c = new ConexionController();
             SqlCommand comandoSql;
             SqlCommand comandoSql2;
-            SqlConnection conexionSQL = new SqlConnection("Data Source=FABIAN-PC\\INSTANCIASQL2014;Initial Catalog=Encuestas;User ID =sa;Password=0601x-2Ñ;");
-            SqlConnection conexionSQL2 = new SqlConnection("Data Source=FABIAN-PC\\INSTANCIASQL2014;Initial Catalog=Encuestas;User ID =sa;Password=0601x-2Ñ;");
+            SqlConnection conexionSQL = new SqlConnection("Data Source=192.168.1.230;Initial Catalog=Encuestas;User ID =sa;Password=0601x-2L;");
+            //SqlConnection conexionSQL = new SqlConnection("Data Source=FABIAN-PC\\INSTANCIASQL2014;Initial Catalog=Encuestas;User ID =sa;Password=0601x-2Ñ;");
+            SqlConnection conexionSQL2 = new SqlConnection("Data Source=192.168.1.230;Initial Catalog=Encuestas;User ID =sa;Password=0601x-2L;");
+            //SqlConnection conexionSQL2 = new SqlConnection("Data Source=FABIAN-PC\\INSTANCIASQL2014;Initial Catalog=Encuestas;User ID =sa;Password=0601x-2Ñ;");
             try
             {
                 conexionSQL.Open();

@@ -77,3 +77,20 @@ C:\Users\Israel\Documents\projects\CallCenter\CallCenter\Encuestas\Softv\Softv.B
 C:\Users\Israel\Documents\projects\CallCenter\CallCenter\Encuestas\Softv\Softv.BAL\obj\Release\Softv.BAL.csprojResolveAssemblyReference.cache
 C:\Users\Israel\Documents\projects\CallCenter\CallCenter\Encuestas\Softv\Softv.BAL\obj\Release\Softv.BAL.dll
 C:\Users\Israel\Documents\projects\CallCenter\CallCenter\Encuestas\Softv\Softv.BAL\obj\Release\Softv.BAL.pdb
+C:\Users\Israel\Documents\projects\Versiones Callcenter\CallCenter -\CallCenter\Encuestas\Softv\Softv.BAL\bin\Release\Softv.BAL.dll
+C:\Users\Israel\Documents\projects\Versiones Callcenter\CallCenter -\CallCenter\Encuestas\Softv\Softv.BAL\bin\Release\Softv.BAL.pdb
+C:\Users\Israel\Documents\projects\Versiones Callcenter\CallCenter -\CallCenter\Encuestas\Softv\Softv.BAL\bin\Release\Dapper.dll
+C:\Users\Israel\Documents\projects\Versiones Callcenter\CallCenter -\CallCenter\Encuestas\Softv\Softv.BAL\bin\Release\Globals.dll
+C:\Users\Israel\Documents\projects\Versiones Callcenter\CallCenter -\CallCenter\Encuestas\Softv\Softv.BAL\bin\Release\Softv.Entities.dll
+C:\Users\Israel\Documents\projects\Versiones Callcenter\CallCenter -\CallCenter\Encuestas\Softv\Softv.BAL\bin\Release\Softv.Providers.dll
+C:\Users\Israel\Documents\projects\Versiones Callcenter\CallCenter -\CallCenter\Encuestas\Softv\Softv.BAL\bin\Release\Softv.SQL.dll
+C:\Users\Israel\Documents\projects\Versiones Callcenter\CallCenter -\CallCenter\Encuestas\Softv\Softv.BAL\bin\Release\SoftvConfiguration.dll
+C:\Users\Israel\Documents\projects\Versiones Callcenter\CallCenter -\CallCenter\Encuestas\Softv\Softv.BAL\bin\Release\Globals.pdb
+C:\Users\Israel\Documents\projects\Versiones Callcenter\CallCenter -\CallCenter\Encuestas\Softv\Softv.BAL\bin\Release\SoftvConfiguration.pdb
+C:\Users\Israel\Documents\projects\Versiones Callcenter\CallCenter -\CallCenter\Encuestas\Softv\Softv.BAL\bin\Release\Softv.Entities.pdb
+C:\Users\Israel\Documents\projects\Versiones Callcenter\CallCenter -\CallCenter\Encuestas\Softv\Softv.BAL\bin\Release\Softv.Providers.pdb
+C:\Users\Israel\Documents\projects\Versiones Callcenter\CallCenter -\CallCenter\Encuestas\Softv\Softv.BAL\bin\Release\Softv.SQL.pdb
+C:\Users\Israel\Documents\projects\Versiones Callcenter\CallCenter -\CallCenter\Encuestas\Softv\Softv.BAL\bin\Release\Dapper.xml
+C:\Users\Israel\Documents\projects\Versiones Callcenter\CallCenter -\CallCenter\Encuestas\Softv\Softv.BAL\obj\Release\Softv.BAL.csprojResolveAssemblyReference.cache
+C:\Users\Israel\Documents\projects\Versiones Callcenter\CallCenter -\CallCenter\Encuestas\Softv\Softv.BAL\obj\Release\Softv.BAL.dll
+C:\Users\Israel\Documents\projects\Versiones Callcenter\CallCenter -\CallCenter\Encuestas\Softv\Softv.BAL\obj\Release\Softv.BAL.pdb

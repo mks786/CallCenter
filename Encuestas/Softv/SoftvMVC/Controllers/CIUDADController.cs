@@ -115,7 +115,7 @@ namespace SoftvMVC.Controllers
             public String Nombre { get; set; }
         }
 
-        public ActionResult GetCiudad(int numModal, int idConexion)
+        public ActionResult GetCiudad(int idConexion)
         {
             ConexionController c = new ConexionController();
             SqlCommand comandoSql;
@@ -130,9 +130,9 @@ namespace SoftvMVC.Controllers
 
             try
             {
-                comandoSql = new SqlCommand("exec DatosTipoCliente " + numModal);
+                comandoSql = new SqlCommand("select * from CIUDADES");
 
-                //comandoSql = new SqlCommand("exec DatosTipoCliente " + numModal + ", " + idConexion + "");
+                //comandoSql = new SqlCommand("exec DatosTipoClienteweb " + numModal + ", " + idConexion + "");
                 comandoSql.Connection = conexionSQL2;
                 SqlDataReader reader = comandoSql.ExecuteReader();
                 if (reader.HasRows)

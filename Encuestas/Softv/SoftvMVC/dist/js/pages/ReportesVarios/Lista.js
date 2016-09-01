@@ -49,9 +49,9 @@ function functionAceptar(idReporte, numModal, idModal) {
     else if (numModal == 2) {
         var destino = "destinoServicios"; //select a validar
     }
-    else if (numModal == 3) {
-        var destino = "destinoCiudades"; //select a validar
-    }
+        //else if (numModal == 3) {
+        //    var destino = "destinoCiudades"; //select a validar
+        //}
     else if (numModal == 4) {
         var destino = "destinoColonias"; //select a validar
     }
@@ -160,6 +160,7 @@ function functionAceptar(idReporte, numModal, idModal) {
             //var valor = lista.options[i].value //Obtener valor de todas las opciones en la lista destino
             //alert("texto= " + texto + ", value = " + valor)
             bandera = 1; //al entrar al for, la lista no está vacía
+            //alert('LA LISTA NO ESTÁ VACÍA');
         }
     }
     if (bandera == 0)//Si la lista select está vacía
@@ -170,9 +171,9 @@ function functionAceptar(idReporte, numModal, idModal) {
         if (numModal == 2) {
             alert('Seleccione al menos un servicio')
         }
-        if (numModal == 3) {
-            alert('Seleccione al menos una ciudad')
-        }
+        //if (numModal == 3) {
+        //    alert('Seleccione al menos una ciudad')
+        //}
         if (numModal == 4) {
             alert('Seleccione al menos una colonia')
         }
@@ -188,6 +189,11 @@ function functionAceptar(idReporte, numModal, idModal) {
         if (numModal == 11) {
             alert('Seleccione al menos una calle')
         }
+    }
+    else if (bandera == 1 && numModal == 4) {
+        //Envía los IdColonias;
+        cancelar(numModal, idModal);//Llama a la función para que reinicie el modal cada vez que se presiona 'aceptar'
+        secuenciaModal(idReporte, numModal);
     }
     else if (bandera == 1 && numModal != 6 || bandera == 1 && numModal == 6 && idReporte != 5) //si solo hay un filtro
     {
@@ -223,6 +229,7 @@ function functionAceptar(idReporte, numModal, idModal) {
             cancelar(numModal, idModal);  //Llama a la función para que reinicie el modal cada vez que se presiona 'aceptar'
             enviarDatos(); //se envian datos al controlador ReportesVarios
             secuenciaModal(idReporte, numModal);
+
         }
 
 
@@ -239,12 +246,10 @@ function cancelar(numModal, idModal) {
 
     if (numModal == 2) {
         $('#tipoServicio').modal('hide');
-
     }
-    if (numModal == 3) {
-        $('#ciudades').modal('hide');
-
-    }
+    //if (numModal == 3) {
+    //    $('#ciudades').modal('hide');
+    //}
     if (numModal == 4) {
         $('#colonias').modal('hide');
     }
@@ -267,17 +272,17 @@ function cancelar(numModal, idModal) {
         $('#estatusCliente').modal('hide');
     }
 
-    //Modal 1, vacía los dos select, y después llena el de origen   
+    //Modal 1, vacía los dos select 
     document.getElementById("destinoClientes").options.length = 0;
     document.getElementById("origenClientes").options.length = 0;
 
-    //Modal 2, vacía los select y llena el de origen
+    //Modal 2, vacía los select
     document.getElementById("destinoServicios").options.length = 0;
     document.getElementById("origenServicios").options.length = 0;
     //$('#origenServicios').append('<option value="0">Servicio Básico </option>'); //ELIMINAR CUANDO SERVICIO FUNCIONE
 
-    document.getElementById("destinoCiudades").options.length = 0;
-    document.getElementById("origenCiudades").options.length = 0;
+    //document.getElementById("destinoCiudades").options.length = 0;
+    //document.getElementById("origenCiudades").options.length = 0;
     //$('#origenCiudades').append('<option value="0">Mérida</option>');
 
     document.getElementById("destinoColonias").options.length = 0;
@@ -369,11 +374,6 @@ function secuenciaModal(idReporte, numModal) { //recibe el id o value del report
         $('#tipoServicio').modal('show');
     }
     else if (numModal == 2) {
-        $('#idReporte1').val(idReporte);
-        cargarDatos(3);
-        $('#ciudades').modal('show');
-    }
-    else if (numModal == 3) {
         cargarDatos(4);
         $('#colonias').modal('show'); //todos van al modal 4: Colonias
     }
@@ -409,12 +409,18 @@ function secuenciaModal(idReporte, numModal) { //recibe el id o value del report
             $('#periodo').modal('show');
         }
     }
-    else if (idReporte == 4 || idReporte == 6 || idReporte == 10) //10: paquetes de cortesía
-    {
+    else if (idReporte == 4 || idReporte == 6) {
         if (numModal == 4) {
             $('#rangoFechas').modal('show'); //al 8
         }
         if (numModal == 8) {
+            cargarDatos(6);
+            $('#periodo').modal('show'); //al 6
+        }
+    }
+    else if (idReporte == 10) //10: paquetes de cortesía
+    {
+        if (numModal == 4) {
             cargarDatos(6);
             $('#periodo').modal('show'); //al 6
         }
@@ -464,7 +470,7 @@ function secuenciaModal(idReporte, numModal) { //recibe el id o value del report
             $('#periodo').modal('show'); //al 6
         }
     }
-
+        //idReporte = 11 ó idReporte = 12 usan modal Ciudad 
     else if (idReporte == 11) { // reporte Ciudad
         if (numModal == 4) {
             cargarDatos(11);
@@ -475,6 +481,8 @@ function secuenciaModal(idReporte, numModal) { //recibe el id o value del report
             divT = document.getElementById("imprimirEtiquetas");
             divT.style.display = "";
             cargarDatos(12);
+
+
             $('#estatusCliente').modal('show');  //va al 12
         }
         if (numModal == 12) {
@@ -489,7 +497,6 @@ function secuenciaModal(idReporte, numModal) { //recibe el id o value del report
             $('#calles').modal('show'); //al 11
         }
         if (numModal == 11) {
-
             //desaparecer el botón  imprimir etiquetas
             divT = document.getElementById("imprimirEtiquetas");
             divT.style.display = "none";

@@ -32,11 +32,27 @@
                             <td>
                                 <div align="center">
                                     <div class="row form-group">
+                                        <div class="col-lg-12    col-md-12    col-sm-12    col-xs-12" align="left">
+                                            <label>Selecciona la Plaza</label><br>
+                                        </div>
                                         <div class="col-lg-12    col-md-12    col-sm-12    col-xs-12">
-                                            <select name='listaConexionPlaza' onchange='' id='listaConexionPlaza' class='form-control'></select>
+                                            <select name='listaConexionPlaza' onchange='traeLasCiudades()' id='listaConexionPlaza' class='form-control'></select> 
+                                         
                                         </div>
                                     </div>
                                     <div class="row form-group">
+                                        <div class="col-lg-12    col-md-12    col-sm-12    col-xs-12" align="left">
+                                            <label>Selecciona la Ciudad</label><br>
+                                        </div>
+                                        <div class="col-lg-12    col-md-12    col-sm-12    col-xs-12">
+                                            <select name='listaCiudad' onchange='' id='listaCiudad' class='form-control'></select>
+                                        </div>
+                                    </div>
+
+                                    <div class="row form-group">
+                                        <div class="col-lg-12    col-md-12    col-sm-12    col-xs-12" align="left">
+                                            <label>Selecciona el Servicio</label><br>
+                                        </div>
                                         <div class="col-lg-12    col-md-12    col-sm-12    col-xs-12">
                                             <select name='listaTipoServicio' onchange='filtraOnChange(this);' id='listaTipoServicio' class='form-control'>
                                                 <option value="1">Servicio de Tv por Cable</option>
@@ -278,74 +294,6 @@
 </div>
 
 
-
-@*MODAL Selección Ciudades*@
-<div class="modal fade bs-example-modal-md" data-backdrop="static" data-keyboard="false" id="ciudades" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel">
-    <div class="modal-dialog modal-md">
-        <div class="modal-content">
-            <div class="modal-header">
-                <button class="close" aria-label="Close" type="button" onclick="cancelar(3, '#ciudades')">×</button>
-                <h4 class="modal-title">Selección de Ciudades</h4>
-            </div>
-            <div class="modal-body">
-                @*<div class="nav-tabs-custom">
-                    <div class="tab-content">
-                        <div class="tab-pane active" id="tab_1">*@
-                <div class="row form-group" align="center">
-
-                    <form action="" method="post" id="formulario">
-                        <table>
-                            <tr>
-                                <td style="width:45%;" align="center">
-                                    <div>
-                                        <label>Seleccione Ciudad(es)</label>
-                                        <select name="origenCiudades" id="origenCiudades" multiple="multiple" size=10 style="width:194px">
-                                            @*<option value="0">Mérida</option>*@
-                                        </select>
-                                    </div>
-                                </td>
-                                <td style="width:10%;" align="center">
-                                    <div>
-                                        <br><button class='btn btn-default btn-sm btn-block pasar' type='button' id="pasar"
-                                                    value="pasar" onclick="seleccionar('ciudades');">
-                                            <i class='' aria-hidden='true'></i> >
-                                        </button>
-                                        <br><button class='btn btn-default btn-sm btn-block pasarTodos' type='button' id="pasarTodos"
-                                                    value="pasarTodos" onclick="seleccionar('ciudades');">
-                                            <i class='' aria-hidden='true'></i> >>
-                                        </button>
-                                        <br><button class='btn btn-default btn-sm btn-block quitar' type='button' id="quitar"
-                                                    value="quitar" onclick="seleccionar('ciudades');">
-                                            <i class='' aria-hidden='true'></i> <
-                                        </button>
-                                        <br><button class='btn btn-default btn-sm btn-block quitarTodos' type='button' id="quitarTodos"
-                                                    value="quitarTodos" onclick="seleccionar('ciudades');">
-                                            <i class='' aria-hidden='true'></i> <<
-                                        </button>
-                                    </div>
-                                </td>
-                                <td style="width:45%;" align="center">
-                                    <div>
-                                        <label>Ciudad(es) Seleccionadas</label>
-                                        <select name="destinoCiudades" id="destinoCiudades" multiple="multiple" size=10 style="width:194px"></select>
-                                    </div>
-                                </td>
-                            </tr>
-                        </table>
-                    </form>
-                </div>
-                @*</div><!-- /.tab-pane -->
-                        </div><!-- /.tab-content -->
-                    </div>*@
-            </div>
-            <div class="modal-footer">
-                <button class="btn btn-default" id="aceptar3" type="button" data-toggle="modal" onclick=" guardarDatos(3);functionAceptar($('#idReporte1').val(), 3, '#ciudades');">Aceptar</button>
-                <button class="btn btn-primary" type="button" onclick="cancelar(3,'#ciudades')">Cancelar</button>
-
-            </div>
-        </div>
-    </div>
-</div>
 
 @*MODAL Selección Colonias*@
 <div class="modal fade bs-example-modal-md" data-backdrop="static" data-keyboard="false" id="colonias" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel">

@@ -174,6 +174,7 @@ namespace SoftvMVC.Controllers
             objCalles objCalles, objColonias objColonias, objTelefono objTelefono, objPeriodo objPeriodo, objEstatusOrden objEstatusOrden,
             objEstatusCliente objEstatusCliente, objParametros objParametros, objRangoFechas objRangoFechas, objReporte objReporte)
         {
+            
             string xmlComoString;
             if (objReporte.num_reporte == 0 || objReporte.num_reporte == 1 || objReporte.num_reporte == 5)
             {   //Desconectados, suspendidos, por pagar
@@ -195,7 +196,7 @@ namespace SoftvMVC.Controllers
             else if (objReporte.num_reporte == 10) //paquetes de c
             {
                 xmlComoString = Filtro_Paquetes(objPrincipal, objParametros, objReporte, objServicio, objCiudades,
-               objColonias, objRangoFechas, objPeriodo);
+               objColonias, objPeriodo);
             }
             else //(objReporte.num_reporte == 11 || objReporte.num_reporte == 12)
             //Ciudad, Resumen
@@ -219,6 +220,7 @@ namespace SoftvMVC.Controllers
             XElement parametros = XElement.Parse(Globals.SerializeTool.Serialize<objParametros>(objParametros));
             XElement tipoCliente = new XElement("TipoCliente", objTipoCliente.tipoCliente.Select(i => new XElement("tipoCliente", new XAttribute("Clv_TipoCliente", i))));
             XElement servicio = new XElement("Servicio", objServicio.servicio.Select(i => new XElement("servicio", new XAttribute("Clv_TipSer", i))));
+            //XElement ciudades = XElement.Parse(Globals.SerializeTool.Serialize<objCiudades>(objCiudades));
             XElement ciudades = new XElement("Ciudades", objCiudades.ciudades.Select(i => new XElement("ciudad", new XAttribute("Clv_Ciudad", i))));
             XElement colonias = new XElement("Colonias", objColonias.colonias.Select(i => new XElement("colonia", new XAttribute("Clv_Colonia", i))));
             XElement telefono = XElement.Parse(Globals.SerializeTool.Serialize<objTelefono>(objTelefono));
@@ -284,8 +286,7 @@ namespace SoftvMVC.Controllers
         }
         //Paquetes de C
         public string Filtro_Paquetes(objPrincipal objPrincipal, objParametros objParametros, objReporte objReporte,
-        objServicio objServicio, objCiudades objCiudades, objColonias objColonias,
-        objRangoFechas objRangoFechas, objPeriodo objPeriodo)
+        objServicio objServicio, objCiudades objCiudades, objColonias objColonias, objPeriodo objPeriodo)
         {
             XElement principal = XElement.Parse(Globals.SerializeTool.Serialize<objPrincipal>(objPrincipal));
             XElement parametros = XElement.Parse(Globals.SerializeTool.Serialize<objParametros>(objParametros));
@@ -293,13 +294,13 @@ namespace SoftvMVC.Controllers
             XElement servicio = new XElement("Servicio", objServicio.servicio.Select(i => new XElement("servicio", new XAttribute("Clv_TipSer", i))));
             XElement ciudades = new XElement("Ciudades", objCiudades.ciudades.Select(i => new XElement("ciudad", new XAttribute("Clv_Ciudad", i))));
             XElement colonias = new XElement("Colonias", objColonias.colonias.Select(i => new XElement("colonia", new XAttribute("Clv_Colonia", i))));
-            XElement rango = XElement.Parse(Globals.SerializeTool.Serialize<objRangoFechas>(objRangoFechas));
+            //XElement rango = XElement.Parse(Globals.SerializeTool.Serialize<objRangoFechas>(objRangoFechas));
             XElement periodo = new XElement("Periodo", objPeriodo.periodo.Select(i =>
                                 new XElement("periodo", new XAttribute("Clv_Periodo", i))),
                                                         new XAttribute("ultimo_mes", objPeriodo.ultimo_mes),
                                                         new XAttribute("ultimo_anio", objPeriodo.ultimo_anio));
 
-            principal.Add(parametros, servicio, ciudades, colonias, rango, periodo);//habilita, periodo1, periodo2, ultimo_mes, ultimo_anio);
+            principal.Add(parametros, servicio, ciudades, colonias, periodo);//habilita, periodo1, periodo2, ultimo_mes, ultimo_anio);
 
             var xmlComoString = principal.ToString();
             return xmlComoString;
@@ -478,7 +479,7 @@ namespace SoftvMVC.Controllers
             {
 
             }
-            SqlCommand comandoSql = new SqlCommand("EXEC Reporte_TiposCliente_nuevo1 @reporteXml");
+            SqlCommand comandoSql = new SqlCommand("EXEC Reporte_TiposCliente_nuevo1web @reporteXml");
             comandoSql.Parameters.AddWithValue("@reporteXml", cadena);
             comandoSql.Connection = conexionSQL;
             SqlDataReader reader = comandoSql.ExecuteReader(); //obtiene todas las tablas del query
@@ -776,7 +777,7 @@ namespace SoftvMVC.Controllers
             {
 
             }
-            SqlCommand comandoSql = new SqlCommand("EXEC Reporte_TiposCliente_telefono @reporteXml");
+            SqlCommand comandoSql = new SqlCommand("EXEC Reporte_TiposCliente_telefonoweb @reporteXml");
             comandoSql.Parameters.AddWithValue("@reporteXml", cadena);
             comandoSql.Connection = conexionSQL;
             SqlDataReader reader = comandoSql.ExecuteReader(); //obtiene todas las tablas del query
@@ -1152,7 +1153,7 @@ namespace SoftvMVC.Controllers
             {
 
             }
-            SqlCommand comandoSql = new SqlCommand("EXEC Reporte_TiposCliente_telefono @reporteXml");
+            SqlCommand comandoSql = new SqlCommand("EXEC Reporte_TiposCliente_telefonoweb @reporteXml");
             comandoSql.Parameters.AddWithValue("@reporteXml", cadena);
             comandoSql.Connection = conexionSQL;
             SqlDataReader reader = comandoSql.ExecuteReader(); //obtiene todas las tablas del query
@@ -1519,7 +1520,7 @@ namespace SoftvMVC.Controllers
             {
 
             }
-            SqlCommand comandoSql = new SqlCommand("EXEC Reporte_TiposCliente_telefono @reporteXml");
+            SqlCommand comandoSql = new SqlCommand("EXEC Reporte_TiposCliente_telefonoweb @reporteXml");
             comandoSql.Parameters.AddWithValue("@reporteXml", cadena);
             comandoSql.Connection = conexionSQL;
             SqlDataReader reader = comandoSql.ExecuteReader(); //obtiene todas las tablas del query
@@ -1536,7 +1537,7 @@ namespace SoftvMVC.Controllers
                     //clvREPORTE
                 }
 
-                if (reader.NextResult()) //tabla2 reporte
+                if (reader.NextResult()) 
                 {
                     while (reader.Read()) //Tabla1 Empresa
                     {
@@ -1819,7 +1820,7 @@ namespace SoftvMVC.Controllers
             {
 
             }
-            SqlCommand comandoSql = new SqlCommand("EXEC Reporte_TiposCliente_telefono @reporteXml");
+            SqlCommand comandoSql = new SqlCommand("EXEC Reporte_TiposCliente_telefonoweb @reporteXml");
             comandoSql.Parameters.AddWithValue("@reporteXml", cadena);
             comandoSql.Connection = conexionSQL;
             SqlDataReader reader = comandoSql.ExecuteReader(); //obtiene todas las tablas del query
@@ -2371,7 +2372,7 @@ namespace SoftvMVC.Controllers
             {
 
             }
-            SqlCommand comandoSql = new SqlCommand("EXEC Reporte_TiposCliente_nuevo2 @reporteXml");
+            SqlCommand comandoSql = new SqlCommand("EXEC Reporte_TiposCliente_nuevo2web @reporteXml");
             comandoSql.Parameters.AddWithValue("@reporteXml", cadena);
             comandoSql.Connection = conexionSQL;
             SqlDataReader reader = comandoSql.ExecuteReader(); //obtiene todas las tablas del query
@@ -2710,7 +2711,7 @@ namespace SoftvMVC.Controllers
             {
 
             }
-            SqlCommand comandoSql = new SqlCommand("EXEC Reporte_cortesia_nuevo @reporteXml");
+            SqlCommand comandoSql = new SqlCommand("EXEC Reporte_cortesia_nuevoweb @reporteXml");
             comandoSql.Parameters.AddWithValue("@reporteXml", cadena);
             comandoSql.Connection = conexionSQL;
             SqlDataReader reader = comandoSql.ExecuteReader(); //obtiene todas las tablas del query
@@ -2940,7 +2941,7 @@ namespace SoftvMVC.Controllers
             {
 
             }
-            SqlCommand comandoSql = new SqlCommand("EXEC Reporte_cortesia_nuevo @reporteXml");
+            SqlCommand comandoSql = new SqlCommand("EXEC Reporte_cortesia_nuevoweb @reporteXml");
             comandoSql.Parameters.AddWithValue("@reporteXml", cadena);
             comandoSql.Connection = conexionSQL;
             SqlDataReader reader = comandoSql.ExecuteReader(); //obtiene todas las tablas del query
@@ -3350,7 +3351,7 @@ namespace SoftvMVC.Controllers
             {
 
             }
-            SqlCommand comandoSql = new SqlCommand("EXEC Reporte_TiposCliente_Ciudad @reporteXml");
+            SqlCommand comandoSql = new SqlCommand("EXEC Reporte_TiposCliente_Ciudadweb @reporteXml");
             comandoSql.Parameters.AddWithValue("@reporteXml", cadena);
             comandoSql.CommandTimeout = 60;
             comandoSql.Connection = conexionSQL;
@@ -4149,7 +4150,7 @@ namespace SoftvMVC.Controllers
             {
 
             }
-            SqlCommand comandoSql = new SqlCommand("EXEC Reporte_TiposCliente_Ciudad @reporteXml");
+            SqlCommand comandoSql = new SqlCommand("EXEC Reporte_TiposCliente_Ciudadweb @reporteXml");
             comandoSql.CommandTimeout = 60;
             comandoSql.Parameters.AddWithValue("@reporteXml", cadena);
             comandoSql.Connection = conexionSQL;
@@ -4970,7 +4971,7 @@ namespace SoftvMVC.Controllers
             {
 
             }
-            SqlCommand comandoSql = new SqlCommand("EXEC Reporte_TiposCliente_Ciudad @reporteXml");
+            SqlCommand comandoSql = new SqlCommand("EXEC Reporte_TiposCliente_Ciudadweb @reporteXml");
             comandoSql.Parameters.AddWithValue("@reporteXml", cadena);
             comandoSql.Connection = conexionSQL;
             comandoSql.CommandTimeout = 60;
@@ -5626,7 +5627,7 @@ namespace SoftvMVC.Controllers
             {
 
             }
-            SqlCommand comandoSql = new SqlCommand("EXEC Reporte_TiposCliente_Ciudad @reporteXml");
+            SqlCommand comandoSql = new SqlCommand("EXEC Reporte_TiposCliente_Ciudadweb @reporteXml");
             comandoSql.Parameters.AddWithValue("@reporteXml", cadena);
             comandoSql.Connection = conexionSQL;
             comandoSql.CommandTimeout = 60;
@@ -6222,7 +6223,7 @@ namespace SoftvMVC.Controllers
             {
 
             }
-            SqlCommand comandoSql = new SqlCommand("EXEC Reporte_TiposCliente_Ciudad @reporteXml");
+            SqlCommand comandoSql = new SqlCommand("EXEC Reporte_TiposCliente_Ciudadweb @reporteXml");
             comandoSql.Parameters.AddWithValue("@reporteXml", cadena);
             comandoSql.CommandTimeout = 60;
             comandoSql.Connection = conexionSQL;
@@ -6878,7 +6879,7 @@ namespace SoftvMVC.Controllers
             {
 
             }
-            SqlCommand comandoSql = new SqlCommand("EXEC Reporte_TiposCliente_Ciudad_Resumen @reporteXml");
+            SqlCommand comandoSql = new SqlCommand("EXEC Reporte_TiposCliente_Ciudad_Resumenweb @reporteXml");
             comandoSql.Parameters.AddWithValue("@reporteXml", cadena);
             comandoSql.Connection = conexionSQL;
             SqlDataReader reader = comandoSql.ExecuteReader(); //obtiene todas las tablas del query
@@ -7077,7 +7078,7 @@ namespace SoftvMVC.Controllers
             {
 
             }
-            SqlCommand comandoSql = new SqlCommand("EXEC Reporte_TiposClienteTv_nuevo @reporteXml");
+            SqlCommand comandoSql = new SqlCommand("EXEC Reporte_TiposClienteTv_nuevoweb @reporteXml");
             comandoSql.Parameters.AddWithValue("@reporteXml", cadena);
             comandoSql.Connection = conexionSQL;
             SqlDataReader reader = comandoSql.ExecuteReader(); //obtiene todas las tablas del query
@@ -7311,7 +7312,7 @@ namespace SoftvMVC.Controllers
             {
 
             }
-            SqlCommand comandoSql = new SqlCommand("EXEC Reporte_TiposCliente_nuevo2 @reporteXml");
+            SqlCommand comandoSql = new SqlCommand("EXEC Reporte_TiposCliente_nuevo2web @reporteXml");
             comandoSql.Parameters.AddWithValue("@reporteXml", cadena);
             comandoSql.Connection = conexionSQL;
             comandoSql.CommandTimeout = 50;
@@ -7654,7 +7655,7 @@ namespace SoftvMVC.Controllers
             {
 
             }
-            SqlCommand comandoSql = new SqlCommand("EXEC Reporte_TiposClienteTv_nuevo @reporteXml");
+            SqlCommand comandoSql = new SqlCommand("EXEC Reporte_TiposClienteTv_nuevoweb @reporteXml");
             comandoSql.Parameters.AddWithValue("@reporteXml", cadena);
             comandoSql.Connection = conexionSQL;
             SqlDataReader reader = comandoSql.ExecuteReader(); //obtiene todas las tablas del query
@@ -7979,7 +7980,7 @@ namespace SoftvMVC.Controllers
             {
 
             }
-            SqlCommand comandoSql = new SqlCommand("EXEC Reporte_TiposCliente_nuevo1 @reporteXml");
+            SqlCommand comandoSql = new SqlCommand("EXEC Reporte_TiposCliente_nuevo1web @reporteXml");
             comandoSql.Parameters.AddWithValue("@reporteXml", cadena);
             comandoSql.Connection = conexionSQL;
             SqlDataReader reader = comandoSql.ExecuteReader(); //obtiene todas las tablas del query
@@ -8275,7 +8276,7 @@ namespace SoftvMVC.Controllers
             {
 
             }
-            SqlCommand comandoSql = new SqlCommand("EXEC Reporte_TiposCliente_Ciudad @reporteXml");
+            SqlCommand comandoSql = new SqlCommand("EXEC Reporte_TiposCliente_Ciudadweb @reporteXml");
             comandoSql.Parameters.AddWithValue("@reporteXml", cadena);
             comandoSql.CommandTimeout = 60;
             comandoSql.Connection = conexionSQL;
@@ -8886,7 +8887,7 @@ namespace SoftvMVC.Controllers
             {
 
             }
-            SqlCommand comandoSql = new SqlCommand("EXEC Reporte_TiposCliente_Ciudad @reporteXml");
+            SqlCommand comandoSql = new SqlCommand("EXEC Reporte_TiposCliente_Ciudadweb @reporteXml");
             comandoSql.Parameters.AddWithValue("@reporteXml", cadena);
             comandoSql.CommandTimeout = 60;
             comandoSql.Connection = conexionSQL;
@@ -9582,7 +9583,7 @@ namespace SoftvMVC.Controllers
             {
 
             }
-            SqlCommand comandoSql = new SqlCommand("EXEC Reporte_TiposCliente_Ciudad @reporteXml");
+            SqlCommand comandoSql = new SqlCommand("EXEC Reporte_TiposCliente_Ciudadweb @reporteXml");
             comandoSql.Parameters.AddWithValue("@reporteXml", cadena);
             comandoSql.CommandTimeout = 60;
             comandoSql.Connection = conexionSQL;
@@ -10310,7 +10311,7 @@ namespace SoftvMVC.Controllers
             {
 
             }
-            SqlCommand comandoSql = new SqlCommand("EXEC Reporte_TiposCliente_Ciudad @reporteXml");
+            SqlCommand comandoSql = new SqlCommand("EXEC Reporte_TiposCliente_Ciudadweb @reporteXml");
             comandoSql.Parameters.AddWithValue("@reporteXml", cadena);
             comandoSql.CommandTimeout = 60;
             comandoSql.Connection = conexionSQL;
@@ -11042,6 +11043,10 @@ namespace SoftvMVC.Controllers
             }
             ps.Close();
             return Content("Reportes/" + nombreArchivo2);
+        }
+        public class DatosCiudad
+        {
+            public int Clv_Ciudad { get; set; }
         }
     }
 

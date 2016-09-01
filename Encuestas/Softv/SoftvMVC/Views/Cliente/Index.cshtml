@@ -33,7 +33,7 @@
 <div class="row">
     <div class="row container" id="conetar_plaza">
         <div class="col-md-6">
-            <button class="btn btn-warning" onclick="AbrirModalClietes()"><i class="fa fa-map-marker" aria-hidden="true"></i> SELECCIONAR PLAZA</button>
+            <button class="btn btn-warning" onclick="AbrirModalClietes()"><i class="fa fa-map-marker" aria-hidden="true"></i> SELECCIONAR CIUDAD</button>
         </div>
     </div>
     <div class="col-xs-12" >
@@ -552,7 +552,9 @@
         </div>
     </div>
 </div>
-
+<script>
+    var usuario = @Session["idusuario"];
+</script>
 <script src="~/plugins/input-mask/jquery.inputmask.js"></script>
 <script src="~/dist/js/pages/Cliente/Lista.js"></script>    
 <script src="~/dist/js/pages/Cliente/DetalleCliente.js"></script>

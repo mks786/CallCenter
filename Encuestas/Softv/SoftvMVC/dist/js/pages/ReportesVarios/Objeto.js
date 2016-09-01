@@ -31,7 +31,7 @@ var obj = {}; // es global
 function guardarDatos(numModal) {
 
     var reportes_valor = $('#reportes').val(); //Obtener el val del elemento seleccionado
-    //Pantalla principal  
+    //----- Pantalla principal  
     var soloInternet = 0;
 
     //REVISA SI EL TIPO DE SERVICIO ES CABLE (1) O INTERNET (2) y retorna su value
@@ -44,10 +44,15 @@ function guardarDatos(numModal) {
     console.log($("#reportes").attr("id"));
     soloInternet = filtrarPor();//filtrarPor = filtrarPor(); //filtrar por soloInternet
     objPrincipal.soloInternet = soloInternet;
-    //Fin pantalla principal
+
+    //REVISA CUAL CIUDAD SE ENCUENTRA SELECCIONADA
+    var ciudadSeleccionada = $('#listaCiudad').val(); //Obtener el val de la ciduad seleccionada
+    objCiudades.ciudades = ciudadSeleccionada;
+    //alert('objCiudades.ciudades ' + objCiudades.ciudades);
+
+    //------ Fin pantalla principal
 
     if (numModal == 1) {
-
         var seleccionTipoCliente = [];
         var lista = document.getElementById('destinoClientes');
         for (var i = 0; i < lista.length; i++) {
@@ -67,13 +72,13 @@ function guardarDatos(numModal) {
 
     } else if (numModal == 3) {
 
-        var seleccionCiudades = [];
-        var lista = document.getElementById('destinoCiudades');
-        for (var i = 0; i < lista.length; i++) {
-            var opcionSel = lista.options[i].value //Obtener valor de todas las opciones en la lista destino
-            seleccionCiudades.push(opcionSel);
-        }
-        objCiudades.ciudades = seleccionCiudades;
+        //var seleccionCiudades = [];
+        //var lista = document.getElementById('destinoCiudades');
+        //for (var i = 0; i < lista.length; i++) {
+        //    var opcionSel = lista.options[i].value //Obtener valor de todas las opciones en la lista destino
+        //    seleccionCiudades.push(opcionSel);
+        //}
+        //objCiudades.ciudades = seleccionCiudades;
 
     } else if (numModal == 4) {
         var seleccionColonias = [];
@@ -395,9 +400,7 @@ function enviarDatos() {
     //se activa cuando se presiona el botón id='aceptar6' ó 'aceptar7'
     //siempre y cuando pase los filtros 
 
-
     objReporte.num_reporte = $('#reportes').val(); //Obtener el val del elemento seleccionado
-
     //  alert('se envían los datos');
     console.log('objPrincipal' + objPrincipal + ' objTipoCliente' + objTipoCliente + 'objServicio' + objServicio +
               'objCiudades' + objCiudades + 'objColonias' + objColonias + 'objTelefono' + objTelefono + 'objPeriodo' + objPeriodo,
@@ -594,8 +597,8 @@ function enviarXmlComoString() {
                     url = "ReportesVarios/ReporteCiudad_2_InternetColonias";
                 }
                 else if (objParametros.baja == 1) //Un solo filtro
-                   // alert("baja=1 --cancelados--todos los filtros que incluyan a baja");
-                url = "ReportesVarios/ReporteCiudad_2_Baja_CableColonias";
+                    // alert("baja=1 --cancelados--todos los filtros que incluyan a baja");
+                    url = "ReportesVarios/ReporteCiudad_2_Baja_CableColonias";
             }
 
         }
@@ -606,10 +609,8 @@ function enviarXmlComoString() {
     {    //ir a ReporteCiudad_2        
         url = "ReportesVarios/Reporte_Resumen_Por_Colonia";
     }
-    //alert(url);
 
-
-    $('#Espere').modal('show');
+    //$('#Espere').modal('show'); //Llama al modar 'espere mientras se procesa el documento'
     //Envía el xml ya hecho al controlador con la ruta indicada
     var cadena = $('#xmlComoCadena').val();
     // alert('se envía el xml como cadena ' + cadena);
@@ -633,11 +634,3 @@ function enviarXmlComoString() {
     });
 }
 
-
-
-//data: {
-//    'objPrincipal': objPrincipal, 'objTipoCliente': objTipoCliente, 'objServicio': objServicio,
-//    'objCiudades': objCiudades, 'objColonias': objColonias, 'objTelefono': objTelefono, 'objPeriodo': objPeriodo,
-//    'objEstatusOrden': objEstatusOrden, 'objRangoFechas': objRangoFechas, 'objCalles': objCalles,
-//    'objEstatusCliente': objEstatusCliente, 'objParametros': objParametros, 'objReporte': objReporte
-//},

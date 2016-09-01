@@ -37,7 +37,6 @@ $('#guardarEncuesta').click(function () {
                 TituloEncuesta: titulo_encuesta,
                 Descripcion: descripcion_encuesta,
             }
-            alert(activa);
             var usuario = document.getElementById("username").innerHTML;
 
             $.ajax({

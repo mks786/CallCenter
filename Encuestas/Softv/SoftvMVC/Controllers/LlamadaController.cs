@@ -545,8 +545,8 @@ namespace SoftvMVC.Controllers
         {
             ConexionController c = new ConexionController();
             SqlCommand comandoSql;
-            //SqlConnection conexionSQL = new SqlConnection("Data Source=192.168.1.230;Initial Catalog=Encuestas;User ID =sa;Password=0601x-2L;");
-            SqlConnection conexionSQL = new SqlConnection("Data Source=FABIAN-PC\\INSTANCIASQL2014;Initial Catalog=Encuestas;User ID =sa;Password=0601x-2Ñ;");
+            SqlConnection conexionSQL = new SqlConnection("Data Source=192.168.1.230;Initial Catalog=Encuestas;User ID =sa;Password=0601x-2L;");
+            //SqlConnection conexionSQL = new SqlConnection("Data Source=FABIAN-PC\\INSTANCIASQL2014;Initial Catalog=Encuestas;User ID =sa;Password=0601x-2Ñ;");
             SqlConnection conexionSQL2 = new SqlConnection(c.DameConexion(IdPlaza));
             int id_llamada = 0;
             int id_queja = 0;
@@ -614,8 +614,23 @@ namespace SoftvMVC.Controllers
                         comandoSql.Connection = conexionSQL2;
                         var Id = Int32.Parse(comandoSql.ExecuteScalar().ToString());
                         id_queja = Id;
-                        comandoSql = new SqlCommand("insert into Llamadas(idUsuario,Tipo_Llamada,Contrato,Detalle,Fecha,HoraInicio,HoraFin,IdTurno,Clv_Queja,IdConexion,Clv_TipSer,Clv_Problema,SiEsCliente,Ciudad) values(@IdUsuario,@Tipo_Llamada,@Contrato,@motivo,@Fecha,@HoraInicio,@HoraFin,@IdTurno,@Clv_Queja,@IdConexion,@Clv_TipSer,@Clv_Problema,@SiEsCliente,@Ciudad);  SELECT SCOPE_IDENTITY()");
+                        
+                        UsuarioEntity user = proxyUsuario.GetUsuario(llamada.usuario);
+                        DateTime today = DateTime.Now;
+                        comandoSql = new SqlCommand("INSERT INTO MovSist(Fecha,usuario,contrato,Sistema,Pantalla,control,valorant,valornuevo,clv_ciudad) values(@Fecha,@usuario,@contrato,@Sistema,@Pantalla,@control,@valorant,@valornuevo,@clv_ciudad)");
+                        comandoSql.Parameters.AddWithValue("@Fecha", today);
+                        comandoSql.Parameters.AddWithValue("@usuario", user.Usuario);
+                        comandoSql.Parameters.AddWithValue("@contrato", llamada.contrato);
+                        comandoSql.Parameters.AddWithValue("@Sistema", "CallCenter");
+                        comandoSql.Parameters.AddWithValue("@Pantalla", "Llamadas - nueva llamada");
+                        comandoSql.Parameters.AddWithValue("@control", "Se Generó una nueva queja");
+                        comandoSql.Parameters.AddWithValue("@valorant", "");
+                        comandoSql.Parameters.AddWithValue("@valornuevo", "Realizó una queja con el número: " + id_queja);
+                        comandoSql.Parameters.AddWithValue("@clv_ciudad", llamada.ciudad);
+                        comandoSql.Connection = conexionSQL2;
+                        comandoSql.ExecuteNonQuery();
 
+                        comandoSql = new SqlCommand("insert into Llamadas(idUsuario,Tipo_Llamada,Contrato,Detalle,Fecha,HoraInicio,HoraFin,IdTurno,Clv_Queja,IdConexion,Clv_TipSer,Clv_Problema,SiEsCliente,Ciudad) values(@IdUsuario,@Tipo_Llamada,@Contrato,@motivo,@Fecha,@HoraInicio,@HoraFin,@IdTurno,@Clv_Queja,@IdConexion,@Clv_TipSer,@Clv_Problema,@SiEsCliente,@Ciudad);  SELECT SCOPE_IDENTITY()");
                         comandoSql.Parameters.AddWithValue("@IdUsuario", llamada.usuario);
                         comandoSql.Parameters.AddWithValue("@IdTurno", llamada.IdTurno);
                         comandoSql.Parameters.AddWithValue("@Clv_Queja", Id);
@@ -1029,8 +1044,8 @@ namespace SoftvMVC.Controllers
             ConexionController c = new ConexionController();
             SqlCommand comandoSql;
             List<editLlamada> lista = new List<editLlamada>();
-            //SqlConnection conexionSQL = new SqlConnection("Data Source=192.168.1.230;Initial Catalog=Encuestas;User ID =sa;Password=0601x-2L;");
-            SqlConnection conexionSQL = new SqlConnection("Data Source=FABIAN-PC\\INSTANCIASQL2014;Initial Catalog=Encuestas;User ID =sa;Password=0601x-2Ñ;");
+            SqlConnection conexionSQL = new SqlConnection("Data Source=192.168.1.230;Initial Catalog=Encuestas;User ID =sa;Password=0601x-2L;");
+            //SqlConnection conexionSQL = new SqlConnection("Data Source=FABIAN-PC\\INSTANCIASQL2014;Initial Catalog=Encuestas;User ID =sa;Password=0601x-2Ñ;");
             SqlConnection conexionSQL2 = new SqlConnection(c.DameConexion(plaza));
             try
             {
@@ -1107,8 +1122,8 @@ namespace SoftvMVC.Controllers
              ConexionController c = new ConexionController();
             SqlCommand comandoSql;
             List<objTipoLlamada> lista = new List<objTipoLlamada>();
-            //SqlConnection conexionSQL = new SqlConnection("Data Source=192.168.1.230;Initial Catalog=Encuestas;User ID =sa;Password=0601x-2L;");
-            SqlConnection conexionSQL = new SqlConnection("Data Source=FABIAN-PC\\INSTANCIASQL2014;Initial Catalog=Encuestas;User ID =sa;Password=0601x-2Ñ;");
+            SqlConnection conexionSQL = new SqlConnection("Data Source=192.168.1.230;Initial Catalog=Encuestas;User ID =sa;Password=0601x-2L;");
+            //SqlConnection conexionSQL = new SqlConnection("Data Source=FABIAN-PC\\INSTANCIASQL2014;Initial Catalog=Encuestas;User ID =sa;Password=0601x-2Ñ;");
             try
             {
                 conexionSQL.Open();
@@ -1201,7 +1216,8 @@ namespace SoftvMVC.Controllers
         {
             ConexionController c = new ConexionController();
             SqlCommand comandoSql;
-            SqlConnection conexionSQL = new SqlConnection("Data Source=FABIAN-PC\\INSTANCIASQL2014;Initial Catalog=Encuestas;User ID =sa;Password=0601x-2Ñ;");
+            SqlConnection conexionSQL = new SqlConnection("Data Source=192.168.1.230;Initial Catalog=Encuestas;User ID =sa;Password=0601x-2L;");
+           // SqlConnection conexionSQL = new SqlConnection("Data Source=FABIAN-PC\\INSTANCIASQL2014;Initial Catalog=Encuestas;User ID =sa;Password=0601x-2Ñ;");
             List<HistorialLlamadas> lista = new List<HistorialLlamadas>();
             try
             {
@@ -1669,7 +1685,9 @@ namespace SoftvMVC.Controllers
             List<datosReporte> lista = new List<datosReporte>();
             ConexionController c = new ConexionController();
             SqlCommand comandoSql;
+            //SqlConnection conexionSQL = new SqlConnection("Data Source=192.168.1.230;Initial Catalog=Encuestas;User ID =sa;Password=0601x-2L;");
             SqlConnection conexionSQL = new SqlConnection("Data Source=FABIAN-PC\\INSTANCIASQL2014;Initial Catalog=Encuestas;User ID =sa;Password=0601x-2Ñ;");
+            string nombre_archivo = "";
             try
             {
                 conexionSQL.Open();
@@ -1714,7 +1732,6 @@ namespace SoftvMVC.Controllers
                         llamada.solucion = reader2[5].ToString();
                         DateTime Fecha = DateTime.Parse(reader2[6].ToString());
                         llamada.fecha = Fecha.ToShortDateString();
-                        //llamada.fecha = reader2[6].ToString();
                         DateTime Inicio = DateTime.Parse(reader2[7].ToString());
                         llamada.inicio = Inicio.ToShortTimeString();
                         DateTime Fin = DateTime.Parse(reader2[8].ToString());
@@ -1723,122 +1740,139 @@ namespace SoftvMVC.Controllers
 
                     }
                 }
+                
+                if (reader2.HasRows)
+                {
+                    ConexionEntity plaza = proxyConexion.GetConexion(reporte.plaza);
+                    //creamos un documento con un guid y lo guardamos en la carpeta temporal de windows
+                    string fileName = Server.MapPath("/Reportes/") + Guid.NewGuid().ToString() + ".pdf";
+                    FileStream fs = new FileStream(fileName, FileMode.Create, FileAccess.Write, FileShare.None);
+                    Document document = new Document(PageSize.A4, 50, 50, 25, 50);
+                    PdfWriter writer = PdfWriter.GetInstance(document, fs);
+                    document.Open();
+
+                    iTextSharp.text.Font negritas = new iTextSharp.text.Font(iTextSharp.text.Font.FontFamily.HELVETICA, 9, iTextSharp.text.Font.BOLD, BaseColor.BLACK);
+                    iTextSharp.text.Font normal = new iTextSharp.text.Font(iTextSharp.text.Font.FontFamily.HELVETICA, 7, iTextSharp.text.Font.NORMAL, BaseColor.BLACK);
+                    //creamos el parrafo de titulo de la enciesra
+                    Paragraph titulo = new Paragraph();
+                    titulo.Alignment = Element.ALIGN_CENTER;
+                    titulo.Font = FontFactory.GetFont("Arial", 20);
+                    titulo.Font.SetStyle(Font.BOLD);
+                    titulo.Add("Reporte de Llamadas Recibidas");
+                    document.Add(titulo);
+                    document.Add(new Paragraph("\n"));
+
+                    Paragraph plazap = new Paragraph();
+                    plazap.Alignment = Element.ALIGN_CENTER;
+                    plazap.Font = FontFactory.GetFont("Arial", 20);
+                    plazap.Font.SetStyle(Font.BOLD);
+                    if (reporte.ciudad != null && reporte.ciudad != "")
+                    {
+                        plazap.Add("Ciudad de " + reporte.ciudad);
+                    }
+                    else
+                    {
+                        plazap.Add("Plaza " + plaza.Plaza);
+                    }
+                    document.Add(plazap);
+                    document.Add(new Paragraph("\n"));
+                    //creamos el parrafo de la descripcion
+                    Paragraph detalle = new Paragraph();
+                    
+                    detalle.Font = FontFactory.GetFont("Arial", 15);
+                    detalle.Font.SetStyle(Font.BOLD);
+                    if (reporte.inicio != "" && reporte.inicio != null)
+                    {
+                        detalle.Alignment = Element.ALIGN_CENTER;
+                        detalle.Add("Reporte del " + reporte.inicio + " al " + reporte.fin);
+                    }
+                    else
+                    {
+                        detalle.Alignment = Element.ALIGN_RIGHT;
+                        DateTime thisDay = DateTime.Today;
+                        detalle.Add("Fecha: " + thisDay.ToShortDateString());
+                    }
+
+                    document.Add(detalle);
+                    document.Add(new Paragraph("\n"));//salto de linea
+
+                    //Separador
+                    Paragraph p = new Paragraph(new Chunk(new iTextSharp.text.pdf.draw.LineSeparator(0.0F, 100.0F, BaseColor.LIGHT_GRAY, Element.ALIGN_LEFT, 1)));
+                    document.Add(p);
+                    document.Add(new Paragraph("\n"));
+
+                    PdfPTable table = new PdfPTable(9);
+
+                    table.WidthPercentage = 100;
+                    table.HeaderRows = 1;
+                    PdfPCell cell1 = new PdfPCell(new Phrase("No. Reporte", negritas));
+                    PdfPCell cell2 = new PdfPCell(new Phrase("Atendió", negritas));
+                    PdfPCell cell3 = new PdfPCell(new Phrase("Tipo", negritas));
+                    PdfPCell cell4 = new PdfPCell(new Phrase("Contrato", negritas));
+                    PdfPCell cell5 = new PdfPCell(new Phrase("Detalle", negritas));
+                    PdfPCell cell6 = new PdfPCell(new Phrase("Solución", negritas));
+                    PdfPCell cell7 = new PdfPCell(new Phrase("Fecha", negritas));
+                    PdfPCell cell8 = new PdfPCell(new Phrase("Inicio", negritas));
+                    PdfPCell cell9 = new PdfPCell(new Phrase("Fin", negritas));
+                    table.AddCell(cell1);
+                    table.AddCell(cell2);
+                    table.AddCell(cell3);
+                    table.AddCell(cell4);
+                    table.AddCell(cell5);
+                    table.AddCell(cell6);
+                    table.AddCell(cell7);
+                    table.AddCell(cell8);
+                    table.AddCell(cell9);
+                    foreach (var item in lista)
+                    {
+
+                        table.AddCell(new PdfPCell(new Phrase(item.id_llamada.ToString(), normal)));
+                        table.AddCell(new PdfPCell(new Phrase(item.usuario.ToString(), normal)));
+                        table.AddCell(new PdfPCell(new Phrase(item.tipo_llamada.ToString(), normal)));
+                        table.AddCell(new PdfPCell(new Phrase(item.contrato.ToString(), normal)));
+                        table.AddCell(new PdfPCell(new Phrase(item.detalle.ToString(), normal)));
+                        table.AddCell(new PdfPCell(new Phrase(item.solucion.ToString(), normal)));
+                        table.AddCell(new PdfPCell(new Phrase(item.fecha.ToString(), normal)));
+                        table.AddCell(new PdfPCell(new Phrase(item.inicio.ToString(), normal)));
+                        table.AddCell(new PdfPCell(new Phrase(item.fin.ToString(), normal)));
+                    }
+
+                    document.Add(table);
+                    document.Close();
+                    //cerramos el documento y lo volvemos a abrir para agregar el numero de pagina a cada hoja
+                    PdfReader rd = new PdfReader(fileName);
+                    nombre_archivo = Guid.NewGuid().ToString();
+                    string fileName2 = Server.MapPath("/Reportes/") + nombre_archivo + ".pdf";
+                    PdfStamper ps = new PdfStamper(rd, new FileStream(fileName2, FileMode.Create));
+
+                    PdfImportedPage page;
+                    for (int i = 1; i <= rd.NumberOfPages; i++)
+                    {
+                        PdfContentByte canvas = ps.GetOverContent(i);
+                        page = ps.GetImportedPage(rd, i);
+                        BaseFont bf = BaseFont.CreateFont(BaseFont.HELVETICA, BaseFont.CP1252, BaseFont.NOT_EMBEDDED);
+                        canvas.BeginText();
+                        canvas.SetFontAndSize(bf, 8);
+
+                        canvas.ShowTextAligned(PdfContentByte.ALIGN_LEFT, " " + i, 300.7f, 20.7f, 0);
+                        canvas.EndText();
+                        canvas.AddTemplate(page, 0, 0);
 
 
-                ConexionEntity plaza = proxyConexion.GetConexion(reporte.plaza);
-                //creamos un documento con un guid y lo guardamos en la carpeta temporal de windows
-                string fileName = System.IO.Path.GetTempPath() + Guid.NewGuid().ToString() + ".pdf";
-                FileStream fs = new FileStream(fileName, FileMode.Create, FileAccess.Write, FileShare.None);
-                Document document = new Document(PageSize.A4, 50, 50, 25, 50);
-                PdfWriter writer = PdfWriter.GetInstance(document, fs);
-                document.Open();
+                    }
+                    ps.Close();
 
-                iTextSharp.text.Font negritas = new iTextSharp.text.Font(iTextSharp.text.Font.FontFamily.HELVETICA, 9, iTextSharp.text.Font.BOLD, BaseColor.BLACK);
-                iTextSharp.text.Font normal = new iTextSharp.text.Font(iTextSharp.text.Font.FontFamily.HELVETICA, 7, iTextSharp.text.Font.NORMAL, BaseColor.BLACK);
-                //creamos el parrafo de titulo de la enciesra
-                Paragraph titulo = new Paragraph();
-                titulo.Alignment = Element.ALIGN_CENTER;
-                titulo.Font = FontFactory.GetFont("Arial", 20);
-                titulo.Font.SetStyle(Font.BOLD);
-                titulo.Add("Reporte de Llamadas Recibidas");
-                document.Add(titulo);
-                document.Add(new Paragraph("\n"));
-
-                Paragraph plazap = new Paragraph();
-                plazap.Alignment = Element.ALIGN_CENTER;
-                plazap.Font = FontFactory.GetFont("Arial", 20);
-                plazap.Font.SetStyle(Font.BOLD);
-                plazap.Add("Plaza " + plaza.Plaza);
-                document.Add(plazap);
-                document.Add(new Paragraph("\n"));
-                //creamos el parrafo de la descripcion
-                Paragraph detalle = new Paragraph();
-                detalle.Alignment = Element.ALIGN_CENTER;
-                detalle.Font = FontFactory.GetFont("Arial", 15);
-                detalle.Font.SetStyle(Font.BOLD);
-                if(reporte.inicio != "" && reporte.inicio != null){
-                    detalle.Add("Reporte del "+reporte.inicio+" al "+reporte.fin);
                 }
                 else
                 {
-                    DateTime thisDay = DateTime.Today;
-                    detalle.Add("Reporte elaborado el "+thisDay);
+                    nombre_archivo = "No Resultados";
                 }
                 
-                document.Add(detalle);
-                document.Add(new Paragraph("\n"));//salto de linea
-
-                //Separador
-                Paragraph p = new Paragraph(new Chunk(new iTextSharp.text.pdf.draw.LineSeparator(0.0F, 100.0F, BaseColor.LIGHT_GRAY, Element.ALIGN_LEFT, 1)));
-                document.Add(p);
-                document.Add(new Paragraph("\n"));
-
-                PdfPTable table = new PdfPTable(9);
                 
-                table.WidthPercentage = 100;
-                table.HeaderRows = 1;
-                PdfPCell cell1 = new PdfPCell(new Phrase("No. Reporte", negritas));
-                PdfPCell cell2 = new PdfPCell(new Phrase("Atendió", negritas));
-                PdfPCell cell3 = new PdfPCell(new Phrase("Tipo", negritas));
-                PdfPCell cell4 = new PdfPCell(new Phrase("Contrato", negritas));
-                PdfPCell cell5 = new PdfPCell(new Phrase("Detalle", negritas));
-                PdfPCell cell6 = new PdfPCell(new Phrase("Solución", negritas));
-                PdfPCell cell7 = new PdfPCell(new Phrase("Fecha", negritas));
-                PdfPCell cell8 = new PdfPCell(new Phrase("Inicio", negritas));
-                PdfPCell cell9 = new PdfPCell(new Phrase("Fin", negritas));
-                table.AddCell(cell1);
-                table.AddCell(cell2);
-                table.AddCell(cell3);
-                table.AddCell(cell4);
-                table.AddCell(cell5);
-                table.AddCell(cell6);
-                table.AddCell(cell7);
-                table.AddCell(cell8);
-                table.AddCell(cell9);
-                foreach (var item in lista)
-                {
-
-                    table.AddCell(new PdfPCell(new Phrase(item.id_llamada.ToString(), normal)));
-                    table.AddCell(new PdfPCell(new Phrase(item.usuario.ToString(), normal)));
-                    table.AddCell(new PdfPCell(new Phrase(item.tipo_llamada.ToString(), normal)));
-                    table.AddCell(new PdfPCell(new Phrase(item.contrato.ToString(), normal)));
-                    table.AddCell(new PdfPCell(new Phrase(item.detalle.ToString(), normal)));
-                    table.AddCell(new PdfPCell(new Phrase(item.solucion.ToString(), normal)));
-                    table.AddCell(new PdfPCell(new Phrase(item.fecha.ToString(), normal)));
-                    table.AddCell(new PdfPCell(new Phrase(item.inicio.ToString(), normal)));
-                    table.AddCell(new PdfPCell(new Phrase(item.fin.ToString(), normal)));
-                }
-
-                document.Add(table);
-                document.Close();
-                //cerramos el documento y lo volvemos a abrir para agregar el numero de pagina a cada hoja
-                PdfReader rd = new PdfReader(fileName);
-                string fileName2 = System.IO.Path.GetTempPath() + Guid.NewGuid().ToString() + ".pdf";
-                PdfStamper ps = new PdfStamper(rd, new FileStream(fileName2, FileMode.Create));
-
-                PdfImportedPage page;
-                for (int i = 1; i <= rd.NumberOfPages; i++)
-                {
-                    PdfContentByte canvas = ps.GetOverContent(i);
-                    page = ps.GetImportedPage(rd, i);
-                    BaseFont bf = BaseFont.CreateFont(BaseFont.HELVETICA, BaseFont.CP1252, BaseFont.NOT_EMBEDDED);
-                    canvas.SetColorFill(BaseColor.DARK_GRAY);
-                    canvas.BeginText();
-                    canvas.SetFontAndSize(bf, 8);
-
-                    canvas.ShowTextAligned(PdfContentByte.ALIGN_LEFT, " " + i, 300.7f, 20.7f, 0);
-                    canvas.EndText();
-                    canvas.AddTemplate(page, 0, 0);
-
-
-                }
-                ps.Close();
-                //retornamos el archivo pero ahora con el nombre del titulo de la encuesta
-                return File(fileName2, "application/pdf","Reporte Llamadas.pdf");
             }
            
             catch {  }
-            return null;
+            return Json(nombre_archivo + ".pdf", JsonRequestBehavior.AllowGet);
         }
         public class obj_reporte{
             public int plaza { get; set; }

@@ -191,7 +191,6 @@ function enviar_editar_permiso() {
     if (document.getElementById('OptDelete_editar').checked) { var d = true } else { var d = false }
     if (document.getElementById('OptUpdate_editar').checked) { var u = true } else { var u = false }
 
-    console.log($('#idPermiso_edit').val());
     var objPermiso = {};
     objPermiso.IdPermiso = $('#idPermiso_edit').val();
     objPermiso.OptAdd = a;

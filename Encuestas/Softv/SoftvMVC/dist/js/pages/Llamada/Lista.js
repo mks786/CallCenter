@@ -232,7 +232,6 @@ function MostrarDetalles(e){
         type: "GET",
         data: { 'plaza': id_plaza, 'id_llamada': llamada },
         success: function (data, textStatus, jqXHR) {
-            console.log(data);
             $('#id_llamda').text(data[0].IdLlamada); 
             $('#atendio_detalle').text(data[0].atendio);
             var contrato = data[0].Contrato;

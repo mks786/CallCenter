@@ -3,16 +3,15 @@
 function cargarDatos(numModal) {
     var tipoServicioSeleccionado = cableInternet(); //1 = cable, 2 = internet
     var idConexion = $("#listaConexionPlaza").val(); //obtener idConexion seleccionada
-
-    //'<option value="0">Servicio Básico </option>'
-
+    var idCiudad = $("#listaCiudad").val(); //obtener idCiudad seleccionada
+    
     if (numModal == 1) //TipoCliente y cable
     {
         $.ajax({
             url: '/TipoCliente/GetTipoClientes/',
             type: 'POST',
             dataType: 'json',
-            data: { 'numModal': numModal,'idConexion': idConexion },
+            data: { 'numModal': numModal, 'idConexion': idConexion },
             success: function (data) {
                 console.log(data);
                 //alert(data);            
@@ -34,7 +33,7 @@ function cargarDatos(numModal) {
             url: '/Servicio/GetServicioCable/',
             type: 'POST',
             dataType: 'json',
-            data: { 'tipoServicioSeleccionado':tipoServicioSeleccionado, 'idConexion': idConexion },
+            data: { 'tipoServicioSeleccionado': tipoServicioSeleccionado, 'idConexion': idConexion },
             success: function (data) {
                 console.log(data);
                 //alert(data);
@@ -47,27 +46,27 @@ function cargarDatos(numModal) {
             }
         });
     }
-    else if (numModal == 3) // Ciudades
-    {
-        $.ajax({
-            url: '/CIUDAD/GetCiudad/',
-            type: 'POST',
-            dataType: 'json',
-            data: { 'numModal': numModal, 'idConexion': idConexion },
-            success: function (data) {
-                //alert(data);
-                $.each(data, function (i, item) {
-                    $('<option value="' + item.Clv_Ciudad + '">' + item.Nombre + '</option>').appendTo('#origenCiudades');
-                });
-            },
-            error: function () {
-                console.log('err')
-            }
-        });
-
-    }
+        //else if (numModal == 3) // Ciudades
+        //{
+        //    $.ajax({
+        //        url: '/CIUDAD/GetCiudad/',
+        //        type: 'POST',
+        //        dataType: 'json',
+        //        data: { 'numModal': numModal, 'idConexion': idConexion },
+        //        success: function (data) {
+        //            //alert(data);
+        //            $.each(data, function (i, item) {
+        //                $('<option value="' + item.Clv_Ciudad + '">' + item.Nombre + '</option>').appendTo('#origenCiudades');
+        //            });
+        //        },
+        //        error: function () {
+        //            console.log('err')
+        //        }
+        //    });
+        //}
     else if (numModal == 4) // Colonias
-    {      
+    {
+        /*
         $.ajax({
             url: '/COLONIA/GetColonia/',
             type: 'POST',
@@ -85,8 +84,26 @@ function cargarDatos(numModal) {
                 console.log('err')
             }
         });
+        */
 
 
+        $.ajax({
+            url: '/COLONIA/GetColoniaPlazaCiudad/',
+            type: 'POST',
+            dataType: 'json',
+            data: { 'idConexion': idConexion, 'idCiudad': idCiudad },
+            success: function (data) {
+                console.log(data);
+                //alert(data);
+                $.each(data, function (i, item) {
+
+                    $('<option value="' + item.clv_colonia + '">' + item.Nombre + '</option>').appendTo('#origenColonias');
+                });
+            },
+            error: function () {
+                console.log('err')
+            }
+        });
 
     }
     else if (numModal == 6) // Periodo
@@ -129,11 +146,15 @@ function cargarDatos(numModal) {
     }
     else if (numModal == 11) //Calles
     {
+    
+        //Las colonias y el idConexion (plaza) determinan las calles que aparecen.
+        //objColonias.colonias guarda los idColonias al dar clic en aceptar del modal 4
+
         $.ajax({
             url: '/CALLE/GetCALLE/',
             type: 'POST',
             dataType: 'json',
-            data: { 'numModal': numModal, 'idConexion': idConexion },
+            data: { 'numModal': numModal, 'idConexion': idConexion,  'idCiudad': idCiudad , 'objColonias': objColonias},
             success: function (data) {
                 //alert(data);
                 $.each(data, function (i, item) {
@@ -168,6 +189,7 @@ function cargarDatos(numModal) {
 
 
 $(document).ready(function () {
+
     $.ajax({
         url: "/Conexion/Plazas/",
         type: "GET",
@@ -177,12 +199,45 @@ $(document).ready(function () {
                     value: data[i].IdConexion,
                     text: data[i].Plaza
                 }));
+                //   alert('data ' + data[i].IdConexion);
             }
+            //console.log(data);
+            $("#listaConexionPlaza option:first").attr('selected', 'selected'); //Selecciona la primera plaza por default      
+            traeLasCiudades(); //
         },
         error: function (jqXHR, textStatus, errorThrown) {
-
         }
     });
 });
 
 
+
+
+function traeLasCiudades() // Llena el select de las ciudades dependiendo de la plaza
+    //esta función es llamada cuando document.ready y onchange de plaza
+{
+    var idConexion = $("#listaConexionPlaza").val(); //obtener idConexion seleccionada
+    $('#listaCiudad').empty(); //Vacía la lista cada que se cambia la plaza
+
+    $.ajax({
+        url: '/CIUDAD/GetCiudad/',
+        type: 'POST',
+        dataType: 'json',
+        data: { 'idConexion': idConexion },
+        success: function (data) {
+            //alert(data);
+            $('#listaCiudad').append($('<option>', {
+                value: 0,
+                text: 'Todas las ciudades' //se añade la opción 0 para seleccionar todas las ciudades
+            }));
+
+            $.each(data, function (i, item) {
+                $('<option value="' + item.Clv_Ciudad + '">' + item.Nombre + '</option>').appendTo('#listaCiudad');
+
+            });
+        },
+        error: function () {
+            console.log('err')
+        }
+    });
+}

@@ -51,7 +51,17 @@ function LlenarTabla(cadena) {
             { "data": "Nombre", "orderable": false },
             { "data": "Email", "orderable": false },
             { "data": "Usuario", "orderable": false },
-            { "data": "Password", "orderable": false },
+            {
+                sortable: false,
+                "render": function (data, type, full, meta) {
+                    var cont = '';
+                    for (var i = 0; i < full.Password.length; i++) {
+                        cont += "*";
+                    }
+                    return cont;
+
+                }
+            },
             {
                 sortable: false,
                 "render": function (data, type, full, meta) {

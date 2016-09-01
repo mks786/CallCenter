@@ -231,9 +231,9 @@ namespace SoftvMVC.Controllers
 
             try
             {
-                comandoSql = new SqlCommand("exec DatosTipoCliente " + numModal);
+                comandoSql = new SqlCommand("Select * from CatalogoPeriodosCorte");
 
-                //comandoSql = new SqlCommand("exec DatosTipoCliente " + numModal + ", " + idConexion + "");
+                //comandoSql = new SqlCommand("exec DatosTipoClienteweb " + numModal + ", " + idConexion + "");
                 comandoSql.Connection = conexionSQL2;
                 SqlDataReader reader = comandoSql.ExecuteReader();
                 if (reader.HasRows)

@@ -59,8 +59,6 @@
             type: "GET",
             data: { 'IdPlaza': $(this).val(), },
             success: function (data, textStatus, jqXHR) {
-                alert('asffsdfdfdfs');
-                console.log(data);
                 $("#problema option").remove();
                 $('#problema').append('<option selected disabled>--------------------</option>');
                 $('#problema').append('<option value="999999">Todos los problemas</option>');
@@ -99,7 +97,7 @@
 
 function llenarCiudades(id) {
     $.ajax({
-        url: "/Conexion/ListaConexiones/",
+        url: "/CIUDAD/getAllCiudades/",
         type: "GET",
         success: function (data, textStatus, jqXHR) {
             $('#ciudades').empty();
@@ -130,12 +128,15 @@ function reportear() {
     var problema = $('#problema').val();
     var usuario = $('#usuario').val();
     var inicio = $('#inicio').val();
-    var ifecha = new Date(inicio);
-    inicio = ifecha.getDate() + 1 + "/" + (ifecha.getMonth() + 1) + "/" + ifecha.getFullYear();
-    var queja = $('#quejas').val();
     var fin = $('#fin').val();
-    var ffecha = new Date(fin);
-    fin = ffecha.getDate() + 1 + "/" + (ffecha.getMonth() + 1) + "/" + ffecha.getFullYear();
+    if (inicio != "" && fin != "") {
+        var ifecha = new Date(inicio);
+        inicio = ifecha.getDate() + 1 + "/" + (ifecha.getMonth() + 1) + "/" + ifecha.getFullYear();
+        var queja = $('#quejas').val();
+
+        var ffecha = new Date(fin);
+        fin = ffecha.getDate() + 1 + "/" + (ffecha.getMonth() + 1) + "/" + ffecha.getFullYear();
+    }
     var reporte = {};
     if (ciudad == "--------------------") {
         reporte.ciudad = "";
@@ -164,13 +165,24 @@ function reportear() {
     reporte.plaza = plaza;
     reporte.inicio = inicio;
     reporte.fin = fin;
-    console.log(reporte);
     $.ajax({
         url: "/Llamada/ReporteLLamadas/",
         type: "GET",
         data:reporte,
         success: function (data, textStatus, jqXHR) {
-
+            if (data == "No Resultados.pdf" || data == ".pdf") {
+                new PNotify({
+                    title: 'No se encontraron resultados',
+                    text: 'No se encontraron resultados con los filtros anteriores.',
+                    icon: 'fa fa-info-circle',
+                    type: 'warning',
+                });
+            }
+            else {
+                $('.collapse').collapse('hide');
+                document.getElementById("reportePdf").innerHTML = '<embed src="Reportes/' + data + '" width=\"600\" height=\"550\">';
+            }
+            
         },
         error: function (jqXHR, textStatus, errorThrown) {
 
