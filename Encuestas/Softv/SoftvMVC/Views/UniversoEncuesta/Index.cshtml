@@ -1,6 +1,23 @@
 ﻿@{
     ViewBag.Title = "Index";
     Layout = "~/Views/Shared/_Layout.cshtml";
+    try
+    {
+        List<Softv.Entities.PermisoEntity> Permiso = ViewBag.Permisos;
+        var a = Permiso.Where(p => p.IdModule == 28).FirstOrDefault();
+        <script>
+            var permiso_editar = "@a.OptUpdate";
+            var permiso_agregar = "@a.OptAdd";
+            var permiso_eliminar = "@a.OptDelete";
+        </script>
+    }
+    catch
+    {
+        <script>
+            location.href = "/";
+        </script>
+    }
+
 }
 <section class="content-header">
     <h1>
@@ -256,6 +273,26 @@
             </div>
             <div class="modal-footer">
                 <button class="btn btn-danger" type="button" id="confirmaElimina">Eliminar</button>
+                <button class="btn btn-primary " type="button" data-dismiss="modal">Cerrar</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="ModalTerminar" role="dialog">
+    <div class="modal-dialog modal-sm">
+        <div class="modal-content">
+            <div class="modal-header alert-danger">
+                <button class="close" aria-label="Close" type="button" data-dismiss="modal"><span aria-hidden="true">×</span></button>
+                <h4 class="modal-title text-center">Terminar Encuesta</h4>
+            </div>
+            <div class="modal-body">
+                <input type="hidden" id="id_proceso_terminar" />
+                <p><strong>¿Realmente deseas terminar el proceso?</strong> <br /> <small class="text-justify">Sí terminas el proceso todas las encuestas pendientes seran cambiadas a terminanas afectando tus estadísticas.</small></p>
+
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-danger" type="button" onclick="confirmaTerminar()">Terminar</button>
                 <button class="btn btn-primary " type="button" data-dismiss="modal">Cerrar</button>
             </div>
         </div>

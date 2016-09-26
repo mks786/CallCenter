@@ -1,0 +1,57 @@
+﻿<div class="modal-header">
+    <button type="button" class="close" ng-click="ctrl.cancel()" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+    <h3 class="modal-title" id="modal-title">Cambio de Domicilio</h3>
+</div>
+<div class="modal-body" id="modal-body">
+    <div class="row">
+        <div class="col-md-12" style="padding-left:30px;">
+            <div class="row">
+                <div class="col-md-6">
+                    <label>Ciudad</label>
+                    <select class="form-control" disabled>
+                        <option selected> {{ ctrl.ciudad }}</option>
+                    </select>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-6">
+                    <label>Colonia</label>
+                    <select class="form-control" disabled>
+                        <option selected> {{ ctrl.colonia }}</option>
+                    </select>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-6">
+                    <label>Calle</label>
+                    <select class="form-control" disabled>
+                        <option selected> {{ ctrl.calle }}</option>
+                    </select>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-4">
+                    <label>Número</label>
+                    <input type="text" class="form-control" ng-model="ctrl.numero" disabled/>
+                </div>
+                <div class="col-md-4">
+                    <label>Número Interior</label>
+                    <input type="text" class="form-control" ng-model="ctrl.numeroInterior" disabled/>
+                </div>
+                <div class="col-md-4">
+                    <label>Teléfono</label>
+                    <input type="text" class="form-control" ng-model="ctrl.telefono" disabled/>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-8">
+                    <label>Entre calles</label>
+                    <input type="text" class="form-control" ng-model="ctrl.entreCalles" disabled/>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="modal-footer">
+    <button class="btn btn-primary" type="button" ng-click="ctrl.cancel()">Cerrar</button>
+</div>

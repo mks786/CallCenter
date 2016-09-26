@@ -1,0 +1,37 @@
+﻿<div class="modal-header">
+    <button type="button" class="close" ng-click="ctrl.cancel()" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+    <h3 class="modal-title" id="modal-title">Seleccione el servicio</h3>
+</div>
+<div class="modal-body" id="modal-body">
+    <div class="row">
+        <div class="col-md-12" style="padding-left:30px;">
+            <div class="row">
+                <div class="col-md-8">
+                    <label>Tipo de servicio</label>
+                    <select class="form-control" ng-change="ctrl.changeService()" ng-model="ctrl.selectedService" ng-options="v.servicio for v in ctrl.servicios track by v.clv_servicio"></select>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-8">
+                    <label>Trabajo</label>
+                    <select class="form-control" ng-model="ctrl.selectedTrabajo" ng-options="v.descripcion for v in ctrl.trabajos track by v.clv_trabajo"><option value="0">---------------------</option></select>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-8">
+                    <label>Observaciones</label>
+                    <textarea class="form-control" ng-model="ctrl.observaciones"></textarea>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-4">
+                    <label class="checkbox-inline"><input type="checkbox" ng-model="ctrl.realizaTrabajo" checked>Se Realiza el Trabajo</label>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="modal-footer">
+    <button class="btn btn-success" type="button" ng-click="ctrl.ok()">Guardar</button>
+    <button class="btn btn-primary" type="button" ng-click="ctrl.cancel()">Cancelar</button>
+</div>

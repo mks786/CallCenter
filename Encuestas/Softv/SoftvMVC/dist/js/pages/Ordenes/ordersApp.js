@@ -1,0 +1,1 @@
+﻿var ordersApp = angular.module('ordersApp', ['ui.bootstrap', 'angular-loading-bar']);

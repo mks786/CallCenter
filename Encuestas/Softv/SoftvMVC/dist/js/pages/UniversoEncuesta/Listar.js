@@ -187,14 +187,67 @@ function LlenarTabla(cadena, filtro) {
 
 function Opciones(full) {
     var opc;
-    if (full.StatusEncuesta == "Pendiente") {
-        opc = "<a href='/ProcesoEncuesta/Details/" + full.IdProcesoEnc + "' class='btn btn-success btn-xs' type='button' id='" + full.IdProcesoEnc + "' onclick='aplicarEncuesta(this)'><i class='fa fa-chart' aria-hidden='true'></i> Aplicar</a> <button id='" + full.IdProcesoEnc + "' class='btn btn-xs btn-danger' id='" + full.IdProcesoEnc + "' onclick='ModalElimiar(this.id);'><i class='fa fa-trash-o' aria-hidden='true'></i> Eliminar</button>";
-
+    if (permiso_eliminar == "False") {
+        if (full.StatusEncuesta == "Pendiente") {
+            if(permiso_editar == "False"){
+                opc = "<a href='/ProcesoEncuesta/Details/" + full.IdProcesoEnc + "' class='btn btn-success btn-xs' type='button' id='" + full.IdProcesoEnc + "' onclick='aplicarEncuesta(this)'><i class='fa fa-chart' aria-hidden='true'></i> Aplicar</a> ";
+            } else {
+                opc = "<a href='/ProcesoEncuesta/Details/" + full.IdProcesoEnc + "' class='btn btn-success btn-xs' type='button' id='" + full.IdProcesoEnc + "' onclick='aplicarEncuesta(this)'><i class='fa fa-chart' aria-hidden='true'></i> Aplicar</a>  <button class='btn btn-warning btn-xs' data-proceso='" + full.IdProcesoEnc + "' id='ter_proceso' onclick='term_proceso(this)'><i class='fa fa-exclamation-triangle' aria-hidden='true'></i> Terminar Proceso</button>";
+            }
+        } else {
+           opc = "<a href='/ProcesoEncuesta/Details/" + full.IdProcesoEnc + "' class='btn btn-primary btn-xs' type='button' id='" + full.IdProcesoEnc + "' onclick='aplicarEncuesta(this)'><i class='fa fa-chart' aria-hidden='true'></i> Consultar</a>";
+        }
     } else {
-        opc = "<a href='/ProcesoEncuesta/Details/" + full.IdProcesoEnc + "' class='btn btn-primary btn-xs' type='button' id='" + full.IdProcesoEnc + "' onclick='aplicarEncuesta(this)'><i class='fa fa-chart' aria-hidden='true'></i> Consultar</a> <button id='" + full.IdProcesoEnc + "' class='btn btn-xs btn-danger' id='" + full.IdProcesoEnc + "' onclick='ModalElimiar(this.id)'><i class='fa fa-trash-o' aria-hidden='true'></i> Eliminar</button>";
+        if (full.StatusEncuesta == "Pendiente") {
+            if (permiso_editar == "False") {
+                opc = "<a href='/ProcesoEncuesta/Details/" + full.IdProcesoEnc + "' class='btn btn-success btn-xs' type='button' id='" + full.IdProcesoEnc + "' onclick='aplicarEncuesta(this)'><i class='fa fa-chart' aria-hidden='true'></i> Aplicar</a> <button id='" + full.IdProcesoEnc + "' class='btn btn-xs btn-danger' id='" + full.IdProcesoEnc + "' onclick='ModalElimiar(this.id);'><i class='fa fa-trash-o' aria-hidden='true'></i> Eliminar</button>";
+            } else {
+                opc = "<a href='/ProcesoEncuesta/Details/" + full.IdProcesoEnc + "' class='btn btn-success btn-xs' type='button' id='" + full.IdProcesoEnc + "' onclick='aplicarEncuesta(this)'><i class='fa fa-chart' aria-hidden='true'></i> Aplicar</a> <button id='" + full.IdProcesoEnc + "' class='btn btn-xs btn-danger' id='" + full.IdProcesoEnc + "' onclick='ModalElimiar(this.id);'><i class='fa fa-trash-o' aria-hidden='true'></i> Eliminar</button> <button class='btn btn-warning btn-xs' data-proceso='" + full.IdProcesoEnc + "' id='ter_proceso' onclick='term_proceso(this)'><i class='fa fa-exclamation-triangle' aria-hidden='true'></i> Terminar Proceso</button>";
+            }
+
+        } else {
+            opc = "<a href='/ProcesoEncuesta/Details/" + full.IdProcesoEnc + "' class='btn btn-primary btn-xs' type='button' id='" + full.IdProcesoEnc + "' onclick='aplicarEncuesta(this)'><i class='fa fa-chart' aria-hidden='true'></i> Consultar</a> <button id='" + full.IdProcesoEnc + "' class='btn btn-xs btn-danger' id='" + full.IdProcesoEnc + "' onclick='ModalElimiar(this.id)'><i class='fa fa-trash-o' aria-hidden='true'></i> Eliminar</button>";
+        }
     }
+
+    
         // opc = "<button class='btn btn-info btn-xs Detalle' type='button' id='" + id + "' onclick='MostrarDetalles(this)'><i class='fa fa-info' aria-hidden='true'></i> Detalles</button> <button class='btn btn-warning btn-xs Editar' type='button' id='" + id + "' onclick='editarLlamada(this)'><i class='fa fa-pencil' aria-hidden='true'></i> Editar</button>";
     return opc;
+}
+
+
+function term_proceso(e) {
+    $('#ModalTerminar').modal('show');
+    var id = e.getAttribute('data-proceso');
+    $('#id_proceso_terminar').val(id);
+    
+}
+
+function confirmaTerminar() {
+    var id = $('#id_proceso_terminar').val();
+    $.ajax({
+        url: "/UniversoEncuesta/TerminarProceso/",
+        type: "POST",
+        data: { 'id_proceso': id },
+        success: function (data, textStatus, jqXHR) {
+            $('#Espere').modal('hide');
+            swal({
+                title: "!Hecho!", text: "El proceso fue terminado exitosamente!!",
+                type: "success",
+                showCancelButton: false,
+                confirmButtonColor: "#5cb85c",
+                confirmButtonText: "Aceptar",
+                cancelButtonText: "Aceptar",
+                closeOnConfirm: false,
+                closeOnCancel: false
+            }, function (isConfirm) {
+                location.reload();
+            });
+        },
+        error: function (jqXHR, textStatus, errorThrown) {
+
+        }
+    });
 }
 
 function ModalElimiar(id) {
@@ -316,7 +369,7 @@ function GuardarUniverso() {
                            universo.instalados = instalados;
                            universo.desconectados = desconectados;
                            universo.fuera_servicio = fuera_servicio;
-                           //envio de datos po estatus
+                           //envio de datos por estatus
                            $.ajax({
                                url: "/ProcesoEncuesta/Create/",
                                type: "POST",

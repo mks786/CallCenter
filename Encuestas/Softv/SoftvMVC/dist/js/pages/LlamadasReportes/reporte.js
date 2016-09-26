@@ -87,6 +87,7 @@
                         text: data[i].Concepto
                     }));
                 }
+                $('#tipo_servicio').append('<option value="0">Ambos</option>');
             },
             error: function (jqXHR, textStatus, errorThrown) {
 
@@ -97,21 +98,18 @@
 
 function llenarCiudades(id) {
     $.ajax({
-        url: "/CIUDAD/getAllCiudades/",
+        url: "/CIUDAD/GetCiudad/",
         type: "GET",
+        data:{idConexion:id},
         success: function (data, textStatus, jqXHR) {
             $('#ciudades').empty();
             $('#ciudades').append('<option selected disabled>--------------------</option>');
-            if(data.length > 1){
-                $('#ciudades').append('<option value="999999">Todas las Ciudades</option>');
-            }
+            $('#ciudades').append('<option value="999999">Todas las Ciudades</option>');
             for (var i = 0; i < data.length; i++) {
-                if (data[i].IdPlaza == id) {
-                    $('#ciudades').append($('<option>', {
-                        value: data[i].IdPlaza,
-                        text: data[i].Ciudad
-                    }));
-                } 
+                $('#ciudades').append($('<option>', {
+                    value: data[i].Clv_Ciudad,
+                    text: data[i].Nombre
+                }));
             }
         },
         error: function (jqXHR, textStatus, errorThrown) {
@@ -120,6 +118,10 @@ function llenarCiudades(id) {
     });
 }
 
+function getDate(date) {
+    d = date.slice(0, 10).split('-');
+    return d[2] + '/' + d[1] + '/' + d[0];
+}
 
 function reportear() {
     var plaza = $('#plazas').val();
@@ -130,12 +132,9 @@ function reportear() {
     var inicio = $('#inicio').val();
     var fin = $('#fin').val();
     if (inicio != "" && fin != "") {
-        var ifecha = new Date(inicio);
-        inicio = ifecha.getDate() + 1 + "/" + (ifecha.getMonth() + 1) + "/" + ifecha.getFullYear();
+        inicio = getDate(inicio)
         var queja = $('#quejas').val();
-
-        var ffecha = new Date(fin);
-        fin = ffecha.getDate() + 1 + "/" + (ffecha.getMonth() + 1) + "/" + ffecha.getFullYear();
+        fin = getDate(fin)
     }
     var reporte = {};
     if (ciudad == "--------------------") {

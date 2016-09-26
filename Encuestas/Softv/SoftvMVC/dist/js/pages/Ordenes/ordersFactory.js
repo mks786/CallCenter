@@ -1,0 +1,365 @@
+﻿'use strict';
+
+ordersApp.factory('ordersFactory', function ($http, $q) {
+    var factory = {};
+    var paths = {
+        list: "Municipio/GetMunicipioList",
+        detailOrder: "/Ordenes/getDetailOrder/",
+        addPre: "/Ordenes/preGuardado/",
+        update: "Municipio/UpdateRelEstMunL",
+        remove: "Municipio/DeleteMunicipio",
+        orders: "/Ordenes/getListOrders/",
+        places: "/Conexion/Plazas/",
+        counters: "/Ordenes/getCounters/",
+        dataClient: "/Ordenes/getDatosClientes/",
+        dataTecnicos: "/Ordenes/getDataTecnicos/",
+        dataServicios: "/Ordenes/getServiciosContratados/",
+        dataTrabajos: "/Ordenes/getTrabajos/",
+        dataActivo: "/Ordenes/getServicioActivo/",
+        allOrdes: "/Ordenes/getAllOrders/",
+        saveDetailOrder: "/Ordenes/guardarDetalleOrden/",
+        deleteDetailOrder: "/Ordenes/deleteDetailOrder/",
+        cancelOrder: "/Ordenes/cancelOrder/",
+        saveOrder: "/Ordenes/SaveOrder/",
+        getCiudades: "/CIUDAD/GetCiudad/",
+        getColonia: "/COLONIA/GetColoniaByCiudad/",
+        getCalle: "/CALLE/GetCalleByColonia/",
+        saveCambioDomicilio: "/Ordenes/saveCambioDomicilio/",
+        getExtensiones: "/Ordenes/getExtensiones/",
+        cancelExtensiones: "/Ordenes/saveExtensiones/",
+        saveExtensiones: "/Ordenes/saveExtensiones/",
+        getCablemodems: "/Ordenes/getCablemodem/",
+        bajaPaquete: "/Ordenes/bajaPaquete/",
+        consultarDetalleOrden: "/Ordenes/consultarDetalleOrden/",
+        detalleCamdo: "/Ordenes/detalleCamdo/",
+        detalleConet: "/Ordenes/detalleConet/",
+        tieneCanexConex: "/Ordenes/tieneCanexConex/",
+        motivosCancelacion: "/Ordenes/motivosCancelacion/",
+        guardarMotivo: "/Ordenes/guardarMotivo/",
+        getBitacoraDescarga: "/Ordenes/getBitacoraDescarga/",
+        getArticulosDescarga: "/Ordenes/getArticulosDescarga/"
+    };
+
+    factory.getList = function () {
+        var deferred = $q.defer();
+        $http.get(paths.list).success(function (data) {
+            deferred.resolve(data);
+        }).error(function (data) {
+            deferred.reject(data);
+        });
+        return deferred.promise;
+    };
+
+    factory.getDataClient = function (idPlaza, Contrato) {
+        var deferred = $q.defer();
+        $http.get(paths.dataClient, { params: { idPlaza: idPlaza, Contrato: Contrato } }).success(function (data) {
+            deferred.resolve(data);
+        }).error(function (data) {
+            deferred.reject(data);
+        });
+        return deferred.promise;
+    };
+
+    factory.guardarMotivo = function (idPlaza, Orden, Motivo) {
+        var deferred = $q.defer();
+        $http.get(paths.guardarMotivo, { params: { idPlaza: idPlaza, Orden: Orden, Motivo:Motivo } }).success(function (data) {
+            deferred.resolve(data);
+        }).error(function (data) {
+            deferred.reject(data);
+        });
+        return deferred.promise;
+    };
+
+    factory.getArticulosDescarga = function (idPlaza, Tecnico, Clasificacion) {
+        var deferred = $q.defer();
+        $http.get(paths.getArticulosDescarga, { params: { idPlaza: idPlaza, Tecnico: Tecnico, Clasificacion: Clasificacion } }).success(function (data) {
+            deferred.resolve(data);
+        }).error(function (data) {
+            deferred.reject(data);
+        });
+        return deferred.promise;
+    };
+
+    factory.getBitacoraDescarga = function (idPlaza, Orden) {
+        var deferred = $q.defer();
+        $http.get(paths.getBitacoraDescarga, { params: { idPlaza: idPlaza, Orden: Orden } }).success(function (data) {
+            deferred.resolve(data);
+        }).error(function (data) {
+            deferred.reject(data);
+        });
+        return deferred.promise;
+    };
+
+    factory.motivosCancelacion = function (idPlaza) {
+        var deferred = $q.defer();
+        $http.get(paths.motivosCancelacion, { params: { idPlaza: idPlaza } }).success(function (data) {
+            deferred.resolve(data);
+        }).error(function (data) {
+            deferred.reject(data);
+        });
+        return deferred.promise;
+    };
+
+    factory.tieneCanexConex = function (idPlaza, Orden) {
+        var deferred = $q.defer();
+        $http.get(paths.tieneCanexConex, { params: { idPlaza: idPlaza, Orden: Orden } }).success(function (data) {
+            deferred.resolve(data);
+        }).error(function (data) {
+            deferred.reject(data);
+        });
+        return deferred.promise;
+    };
+
+    factory.consultarDetalleOrden = function (idPlaza, Orden) {
+        var deferred = $q.defer();
+        $http.get(paths.consultarDetalleOrden, { params: { idPlaza: idPlaza, Orden: Orden } }).success(function (data) {
+            deferred.resolve(data);
+        }).error(function (data) {
+            deferred.reject(data);
+        });
+        return deferred.promise;
+    };
+
+    factory.getCablemodems = function (idPlaza, Contrato) {
+        var deferred = $q.defer();
+        $http.get(paths.getCablemodems, { params: { idPlaza: idPlaza, Contrato: Contrato } }).success(function (data) {
+            deferred.resolve(data);
+        }).error(function (data) {
+            deferred.reject(data);
+        });
+        return deferred.promise;
+    };
+    
+    factory.detalleConet = function (idPlaza, Clave, Orden, Contrato) {
+        var deferred = $q.defer();
+        $http.get(paths.detalleConet, { params: { idPlaza: idPlaza, Contrato: Contrato, Clave: Clave, Orden: Orden } }).success(function (data) {
+            deferred.resolve(data);
+        }).error(function (data) {
+            deferred.reject(data);
+        });
+        return deferred.promise;
+    };
+
+    factory.detalleCamdo = function (idPlaza, Clave, Orden, Contrato) {
+        var deferred = $q.defer();
+        $http.get(paths.detalleCamdo, { params: { idPlaza: idPlaza, Contrato: Contrato, Clave: Clave, Orden: Orden } }).success(function (data) {
+            deferred.resolve(data);
+        }).error(function (data) {
+            deferred.reject(data);
+        });
+        return deferred.promise;
+    };
+
+    factory.cancelExtensiones = function (idPlaza, Clave, Orden, Contrato, Extensiones) {
+        var deferred = $q.defer();
+        $http.get(paths.cancelExtensiones, { params: { idPlaza: idPlaza, Contrato: Contrato, Clave: Clave, Orden: Orden, Extensiones: Extensiones } }).success(function (data) {
+            deferred.resolve(data);
+        }).error(function (data) {
+            deferred.reject(data);
+        });
+        return deferred.promise;
+    };
+
+    factory.bajaPaquete = function (Objeto) {
+        var deferred = $q.defer();
+        $http.post(paths.bajaPaquete, Objeto).success(function (data) {
+            deferred.resolve(data);
+        }).error(function (data) {
+            deferred.reject(data);
+        });
+        return deferred.promise;
+    };
+
+    factory.saveExtensiones = function (idPlaza, Clave, Orden, Contrato, Extensiones) {
+        var deferred = $q.defer();
+        $http.get(paths.saveExtensiones, { params: { idPlaza: idPlaza, Contrato: Contrato, Clave: Clave, Orden: Orden, Extensiones: Extensiones } }).success(function (data) {
+            deferred.resolve(data);
+        }).error(function (data) {
+            deferred.reject(data);
+        });
+        return deferred.promise;
+    };
+
+    factory.getExtensiones = function (idPlaza, Contrato) {
+        var deferred = $q.defer();
+        $http.get(paths.getExtensiones, { params: { idPlaza: idPlaza, Contrato: Contrato } }).success(function (data) {
+            deferred.resolve(data);
+        }).error(function (data) {
+            deferred.reject(data);
+        });
+        return deferred.promise;
+    };
+
+    factory.getCalle = function (idPlaza, Colonia) {
+        var deferred = $q.defer();
+        $http.get(paths.getCalle, { params: { colonia: Colonia, plaza: idPlaza } }).success(function (data) {
+            deferred.resolve(data);
+        }).error(function (data) {
+            deferred.reject(data);
+        });
+        return deferred.promise;
+    };
+
+    factory.getColonia = function (idPlaza, Ciudad) {
+        var deferred = $q.defer();
+        $http.get(paths.getColonia, { params: { idciudad: Ciudad, plaza: idPlaza } }).success(function (data) {
+            deferred.resolve(data);
+        }).error(function (data) {
+            deferred.reject(data);
+        });
+        return deferred.promise;
+    };
+
+    factory.saveCambioDomicilio = function (idPlaza, Clave, Orden, Contrato, Ciudad, Colonia, Calle, Numero, Telefono, entreCalles, NumInt) {
+        var deferred = $q.defer();
+        $http.get(paths.saveCambioDomicilio, { params: { idPlaza: idPlaza, Clave: Clave, Orden: Orden, Contrato: Contrato, Ciudad: Ciudad, Colonia: Colonia, Calle: Calle, Numero: Numero, Telefono: Telefono, entreCalles: entreCalles, NumInt: NumInt } }).success(function (data) {
+            deferred.resolve(data);
+        }).error(function (data) {
+            deferred.reject(data);
+        });
+        return deferred.promise;
+    };
+
+    factory.getCiudades = function (idPlaza) {
+        var deferred = $q.defer();
+        $http.get(paths.getCiudades, { params: { idConexion: idPlaza } }).success(function (data) {
+            deferred.resolve(data);
+        }).error(function (data) {
+            deferred.reject(data);
+        });
+        return deferred.promise;
+    };
+
+    factory.cancelOrder = function (idPlaza, Orden) {
+        var deferred = $q.defer();
+        $http.get(paths.cancelOrder, { params: { idPlaza: idPlaza, Orden: Orden } }).success(function (data) {
+            deferred.resolve(data);
+        }).error(function (data) {
+            deferred.reject(data);
+        });
+        return deferred.promise;
+    };
+
+    factory.deleteDetailOrder = function (idPlaza, Clave) {
+        var deferred = $q.defer();
+        $http.get(paths.deleteDetailOrder, { params: { idPlaza: idPlaza, Clave: Clave } }).success(function (data) {
+            deferred.resolve(data);
+        }).error(function (data) {
+            deferred.reject(data);
+        });
+        return deferred.promise;
+    };
+
+    factory.getAllOrders = function (idPlaza, Orden) {
+        var deferred = $q.defer();
+        $http.get(paths.allOrdes, { params: { idPlaza: idPlaza, Orden: Orden } }).success(function (data) {
+            deferred.resolve(data);
+        }).error(function (data) {
+            deferred.reject(data);
+        });
+        return deferred.promise;
+    };
+
+    factory.saveDetailOrder = function (idPlaza, Orden, Trabajo, Observaciones, Realiza, Servicio) {
+        var deferred = $q.defer();
+        $http.get(paths.saveDetailOrder, { params: { idPlaza: idPlaza, Orden: Orden, Observaciones: Observaciones, Trabajo: Trabajo, Realiza: Realiza, Servicio: Servicio } }).success(function (data) {
+            deferred.resolve(data);
+        }).error(function (data) {
+            deferred.reject(data);
+        });
+        return deferred.promise;
+    };
+
+    factory.saveOrder = function (idPlaza, Obse, Orden, Usuario) {
+        var deferred = $q.defer();
+        $http.get(paths.saveOrder, { params: { idPlaza: idPlaza, Obse: Obse, Orden: Orden, Usuario: Usuario } }).success(function (data) {
+            deferred.resolve(data);
+        }).error(function (data) {
+            deferred.reject(data);
+        });
+        return deferred.promise;
+    };
+
+    factory.addPre = function (idPlaza, Contrato, Observaciones) {
+        var deferred = $q.defer();
+        $http.get(paths.addPre, { params: { idPlaza: idPlaza, Contrato: Contrato, Observaciones: Observaciones } }).success(function (data) {
+            deferred.resolve(data);
+        }).error(function (data) {
+            deferred.reject(data);
+        });
+        return deferred.promise;
+    };
+
+    factory.getDataJobs = function (idPlaza, Servicio) {
+        var deferred = $q.defer();
+        $http.get(paths.dataTrabajos, { params: { idPlaza: idPlaza, Servicio: Servicio } }).success(function (data) {
+            deferred.resolve(data);
+        }).error(function (data) {
+            deferred.reject(data);
+        });
+        return deferred.promise;
+    };
+
+    factory.getDataActivo = function (idPlaza, Servicio, Contrato) {
+        var deferred = $q.defer();
+        $http.get(paths.dataActivo, { params: { idPlaza: idPlaza, Servicio: Servicio, Contrato: Contrato } }).success(function (data) {
+            deferred.resolve(data);
+        }).error(function (data) {
+            deferred.reject(data);
+        });
+        return deferred.promise;
+    };
+
+    factory.getDataServices = function (idPlaza, Contrato) {
+        var deferred = $q.defer();
+        $http.get(paths.dataServicios, { params: { idPlaza: idPlaza, Contrato: Contrato } }).success(function (data) {
+            deferred.resolve(data);
+        }).error(function (data) {
+            deferred.reject(data);
+        });
+        return deferred.promise;
+    };
+
+    factory.getDataTecnicos = function (idPlaza) {
+        var deferred = $q.defer();
+        $http.get(paths.dataTecnicos, { params: { idPlaza: idPlaza } }).success(function (data) {
+            deferred.resolve(data);
+        }).error(function (data) {
+            deferred.reject(data);
+        });
+        return deferred.promise;
+    };
+
+    factory.getCounters = function (idPlaza) {
+        var deferred = $q.defer();
+        $http.get(paths.counters, { params: { idPlaza: idPlaza} }).success(function (data) {
+            deferred.resolve(data);
+        }).error(function (data) {
+            deferred.reject(data);
+        });
+        return deferred.promise;
+    };
+
+    factory.getDetailOrders = function (idPlaza,Contrato) {
+        var deferred = $q.defer();
+        $http.get(paths.detailOrder, { params: { idPlaza: idPlaza, Contrato:Contrato } }).success(function (data) {
+            deferred.resolve(data);
+        }).error(function (data) {
+            deferred.reject(data);
+        });
+        return deferred.promise;
+    };
+
+    factory.getListPlaces = function () {
+        var deferred = $q.defer();
+        $http.get(paths.places).success(function (data) {
+            deferred.resolve(data);
+        }).error(function (data) {
+            deferred.reject(data);
+        });
+        return deferred.promise;
+    };
+
+
+    return factory;
+});

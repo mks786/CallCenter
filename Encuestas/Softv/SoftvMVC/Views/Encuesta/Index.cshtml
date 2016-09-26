@@ -2,7 +2,7 @@
     try
     {
         List<Softv.Entities.PermisoEntity> Permiso = ViewBag.Permisos;
-        var a = Permiso.Where(p => p.IdModule == 2 || p.IdModule == 8).FirstOrDefault();
+        var a = Permiso.Where(p => p.IdModule == 32).FirstOrDefault();
         <script>
             var permiso_editar = "@a.OptUpdate";
             var permiso_agregar = "@a.OptAdd";
@@ -511,9 +511,9 @@
 <script>
     $(document).ready(function () {
         $('#poner_activo li').siblings('li').removeClass('active');
-        $('.2').addClass('active');
+        $('.24').addClass('active');
         $('#sub_activo li').siblings('li').removeClass('active');
-        $('.8').addClass('active');
+        $('.32').addClass('active');
     });
 </script>
 

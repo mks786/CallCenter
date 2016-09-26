@@ -24,12 +24,14 @@ namespace SoftvMVC.Controllers
     {
         private SoftvService.CIUDADClient proxy = null;
         private SoftvService.ConexionClient proxyCon = null;
+        private SoftvService.CiudadServidorClient proxyCiudades = null;
 
         public CIUDADController()
         {
 
             proxy = new SoftvService.CIUDADClient();
             proxyCon = new SoftvService.ConexionClient();
+            proxyCiudades = new SoftvService.CiudadServidorClient();
 
         }
 
@@ -153,39 +155,7 @@ namespace SoftvMVC.Controllers
 
         public ActionResult getAllCiudades()
         {
-            var lista = proxyCon.GetConexionList();
-            List<CiudadServidorEntity> ciudades = new List<CiudadServidorEntity>();
-            foreach (var item in lista)
-            {
-                ConexionController c = new ConexionController();
-                SqlCommand comandoSql;
-                int id = Int32.Parse(item.IdConexion.ToString());
-                SqlConnection conexionSQL2 = new SqlConnection(c.DameConexion(id));
-                try
-                {
-                    conexionSQL2.Open();
-                }
-                catch
-                { }
-                try
-                {
-                    comandoSql = new SqlCommand("SELECT * FROM CIUDADES");
-                    comandoSql.Connection = conexionSQL2;
-                    SqlDataReader reader = comandoSql.ExecuteReader();
-                    if (reader.HasRows)
-                    {
-                        while (reader.Read())
-                        {
-                            CiudadServidorEntity datos = new CiudadServidorEntity();
-                            datos.IdPlaza = id;
-                            datos.Ciudad = reader[1].ToString();
-                            ciudades.Add(datos);
-                        }
-                    }
-                }
-                catch{ }
-            }
-            ciudades = ciudades.Distinct().OrderBy(o=>o.Ciudad).ToList();
+            var ciudades = proxyCiudades.GetCiudadServidorList().OrderBy(o=>o.Ciudad);
             return Json(ciudades,JsonRequestBehavior.AllowGet);
         }
     }

@@ -45,6 +45,16 @@
       border-width: 0 0 1px 0; 
       border-radius: 20px; 
     }
+    .wrapper_scroll {
+        width: 200px;
+        height: 300px;
+        overflow: auto;
+    }
+
+    .shell_redondo {
+        border-radius: 10px 10px 10px 10px;
+        overflow: hidden;
+    }
 </style>
 
 <section class="content-header">
@@ -273,6 +283,8 @@
                                  <h5 id="texto_contrato" style="color:#4b646f;"></h5>
                                  <input type="hidden" id="contrato_oculto" />
                                  <h5 id="texto_nombre" style="color:#4b646f;"></h5>
+                                 <h5 id="texto_telefono" style="color:#4b646f;"></h5>
+                                 <h5 id="texto_celular" style="color:#4b646f;"></h5>
                                  <h5 id="texto_colonia" style="color:#4b646f;"></h5>
                                  <h5 id="texto_calle" style="color:#4b646f;"></h5>
                                  <h5 id="texto_numero" style="color:#4b646f;"></h5>
@@ -388,6 +400,9 @@
                                  <div class="row">
                                      <a class="btn btn-primary" onclick=" ModalConsultarPagos()" style="width:150px;">Consultar Pagos</a><br />
                                  </div><br />
+                                 <div class="row">
+                                     <a class="btn btn-primary" onclick="ModalOrdenes()" style="width:150px;">Consultar Ordenes</a><br />
+                                 </div><br />
                              </div>
                          </div>
                      </div>
@@ -396,7 +411,7 @@
                 <div class="row" style="padding-right:40px; display:none;" id="btn_enviar">
                     <div class="col-md-12">
                         <p class="text-right">
-                            <a class="btn btn-success" onclick="guardarLlamada()" id="guardar_llamada"> Guaradar Llamada</a>
+                            <a class="btn btn-success" onclick="guardarLlamada()" id="guardar_llamada"> Guardar Llamada</a>
                         </p>
                     </div>
                 </div>
@@ -575,6 +590,195 @@
     </div>
 </div>
 
+<div class="modal fade" id="HistorialOrdenes" role="dialog" data-backdrop="static" data-keyboard="false">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button class="close" aria-label="Close" type="button" data-dismiss="modal"><span aria-hidden="true">×</span></button>
+                <h4 class="modal-title">Historial de Ordenes</h4>
+            </div>
+            <div class="modal-body">
+                <table id="tableOrdenes" class="table table-bordered table-hover dataTable">
+                    <thead>
+                        <tr>
+                            <td><b>Orden</b></td>
+                            <td><b>Status</b></td>
+                            <td><b>Nombre</b></td>
+                            <td><b>Opciones</b></td>
+                        </tr>
+                    </thead>
+                    <tbody></tbody>
+                </table>
+
+
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-primary " type="button" data-dismiss="modal">Cerrar</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="DetalleOrden" role="dialog" data-backdrop="static" data-keyboard="false">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h3 class="modal-title" id="modal-title">Consultar Orden de Servicio</h3>
+            </div>
+            <div class="modal-body" id="modal-body">
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="row" id="">
+                            <div class="col-md-3" align="left">
+                                <div class="col-md-12" align="left">
+                                    <div class="form-group form-inline">
+                                        <label for="OrdenTxt"># Orden: </label>
+                                        <input type="text" id="noOrden" placeholder=" " style="width: 100px;" disabled>
+                                    </div>
+                                </div>
+                                <div class="form-group form-inline">
+                                    <label for="ContratoTxt">Contrato: </label>
+                                    <div class="input-group">
+                                        <input type="number" class="form-control input-sm" id="contratoCliente" disabled>
+                                        <span class="input-group-btn">
+                                            <button class="btn btn-default btn-sm" type="button" disabled>Buscar</button><br>
+                                        </span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-4" align="left">
+                                <div class="form-group form-inline">
+                                    <label for="FolioBitacoraTxt">No. de Folio de Bitácora: </label>
+                                    <input type="text" ng-model="add.folio" style="width:100px;" disabled>
+                                </div>
+                            </div>
+
+                            <div class="col-md-5" align="center">
+                                <div class="form-group shell_redondo" style="background-color:#FDD193; overflow:auto">
+                                    <div class="col-md-12" align="center">
+                                        <label>Status</label>
+                                    </div>
+                                    <div class="col-md-4" align="center">
+                                        <label><input type="radio" name="radioStatus" id="pendiente" disabled> Pendiente</label>
+                                    </div>
+                                    <div class="col-md-4" align="center">
+                                        <label><input type="radio" name="radioStatus" id="ejecutada" disabled> Ejecutada</label>
+                                    </div>
+                                    <div class="col-md-4" align="center">
+                                        <label><input type="radio" name="radioStatus" id="visita" disabled> Vista</label>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row" id="">
+                            <div class="col-md-6" align="center">
+                                <div class="shell_redondo" style="background-color:#FDD193;  overflow:auto">
+                                    <label>Datos del Cliente</label>
+                                    <div class="col-md-12" align="left">
+                                        <p id="NombreP"><strong>Nombre: </strong><small id="nombre_orden"></small></p>
+                                    </div>
+                                    <div class="col-md-12" align="left">
+                                        <p id="NombreP"><strong>Calle :</strong><small id="calle_orden"></small></p>
+                                    </div>
+                                    <div class="col-md-4" align="left">
+                                        <p id="NumeroP"><strong>#:</strong><small id="numero_orden"></small></p>
+                                    </div>
+                                    <div class="col-md-8" align="left">
+                                        <p id="NumeroP"><strong>Col:</strong><small id="colonia_orden"></small></p>
+                                    </div>
+                                    <div class="col-md-6" align="left">
+                                        <label><input type="checkbox" value=""> Solo Internet</label>
+                                    </div>
+                                    <div class="col-md-6" align="left">
+                                        <label><input type="checkbox" value=""> Es Hotel</label>
+                                    </div>
+                                    <div class="col-md-12" align="center">
+                                        <div class="form-group form-inline">
+                                            <label style="vertical-align:central">Servicios Asignados</label>
+                                            <div style="background-color:white; width: 350px; height:150px;" id="servicios_contratados" class="wrapper_scroll">
+                                                <div id="serviciosCliente">
+
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <br>
+                                <div class="form-group form-inline">
+                                    <div class="form-group form-inline">
+                                        <label for="tecnico">Técnico: </label>
+                                        <select class=" form-control input-sm" style="width:200px" disabled id="selectTecnico">
+                                            
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group col-md-5 col-md-offset-1" align="center" style="overflow:auto">
+                                <div class="form-group form-inline">
+                                    <label>Generó: <small id="genero_orden"></small></label>
+                                </div>
+                                <div class="form-group form-inline">
+                                    <label>Ejecutó: <small id="ejecuto_orden"></small></label>
+                                </div>
+                                <div class="" align="center">
+                                    <label>Fechas de: </label>
+                                </div>
+                                <div class="form-group form-inline">
+                                    <label>Solicitud:</label>
+                                    <input type="text" id="fecha_solicitud" disabled>
+                                </div>
+                                <div class="form-group form-inline">
+                                    <label>Ejecución:</label>
+                                    <input type="text" id="fecha_ejecucion" disabled>
+                                </div>
+                                <div class="form-group form-inline">
+                                    <label>Visita 1:</label>
+                                    <input type="text" id="fecha_visita1" disabled>
+                                </div>
+                                <div class="form-group form-inline">
+                                    <label>Visita 2:</label>
+                                    <input type="text" id="fecha_visita2" disabled>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-8" align="center">
+                                <div class="form-group form-inline">
+                                    <label style="padding-top:-30px;"> Observaciones: </label>
+                                    <input type="text" class="form-control" style="width:70%;" id="observaciones_orden" disabled />
+                                </div>
+                            </div>
+                            <div class="col-md-6" align="left">
+                                <div class="form-group form-inline">
+                                    <label> Detalle de la Orden de Servicio: </label><br />
+                                </div>
+                            </div>
+                            <div style="padding-left:30px;">
+                                <table id="TablaDetalleOrdenes" class="table table-bordered" style="width:100%; padding-left:30px;">
+                                    <thead>
+                                        <tr>
+                                            <td><b>Descripción</b></td>
+                                            <td><b>Acción</b></td>
+                                            <td><b>Observaciones</b></td>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-primary " type="button" data-dismiss="modal">Cerrar</button>
+            </div>
+
+        </div>
+    </div>
+</div>
 
 <div class="modal fade" id="HistorialLlamadas" role="dialog" data-backdrop="static" data-keyboard="false">
     <div class="modal-dialog">
@@ -740,7 +944,7 @@
 </div>
 
 <div class="modal fade" id="detalle_queja" role="dialog" data-backdrop="static" data-keyboard="false">
-    <div class="modal-dialog">
+    <div class="modal-dialog modal-lg">
         <div class="modal-content">
             <div class="modal-header">
                 <button class="close" aria-label="Close" type="button" data-dismiss="modal"><span aria-hidden="true">×</span></button>
@@ -751,14 +955,11 @@
                 <div class="row" id="panel_detalle_queja" style="display:none;">
                     <div class="col-md-6">
                         <div class="row">
-                            <div class="col-md-12">
-                                <p><strong>Tipo de Servicio</strong></p>
-                                <select class="form-control" id="queja_servicio" disabled></select>
-                            </div>
-                            <div class="col-md-12">
+                            
+                            <div class="col-md-6">
                                 <h5><strong>Clave: </strong><span id="queja_id"></span></h5>
                             </div>
-                            <div class="col-md-12">
+                            <div class="col-md-6">
                                 <h5><strong>Contrato: </strong><span id="queja_contrato"></span></h5>
                             </div>
                             <div class="col-md-12">
@@ -767,11 +968,15 @@
                             <div class="col-md-12">
                                 <h5><strong>Colonia: </strong><span id="queja_colonia"></span></h5>
                             </div>
-                            <div class="col-md-12">
+                            <div class="col-md-6">
                                 <h5><strong>Calle: </strong><span id="queja_calle"></span></h5>
                             </div>
-                            <div class="col-md-12">
+                            <div class="col-md-6">
                                 <h5><strong>Número: </strong><span id="queja_numero"></span></h5>
+                            </div>
+                            <div class="col-md-12">
+                                <p><strong>Tipo de Servicio</strong></p>
+                                <select class="form-control" id="queja_servicio" disabled></select>
                             </div>
                             <div class="col-md-12">
                                 <p><strong>Reporte del Cliente</strong></p>

@@ -1,0 +1,182 @@
+﻿<style>
+    .wrapper {
+        width: 200px;
+        height: 300px;
+        overflow: auto;
+    }
+
+    .shell_redondo {
+        border-radius: 10px 10px 10px 10px;
+        overflow: hidden;
+    }
+</style>
+<div class="modal-header">
+    <button type="button" class="close" ng-click="add.cancel()" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+    <h3 class="modal-title" id="modal-title">Consultar Orden de Servicio</h3>
+</div>
+<div class="modal-body" id="modal-body">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="row" id="">
+                <div class="col-md-3" align="left">
+                    <div class="col-md-12" align="left">
+                        <div class="form-group form-inline">
+                            <label for="OrdenTxt"># Orden: </label>
+                            <input type="text" ng-model="add.noOrden" placeholder=" " style="width: 100px;" disabled>
+                        </div>
+                    </div>
+                    <div class="form-group form-inline">
+                        <label for="ContratoTxt">Contrato: </label>
+                        <div class="input-group">
+                            <input type="number" class="form-control input-sm" ng-model="add.contratoCliente" disabled>
+                            <span class="input-group-btn">
+                                <button class="btn btn-default btn-sm" type="button" disabled>Buscar</button><br>
+                            </span>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4" align="left">
+                    <div class="form-group form-inline">
+                        <label for="FolioBitacoraTxt">No. de Folio de Bitácora: </label>
+                        <input type="text" ng-model="add.folio" style="width:100px;" disabled>
+                    </div>
+                </div>
+
+                <div class="col-md-5" align="center">
+                    <div class="form-group shell_redondo" style="background-color:#FDD193; overflow:auto">
+                        <div class="col-md-12" align="center">
+                            <label>Status</label>
+                        </div>
+                        <div class="col-md-4" align="center">
+                            <label><input type="radio" name="radioStatus" ng-checked="add.pe" disabled> Pendiente</label>
+                        </div>
+                        <div class="col-md-4" align="center">
+                            <label><input type="radio" name="radioStatus" ng-checked="add.ej" disabled> Ejecutada</label>
+                        </div>
+                        <div class="col-md-4" align="center">
+                            <label><input type="radio" name="radioStatus" ng-checked="add.vis" disabled> Vista</label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row" id="">
+                <div class="col-md-6" align="center">
+                    <div class="shell_redondo" style="background-color:#FDD193;  overflow:auto">
+                        <label>Datos del Cliente</label>
+                        <div class="col-md-12" align="left">
+                            <p id="NombreP"><strong>Nombre: </strong> {{ add.nombre }}</p>
+                        </div>
+                        <div class="col-md-12" align="left">
+                            <p id="NombreP"><strong>Calle :</strong> {{ add.calle }}</p>
+                        </div>
+                        <div class="col-md-4" align="left">
+                            <p id="NumeroP"><strong>#:</strong> {{ add.numero }}</p>
+                        </div>
+                        <div class="col-md-8" align="left">
+                            <p id="NumeroP"><strong>Col:</strong> {{ add.colonia }}</p>
+                        </div>
+                        <div class="col-md-6" align="left">
+                            <label><input type="checkbox" value=""> Solo Internet</label>
+                        </div>
+                        <div class="col-md-6" align="left">
+                            <label><input type="checkbox" value=""> Es Hotel</label>
+                        </div>
+                        <div class="col-md-12" align="center">
+                            <div class="form-group form-inline">
+                                <label style="vertical-align:central">Servicios Asignados</label>
+                                <div style="background-color:white; width: 350px; height:150px;" id="servicios_contratados" class="wrapper">
+                                    <div ng-repeat="x in add.serviciosCliente">
+                                        {{ x.servicio }}
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <br>
+                    <div class="form-group form-inline">
+                        <div class="form-group form-inline">
+                            <label for="tecnico">Técnico: </label>
+                            <select class=" form-control input-sm" style="width:200px" disabled>
+                                <option value="{{ add.tecnicosSelect.clvTecnico }}">{{ add.tecnicosSelect.Nombre }}</option>
+                            </select>
+                        </div>
+                        <button type="button" class="btn btn-warning btn-sm" data-toggle="modal" data-target="#DescargaMaterial" disabled>Descarga de Material</button><br>
+                    </div>
+                </div>
+                <div class="form-group col-md-5 col-md-offset-1" align="center" style="overflow:auto">
+                    <div class="form-group form-inline">
+                        <label>Generó: <small> {{ add.genero}}</small></label>
+                    </div>
+                    <div class="form-group form-inline">
+                        <label>Ejecutó: <small> {{ add.ejecuto}}</small></label>
+                    </div>
+                    <div class="" align="center">
+                        <label>Fechas de: </label>
+                    </div>
+                    <div class="form-group form-inline">
+                        <label>Solicitud:</label>
+                        <input type="text" ng-model="add.fecha" disabled>
+                    </div>
+                    <div class="form-group form-inline">
+                        <label>Ejecución:</label>
+                        <input type="text" id="ejecución" ng-model="add.fejecucion" disabled>
+                    </div>
+                    <div class="form-group form-inline">
+                        <label>Visita 1:</label>
+                        <input type="text" id="ejecución" ng-model="add.visita1" disabled>
+                    </div>
+                    <div class="form-group form-inline">
+                        <label>Visita 2:</label>
+                        <input type="text" id="visita2" ng-model="add.visita2" disabled>
+                    </div>
+                    <br />
+                    <br />
+                    <div class="form-group form-inline" ng-show="add.mostrarDetallesDimicilio">
+                        <label>Placa:</label>
+                        <input type="text" ng-model="add.placa" disabled>
+                    </div>
+                    <div class="form-group form-inline" ng-show="add.mostrarDetallesDimicilio">
+                        <label>Tap:</label>
+                        <select class="form-control"><option value ="{{ add.taps.idTap }}">{{ add.taps.clave }}</option> </select>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-8" align="center">
+                    <div class="form-group form-inline">
+                        <label style="padding-top:-30px;"> Observaciones: </label>
+                        <input type="text" class="form-control" style="width:70%;" ng-model="add.observaciones" disabled />
+                    </div>
+                </div>
+                <div class="col-md-6" align="left">
+                    <div class="form-group form-inline">
+                        <label> Detalle de la Orden de Servicio: </label><br />
+                        <button type="button" class="btn btn-primary btn-sm btn" style="width:150px;" disabled>Agregar</button>
+                    </div>
+                </div>
+                <div style="padding-left:30px;">
+                    <table id="TablaOrdenes" class="table table-bordered" style="width:100%; padding-left:30px;">
+                        <thead>
+                            <tr>
+                                <td><b>Descripción</b></td>
+                                <td><b>Acción</b></td>
+                                <td><b>Observaciones</b></td>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr ng-repeat="x in add.DetailsOrders">
+                                <td>{{ x.descripcion }}</td>
+                                <td><button ng-if="x.accion != ''" ng-click="add.detalleExtra(x)" class="btn btn-sm btn-default">{{ x.accion }}</button></td>
+                                <td>{{ x.observaciones }}</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="modal-footer">
+    <button class="btn btn-primary" type="button" ng-click="add.cancel()">Cerrar</button>
+</div>

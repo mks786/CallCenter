@@ -311,7 +311,7 @@ function editarLlamada(e) {
             var queja = data[0].Clv_Queja;
             var informacion = data[0].Clv_Motivo;
             var cliente = data[0].SiEsCliente;
-            if(cliente == true){
+            if (cliente == true) {
                 if (queja > 1) {
                     $('#contrato_oculto').val(contrato);
                     $('#tipo_llamada_oculto').val(2);
@@ -333,7 +333,7 @@ function editarLlamada(e) {
                     $('#domicilio_panel_editar').hide();
                     $('#email_panel_editar').hide(); 
                     $('#panel_tipo_informacion').hide();
-                } else if (informacion != null) {
+                } else if (informacion > 0) {
                     $('#contrato_oculto').val(contrato);
                     $('#tipo_llamada_oculto').val(1);
                     $('#queja_oculto').val("");

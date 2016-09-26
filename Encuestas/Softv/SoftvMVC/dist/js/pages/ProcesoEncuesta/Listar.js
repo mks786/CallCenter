@@ -250,7 +250,6 @@ function buscar() {
 }
 
 function confirmaTerminar() {
-    $('#Espere').modal('show');
     $.ajax({
         url: "/UniversoEncuesta/TerminarProceso/",
         type: "POST",

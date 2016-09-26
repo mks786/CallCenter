@@ -251,6 +251,7 @@
     <Compile Include="Controllers\MotAtenTelController.cs" />
     <Compile Include="Controllers\MotivoCancelacionController.cs" />
     <Compile Include="Controllers\NoClienteController.cs" />
+    <Compile Include="Controllers\OrdenesController.cs" />
     <Compile Include="Controllers\PartialClass\BaseControllerFunc.cs" />
     <Compile Include="Controllers\PartialClass\BaseControllerScripts.cs" />
     <Compile Include="Controllers\PartialClass\UsuarioController.cs" />
@@ -613,6 +614,25 @@
     <Content Include="dist\js\pages\Llamada\Lista.js" />
     <Content Include="dist\js\pages\MotAtenTel\Lista.js" />
     <Content Include="dist\js\pages\MotAtenTel\ModalesMonAtenTel.js" />
+    <Content Include="dist\js\pages\Ordenes\controllers.js" />
+    <Content Include="dist\js\pages\Ordenes\loading-bar.css" />
+    <Content Include="dist\js\pages\Ordenes\loading-bar.js" />
+    <Content Include="dist\js\pages\Ordenes\ordersApp.js" />
+    <Content Include="dist\js\pages\Ordenes\ordersFactory.js" />
+    <Content Include="dist\js\pages\Ordenes\table.js" />
+    <Content Include="dist\js\pages\Ordenes\ui-bootstrap-tpls-2.1.3.min.js" />
+    <Content Include="dist\js\pages\Ordenes\views\agregarExtension.tpl.html" />
+    <Content Include="dist\js\pages\Ordenes\views\bajaPaquete.tpl.html" />
+    <Content Include="dist\js\pages\Ordenes\views\cancelarExtension.tpl.html" />
+    <Content Include="dist\js\pages\Ordenes\views\consultarOrden.tpl.html" />
+    <Content Include="dist\js\pages\Ordenes\views\descargaMaterial.tpl.html" />
+    <Content Include="dist\js\pages\Ordenes\views\domicilio.tpl.html" />
+    <Content Include="dist\js\pages\Ordenes\views\domicilioDetalle.tpl.html" />
+    <Content Include="dist\js\pages\Ordenes\views\ejecutarOrden.tpl.html" />
+    <Content Include="dist\js\pages\Ordenes\views\extensionDetalle.tpl.html" />
+    <Content Include="dist\js\pages\Ordenes\views\modalAdd.tpl.html" />
+    <Content Include="dist\js\pages\Ordenes\views\modalTrabajo.tpl.html" />
+    <Content Include="dist\js\pages\Ordenes\views\motivoCancelacion.tpl.html" />
     <Content Include="dist\js\pages\Permiso\Lista.js" />
     <Content Include="dist\js\pages\Permiso\ModalesPermisos.js" />
     <Content Include="dist\js\pages\Pregunta\editar_pregunta.js" />
@@ -1628,6 +1648,7 @@
     </None>
     <Content Include="Views\LlamadasReportes\Index.cshtml" />
     <Content Include="Views\UniversoEncuesta\Index.cshtml" />
+    <Content Include="Views\Ordenes\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

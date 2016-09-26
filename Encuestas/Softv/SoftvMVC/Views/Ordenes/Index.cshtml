@@ -1,0 +1,252 @@
+﻿@{
+    ViewBag.Title = "Órdenes de Servicio";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<style>
+    .shell_redondo {
+         border-radius: 10px 10px 10px 10px;
+         overflow:hidden;
+        }
+</style>
+<div ng-app="ordersApp">
+    <section class="content-header">
+        <h1>
+            Órdenes de Servicio
+        </h1>
+        <ol class="breadcrumb">
+            <li><a href="#"><i class="fa fa-dashboard"></i> Inicio</a></li>
+            <li class="active"><small>Órdenes de Servicio</small></li>
+        </ol>
+    </section>
+    <div class="row">
+        <div class="col-xs-12">
+            <div class="box">
+                <div class="box-body" id="mostrandoController" ng-controller="showOrders as show">
+                    <div class="row">
+                        <div class="col-md-3">
+                            <label>Selecciona la plaza</label>
+                            <select class="form-control" ng-change="show.changePlace()" ng-model="show.selectedPlace" ng-options="v.Plaza for v in show.places track by v.IdConexion"></select>
+                        </div>
+                    </div><br />
+                    <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
+                        <div class="panel panel-default">
+                            <div class="panel-heading" role="tab" id="headingOne">
+                                <h4 class="panel-title">
+                                    <a role="button" id="busqueda_collapse" data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="true" aria-controls="collapseOne" style="color:#4b646f;">
+                                        Buscar órden
+                                    </a>
+                                </h4>
+                            </div>
+                            <div id="collapseOne" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingOne">
+                                <div class="panel-body">
+                                    <!-- Nav tabs -->
+                                    <ul class="nav nav-tabs" role="tablist">
+                                        <li role="presentation" class="active"><a href="#contrato" aria-controls="contrato" role="tab" data-toggle="tab">Contrato / Órden</a></li>
+                                        <li role="presentation"><a href="#status" aria-controls="status" role="tab" data-toggle="tab">Status</a></li>
+                                        <li role="presentation"><a href="#nombre" aria-controls="nombre" role="tab" data-toggle="tab">Nombre</a></li>
+                                        <li role="presentation"><a href="#direccion" aria-controls="direccion" role="tab" data-toggle="tab">Dirección</a></li>
+                                    </ul>
+
+                                    <!-- Tab panes -->
+                                    <div class="tab-content">
+                                        <div role="tabpanel" class="tab-pane active" id="contrato">
+                                            <br />
+                                            <div class="row">
+                                                <div class="col-md-4">
+                                                    <p style="color:#4b646f;">Ingrese el número de contrato ó la órden de servicio</p>
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-md-3">
+                                                    <input type="number" class="form-control" ng-model="show.conOrd" />
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-md-12">
+                                                    <p class="text-right">
+                                                        <button class="btn btn-primary" ng-disabled="show.showBtnBuscar" ng-click="show.buscarOrden(1)"><i class="fa fa-search" aria-hidden="true"></i> Buscar</button>
+                                                    </p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div role="tabpanel" class="tab-pane" id="status">
+                                            <br />
+                                            <div class="row">
+                                                <div class="col-md-4">
+                                                    <p style="color:#4b646f;">Tipo de Órden</p>
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-md-3">
+                                                    <div class="radio">
+                                                        <label><input type="radio" value="P" name="optradio" ng-model="show.status"> Pendientes</label>
+                                                    </div>
+                                                    <div class="radio">
+                                                        <label><input type="radio" value="E" name="optradio" ng-model="show.status"> Ejecutadas</label>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-md-12">
+                                                    <p class="text-right">
+                                                        <button class="btn btn-primary" ng-disabled="show.showBtnBuscar" ng-click="show.buscarOrden(2)"><i class="fa fa-search" aria-hidden="true"></i> Buscar</button>
+                                                    </p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div role="tabpanel" class="tab-pane" id="direccion">
+                                            <br />
+                                            <div class="container">
+                                                <div class="row">
+                                                    <div class="col-md-4">
+                                                        <input type="text" class="form-control" ng-model="show.calle" placeholder="Calle" />
+                                                    </div>
+                                                </div><br />
+                                                <div class="row">
+                                                    <div class="col-md-4">
+                                                        <input type="text" class="form-control" ng-model="show.numero" placeholder="Número" />
+                                                    </div>
+                                                </div>
+                                            </div><br />
+                                            <div class="row">
+                                                <div class="col-md-12">
+                                                    <p class="text-right">
+                                                        <button class="btn btn-primary" ng-disabled="show.showBtnBuscar" ng-click="show.buscarOrden(4)"><i class="fa fa-search" aria-hidden="true"></i> Buscar</button>
+                                                    </p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div role="tabpanel" class="tab-pane" id="nombre">
+                                            <br />
+                                            <div class="row">
+                                                <div class="col-md-4">
+                                                    <p style="color:#4b646f;">Nombre</p>
+                                                </div>
+                                                <div class="col-md-4">
+                                                    <p style="color:#4b646f;">Apellido Paterno</p>
+                                                </div>
+                                                <div class="col-md-4">
+                                                    <p style="color:#4b646f;">Apellido Materno</p>
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-md-4">
+                                                    <input type="text" class="form-control" ng-model="show.nombreCliente" />
+                                                </div>
+                                                <div class="col-md-4">
+                                                    <input type="text" class="form-control" ng-model="show.apellidoPCliente" />
+                                                </div>
+                                                <div class="col-md-4">
+                                                    <input type="text" class="form-control" ng-model="show.apellidoMCliente" />
+                                                </div>
+                                            </div><br />
+                                            <div class="row">
+                                                <div class="col-md-12">
+                                                    <p class="text-right">
+                                                        <button class="btn btn-primary" ng-disabled="show.showBtnBuscar" ng-click="show.buscarOrden(3)"><i class="fa fa-search" aria-hidden="true"></i> Buscar</button>
+                                                    </p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div><!-- panel body -->
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-9">
+                        <table id="TablaOrdenesIndex" class="table table-bordered table-hover dataTable" style="width:100%;">
+                            <thead>
+                                <tr>
+                                    <td><b>Orden</b></td>
+                                    <td><b>Status</b></td>
+                                    <td><b>Contrato</b></td>
+                                    <td><b>Nombre</b> </td>
+                                    <td><b>Calle</b></td>
+                                    <td><b>Número</b></td>
+                                </tr>
+                            </thead>
+                            <tbody></tbody>
+                        </table>
+                    </div>
+                    <div class="col-md-3" align="center">
+                        <div class="row form-group" align="center">
+                            <div class="col-md-12 col-md-offset-0">
+                                <button type="button" class="btn btn-primary btn-block" ng-disabled="show.showBtnNuevo" ng-click="show.open('lg')">Nuevo</button><br>
+                            </div>
+                            <div class="col-md-12 col-md-offset-0">
+                                <button type="button" class="btn btn-info btn-block" ng-disabled="show.showBtnConsultar" ng-click="show.openConsultar(show.Clv_Orden)" data-toggle="modal" data-target="#BuscarClientePor">Consulta</button><br>
+                            </div>
+                            <div class="col-md-12 col-md-offset-0">
+                                <button type="button" class="btn btn-warning btn-block" ng-disabled="show.showBtnEjecutar" ng-click="show.openEjecutar(show.Clv_Orden)" data-toggle="modal" data-target="">Ejecutar</button>
+                            </div>
+                        </div>
+                        <div class="form-group shell_redondo" align="center" style="background-color:#F5F5F5; overflow:auto">
+                            <label>Resumen Órdenes</label>
+                            <div class="col-md-12" align="left">
+                                <h5>
+                                    <label> Pendientes: {{ show.pendientes }} </label><br>
+                                    <label> Proceso Aut: {{ show.proceso }}</label>
+                                </h5>
+                            </div>
+                        </div>
+                        <div style="overflow:auto; background-color:#F5F5F5" class="form-group shell_redondo">
+                            <div class="col-md-12" align="center" style="padding-top:-20px;">
+                                <p style="font-size:16px;"><b>Datos de la Orden de Servicio</b></p>
+                            </div>
+                            <div class="col-md-12" align="left">
+                                <p style="font-size:14px;"><b># Orden:</b> {{ show.Clv_Orden }}</p>
+                                <p style="font-size:14px;"><b>Contrato:</b> {{ show.Contrato }} </p>
+                            </div>
+                            <div class="col-md-12" align="left">
+                                <div align="left"><p style="font-size:14px;"><b> Nombre: </b> {{ show.Nombre }}</p></div>
+                                <div align="left"><p style="font-size:14px;"><b> Calle: </b> {{ show.Calle }}</p></div>
+                            </div>
+                            <div class="col-md-12" align="left">
+                                <p style="font-size:14px;"><b> Número: </b> {{ show.Numero }}</p>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <p class="text-center"><b> Detalle de la Orden</b></p>
+                            <div style="border-style: solid; border-width: 1px; border-color: #C0C0C0;">
+                                <ul ng-repeat="x in show.Descripciones">
+                                    <li class="text-left">{{ x.Descripcion }}</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+
+<script>
+    var usuario = @Session["idusuario"];
+</script>
+<script src="/plugins/slimScroll/jquery.slimscroll.js"></script>
+<script>
+    $(document).ready(function () {
+        $('#poner_activo li').siblings('li').removeClass('active');
+        $('.30').addClass('active');
+        $('#sub_activo li').siblings('li').removeClass('active');
+        $('.31').addClass('active');
+    });
+
+    $(function () {
+        $('#servicios_contratados').slimScroll({
+            height: '150px'
+        });
+    });
+</script>
+<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/t/bs/dt-1.10.11/datatables.min.css" />
+<script type="text/javascript" src="https://cdn.datatables.net/t/bs/dt-1.10.11/datatables.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.8/angular.min.js"> </script>
+<script src="~/dist/js/pages/Ordenes/loading-bar.js"></script>
+<link href="~/dist/js/pages/Ordenes/loading-bar.css" rel="stylesheet" />
+<script src="~/dist/js/pages/Ordenes/ui-bootstrap-tpls-2.1.3.min.js"></script>
+<script src="~/dist/js/pages/Ordenes/ordersApp.js"></script>
+<script src="~/dist/js/pages/Ordenes/ordersFactory.js"></script>
+<script src="~/dist/js/pages/Ordenes/controllers.js"></script>
+<script src="~/dist/js/pages/Ordenes/table.js"></script>

@@ -146,6 +146,9 @@ namespace SoftvMVC.Controllers
 
         }
 
+        //string conexion = "Data Source=192.168.1.230;Initial Catalog=Encuestas;User ID =sa;Password=0601x-2L;";
+        string conexion = "Data Source=FABIAN-PC\\INSTANCIASQL2014;Initial Catalog=Encuestas;User ID =sa;Password=0601x-2Ñ;";
+
         public ActionResult Index(int? page, int? pageSize)
         {
             PermisosAcceso("Llamada");
@@ -376,7 +379,7 @@ namespace SoftvMVC.Controllers
                 objLlamada.Fecha = Fecha.ToString();
             }
 
-            if ((HoraInicio != null ))
+            if ((HoraInicio != null))
             {
                 objLlamada.HoraInicio = HoraInicio;
             }
@@ -495,14 +498,15 @@ namespace SoftvMVC.Controllers
             { }
             try
             {
-                if(cadena != null){
+                if (cadena != null)
+                {
                     comandoSql = new SqlCommand("SELECT * FROM LlamadaUsuario where Contrato=" + cadena + " OR IdLlamada=" + cadena + "  order by IdLlamada DESC ");
                 }
                 else
                 {
                     comandoSql = new SqlCommand("SELECT * FROM LlamadaUsuario order by IdLlamada DESC");
                 }
-               
+
                 comandoSql.Connection = conexionSQL;
                 SqlDataReader reader = comandoSql.ExecuteReader();
                 if (reader.HasRows)
@@ -513,7 +517,8 @@ namespace SoftvMVC.Controllers
                         llamada.IdLlamada = Int32.Parse(reader[0].ToString());
                         llamada.IdUsuario = Int32.Parse(reader[1].ToString());
                         llamada.Tipo_Llamada = Int32.Parse(reader[2].ToString());
-                        try{
+                        try
+                        {
                             llamada.Contrato = Int32.Parse(reader[3].ToString());
                         }
                         catch
@@ -545,8 +550,8 @@ namespace SoftvMVC.Controllers
         {
             ConexionController c = new ConexionController();
             SqlCommand comandoSql;
-            SqlConnection conexionSQL = new SqlConnection("Data Source=192.168.1.230;Initial Catalog=Encuestas;User ID =sa;Password=0601x-2L;");
-            //SqlConnection conexionSQL = new SqlConnection("Data Source=FABIAN-PC\\INSTANCIASQL2014;Initial Catalog=Encuestas;User ID =sa;Password=0601x-2Ñ;");
+            //SqlConnection conexionSQL = new SqlConnection("Data Source=192.168.1.230;Initial Catalog=Encuestas;User ID =sa;Password=0601x-2L;");
+            SqlConnection conexionSQL = new SqlConnection(conexion);
             SqlConnection conexionSQL2 = new SqlConnection(c.DameConexion(IdPlaza));
             int id_llamada = 0;
             int id_queja = 0;
@@ -559,67 +564,39 @@ namespace SoftvMVC.Controllers
             { }
             try
             {
-                if (llamada.tipo_llamada == 1) {
+                if (llamada.tipo_llamada == 1)
+                {
                     if (llamada.tipo_llamada_cliente == true)
                     {
-                        comandoSql = new SqlCommand("insert into Llamadas(idUsuario,Tipo_Llamada,Contrato,Detalle,Fecha,HoraInicio,HoraFin,IdTurno,Clv_Queja,IdConexion,Clv_TipSer,Clv_Motivo,SiEsCliente,Ciudad) values(@IdUsuario,@Tipo_Llamada,@Contrato,@motivo,@Fecha,@HoraInicio,@HoraFin,null,null,@IdConexion,@Clv_TipSer,@Clv_Motivo,@SiEsCliente,@Ciudad)");
-
-                        comandoSql.Parameters.AddWithValue("@IdUsuario", llamada.usuario);
-                        comandoSql.Parameters.AddWithValue("@Tipo_Llamada", llamada.tipo_llamada);
-                        comandoSql.Parameters.AddWithValue("@Contrato", llamada.contrato);
-                        comandoSql.Parameters.AddWithValue("@Fecha", llamada.fecha);
-                        comandoSql.Parameters.AddWithValue("@motivo", llamada.motivo);
-                        comandoSql.Parameters.AddWithValue("@HoraInicio", llamada.horainicio);
-                        comandoSql.Parameters.AddWithValue("@HoraFin", llamada.horatermino);
-                        comandoSql.Parameters.AddWithValue("@IdConexion", llamada.IdConexion);
-                        comandoSql.Parameters.AddWithValue("@Clv_TipSer", llamada.Clv_TipSer);
-                        comandoSql.Parameters.AddWithValue("@SiEsCliente", llamada.tipo_llamada_cliente);
-                        comandoSql.Parameters.AddWithValue("@Clv_Motivo", llamada.tipo_informacion);
-                        comandoSql.Parameters.AddWithValue("@Ciudad", llamada.ciudad);
+                        comandoSql = new SqlCommand("declare @a int exec AddLlamada_Cliente @a OUTPUT," + llamada.usuario + "," + llamada.tipo_llamada + "," + llamada.contrato + ",'" + llamada.fecha + "','" + llamada.motivo + "','','" + llamada.horainicio + "','" + llamada.horatermino + "'," + llamada.IdConexion + "," + llamada.Clv_TipSer + ",0,0," + llamada.tipo_llamada_cliente + ",'" + llamada.ciudad + "','" + llamada.nombre + "','" + llamada.telefono + "','" + llamada.celular + "',0,0," + llamada.tipo_informacion + " select @a");
                         comandoSql.Connection = conexionSQL;
                         comandoSql.ExecuteReader();
                     }
                     else
                     {
-                        comandoSql = new SqlCommand("insert into Llamadas(idUsuario,Tipo_Llamada,Contrato,Detalle,Fecha,HoraInicio,HoraFin,IdTurno,Clv_Queja,IdConexion,Clv_Trabajo,Clv_TipSer,Clv_Motivo,SiEsCliente,Ciudad) values(@idUsuario,@Tipo_Llamada,null,@Motivo,@Fecha,@HoraInicio,@HoraFin,null,null,@IdConexion,null,null,@Clv_Motivo,@SiEsCliente,@Ciudad) SELECT SCOPE_IDENTITY()");
-                        comandoSql.Parameters.AddWithValue("@Tipo_Llamada", llamada.tipo_llamada);
-                        comandoSql.Parameters.AddWithValue("@idUsuario", llamada.usuario);
-                        comandoSql.Parameters.AddWithValue("@Fecha", llamada.fecha);
-                        comandoSql.Parameters.AddWithValue("@motivo", llamada.motivo);
-                        comandoSql.Parameters.AddWithValue("@HoraInicio", llamada.horainicio);
-                        comandoSql.Parameters.AddWithValue("@HoraFin", llamada.horatermino);
-                        comandoSql.Parameters.AddWithValue("@IdConexion", llamada.IdConexion);
-                        comandoSql.Parameters.AddWithValue("@Clv_Motivo", llamada.tipo_informacion);
-                        comandoSql.Parameters.AddWithValue("@SiEsCliente", llamada.tipo_llamada_cliente);
-                        comandoSql.Parameters.AddWithValue("@Ciudad", llamada.ciudad);
+                        comandoSql = new SqlCommand("declare @a int exec AddLlamada_NoCliente @a OUTPUT," + llamada.tipo_llamada + "," + llamada.usuario + ",'" + llamada.fecha + "','" + llamada.motivo + "','" + llamada.horainicio + "','" + llamada.horatermino + "'," + llamada.IdConexion + "," + llamada.tipo_informacion + "," + llamada.tipo_llamada_cliente + ",'" + llamada.ciudad + "','" + llamada.nombre + "','" + llamada.telefono + "','" + llamada.celular + "' select @a");
                         comandoSql.Connection = conexionSQL;
                         var Id_llamada = Int32.Parse(comandoSql.ExecuteScalar().ToString());
 
-                        comandoSql = new SqlCommand("insert into NoClientes(IdLlamada,Nombre,Direccion,Telefono,Celular,Email) values(@IdLlamada,@Nombre,@Direccion,@Telefono,@Celular,@Email)");
-                        comandoSql.Parameters.AddWithValue("@IdLlamada", Id_llamada);
-                        comandoSql.Parameters.AddWithValue("@Nombre", llamada.nombre);
-                        comandoSql.Parameters.AddWithValue("@Direccion", llamada.domicilio);
-                        comandoSql.Parameters.AddWithValue("@Telefono", llamada.telefono);
-                        comandoSql.Parameters.AddWithValue("@Celular", llamada.celular);
-                        comandoSql.Parameters.AddWithValue("@Email", llamada.email);
+                        comandoSql = new SqlCommand("exec AddNoCliente " + Id_llamada + ",'" + llamada.nombre + "','" + llamada.domicilio + "','" + llamada.celular + "','" + llamada.telefono + "','" + llamada.email + "'");
                         comandoSql.Connection = conexionSQL;
                         comandoSql.ExecuteReader();
                     }
                 }
                 else
                 {
-                    if(llamada.queja == 1){
-
-                        comandoSql = new SqlCommand("declare @queja bigint exec AddQueja_and_Cita @queja OUTPUT," + llamada.Clv_TipSer + "," + llamada.contrato + ",'" + llamada.fecha + "','" + llamada.motivo + "','" + llamada.fecha + "'," + llamada.usuario + "," + llamada.IdTurno + ",'" + llamada.comentario + "'");
+                    if (llamada.queja == 1)
+                    {
+                        UsuarioEntity userCurrent = proxyUsuario.GetUsuario(llamada.usuario);
+                        comandoSql = new SqlCommand("declare @queja bigint exec AddQueja_and_Cita @queja OUTPUT," + llamada.Clv_TipSer + "," + llamada.contrato + ",'" + llamada.fecha + "','" + llamada.motivo + "','" + llamada.fecha + "'," + llamada.usuario + "," + llamada.IdTurno + ",'" + llamada.comentario + "','" + userCurrent.Usuario + "', '" + llamada.solucion + "'");
                         comandoSql.Connection = conexionSQL2;
                         var Id = Int32.Parse(comandoSql.ExecuteScalar().ToString());
                         id_queja = Id;
-                        
-                        UsuarioEntity user = proxyUsuario.GetUsuario(llamada.usuario);
+
                         DateTime today = DateTime.Now;
                         comandoSql = new SqlCommand("INSERT INTO MovSist(Fecha,usuario,contrato,Sistema,Pantalla,control,valorant,valornuevo,clv_ciudad) values(@Fecha,@usuario,@contrato,@Sistema,@Pantalla,@control,@valorant,@valornuevo,@clv_ciudad)");
                         comandoSql.Parameters.AddWithValue("@Fecha", today);
-                        comandoSql.Parameters.AddWithValue("@usuario", user.Usuario);
+                        comandoSql.Parameters.AddWithValue("@usuario", userCurrent.Usuario);
                         comandoSql.Parameters.AddWithValue("@contrato", llamada.contrato);
                         comandoSql.Parameters.AddWithValue("@Sistema", "CallCenter");
                         comandoSql.Parameters.AddWithValue("@Pantalla", "Llamadas - nueva llamada");
@@ -630,42 +607,17 @@ namespace SoftvMVC.Controllers
                         comandoSql.Connection = conexionSQL2;
                         comandoSql.ExecuteNonQuery();
 
-                        comandoSql = new SqlCommand("insert into Llamadas(idUsuario,Tipo_Llamada,Contrato,Detalle,Fecha,HoraInicio,HoraFin,IdTurno,Clv_Queja,IdConexion,Clv_TipSer,Clv_Problema,SiEsCliente,Ciudad) values(@IdUsuario,@Tipo_Llamada,@Contrato,@motivo,@Fecha,@HoraInicio,@HoraFin,@IdTurno,@Clv_Queja,@IdConexion,@Clv_TipSer,@Clv_Problema,@SiEsCliente,@Ciudad);  SELECT SCOPE_IDENTITY()");
-                        comandoSql.Parameters.AddWithValue("@IdUsuario", llamada.usuario);
-                        comandoSql.Parameters.AddWithValue("@IdTurno", llamada.IdTurno);
-                        comandoSql.Parameters.AddWithValue("@Clv_Queja", Id);
-                        comandoSql.Parameters.AddWithValue("@Tipo_Llamada", llamada.tipo_llamada);
-                        comandoSql.Parameters.AddWithValue("@Contrato", llamada.contrato);
-                        comandoSql.Parameters.AddWithValue("@Fecha", llamada.fecha);
-                        comandoSql.Parameters.AddWithValue("@motivo", llamada.motivo);
-                        comandoSql.Parameters.AddWithValue("@HoraInicio", llamada.horainicio);
-                        comandoSql.Parameters.AddWithValue("@HoraFin", llamada.horatermino);
-                        comandoSql.Parameters.AddWithValue("@IdConexion", llamada.IdConexion);
-                        comandoSql.Parameters.AddWithValue("@Clv_TipSer", llamada.Clv_TipSer);
-                        comandoSql.Parameters.AddWithValue("@Clv_Problema", llamada.clas_problema);
-                        comandoSql.Parameters.AddWithValue("@SiEsCliente", llamada.tipo_llamada_cliente);
-                        comandoSql.Parameters.AddWithValue("@Ciudad", llamada.ciudad);
+                        comandoSql = new SqlCommand("declare @a int exec AddLlamada_Cliente @a OUTPUT," + llamada.usuario + "," + llamada.tipo_llamada + "," + llamada.contrato + ",'" + llamada.fecha + "','" + llamada.motivo + "','','" + llamada.horainicio + "','" + llamada.horatermino + "'," + llamada.IdConexion + "," + llamada.Clv_TipSer + ",0," + llamada.clas_problema + "," + llamada.tipo_llamada_cliente + ",'" + llamada.ciudad + "','" + llamada.nombre + "','" + llamada.telefono + "','" + llamada.celular + "'," + llamada.IdTurno + "," + id_queja + ",0 select @a");
                         comandoSql.Connection = conexionSQL;
                         id_llamada = Int32.Parse(comandoSql.ExecuteScalar().ToString());
+
+                        comandoSql = new SqlCommand("exec AddRelQuejaProblemaUsuario " + id_queja + "," + id_llamada + "," + Int32.Parse(llamada.clas_problema));
+                        comandoSql.Connection = conexionSQL2;
+                        comandoSql.ExecuteNonQuery();
                     }
                     else if (llamada.queja == 0)
                     {
-                        comandoSql = new SqlCommand("insert into Llamadas(idUsuario,Tipo_Llamada,Contrato,Detalle,solucion,Fecha,HoraInicio,HoraFin,IdTurno,Clv_Queja,IdConexion,Clv_Trabajo,Clv_TipSer,Clv_Problema,SiEsCliente,Ciudad) values(@IdUsuario,@Tipo_Llamada,@Contrato,@motivo,@solucion,@Fecha,@HoraInicio,@HoraFin,null,null,@IdConexion,@Clv_Trabajo,@Clv_TipSer,@Clv_Problema,@SiEsCliente,@Ciudad);  SELECT SCOPE_IDENTITY()");
-
-                        comandoSql.Parameters.AddWithValue("@IdUsuario", llamada.usuario);
-                        comandoSql.Parameters.AddWithValue("@Tipo_Llamada", llamada.tipo_llamada);
-                        comandoSql.Parameters.AddWithValue("@Contrato", llamada.contrato);
-                        comandoSql.Parameters.AddWithValue("@Fecha", llamada.fecha);
-                        comandoSql.Parameters.AddWithValue("@motivo", llamada.motivo);
-                        comandoSql.Parameters.AddWithValue("@solucion", llamada.solucion);
-                        comandoSql.Parameters.AddWithValue("@HoraInicio", llamada.horainicio);
-                        comandoSql.Parameters.AddWithValue("@HoraFin", llamada.horatermino);
-                        comandoSql.Parameters.AddWithValue("@IdConexion", llamada.IdConexion);
-                        comandoSql.Parameters.AddWithValue("@Clv_TipSer", llamada.Clv_TipSer);
-                        comandoSql.Parameters.AddWithValue("@Clv_Trabajo", llamada.clas_solucion);
-                        comandoSql.Parameters.AddWithValue("@Clv_Problema", llamada.clas_problema);
-                        comandoSql.Parameters.AddWithValue("@SiEsCliente", llamada.tipo_llamada_cliente);
-                        comandoSql.Parameters.AddWithValue("@Ciudad", llamada.ciudad);
+                        comandoSql = new SqlCommand("declare @a int exec AddLlamada_Cliente @a OUTPUT," + llamada.usuario + "," + llamada.tipo_llamada + "," + llamada.contrato + ",'" + llamada.fecha + "','" + llamada.motivo + "','" + llamada.solucion + "','" + llamada.horainicio + "','" + llamada.horatermino + "'," + llamada.IdConexion + "," + llamada.Clv_TipSer + "," + llamada.clas_solucion + "," + llamada.clas_problema + "," + llamada.tipo_llamada_cliente + ",'" + llamada.ciudad + "','" + llamada.nombre + "','" + llamada.telefono + "','" + llamada.celular + "',0,0,0 select @a");
                         comandoSql.Connection = conexionSQL;
                         id_llamada = Int32.Parse(comandoSql.ExecuteScalar().ToString());
                         id_queja = 1;
@@ -673,17 +625,18 @@ namespace SoftvMVC.Controllers
                 }
             }
             catch { }
-           if(id_queja > 0 && id_llamada > 0){
-               var result = new { reporte = id_llamada, queja = id_queja };
-               return Json(result, JsonRequestBehavior.AllowGet);
-           }
-           else
-           {
-               return Json(1, JsonRequestBehavior.AllowGet);
-           }
-            
-    
-            
+            if (id_queja > 0 && id_llamada > 0)
+            {
+                var result = new { reporte = id_llamada, queja = id_queja };
+                return Json(result, JsonRequestBehavior.AllowGet);
+            }
+            else
+            {
+                return Json(1, JsonRequestBehavior.AllowGet);
+            }
+
+
+
         }
 
         public class llamdaObject
@@ -746,7 +699,7 @@ namespace SoftvMVC.Controllers
                     }
                 }
             }
-            
+
             catch { }
             return Json(lista, JsonRequestBehavior.AllowGet);
         }
@@ -849,7 +802,9 @@ namespace SoftvMVC.Controllers
                         }
                         reader.Close();
                     }
-                } else{
+                }
+                else
+                {
                     List<NoClienteEntity> nocliente = prxyNoCliente.GetNoClienteList();
                     foreach (var item in nocliente)
                     {
@@ -883,7 +838,7 @@ namespace SoftvMVC.Controllers
                     }
                 }
 
-               
+
             }
 
             catch { }
@@ -1044,7 +999,7 @@ namespace SoftvMVC.Controllers
             ConexionController c = new ConexionController();
             SqlCommand comandoSql;
             List<editLlamada> lista = new List<editLlamada>();
-            SqlConnection conexionSQL = new SqlConnection("Data Source=192.168.1.230;Initial Catalog=Encuestas;User ID =sa;Password=0601x-2L;");
+            SqlConnection conexionSQL = new SqlConnection(conexion);
             //SqlConnection conexionSQL = new SqlConnection("Data Source=FABIAN-PC\\INSTANCIASQL2014;Initial Catalog=Encuestas;User ID =sa;Password=0601x-2Ñ;");
             SqlConnection conexionSQL2 = new SqlConnection(c.DameConexion(plaza));
             try
@@ -1057,11 +1012,13 @@ namespace SoftvMVC.Controllers
 
             try
             {
-                if(llamada.tipo_llamada == 1){
-                    if(llamada.contrato != null){
-                          comandoSql = new SqlCommand("UPDATE LLamadas SET Detalle ='" + llamada.detalle + "', Clv_Motivo='" + llamada.clv_motivo + "' WHERE IdLlamada=" + llamada.id_llamada);
-                          comandoSql.Connection = conexionSQL;
-                          comandoSql.ExecuteNonQuery();
+                if (llamada.tipo_llamada == 1)
+                {
+                    if (llamada.contrato != null)
+                    {
+                        comandoSql = new SqlCommand("UPDATE LLamadas SET Detalle ='" + llamada.detalle + "', Clv_Motivo='" + llamada.clv_motivo + "' WHERE IdLlamada=" + llamada.id_llamada);
+                        comandoSql.Connection = conexionSQL;
+                        comandoSql.ExecuteNonQuery();
                     }
                     else
                     {
@@ -1075,7 +1032,8 @@ namespace SoftvMVC.Controllers
                 }
                 else
                 {
-                    if(llamada.queja != null){
+                    if (llamada.queja != null)
+                    {
                         comandoSql = new SqlCommand("UPDATE LLamadas SET Detalle ='" + llamada.detalle + "', Clv_Problema='" + llamada.clas_problema + "' WHERE IdLlamada=" + llamada.id_llamada);
                         comandoSql.Connection = conexionSQL;
                         comandoSql.ExecuteNonQuery();
@@ -1091,7 +1049,7 @@ namespace SoftvMVC.Controllers
                     }
                 }
 
-               
+
             }
 
             catch { }
@@ -1117,13 +1075,14 @@ namespace SoftvMVC.Controllers
             public int MotivoLlamada { get; set; }
             public int tipo_llamada { get; set; }
         }
-        
-        public ActionResult TipoLlamada(){
-             ConexionController c = new ConexionController();
+
+        public ActionResult TipoLlamada()
+        {
+            ConexionController c = new ConexionController();
             SqlCommand comandoSql;
             List<objTipoLlamada> lista = new List<objTipoLlamada>();
-            SqlConnection conexionSQL = new SqlConnection("Data Source=192.168.1.230;Initial Catalog=Encuestas;User ID =sa;Password=0601x-2L;");
-            //SqlConnection conexionSQL = new SqlConnection("Data Source=FABIAN-PC\\INSTANCIASQL2014;Initial Catalog=Encuestas;User ID =sa;Password=0601x-2Ñ;");
+            // SqlConnection conexionSQL = new SqlConnection("Data Source=192.168.1.230;Initial Catalog=Encuestas;User ID =sa;Password=0601x-2L;");
+            SqlConnection conexionSQL = new SqlConnection(conexion);
             try
             {
                 conexionSQL.Open();
@@ -1146,7 +1105,7 @@ namespace SoftvMVC.Controllers
                         lista.Add(datos);
                     }
                 }
-              
+
             }
 
             catch { }
@@ -1216,8 +1175,8 @@ namespace SoftvMVC.Controllers
         {
             ConexionController c = new ConexionController();
             SqlCommand comandoSql;
-            SqlConnection conexionSQL = new SqlConnection("Data Source=192.168.1.230;Initial Catalog=Encuestas;User ID =sa;Password=0601x-2L;");
-           // SqlConnection conexionSQL = new SqlConnection("Data Source=FABIAN-PC\\INSTANCIASQL2014;Initial Catalog=Encuestas;User ID =sa;Password=0601x-2Ñ;");
+            SqlConnection conexionSQL = new SqlConnection(conexion);
+            //SqlConnection conexionSQL = new SqlConnection("Data Source=FABIAN-PC\\INSTANCIASQL2014;Initial Catalog=Encuestas;User ID =sa;Password=0601x-2Ñ;");
             List<HistorialLlamadas> lista = new List<HistorialLlamadas>();
             try
             {
@@ -1280,7 +1239,8 @@ namespace SoftvMVC.Controllers
 
             try
             {
-                if(filtro > 0){
+                if (filtro > 0)
+                {
                     comandoSql = new SqlCommand("exec HistorialQuejas " + contrato + ", " + filtro + "");
                     comandoSql.Connection = conexionSQL2;
                 }
@@ -1289,7 +1249,7 @@ namespace SoftvMVC.Controllers
                     comandoSql = new SqlCommand("exec HistorialQuejas " + contrato + ", 4");
                     comandoSql.Connection = conexionSQL2;
                 }
-                
+
                 SqlDataReader reader = comandoSql.ExecuteReader();
                 if (reader.HasRows)
                 {
@@ -1422,7 +1382,7 @@ namespace SoftvMVC.Controllers
             public float Total { get; set; }
         }
 
-        public ActionResult TieneQueja(int id_plaza,int contrato)
+        public ActionResult TieneQueja(int id_plaza, int contrato)
         {
             ConexionController c = new ConexionController();
             SqlCommand comandoSql;
@@ -1437,7 +1397,7 @@ namespace SoftvMVC.Controllers
 
             try
             {
-                comandoSql = new SqlCommand("SELECT * FROM Quejas WHERE Contrato = "+contrato+" AND Status = 'P'");
+                comandoSql = new SqlCommand("SELECT * FROM Quejas WHERE Contrato = " + contrato + " AND Status = 'P'");
                 comandoSql.Connection = conexionSQL2;
                 SqlDataReader reader = comandoSql.ExecuteReader();
                 if (reader.HasRows)
@@ -1466,7 +1426,7 @@ namespace SoftvMVC.Controllers
             ConexionController c = new ConexionController();
             SqlCommand comandoSql;
             SqlConnection conexionSQL2 = new SqlConnection(c.DameConexion(plaza));
-            List<datosTicket>  lista = new List<datosTicket>();
+            List<datosTicket> lista = new List<datosTicket>();
             datosTicket ticket = new datosTicket();
             try
             {
@@ -1477,20 +1437,20 @@ namespace SoftvMVC.Controllers
 
             try
             {
-                comandoSql = new SqlCommand("exec CrearTiket_ConsultaPago "+clv_factura+","  +contrato+"");
+                comandoSql = new SqlCommand("exec CrearTiket_ConsultaPago " + clv_factura + "," + contrato + "");
                 comandoSql.Connection = conexionSQL2;
                 SqlDataReader reader = comandoSql.ExecuteReader();
                 if (reader.HasRows)
                 {
                     while (reader.Read())
                     {
-                        
+
                         ticket.nombre_empresa = reader[1].ToString();
                         ticket.direccion_empresa = reader[2].ToString();
                         ticket.colonia_empresa = reader[3].ToString();
                         ticket.ciudad_empresa = reader[4].ToString();
                         ticket.rfc_empresa = reader[5].ToString();
-                        
+
                     }
                     if (reader.NextResult())
                     {
@@ -1509,7 +1469,7 @@ namespace SoftvMVC.Controllers
                             ticket.cp_sucursal = reader[3].ToString();
                             ticket.municipio_sucursal = reader[4].ToString();
                             ticket.ciudad_sucursal = reader[5].ToString();
-                            ticket.telefono_sucursal= reader[6].ToString();
+                            ticket.telefono_sucursal = reader[6].ToString();
                         }
                     }
                     if (reader.NextResult())
@@ -1539,7 +1499,7 @@ namespace SoftvMVC.Controllers
                         {
                             ticket.descripcion_servicio = reader[8].ToString();
                             ticket.monto_servicio = reader[9].ToString();
-                            ticket.mes = reader[12].ToString() +" "+ reader[13].ToString();
+                            ticket.mes = reader[12].ToString() + " " + reader[13].ToString();
                             ticket.puntos = reader[21].ToString();
                         }
                     }
@@ -1566,7 +1526,8 @@ namespace SoftvMVC.Controllers
             catch { }
             return Json(lista, JsonRequestBehavior.AllowGet);
         }
-        public class datosTicket{
+        public class datosTicket
+        {
             public string nombre_empresa { get; set; }
             public string direccion_empresa { get; set; }
             public string colonia_empresa { get; set; }
@@ -1600,15 +1561,16 @@ namespace SoftvMVC.Controllers
             public string efectivo { get; set; }
             public string proximo_pago { get; set; }
         }
-        public ActionResult detalleQueja(int id_plaza,int queja){
+        public ActionResult detalleQueja(int id_plaza, int queja)
+        {
             ConexionController c = new ConexionController();
             SqlCommand comandoSql;
             SqlConnection conexionSQL = new SqlConnection(c.DameConexion(id_plaza));
             DetallesQueja lista = new DetallesQueja();
-            List<LlamadaEntity> llamada = proxy.GetLlamadaList().Where(o => o.Clv_Queja == queja).ToList();
-            LlamadaEntity one_llamada = llamada.FirstOrDefault();
-            UsuarioEntity usuario = proxyUsuario.GetUsuario(one_llamada.IdUsuario);
-            ClasificacionProblemaEntity problema = proxyClass.GetClasificacionProblema(one_llamada.Clv_Problema);
+            //List<LlamadaEntity> llamada = proxy.GetLlamadaList().Where(o => o.Clv_Queja == queja).ToList();
+            //LlamadaEntity one_llamada = llamada.FirstOrDefault();
+            //UsuarioEntity usuario = proxyUsuario.GetUsuario(one_llamada.IdUsuario);
+            //ClasificacionProblemaEntity problema = proxyClass.GetClasificacionProblema(one_llamada.Clv_Problema);
             try
             {
                 conexionSQL.Open();
@@ -1618,7 +1580,7 @@ namespace SoftvMVC.Controllers
 
             try
             {
-                comandoSql = new SqlCommand("exec ConsultarQueja "+queja);
+                comandoSql = new SqlCommand("exec ConsultarQueja " + queja);
                 comandoSql.Connection = conexionSQL;
                 SqlDataReader reader = comandoSql.ExecuteReader();
                 if (reader.HasRows)
@@ -1629,7 +1591,7 @@ namespace SoftvMVC.Controllers
                         lista.tipo_servicio = reader[1].ToString();
                         lista.contrato = Int32.Parse(reader[2].ToString());
                         lista.status = reader[3].ToString();
-                        lista.observaciones = "Procede de una Atención Telefónica Atendio Reporte El Usuario: "+usuario.Nombre;
+                        lista.observaciones = "Procede de una Atención Telefónica Atendio Reporte El Usuario: " + reader[13].ToString();
                         lista.problema = reader[4].ToString();
                         lista.v1 = reader[6].ToString();
                         lista.v2 = reader[7].ToString();
@@ -1638,14 +1600,15 @@ namespace SoftvMVC.Controllers
                         lista.ejecucion = reader[10].ToString();
                         lista.usuario_ejecuto = reader[11].ToString();
                         lista.solucion = reader[12].ToString();
-                        lista.class_problema = problema.Descripcion;
-                        lista.usuario = usuario.Nombre;
+                        lista.class_problema = reader[4].ToString();
+                        lista.usuario = reader[13].ToString();
+                        lista.int_solucion = Int32.Parse(reader[14].ToString());
 
 
                     }
                 }
                 reader.Close();
-                comandoSql = new SqlCommand("exec ConsultarTrabajosParaLaSolucion " + one_llamada.Clv_Trabajo);
+                comandoSql = new SqlCommand("exec ConsultarTrabajosParaLaSolucion " + lista.int_solucion);
                 comandoSql.Connection = conexionSQL;
                 SqlDataReader reader2 = comandoSql.ExecuteReader();
                 if (reader2.HasRows)
@@ -1677,6 +1640,7 @@ namespace SoftvMVC.Controllers
             public string class_problema { get; set; }
             public string usuario_ejecuto { get; set; }
             public string clas_solucion { get; set; }
+            public int int_solucion { get; set; }
             public string solucion { get; set; }
         }
 
@@ -1685,8 +1649,8 @@ namespace SoftvMVC.Controllers
             List<datosReporte> lista = new List<datosReporte>();
             ConexionController c = new ConexionController();
             SqlCommand comandoSql;
-            //SqlConnection conexionSQL = new SqlConnection("Data Source=192.168.1.230;Initial Catalog=Encuestas;User ID =sa;Password=0601x-2L;");
-            SqlConnection conexionSQL = new SqlConnection("Data Source=FABIAN-PC\\INSTANCIASQL2014;Initial Catalog=Encuestas;User ID =sa;Password=0601x-2Ñ;");
+            SqlConnection conexionSQL = new SqlConnection(conexion);
+            //SqlConnection conexionSQL = new SqlConnection("Data Source=FABIAN-PC\\INSTANCIASQL2014;Initial Catalog=Encuestas;User ID =sa;Password=0601x-2Ñ;");
             string nombre_archivo = "";
             try
             {
@@ -1697,7 +1661,7 @@ namespace SoftvMVC.Controllers
 
             try
             {
-                int conQueja=0;
+                int conQueja = 0;
                 int sinQueja = 0;
                 int ambas = 0;
                 if (reporte.queja == 1)
@@ -1705,7 +1669,9 @@ namespace SoftvMVC.Controllers
                     conQueja = 1;
                     sinQueja = 0;
                     ambas = 0;
-                }else if(reporte.queja == 2){
+                }
+                else if (reporte.queja == 2)
+                {
                     conQueja = 0;
                     sinQueja = 1;
                     ambas = 0;
@@ -1716,7 +1682,7 @@ namespace SoftvMVC.Controllers
                     sinQueja = 0;
                     ambas = 1;
                 }
-                comandoSql = new SqlCommand("exec ReporteLlamadas "+reporte.plaza+",'"+reporte.ciudad+"',1,"+reporte.motivo+","+conQueja+","+sinQueja+","+ambas+","+reporte.usuario+",0,"+reporte.problema+",'"+reporte.inicio+"','"+reporte.fin+"'");
+                comandoSql = new SqlCommand("exec ReporteLlamadas " + reporte.plaza + ",'" + reporte.ciudad + "',1," + reporte.motivo + "," + conQueja + "," + sinQueja + "," + ambas + "," + reporte.usuario + ",0," + reporte.problema + ",'" + reporte.inicio + "','" + reporte.fin + "'");
                 comandoSql.Connection = conexionSQL;
                 SqlDataReader reader2 = comandoSql.ExecuteReader();
                 if (reader2.HasRows)
@@ -1736,18 +1702,29 @@ namespace SoftvMVC.Controllers
                         llamada.inicio = Inicio.ToShortTimeString();
                         DateTime Fin = DateTime.Parse(reader2[8].ToString());
                         llamada.fin = Fin.ToShortTimeString();
+                        try
+                        {
+                            llamada.nombre = reader2[11].ToString();
+                        }
+                        catch { llamada.nombre = ""; }
+                        try { llamada.telefono = reader2[12].ToString(); }
+                        catch { llamada.telefono = ""; }
+                        try { llamada.celular = reader2[13].ToString(); }
+                        catch { llamada.celular = ""; }
+
                         lista.Add(llamada);
 
                     }
                 }
-                
+
                 if (reader2.HasRows)
                 {
                     ConexionEntity plaza = proxyConexion.GetConexion(reporte.plaza);
                     //creamos un documento con un guid y lo guardamos en la carpeta temporal de windows
-                    string fileName = Server.MapPath("/Reportes/") + Guid.NewGuid().ToString() + ".pdf";
+                    nombre_archivo = Guid.NewGuid().ToString();
+                    string fileName = Server.MapPath("/Reportes/") + nombre_archivo + ".pdf";
                     FileStream fs = new FileStream(fileName, FileMode.Create, FileAccess.Write, FileShare.None);
-                    Document document = new Document(PageSize.A4, 50, 50, 25, 50);
+                    Document document = new Document(PageSize.A4.Rotate(), 50, 50, 25, 50);
                     PdfWriter writer = PdfWriter.GetInstance(document, fs);
                     document.Open();
 
@@ -1768,7 +1745,14 @@ namespace SoftvMVC.Controllers
                     plazap.Font.SetStyle(Font.BOLD);
                     if (reporte.ciudad != null && reporte.ciudad != "")
                     {
-                        plazap.Add("Ciudad de " + reporte.ciudad);
+                        if (reporte.ciudad == "Todas las Ciudades")
+                        {
+                            plazap.Add(reporte.ciudad);
+                        }
+                        else
+                        {
+                            plazap.Add("Ciudad de " + reporte.ciudad);
+                        }
                     }
                     else
                     {
@@ -1778,7 +1762,7 @@ namespace SoftvMVC.Controllers
                     document.Add(new Paragraph("\n"));
                     //creamos el parrafo de la descripcion
                     Paragraph detalle = new Paragraph();
-                    
+
                     detalle.Font = FontFactory.GetFont("Arial", 15);
                     detalle.Font.SetStyle(Font.BOLD);
                     if (reporte.inicio != "" && reporte.inicio != null)
@@ -1801,7 +1785,7 @@ namespace SoftvMVC.Controllers
                     document.Add(p);
                     document.Add(new Paragraph("\n"));
 
-                    PdfPTable table = new PdfPTable(9);
+                    PdfPTable table = new PdfPTable(12);
 
                     table.WidthPercentage = 100;
                     table.HeaderRows = 1;
@@ -1809,6 +1793,9 @@ namespace SoftvMVC.Controllers
                     PdfPCell cell2 = new PdfPCell(new Phrase("Atendió", negritas));
                     PdfPCell cell3 = new PdfPCell(new Phrase("Tipo", negritas));
                     PdfPCell cell4 = new PdfPCell(new Phrase("Contrato", negritas));
+                    PdfPCell cell10 = new PdfPCell(new Phrase("Nombre", negritas));
+                    PdfPCell cell11 = new PdfPCell(new Phrase("Telefono", negritas));
+                    PdfPCell cell12 = new PdfPCell(new Phrase("Celular", negritas));
                     PdfPCell cell5 = new PdfPCell(new Phrase("Detalle", negritas));
                     PdfPCell cell6 = new PdfPCell(new Phrase("Solución", negritas));
                     PdfPCell cell7 = new PdfPCell(new Phrase("Fecha", negritas));
@@ -1818,6 +1805,9 @@ namespace SoftvMVC.Controllers
                     table.AddCell(cell2);
                     table.AddCell(cell3);
                     table.AddCell(cell4);
+                    table.AddCell(cell10);
+                    table.AddCell(cell11);
+                    table.AddCell(cell12);
                     table.AddCell(cell5);
                     table.AddCell(cell6);
                     table.AddCell(cell7);
@@ -1830,6 +1820,9 @@ namespace SoftvMVC.Controllers
                         table.AddCell(new PdfPCell(new Phrase(item.usuario.ToString(), normal)));
                         table.AddCell(new PdfPCell(new Phrase(item.tipo_llamada.ToString(), normal)));
                         table.AddCell(new PdfPCell(new Phrase(item.contrato.ToString(), normal)));
+                        table.AddCell(new PdfPCell(new Phrase(item.nombre.ToString(), normal)));
+                        table.AddCell(new PdfPCell(new Phrase(item.telefono.ToString(), normal)));
+                        table.AddCell(new PdfPCell(new Phrase(item.celular.ToString(), normal)));
                         table.AddCell(new PdfPCell(new Phrase(item.detalle.ToString(), normal)));
                         table.AddCell(new PdfPCell(new Phrase(item.solucion.ToString(), normal)));
                         table.AddCell(new PdfPCell(new Phrase(item.fecha.ToString(), normal)));
@@ -1840,41 +1833,42 @@ namespace SoftvMVC.Controllers
                     document.Add(table);
                     document.Close();
                     //cerramos el documento y lo volvemos a abrir para agregar el numero de pagina a cada hoja
-                    PdfReader rd = new PdfReader(fileName);
-                    nombre_archivo = Guid.NewGuid().ToString();
-                    string fileName2 = Server.MapPath("/Reportes/") + nombre_archivo + ".pdf";
-                    PdfStamper ps = new PdfStamper(rd, new FileStream(fileName2, FileMode.Create));
+                    //PdfReader rd = new PdfReader(fileName);
+                    //nombre_archivo = Guid.NewGuid().ToString();
+                    //string fileName2 = Server.MapPath("/Reportes/") + nombre_archivo + ".pdf";
+                    //PdfStamper ps = new PdfStamper(rd, new FileStream(fileName2, FileMode.Create));
 
-                    PdfImportedPage page;
-                    for (int i = 1; i <= rd.NumberOfPages; i++)
-                    {
-                        PdfContentByte canvas = ps.GetOverContent(i);
-                        page = ps.GetImportedPage(rd, i);
-                        BaseFont bf = BaseFont.CreateFont(BaseFont.HELVETICA, BaseFont.CP1252, BaseFont.NOT_EMBEDDED);
-                        canvas.BeginText();
-                        canvas.SetFontAndSize(bf, 8);
+                    //PdfImportedPage page;
+                    //for (int i = 1; i <= rd.NumberOfPages; i++)
+                    //{
+                    //    PdfContentByte canvas = ps.GetOverContent(i);
+                    //    page = ps.GetImportedPage(rd, i);
+                    //    BaseFont bf = BaseFont.CreateFont(BaseFont.HELVETICA, BaseFont.CP1252, BaseFont.NOT_EMBEDDED);
+                    //    canvas.BeginText();
+                    //    canvas.SetFontAndSize(bf, 8);
 
-                        canvas.ShowTextAligned(PdfContentByte.ALIGN_LEFT, " " + i, 300.7f, 20.7f, 0);
-                        canvas.EndText();
-                        canvas.AddTemplate(page, 0, 0);
+                    //    canvas.ShowTextAligned(PdfContentByte.ALIGN_LEFT, " " + i, 300.7f, 20.7f, 0);
+                    //    canvas.EndText();
+                    //    canvas.AddTemplate(page, 0, 0);
 
 
-                    }
-                    ps.Close();
+                    //}
+                    //ps.Close();
 
                 }
                 else
                 {
                     nombre_archivo = "No Resultados";
                 }
-                
-                
+
+
             }
-           
-            catch {  }
+
+            catch { }
             return Json(nombre_archivo + ".pdf", JsonRequestBehavior.AllowGet);
         }
-        public class obj_reporte{
+        public class obj_reporte
+        {
             public int plaza { get; set; }
             public string ciudad { get; set; }
             public int motivo { get; set; }
@@ -1898,6 +1892,292 @@ namespace SoftvMVC.Controllers
             public string fecha { get; set; }
             public string inicio { get; set; }
             public string fin { get; set; }
+            public string nombre { get; set; }
+            public string telefono { get; set; }
+            public string celular { get; set; }
+        }
+
+
+        public ActionResult getOrdenes(int idPlaza, int Contrato)
+        {
+            ConexionController c = new ConexionController();
+            SqlCommand comandoSql;
+            SqlConnection conexionSQL2 = new SqlConnection(c.DameConexion(idPlaza));
+            List<DatosOrden> data = new List<DatosOrden>();
+            try
+            {
+                conexionSQL2.Open();
+            }
+            catch
+            { }
+
+            try
+            {
+                comandoSql = new SqlCommand("exec uspBuscaOrdSer 0, 0, "+Contrato+", '', '', '', 30, 0, 0");
+                comandoSql.Connection = conexionSQL2;
+                SqlDataReader reader = comandoSql.ExecuteReader();
+                if (reader.HasRows)
+                {
+                    while (reader.Read())
+                    {
+                        DatosOrden datos = new DatosOrden();
+                        datos.Clv_Orden = Convert.ToInt32(reader[0]);
+                        datos.STATUS = reader[1].ToString();
+                        datos.Contrato = Convert.ToInt32(reader[2]);
+                        datos.Nombre = reader[3].ToString();
+                        datos.CALLE = reader[4].ToString();
+                        datos.NUMERO = reader[5].ToString();
+                        datos.Clv_TipSer = Convert.ToInt32(reader[6]);
+                        data.Add(datos);
+                    }
+                }
+                reader.Close();
+            }
+            catch
+            {
+
+            }
+            return Json(data, JsonRequestBehavior.AllowGet);
+        }
+
+        public class DatosOrden
+        {
+            public int Clv_Orden { get; set; }
+            public string STATUS { get; set; }
+            public int Contrato { get; set; }
+            public string Nombre { get; set; }
+            public string CALLE { get; set; }
+            public string NUMERO { get; set; }
+            public int Clv_TipSer { get; set; }
+        }
+
+
+        public ActionResult consultarDetalleOrden(int idPlaza, int Orden)
+        {
+            ConexionController c = new ConexionController();
+            SqlCommand comandoSql;
+            SqlConnection conexionSQL2 = new SqlConnection(c.DameConexion(idPlaza));
+            objDetalleOrden orden = new objDetalleOrden();
+            try
+            {
+                conexionSQL2.Open();
+            }
+            catch
+            { }
+
+            try
+            {
+
+                comandoSql = new SqlCommand("exec CONORDSER " + Orden + ", 0 ");
+                comandoSql.Connection = conexionSQL2;
+                SqlDataReader reader = comandoSql.ExecuteReader();
+                if (reader.HasRows)
+                {
+                    while (reader.Read())
+                    {
+                        orden.clv_orden = Convert.ToInt32(reader[0]);
+                        orden.contrato = Convert.ToInt32(reader[2]);
+                        orden.solicitud = reader[3].ToString();
+                        orden.ejecucion = reader[4].ToString();
+                        orden.visita1 = reader[5].ToString();
+                        orden.visita2 = reader[6].ToString();
+                        orden.status = reader[7].ToString();
+                        orden.observaciones = reader[11].ToString();
+                    }
+                }
+                reader.Close();
+
+                comandoSql = new SqlCommand("exec BUSCLIPORCONTRATO " + orden.contrato + ", '', '', '', '', 0, 0");
+                comandoSql.Connection = conexionSQL2;
+                SqlDataReader reader0 = comandoSql.ExecuteReader();
+                if (reader0.HasRows)
+                {
+                    while (reader0.Read())
+                    {
+                        orden.nombre = reader0[1].ToString();
+                        orden.calle = reader0[2].ToString();
+                        orden.colonia = reader0[3].ToString();
+                        orden.numero = reader0[4].ToString();
+                        orden.ciudad = reader0[5].ToString();
+                    }
+                }
+                reader0.Close();
+
+                comandoSql = new SqlCommand("exec dameSerDELCli " + orden.contrato + "");
+                comandoSql.Connection = conexionSQL2;
+                List<objServicios> servicios = new List<objServicios>();
+                SqlDataReader reader2 = comandoSql.ExecuteReader();
+                if (reader2.HasRows)
+                {
+                    while (reader2.Read())
+                    {
+                        objServicios servicio = new objServicios();
+                        servicio.servicio = reader2[0].ToString();
+                        servicios.Add(servicio);
+                    }
+                }
+                reader2.Close();
+                orden.servicios = servicios;
+
+
+                comandoSql = new SqlCommand("exec MuestraRelOrdenesTecnicos " + Orden + "");
+                comandoSql.Connection = conexionSQL2;
+                SqlDataReader reader3 = comandoSql.ExecuteReader();
+                objTecnico tecnico = new objTecnico();
+                if (reader3.HasRows)
+                {
+                    while (reader3.Read())
+                    {
+
+                        tecnico.clvTecnico = Convert.ToInt32(reader3[0]);
+                        tecnico.Nombre = reader3[1].ToString();
+                    }
+                }
+                reader3.Close();
+                orden.tecnico = tecnico;
+
+
+                comandoSql = new SqlCommand("declare @a int, @b varchar(50) exec uspDamePlacaTapCliente " + orden.contrato + ", @a OUTPUT, @b OUTPUT  select @b");
+                comandoSql.Connection = conexionSQL2;
+                SqlDataReader reader4 = comandoSql.ExecuteReader();
+                if (reader4.HasRows)
+                {
+                    while (reader4.Read())
+                    {
+                        try
+                        {
+                            orden.placa = Convert.ToInt32(reader4[0]);
+                        }
+                        catch
+                        {
+                            orden.placa = 0;
+                        }
+                    }
+                }
+                reader4.Close();
+
+                comandoSql = new SqlCommand("exec uspConsultaTap " + orden.contrato + ", 0, 0 ");
+                comandoSql.Connection = conexionSQL2;
+                SqlDataReader reader5 = comandoSql.ExecuteReader();
+                objTap tap = new objTap();
+                if (reader5.HasRows)
+                {
+                    while (reader5.Read())
+                    {
+
+                        tap.idTap = Convert.ToInt32(reader5[0]);
+                        tap.clave = reader5[1].ToString();
+                    }
+                }
+                reader5.Close();
+                orden.tap = tap;
+
+                comandoSql = new SqlCommand("exec Consulta_RelOrdenUsuario " + Orden + "");
+                comandoSql.Connection = conexionSQL2;
+                SqlDataReader reader6 = comandoSql.ExecuteReader();
+                if (reader6.HasRows)
+                {
+                    while (reader6.Read())
+                    {
+
+                        orden.genero = reader6[0].ToString(); ;
+                        orden.ejecuto = reader6[1].ToString();
+                    }
+                }
+                reader6.Close();
+
+                comandoSql = new SqlCommand("exec BUSCADetOrdSer " + Orden + "");
+                comandoSql.Connection = conexionSQL2;
+                SqlDataReader reader7 = comandoSql.ExecuteReader();
+                List<objAllOrders> detallesOrdenes = new List<objAllOrders>();
+                if (reader7.HasRows)
+                {
+                    while (reader7.Read())
+                    {
+                        objAllOrders detalleOrden = new objAllOrders();
+                        detalleOrden.clave = Convert.ToInt32(reader7[0]);
+                        detalleOrden.clv_orden = Convert.ToInt32(reader7[1]);
+                        detalleOrden.clv_trabajo = Convert.ToInt32(reader7[2]);
+                        detalleOrden.descripcion = reader7[3].ToString();
+                        detalleOrden.accion = reader7[4].ToString();
+                        detalleOrden.observaciones = reader7[5].ToString();
+                        detalleOrden.realiza = reader7[6].ToString();
+                        detallesOrdenes.Add(detalleOrden);
+                    }
+                }
+                reader7.Close();
+                orden.detallesOrdenes = detallesOrdenes;
+
+
+                comandoSql = new SqlCommand("exec DimeSiTieneunaBitacora " + Orden + "");
+                comandoSql.Connection = conexionSQL2;
+                SqlDataReader reader8 = comandoSql.ExecuteReader();
+                if (reader8.HasRows)
+                {
+                    while (reader8.Read())
+                    {
+
+                        orden.folio = reader8[0].ToString();
+                    }
+                }
+                reader8.Close();
+
+            }
+            catch { }
+            return Json(orden, JsonRequestBehavior.AllowGet);
+        }
+
+        public class objDetalleOrden
+        {
+            public int clv_orden { get; set; }
+            public int contrato { get; set; }
+            public string folio { get; set; }
+            public string nombre { get; set; }
+            public string ciudad { get; set; }
+            public string colonia { get; set; }
+            public string calle { get; set; }
+            public string numero { get; set; }
+            public string solicitud { get; set; }
+            public string ejecucion { get; set; }
+            public string visita1 { get; set; }
+            public string visita2 { get; set; }
+            public string status { get; set; }
+            public string observaciones { get; set; }
+            public List<objServicios> servicios { get; set; }
+            public objTecnico tecnico { get; set; }
+            public int placa { get; set; }
+            public objTap tap { get; set; }
+            public string ejecuto { get; set; }
+            public string genero { get; set; }
+            public List<objAllOrders> detallesOrdenes { get; set; }
+        }
+
+        public class objServicios
+        {
+            public string servicio { get; set; }
+        }
+
+        public class objTecnico
+        {
+            public int clvTecnico { get; set; }
+            public string Nombre { get; set; }
+        }
+
+        public class objTap
+        {
+            public int idTap { get; set; }
+            public string clave { get; set; }
+        }
+
+        public class objAllOrders
+        {
+            public int clave { get; set; }
+            public int clv_orden { get; set; }
+            public int clv_trabajo { get; set; }
+            public string descripcion { get; set; }
+            public string accion { get; set; }
+            public string observaciones { get; set; }
+            public string realiza { get; set; }
         }
     }
 

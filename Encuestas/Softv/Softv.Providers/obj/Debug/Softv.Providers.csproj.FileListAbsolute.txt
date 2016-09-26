@@ -246,3 +246,16 @@ C:\Users\Israel\Documents\projects\Versiones Callcenter\CallCenter -\CallCenter\
 C:\Users\Israel\Documents\projects\Versiones Callcenter\CallCenter -\CallCenter\Encuestas\Softv\Softv.Providers\obj\Debug\Softv.Providers.csprojResolveAssemblyReference.cache
 C:\Users\Israel\Documents\projects\Versiones Callcenter\CallCenter -\CallCenter\Encuestas\Softv\Softv.Providers\obj\Debug\Softv.Providers.dll
 C:\Users\Israel\Documents\projects\Versiones Callcenter\CallCenter -\CallCenter\Encuestas\Softv\Softv.Providers\obj\Debug\Softv.Providers.pdb
+C:\Users\Israel\Documents\projects\Versiones Callcenter\CallCenter -31082014\CallCenter\Encuestas\Softv\Softv.Providers\bin\Debug\Softv.Providers.dll
+C:\Users\Israel\Documents\projects\Versiones Callcenter\CallCenter -31082014\CallCenter\Encuestas\Softv\Softv.Providers\bin\Debug\Softv.Providers.pdb
+C:\Users\Israel\Documents\projects\Versiones Callcenter\CallCenter -31082014\CallCenter\Encuestas\Softv\Softv.Providers\bin\Debug\Dapper.dll
+C:\Users\Israel\Documents\projects\Versiones Callcenter\CallCenter -31082014\CallCenter\Encuestas\Softv\Softv.Providers\bin\Debug\Globals.dll
+C:\Users\Israel\Documents\projects\Versiones Callcenter\CallCenter -31082014\CallCenter\Encuestas\Softv\Softv.Providers\bin\Debug\Softv.Entities.dll
+C:\Users\Israel\Documents\projects\Versiones Callcenter\CallCenter -31082014\CallCenter\Encuestas\Softv\Softv.Providers\bin\Debug\SoftvConfiguration.dll
+C:\Users\Israel\Documents\projects\Versiones Callcenter\CallCenter -31082014\CallCenter\Encuestas\Softv\Softv.Providers\bin\Debug\Globals.pdb
+C:\Users\Israel\Documents\projects\Versiones Callcenter\CallCenter -31082014\CallCenter\Encuestas\Softv\Softv.Providers\bin\Debug\SoftvConfiguration.pdb
+C:\Users\Israel\Documents\projects\Versiones Callcenter\CallCenter -31082014\CallCenter\Encuestas\Softv\Softv.Providers\bin\Debug\Softv.Entities.pdb
+C:\Users\Israel\Documents\projects\Versiones Callcenter\CallCenter -31082014\CallCenter\Encuestas\Softv\Softv.Providers\bin\Debug\Dapper.xml
+C:\Users\Israel\Documents\projects\Versiones Callcenter\CallCenter -31082014\CallCenter\Encuestas\Softv\Softv.Providers\obj\Debug\Softv.Providers.csprojResolveAssemblyReference.cache
+C:\Users\Israel\Documents\projects\Versiones Callcenter\CallCenter -31082014\CallCenter\Encuestas\Softv\Softv.Providers\obj\Debug\Softv.Providers.dll
+C:\Users\Israel\Documents\projects\Versiones Callcenter\CallCenter -31082014\CallCenter\Encuestas\Softv\Softv.Providers\obj\Debug\Softv.Providers.pdb
