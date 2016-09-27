@@ -146,8 +146,8 @@ namespace SoftvMVC.Controllers
 
         }
 
-        //string conexion = "Data Source=192.168.1.230;Initial Catalog=Encuestas;User ID =sa;Password=0601x-2L;";
-        string conexion = "Data Source=FABIAN-PC\\INSTANCIASQL2014;Initial Catalog=Encuestas;User ID =sa;Password=0601x-2Ñ;";
+        string conexion = "Data Source=192.168.1.230;Initial Catalog=Encuestas;User ID =sa;Password=0601x-2L;";
+        //string conexion = "Data Source=FABIAN-PC\\INSTANCIASQL2014;Initial Catalog=Encuestas;User ID =sa;Password=0601x-2Ñ;";
 
         public ActionResult Index(int? page, int? pageSize)
         {
@@ -1682,7 +1682,7 @@ namespace SoftvMVC.Controllers
                     sinQueja = 0;
                     ambas = 1;
                 }
-                comandoSql = new SqlCommand("exec ReporteLlamadas " + reporte.plaza + ",'" + reporte.ciudad + "',1," + reporte.motivo + "," + conQueja + "," + sinQueja + "," + ambas + "," + reporte.usuario + ",0," + reporte.problema + ",'" + reporte.inicio + "','" + reporte.fin + "'");
+                comandoSql = new SqlCommand("exec ReporteLlamadas " + reporte.plaza + ",'" + reporte.ciudad + "',"+reporte.tipServ+"," + reporte.motivo + "," + conQueja + "," + sinQueja + "," + ambas + "," + reporte.usuario + ",0," + reporte.problema + ",'" + reporte.inicio + "','" + reporte.fin + "'");
                 comandoSql.Connection = conexionSQL;
                 SqlDataReader reader2 = comandoSql.ExecuteReader();
                 if (reader2.HasRows)

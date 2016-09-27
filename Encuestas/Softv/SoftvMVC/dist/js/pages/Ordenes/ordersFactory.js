@@ -37,7 +37,9 @@ ordersApp.factory('ordersFactory', function ($http, $q) {
         motivosCancelacion: "/Ordenes/motivosCancelacion/",
         guardarMotivo: "/Ordenes/guardarMotivo/",
         getBitacoraDescarga: "/Ordenes/getBitacoraDescarga/",
-        getArticulosDescarga: "/Ordenes/getArticulosDescarga/"
+        getArticulosDescarga: "/Ordenes/getArticulosDescarga/",
+        consultarExistencia: "/Ordenes/consultarExistencia/",
+        guardarMaterial: "/Ordenes/guardarMaterial/"
     };
 
     factory.getList = function () {
@@ -83,6 +85,16 @@ ordersApp.factory('ordersFactory', function ($http, $q) {
     factory.getBitacoraDescarga = function (idPlaza, Orden) {
         var deferred = $q.defer();
         $http.get(paths.getBitacoraDescarga, { params: { idPlaza: idPlaza, Orden: Orden } }).success(function (data) {
+            deferred.resolve(data);
+        }).error(function (data) {
+            deferred.reject(data);
+        });
+        return deferred.promise;
+    };
+
+    factory.consultarExistencia = function (idPlaza, Tecnico, Articulo, Cantidad) {
+        var deferred = $q.defer();
+        $http.get(paths.consultarExistencia, { params: { idPlaza: idPlaza, Tecnico: Tecnico, Articulo: Articulo, Cantidad: Cantidad } }).success(function (data) {
             deferred.resolve(data);
         }).error(function (data) {
             deferred.reject(data);
@@ -173,6 +185,17 @@ ordersApp.factory('ordersFactory', function ($http, $q) {
     factory.saveExtensiones = function (idPlaza, Clave, Orden, Contrato, Extensiones) {
         var deferred = $q.defer();
         $http.get(paths.saveExtensiones, { params: { idPlaza: idPlaza, Contrato: Contrato, Clave: Clave, Orden: Orden, Extensiones: Extensiones } }).success(function (data) {
+            deferred.resolve(data);
+        }).error(function (data) {
+            deferred.reject(data);
+        });
+        return deferred.promise;
+    };
+
+    factory.guardarMaterial = function (idPlaza, Orden, Almacen, ClaveArticulo, Articulo, Tecnico, cantidad, Mii, Mfi, Mei, Mef) {
+        console.log(idPlaza, Orden, Almacen, ClaveArticulo, Articulo, Tecnico, cantidad, Mii, Mfi, Mei, Mef);
+        var deferred = $q.defer();
+        $http.get(paths.guardarMaterial, { params: { idPlaza: idPlaza, Orden: Orden, Almacen: Almacen, ClaveArticulo: ClaveArticulo, Articulo: Articulo, Tecnico: Tecnico, cantidad: cantidad, Mii: Mii, Mfi: Mfi, Mei: Mei, Mef: Mef } }).success(function (data) {
             deferred.resolve(data);
         }).error(function (data) {
             deferred.reject(data);

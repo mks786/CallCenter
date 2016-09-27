@@ -1197,6 +1197,7 @@ function ModalEjecutarOrdenCtrl($uibModal, $uibModalInstance, detalle, ordersFac
 
     vm.descargaMaterial = function () {
         detalle.tecnico = vm.selectedTecnico.clvTecnico;
+        detalle.tecnicoNombre = vm.selectedTecnico.Nombre;
         vm.animationsEnabled = true;
         var modalInstance = $uibModal.open({
             animation: vm.animationsEnabled,
@@ -1370,7 +1371,7 @@ function ModalDescargaMaterialCtrl($uibModalInstance, data, ordersFactory) {
             vm.showMetraje = false;
         }
     }
-
+    
     vm.agregarArticulo = function () {
         if (vm.selectedAlmacen.id != 0) {
             if (vm.selectedClasificacion.clv_tipo != 0) {
@@ -1385,7 +1386,7 @@ function ModalDescargaMaterialCtrl($uibModalInstance, data, ordersFactory) {
                                 hide: true
                             });
                         } else {
-                            if (vm.iinicial < vm.ifinal && vm.finicial == 0 && vm.ffinal == 0 || vm.finicial == undefined || vm.ffinal == undefined) {
+                            if (vm.iinicial < vm.ifinal && vm.finicial == 0 && vm.ffinal == 0) {
                                 if (vm.iinicial == 0 || vm.ifinal == 0) {
                                     new PNotify({
                                         title: 'Error',
@@ -1395,11 +1396,49 @@ function ModalDescargaMaterialCtrl($uibModalInstance, data, ordersFactory) {
                                         hide: true
                                     });
                                 } else {
-                                    console.log('valido');
+                                    vm.cantidad_total = vm.ifinal - vm.iinicial;
+                                    ordersFactory.consultarExistencia(data.plaza, data.tecnico, vm.selectedArticuloDescarga.id, vm.cantidad_total).then(function (data) {
+                                        if(data == 4){
+                                            ordersFactory.guardarMaterial(data.plaza, data.clv_orden, vm.selectedAlmacen.descripcion, vm.selectedArticuloDescarga.clave, vm.selectedArticuloDescarga.articulo, data.tecnicoNombre, vm.cantidad_total, vm.iinicial, vm.ifinal, vm.finicial, vm.ffinal).then(function (data) {
+                                                guardarDetalle(1);
+                                            });
+                                        } else {
+                                            new PNotify({
+                                                title: 'Error',
+                                                text: 'El técnico no cuenta con el material suficiente.',
+                                                icon: 'fa fa-info-circle',
+                                                type: 'error',
+                                                hide: true
+                                            });
+                                        }
+                                    });
                                 }
-                            } else if (vm.iinicial == 0 && vm.ifinal == 0 && vm.finicial < vm.ffinal || vm.iinicial == undefined || vm.ifinal == undefined) {
-                                console.log('valido');
-                            }else if (vm.ifinal <= vm.iinicial || vm.finicial <= vm.ifinal || vm.ffinal <= vm.finicial) {
+                            } else if (vm.finicial < vm.ffinal && vm.iinicial == 0 && vm.ifinal == 0) {
+                                if (vm.finicial == 0 || vm.ffinal == 0) {
+                                    new PNotify({
+                                        title: 'Error',
+                                        text: 'El rango de los metrajes interiores no pueden ir en cero.',
+                                        icon: 'fa fa-info-circle',
+                                        type: 'error',
+                                        hide: true
+                                    });
+                                } else {
+                                    vm.cantidad_total = vm.ffinal - vm.finicial;
+                                    ordersFactory.consultarExistencia(data.plaza, data.tecnico, vm.selectedArticuloDescarga.id, vm.cantidad_total).then(function (data) {
+                                        if (data == 4) {
+                                            guardarDetalle(1);
+                                        } else {
+                                            new PNotify({
+                                                title: 'Error',
+                                                text: 'El técnico no cuenta con el material suficiente.',
+                                                icon: 'fa fa-info-circle',
+                                                type: 'error',
+                                                hide: true
+                                            });
+                                        }
+                                    });
+                                }
+                            } else if (vm.ifinal <= vm.iinicial || vm.ffinal <= vm.finicial) {
                                 new PNotify({
                                     title: 'Error',
                                     text: 'El rango de los metrajes no se pueden interceptar.',
@@ -1408,7 +1447,63 @@ function ModalDescargaMaterialCtrl($uibModalInstance, data, ordersFactory) {
                                     hide: true
                                 });
                             } else {
-                                console.log('valido');
+                                if (vm.iinicial > vm.finicial) {
+                                    if (vm.iinicial <= vm.ffinal ) {
+                                        new PNotify({
+                                            title: 'Error',
+                                            text: 'El rango de los metrajes no se pueden interceptar.',
+                                            icon: 'fa fa-info-circle',
+                                            type: 'error',
+                                            hide: true
+                                        });
+                                    } else {
+                                        var interior = vm.ifinal - vm.iinicial;
+                                        var exterior = vm.ffinal - vm.finicial;
+
+                                        vm.cantidad_total = interior + exterior;
+                                        ordersFactory.consultarExistencia(data.plaza, data.tecnico, vm.selectedArticuloDescarga.id, vm.cantidad_total).then(function (data) {
+                                            if (data == 4) {
+                                                guardarDetalle(1);
+                                            } else {
+                                                new PNotify({
+                                                    title: 'Error',
+                                                    text: 'El técnico no cuenta con el material suficiente.',
+                                                    icon: 'fa fa-info-circle',
+                                                    type: 'error',
+                                                    hide: true
+                                                });
+                                            }
+                                        });
+                                    }
+                                } else {
+                                    if (vm.finicial <= vm.ifinal) {
+                                        new PNotify({
+                                            title: 'Error',
+                                            text: 'El rango de los metrajes no se pueden interceptar.',
+                                            icon: 'fa fa-info-circle',
+                                            type: 'error',
+                                            hide: true
+                                        });
+                                    } else {
+                                        var interior = vm.ifinal - vm.iinicial;
+                                        var exterior = vm.ffinal - vm.finicial;                                    
+                                        vm.cantidad_total = interior + exterior;
+                                        ordersFactory.consultarExistencia(data.plaza, data.tecnico, vm.selectedArticuloDescarga.id, vm.cantidad_total).then(function (data) {
+                                            if (data == 4) {
+                                                guardarDetalle(1);
+                                            } else {
+                                                new PNotify({
+                                                    title: 'Error',
+                                                    text: 'El técnico no cuenta con el material suficiente.',
+                                                    icon: 'fa fa-info-circle',
+                                                    type: 'error',
+                                                    hide: true
+                                                });
+                                            }
+                                        });
+                                    }
+                                }
+                                
                             }
                         }
                     } else {
@@ -1419,6 +1514,20 @@ function ModalDescargaMaterialCtrl($uibModalInstance, data, ordersFactory) {
                                 icon: 'fa fa-info-circle',
                                 type: 'error',
                                 hide: true
+                            });
+                        } else {
+                            ordersFactory.consultarExistencia(data.plaza, data.tecnico, vm.selectedArticuloDescarga.id, vm.cantidad).then(function (data) {
+                                if (data == 4) {
+                                    guardarDetalle(2);
+                                } else {
+                                    new PNotify({
+                                        title: 'Error',
+                                        text: 'El técnico no cuenta con el material suficiente.',
+                                        icon: 'fa fa-info-circle',
+                                        type: 'error',
+                                        hide: true
+                                    });
+                                }
                             });
                         }
                     }
@@ -1431,6 +1540,19 @@ function ModalDescargaMaterialCtrl($uibModalInstance, data, ordersFactory) {
             }
         } else {
             completaCampos();
+        }
+
+        function guardarDetalle(flag) {
+            if (flag == 2) {
+                ordersFactory.guardarMaterial(data.plaza, data.clv_orden, vm.selectedAlmacen.descripcion, vm.selectedArticuloDescarga.clave, vm.selectedArticuloDescarga.articulo, data.tecnicoNombre, vm.cantidad, 0, 0, 0, 0).then(function (data) {
+                    console.log(data);
+                });
+            } else {
+                ordersFactory.guardarMaterial(data.plaza, data.clv_orden, vm.selectedAlmacen.descripcion, vm.selectedArticuloDescarga.clave, vm.selectedArticuloDescarga.articulo, data.tecnicoNombre, vm.cantidad_total, vm.iinicial, vm.ifinal, vm.finicial, vm.ffinal).then(function (data) {
+                    console.log(data);
+                });
+            }
+     
         }
         
     }

@@ -164,6 +164,7 @@ function reportear() {
     reporte.plaza = plaza;
     reporte.inicio = inicio;
     reporte.fin = fin;
+    reporte.tipServ = $('#tipo_servicio').val();
     $.ajax({
         url: "/Llamada/ReporteLLamadas/",
         type: "GET",
@@ -179,7 +180,7 @@ function reportear() {
             }
             else {
                 $('.collapse').collapse('hide');
-                document.getElementById("reportePdf").innerHTML = '<embed src="Reportes/' + data + '" width=\"600\" height=\"550\">';
+                document.getElementById("reportePdf").innerHTML = '<embed src="Reportes/' + data + '" width=\"700\" height=\"650\">';
             }
             
         },

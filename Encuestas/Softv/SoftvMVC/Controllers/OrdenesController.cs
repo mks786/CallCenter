@@ -1422,5 +1422,52 @@ namespace SoftvMVC.Controllers
             public string articulo { get; set; }
             public int id { get; set; }
         }
+
+        public ActionResult guardarMaterial(int idPlaza, int Orden, string Almacen, string ClaveArticulo, string Articulo, string Tecnico, int cantidad, int Mii, int Mfi, int Mei, int Mef)
+        {
+            ConexionController c = new ConexionController();
+            SqlCommand comandoSql;
+            SqlConnection conexionSQL2 = new SqlConnection(c.DameConexion(idPlaza));
+            int result = 0;
+            try
+            {
+                conexionSQL2.Open();
+            }
+            catch
+            { }
+
+            try
+            {
+
+                comandoSql = new SqlCommand("exec AddTempDetalleMaterial " + Orden + ", '" + Almacen + "', '" +ClaveArticulo+ "','"+Articulo+"','"+Tecnico+"',"+cantidad+","+Mii+","+Mfi+","+Mei+","+Mef);
+                comandoSql.Connection = conexionSQL2;
+                comandoSql.ExecuteNonQuery();
+            }
+            catch { }
+            return Json(result, JsonRequestBehavior.AllowGet); ;
+        }
+        public ActionResult consultarExistencia(int idPlaza, int Tecnico, int Articulo, int Cantidad)
+        {
+            ConexionController c = new ConexionController();
+            SqlCommand comandoSql;
+            SqlConnection conexionSQL2 = new SqlConnection(c.DameConexion(idPlaza));
+            int result = 0;
+            try
+            {
+                conexionSQL2.Open();
+            }
+            catch
+            { }
+
+            try
+            {
+
+                comandoSql = new SqlCommand("exec ValidaExistenciasTecnicos " + Tecnico + ", " + Articulo + ", " + Cantidad);
+                comandoSql.Connection = conexionSQL2;
+                result = Int32.Parse(comandoSql.ExecuteScalar().ToString());
+            }
+            catch { }
+            return Json(result, JsonRequestBehavior.AllowGet); ;
+        }
     }
 }
