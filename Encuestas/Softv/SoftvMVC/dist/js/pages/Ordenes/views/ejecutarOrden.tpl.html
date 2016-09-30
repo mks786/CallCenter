@@ -97,7 +97,7 @@
                     <div class="form-group form-inline">
                         <div class="form-group form-inline">
                             <label for="tecnico">Técnico: </label>
-                            <select class=" form-control input-sm" style="width:200px" ng-model="add.selectedTecnico" ng-options="v.Nombre for v in add.tecnicos track by v.clvTecnico"></select>
+                            <select class=" form-control input-sm" style="width:200px" ng-model="add.selectedTecnico" ng-options="v.Nombre for v in add.tecnicos track by v.clvTecnico" ng-disabled="add.hideTecnicos"></select>
                         </div>
                         <button type="button" class="btn btn-warning btn-sm" ng-click="add.descargaMaterial()">Descarga de Material</button><br>
                     </div>
@@ -177,5 +177,5 @@
 </div>
 <div class="modal-footer">
     <button class="btn btn-success" type="button" ng-click="add.ok()">Ejecutar</button>
-    <button class="btn btn-primary" type="button" ng-click="add.cancel()">Cerrar</button>
+    <button class="btn btn-primary" type="button" ng-click="add.cancel()">Cancelar</button>
 </div>

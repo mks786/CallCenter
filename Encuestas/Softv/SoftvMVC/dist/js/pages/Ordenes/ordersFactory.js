@@ -39,7 +39,12 @@ ordersApp.factory('ordersFactory', function ($http, $q) {
         getBitacoraDescarga: "/Ordenes/getBitacoraDescarga/",
         getArticulosDescarga: "/Ordenes/getArticulosDescarga/",
         consultarExistencia: "/Ordenes/consultarExistencia/",
-        guardarMaterial: "/Ordenes/guardarMaterial/"
+        guardarMaterial: "/Ordenes/guardarMaterial/",
+        detalleArticulosTabla: "/Ordenes/detalleArticulosTabla/",
+        getSession: "/Ordenes/getSession/",
+        eliminarMaterial: "/Ordenes/eliminarMaterial",
+        eliminarTodosArticulos: "/Ordenes/eliminarTodosArticulos/",
+        guardarDescargaMaterial: "/Ordenes/guardarDescargaMaterial"
     };
 
     factory.getList = function () {
@@ -55,6 +60,46 @@ ordersApp.factory('ordersFactory', function ($http, $q) {
     factory.getDataClient = function (idPlaza, Contrato) {
         var deferred = $q.defer();
         $http.get(paths.dataClient, { params: { idPlaza: idPlaza, Contrato: Contrato } }).success(function (data) {
+            deferred.resolve(data);
+        }).error(function (data) {
+            deferred.reject(data);
+        });
+        return deferred.promise;
+    };
+
+    factory.eliminarTodosArticulos = function (idPlaza, Orden) {
+        var deferred = $q.defer();
+        $http.get(paths.eliminarTodosArticulos, { params: { idPlaza: idPlaza, Orden: Orden } }).success(function (data) {
+            deferred.resolve(data);
+        }).error(function (data) {
+            deferred.reject(data);
+        });
+        return deferred.promise;
+    };
+
+    factory.getSession = function (idPlaza) {
+        var deferred = $q.defer();
+        $http.get(paths.getSession, { params: { idPlaza: idPlaza } }).success(function (data) {
+            deferred.resolve(data);
+        }).error(function (data) {
+            deferred.reject(data);
+        });
+        return deferred.promise;
+    };
+
+    factory.detalleArticulosTabla = function (idPlaza, Orden, Session) {
+        var deferred = $q.defer();
+        $http.get(paths.detalleArticulosTabla, { params: { idPlaza: idPlaza, Orden: Orden, Session:Session } }).success(function (data) {
+            deferred.resolve(data);
+        }).error(function (data) {
+            deferred.reject(data);
+        });
+        return deferred.promise;
+    };
+
+    factory.eliminarMaterial = function (idPlaza, ID) {
+        var deferred = $q.defer();
+        $http.get(paths.eliminarMaterial, { params: { idPlaza: idPlaza, ID: ID } }).success(function (data) {
             deferred.resolve(data);
         }).error(function (data) {
             deferred.reject(data);
@@ -182,6 +227,16 @@ ordersApp.factory('ordersFactory', function ($http, $q) {
         return deferred.promise;
     };
 
+    factory.guardarDescargaMaterial = function (Descarga) {
+        var deferred = $q.defer();
+        $http.post(paths.guardarDescargaMaterial, Descarga).success(function (data) {
+            deferred.resolve(data);
+        }).error(function (data) {
+            deferred.reject(data);
+        });
+        return deferred.promise;
+    };
+
     factory.saveExtensiones = function (idPlaza, Clave, Orden, Contrato, Extensiones) {
         var deferred = $q.defer();
         $http.get(paths.saveExtensiones, { params: { idPlaza: idPlaza, Contrato: Contrato, Clave: Clave, Orden: Orden, Extensiones: Extensiones } }).success(function (data) {
@@ -192,10 +247,10 @@ ordersApp.factory('ordersFactory', function ($http, $q) {
         return deferred.promise;
     };
 
-    factory.guardarMaterial = function (idPlaza, Orden, Almacen, ClaveArticulo, Articulo, Tecnico, cantidad, Mii, Mfi, Mei, Mef) {
-        console.log(idPlaza, Orden, Almacen, ClaveArticulo, Articulo, Tecnico, cantidad, Mii, Mfi, Mei, Mef);
+    factory.guardarMaterial = function (idPlaza, Orden, Almacen, ClaveArticulo, Articulo, Tecnico, cantidad, Mii, Mfi, Mei, Mef, Session) {
+        console.log(idPlaza, Orden, Almacen, ClaveArticulo, Articulo, Tecnico, cantidad, Mii, Mfi, Mei, Mef, Session);
         var deferred = $q.defer();
-        $http.get(paths.guardarMaterial, { params: { idPlaza: idPlaza, Orden: Orden, Almacen: Almacen, ClaveArticulo: ClaveArticulo, Articulo: Articulo, Tecnico: Tecnico, cantidad: cantidad, Mii: Mii, Mfi: Mfi, Mei: Mei, Mef: Mef } }).success(function (data) {
+        $http.get(paths.guardarMaterial, { params: { idPlaza: idPlaza, Orden: Orden, Almacen: Almacen, ClaveArticulo: ClaveArticulo, Articulo: Articulo, Tecnico: Tecnico, cantidad: cantidad, Mii: Mii, Mfi: Mfi, Mei: Mei, Mef: Mef, Session: Session } }).success(function (data) {
             deferred.resolve(data);
         }).error(function (data) {
             deferred.reject(data);

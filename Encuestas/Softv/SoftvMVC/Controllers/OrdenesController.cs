@@ -384,7 +384,7 @@ namespace SoftvMVC.Controllers
 
             try
             {
-                comandoSql = new SqlCommand("SELECT CLAVE AS CLV_TECNICO,NOMBRE FROM ALMACENWEBDB.DBO.TBL_TECNICOS WHERE CLAVE != 0 ORDER BY NOMBRE ");
+                comandoSql = new SqlCommand("exec Muestra_TecnicosByFamili 1, 1");
                 comandoSql.Connection = conexionSQL2;
                 SqlDataReader reader = comandoSql.ExecuteReader();
                 if (reader.HasRows)
@@ -1348,6 +1348,7 @@ namespace SoftvMVC.Controllers
                     {
                         objClasificacionMaterial clasificacion = new objClasificacionMaterial();
                         clasificacion.clv_tipo = Convert.ToInt32(reader3[2]);
+                        clasificacion.clv_categoria = Convert.ToInt32(reader3[1]);
                         clasificacion.concepto = reader3[3].ToString();
                         clasificaciones.Add(clasificacion);
 
@@ -1375,6 +1376,7 @@ namespace SoftvMVC.Controllers
         public class objClasificacionMaterial
         {
             public int clv_tipo { get; set; }
+            public int clv_categoria { get; set; }
             public string concepto { get; set; }
         }
 
@@ -1423,7 +1425,7 @@ namespace SoftvMVC.Controllers
             public int id { get; set; }
         }
 
-        public ActionResult guardarMaterial(int idPlaza, int Orden, string Almacen, string ClaveArticulo, string Articulo, string Tecnico, int cantidad, int Mii, int Mfi, int Mei, int Mef)
+        public ActionResult guardarMaterial(int idPlaza, int Orden, string Almacen, string ClaveArticulo, string Articulo, string Tecnico, int cantidad, int Mii, int Mfi, int Mei, int Mef, int Session)
         {
             ConexionController c = new ConexionController();
             SqlCommand comandoSql;
@@ -1439,7 +1441,7 @@ namespace SoftvMVC.Controllers
             try
             {
 
-                comandoSql = new SqlCommand("exec AddTempDetalleMaterial " + Orden + ", '" + Almacen + "', '" +ClaveArticulo+ "','"+Articulo+"','"+Tecnico+"',"+cantidad+","+Mii+","+Mfi+","+Mei+","+Mef);
+                comandoSql = new SqlCommand("exec AddTempDetalleMaterial " + Orden + ", '" + Almacen + "', '" +ClaveArticulo+ "','"+Articulo+"','"+Tecnico+"',"+cantidad+","+Mii+","+Mfi+","+Mei+","+Mef+","+Session);
                 comandoSql.Connection = conexionSQL2;
                 comandoSql.ExecuteNonQuery();
             }
@@ -1468,6 +1470,300 @@ namespace SoftvMVC.Controllers
             }
             catch { }
             return Json(result, JsonRequestBehavior.AllowGet); ;
+        }
+
+        public ActionResult getSession(int idPlaza)
+        {
+            ConexionController c = new ConexionController();
+            SqlCommand comandoSql;
+            SqlConnection conexionSQL2 = new SqlConnection(c.DameConexion(idPlaza));
+            int result = 0;
+            try
+            {
+                conexionSQL2.Open();
+            }
+            catch
+            { }
+
+            try
+            {
+
+                comandoSql = new SqlCommand("declare @a bigint exec DameClv_Session_Tecnicos @a OUTPUT select @a");
+                comandoSql.Connection = conexionSQL2;
+                result = Int32.Parse(comandoSql.ExecuteScalar().ToString());
+            }
+            catch { }
+            return Json(result, JsonRequestBehavior.AllowGet); ;
+        }
+
+        public ActionResult detalleArticulosTabla(int idPlaza, int Orden, int Session)
+        {
+            ConexionController c = new ConexionController();
+            SqlCommand comandoSql;
+            SqlConnection conexionSQL2 = new SqlConnection(c.DameConexion(idPlaza));
+            List<objDetalleArticulo> articulos = new List<objDetalleArticulo>();
+            try
+            {
+                conexionSQL2.Open();
+            }
+            catch
+            { }
+
+            try
+            {
+
+                comandoSql = new SqlCommand("exec Consult_TempDetalleMaterial " + Orden+","+Session);
+                comandoSql.Connection = conexionSQL2;
+                SqlDataReader reader = comandoSql.ExecuteReader();
+                if (reader.HasRows)
+                {
+                    while (reader.Read())
+                    {
+                        objDetalleArticulo articulo = new objDetalleArticulo();
+                        articulo.id = Convert.ToInt32(reader[0]);
+                        articulo.orden = Convert.ToInt32(reader[1]);
+                        articulo.almacen = reader[2].ToString();
+                        articulo.clave = reader[3].ToString();
+                        articulo.descripcion = reader[4].ToString();
+                        articulo.tecnico = reader[5].ToString();
+                        try
+                        {
+                            articulo.cantidad = Convert.ToInt32(reader[6]);
+                        }
+                        catch { articulo.cantidad = 0; }
+                        
+                        try
+                        {
+                            articulo.mii = Convert.ToInt32(reader[7]);
+                        }
+                        catch { articulo.mii = 0; }
+                        try
+                        {
+                            articulo.mfi = Convert.ToInt32(reader[8]);
+                        }
+                        catch { articulo.mfi = 0; }
+                        try
+                        {
+                            articulo.mie = Convert.ToInt32(reader[9]);
+                        }
+                        catch { articulo.mie = 0; }
+                        try
+                        {
+                            articulo.mfe = Convert.ToInt32(reader[10]);
+                        }
+                        catch { articulo.mfe = 0; }
+                        
+                        articulos.Add(articulo);
+                    }
+                }
+                reader.Close();
+            }
+            catch { }
+            return Json(articulos, JsonRequestBehavior.AllowGet); ;
+        }
+
+        public class objDetalleArticulo
+        {
+            public int id { get; set; }
+            public string clave { get; set; }
+            public int orden { get; set; }
+            public string almacen { get; set; }
+            public string descripcion { get; set; }
+            public int cantidad { get; set; }
+            public string tecnico { get; set; }
+            public int mii { get; set; }
+            public int mfi { get; set; }
+            public int mie { get; set; }
+            public int mfe{get;set;}
+        }
+
+        public ActionResult eliminarMaterial(int idPlaza, int ID)
+        {
+            ConexionController c = new ConexionController();
+            SqlCommand comandoSql;
+            SqlConnection conexionSQL2 = new SqlConnection(c.DameConexion(idPlaza));
+            int result = 0;
+            try
+            {
+                conexionSQL2.Open();
+            }
+            catch
+            { }
+
+            try
+            {
+
+                comandoSql = new SqlCommand("exec Delete_TempDetalleMaterial " + ID );
+                comandoSql.Connection = conexionSQL2;
+                comandoSql.ExecuteNonQuery();
+            }
+            catch { }
+            return Json(result, JsonRequestBehavior.AllowGet); ;
+        }
+
+        public ActionResult eliminarTodosArticulos(int idPlaza, int Orden)
+        {
+            ConexionController c = new ConexionController();
+            SqlCommand comandoSql;
+            SqlConnection conexionSQL2 = new SqlConnection(c.DameConexion(idPlaza));
+            int result = 0;
+            try
+            {
+                conexionSQL2.Open();
+            }
+            catch
+            { }
+
+            try
+            {                 
+                comandoSql = new SqlCommand("exec softv_BorraDescarga  " + Orden+",'O'");
+                comandoSql.Connection = conexionSQL2;
+                comandoSql.ExecuteNonQuery();
+
+                //comandoSql = new SqlCommand("declare @i int exec SP_CancelarBitacora "+Orden+", 1, @i OUTPUT select @i");
+                //comandoSql.Connection = conexionSQL2;
+                //comandoSql.ExecuteNonQuery();
+            }
+            catch { }
+            return Json(result, JsonRequestBehavior.AllowGet); ;
+        }
+
+        public ActionResult guardarDescargaMaterial(objguardarDescarga Descarga)
+        {
+            ConexionController c = new ConexionController();
+            SqlCommand comandoSql;
+            SqlConnection conexionSQL2 = new SqlConnection(c.DameConexion(Descarga.idPlaza));
+            int resultado = 0;
+            int existencia = 0;
+            int folio = 0;
+            int bitacora = 0;
+            try
+            {
+                conexionSQL2.Open();
+            }
+            catch
+            { }
+
+            try
+            {
+                foreach (var item in Descarga.Articulos)
+                {
+                    comandoSql = new SqlCommand("select * from AlmacenWebDB.dbo.tbl_articulos where Descripcion='"+item.descripcion+"'");
+                    comandoSql.Connection = conexionSQL2;
+                    SqlDataReader reader2 = comandoSql.ExecuteReader();
+                    int id = 0;
+                    if (reader2.HasRows)
+                    {
+                        while (reader2.Read())
+                        {
+                            id = Convert.ToInt32(reader2[0]);
+
+                        }
+                    }
+                    reader2.Close();
+                    comandoSql = new SqlCommand("exec ValidaExistenciasTecnicos " + Descarga.idTecnico + ", " + id + ", " + item.cantidad);
+                    comandoSql.Connection = conexionSQL2;
+                    int result = Int32.Parse(comandoSql.ExecuteScalar().ToString());
+                    if(result != 4){
+                        existencia = existencia + 1;
+                    }
+                }
+                if (existencia == 0)
+                {
+                    comandoSql = new SqlCommand("declare @clv_folio int exec Dame_Folio " + Descarga.Orden + ", " + Descarga.clvCategoria + ", @clv_folio OUTPUT select @clv_folio");
+                    comandoSql.Connection = conexionSQL2;
+                    folio = Int32.Parse(comandoSql.ExecuteScalar().ToString());
+
+                    foreach (var x in Descarga.Articulos)
+	                {
+                        comandoSql = new SqlCommand("select * from AlmacenWebDB.dbo.tbl_articulos where Descripcion ='" + x.descripcion + "'");
+                        comandoSql.Connection = conexionSQL2;
+                        var idReal = 0;
+                        SqlDataReader reader2 = comandoSql.ExecuteReader();
+                        if (reader2.HasRows)
+                        {
+                            while (reader2.Read())
+                            {
+                                idReal = Convert.ToInt32(reader2[0]);
+
+                            }
+                        }
+                        reader2.Close();
+
+                        comandoSql = new SqlCommand("exec Add_Rel_Session_Tecnicos " + Descarga.Session + "," + idReal + "," + x.cantidad + "," + Descarga.idTecnico);
+                        comandoSql.Connection = conexionSQL2;
+                        comandoSql.ExecuteNonQuery();
+	                }
+                   
+
+                    comandoSql = new SqlCommand(" declare @x int exec Inserta_Bitacora_tec " + Descarga.Session + ", " + Descarga.Orden + ", " + folio + ", 1, " + Descarga.idTecnico + ", '', 'P', '',@x OUTPUT select @x");
+                    comandoSql.Connection = conexionSQL2;
+                    bitacora = Int32.Parse(comandoSql.ExecuteScalar().ToString());
+
+                    comandoSql = new SqlCommand("exec Inserta_Rel_Bitacora_Orden " + bitacora + "," + Descarga.Orden);
+                    comandoSql.Connection = conexionSQL2;
+                    comandoSql.ExecuteNonQuery();
+
+                    foreach (var item in Descarga.Articulos)
+                    {
+                        comandoSql = new SqlCommand("select * from AlmacenWebDB.dbo.tbl_articulos where Descripcion='"+item.descripcion+"'");
+                        comandoSql.Connection = conexionSQL2;
+                        SqlDataReader reader2 = comandoSql.ExecuteReader();
+                        int id = 0;
+                        if (reader2.HasRows)
+                        {
+                            while (reader2.Read())
+                            {
+                                id = Convert.ToInt32(reader2[0]);
+
+                            }
+                        }
+                        reader2.Close();
+                        comandoSql = new SqlCommand("select * from AlmacenWebDB.dbo.tbl_AlmacenEmpresa where Descripcion='"+item.almacen+"'");
+                        comandoSql.Connection = conexionSQL2;
+                        SqlDataReader reader3 = comandoSql.ExecuteReader();
+                        int idAlmacen = 0;
+                        if (reader3.HasRows)
+                        {
+                            while (reader3.Read())
+                            {
+                                idAlmacen = Convert.ToInt32(reader3[0]);
+
+                            }
+                        }
+                        reader3.Close();
+                        int cable = 0;
+                        if(item.mfi > 0 || item.mfe > 0 || item.mie > 0 || item.mii > 0){
+                            cable = 1;
+                        }
+                        comandoSql = new SqlCommand("exec Add_DescargaMaterial " + Descarga.Contrato + "," + Descarga.Orden+","+id+","+item.cantidad+","+bitacora+","+Descarga.idTecnico+","+idAlmacen+","+item.mii+","+item.mfi+","+cable+","+item.mie+","+item.mfe);
+                        comandoSql.Connection = conexionSQL2;
+                        comandoSql.ExecuteNonQuery();
+                        resultado = 1;
+
+
+                        comandoSql = new SqlCommand("exec Borra_Inserta_Tempo " + Descarga.Session);
+                        comandoSql.Connection = conexionSQL2;
+                        comandoSql.ExecuteNonQuery();
+                        
+                    }
+
+                }
+                
+            }
+            catch { }
+            return Json(resultado, JsonRequestBehavior.AllowGet); ;
+        }
+
+        public class objguardarDescarga
+        {
+            public int idPlaza { get; set; }
+            public int Session { get; set; }
+            public int idTecnico { get; set; }
+            public int clvCategoria { get; set; }
+            public int Orden { get; set; }
+            public int Contrato { get; set; }
+            public List<objDetalleArticulo> Articulos { get; set; }
         }
     }
 }
