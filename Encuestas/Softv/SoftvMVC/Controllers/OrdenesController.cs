@@ -1495,7 +1495,7 @@ namespace SoftvMVC.Controllers
             catch { }
             return Json(result, JsonRequestBehavior.AllowGet); ;
         }
-
+ 
         public ActionResult detalleArticulosTabla(int idPlaza, int Orden, int Session)
         {
             ConexionController c = new ConexionController();
@@ -1562,6 +1562,92 @@ namespace SoftvMVC.Controllers
             return Json(articulos, JsonRequestBehavior.AllowGet); ;
         }
 
+        public ActionResult consultarArticulosTabla(int idPlaza, int Orden)
+        {
+            ConexionController c = new ConexionController();
+            SqlCommand comandoSql;
+            SqlConnection conexionSQL2 = new SqlConnection(c.DameConexion(idPlaza));
+            objConsultarMaterial objeto = new objConsultarMaterial();
+            List<objDetalleArticulo> articulos = new List<objDetalleArticulo>();
+            try
+            {
+                conexionSQL2.Open();
+            }
+            catch
+            { }
+
+            try
+            {
+
+                comandoSql = new SqlCommand("exec ConsultaDescargaMaterialGeneral " + Orden);
+                comandoSql.Connection = conexionSQL2;
+                SqlDataReader reader = comandoSql.ExecuteReader();
+                if (reader.HasRows)
+                {
+                    while (reader.Read())
+                    {
+                        objeto.almacen = reader[0].ToString();
+                        objeto.categoria = reader[1].ToString();
+                        objeto.articulo = reader[3].ToString();
+                        objeto.bitacora = reader[4].ToString();
+                    }
+                    if (reader.NextResult())
+                    {
+                        while (reader.Read())
+                        {
+                            objDetalleArticulo articulo = new objDetalleArticulo();
+                            articulo.orden = Convert.ToInt32(reader[0]);
+                            articulo.clave = reader[1].ToString();
+                            articulo.descripcion = reader[2].ToString();
+                            articulo.tecnico = reader[4].ToString();
+                            try
+                            {
+                                articulo.cantidad = Convert.ToInt32(reader[3]);
+                            }
+                            catch { articulo.cantidad = 0; }
+
+                            try
+                            {
+                                articulo.mii = Convert.ToInt32(reader[5]);
+                            }
+                            catch { articulo.mii = 0; }
+                            try
+                            {
+                                articulo.mfi = Convert.ToInt32(reader[6]);
+                            }
+                            catch { articulo.mfi = 0; }
+                            try
+                            {
+                                articulo.mie = Convert.ToInt32(reader[7]);
+                            }
+                            catch { articulo.mie = 0; }
+                            try
+                            {
+                                articulo.mfe = Convert.ToInt32(reader[8]);
+                            }
+                            catch { articulo.mfe = 0; }
+
+                            articulos.Add(articulo);
+                        }
+                    }
+                    
+                }
+                reader.Close();
+                objeto.articulos = articulos;
+            }
+            catch { }
+            return Json(objeto, JsonRequestBehavior.AllowGet); ;
+        }
+
+        public class objConsultarMaterial
+        {
+            public List<objDetalleArticulo> articulos { get; set; }
+            public string almacen { get; set; }
+            public string categoria { get; set; }
+            public string articulo { get; set; }
+            public string bitacora { get; set; }
+        }
+
         public class objDetalleArticulo
         {
             public int id { get; set; }
@@ -1620,9 +1706,40 @@ namespace SoftvMVC.Controllers
                 comandoSql.Connection = conexionSQL2;
                 comandoSql.ExecuteNonQuery();
 
+                comandoSql = new SqlCommand("exec Eliminar_DetalleDescarga  " + Orden );
+                comandoSql.Connection = conexionSQL2;
+                comandoSql.ExecuteNonQuery();
+
+
                 //comandoSql = new SqlCommand("declare @i int exec SP_CancelarBitacora "+Orden+", 1, @i OUTPUT select @i");
                 //comandoSql.Connection = conexionSQL2;
                 //comandoSql.ExecuteNonQuery();
+            }
+            catch { }
+            return Json(result, JsonRequestBehavior.AllowGet); ;
+        }
+
+        public ActionResult eliminarArticulosTabla(int idPlaza, int Orden)
+        {
+            ConexionController c = new ConexionController();
+            SqlCommand comandoSql;
+            SqlConnection conexionSQL2 = new SqlConnection(c.DameConexion(idPlaza));
+            int result = 0;
+            try
+            {
+                conexionSQL2.Open();
+            }
+            catch
+            { }
+
+            try
+            {
+
+
+                comandoSql = new SqlCommand("exec Eliminar_DetalleDescarga  " + Orden);
+                comandoSql.Connection = conexionSQL2;
+                comandoSql.ExecuteNonQuery();
+
             }
             catch { }
             return Json(result, JsonRequestBehavior.AllowGet); ;

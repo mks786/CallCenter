@@ -15,7 +15,8 @@
     .controller('ModalExtensionDetalleCtrl', ModalExtensionDetalleCtrl)
     .controller('MotivoCancelacionCtrl', MotivoCancelacionCtrl)
     .controller('ModalEjecutarOrdenCtrl', ModalEjecutarOrdenCtrl)
-    .controller('ModalDescargaMaterialCtrl', ModalDescargaMaterialCtrl);
+    .controller('ModalDescargaMaterialCtrl', ModalDescargaMaterialCtrl)
+    .controller('ModalDescargaMaterialDetalleCtrl', ModalDescargaMaterialDetalleCtrl);
 
 
 function showOrders(ordersFactory, $scope, $uibModal, $log, $rootScope) {
@@ -1087,17 +1088,23 @@ function ModalconsultarOrdenCtrl($uibModal, $uibModalInstance, detalle, ordersFa
 
     vm.contratoCliente = detalle.contrato;
     vm.noOrden = detalle.clv_orden;
+    vm.mostrarDescarga = true;
     if (detalle.status == "P") {;
         vm.pe = true;
     } else if (detalle.status == "E") {
+        vm.mostrarDescarga = false;
         vm.ej = true;
     } else {
         vm.vis = true;
+        vm.mostrarDescarga = false;
     }
     vm.mostrarDetallesDimicilio = false;
     for (var i = 0; i < detalle.detallesOrdenes.length; i++) {
         if (detalle.detallesOrdenes[i].accion == "Domicilio") {
              vm.mostrarDetallesDimicilio = true;
+        }
+        if (detalle.detallesOrdenes[i].accion == "Ext. Adicionales") {
+            detalle.adicionales = true;
         }
     }
     vm.nombre = detalle.nombre;
@@ -1170,12 +1177,38 @@ function ModalconsultarOrdenCtrl($uibModal, $uibModalInstance, detalle, ordersFa
             });
         }
     }
+
+
+    vm.verDescarga = function () {
+        vm.animationsEnabled = true;
+        var modalInstance = $uibModal.open({
+            animation: vm.animationsEnabled,
+            ariaLabelledBy: 'modal-title',
+            ariaDescribedBy: 'modal-body',
+            templateUrl: '/dist/js/pages/Ordenes/views/descargaMaterialDetalle.tpl.html',
+            controller: 'ModalDescargaMaterialDetalleCtrl',
+            controllerAs: 'ctrl',
+            backdrop: 'static',
+            keyboard: false,
+            size: 'lg',
+            resolve: {
+                data: function () {
+                    return detalle;
+                }
+            }
+        });
+    }
+
     vm.cancel = function () {
         $uibModalInstance.dismiss('cancel');
     }
 }
 
 function ModalEjecutarOrdenCtrl($uibModal, $rootScope, $uibModalInstance, detalle, ordersFactory) {
+
+    if (detalle.session == null || detalle.session == 0 || detalle.session == undefined) {
+        $uibModalInstance.dismiss('cancel');
+    }
     var vm = this;
     vm.contratoCliente = detalle.contrato;
     vm.noOrden = detalle.clv_orden;
@@ -1200,14 +1233,19 @@ function ModalEjecutarOrdenCtrl($uibModal, $rootScope, $uibModalInstance, detall
     }
 
     vm.hideTecnicos = false;
+    vm.materialGuardado = false;
 
     $rootScope.$on("HideTecnicos", function () {
         vm.hideTecnicos = true;
+    });
+    $rootScope.$on("banderaMaterial", function () {
+        vm.materialGuardado = true;
     });
 
     vm.descargaMaterial = function () {
         detalle.tecnico = vm.selectedTecnico.clvTecnico;
         detalle.tecnicoNombre = vm.selectedTecnico.Nombre;
+        detalle.materialGuardado = vm.materialGuardado;
         vm.animationsEnabled = true;
         var modalInstance = $uibModal.open({
             animation: vm.animationsEnabled,
@@ -1377,6 +1415,12 @@ function ModalDescargaMaterialCtrl($uibModalInstance, $rootScope, data, ordersFa
             });
         }
         
+    }
+
+    vm.eliminarArticulo = function (idArticulo) {
+        ordersFactory.eliminarMaterial(data.plaza, idArticulo).then(function (data) {
+            actualizarTabla();
+        });
     }
 
     vm.changeArticuloDescarga = function () {
@@ -1573,18 +1617,7 @@ function ModalDescargaMaterialCtrl($uibModalInstance, $rootScope, data, ordersFa
      
         }
 
-        vm.eliminarArticulo = function (idArticulo) {
-            alert(idArticulo);
-            ordersFactory.eliminarMaterial(data.plaza, idArticulo).then(function (data) {
-                actualizarTabla();
-            });
-        }
 
-        function actualizarTabla() {
-            ordersFactory.detalleArticulosTabla(data.plaza, data.clv_orden, data.session).then(function (data) {
-                vm.articulosGuardados = data;
-            });
-        }
         function consultarRepetido(x) {
             var result = 0;
             if (vm.articulosGuardados != undefined) {
@@ -1602,9 +1635,14 @@ function ModalDescargaMaterialCtrl($uibModalInstance, $rootScope, data, ordersFa
                 }
             }
             return result;
-        }
+        }      
         
-        
+    }
+
+    function actualizarTabla() {
+        ordersFactory.detalleArticulosTabla(data.plaza, data.clv_orden, data.session).then(function (data) {
+            vm.articulosGuardados = data;
+        });
     }
 
     function completaCampos() {
@@ -1617,7 +1655,12 @@ function ModalDescargaMaterialCtrl($uibModalInstance, $rootScope, data, ordersFa
         });
     }
 
+    vm.ordenGuardada = false;
+
     vm.cancel = function () {
+        if (data.materialGuardado == false || data.materialGuardado == undefined) {
+            ordersFactory.eliminarArticulosTabla(data.plaza, data.clv_orden).then(function (data) { });
+        }
         $uibModalInstance.dismiss('cancel'); 
     }
 
@@ -1631,9 +1674,11 @@ function ModalDescargaMaterialCtrl($uibModalInstance, $rootScope, data, ordersFa
         descarga.Orden = data.clv_orden;
         descarga.Contrato = data.contrato;
         descarga.clvCategoria = vm.selectedClasificacion.clv_categoria;
+
         ordersFactory.guardarDescargaMaterial(descarga).then(function (data) {
             if (data == 1) {
                 $rootScope.$emit("HideTecnicos", {});
+                $rootScope.$emit("banderaMaterial", {});
                 $uibModalInstance.dismiss('cancel');
             } else {
                 new PNotify({
@@ -1645,5 +1690,21 @@ function ModalDescargaMaterialCtrl($uibModalInstance, $rootScope, data, ordersFa
                 });
             }
         });
+    }
+}
+
+function ModalDescargaMaterialDetalleCtrl($uibModalInstance, $rootScope, data, ordersFactory) {
+    var vm = this;
+    vm.showExtensiones = data.adicionales;
+
+    ordersFactory.consultarArticulosTabla(data.plaza, data.clv_orden).then(function (data) {
+        vm.articulosGuardados = data.articulos;
+        vm.bitacora = data.bitacora;
+        vm.almacen = data.almacen;
+        vm.categoria = data.categoria;
+    });
+
+    vm.cancel = function () {
+        $uibModalInstance.dismiss('cancel');
     }
 }

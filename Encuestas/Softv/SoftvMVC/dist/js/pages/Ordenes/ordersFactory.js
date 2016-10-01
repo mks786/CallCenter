@@ -44,7 +44,9 @@ ordersApp.factory('ordersFactory', function ($http, $q) {
         getSession: "/Ordenes/getSession/",
         eliminarMaterial: "/Ordenes/eliminarMaterial",
         eliminarTodosArticulos: "/Ordenes/eliminarTodosArticulos/",
-        guardarDescargaMaterial: "/Ordenes/guardarDescargaMaterial"
+        guardarDescargaMaterial: "/Ordenes/guardarDescargaMaterial/",
+        eliminarArticulosTabla: "/Ordenes/eliminarArticulosTabla/",
+        consultarArticulosTabla: "/Ordenes/consultarArticulosTabla/"
     };
 
     factory.getList = function () {
@@ -70,6 +72,27 @@ ordersApp.factory('ordersFactory', function ($http, $q) {
     factory.eliminarTodosArticulos = function (idPlaza, Orden) {
         var deferred = $q.defer();
         $http.get(paths.eliminarTodosArticulos, { params: { idPlaza: idPlaza, Orden: Orden } }).success(function (data) {
+            deferred.resolve(data);
+        }).error(function (data) {
+            deferred.reject(data);
+        });
+        return deferred.promise;
+    };
+
+    factory.eliminarArticulosTabla = function (idPlaza, Orden) {
+        var deferred = $q.defer();
+        $http.get(paths.eliminarArticulosTabla, { params: { idPlaza: idPlaza, Orden: Orden } }).success(function (data) {
+            deferred.resolve(data);
+        }).error(function (data) {
+            deferred.reject(data);
+        });
+        return deferred.promise;
+    };
+
+
+    factory.consultarArticulosTabla = function (idPlaza, Orden) {
+        var deferred = $q.defer();
+        $http.get(paths.consultarArticulosTabla, { params: { idPlaza: idPlaza, Orden: Orden } }).success(function (data) {
             deferred.resolve(data);
         }).error(function (data) {
             deferred.reject(data);

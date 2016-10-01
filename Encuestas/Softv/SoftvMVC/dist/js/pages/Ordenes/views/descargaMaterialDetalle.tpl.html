@@ -1,0 +1,98 @@
+﻿<div class="modal-header">
+    <button type="button" class="close" ng-click="ctrl.cancel()" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+    <h4 class="modal-title" id="modal-title">Descarga de Material</h4>
+</div>
+<div class="modal-body" id="modal-body">
+    <div class="row">
+        <div class="col-md-12">
+            <h4 class="text-center"><strong>DETALLE DE ENTREGA DE MATERIAL A TÉCNICOS</strong></h4><br />
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-7">
+            <div class="row">
+                <div class="col-md-12 col-md-offset-4">
+                    <div class="form-group form-inline">
+                        <label>No. Bitacora: </label>
+                        <input type="text" class="form-control input-sm" ng-model="ctrl.bitacora" style="width:100px;" disabled />
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12 col-md-offset-4">
+                    <div class="form-group form-inline">
+                        <label>Almacén: </label>
+                        <select class="form-control input-sm" style="width:200px;" disabled>
+                            <option>{{ ctrl.almacen }}</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12 col-md-offset-4">
+                    <div class="form-group form-inline">
+                        <label>Clasificación de Material: </label>
+                        <select class="form-control input-sm" style="width:200px;" disabled>
+                            <option>{{ ctrl.categoria }}</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-12">
+            <div class="col-md-7">
+                <div class="col-md-12">
+                    <label>Descripción del Árticulo</label>
+                    <select class="form-control" disabled>
+                        <option>{{ ctrl.articulo }}</option>
+                    </select>
+                </div>
+            </div>
+            <div class="col-md-4" ng-show="ctrl.showExtensiones" style="padding-left:50px; padding-top:20px;">
+                <div class="row">
+                    <div class="col-md-4">
+                        <div class="form-group form-inline">
+                            <button class="btn btn-default">Extensiones</button>  
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div><br />
+    <hr />
+    <div class="row">
+        <div class="col-md-12">
+            <table class="table table-bordered">
+                <thead>
+                    <tr>
+                        <th>Clave</th>
+                        <th>Descripción</th>
+                        <th>Cantidad</th>
+                        <th>Técnico</th>
+                        <th>Metraje inicial interior</th>
+                        <th>Metraje final interior</th>
+                        <th>Metraje inicial exterior</th>
+                        <th>Metraje final exterior</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr ng-repeat="x in ctrl.articulosGuardados">
+                        <td>{{ x.clave }}</td>
+                        <td>{{ x.descripcion }}</td>
+                        <td>{{ x.cantidad }}</td>
+                        <td>{{ x.tecnico }}</td>
+                        <td>{{ x.mii }}</td>
+                        <td>{{ x.mfi }}</td>
+                        <td>{{ x.mie }}</td>
+                        <td>{{ x.mfe }}</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+<div class="modal-footer">
+    <button class="btn btn-primary" type="button" ng-click="ctrl.cancel()">Salir</button>
+</div>

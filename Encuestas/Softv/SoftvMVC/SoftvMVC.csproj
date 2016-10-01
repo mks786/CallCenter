@@ -626,6 +626,7 @@
     <Content Include="dist\js\pages\Ordenes\views\cancelarExtension.tpl.html" />
     <Content Include="dist\js\pages\Ordenes\views\consultarOrden.tpl.html" />
     <Content Include="dist\js\pages\Ordenes\views\descargaMaterial.tpl.html" />
+    <Content Include="dist\js\pages\Ordenes\views\descargaMaterialDetalle.tpl.html" />
     <Content Include="dist\js\pages\Ordenes\views\domicilio.tpl.html" />
     <Content Include="dist\js\pages\Ordenes\views\domicilioDetalle.tpl.html" />
     <Content Include="dist\js\pages\Ordenes\views\ejecutarOrden.tpl.html" />
