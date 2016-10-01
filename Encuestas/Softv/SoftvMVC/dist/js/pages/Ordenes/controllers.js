@@ -16,7 +16,8 @@
     .controller('MotivoCancelacionCtrl', MotivoCancelacionCtrl)
     .controller('ModalEjecutarOrdenCtrl', ModalEjecutarOrdenCtrl)
     .controller('ModalDescargaMaterialCtrl', ModalDescargaMaterialCtrl)
-    .controller('ModalDescargaMaterialDetalleCtrl', ModalDescargaMaterialDetalleCtrl);
+    .controller('ModalDescargaMaterialDetalleCtrl', ModalDescargaMaterialDetalleCtrl)
+    .controller('descargaExtensionesCtrl', descargaExtensionesCtrl);
 
 
 function showOrders(ordersFactory, $scope, $uibModal, $log, $rootScope) {
@@ -1220,6 +1221,9 @@ function ModalEjecutarOrdenCtrl($uibModal, $rootScope, $uibModalInstance, detall
         if (detalle.detallesOrdenes[i].accion == "Domicilio") {
             vm.mostrarDetallesDimicilio = true;
         }
+        if (detalle.detallesOrdenes[i].accion == "Ext. Adicionales") {
+            detalle.adicionales = true;
+        }
     }
 
     vm.showFechas = function () {
@@ -1378,8 +1382,32 @@ function ModalExtensionDetalleCtrl($uibModalInstance, data) {
     }
 }
 
-function ModalDescargaMaterialCtrl($uibModalInstance, $rootScope, data, ordersFactory) {
+function ModalDescargaMaterialCtrl($uibModal, $uibModalInstance, $rootScope, data, ordersFactory) {
     var vm = this;
+
+    vm.showExtensiones = data.adicionales;
+
+    vm.openExtensiones = function () {
+        vm.animationsEnabled = true;
+        data.esGuardar = true;
+        var modalInstance = $uibModal.open({
+            animation: vm.animationsEnabled,
+            ariaLabelledBy: 'modal-title',
+            ariaDescribedBy: 'modal-body',
+            templateUrl: '/dist/js/pages/Ordenes/views/descargaMaterialExtensiones.tpl.html',
+            controller: 'descargaExtensionesCtrl',
+            controllerAs: 'ctrl',
+            backdrop: 'static',
+            keyboard: false,
+            size: 'lg',
+            resolve: {
+                data: function () {
+                    return data;
+                }
+            }
+        });
+    }
+
     ordersFactory.getBitacoraDescarga(data.plaza, data.clv_orden).then(function (data) {
         vm.bitacora = data.bitacora;
         if (vm.bitacora == 0) {
@@ -1693,7 +1721,7 @@ function ModalDescargaMaterialCtrl($uibModalInstance, $rootScope, data, ordersFa
     }
 }
 
-function ModalDescargaMaterialDetalleCtrl($uibModalInstance, $rootScope, data, ordersFactory) {
+function ModalDescargaMaterialDetalleCtrl($uibModal, $uibModalInstance, $rootScope, data, ordersFactory) {
     var vm = this;
     vm.showExtensiones = data.adicionales;
 
@@ -1704,6 +1732,41 @@ function ModalDescargaMaterialDetalleCtrl($uibModalInstance, $rootScope, data, o
         vm.categoria = data.categoria;
     });
 
+    vm.openExtensiones = function () {
+        vm.animationsEnabled = true;
+        var modalInstance = $uibModal.open({
+            animation: vm.animationsEnabled,
+            ariaLabelledBy: 'modal-title',
+            ariaDescribedBy: 'modal-body',
+            templateUrl: '/dist/js/pages/Ordenes/views/descargaMaterialExtensiones.tpl.html',
+            controller: 'descargaExtensionesCtrl',
+            controllerAs: 'ctrl',
+            backdrop: 'static',
+            keyboard: false,
+            size: 'lg',
+            resolve: {
+                data: function () {
+                    return data;
+                }
+            }
+        });
+    }
+
+    vm.cancel = function () {
+        $uibModalInstance.dismiss('cancel');
+    }
+}
+
+function descargaExtensionesCtrl($uibModalInstance, $rootScope, data, ordersFactory) {
+    var vm = this;
+    console.log(data);
+    if (data.esGuardar == true) {
+        alert('true');
+        vm.disbledGuardar == false;
+    } else {
+        alert('false');
+        vm.disbledGuardar == false;
+    }
     vm.cancel = function () {
         $uibModalInstance.dismiss('cancel');
     }

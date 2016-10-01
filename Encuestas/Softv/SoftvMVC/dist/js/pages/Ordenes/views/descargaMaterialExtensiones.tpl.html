@@ -1,11 +1,11 @@
 ﻿<div class="modal-header">
     <button type="button" class="close" ng-click="ctrl.cancel()" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-    <h4 class="modal-title" id="modal-title">Descarga de Material</h4>
+    <h4 class="modal-title" id="modal-title">Descarga de Material Extensiones</h4>
 </div>
 <div class="modal-body" id="modal-body">
     <div class="row">
         <div class="col-md-12">
-            <h4 class="text-center"><strong>DETALLE DE ENTREGA DE MATERIAL A TÉCNICOS</strong></h4><br />
+            <h4 class="text-center"><strong>DETALLE DE ENTREGA DE MATERIAL EXTENSIONES</strong></h4><br />
         </div>
     </div>
     <div class="row">
@@ -13,8 +13,10 @@
             <div class="row">
                 <div class="col-md-12 col-md-offset-4">
                     <div class="form-group form-inline">
-                        <label>No. Bitacora: </label>
-                        <input type="text" class="form-control input-sm" ng-model="ctrl.bitacora" style="width:100px;" disabled />
+                        <label>Seleccione la extension:</label>
+                        <select class="form-control">
+                            <option value="value">text</option>
+                        </select>
                     </div>
                 </div>
             </div>
@@ -22,7 +24,7 @@
                 <div class="col-md-12 col-md-offset-4">
                     <div class="form-group form-inline">
                         <label>Almacén: </label>
-                        <select class="form-control input-sm" style="width:200px;" disabled>
+                        <select class="form-control input-sm" style="width:200px;" ng-disabled="ctrl.disbledGuardar">
                             <option>{{ ctrl.almacen }}</option>
                         </select>
                     </div>
@@ -32,7 +34,7 @@
                 <div class="col-md-12 col-md-offset-4">
                     <div class="form-group form-inline">
                         <label>Clasificación de Material: </label>
-                        <select class="form-control input-sm" style="width:200px;" disabled>
+                        <select class="form-control input-sm" style="width:200px;" ng-disabled="ctrl.disbledGuardar">
                             <option>{{ ctrl.categoria }}</option>
                         </select>
                     </div>
@@ -45,18 +47,9 @@
             <div class="col-md-7">
                 <div class="col-md-12">
                     <label>Descripción del Árticulo</label>
-                    <select class="form-control" disabled>
+                    <select class="form-control" ng-disabled="ctrl.disbledGuardar">
                         <option>{{ ctrl.articulo }}</option>
                     </select>
-                </div>
-            </div>
-            <div class="col-md-4" ng-show="ctrl.showExtensiones" style="padding-left:50px; padding-top:20px;">
-                <div class="row">
-                    <div class="col-md-4">
-                        <div class="form-group form-inline">
-                            <button class="btn btn-default" ng-click="ctrl.openExtensiones()">Extensiones</button>  
-                        </div>
-                    </div>
                 </div>
             </div>
         </div>
