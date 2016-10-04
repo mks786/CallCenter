@@ -14,9 +14,7 @@
                 <div class="col-md-12 col-md-offset-4">
                     <div class="form-group form-inline">
                         <label>Seleccione la extension:</label>
-                        <select class="form-control">
-                            <option value="value">text</option>
-                        </select>
+                        <select class="form-control" ng-model="ctrl.selectedExtension" ng-options="v.label for v in ctrl.selectExtensiones track by v.id"> </select>
                     </div>
                 </div>
             </div>
@@ -24,7 +22,7 @@
                 <div class="col-md-12 col-md-offset-4">
                     <div class="form-group form-inline">
                         <label>Almacén: </label>
-                        <select class="form-control input-sm" style="width:200px;" ng-disabled="ctrl.disbledGuardar">
+                        <select class="form-control input-sm" style="width:200px;" ng-model="ctrl.selectedAlmacen" ng-options="v.descripcion for v in ctrl.almacenes track by v.id" ng-disabled="ctrl.disbledGuardar">
                             <option>{{ ctrl.almacen }}</option>
                         </select>
                     </div>
@@ -34,7 +32,7 @@
                 <div class="col-md-12 col-md-offset-4">
                     <div class="form-group form-inline">
                         <label>Clasificación de Material: </label>
-                        <select class="form-control input-sm" style="width:200px;" ng-disabled="ctrl.disbledGuardar">
+                        <select class="form-control input-sm" style="width:200px;" ng-change="ctrl.changeClasificacion()" ng-model="ctrl.selectedClasificacion" ng-options="v.concepto for v in ctrl.clasificaciones track by v.clv_tipo" ng-disabled="ctrl.disbledGuardar">
                             <option>{{ ctrl.categoria }}</option>
                         </select>
                     </div>
@@ -47,13 +45,63 @@
             <div class="col-md-7">
                 <div class="col-md-12">
                     <label>Descripción del Árticulo</label>
-                    <select class="form-control" ng-disabled="ctrl.disbledGuardar">
+                    <select class="form-control" ng-change="ctrl.changeArticuloDescarga()" ng-model="ctrl.selectedArticuloDescarga" ng-options="v.articulo for v in ctrl.articulos track by v.id" ng-disabled="ctrl.disbledGuardar">
                         <option>{{ ctrl.articulo }}</option>
                     </select>
                 </div>
             </div>
+            <div class="col-md-4" ng-show="ctrl.showMetraje">
+                <div class="col-md-12 col-md-offset-2">
+                    <p class="text-center"><strong>Metraje</strong></p>
+                </div>
+                <div class="row">
+                    <div class="col-md-5 col-md-offset-3">
+                        <p class="text-center"><strong>Inicial</strong></p>
+                    </div>
+                    <div class="col-md-4">
+                        <p class="text-center"><strong>Final</strong></p>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-4">
+                        <label>Interior</label>
+                    </div>
+                    <div class="col-md-4">
+                        <input type="number" class="form-control input-sm" ng-model="ctrl.iinicial" />
+                    </div>
+                    <div class="col-md-4">
+                        <input type="number" class="form-control input-sm" ng-model="ctrl.ifinal" />
+                    </div>
+                </div><br />
+                <div class="row">
+                    <div class="col-md-4">
+                        <label>Exterior</label>
+                    </div>
+                    <div class="col-md-4">
+                        <input type="number" class="form-control input-sm" ng-model="ctrl.finicial" />
+                    </div>
+                    <div class="col-md-4">
+                        <input type="number" class="form-control input-sm" ng-model="ctrl.ffinal" />
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4" ng-show="ctrl.showCantidad" style="padding-left:50px;">
+                <div class="row">
+                    <div class="col-md-4">
+                        <div class="form-group form-inline">
+                            <label>Cantidad: </label>
+                            <input type="number" min="1" class="form-control input-sm" ng-model="ctrl.cantidad" />
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
     </div><br />
+    <div class="row">
+        <div style="padding-left:40px;">
+            <button class="btn btn-success" style="width:150px;" ng-click="ctrl.agregarArticulo()">Agregar</button>
+        </div>
+    </div>
     <hr />
     <div class="row">
         <div class="col-md-12">
@@ -80,6 +128,7 @@
                         <td>{{ x.mfi }}</td>
                         <td>{{ x.mie }}</td>
                         <td>{{ x.mfe }}</td>
+                        <td><button class="btn btn-danger btn-sm" ng-click="ctrl.eliminarArticulo(x.id)"><i class="fa fa-trash" aria-hidden="true"></i></button></td>
                     </tr>
                 </tbody>
             </table>
@@ -87,5 +136,6 @@
     </div>
 </div>
 <div class="modal-footer">
+    <button class="btn btn-success" ng-show="ctrl.btnGuardar">Guardar</button>
     <button class="btn btn-primary" type="button" ng-click="ctrl.cancel()">Salir</button>
 </div>

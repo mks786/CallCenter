@@ -1223,6 +1223,7 @@ function ModalEjecutarOrdenCtrl($uibModal, $rootScope, $uibModalInstance, detall
         }
         if (detalle.detallesOrdenes[i].accion == "Ext. Adicionales") {
             detalle.adicionales = true;
+            detalle.clave = detalle.detallesOrdenes[i].clave;
         }
     }
 
@@ -1385,8 +1386,14 @@ function ModalExtensionDetalleCtrl($uibModalInstance, data) {
 function ModalDescargaMaterialCtrl($uibModal, $uibModalInstance, $rootScope, data, ordersFactory) {
     var vm = this;
 
-    vm.showExtensiones = data.adicionales;
 
+    
+    if (data.adicionales == undefined) {
+        vm.showExtensiones = false;
+    } else {
+        vm.showExtensiones = data.adicionales;
+    }
+    
     vm.openExtensiones = function () {
         vm.animationsEnabled = true;
         data.esGuardar = true;
@@ -1723,7 +1730,12 @@ function ModalDescargaMaterialCtrl($uibModal, $uibModalInstance, $rootScope, dat
 
 function ModalDescargaMaterialDetalleCtrl($uibModal, $uibModalInstance, $rootScope, data, ordersFactory) {
     var vm = this;
-    vm.showExtensiones = data.adicionales;
+    
+    if (data.adicionales == undefined) {
+        vm.showExtensiones = false;
+    } else {
+        vm.showExtensiones = data.adicionales;
+    }
 
     ordersFactory.consultarArticulosTabla(data.plaza, data.clv_orden).then(function (data) {
         vm.articulosGuardados = data.articulos;
@@ -1759,14 +1771,298 @@ function ModalDescargaMaterialDetalleCtrl($uibModal, $uibModalInstance, $rootSco
 
 function descargaExtensionesCtrl($uibModalInstance, $rootScope, data, ordersFactory) {
     var vm = this;
-    console.log(data);
-    if (data.esGuardar == true) {
-        alert('true');
-        vm.disbledGuardar == false;
-    } else {
-        alert('false');
-        vm.disbledGuardar == false;
+    actualizarTabla();
+    var array = [];
+    ordersFactory.detalleConet(data.plaza, data.clave, data.clv_orden, data.contrato).then(function (data) {
+        array.push({
+            id: 0,
+            label: "---------------"
+        });
+        for (var i = 0; i < data.extra; i++) {
+            array.push({
+                id: i+1,
+                label: "Extensión #"+(i+1)
+            });
+        }
+    });
+    vm.selectExtensiones = array
+    vm.selectedExtension = 0;
+    ordersFactory.getBitacoraDescarga(data.plaza, data.clv_orden).then(function (data) {
+        vm.bitacora = data.bitacora;
+        if (vm.bitacora == 0) {
+            vm.bitacora = '';
+        }
+        vm.almacenes = data.almacenes;
+        data.almacenes.unshift({
+            "id": 0,
+            "descripcion": "--------------------------"
+        });
+        vm.selectedAlmacen = data.almacenes[0];
+        data.clasificaciones.unshift({
+            "clv_tipo": 0,
+            "concepto": "--------------------------"
+        });
+        vm.clasificaciones = data.clasificaciones;
+        vm.selectedClasificacion = data.clasificaciones[0];
+    });
+
+    vm.changeClasificacion = function () {
+        if (vm.selectedClasificacion.clv_tipo != 0) {
+            ordersFactory.getArticulosDescarga(data.plaza, data.tecnico, vm.selectedClasificacion.clv_tipo).then(function (data) {
+                data.unshift({
+                    "clave": 0,
+                    "articulo": "--------------------------",
+                });
+                vm.articulos = data;
+                vm.selectedArticuloDescarga = data[0];
+            });
+        }
+
     }
+
+    vm.agregarArticulo = function () {
+        if (vm.selectedAlmacen.id != 0) {
+            if (vm.selectedClasificacion.clv_tipo != 0) {
+                if (vm.selectedArticuloDescarga.clave != 0) {
+                    var repetido = consultarRepetido(vm.selectedArticuloDescarga.articulo);
+                    if (repetido == 0) {
+                        if (vm.selectedArticuloDescarga.articulo.toLowerCase().indexOf("cable") != -1 || vm.selectedArticuloDescarga.articulo.toLowerCase().indexOf("aire comprimido") != -1) {
+                            if (vm.iinicial == undefined && vm.ifinal == undefined && vm.finicial == undefined && vm.ffinal == undefined) {
+                                new PNotify({
+                                    title: 'Error',
+                                    text: 'Por favor llene los campos del metraje.',
+                                    icon: 'fa fa-info-circle',
+                                    type: 'error',
+                                    hide: true
+                                });
+                            } else {
+                                if (vm.iinicial < vm.ifinal && vm.finicial == 0 && vm.ffinal == 0) {
+                                    if (vm.iinicial == 0 || vm.ifinal == 0) {
+                                        new PNotify({
+                                            title: 'Error',
+                                            text: 'El rango de los metrajes interiores no pueden ir en cero.',
+                                            icon: 'fa fa-info-circle',
+                                            type: 'error',
+                                            hide: true
+                                        });
+                                    } else {
+                                        vm.cantidad_total = vm.ifinal - vm.iinicial;
+                                        ordersFactory.consultarExistencia(data.plaza, data.tecnico, vm.selectedArticuloDescarga.id, vm.cantidad_total).then(function (data) {
+                                            if (data == 4) {
+                                                guardarDetalle(1);
+                                            } else {
+                                                new PNotify({
+                                                    title: 'Error',
+                                                    text: 'El técnico no cuenta con el material suficiente.',
+                                                    icon: 'fa fa-info-circle',
+                                                    type: 'error',
+                                                    hide: true
+                                                });
+                                            }
+                                        });
+                                    }
+                                } else if (vm.finicial < vm.ffinal && vm.iinicial == 0 && vm.ifinal == 0) {
+                                    if (vm.finicial == 0 || vm.ffinal == 0) {
+                                        new PNotify({
+                                            title: 'Error',
+                                            text: 'El rango de los metrajes interiores no pueden ir en cero.',
+                                            icon: 'fa fa-info-circle',
+                                            type: 'error',
+                                            hide: true
+                                        });
+                                    } else {
+                                        vm.cantidad_total = vm.ffinal - vm.finicial;
+                                        ordersFactory.consultarExistencia(data.plaza, data.tecnico, vm.selectedArticuloDescarga.id, vm.cantidad_total).then(function (data) {
+                                            if (data == 4) {
+                                                guardarDetalle(1);
+                                            } else {
+                                                new PNotify({
+                                                    title: 'Error',
+                                                    text: 'El técnico no cuenta con el material suficiente.',
+                                                    icon: 'fa fa-info-circle',
+                                                    type: 'error',
+                                                    hide: true
+                                                });
+                                            }
+                                        });
+                                    }
+                                } else if (vm.ifinal <= vm.iinicial || vm.ffinal <= vm.finicial) {
+                                    new PNotify({
+                                        title: 'Error',
+                                        text: 'El rango de los metrajes no se pueden interceptar.',
+                                        icon: 'fa fa-info-circle',
+                                        type: 'error',
+                                        hide: true
+                                    });
+                                } else {
+                                    if (vm.iinicial > vm.finicial) {
+                                        if (vm.iinicial <= vm.ffinal) {
+                                            new PNotify({
+                                                title: 'Error',
+                                                text: 'El rango de los metrajes no se pueden interceptar.',
+                                                icon: 'fa fa-info-circle',
+                                                type: 'error',
+                                                hide: true
+                                            });
+                                        } else {
+                                            var interior = vm.ifinal - vm.iinicial;
+                                            var exterior = vm.ffinal - vm.finicial;
+
+                                            vm.cantidad_total = interior + exterior;
+                                            ordersFactory.consultarExistencia(data.plaza, data.tecnico, vm.selectedArticuloDescarga.id, vm.cantidad_total).then(function (data) {
+                                                if (data == 4) {
+                                                    guardarDetalle(1);
+                                                } else {
+                                                    new PNotify({
+                                                        title: 'Error',
+                                                        text: 'El técnico no cuenta con el material suficiente.',
+                                                        icon: 'fa fa-info-circle',
+                                                        type: 'error',
+                                                        hide: true
+                                                    });
+                                                }
+                                            });
+                                        }
+                                    } else {
+                                        if (vm.finicial <= vm.ifinal) {
+                                            new PNotify({
+                                                title: 'Error',
+                                                text: 'El rango de los metrajes no se pueden interceptar.',
+                                                icon: 'fa fa-info-circle',
+                                                type: 'error',
+                                                hide: true
+                                            });
+                                        } else {
+                                            var interior = vm.ifinal - vm.iinicial;
+                                            var exterior = vm.ffinal - vm.finicial;
+                                            vm.cantidad_total = interior + exterior;
+                                            ordersFactory.consultarExistencia(data.plaza, data.tecnico, vm.selectedArticuloDescarga.id, vm.cantidad_total).then(function (data) {
+                                                if (data == 4) {
+                                                    guardarDetalle(1);
+                                                } else {
+                                                    new PNotify({
+                                                        title: 'Error',
+                                                        text: 'El técnico no cuenta con el material suficiente.',
+                                                        icon: 'fa fa-info-circle',
+                                                        type: 'error',
+                                                        hide: true
+                                                    });
+                                                }
+                                            });
+                                        }
+                                    }
+
+                                }
+                            }
+                        } else {
+                            if (vm.cantidad <= 0 || vm.cantidad == undefined) {
+                                new PNotify({
+                                    title: 'Error',
+                                    text: 'La cantidad debe ser mayor a 0.',
+                                    icon: 'fa fa-info-circle',
+                                    type: 'error',
+                                    hide: true
+                                });
+                            } else {
+                                ordersFactory.consultarExistencia(data.plaza, data.tecnico, vm.selectedArticuloDescarga.id, vm.cantidad).then(function (data) {
+                                    if (data == 4) {
+                                        guardarDetalle(2);
+                                    } else {
+                                        new PNotify({
+                                            title: 'Error',
+                                            text: 'El técnico no cuenta con el material suficiente.',
+                                            icon: 'fa fa-info-circle',
+                                            type: 'error',
+                                            hide: true
+                                        });
+                                    }
+                                });
+                            }
+                        }
+                    }
+
+                    } else {
+                        completaCampos();
+                    }
+                } else {
+                    completaCampos();
+                }
+            } else {
+                completaCampos();
+            }
+        }
+
+        function completaCampos() {
+            new PNotify({
+                title: 'Error',
+                text: 'Por favor complete todos los campos.',
+                icon: 'fa fa-info-circle',
+                type: 'error',
+                hide: true
+            });
+        }
+        function guardarDetalle(flag) {
+            if (flag == 2) {
+                ordersFactory.addArticuloExtensiones(data.plaza, data.clv_orden, vm.selectedArticuloDescarga.clave, data.tecnico, vm.selectedAlmacen.id, 0, 0, 0, 0, vm.cantidad, vm.selectedExtension.id).then(function (data) {
+                    actualizarTabla();
+                });
+            } else {
+                ordersFactory.addArticuloExtensiones(data.plaza, data.clv_orden, vm.selectedArticuloDescarga.clave, data.tecnico, vm.selectedAlmacen.id, vm.iinicial, vm.ifinal, vm.finicial, vm.ffinal, vm.cantidad_total, vm.selectedExtension.id).then(function (data) {
+                    actualizarTabla();
+                });
+            }
+     
+        }
+        
+        function actualizarTabla(){
+            ordersFactory.consultarArticulosTablaExtensiones(data.plaza, data.clv_orden).then(function (data) {
+                vm.articulosGuardados = data.articulos;
+            });
+        }
+
+        function consultarRepetido(x) {
+            var result = 0;
+            if (vm.articulosGuardados != undefined) {
+                for (var i = 0; i < vm.articulosGuardados.length; i++) {
+                    if (vm.articulosGuardados[i].descripcion == x) {
+                        new PNotify({
+                            title: 'Error',
+                            text: 'El articulo ya esta agregado.',
+                            icon: 'fa fa-info-circle',
+                            type: 'error',
+                            hide: true
+                        });
+                        result = 1;
+                    }
+                }
+            }
+            return result;
+        }  
+
+    vm.changeArticuloDescarga = function () {
+        if (vm.selectedArticuloDescarga.articulo.toLowerCase().indexOf("cable") != -1 || vm.selectedArticuloDescarga.articulo.toLowerCase().indexOf("aire comprimido") != -1) {
+            vm.showMetraje = true;
+            vm.showCantidad = false;
+        } else {
+            vm.showCantidad = true;
+            vm.showMetraje = false;
+        }
+    }
+
+    if (data.esGuardar == true) {
+        vm.disbledGuardar = false;
+        vm.btnGuardar = true;
+    } else {
+        vm.disbledGuardar = true;
+        vm.btnGuardar = false;
+    }
+
+    vm.eliminarArticulo = function (x) {
+        ordersFactory.eliminarMaterialExtensiones(data.plaza, x).then(function (data) {
+            actualizarTabla();
+        });
+    }
+
     vm.cancel = function () {
         $uibModalInstance.dismiss('cancel');
     }

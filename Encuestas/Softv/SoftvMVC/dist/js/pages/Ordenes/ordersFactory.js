@@ -46,12 +46,26 @@ ordersApp.factory('ordersFactory', function ($http, $q) {
         eliminarTodosArticulos: "/Ordenes/eliminarTodosArticulos/",
         guardarDescargaMaterial: "/Ordenes/guardarDescargaMaterial/",
         eliminarArticulosTabla: "/Ordenes/eliminarArticulosTabla/",
-        consultarArticulosTabla: "/Ordenes/consultarArticulosTabla/"
+        consultarArticulosTabla: "/Ordenes/consultarArticulosTabla/",
+        addArticuloExtensiones: "/Ordenes/addArticuloExtensiones/",
+        consultarArticulosTablaExtensiones: "/Ordenes/consultarArticulosTablaExtensiones/",
+        eliminarMaterialExtensiones: "/Ordenes/eliminarMaterialExtensiones/"
     };
 
     factory.getList = function () {
         var deferred = $q.defer();
         $http.get(paths.list).success(function (data) {
+            deferred.resolve(data);
+        }).error(function (data) {
+            deferred.reject(data);
+        });
+        return deferred.promise;
+    };
+
+    factory.addArticuloExtensiones = function (idPlaza, Orden, Articulo, Tecnico, Almacen, Mii, Mfi, Mie, Mfe, Cantidad, Extension) {
+        var deferred = $q.defer();
+        console.log(Extension);
+        $http.get(paths.addArticuloExtensiones, { params: { idPlaza: idPlaza, Orden: Orden, Almacen: Almacen, Articulo: Articulo, Tecnico: Tecnico, Cantidad: Cantidad, Mii: Mii, Mfi: Mfi, Mie: Mie, Mfe: Mfe, Extension: Extension } }).success(function (data) {
             deferred.resolve(data);
         }).error(function (data) {
             deferred.reject(data);
@@ -72,6 +86,26 @@ ordersApp.factory('ordersFactory', function ($http, $q) {
     factory.eliminarTodosArticulos = function (idPlaza, Orden) {
         var deferred = $q.defer();
         $http.get(paths.eliminarTodosArticulos, { params: { idPlaza: idPlaza, Orden: Orden } }).success(function (data) {
+            deferred.resolve(data);
+        }).error(function (data) {
+            deferred.reject(data);
+        });
+        return deferred.promise;
+    };
+
+    factory.eliminarMaterialExtensiones = function (idPlaza, ID) {
+        var deferred = $q.defer();
+        $http.get(paths.eliminarMaterialExtensiones, { params: { idPlaza: idPlaza, ID: ID } }).success(function (data) {
+            deferred.resolve(data);
+        }).error(function (data) {
+            deferred.reject(data);
+        });
+        return deferred.promise;
+    };
+
+    factory.consultarArticulosTablaExtensiones = function (idPlaza, Orden) {
+        var deferred = $q.defer();
+        $http.get(paths.consultarArticulosTablaExtensiones, { params: { idPlaza: idPlaza, Orden: Orden } }).success(function (data) {
             deferred.resolve(data);
         }).error(function (data) {
             deferred.reject(data);

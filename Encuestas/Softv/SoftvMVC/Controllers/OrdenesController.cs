@@ -1882,5 +1882,123 @@ namespace SoftvMVC.Controllers
             public int Contrato { get; set; }
             public List<objDetalleArticulo> Articulos { get; set; }
         }
+
+        public ActionResult addArticuloExtensiones(int idPlaza, int Orden, int Articulo, int Tecnico, int Almacen, int Mii, int Mfi, int Mie, int Mfe, int Cantidad, int Extension)
+        {
+            ConexionController c = new ConexionController();
+            SqlCommand comandoSql;
+            SqlConnection conexionSQL2 = new SqlConnection(c.DameConexion(idPlaza));
+            int result = 0;
+            try
+            {
+                conexionSQL2.Open();
+            }
+            catch
+            { }
+
+            try
+            {
+
+
+                comandoSql = new SqlCommand("exec Add_DescargaMaterialExtenciones  " + Orden+","+Articulo+","+Tecnico+","+Almacen+","+Mii+","+Mfi+",'O',"+Mie+","+Mfe+","+Cantidad+","+Extension+",0");
+                comandoSql.Connection = conexionSQL2;
+                comandoSql.ExecuteNonQuery();
+
+            }
+            catch { }
+            return Json(result, JsonRequestBehavior.AllowGet); ;
+        }
+
+        public ActionResult consultarArticulosTablaExtensiones(int idPlaza, int Orden)
+        {
+            ConexionController c = new ConexionController();
+            SqlCommand comandoSql;
+            SqlConnection conexionSQL2 = new SqlConnection(c.DameConexion(idPlaza));
+            objConsultarMaterial objeto = new objConsultarMaterial();
+            List<objDetalleArticulo> articulos = new List<objDetalleArticulo>();
+            try
+            {
+                conexionSQL2.Open();
+            }
+            catch
+            { }
+
+            try
+            {
+
+                comandoSql = new SqlCommand("exec ConsultaDescargaMaterialExtenciones " + Orden);
+                comandoSql.Connection = conexionSQL2;
+                SqlDataReader reader = comandoSql.ExecuteReader();
+
+                if (reader.HasRows)
+                {
+                    while (reader.Read())
+                    {
+                        objDetalleArticulo articulo = new objDetalleArticulo();
+                        articulo.id = Convert.ToInt32(reader[9]);
+                        articulo.orden = Convert.ToInt32(reader[10]);
+                        articulo.clave = reader[1].ToString();
+                        articulo.descripcion = reader[2].ToString();
+                        articulo.tecnico = reader[4].ToString();
+                        try
+                        {
+                            articulo.cantidad = Convert.ToInt32(reader[3]);
+                        }
+                        catch { articulo.cantidad = 0; }
+
+                        try
+                        {
+                            articulo.mii = Convert.ToInt32(reader[5]);
+                        }
+                        catch { articulo.mii = 0; }
+                        try
+                        {
+                            articulo.mfi = Convert.ToInt32(reader[6]);
+                        }
+                        catch { articulo.mfi = 0; }
+                        try
+                        {
+                            articulo.mie = Convert.ToInt32(reader[7]);
+                        }
+                        catch { articulo.mie = 0; }
+                        try
+                        {
+                            articulo.mfe = Convert.ToInt32(reader[8]);
+                        }
+                        catch { articulo.mfe = 0; }
+
+                        articulos.Add(articulo);
+                    }
+                }
+                reader.Close();
+                objeto.articulos = articulos;
+            }
+            catch { }
+            return Json(objeto, JsonRequestBehavior.AllowGet); ;
+        }
+
+        public ActionResult eliminarMaterialExtensiones(int idPlaza, int ID)
+        {
+            ConexionController c = new ConexionController();
+            SqlCommand comandoSql;
+            SqlConnection conexionSQL2 = new SqlConnection(c.DameConexion(idPlaza));
+            int result = 0;
+            try
+            {
+                conexionSQL2.Open();
+            }
+            catch
+            { }
+
+            try
+            {
+
+                comandoSql = new SqlCommand("exec UspCancela_DescargaMaterialExtensiones " + ID);
+                comandoSql.Connection = conexionSQL2;
+                comandoSql.ExecuteNonQuery();
+            }
+            catch { }
+            return Json(result, JsonRequestBehavior.AllowGet); ;
+        }
     }
 }
