@@ -101,8 +101,9 @@ namespace SoftvMVC.Controllers
                     }
                     else
                     {
-                        sql = "exec BUSCAORDSER 1, 0, 0, '', '', '', 30, 0";
-                        bandera = 1;
+                        sql = "exec BuscaOrdSerSeparado2 0,0,0,'','','','','',49,0,0";
+                        bandera = 0;
+                        tipo = 1;
                     }
 
                     comandoSql = new SqlCommand(sql);
@@ -1994,6 +1995,131 @@ namespace SoftvMVC.Controllers
             {
 
                 comandoSql = new SqlCommand("exec UspCancela_DescargaMaterialExtensiones " + ID);
+                comandoSql.Connection = conexionSQL2;
+                comandoSql.ExecuteNonQuery();
+            }
+            catch { }
+            return Json(result, JsonRequestBehavior.AllowGet); ;
+        }
+
+        public ActionResult eliminarTodoMaterialExtensiones(int idPlaza, int Orden)
+        {
+            ConexionController c = new ConexionController();
+            SqlCommand comandoSql;
+            SqlConnection conexionSQL2 = new SqlConnection(c.DameConexion(idPlaza));
+            int result = 0;
+            try
+            {
+                conexionSQL2.Open();
+            }
+            catch
+            { }
+
+            try
+            {
+
+                comandoSql = new SqlCommand("exec UspCancelaDescargaExtensiones " + Orden);
+                comandoSql.Connection = conexionSQL2;
+                comandoSql.ExecuteNonQuery();
+            }
+            catch { }
+            return Json(result, JsonRequestBehavior.AllowGet); ;
+        }
+
+        public ActionResult consultarExtencionesArticulosDetalle(int idPlaza, int Orden)
+        {
+            ConexionController c = new ConexionController();
+            SqlCommand comandoSql;
+            SqlConnection conexionSQL2 = new SqlConnection(c.DameConexion(idPlaza));
+            objConsultarMaterial objeto = new objConsultarMaterial();
+            List<objDetalleArticulo> articulos = new List<objDetalleArticulo>();
+            try
+            {
+                conexionSQL2.Open();
+            }
+            catch
+            { }
+
+            try
+            {
+
+                comandoSql = new SqlCommand("exec Consulta_DescargaMaterialExtenciones " + Orden);
+                comandoSql.Connection = conexionSQL2;
+                SqlDataReader reader = comandoSql.ExecuteReader();
+                if (reader.HasRows)
+                {
+                    while (reader.Read())
+                    {
+                        objeto.almacen = reader[0].ToString();
+                        objeto.categoria = reader[1].ToString();
+                        objeto.articulo = reader[3].ToString();
+                        objeto.bitacora = reader[4].ToString();
+                    }
+                    if (reader.NextResult())
+                    {
+                        while (reader.Read())
+                        {
+                            objDetalleArticulo articulo = new objDetalleArticulo();
+                            articulo.orden = Convert.ToInt32(reader[0]);
+                            articulo.clave = reader[1].ToString();
+                            articulo.descripcion = reader[2].ToString();
+                            articulo.tecnico = reader[4].ToString();
+                            try
+                            {
+                                articulo.cantidad = Convert.ToInt32(reader[3]);
+                            }
+                            catch { articulo.cantidad = 0; }
+
+                            try
+                            {
+                                articulo.mii = Convert.ToInt32(reader[5]);
+                            }
+                            catch { articulo.mii = 0; }
+                            try
+                            {
+                                articulo.mfi = Convert.ToInt32(reader[6]);
+                            }
+                            catch { articulo.mfi = 0; }
+                            try
+                            {
+                                articulo.mie = Convert.ToInt32(reader[7]);
+                            }
+                            catch { articulo.mie = 0; }
+                            try
+                            {
+                                articulo.mfe = Convert.ToInt32(reader[8]);
+                            }
+                            catch { articulo.mfe = 0; }
+
+                            articulos.Add(articulo);
+                        }
+                    }
+
+                }
+                reader.Close();
+                objeto.articulos = articulos;
+            }
+            catch { }
+            return Json(objeto, JsonRequestBehavior.AllowGet); ;
+        }
+
+        public ActionResult generarBPAQU(int idPlaza, int Contrato)
+        {
+            ConexionController c = new ConexionController();
+            SqlCommand comandoSql;
+            SqlConnection conexionSQL2 = new SqlConnection(c.DameConexion(idPlaza));
+            int result = 0;
+            try
+            {
+                conexionSQL2.Open();
+            }
+            catch
+            { }
+
+            try
+            {
+
+                comandoSql = new SqlCommand("exec CreateProcesoAuto_BPAQU 2," + Contrato + ",'P',0,''");
                 comandoSql.Connection = conexionSQL2;
                 comandoSql.ExecuteNonQuery();
             }

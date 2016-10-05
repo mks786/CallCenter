@@ -49,7 +49,10 @@ ordersApp.factory('ordersFactory', function ($http, $q) {
         consultarArticulosTabla: "/Ordenes/consultarArticulosTabla/",
         addArticuloExtensiones: "/Ordenes/addArticuloExtensiones/",
         consultarArticulosTablaExtensiones: "/Ordenes/consultarArticulosTablaExtensiones/",
-        eliminarMaterialExtensiones: "/Ordenes/eliminarMaterialExtensiones/"
+        eliminarMaterialExtensiones: "/Ordenes/eliminarMaterialExtensiones/",
+        eliminarTodoMaterialExtensiones: "/Ordenes/eliminarTodoMaterialExtensiones/",
+        consultarExtencionesArticulosDetalle: "/Ordenes/consultarExtencionesArticulosDetalle/",
+        generarBPAQU: "/Ordenes/generarBPAQU/"
     };
 
     factory.getList = function () {
@@ -64,8 +67,17 @@ ordersApp.factory('ordersFactory', function ($http, $q) {
 
     factory.addArticuloExtensiones = function (idPlaza, Orden, Articulo, Tecnico, Almacen, Mii, Mfi, Mie, Mfe, Cantidad, Extension) {
         var deferred = $q.defer();
-        console.log(Extension);
         $http.get(paths.addArticuloExtensiones, { params: { idPlaza: idPlaza, Orden: Orden, Almacen: Almacen, Articulo: Articulo, Tecnico: Tecnico, Cantidad: Cantidad, Mii: Mii, Mfi: Mfi, Mie: Mie, Mfe: Mfe, Extension: Extension } }).success(function (data) {
+            deferred.resolve(data);
+        }).error(function (data) {
+            deferred.reject(data);
+        });
+        return deferred.promise;
+    };
+
+    factory.generarBPAQU = function (idPlaza,Contrato) {
+        var deferred = $q.defer();
+        $http.get(paths.generarBPAQU, { params: { idPlaza: idPlaza,Contrato: Contrato } }).success(function (data) {
             deferred.resolve(data);
         }).error(function (data) {
             deferred.reject(data);
@@ -86,6 +98,26 @@ ordersApp.factory('ordersFactory', function ($http, $q) {
     factory.eliminarTodosArticulos = function (idPlaza, Orden) {
         var deferred = $q.defer();
         $http.get(paths.eliminarTodosArticulos, { params: { idPlaza: idPlaza, Orden: Orden } }).success(function (data) {
+            deferred.resolve(data);
+        }).error(function (data) {
+            deferred.reject(data);
+        });
+        return deferred.promise;
+    };
+
+    factory.consultarExtencionesArticulosDetalle = function (idPlaza, Orden) {
+        var deferred = $q.defer();
+        $http.get(paths.consultarExtencionesArticulosDetalle, { params: { idPlaza: idPlaza, Orden: Orden } }).success(function (data) {
+            deferred.resolve(data);
+        }).error(function (data) {
+            deferred.reject(data);
+        });
+        return deferred.promise;
+    };
+
+    factory.eliminarTodoMaterialExtensiones = function (idPlaza, Orden) {
+        var deferred = $q.defer();
+        $http.get(paths.eliminarTodoMaterialExtensiones, { params: { idPlaza: idPlaza, Orden: Orden } }).success(function (data) {
             deferred.resolve(data);
         }).error(function (data) {
             deferred.reject(data);

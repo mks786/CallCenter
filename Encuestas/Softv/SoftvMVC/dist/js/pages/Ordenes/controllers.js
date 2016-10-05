@@ -17,7 +17,8 @@
     .controller('ModalEjecutarOrdenCtrl', ModalEjecutarOrdenCtrl)
     .controller('ModalDescargaMaterialCtrl', ModalDescargaMaterialCtrl)
     .controller('ModalDescargaMaterialDetalleCtrl', ModalDescargaMaterialDetalleCtrl)
-    .controller('descargaExtensionesCtrl', descargaExtensionesCtrl);
+    .controller('descargaExtensionesCtrl', descargaExtensionesCtrl)
+    .controller('descargaExtensionesDestalleCtrl', descargaExtensionesDestalleCtrl);
 
 
 function showOrders(ordersFactory, $scope, $uibModal, $log, $rootScope) {
@@ -241,7 +242,9 @@ function ModalAddCtrl($uibModal, $uibModalInstance, ordersFactory, plaza, $rootS
                 flag = 1;
                 var items = {
                     plaza: plaza,
-                    orden: vm.noOrden
+                    orden: vm.noOrden,
+                    contrato: vm.contratoCliente,
+
                 };
                 vm.animationsEnabled = true;
                 var modalInstance = $uibModal.open({
@@ -446,6 +449,8 @@ function MotivoCancelacionCtrl($uibModal, $uibModalInstance, ordersFactory, item
     });
     vm.ok = function () {
         vm.cancel();
+        console.log(items);
+        //ordersFactory.generarBPAQU(items.plaza, items.contrato).then(function (data) { });
         ordersFactory.guardarMotivo(items.plaza, items.orden, vm.selectedMotivo.clv_motivo).then(function (data) {
             $rootScope.$emit("guardarDetalle", {});
         });
@@ -1208,7 +1213,9 @@ function ModalconsultarOrdenCtrl($uibModal, $uibModalInstance, detalle, ordersFa
 function ModalEjecutarOrdenCtrl($uibModal, $rootScope, $uibModalInstance, detalle, ordersFactory) {
 
     if (detalle.session == null || detalle.session == 0 || detalle.session == undefined) {
-        $uibModalInstance.dismiss('cancel');
+        ordersFactory.getSession(vm.idPlaza).then(function (data) {
+            detalle.session = data;
+        });
     }
     var vm = this;
     vm.contratoCliente = detalle.contrato;
@@ -1345,6 +1352,7 @@ function ModalEjecutarOrdenCtrl($uibModal, $rootScope, $uibModalInstance, detall
             });
         }
     }
+   
     vm.cancel = function () {
         $uibModalInstance.dismiss('cancel');
         ordersFactory.eliminarTodosArticulos(detalle.plaza, detalle.clv_orden).then(function (data) {
@@ -1584,19 +1592,29 @@ function ModalDescargaMaterialCtrl($uibModal, $uibModalInstance, $rootScope, dat
                                             var interior = vm.ifinal - vm.iinicial;
                                             var exterior = vm.ffinal - vm.finicial;
                                             vm.cantidad_total = interior + exterior;
-                                            ordersFactory.consultarExistencia(data.plaza, data.tecnico, vm.selectedArticuloDescarga.id, vm.cantidad_total).then(function (data) {
-                                                if (data == 4) {
-                                                    guardarDetalle(1);
-                                                } else {
-                                                    new PNotify({
-                                                        title: 'Error',
-                                                        text: 'El técnico no cuenta con el material suficiente.',
-                                                        icon: 'fa fa-info-circle',
-                                                        type: 'error',
-                                                        hide: true
-                                                    });
-                                                }
-                                            });
+                                            if (vm.ffinal == undefined || vm.finicial == undefined) {
+                                                new PNotify({
+                                                    title: 'Error',
+                                                    text: 'Por favor llene todos los metrajes.',
+                                                    icon: 'fa fa-info-circle',
+                                                    type: 'error',
+                                                    hide: true
+                                                });
+                                            } else {
+                                                ordersFactory.consultarExistencia(data.plaza, data.tecnico, vm.selectedArticuloDescarga.id, vm.cantidad_total).then(function (data) {
+                                                    if (data == 4) {
+                                                        guardarDetalle(1);
+                                                    } else {
+                                                        new PNotify({
+                                                            title: 'Error',
+                                                            text: 'El técnico no cuenta con el material suficiente.',
+                                                            icon: 'fa fa-info-circle',
+                                                            type: 'error',
+                                                            hide: true
+                                                        });
+                                                    }
+                                                });
+                                            }
                                         }
                                     }
 
@@ -1695,6 +1713,7 @@ function ModalDescargaMaterialCtrl($uibModal, $uibModalInstance, $rootScope, dat
     vm.cancel = function () {
         if (data.materialGuardado == false || data.materialGuardado == undefined) {
             ordersFactory.eliminarArticulosTabla(data.plaza, data.clv_orden).then(function (data) { });
+            ordersFactory.eliminarTodoMaterialExtensiones(data.plaza, data.clv_orden).then(function (data) {});
         }
         $uibModalInstance.dismiss('cancel'); 
     }
@@ -1750,8 +1769,8 @@ function ModalDescargaMaterialDetalleCtrl($uibModal, $uibModalInstance, $rootSco
             animation: vm.animationsEnabled,
             ariaLabelledBy: 'modal-title',
             ariaDescribedBy: 'modal-body',
-            templateUrl: '/dist/js/pages/Ordenes/views/descargaMaterialExtensiones.tpl.html',
-            controller: 'descargaExtensionesCtrl',
+            templateUrl: '/dist/js/pages/Ordenes/views/descargaMaterialExtensionesDetalle.tpl.html',
+            controller: 'descargaExtensionesDestalleCtrl',
             controllerAs: 'ctrl',
             backdrop: 'static',
             keyboard: false,
@@ -1786,7 +1805,7 @@ function descargaExtensionesCtrl($uibModalInstance, $rootScope, data, ordersFact
         }
     });
     vm.selectExtensiones = array
-    vm.selectedExtension = 0;
+    vm.selectedExtension = array[0];
     ordersFactory.getBitacoraDescarga(data.plaza, data.clv_orden).then(function (data) {
         vm.bitacora = data.bitacora;
         if (vm.bitacora == 0) {
@@ -1936,19 +1955,29 @@ function descargaExtensionesCtrl($uibModalInstance, $rootScope, data, ordersFact
                                             var interior = vm.ifinal - vm.iinicial;
                                             var exterior = vm.ffinal - vm.finicial;
                                             vm.cantidad_total = interior + exterior;
-                                            ordersFactory.consultarExistencia(data.plaza, data.tecnico, vm.selectedArticuloDescarga.id, vm.cantidad_total).then(function (data) {
-                                                if (data == 4) {
-                                                    guardarDetalle(1);
-                                                } else {
-                                                    new PNotify({
-                                                        title: 'Error',
-                                                        text: 'El técnico no cuenta con el material suficiente.',
-                                                        icon: 'fa fa-info-circle',
-                                                        type: 'error',
-                                                        hide: true
-                                                    });
-                                                }
-                                            });
+                                            if (vm.ffinal == undefined || vm.finicial == undefined) {
+                                                new PNotify({
+                                                    title: 'Error',
+                                                    text: 'Por favor llene todos los metrajes.',
+                                                    icon: 'fa fa-info-circle',
+                                                    type: 'error',
+                                                    hide: true
+                                                });
+                                            } else {
+                                                ordersFactory.consultarExistencia(data.plaza, data.tecnico, vm.selectedArticuloDescarga.id, vm.cantidad_total).then(function (data) {
+                                                    if (data == 4) {
+                                                        guardarDetalle(1);
+                                                    } else {
+                                                        new PNotify({
+                                                            title: 'Error',
+                                                            text: 'El técnico no cuenta con el material suficiente.',
+                                                            icon: 'fa fa-info-circle',
+                                                            type: 'error',
+                                                            hide: true
+                                                        });
+                                                    }
+                                                });
+                                            }
                                         }
                                     }
 
@@ -2002,16 +2031,32 @@ function descargaExtensionesCtrl($uibModalInstance, $rootScope, data, ordersFact
             });
         }
         function guardarDetalle(flag) {
-            if (flag == 2) {
-                ordersFactory.addArticuloExtensiones(data.plaza, data.clv_orden, vm.selectedArticuloDescarga.clave, data.tecnico, vm.selectedAlmacen.id, 0, 0, 0, 0, vm.cantidad, vm.selectedExtension.id).then(function (data) {
-                    actualizarTabla();
-                });
+            console.log(vm.selectedExtension);
+            if (vm.selectedExtension == undefined) {
+                completaCampos();
             } else {
-                ordersFactory.addArticuloExtensiones(data.plaza, data.clv_orden, vm.selectedArticuloDescarga.clave, data.tecnico, vm.selectedAlmacen.id, vm.iinicial, vm.ifinal, vm.finicial, vm.ffinal, vm.cantidad_total, vm.selectedExtension.id).then(function (data) {
-                    actualizarTabla();
-                });
+                if (vm.selectedExtension.id == 0) {
+                    new PNotify({
+                        title: 'Error',
+                        text: 'Por favor complete todos los campos.',
+                        icon: 'fa fa-info-circle',
+                        type: 'error',
+                        hide: true
+                    });
+                } else {
+                    if (flag == 2) {
+                        ordersFactory.addArticuloExtensiones(data.plaza, data.clv_orden, vm.selectedArticuloDescarga.clave, data.tecnico, vm.selectedAlmacen.id, 0, 0, 0, 0, vm.cantidad, vm.selectedExtension.id).then(function (data) {
+                            actualizarTabla();
+                        });
+                    } else {
+                        ordersFactory.addArticuloExtensiones(data.plaza, data.clv_orden, vm.selectedArticuloDescarga.clave, data.tecnico, vm.selectedAlmacen.id, vm.iinicial, vm.ifinal, vm.finicial, vm.ffinal, vm.cantidad_total, vm.selectedExtension.id).then(function (data) {
+                            actualizarTabla();
+                        });
+                    }
+                }
+                
             }
-     
+            
         }
         
         function actualizarTabla(){
@@ -2064,6 +2109,37 @@ function descargaExtensionesCtrl($uibModalInstance, $rootScope, data, ordersFact
     }
 
     vm.cancel = function () {
+        ordersFactory.eliminarTodoMaterialExtensiones(data.plaza, data.clv_orden).then(function (data) {
+            $uibModalInstance.dismiss('cancel');
+        });
+        
+    }
+    vm.ok = function () {
         $uibModalInstance.dismiss('cancel');
+    }
+}
+
+function descargaExtensionesDestalleCtrl($uibModalInstance, $rootScope, data, ordersFactory) {
+    var vm = this;
+    actualizarTabla();
+    function actualizarTabla() {
+        ordersFactory.consultarExtencionesArticulosDetalle(data.plaza, data.clv_orden).then(function (data) {
+            vm.articulosGuardados = data.articulos;
+            vm.almacen = data.almacen;
+            vm.categoria = data.categoria;
+            vm.articulo = data.articulo;
+        });
+    }
+
+    if (data.esGuardar == true) {
+        vm.disbledGuardar = false;
+        vm.btnGuardar = true;
+    } else {
+        vm.disbledGuardar = true;
+        vm.btnGuardar = false;
+    }
+
+    vm.cancel = function () {
+            $uibModalInstance.dismiss('cancel');
     }
 }
