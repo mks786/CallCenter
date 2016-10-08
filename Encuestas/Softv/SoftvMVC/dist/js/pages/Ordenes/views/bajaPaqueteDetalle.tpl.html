@@ -10,7 +10,7 @@
                     <label>Servicios de Internet Activos</label><br />
                     <div class="col-md-12" ng-repeat="x in ctrl.cablemodems">
                         <div class="checkbox">
-                            <label><input type="checkbox" ng-model="x.selectedMac" value={{x.ContratoNet}} ng-change="ctrl.saveContratoNet(x)">{{ x.Mac }}<br /><small>{{ x.Detalle }}</small></label>
+                            <label><input type="checkbox" ng-click="ctrl.activaCambios()" check-list="ctrl.itemsChecked" ng-model="x.selectedMac" value={{x.ContratoNet}} ng-change="ctrl.saveContratoNet(x)" ng-checked="x.checado">{{ x.Mac }}<br /><small>{{ x.Detalle }}</small></label>
                         </div>
                     </div>
                 </div>

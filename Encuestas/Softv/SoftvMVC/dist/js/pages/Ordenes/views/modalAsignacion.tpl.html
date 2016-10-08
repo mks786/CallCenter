@@ -1,0 +1,38 @@
+﻿<div class="modal-header">
+    <button class="close" aria-label="Close" type="button" onclick="">×</button>
+    <h4 class="modal-title">Asignación de cablemódems</h4>
+</div>
+<div class="modal-body">
+    <div class="row form-group" align="center">
+        <form action="" method="post" id="formulario" class="validar_form">
+            <table>
+                <tr>
+                    <td style="width:45%;" align="center">
+                        <div>
+                            <label>Servicios de Internet Suspendidos</label>
+                            <select size=10 style="width:200px">
+                            </select>
+                        </div>
+                    </td>
+                    <td style="width:55%;" align="left">
+                        <div class="form-group form-inline">
+                            <label>Asignar a: </label>
+                            <input type="text" class="form-control input-sm" id="" placeholder=" " style="width:70%">
+                        </div>
+                        <div class="form-group form-inline">
+                            <label>Cablemódem nuevo:  </label>
+                            <input type="text" class="form-control input-sm" id="" placeholder=" " style="width:50%">
+                        </div>
+                        <div class="form-group form-inline" align="center">
+                            <button class="btn btn-warning btn-sm" type="button" onclick="" data-toggle="modal" data-target="#CableModemDispo">Cablemódems Disponibles</button>
+                        </div>
+                    </td>
+                </tr>
+            </table>
+        </form>
+    </div>
+</div>
+<div class="modal-footer">
+    <button class="btn btn-success" type="button">Aceptar</button>
+    <button class="btn btn-primary" type="button" ng-click="ctrl.cancel()">Cancelar</button>
+</div>

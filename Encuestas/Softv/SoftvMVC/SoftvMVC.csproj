@@ -615,6 +615,7 @@
     <Content Include="dist\js\pages\MotAtenTel\Lista.js" />
     <Content Include="dist\js\pages\MotAtenTel\ModalesMonAtenTel.js" />
     <Content Include="dist\js\pages\Ordenes\controllers.js" />
+    <Content Include="dist\js\pages\Ordenes\directivas.js" />
     <Content Include="dist\js\pages\Ordenes\loading-bar.css" />
     <Content Include="dist\js\pages\Ordenes\loading-bar.js" />
     <Content Include="dist\js\pages\Ordenes\ordersApp.js" />
@@ -623,6 +624,7 @@
     <Content Include="dist\js\pages\Ordenes\ui-bootstrap-tpls-2.1.3.min.js" />
     <Content Include="dist\js\pages\Ordenes\views\agregarExtension.tpl.html" />
     <Content Include="dist\js\pages\Ordenes\views\bajaPaquete.tpl.html" />
+    <Content Include="dist\js\pages\Ordenes\views\bajaPaqueteDetalle.tpl.html" />
     <Content Include="dist\js\pages\Ordenes\views\cancelarExtension.tpl.html" />
     <Content Include="dist\js\pages\Ordenes\views\consultarOrden.tpl.html" />
     <Content Include="dist\js\pages\Ordenes\views\descargaMaterial.tpl.html" />
@@ -634,6 +636,7 @@
     <Content Include="dist\js\pages\Ordenes\views\ejecutarOrden.tpl.html" />
     <Content Include="dist\js\pages\Ordenes\views\extensionDetalle.tpl.html" />
     <Content Include="dist\js\pages\Ordenes\views\modalAdd.tpl.html" />
+    <Content Include="dist\js\pages\Ordenes\views\modalAsignacion.tpl.html" />
     <Content Include="dist\js\pages\Ordenes\views\modalTrabajo.tpl.html" />
     <Content Include="dist\js\pages\Ordenes\views\motivoCancelacion.tpl.html" />
     <Content Include="dist\js\pages\Permiso\Lista.js" />

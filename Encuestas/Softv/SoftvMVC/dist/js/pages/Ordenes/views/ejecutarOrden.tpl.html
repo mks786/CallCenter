@@ -118,15 +118,15 @@
                     </div>
                     <div class="form-group form-inline">
                         <label>Ejecución:</label>
-                        <input type="date" id="ejecución" ng-model="add.fejecucion" ng-disabled="add.fechaEjecutar">
+                        <input type="date" date-input ng-model="add.fejecucion" ng-disabled="add.fechaEjecutar">
                     </div>
                     <div class="form-group form-inline">
                         <label>Visita 1:</label>
-                        <input type="date" id="ejecución" ng-model="add.visita1" ng-disabled="add.fechaVisita">
+                        <input type="date" date-input ng-model="add.visita1" ng-disabled="add.fechaVisita">
                     </div>
                     <div class="form-group form-inline">
                         <label>Visita 2:</label>
-                        <input type="date" id="visita2" ng-model="add.visita2" ng-disabled="add.fechaVisita">
+                        <input type="date" date-input ng-model="add.visita2" ng-disabled="add.fechaVisita">
                     </div>
                     <br />
                     <br />
@@ -144,7 +144,7 @@
                 <div class="col-md-8" align="center">
                     <div class="form-group form-inline">
                         <label style="padding-top:-30px;"> Observaciones: </label>
-                        <input type="text" class="form-control" style="width:70%;" ng-model="add.observaciones" disabled />
+                        <input type="text" class="form-control" style="width:70%;" ng-model="add.observaciones"/>
                     </div>
                 </div>
                 <div class="col-md-6" align="left">
@@ -176,6 +176,7 @@
     </div>
 </div>
 <div class="modal-footer">
+    <button class="btn btn-danger pull-left" type="button" ng-click="add.eliminarOrden()">Eliminar</button>
     <button class="btn btn-success" type="button" ng-click="add.ok()">Ejecutar</button>
     <button class="btn btn-primary" type="button" ng-click="add.cancel()">Cancelar</button>
 </div>

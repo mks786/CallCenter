@@ -1,6 +1,8 @@
-﻿'use strict';
+﻿angular
+    .module('ordersApp')
+    .factory('ordersFactory', ordersFactory);
 
-ordersApp.factory('ordersFactory', function ($http, $q) {
+function ordersFactory($http, $q) {
     var factory = {};
     var paths = {
         list: "Municipio/GetMunicipioList",
@@ -52,12 +54,36 @@ ordersApp.factory('ordersFactory', function ($http, $q) {
         eliminarMaterialExtensiones: "/Ordenes/eliminarMaterialExtensiones/",
         eliminarTodoMaterialExtensiones: "/Ordenes/eliminarTodoMaterialExtensiones/",
         consultarExtencionesArticulosDetalle: "/Ordenes/consultarExtencionesArticulosDetalle/",
-        generarBPAQU: "/Ordenes/generarBPAQU/"
+        generarBPAQU: "/Ordenes/generarBPAQU/",
+        EliminarOrden: "/Ordenes/EliminarOrden/",
+        ejecutarOrden: "/Ordenes/ejecutarOrden/",
+        consultarBPAQU: "/Ordenes/consultarBPAQU/",
+        eliminarTodoBPAQU: "/Ordenes/eliminarTodoBPAQU/"
     };
 
     factory.getList = function () {
         var deferred = $q.defer();
         $http.get(paths.list).success(function (data) {
+            deferred.resolve(data);
+        }).error(function (data) {
+            deferred.reject(data);
+        });
+        return deferred.promise;
+    };
+
+    factory.ejecutarOrden = function (idPlaza, Fecha, Visita1, Visita2, Observaciones, Usuario, Orden, Op, Op2) {
+        var deferred = $q.defer();
+        $http.get(paths.ejecutarOrden, { params: { idPlaza: idPlaza, Fecha: Fecha, Visita1: Visita1, Visita2: Visita2, Observaciones: Observaciones, Usuario: Usuario, Orden: Orden, Op: Op, Op2: Op2 } }).success(function (data) {
+            deferred.resolve(data);
+        }).error(function (data) {
+            deferred.reject(data);
+        });
+        return deferred.promise;
+    };
+
+    factory.eliminarTodoBPAQU = function (idPlaza, Orden) {
+        var deferred = $q.defer();
+        $http.get(paths.eliminarTodoBPAQU, { params: { idPlaza: idPlaza, Orden: Orden } }).success(function (data) {
             deferred.resolve(data);
         }).error(function (data) {
             deferred.reject(data);
@@ -85,6 +111,16 @@ ordersApp.factory('ordersFactory', function ($http, $q) {
         return deferred.promise;
     };
 
+    factory.consultarBPAQU = function (idPlaza, Clave, Orden) {
+        var deferred = $q.defer();
+        $http.get(paths.consultarBPAQU, { params: { idPlaza: idPlaza, Clave: Clave, Orden:Orden } }).success(function (data) {
+            deferred.resolve(data);
+        }).error(function (data) {
+            deferred.reject(data);
+        });
+        return deferred.promise;
+    };
+
     factory.getDataClient = function (idPlaza, Contrato) {
         var deferred = $q.defer();
         $http.get(paths.dataClient, { params: { idPlaza: idPlaza, Contrato: Contrato } }).success(function (data) {
@@ -98,6 +134,16 @@ ordersApp.factory('ordersFactory', function ($http, $q) {
     factory.eliminarTodosArticulos = function (idPlaza, Orden) {
         var deferred = $q.defer();
         $http.get(paths.eliminarTodosArticulos, { params: { idPlaza: idPlaza, Orden: Orden } }).success(function (data) {
+            deferred.resolve(data);
+        }).error(function (data) {
+            deferred.reject(data);
+        });
+        return deferred.promise;
+    };
+
+    factory.EliminarOrden = function (idPlaza, Orden) {
+        var deferred = $q.defer();
+        $http.get(paths.EliminarOrden, { params: { idPlaza: idPlaza, Orden: Orden } }).success(function (data) {
             deferred.resolve(data);
         }).error(function (data) {
             deferred.reject(data);
@@ -266,9 +312,9 @@ ordersApp.factory('ordersFactory', function ($http, $q) {
         return deferred.promise;
     };
 
-    factory.getCablemodems = function (idPlaza, Contrato) {
+    factory.getCablemodems = function (idPlaza, Contrato, Clave, Orden) {
         var deferred = $q.defer();
-        $http.get(paths.getCablemodems, { params: { idPlaza: idPlaza, Contrato: Contrato } }).success(function (data) {
+        $http.get(paths.getCablemodems, { params: { idPlaza: idPlaza, Contrato: Contrato, Orden: Orden, Clave: Clave } }).success(function (data) {
             deferred.resolve(data);
         }).error(function (data) {
             deferred.reject(data);
@@ -276,9 +322,9 @@ ordersApp.factory('ordersFactory', function ($http, $q) {
         return deferred.promise;
     };
     
-    factory.detalleConet = function (idPlaza, Clave, Orden, Contrato) {
+    factory.detalleConet = function (idPlaza,Clave , Orden ,Contrato) {
         var deferred = $q.defer();
-        $http.get(paths.detalleConet, { params: { idPlaza: idPlaza, Contrato: Contrato, Clave: Clave, Orden: Orden } }).success(function (data) {
+        $http.get(paths.detalleConet, { params: { idPlaza: idPlaza, Clave: Clave, Orden: Orden, Contrato: Contrato } }).success(function (data) {
             deferred.resolve(data);
         }).error(function (data) {
             deferred.reject(data);
@@ -337,7 +383,6 @@ ordersApp.factory('ordersFactory', function ($http, $q) {
     };
 
     factory.guardarMaterial = function (idPlaza, Orden, Almacen, ClaveArticulo, Articulo, Tecnico, cantidad, Mii, Mfi, Mei, Mef, Session) {
-        console.log(idPlaza, Orden, Almacen, ClaveArticulo, Articulo, Tecnico, cantidad, Mii, Mfi, Mei, Mef, Session);
         var deferred = $q.defer();
         $http.get(paths.guardarMaterial, { params: { idPlaza: idPlaza, Orden: Orden, Almacen: Almacen, ClaveArticulo: ClaveArticulo, Articulo: Articulo, Tecnico: Tecnico, cantidad: cantidad, Mii: Mii, Mfi: Mfi, Mei: Mei, Mef: Mef, Session: Session } }).success(function (data) {
             deferred.resolve(data);
@@ -529,4 +574,4 @@ ordersApp.factory('ordersFactory', function ($http, $q) {
 
 
     return factory;
-});
+}

@@ -780,15 +780,19 @@ namespace SoftvMVC.Controllers
             try
             {
 
+                comandoSql = new SqlCommand("delete from CONEX where Clv_Orden = "+Orden);
+                comandoSql.Connection = conexionSQL2;
+                comandoSql.ExecuteNonQuery();
+
                 comandoSql = new SqlCommand("exec NUECONEX " + Clave + "," + Orden + "," + Contrato + "," + Extensiones);
                 comandoSql.Connection = conexionSQL2;
-                comandoSql.ExecuteReader();
+                comandoSql.ExecuteNonQuery();
             }
             catch { }
             return Json(result, JsonRequestBehavior.AllowGet);
         }
 
-        public ActionResult getCablemodem(int idPlaza, int Contrato)
+        public ActionResult getCablemodem(int idPlaza, int Contrato, int Orden, int Clave)
         {
             ConexionController c = new ConexionController();
             SqlCommand comandoSql;
@@ -817,6 +821,24 @@ namespace SoftvMVC.Controllers
                         cablemondems.Add(cablemodem);
                     }
                 }
+                reader.Close();
+
+                foreach (var item in cablemondems)
+                {
+                    comandoSql = new SqlCommand("exec MUESTRACONTNET_PorOpcion " + item.ContratoNet + ", '', 10, " + Orden + ", " + Clave + "");
+                    comandoSql.Connection = conexionSQL2;
+                    SqlDataReader reader2 = comandoSql.ExecuteReader();
+                    if (reader2.HasRows)
+                    {
+                        while (reader2.Read())
+                        {
+                            item.clv_unicanet = Convert.ToInt32(reader2[0]);
+                            item.Detalle = reader2[1].ToString() + ": " + reader2[2].ToString();
+
+                        }
+                    }
+                } 
+
             }
             catch { }
             return Json(cablemondems, JsonRequestBehavior.AllowGet);
@@ -826,6 +848,8 @@ namespace SoftvMVC.Controllers
         {
             public int ContratoNet { get; set; }
             public string Mac { get; set; }
+            public int clv_unicanet { get; set; }
+            public string Detalle { get; set; }
         }
 
         public ActionResult bajaPaquete(objCancelar Objeto)
@@ -1159,7 +1183,7 @@ namespace SoftvMVC.Controllers
             public string calle { get; set; }
         }
 
-        public ActionResult detalleConet(int idPlaza, int Clave, int Contrato, int Orden)
+        public ActionResult detalleConet(int idPlaza, int Clave,int Orden, int Contrato)
         {
             ConexionController c = new ConexionController();
             SqlCommand comandoSql;
@@ -2126,5 +2150,121 @@ namespace SoftvMVC.Controllers
             catch { }
             return Json(result, JsonRequestBehavior.AllowGet); ;
         }
+
+        public ActionResult EliminarOrden(int idPlaza, int Orden)
+        {
+            ConexionController c = new ConexionController();
+            SqlCommand comandoSql;
+            SqlConnection conexionSQL2 = new SqlConnection(c.DameConexion(idPlaza));
+            int result = 0;
+            try
+            {
+                conexionSQL2.Open();
+            }
+            catch
+            { }
+
+            try
+            {
+
+                comandoSql = new SqlCommand("exec Eliminar_Orden " + Orden);
+                comandoSql.Connection = conexionSQL2;
+                comandoSql.ExecuteNonQuery();
+            }
+            catch { }
+            return Json(result, JsonRequestBehavior.AllowGet); ;
+        }
+
+        public ActionResult ejecutarOrden(int idPlaza, string Fecha, string Visita1, string Visita2, string Observaciones, int Usuario, int Orden, int Op, int Op2)
+        {
+            ConexionController c = new ConexionController();
+            SqlCommand comandoSql;
+            SqlConnection conexionSQL2 = new SqlConnection(c.DameConexion(idPlaza));
+            int result = 0;
+            try
+            {
+                conexionSQL2.Open();
+            }
+            catch
+            { }
+
+            try
+            {
+
+                comandoSql = new SqlCommand("exec  EjecutarOS '"+Fecha+"','"+Visita1+"','"+Visita2+"','"+Observaciones+"',"+Usuario+","+Orden+","+Op+","+Op2);
+                comandoSql.Connection = conexionSQL2;
+                comandoSql.ExecuteNonQuery();
+            }
+            catch { }
+            return Json(result, JsonRequestBehavior.AllowGet); ;
+        }
+
+
+        public ActionResult consultarBPAQU(int idPlaza,int Clave, int Orden)
+        {
+            ConexionController c = new ConexionController();
+            SqlCommand comandoSql;
+            SqlConnection conexionSQL2 = new SqlConnection(c.DameConexion(idPlaza));
+            List<objconsultaBPAQU> cables = new List<objconsultaBPAQU>();
+            try
+            {
+                conexionSQL2.Open();
+            }
+            catch
+            { }
+
+            try
+            {
+
+                comandoSql = new SqlCommand("exec MUESTRAIPAQU_porSOL "+Clave+", "+Orden+", 0");
+                comandoSql.Connection = conexionSQL2;
+                SqlDataReader reader = comandoSql.ExecuteReader();
+                if (reader.HasRows)
+                {
+                    while (reader.Read())
+                    {
+                        objconsultaBPAQU cable = new objconsultaBPAQU(); 
+                        cable.contratoNet = Convert.ToInt32(reader[0]);
+                        cable.Mac = reader[1].ToString();
+                        cables.Add(cable);
+                    }
+
+                }
+                reader.Close();
+            }
+            catch { }
+            return Json(cables, JsonRequestBehavior.AllowGet); ;
+        }
+
+        public class objconsultaBPAQU
+        {
+            public int contratoNet { get; set; }
+            public string Mac { get; set; }
+        }
+
+        public ActionResult eliminarTodoBPAQU(int idPlaza, int Orden)
+        {
+            ConexionController c = new ConexionController();
+            SqlCommand comandoSql;
+            SqlConnection conexionSQL2 = new SqlConnection(c.DameConexion(idPlaza));
+            int restult = 0;
+            try
+            {
+                conexionSQL2.Open();
+            }
+            catch
+            { }
+
+            try
+            {
+
+                comandoSql = new SqlCommand("exec DeleteAll_BPAQU " + Orden);
+                comandoSql.Connection = conexionSQL2;
+                comandoSql.ExecuteNonQuery();
+            }
+            catch { }
+            return Json(restult, JsonRequestBehavior.AllowGet); ;
+        }
+
     }
 }
