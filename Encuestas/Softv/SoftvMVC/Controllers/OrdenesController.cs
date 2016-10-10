@@ -2266,5 +2266,128 @@ namespace SoftvMVC.Controllers
             return Json(restult, JsonRequestBehavior.AllowGet); ;
         }
 
+
+        public ActionResult guardarDetalleAsignacion(objAsignacion Objeto)
+        {
+            ConexionController c = new ConexionController();
+            SqlCommand comandoSql;
+            SqlConnection conexionSQL2 = new SqlConnection(c.DameConexion(Objeto.idPlaza));
+            int restult = 0;
+            try
+            {
+                conexionSQL2.Open();
+            }
+            catch
+            { }
+
+            try
+            {
+                comandoSql = new SqlCommand("exec  DeleteAll_ICABM "+Objeto.Orden);
+                comandoSql.Connection = conexionSQL2;
+                comandoSql.ExecuteNonQuery();
+
+                foreach (var item in Objeto.contratosNet)
+                {
+                    comandoSql = new SqlCommand("exec  NUEICABM_SOL " + Objeto.Clave + ", " + Objeto.Orden + ", " + item.ContratoNet + ", 0 ");
+                    comandoSql.Connection = conexionSQL2;
+                    comandoSql.ExecuteNonQuery();
+                }
+                
+            }
+            catch { }
+            return Json(restult, JsonRequestBehavior.AllowGet); ;
+        }
+
+
+        public class objAsignacion
+        {
+            public int idPlaza { get; set; }
+            public int Clave { get; set; }
+            public int Orden { get; set; }
+
+            public List<ContratosNet> contratosNet { get; set; }
+        }
+        public class ContratosNet
+        {
+            public int ContratoNet { get; set; }
+        }
+
+        public ActionResult consultarICAM(int idPlaza, int Clave, int Orden)
+        {
+            ConexionController c = new ConexionController();
+            SqlCommand comandoSql;
+            SqlConnection conexionSQL2 = new SqlConnection(c.DameConexion(idPlaza));
+            List<objconsultaBPAQU> cables = new List<objconsultaBPAQU>();
+            try
+            {
+                conexionSQL2.Open();
+            }
+            catch
+            { }
+
+            try
+            {
+
+                comandoSql = new SqlCommand("exec MUESTRAICAM_porSOL " + Orden + ", " + Clave + ", 0");
+                comandoSql.Connection = conexionSQL2;
+                SqlDataReader reader = comandoSql.ExecuteReader();
+                if (reader.HasRows)
+                {
+                    while (reader.Read())
+                    {
+                        objconsultaBPAQU cable = new objconsultaBPAQU();
+                        cable.contratoNet = Convert.ToInt32(reader[0]);
+                        cable.Mac = reader[1].ToString();
+                        cables.Add(cable);
+                    }
+
+                }
+                reader.Close();
+            }
+            catch { }
+            return Json(cables, JsonRequestBehavior.AllowGet); ;
+        }
+
+
+        public ActionResult getCablemodemsDisponibles(int idPlaza)
+        {
+            ConexionController c = new ConexionController();
+            SqlCommand comandoSql;
+            SqlConnection conexionSQL2 = new SqlConnection(c.DameConexion(idPlaza));
+            List<objCablemodems> macs = new List<objCablemodems>();
+            try
+            {
+                conexionSQL2.Open();
+            }
+            catch
+            { }
+
+            try
+            {
+
+                comandoSql = new SqlCommand("exec MUESTRACABLEMODEMS_disponibles 0");
+                comandoSql.Connection = conexionSQL2;
+                SqlDataReader reader = comandoSql.ExecuteReader();
+                if (reader.HasRows)
+                {
+                    while (reader.Read())
+                    {
+                        objCablemodems mac = new objCablemodems();
+                        mac.clave = Convert.ToInt32(reader[0]);
+                        mac.mac = reader[1].ToString();
+                        macs.Add(mac);
+                    }
+
+                }
+                reader.Close();
+            }
+            catch { }
+            return Json(macs, JsonRequestBehavior.AllowGet); ;
+        }
+        public class objCablemodems
+        {
+            public int clave { get; set; }
+            public string mac { get; set; }
+        }
     }
 }

@@ -1,0 +1,23 @@
+﻿<div class="modal-header">
+    <button type="button" class="close" ng-click="ctrl.cancel()" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+    <h3 class="modal-title" id="modal-title">Asignación de cablemodem</h3>
+</div>
+<div class="modal-body" id="modal-body">
+    <div class="row">
+        <div class="col-md-12" style="padding-left:30px;">
+            <form name="extensionForm">
+                <div class="row">
+                    <label>Servicios de Internet por Asignar</label><br />
+                    <div class="col-md-12" ng-repeat="x in ctrl.contratosNet">
+                        <div class="checkbox">
+                            <label><input type="checkbox" ng-model="x.selectedMac" ng-checked="x.checado" value={{x.ContratoNet}} disabled>{{ x.Mac }}<br /><small>{{ x.Detalle }}</small></label>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+<div class="modal-footer">
+    <button class="btn btn-primary" type="button" ng-click="ctrl.cancel()">Cancelar</button>
+</div>

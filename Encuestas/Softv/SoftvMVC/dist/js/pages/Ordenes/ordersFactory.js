@@ -58,7 +58,10 @@ function ordersFactory($http, $q) {
         EliminarOrden: "/Ordenes/EliminarOrden/",
         ejecutarOrden: "/Ordenes/ejecutarOrden/",
         consultarBPAQU: "/Ordenes/consultarBPAQU/",
-        eliminarTodoBPAQU: "/Ordenes/eliminarTodoBPAQU/"
+        eliminarTodoBPAQU: "/Ordenes/eliminarTodoBPAQU/",
+        guardarDetalleAsignacion: "/Ordenes/guardarDetalleAsignacion/",
+        consultarICAM: "/Ordenes/consultarICAM/",
+        getCablemodemsDisponibles: "/Ordenes/getCablemodemsDisponibles/"
     };
 
     factory.getList = function () {
@@ -91,6 +94,26 @@ function ordersFactory($http, $q) {
         return deferred.promise;
     };
 
+    factory.getCablemodemsDisponibles = function (idPlaza) {
+        var deferred = $q.defer();
+        $http.get(paths.getCablemodemsDisponibles, { params: { idPlaza: idPlaza } }).success(function (data) {
+            deferred.resolve(data);
+        }).error(function (data) {
+            deferred.reject(data);
+        });
+        return deferred.promise;
+    };
+
+    factory.guardarDetalleAsignacion = function (objeto) {
+        var deferred = $q.defer();
+        $http.post(paths.guardarDetalleAsignacion, objeto).success(function (data) {
+            deferred.resolve(data);
+        }).error(function (data) {
+            deferred.reject(data);
+        });
+        return deferred.promise;
+    };
+
     factory.addArticuloExtensiones = function (idPlaza, Orden, Articulo, Tecnico, Almacen, Mii, Mfi, Mie, Mfe, Cantidad, Extension) {
         var deferred = $q.defer();
         $http.get(paths.addArticuloExtensiones, { params: { idPlaza: idPlaza, Orden: Orden, Almacen: Almacen, Articulo: Articulo, Tecnico: Tecnico, Cantidad: Cantidad, Mii: Mii, Mfi: Mfi, Mie: Mie, Mfe: Mfe, Extension: Extension } }).success(function (data) {
@@ -114,6 +137,16 @@ function ordersFactory($http, $q) {
     factory.consultarBPAQU = function (idPlaza, Clave, Orden) {
         var deferred = $q.defer();
         $http.get(paths.consultarBPAQU, { params: { idPlaza: idPlaza, Clave: Clave, Orden:Orden } }).success(function (data) {
+            deferred.resolve(data);
+        }).error(function (data) {
+            deferred.reject(data);
+        });
+        return deferred.promise;
+    };
+
+    factory.consultarICAM = function (idPlaza, Clave, Orden) {
+        var deferred = $q.defer();
+        $http.get(paths.consultarICAM, { params: { idPlaza: idPlaza, Clave: Clave, Orden: Orden } }).success(function (data) {
             deferred.resolve(data);
         }).error(function (data) {
             deferred.reject(data);

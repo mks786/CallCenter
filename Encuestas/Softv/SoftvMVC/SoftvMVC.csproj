@@ -637,6 +637,9 @@
     <Content Include="dist\js\pages\Ordenes\views\extensionDetalle.tpl.html" />
     <Content Include="dist\js\pages\Ordenes\views\modalAdd.tpl.html" />
     <Content Include="dist\js\pages\Ordenes\views\modalAsignacion.tpl.html" />
+    <Content Include="dist\js\pages\Ordenes\views\ModalAsignacionActualizar.tpl.html" />
+    <Content Include="dist\js\pages\Ordenes\views\ModalAsignacionAdd.tpl.html" />
+    <Content Include="dist\js\pages\Ordenes\views\ModalAsignacionDetalle.tpl.html" />
     <Content Include="dist\js\pages\Ordenes\views\modalTrabajo.tpl.html" />
     <Content Include="dist\js\pages\Ordenes\views\motivoCancelacion.tpl.html" />
     <Content Include="dist\js\pages\Permiso\Lista.js" />

@@ -6,7 +6,6 @@
     .controller('ModalDomicilioCtrl', ModalDomicilioCtrl)
     .controller('ModalExtensionCtrl', ModalExtensionCtrl)
     .controller('ModalExtensionAddCtrl', ModalExtensionAddCtrl)
-    .controller('ModalExtensionActualizarCtrl', ModalExtensionActualizarCtrl)
     .controller('ModalBajaPaqueteCtrl', ModalBajaPaqueteCtrl)
     .controller('ModalDomicilioNetCtrl', ModalDomicilioNetCtrl)
     .controller('ModalDesconexionPaqueteCtrl', ModalDesconexionPaqueteCtrl)
@@ -22,7 +21,10 @@
     .controller('descargaExtensionesCtrl', descargaExtensionesCtrl)
     .controller('descargaExtensionesDestalleCtrl', descargaExtensionesDestalleCtrl)
     .controller('ModalAsignacionCtrl', ModalAsignacionCtrl)
-    .controller('bajaPaqueteDeatelleCtrl', bajaPaqueteDeatelleCtrl);
+    .controller('bajaPaqueteDeatelleCtrl', bajaPaqueteDeatelleCtrl)
+    .controller('ModalAsignacionAddCtrl', ModalAsignacionAddCtrl)
+    .controller('ModalAsignacionActualizarCtrl', ModalAsignacionActualizarCtrl)
+    .controller('ModalAsignacionDetalleCtrl', ModalAsignacionDetalleCtrl);
 
 function showOrders(ordersFactory, $scope, $uibModal, $log, $rootScope) {
     var vm = this;
@@ -37,16 +39,19 @@ function showOrders(ordersFactory, $scope, $uibModal, $log, $rootScope) {
     vm.open = open;
     vm.openConsultar = openConsultar;
     vm.openEjecutar = openEjecutar;
+    initialData();
 
-    ordersFactory.getListPlaces().then(function (data) {
-        data.unshift({
-            "Plaza": "----------------",
-            "IdConexion": 0
+
+    function initialData() {
+        ordersFactory.getListPlaces().then(function (data) {
+            data.unshift({
+                "Plaza": "----------------",
+                "IdConexion": 0
+            });
+            vm.places = data;
+            vm.selectedPlace = vm.places[0];
         });
-        vm.places = data;
-        vm.selectedPlace = vm.places[0];
-    });
-    
+    }    
     
     function buscarOrden(id) {
         if(id == 1){
@@ -223,15 +228,18 @@ function ModalAddCtrl($uibModal, $uibModalInstance, ordersFactory, plaza, $rootS
     vm.detalleExtra = detalleExtra;
     vm.open = open;
     vm.cancel = cancel;
-
-    ordersFactory.getDataTecnicos(plaza)
-        .then(function (data) {
-            vm.tecnicos = data;  
-            vm.selectedTecnico = data[0];
-            vm.tecnicoVisible = true;
-    });
+    initialData();
 
 
+    function initialData(){
+        ordersFactory.getDataTecnicos(plaza)
+       .then(function (data) {
+           vm.tecnicos = data;
+           vm.selectedTecnico = data[0];
+           vm.tecnicoVisible = true;
+       });
+    }
+   
     $rootScope.$on("CallParentMethod", function () {
         vm.showAllOrders();
     });
@@ -293,7 +301,15 @@ function ModalAddCtrl($uibModal, $uibModalInstance, ordersFactory, plaza, $rootS
     }
 
     $rootScope.$on("guardarDetalle", function () {
-        guardarDetalle();
+        ordersFactory.saveOrder(plaza, vm.observaciones, vm.noOrden, usuario).then(function (data) {
+            new PNotify({
+                title: 'Orden Generada',
+                text: 'La orden se generó exitosamente!',
+                type: 'success'
+            });
+            $uibModalInstance.dismiss('cancel');
+            LlenarTabla(plaza, '', '', '', '', '');
+        });
     });
 
     function guardarDetalle() {
@@ -451,6 +467,30 @@ function ModalAddCtrl($uibModal, $uibModalInstance, ordersFactory, plaza, $rootS
                     }
                 }
             });
+        } else if (x.accion == "Asignación") {
+            var data = {
+                orden: x.clv_orden,
+                clave: x.clave,
+                plaza: plaza,
+                contrato: vm.contratoCliente,
+            };
+            vm.animationsEnabled = true;
+            var modalInstance = $uibModal.open({
+                animation: vm.animationsEnabled,
+                ariaLabelledBy: 'modal-title',
+                ariaDescribedBy: 'modal-body',
+                templateUrl: '/dist/js/pages/Ordenes/views/ModalAsignacionActualizar.tpl.html',
+                controller: 'ModalAsignacionActualizarCtrl',
+                controllerAs: 'ctrl',
+                backdrop: 'static',
+                keyboard: false,
+                size: 'md',
+                resolve: {
+                    items: function () {
+                        return data;
+                    }
+                }
+            });
         }
     }
 
@@ -522,12 +562,15 @@ function MotivoCancelacionCtrl($uibModal, $uibModalInstance, ordersFactory, item
     var vm = this;
     vm.ok = ok;
     vm.cancel = cancel;
+    initialData();
 
-    ordersFactory.motivosCancelacion(items.plaza)
-        .then(function (data) {
-            vm.motivos = data;
-            vm.selectedMotivo = data[0];
-    });
+    function initialData() {
+        ordersFactory.motivosCancelacion(items.plaza)
+           .then(function (data) {
+               vm.motivos = data;
+               vm.selectedMotivo = data[0];
+       });
+    }
     
     function ok() {
         vm.cancel();
@@ -549,16 +592,19 @@ function ModalServiceCtrl($uibModal, $uibModalInstance, ordersFactory, items, $r
     vm.changeService = changeService;
     vm.cancel = cancel;
     vm.ok = ok;
+    initialData();
 
-    ordersFactory.getDataServices(items.plaza, items.contrato)
-        .then(function (data) {
-            vm.servicios = data;
-            data.unshift({
-                "clv_servicio": 0,
-                "servicio": "--------------------------"
-            });
-            vm.selectedService = data[0];
-    });
+    function initialData() {
+        ordersFactory.getDataServices(items.plaza, items.contrato)
+           .then(function (data) {
+               vm.servicios = data;
+               data.unshift({
+                   "clv_servicio": 0,
+                   "servicio": "--------------------------"
+               });
+               vm.selectedService = data[0];
+       });
+    }   
   
     function changeService() {
         if (vm.selectedService.clv_servicio != 0) {
@@ -597,7 +643,6 @@ function ModalServiceCtrl($uibModal, $uibModalInstance, ordersFactory, items, $r
                     }
                     ordersFactory.saveDetailOrder(items.plaza, items.orden, vm.selectedTrabajo.clv_trabajo, vm.observaciones, trabajo, vm.selectedService.clv_servicio).then(function (data) {
                         items.clave = data;
-                        $rootScope.$emit("CallParentMethod", {});
                         $uibModalInstance.dismiss('cancel');
 
                         if (vm.selectedTrabajo.descripcion == "CAMDO - CAMBIO DE DOMICILIO") {
@@ -750,8 +795,8 @@ function ModalServiceCtrl($uibModal, $uibModalInstance, ordersFactory, items, $r
                                 animation: vm.animationsEnabled,
                                 ariaLabelledBy: 'modal-title',
                                 ariaDescribedBy: 'modal-body',
-                                templateUrl: '/dist/js/pages/Ordenes/views/modalAsignacion.tpl.html',
-                                controller: 'ModalAsignacionCtrl',
+                                templateUrl: '/dist/js/pages/Ordenes/views/ModalAsignacionAdd.tpl.html',
+                                controller: 'ModalAsignacionAddCtrl',
                                 controllerAs: 'ctrl',
                                 backdrop: 'static',
                                 keyboard: false,
@@ -763,6 +808,7 @@ function ModalServiceCtrl($uibModal, $uibModalInstance, ordersFactory, items, $r
                                 }
                             });
                         }
+                        $rootScope.$emit("CallParentMethod", {});
                     }); 
                 }
         });
@@ -775,16 +821,20 @@ function ModalDomicilioCtrl($uibModalInstance, ordersFactory, items, $rootScope)
     vm.ok = ok;
     vm.changeColonia = changeColonia;
     vm.cancel = cancel;
+    initialData();
 
-    ordersFactory.getCiudades(items.plaza)
-        .then(function (data) {
-            data.unshift({
-                "Clv_Ciudad": 0,
-                "Nombre": "--------------------------"
-            });
-            vm.ciudades = data;
-            vm.selectedCiudad = data[0];
-    });
+    function initialData() {
+        ordersFactory.getCiudades(items.plaza)
+            .then(function (data) {
+                data.unshift({
+                    "Clv_Ciudad": 0,
+                    "Nombre": "--------------------------"
+                });
+                vm.ciudades = data;
+                vm.selectedCiudad = data[0];
+       });
+    }
+    
 
     function changeCiudad() {
         if (vm.selectedCiudad.Clv_Ciudad != 0) {
@@ -846,13 +896,16 @@ function ModalExtensionCtrl($uibModalInstance, ordersFactory, items, $rootScope)
     var vm = this;
     vm.cancel = cancel;
     vm.ok = ok;
-
-    ordersFactory.getExtensiones(items.plaza, items.contrato)
-        .then(function (data) {
-            vm.extInstaladas = data;
-    });
-
+    initialData();
     var can = 0;
+
+    function initialData() {
+        ordersFactory.getExtensiones(items.plaza, items.contrato)
+            .then(function (data) {
+                vm.extInstaladas = data;
+            });
+    }
+
     if(items.extra == undefined){
         vm.extCancelar = 1;
     } else {
@@ -1017,11 +1070,14 @@ function ModalBajaPaqueteCtrl($uibModalInstance, ordersFactory, items, $rootScop
     vm.saveContratoNet = saveContratoNet;
     vm.ok = ok;
     vm.cancel = cancel;
+    initialData();
 
-    ordersFactory.getCablemodems(items.plaza, items.contrato, items.orden, items.clave)
-        .then(function (data) {
-            vm.cablemodems = data;
+    function initialData() {
+        ordersFactory.getCablemodems(items.plaza, items.contrato, items.orden, items.clave)
+            .then(function (data) {
+                vm.cablemodems = data;
     });
+    }
 
     function saveContratoNet(contrato) {
         if (contrato.selectedMac == true) {
@@ -1067,8 +1123,10 @@ function ModalDomicilioNetCtrl($uibModalInstance, ordersFactory, items, $rootSco
     vm.changeColonia = changeColonia;
     vm.ok = ok;
     vm.cancel = cancel;
+    initialData();
 
-    ordersFactory.getCiudades(items.plaza)
+    function initialData() {
+        ordersFactory.getCiudades(items.plaza)
         .then(function (data) {
             data.unshift({
                 "Clv_Ciudad": 0,
@@ -1076,7 +1134,8 @@ function ModalDomicilioNetCtrl($uibModalInstance, ordersFactory, items, $rootSco
             });
             vm.ciudades = data;
             vm.selectedCiudad = data[0];
-    });
+        });
+    }
 
     function changeCiudad() {
         if (vm.selectedCiudad.Clv_Ciudad != 0) {
@@ -1141,11 +1200,14 @@ function ModalDesconexionPaqueteCtrl($uibModalInstance, ordersFactory, items, $r
     vm.saveContratoNet = saveContratoNet;
     vm.ok = ok;
     vm.cancel = cancel;
+    initialData();
 
-    ordersFactory.getCablemodems(items.plaza, items.contrato)
-        .then(function (data) {
-            vm.cablemodems = data;
-    });
+    function initialData() {
+        ordersFactory.getCablemodems(items.plaza, items.contrato)
+            .then(function (data) {
+                vm.cablemodems = data;
+            });
+    }
 
     function saveContratoNet(contrato) {
         if (contrato.selectedMac == true) {
@@ -1193,11 +1255,15 @@ function ModalInstalacionPaqueteCtrl($uibModalInstance, ordersFactory, items, $r
     vm.saveContratoNet = saveContratoNet;
     vm.ok = ok;
     vm.cancel = cancel;
+    initialData();
 
-    ordersFactory.getCablemodems(items.plaza, items.contrato)
+    function initialData() {
+        ordersFactory.getCablemodems(items.plaza, items.contrato)
         .then(function (data) {
             vm.cablemodems = data;
-    });
+        });
+    }
+    
 
     function saveContratoNet(contrato) {
         if (contrato.selectedMac == true) {
@@ -1245,11 +1311,14 @@ function ModalReconexionPaqueteCtrl($uibModalInstance, ordersFactory, items, $ro
     vm.saveContratoNet = saveContratoNet;
     vm.ok = ok;
     vm.cancel = cancel;
+    initialData();
 
-    ordersFactory.getCablemodems(items.plaza, items.contrato)
+    function initialData() {
+        ordersFactory.getCablemodems(items.plaza, items.contrato)
         .then(function (data) {
             vm.cablemodems = data;
-    });
+        });
+    }   
 
     function saveContratoNet(contrato) {
         if (contrato.selectedMac == true) {
@@ -1389,6 +1458,31 @@ function ModalconsultarOrdenCtrl($uibModal, $uibModalInstance, detalle, ordersFa
                             }
                         }
                     });
+            });
+        } else if (x.accion == "Asignación") {
+            items = {
+                plaza: detalle.plaza,
+                clave: x.clave,
+                orden: x.clv_orden,
+                contrato: detalle.contrato,
+                editar:false
+            }
+            vm.animationsEnabled = true;
+            var modalInstance = $uibModal.open({
+                animation: vm.animationsEnabled,
+                ariaLabelledBy: 'modal-title',
+                ariaDescribedBy: 'modal-body',
+                templateUrl: '/dist/js/pages/Ordenes/views/ModalAsignacionDetalle.tpl.html',
+                controller: 'ModalAsignacionDetalleCtrl',
+                controllerAs: 'ctrl',
+                backdrop: 'static',
+                keyboard: false,
+                size: 'md',
+                resolve: {
+                    items: function () {
+                        return items;
+                    }
+                }
             });
         }
     }
@@ -1577,6 +1671,31 @@ function ModalEjecutarOrdenCtrl($uibModal, $rootScope, $uibModalInstance, detall
                         }
                     });
             });
+        } else if(x.accion == "Asignación"){
+            items = {
+                plaza: detalle.plaza,
+                clave: x.clave,
+                orden: x.clv_orden,
+                contrato: detalle.contrato,
+                editar: false
+            }
+            vm.animationsEnabled = true;
+            var modalInstance = $uibModal.open({
+                animation: vm.animationsEnabled,
+                ariaLabelledBy: 'modal-title',
+                ariaDescribedBy: 'modal-body',
+                templateUrl: '/dist/js/pages/Ordenes/views/ModalAsignacion.tpl.html',
+                controller: 'ModalAsignacionCtrl',
+                controllerAs: 'ctrl',
+                backdrop: 'static',
+                keyboard: false,
+                size: 'md',
+                resolve: {
+                    items: function () {
+                        return items;
+                    }
+                }
+            });
         }
     }
    
@@ -1688,6 +1807,7 @@ function ModalDescargaMaterialCtrl($uibModal, $uibModalInstance, $rootScope, dat
     vm.cancel = cancel;
     vm.ok = ok;
     vm.ordenGuardada = false;
+    initialData();
 
     if (data.adicionales == undefined) {
         vm.showExtensiones = false;
@@ -1716,30 +1836,33 @@ function ModalDescargaMaterialCtrl($uibModal, $uibModalInstance, $rootScope, dat
         });
     }
 
-    ordersFactory.getBitacoraDescarga(data.plaza, data.clv_orden)
-        .then(function (data) {
-            vm.bitacora = data.bitacora;
-            if (vm.bitacora == 0) {
-                vm.bitacora = '';
-            }
-            vm.almacenes = data.almacenes;
-            data.almacenes.unshift({
-                "id": 0,
-                "descripcion": "--------------------------"
-            });
-            vm.selectedAlmacen = data.almacenes[0];
-            data.clasificaciones.unshift({
-                "clv_tipo": 0,
-                "concepto": "--------------------------"
-            });
-            vm.clasificaciones = data.clasificaciones;
-            vm.selectedClasificacion = data.clasificaciones[0];
-    });
+    function initialData() {
+        ordersFactory.getBitacoraDescarga(data.plaza, data.clv_orden)
+                .then(function (data) {
+                    vm.bitacora = data.bitacora;
+                    if (vm.bitacora == 0) {
+                        vm.bitacora = '';
+                    }
+                    vm.almacenes = data.almacenes;
+                    data.almacenes.unshift({
+                        "id": 0,
+                        "descripcion": "--------------------------"
+                    });
+                    vm.selectedAlmacen = data.almacenes[0];
+                    data.clasificaciones.unshift({
+                        "clv_tipo": 0,
+                        "concepto": "--------------------------"
+                    });
+                    vm.clasificaciones = data.clasificaciones;
+                    vm.selectedClasificacion = data.clasificaciones[0];
+                });
 
-    ordersFactory.detalleArticulosTabla(data.plaza, data.clv_orden, data.session)
-        .then(function (data) {
-            vm.articulosGuardados = data;
-    });
+        ordersFactory.detalleArticulosTabla(data.plaza, data.clv_orden, data.session)
+            .then(function (data) {
+                vm.articulosGuardados = data;
+            });
+    }
+    
 
     function changeClasificacion() {
         if (vm.selectedClasificacion.clv_tipo != 0) {         
@@ -2055,6 +2178,7 @@ function ModalDescargaMaterialDetalleCtrl($uibModal, $uibModalInstance, $rootSco
     var vm = this;
     vm.openExtensiones = openExtensiones;
     vm.cancel = cancel;
+    initialData();
 
     if (data.adicionales == undefined) {
         vm.showExtensiones = false;
@@ -2062,13 +2186,15 @@ function ModalDescargaMaterialDetalleCtrl($uibModal, $uibModalInstance, $rootSco
         vm.showExtensiones = data.adicionales;
     }
 
-    ordersFactory.consultarArticulosTabla(data.plaza, data.clv_orden)
+    function initialData() {
+        ordersFactory.consultarArticulosTabla(data.plaza, data.clv_orden)
         .then(function (data) {
             vm.articulosGuardados = data.articulos;
             vm.bitacora = data.bitacora;
             vm.almacen = data.almacen;
             vm.categoria = data.categoria;
-    });
+        });
+    }  
 
     function openExtensiones() {
         vm.animationsEnabled = true;
@@ -2105,43 +2231,47 @@ function descargaExtensionesCtrl($uibModalInstance, $rootScope, data, ordersFact
     vm.ok = ok;
     vm.cancel = cancel;
     vm.eliminarArticulo = eliminarArticulo;
+    initialData();
 
-    ordersFactory.detalleConet(data.plaza, data.clave, data.clv_orden, data.contrato)
-        .then(function (data) {
-            array.push({
-                id: 0,
-                label: "---------------"
-            });
-            for (var i = 0; i < data.extra; i++) {
-                array.push({
-                    id: i+1,
-                    label: "Extensión #"+(i+1)
+    function initialData() {
+        ordersFactory.detalleConet(data.plaza, data.clave, data.clv_orden, data.contrato)
+       .then(function (data) {
+           array.push({
+               id: 0,
+               label: "---------------"
+           });
+           for (var i = 0; i < data.extra; i++) {
+               array.push({
+                   id: i + 1,
+                   label: "Extensión #" + (i + 1)
+               });
+           }
+       });
+
+        vm.selectExtensiones = array
+        vm.selectedExtension = array[0];
+
+        ordersFactory.getBitacoraDescarga(data.plaza, data.clv_orden)
+            .then(function (data) {
+                vm.bitacora = data.bitacora;
+                if (vm.bitacora == 0) {
+                    vm.bitacora = '';
+                }
+                vm.almacenes = data.almacenes;
+                data.almacenes.unshift({
+                    "id": 0,
+                    "descripcion": "--------------------------"
                 });
-            }
-    });
-
-    vm.selectExtensiones = array
-    vm.selectedExtension = array[0];
-
-    ordersFactory.getBitacoraDescarga(data.plaza, data.clv_orden)
-        .then(function (data) {
-            vm.bitacora = data.bitacora;
-            if (vm.bitacora == 0) {
-                vm.bitacora = '';
-            }
-            vm.almacenes = data.almacenes;
-            data.almacenes.unshift({
-                "id": 0,
-                "descripcion": "--------------------------"
+                vm.selectedAlmacen = data.almacenes[0];
+                data.clasificaciones.unshift({
+                    "clv_tipo": 0,
+                    "concepto": "--------------------------"
+                });
+                vm.clasificaciones = data.clasificaciones;
+                vm.selectedClasificacion = data.clasificaciones[0];
             });
-            vm.selectedAlmacen = data.almacenes[0];
-            data.clasificaciones.unshift({
-                "clv_tipo": 0,
-                "concepto": "--------------------------"
-            });
-            vm.clasificaciones = data.clasificaciones;
-            vm.selectedClasificacion = data.clasificaciones[0];
-    });
+    }
+   
 
     function changeClasificacion() {
         if (vm.selectedClasificacion.clv_tipo != 0) {
@@ -2452,6 +2582,7 @@ function descargaExtensionesCtrl($uibModalInstance, $rootScope, data, ordersFact
 function descargaExtensionesDestalleCtrl($uibModalInstance, $rootScope, data, ordersFactory) {
     var vm = this;
     actualizarTabla();
+
     function actualizarTabla() {
         ordersFactory.consultarExtencionesArticulosDetalle(data.plaza, data.clv_orden)
             .then(function (data) {
@@ -2478,6 +2609,36 @@ function descargaExtensionesDestalleCtrl($uibModalInstance, $rootScope, data, or
 function ModalAsignacionCtrl($uibModalInstance, $rootScope, items, ordersFactory) {
     var vm = this;
     vm.cancel = cancel;
+    vm.contratosNet = [];
+    initialData();
+
+
+    function initialData() {
+        ordersFactory.getCablemodems(items.plaza, items.contrato, items.orden, items.clave)
+           .then(function (data) {
+               if (data.length > 0) {
+                   for (var i = 0; i < data.length; i++) {
+                       if(i == 0){
+                           vm.mac = data[i].Mac;
+                       }
+                       vm.contratosNet.push({
+                           ContratoNet: data[i].ContratoNet,
+                           Mac: data[i].Mac,
+                           Detalle: data[i].Detalle,
+                       });
+                   }
+               }
+           });
+        ordersFactory.getCablemodemsDisponibles(items.plaza)
+          .then(function (data) {
+              data.unshift({
+                  "clave": 0,
+                  "mac": "--------------------------"
+              });
+              vm.cablemacs = data;
+              vm.selectedCableMac = data[0];
+          });
+    }
 
     function cancel() {
         $uibModalInstance.dismiss('cancel');
@@ -2494,8 +2655,10 @@ function bajaPaqueteDeatelleCtrl($uibModalInstance, $rootScope, data, ordersFact
     vm.saveContratoNet = saveContratoNet;
     vm.ok = ok;
     vm.cancel = cancel;
+    initialData();
 
-    ordersFactory.getCablemodems(data.plaza, data.contrato, data.orden, data.clave)
+    function initialData() {
+        ordersFactory.getCablemodems(data.plaza, data.contrato, data.orden, data.clave)
         .then(function (data) {
             for (var i = 0; i < data.length; i++) {
                 vm.cablemodems.push({
@@ -2505,7 +2668,8 @@ function bajaPaqueteDeatelleCtrl($uibModalInstance, $rootScope, data, ordersFact
                     checado: false
                 });
             }
-    });
+        });
+    }   
    
     function activaCambios() {
         cambios = 1;
@@ -2561,6 +2725,178 @@ function bajaPaqueteDeatelleCtrl($uibModalInstance, $rootScope, data, ordersFact
     }
 }
 
-function ModalExtensionActualizarCtrl($uibModalInstance, ordersFactory, items, $rootScope) {
+function ModalAsignacionAddCtrl($uibModalInstance, ordersFactory, items, $rootScope) {
+    var vm = this;
+    vm.cancel = cancel;
+    vm.ok = ok;
+    vm.saveContratoNet = saveContratoNet;
+    vm.contratosNet = [];
+    initialData();
+
+    function initialData() {
+        ordersFactory.getCablemodems(items.plaza, items.contrato, items.orden, items.clave)
+            .then(function (data) {
+                vm.cablemodems = data;
+            });
+    }
+
+    function saveContratoNet(contrato) {
+        if (contrato.selectedMac == true) {
+            vm.contratosNet.push({
+                ContratoNet: contrato.ContratoNet,
+                Mac: contrato.Mac
+            });
+        } else {
+            vm.contratosNet.forEach(function (element, index, array) {
+                if (element.ContratoNet == contrato.ContratoNet) {
+                    vm.contratosNet.splice(index, 1);
+                }
+            });
+        }
+
+    }
+
+    function ok() {
+        var objeto = {};
+        objeto.idPlaza = items.plaza;
+        objeto.Clave = items.clave;
+        objeto.Orden = items.orden;
+        objeto.contratosNet = vm.contratosNet;
+        ordersFactory.guardarDetalleAsignacion(objeto)
+            .then(function (data) {
+                $uibModalInstance.dismiss('cancel');
+            });
+    }
+
+    function cancel() {
+        ordersFactory.deleteDetailOrder(items.plaza, items.clave)
+            .then(function (data) {
+                $rootScope.$emit("CallParentMethod", {});
+            });
+        $uibModalInstance.dismiss('cancel');
+    };
+
+}
+
+function ModalAsignacionActualizarCtrl($uibModalInstance, ordersFactory, items, $rootScope) {
+    var vm = this;
+    vm.cancel = cancel;
+    vm.ok = ok;
+    vm.saveContratoNet = saveContratoNet;
+    vm.contratosNet = [];
+    initialData();
+
+
+    if (items.editar == false) {
+        vm.editar = false;
+        vm.mostrarBoton = false;
+    } else {
+        vm.editar = true;
+        vm.mostrarBoton = true;
+    }
+
+    function initialData() {
+        ordersFactory.getCablemodems(items.plaza, items.contrato, items.orden, items.clave)
+            .then(function (data) {
+                if(data.length > 0){
+                    for (var i = 0; i < data.length; i++) {
+                        vm.contratosNet.push({
+                            ContratoNet: data[i].ContratoNet,
+                            Mac: data[i].Mac,
+                            Detalle: data[i].Detalle,
+                            checado: false
+                        });
+                    } 
+                }
+            });
+
+             ordersFactory.consultarICAM(items.plaza, items.orden, items.clave)
+                .then(function (data) {
+                    if (data.length > 0) {
+                        for (var i = 0; i < data.length; i++) {
+                            for (var j = 0; j < vm.contratosNet.length; j++) {
+                                if (data[i].contratoNet == vm.contratosNet[j].ContratoNet) {
+                                    vm.contratosNet[j].checado = true;
+                                }
+                            }
+                        }
+                    }
+                });
+    }
+
+    function saveContratoNet(contrato) {
+        if(vm.editar = true){
+            if (contrato.selectedMac == true) {
+                vm.contratosNet.push({
+                    ContratoNet: contrato.ContratoNet,
+                    Mac: contrato.Mac
+                });
+            } else {
+                vm.contratosNet.forEach(function (element, index, array) {
+                    if (element.ContratoNet == contrato.ContratoNet) {
+                        vm.contratosNet.splice(index, 1);
+                    }
+                });
+            }
+        }      
+    }
+
+    function ok() {
+        var objeto = {};
+        objeto.idPlaza = items.plaza;
+        objeto.Clave = items.clave;
+        objeto.Orden = items.orden;
+        objeto.contratosNet = vm.contratosNet;
+        ordersFactory.guardarDetalleAsignacion(objeto)
+            .then(function (data) {
+                $uibModalInstance.dismiss('cancel');
+            });
+    }
+
+    function cancel() {
+        $uibModalInstance.dismiss('cancel');
+    };
+
+}
+
+function ModalAsignacionDetalleCtrl($uibModalInstance, ordersFactory, items, $rootScope) {
+    var vm = this;
+    vm.cancel = cancel;
+    vm.contratosNet = [];
+    initialData();
+
+
+    function initialData() {
+        ordersFactory.getCablemodems(items.plaza, items.contrato, items.orden, items.clave)
+            .then(function (data) {
+                if (data.length > 0) {
+                    for (var i = 0; i < data.length; i++) {
+                        vm.contratosNet.push({
+                            ContratoNet: data[i].ContratoNet,
+                            Mac: data[i].Mac,
+                            Detalle: data[i].Detalle,
+                            checado: false
+                        });
+                    }
+                }
+            });
+
+        ordersFactory.consultarICAM(items.plaza, items.orden, items.clave)
+           .then(function (data) {
+               if (data.length > 0) {
+                   for (var i = 0; i < data.length; i++) {
+                       for (var j = 0; j < vm.contratosNet.length; j++) {
+                           if (data[i].contratoNet == vm.contratosNet[j].ContratoNet) {
+                               vm.contratosNet[j].checado = true;
+                           }
+                       }
+                   }
+               }
+           });
+    }
+
+    function cancel() {
+        $uibModalInstance.dismiss('cancel');
+    };
 
 }
