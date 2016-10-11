@@ -61,12 +61,34 @@ function ordersFactory($http, $q) {
         eliminarTodoBPAQU: "/Ordenes/eliminarTodoBPAQU/",
         guardarDetalleAsignacion: "/Ordenes/guardarDetalleAsignacion/",
         consultarICAM: "/Ordenes/consultarICAM/",
-        getCablemodemsDisponibles: "/Ordenes/getCablemodemsDisponibles/"
+        getCablemodemsDisponibles: "/Ordenes/getCablemodemsDisponibles/",
+        actualizarCablemodem: "/Ordenes/actualizarCablemodem/",
+        ConsultarDatosCablemodem: "/Ordenes/ConsultarDatosCablemodem/"
     };
 
     factory.getList = function () {
         var deferred = $q.defer();
         $http.get(paths.list).success(function (data) {
+            deferred.resolve(data);
+        }).error(function (data) {
+            deferred.reject(data);
+        });
+        return deferred.promise;
+    };
+
+    factory.actualizarCablemodem = function (idPlaza, Clave, Orden, ContratoNet, Clv_Mac) {
+        var deferred = $q.defer();
+        $http.get(paths.actualizarCablemodem, { params: { idPlaza: idPlaza, Clave: Clave, Orden: Orden, ContratoNet: ContratoNet, Clv_Mac: Clv_Mac } }).success(function (data) {
+            deferred.resolve(data);
+        }).error(function (data) {
+            deferred.reject(data);
+        });
+        return deferred.promise;
+    };
+
+    factory.ConsultarDatosCablemodem = function (idPlaza, Clave, Orden, ContratoNet) {
+        var deferred = $q.defer();
+        $http.get(paths.ConsultarDatosCablemodem, { params: { idPlaza: idPlaza, Clave: Clave, Orden: Orden, ContratoNet: ContratoNet } }).success(function (data) {
             deferred.resolve(data);
         }).error(function (data) {
             deferred.reject(data);

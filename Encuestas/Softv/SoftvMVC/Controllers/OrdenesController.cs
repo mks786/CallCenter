@@ -2389,5 +2389,68 @@ namespace SoftvMVC.Controllers
             public int clave { get; set; }
             public string mac { get; set; }
         }
+
+        public ActionResult actualizarCablemodem(int idPlaza, int Clave, int Orden, int ContratoNet, int Clv_Mac)
+        {
+            ConexionController c = new ConexionController();
+            SqlCommand comandoSql;
+            SqlConnection conexionSQL2 = new SqlConnection(c.DameConexion(idPlaza));
+            int result = 0;
+            try
+            {
+                conexionSQL2.Open();
+            }
+            catch
+            { }
+
+            try
+            {
+
+                comandoSql = new SqlCommand("exec Update_ICABM  "+Clave+", "+Orden+", "+ContratoNet+", "+Clv_Mac+", 1");
+                comandoSql.Connection = conexionSQL2;
+                comandoSql.ExecuteNonQuery();
+            }
+            catch { }
+            return Json(result, JsonRequestBehavior.AllowGet); ;
+        }
+
+        public ActionResult ConsultarDatosCablemodem(int idPlaza, int Clave, int Orden, int ContratoNet)
+        {
+            ConexionController c = new ConexionController();
+            SqlCommand comandoSql;
+            SqlConnection conexionSQL2 = new SqlConnection(c.DameConexion(idPlaza));
+            objConsultaCablemodem mac = new objConsultaCablemodem();
+            try
+            {
+                conexionSQL2.Open();
+            }
+            catch
+            { }
+
+            try
+            {
+
+                comandoSql = new SqlCommand("exec CONICABM "+Clave+", "+Orden+", "+ContratoNet+"");
+                comandoSql.Connection = conexionSQL2;
+                SqlDataReader reader = comandoSql.ExecuteReader();
+                if (reader.HasRows)
+                {
+                    while (reader.Read())
+                    {
+                        mac.clave = Convert.ToInt32(reader[3]);
+                        mac.mac = reader[4].ToString();
+                    }
+
+                }
+                reader.Close();
+            }
+            catch { }
+            return Json(mac, JsonRequestBehavior.AllowGet); ;
+        }
+        public class objConsultaCablemodem
+        {
+            public int clave { get; set; }
+            public string mac { get; set; }
+        }
     }
 }

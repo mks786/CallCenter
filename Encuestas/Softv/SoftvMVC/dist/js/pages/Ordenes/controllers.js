@@ -2610,6 +2610,7 @@ function ModalAsignacionCtrl($uibModalInstance, $rootScope, items, ordersFactory
     var vm = this;
     vm.cancel = cancel;
     vm.contratosNet = [];
+    vm.ok = ok;
     initialData();
 
 
@@ -2620,6 +2621,7 @@ function ModalAsignacionCtrl($uibModalInstance, $rootScope, items, ordersFactory
                    for (var i = 0; i < data.length; i++) {
                        if(i == 0){
                            vm.mac = data[i].Mac;
+                           vm.contratoNet = data[i].ContratoNet;
                        }
                        vm.contratosNet.push({
                            ContratoNet: data[i].ContratoNet,
@@ -2636,8 +2638,37 @@ function ModalAsignacionCtrl($uibModalInstance, $rootScope, items, ordersFactory
                   "mac": "--------------------------"
               });
               vm.cablemacs = data;
-              vm.selectedCableMac = data[0];
+              ordersFactory.ConsultarDatosCablemodem(items.plaza, items.clave, items.orden, vm.contratoNet).then(function (response) {
+                  if (data.mac != "") {
+                      for (var i = 0; i < vm.cablemacs.length; i++) {
+                          if (vm.cablemacs[i].clave == response.clave) {
+                              vm.selectedCableMac = vm.cablemacs[i]
+                          }
+                      }
+                  } else {
+                      vm.selectedCableMac = data[0];
+                  }
+              });
+              
           });
+    }
+
+    function ok() {
+        if (vm.selectedCableMac.clave == 0) {
+            new PNotify({
+                title: 'Selecciona un cablemódem',
+                text: 'Debes seleccionar un cablemódem válido.',
+                icon: 'fa fa-info-circle',
+                type: 'error',
+                hide: true
+            });
+        } else {
+
+        }
+        console.log(items.plaza, items.clave, items.orden, vm.contratoNet, vm.selectedCableMac.clave);
+        ordersFactory.actualizarCablemodem(items.plaza, items.clave, items.orden, vm.contratoNet, vm.selectedCableMac.clave).then(function (data) {
+            $uibModalInstance.dismiss('cancel');
+        });
     }
 
     function cancel() {
